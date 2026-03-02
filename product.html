@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Product • Offerte</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand">
+        <div class="brand-title">Offerte samenstellen</div>
+        <div class="brand-sub">Selecteer opties voor dit product.</div>
+      </div>
+
+      <div class="header-actions">
+        <a class="btn btn-secondary" href="index.html">← Terug</a>
+        <a class="btn btn-primary" href="cart.html">🧾 Offerte (<span id="cartCount">0</span>)</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel" id="pwrap" style="display:none">
+      <div class="product-layout">
+        <div class="product-media">
+          <img id="pimg" class="product-img" alt="" loading="lazy" />
+          <div class="small" id="pbadge"></div>
+          <div class="small"><a id="plink" target="_blank" rel="noopener">Bronpagina</a></div>
+        </div>
+
+        <div class="product-main">
+          <div class="product-title" id="ptitle"></div>
+          <div class="product-price" id="pprice"></div>
+          <div class="product-specs" id="pspecs"></div>
+
+          <hr class="sep"/>
+
+          <div class="panel-title">Keuzevakken</div>
+
+          <div class="options">
+            <label class="opt">
+              <input id="optInstall" type="checkbox" />
+              <div class="opt-text">
+                <div class="opt-title">Levering & installatie</div>
+                <div class="small" id="installHint"></div>
+              </div>
+              <div class="opt-price" id="installPrice">€0</div>
+            </label>
+
+            <label class="opt opt-disabled">
+              <input type="checkbox" checked disabled />
+              <div class="opt-text">
+                <div class="opt-title">Cover & trap</div>
+                <div class="small">Inclusief</div>
+              </div>
+              <div class="opt-price">€0</div>
+            </label>
+
+            <label class="opt">
+              <input id="optCoverlift" type="checkbox" />
+              <div class="opt-text">
+                <div class="opt-title">Coverlift</div>
+                <div class="small">Optioneel</div>
+              </div>
+              <div class="opt-price" id="coverliftPrice">€189</div>
+            </label>
+
+            <label class="opt">
+              <input id="optMaintenance" type="checkbox" />
+              <div class="opt-text">
+                <div class="opt-title">Onderhoudspakket</div>
+                <div class="small">Optioneel</div>
+              </div>
+              <div class="opt-price" id="maintPrice">€179</div>
+            </label>
+
+            <div class="opt opt-row">
+              <div class="opt-text">
+                <div class="opt-title">Extra filters</div>
+                <div class="small">€45 per filter</div>
+              </div>
+              <div class="opt-qty">
+                <input id="filterQty" type="number" min="0" step="1" value="0" />
+              </div>
+              <div class="opt-price" id="filterPrice">€0</div>
+            </div>
+          </div>
+
+          <hr class="sep"/>
+
+          <div class="product-actions">
+            <div class="qty">
+              <label class="small" for="pqty">Aantal</label>
+              <input id="pqty" type="number" min="1" step="1" value="1" />
+            </div>
+
+            <div class="totals">
+              <div class="totals-row"><span>Product</span><strong id="tProduct">€0</strong></div>
+              <div class="totals-row"><span>Opties</span><strong id="tOptions">€0</strong></div>
+              <div class="totals-row totals-row-big"><span>Totaal</span><strong id="tTotal">€0</strong></div>
+              <div class="small">Alle bedragen excl. btw.</div>
+            </div>
+
+            <button id="btnAdd" class="btn btn-primary" type="button">➕ Voeg toe aan offerte</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="err" style="display:none">
+      <div class="panel-title">Product niet gevonden</div>
+      <div class="small">Ga terug naar de catalogus en probeer opnieuw.</div>
+      <div style="margin-top:12px"><a class="btn btn-secondary" href="index.html">← Terug</a></div>
+    </section>
+  </main>
+
+  <script src="product.js"></script>
+</body>
+</html>

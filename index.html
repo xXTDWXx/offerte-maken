@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sunspa Catalogus</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand">
+        <div class="brand-title">Sunspa Catalogus</div>
+        <div class="brand-sub">Klik op een product om opties te kiezen en je offerte op te bouwen.</div>
+      </div>
+
+      <div class="header-actions">
+        <button id="btn-sync" class="btn btn-secondary" type="button" title="Herlaad productlijst">🔄 Synchroniseren</button>
+        <a class="btn btn-primary" href="cart.html">🧾 Offerte (<span id="cartCount">0</span>)</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <div class="panel-row">
+        <div class="field">
+          <label for="search">Zoeken</label>
+          <input id="search" type="search" placeholder="Zoek op titel, type, specificaties…" />
+        </div>
+
+        <div class="field">
+          <label for="typeFilter">Type</label>
+          <select id="typeFilter"><option value="">Alle types</option></select>
+        </div>
+
+        <div class="field">
+          <label for="sort">Sorteren</label>
+          <select id="sort">
+            <option value="relevance">Relevantie</option>
+            <option value="priceAsc">Prijs (laag → hoog)</option>
+            <option value="priceDesc">Prijs (hoog → laag)</option>
+            <option value="titleAsc">Titel (A → Z)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>&nbsp;</label>
+          <button id="btnClear" class="btn" type="button">Wissen</button>
+        </div>
+      </div>
+
+      <div class="panel-row panel-row-2">
+        <div class="chips" id="activeChips"></div>
+        <div class="small" id="resultMeta"></div>
+      </div>
+    </section>
+
+    <section class="grid" id="grid"></section>
+  </main>
+
+  <template id="cardTpl">
+    <article class="card">
+      <a class="card-link" data-link>
+        <div class="card-imgwrap">
+          <img class="card-img" alt="" loading="lazy" />
+          <div class="badge" data-badge></div>
+        </div>
+
+        <div class="card-body">
+          <div class="card-title" data-title></div>
+          <div class="card-price" data-price></div>
+          <div class="card-specs" data-specs></div>
+          <div class="card-cta">👉 Kies opties & voeg toe</div>
+        </div>
+      </a>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
