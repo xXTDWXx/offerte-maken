@@ -559,3 +559,4 @@ function afterOpenModal(p){
 
   wireOptionHandlers();
   updateOptionUI();
+}
