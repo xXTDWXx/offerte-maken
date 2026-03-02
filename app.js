@@ -1,6 +1,6 @@
 // Catalogus
 // Shared helpers + cart storage
-const PRODUCTS_URL = './assets/products.json';
+const PRODUCTS_URL = 'products.json';
 const CART_KEY = 'sunspa_quote_cart_v1';
 const FORM_KEY = 'sunspa_quote_form_v1';
 
