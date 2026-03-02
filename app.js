@@ -1,7 +1,7 @@
 // Sunspa catalogus + productfiche modal
 // Verwacht: assets/products.json
 
-const PRODUCTS_URL = new URL('assets/products.json', document.baseURI).toString();
+const PRODUCTS_URL = new URL('./products.json', document.baseURI).toString();
 
 const elGrid = document.getElementById('grid');
 const tpl = document.getElementById('cardTpl');
