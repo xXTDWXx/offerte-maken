@@ -1,101 +1,99 @@
-// Catalogus
-// Shared helpers + cart storage
-const PRODUCTS_URL = './products.json';
-const CART_KEY = 'sunspa_quote_cart_v1';
-const FORM_KEY = 'sunspa_quote_form_v1';
+// Sunspa catalogus + productfiche modal
+// Verwacht: assets/products.json
 
-function euro(n){
-  try{ return new Intl.NumberFormat('nl-BE',{style:'currency',currency:'EUR'}).format(n); }
-  catch{ return '€' + (Math.round(n*100)/100).toFixed(2); }
-}
-function normalize(s){ return (s||'').toString().toLowerCase().trim(); }
-
-function getCart(){
-  try{ return JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }catch{ return []; }
-}
-function setCart(items){
-  localStorage.setItem(CART_KEY, JSON.stringify(items));
-}
-function cartCount(){
-  return getCart().reduce((a,i)=> a + Math.max(1, Number(i.qty||1)), 0);
-}
-function setCountTo(el){
-  if (el) el.textContent = String(cartCount());
-}
-async function loadProducts(force=false){
-  const url = force ? `${PRODUCTS_URL}?t=${Date.now()}` : PRODUCTS_URL;
-  const res = await fetch(url, { cache: force ? 'no-store' : 'default' });
-  if (!res.ok) throw new Error(`Kan products.json niet laden (${res.status})`);
-  const json = await res.json();
-  return Array.isArray(json) ? json : (json.products || []);
-}
-
-function installCostForType(type){
-  const t = normalize(type);
-  // Map per jouw prijzen
-  if (t.includes('zwemspa') || t.includes('swim')) return 895;
-  if (t.includes('infrarood')) return 450;
-  if (t.includes('sauna barrel') || (t.includes('barrel') && t.includes('sauna'))) return 995;
-  if (t.includes('sauna')) return 695; // gewone sauna
-  // default: jacuzzi
-  return 695;
-}
-
-function escapeHtml(s){
-  return (s||'').toString()
-    .replaceAll('&','&amp;')
-    .replaceAll('<','&lt;')
-    .replaceAll('>','&gt;')
-    .replaceAll('"','&quot;')
-    .replaceAll("'",'&#039;');
-}
+const PRODUCTS_URL = new URL('assets/products.json', document.baseURI).toString();
 
 const elGrid = document.getElementById('grid');
 const tpl = document.getElementById('cardTpl');
+
 const elSearch = document.getElementById('search');
 const elType = document.getElementById('typeFilter');
 const elSort = document.getElementById('sort');
 const elClear = document.getElementById('btnClear');
+
 const elSync = document.getElementById('btn-sync');
-setCountTo(document.getElementById('cartCount'));
+const elStatus = document.getElementById('status');
+const elChips = document.getElementById('activeChips');
+const elMeta = document.getElementById('resultMeta');
+
+const errorBox = document.getElementById('errorBox');
+const errorText = document.getElementById('errorText');
+
+// Modal refs
+const modal = document.getElementById('productModal');
+const modalImg = document.getElementById('modalImg');
+const modalTitle = document.getElementById('modalTitle');
+const modalPrice = document.getElementById('modalPrice');
+const modalType = document.getElementById('modalType');
+const modalSpecs = document.getElementById('modalSpecs');
+const modalUrl = document.getElementById('modalUrl');
+const modalPrint = document.getElementById('modalPrint');
 
 let products = [];
 let filtered = [];
 
+function euro(n){
+  const x = Number(n || 0);
+  try {
+    return new Intl.NumberFormat('nl-BE', { style: 'currency', currency: 'EUR' }).format(x);
+  } catch {
+    return '€' + x.toFixed(2);
+  }
+}
+
+function normalize(s){
+  return (s ?? '').toString().toLowerCase().trim();
+}
+
+function escapeHtml(s){
+  return (s ?? '').toString()
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'","&#039;");
+}
+
+async function loadProducts({ force = false } = {}){
+  const url = force ? `${PRODUCTS_URL}?t=${Date.now()}` : PRODUCTS_URL;
+  const res = await fetch(url, { cache: force ? 'no-store' : 'default' });
+  if (!res.ok) throw new Error(`Kan products.json niet laden (${res.status})`);
+  const json = await res.json();
+
+  // ondersteunt: [..] of {products:[..]}
+  const items = Array.isArray(json) ? json : (json.products || []);
+  if (!Array.isArray(items)) return [];
+  return items;
+}
+
 function buildTypeFilter(items){
-  const types = Array.from(new Set(items.map(p=>p.type).filter(Boolean))).sort();
-  elType.innerHTML = '<option value="">Alle types</option>' + types.map(t=>`<option value="${t}">${t}</option>`).join('');
+  const types = Array.from(new Set(items.map(p => p.type).filter(Boolean))).sort();
+  elType.innerHTML = '<option value="">Alle types</option>' +
+    types.map(t => `<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`).join('');
 }
 
 function productSearchBlob(p){
-  const specText = (p.specs||[]).map(s => `${s.label}: ${s.value}`).join(' | ');
-  const bullets = (p.bullets||[]).join(' | ');
-  return normalize([p.title,p.type,bullets,specText].join(' '));
-}
-
-function renderChips(q,type,sort){
-  const chips = [];
-  if (q) chips.push(`Zoek: ${q}`);
-  if (type) chips.push(`Type: ${type}`);
-  if (sort && sort !== 'relevance'){
-    const map = {priceAsc:'Prijs ↑',priceDesc:'Prijs ↓',titleAsc:'Titel A–Z'};
-    chips.push(`Sort: ${map[sort] || sort}`);
-  }
-  document.getElementById('activeChips').innerHTML = chips.map(c=>`<span class="chip">${c}</span>`).join('');
-  document.getElementById('resultMeta').textContent = `${filtered.length} producten`;
+  const specText = (p.specs || []).map(s => `${s.label}: ${s.value}`).join(' | ');
+  const bullets = (p.bullets || []).join(' | ');
+  return normalize([p.title, p.type, bullets, specText].join(' '));
 }
 
 function topSpecs(p){
   const want = ['Aantal zitplaatsen','Aantal ligplaatsen','Aantal jets','Afmetingen','Inhoud','Stroom'];
-  const specs = p.specs || [];
+  const specs = Array.isArray(p.specs) ? p.specs : [];
   const picked = [];
+
   for (const key of want){
     const found = specs.find(s => normalize(s.label) === normalize(key));
-    if (found) picked.push(`${found.label}: ${found.value}`);
+    if (found) picked.push(`${escapeHtml(found.label)}: ${escapeHtml(found.value)}`);
   }
+
   if (!picked.length){
-    for (const s of specs.slice(0,3)) picked.push(`${s.label}: ${s.value}`);
+    for (const s of specs.slice(0,3)){
+      picked.push(`${escapeHtml(s.label)}: ${escapeHtml(s.value)}`);
+    }
   }
+
   return picked.slice(0,4).join('<br>');
 }
 
@@ -110,12 +108,25 @@ function applyFilters(){
     return true;
   });
 
-  if (sort === 'priceAsc') filtered.sort((a,b)=> (a.price||0)-(b.price||0));
-  if (sort === 'priceDesc') filtered.sort((a,b)=> (b.price||0)-(a.price||0));
+  if (sort === 'priceAsc') filtered.sort((a,b)=> (a.price||0) - (b.price||0));
+  if (sort === 'priceDesc') filtered.sort((a,b)=> (b.price||0) - (a.price||0));
   if (sort === 'titleAsc') filtered.sort((a,b)=> (a.title||'').localeCompare(b.title||'','nl'));
 
-  renderChips(q,type,sort);
+  renderChips(q, type, sort);
   renderGrid();
+}
+
+function renderChips(q, type, sort){
+  const chips = [];
+  if (q) chips.push(`Zoek: ${escapeHtml(q)}`);
+  if (type) chips.push(`Type: ${escapeHtml(type)}`);
+  if (sort && sort !== 'relevance'){
+    const map = { priceAsc:'Prijs ↑', priceDesc:'Prijs ↓', titleAsc:'Titel A–Z' };
+    chips.push(`Sort: ${map[sort] || sort}`);
+  }
+
+  elChips.innerHTML = chips.map(c => `<span class="chip">${c}</span>`).join('');
+  elMeta.textContent = `${filtered.length} producten`;
 }
 
 function renderGrid(){
@@ -124,46 +135,157 @@ function renderGrid(){
 
   for (const p of filtered){
     const node = tpl.content.cloneNode(true);
+
     const img = node.querySelector('.card-img');
     img.src = p.image || '';
     img.alt = p.title || 'Product';
-    img.onerror = () => { img.src=''; img.style.display='none'; };
+    img.onerror = () => { img.style.display = 'none'; };
 
     node.querySelector('[data-badge]').textContent = (p.type || '').toUpperCase();
     node.querySelector('[data-title]').textContent = p.title || '';
     node.querySelector('[data-price]').textContent = euro(p.price || 0);
     node.querySelector('[data-specs]').innerHTML = topSpecs(p);
 
-    const link = node.querySelector('[data-link]');
-    link.href = `product.html?id=${encodeURIComponent(p.id)}`;
+    node.querySelector('[data-open]').addEventListener('click', () => openModal(p));
 
     frag.appendChild(node);
   }
+
   elGrid.appendChild(frag);
 }
 
+function specTableHtml(p){
+  const specs = Array.isArray(p.specs) ? p.specs : [];
+  if (!specs.length) return '<div class="small">Geen specificaties beschikbaar.</div>';
+
+  return specs.map(s => `
+    <div class="spec-row">
+      <strong>${escapeHtml(s.label || '')}</strong>
+      <span>${escapeHtml(s.value || '')}</span>
+    </div>
+  `).join('');
+}
+
+function openModal(p){
+  modalTitle.textContent = p.title || '—';
+  modalPrice.textContent = `Prijs: ${euro(p.price || 0)}`;
+  modalType.textContent = (p.type || '').toUpperCase();
+
+  modalImg.src = p.image || '';
+  modalImg.alt = p.title || 'Product';
+  modalImg.style.display = p.image ? '' : 'none';
+  modalImg.onerror = () => { modalImg.style.display = 'none'; };
+
+  modalSpecs.innerHTML = specTableHtml(p);
+
+  modalUrl.href = p.url || '#';
+  modalUrl.style.display = p.url ? '' : 'none';
+
+  modalPrint.onclick = () => printProductFiche(p);
+
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(){
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+modal.addEventListener('click', (e) => {
+  const t = e.target;
+  if (t && t.matches('[data-close]')) closeModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+});
+
+function printProductFiche(p){
+  const win = window.open('', '_blank');
+  const specs = (p.specs || []).map(s =>
+    `<tr><td><strong>${escapeHtml(s.label)}</strong></td><td>${escapeHtml(s.value)}</td></tr>`
+  ).join('');
+
+  const img = p.image
+    ? `<img src="${p.image}" style="width:100%;max-width:760px;border:1px solid #ddd;border-radius:12px;margin:10px 0">`
+    : '';
+
+  win.document.write(`
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>${escapeHtml(p.title || 'Product')}</title>
+        <style>
+          body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:24px;color:#111}
+          h1{margin:0 0 6px 0}
+          .meta{color:#333;margin:0 0 10px 0}
+          table{width:100%;border-collapse:collapse;margin-top:12px}
+          td{border-bottom:1px solid #eee;padding:8px 0;vertical-align:top}
+          td:first-child{width:220px}
+          @media print{button{display:none}}
+        </style>
+      </head>
+      <body>
+        <h1>${escapeHtml(p.title || '')}</h1>
+        <div class="meta">
+          Type: ${escapeHtml(p.type || '—')}<br>
+          Prijs: ${euro(p.price || 0)}
+        </div>
+        ${img}
+        <table>${specs}</table>
+        <script>window.onload=()=>{window.print();}</script>
+      </body>
+    </html>
+  `);
+  win.document.close();
+}
+
+function showError(msg){
+  errorBox.style.display = '';
+  errorText.textContent = msg;
+}
+
 async function init(){
-  products = await loadProducts(false);
+  elStatus.textContent = 'Laden…';
+  products = await loadProducts({ force: false });
   buildTypeFilter(products);
   applyFilters();
+  elStatus.textContent = `OK • ${products.length} producten`;
 }
 
 elSearch.addEventListener('input', applyFilters);
 elType.addEventListener('change', applyFilters);
 elSort.addEventListener('change', applyFilters);
-elClear.addEventListener('click', () => { elSearch.value=''; elType.value=''; elSort.value='relevance'; applyFilters(); });
+
+elClear.addEventListener('click', () => {
+  elSearch.value = '';
+  elType.value = '';
+  elSort.value = 'relevance';
+  applyFilters();
+});
+
 elSync.addEventListener('click', async () => {
-  elSync.disabled = true; elSync.textContent='⏳ Bezig…';
+  elSync.disabled = true;
+  elSync.textContent = '⏳ Bezig…';
+  elStatus.textContent = 'Synchroniseren…';
   try{
-    products = await loadProducts(true);
+    products = await loadProducts({ force: true });
     buildTypeFilter(products);
     applyFilters();
-  }finally{
-    elSync.disabled = false; elSync.textContent='🔄 Synchroniseren';
+    elStatus.textContent = `OK • ${products.length} producten`;
+  } catch (e){
+    console.error(e);
+    elStatus.textContent = 'Fout';
+    showError(String(e.message || e));
+  } finally {
+    elSync.disabled = false;
+    elSync.textContent = '🔄 Synchroniseren';
   }
 });
 
-init().catch(err => {
-  console.error(err);
-  document.getElementById('resultMeta').textContent = 'Fout bij laden';
+init().catch(e => {
+  console.error(e);
+  elStatus.textContent = 'Fout';
+  showError(String(e.message || e));
 });
