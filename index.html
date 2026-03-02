@@ -109,6 +109,86 @@
 
           <div class="modal-specs">
             <div id="modalSpecs" class="spec-table"></div>
+            <hr style="border:none;border-top:1px solid var(--border);margin:14px 0">
+
+<div class="panel-title" style="margin:0 0 10px 0">Opties</div>
+
+<div class="options" id="modalOptions">
+  <label class="opt">
+    <input id="optInstall" type="checkbox" />
+    <div class="opt-text">
+      <div class="opt-title">Levering & installatie</div>
+      <div class="small" id="optInstallHint"></div>
+    </div>
+    <div class="opt-price" id="optInstallPrice">€0</div>
+  </label>
+
+  <label class="opt opt-disabled">
+    <input type="checkbox" checked disabled />
+    <div class="opt-text">
+      <div class="opt-title">Cover & trap</div>
+      <div class="small">Inclusief</div>
+    </div>
+    <div class="opt-price">€0</div>
+  </label>
+
+  <div class="opt opt-row" id="optCoverliftRow">
+    <div class="opt-text">
+      <div class="opt-title">Coverlift</div>
+      <div class="small">€189 per stuk (alleen jacuzzi/zwemspa)</div>
+    </div>
+    <div class="opt-qty">
+      <input id="optCoverliftQty" type="number" min="0" step="1" value="0" />
+    </div>
+    <div class="opt-price" id="optCoverliftTotal">€0</div>
+  </div>
+
+  <div class="opt opt-row">
+    <div class="opt-text">
+      <div class="opt-title">Onderhoudspakket</div>
+      <div class="small">€179 per stuk</div>
+    </div>
+    <div class="opt-qty">
+      <input id="optMaintQty" type="number" min="0" step="1" value="0" />
+    </div>
+    <div class="opt-price" id="optMaintTotal">€0</div>
+  </div>
+
+  <div class="opt opt-row">
+    <div class="opt-text">
+      <div class="opt-title">Extra filter</div>
+      <div class="small">€45 per stuk</div>
+    </div>
+    <div class="opt-qty">
+      <input id="optFilterQty" type="number" min="0" step="1" value="0" />
+    </div>
+    <div class="opt-price" id="optFilterTotal">€0</div>
+  </div>
+
+  <div class="opt opt-row" id="optSwimFiltersetRow" style="display:none">
+    <div class="opt-text">
+      <div class="opt-title">Extra filterset (zwemspa)</div>
+      <div class="small">€250 per set</div>
+    </div>
+    <div class="opt-qty">
+      <input id="optSwimFiltersetQty" type="number" min="0" step="1" value="0" />
+    </div>
+    <div class="opt-price" id="optSwimFiltersetTotal">€0</div>
+  </div>
+</div>
+
+<hr style="border:none;border-top:1px solid var(--border);margin:14px 0">
+
+<div class="totals">
+  <div class="totals-row"><span>Product</span><strong id="optProductTotal">€0</strong></div>
+  <div class="totals-row"><span>Opties</span><strong id="optOptionsTotal">€0</strong></div>
+  <div class="totals-row totals-row-big"><span>Totaal</span><strong id="optGrandTotal">€0</strong></div>
+  <div class="small">Alle bedragen excl. btw.</div>
+</div>
+
+<div style="margin-top:12px">
+  <button id="btnAddToOffer" class="btn btn-primary" type="button">➕ Voeg toe aan offerte</button>
+</div>
 
             <div class="modal-actions">
               <a id="modalUrl" class="btn btn-secondary" target="_blank" rel="noopener">Bekijk op website</a>
