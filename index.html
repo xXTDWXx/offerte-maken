@@ -6,17 +6,18 @@
   <title>Sunspa Catalogus</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <header class="header">
     <div class="container header-row">
       <div class="brand">
         <div class="brand-title">Sunspa Catalogus</div>
-        <div class="brand-sub">Klik op een product om opties te kiezen en je offerte op te bouwen.</div>
+        <div class="brand-sub">Klik op een product om details te zien en te printen.</div>
       </div>
 
       <div class="header-actions">
-        <button id="btn-sync" class="btn btn-secondary" type="button" title="Herlaad productlijst">🔄 Synchroniseren</button>
-        <a class="btn btn-primary" href="cart.html">🧾 Offerte (<span id="cartCount">0</span>)</a>
+        <button id="btn-sync" class="btn btn-secondary" type="button">🔄 Synchroniseren</button>
+        <div class="small" id="status"></div>
       </div>
     </div>
   </header>
@@ -31,7 +32,9 @@
 
         <div class="field">
           <label for="typeFilter">Type</label>
-          <select id="typeFilter"><option value="">Alle types</option></select>
+          <select id="typeFilter">
+            <option value="">Alle types</option>
+          </select>
         </div>
 
         <div class="field">
@@ -52,16 +55,24 @@
 
       <div class="panel-row panel-row-2">
         <div class="chips" id="activeChips"></div>
-        <div class="small" id="resultMeta"></div>
+        <div class="small" id="resultMeta">—</div>
       </div>
     </section>
 
     <section class="grid" id="grid"></section>
+
+    <section class="panel" id="errorBox" style="display:none">
+      <div class="panel-title">Fout bij laden</div>
+      <div class="small" id="errorText"></div>
+      <div class="small" style="margin-top:8px">
+        Controleer of <code>assets/products.json</code> bestaat en bereikbaar is.
+      </div>
+    </section>
   </main>
 
   <template id="cardTpl">
     <article class="card">
-      <a class="card-link" data-link>
+      <button class="card-link" type="button" data-open>
         <div class="card-imgwrap">
           <img class="card-img" alt="" loading="lazy" />
           <div class="badge" data-badge></div>
@@ -71,11 +82,47 @@
           <div class="card-title" data-title></div>
           <div class="card-price" data-price></div>
           <div class="card-specs" data-specs></div>
-          <div class="card-cta">👉 Kies opties & voeg toe</div>
+          <div class="card-cta">👉 Bekijk details</div>
         </div>
-      </a>
+      </button>
     </article>
   </template>
+
+  <!-- Productfiche modal -->
+  <div id="productModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" type="button" aria-label="Sluiten" data-close>✕</button>
+
+      <div class="modal-head">
+        <h2 id="modalTitle" class="modal-title">—</h2>
+        <div id="modalPrice" class="modal-price">Prijs: —</div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-grid">
+          <div class="modal-media">
+            <img id="modalImg" alt="" loading="lazy" />
+            <div id="modalType" class="modal-type"></div>
+          </div>
+
+          <div class="modal-specs">
+            <div id="modalSpecs" class="spec-table"></div>
+
+            <div class="modal-actions">
+              <a id="modalUrl" class="btn btn-secondary" target="_blank" rel="noopener">Bekijk op website</a>
+              <button id="modalPrint" class="btn btn-primary" type="button">Print</button>
+            </div>
+
+            <div class="small" style="margin-top:10px">
+              Print maakt een fiche van alleen dit product.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>
