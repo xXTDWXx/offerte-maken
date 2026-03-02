@@ -172,7 +172,9 @@ function openModal(p) {
 
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
+  afterOpenModal(p);
 }
+
 
 function closeModal() {
   if (!modal) return;
