@@ -177,6 +177,22 @@ input:focus,select:focus{border-color:rgba(56,189,248,.55)}
   border:1px solid var(--border);
   border-radius: 14px;
   background: rgba(255,255,255,.03);
+  .options{display:flex;flex-direction:column;gap:10px}
+.opt{
+  display:grid;
+  grid-template-columns: 22px 1fr 110px;
+  gap:10px;
+  align-items:center;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(255,255,255,.03);
+}
+.opt-row{grid-template-columns: 1fr 120px 110px}
+.opt-disabled{opacity:.75}
+.opt-title{font-weight:850}
+.opt-price{text-align:right;font-weight:900}
+.opt-qty input{width:100%}
 }
 .spec-row strong{color:var(--text)}
 .spec-row span{color:var(--muted)}
