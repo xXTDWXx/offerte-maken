@@ -1,8 +1,8 @@
-// Sunspa catalogus + productfiche modal (robust / null-safe)
-// Verwacht: assets/products.json
-// Werkt met templates die (optioneel) data-open en/of data-link bevatten.
+// Sunspa catalogus + productfiche modal + offerte-opties
+// Verwacht: products.json in dezelfde map als index.html
 
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
+const OFFER_KEY = 'sunspa_offer_v1';
 
 // --- Catalog refs
 const elGrid = document.getElementById('grid');
@@ -21,7 +21,7 @@ const elMeta = document.getElementById('resultMeta');
 const errorBox = document.getElementById('errorBox');
 const errorText = document.getElementById('errorText');
 
-// --- Modal refs (best-effort; als modal niet bestaat, blijft catalogus werken)
+// --- Modal refs
 const modal = document.getElementById('productModal');
 const modalImg = document.getElementById('modalImg');
 const modalTitle = document.getElementById('modalTitle');
@@ -33,11 +33,20 @@ const modalPrint = document.getElementById('modalPrint');
 
 let products = [];
 let filtered = [];
+let currentProduct = null;
+
+// ===== helpers =====
+function $(id) {
+  return document.getElementById(id);
+}
 
 function euro(n) {
   const x = Number(n || 0);
   try {
-    return new Intl.NumberFormat('nl-BE', { style: 'currency', currency: 'EUR' }).format(x);
+    return new Intl.NumberFormat('nl-BE', {
+      style: 'currency',
+      currency: 'EUR'
+    }).format(x);
   } catch {
     return '€' + x.toFixed(2);
   }
@@ -56,13 +65,82 @@ function escapeHtml(s) {
     .replaceAll("'", '&#039;');
 }
 
+function getOffer() {
+  try {
+    return JSON.parse(localStorage.getItem(OFFER_KEY) || '[]');
+  } catch {
+    return [];
+  }
+}
+
+function setOffer(lines) {
+  localStorage.setItem(OFFER_KEY, JSON.stringify(lines));
+}
+
+// ===== pricing rules =====
+const PRICES = {
+  install_jacuzzi: 695,
+  install_swimspa: 895,
+  install_barrel_sauna: 995,
+  install_infrared: 450,
+  install_sauna: 695,
+  coverlift_unit: 189,
+  maintenance_unit: 179,
+  filter_unit: 45,
+  swim_filterset_unit: 250
+};
+
+function typeNorm(type) {
+  return (type || '').toString().toLowerCase();
+}
+
+function isSwimspa(type) {
+  const t = typeNorm(type);
+  return t.includes('zwemspa') || t.includes('swim');
+}
+
+function isInfrared(type) {
+  return typeNorm(type).includes('infrarood');
+}
+
+function isBarrelSauna(type) {
+  const t = typeNorm(type);
+  return t.includes('barrel') && t.includes('sauna');
+}
+
+function isSauna(type) {
+  return typeNorm(type).includes('sauna');
+}
+
+function isJacuzzi(type) {
+  const t = typeNorm(type);
+  return !isSwimspa(t) && !isInfrared(t) && !isSauna(t);
+}
+
+function installCost(type) {
+  if (isSwimspa(type)) return PRICES.install_swimspa;
+  if (isBarrelSauna(type)) return PRICES.install_barrel_sauna;
+  if (isInfrared(type)) return PRICES.install_infrared;
+  if (isSauna(type)) return PRICES.install_sauna;
+  return PRICES.install_jacuzzi;
+}
+
+function coverliftAllowed(type) {
+  return isJacuzzi(type) || isSwimspa(type);
+}
+
+function readInt(el) {
+  const n = Number(el?.value || 0);
+  return Number.isFinite(n) ? Math.max(0, Math.floor(n)) : 0;
+}
+
+// ===== data loading =====
 async function loadProducts({ force = false } = {}) {
   const url = force ? `${PRODUCTS_URL}?t=${Date.now()}` : PRODUCTS_URL;
   const res = await fetch(url, { cache: force ? 'no-store' : 'default' });
   if (!res.ok) throw new Error(`Kan products.json niet laden (${res.status})`);
   const json = await res.json();
 
-  // ondersteunt: [..] of {products:[..]}
   const items = Array.isArray(json) ? json : (json.products || []);
   if (!Array.isArray(items)) return [];
   return items;
@@ -71,7 +149,8 @@ async function loadProducts({ force = false } = {}) {
 function buildTypeFilter(items) {
   if (!elType) return;
   const types = Array.from(new Set(items.map(p => p.type).filter(Boolean))).sort();
-  elType.innerHTML = '<option value="">Alle types</option>' +
+  elType.innerHTML =
+    '<option value="">Alle types</option>' +
     types.map(t => `<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`).join('');
 }
 
@@ -100,6 +179,19 @@ function topSpecs(p) {
   return picked.slice(0, 4).join('<br>');
 }
 
+function specTableHtml(p) {
+  const specs = Array.isArray(p.specs) ? p.specs : [];
+  if (!specs.length) return '<div class="small">Geen specificaties beschikbaar.</div>';
+
+  return specs.map(s => `
+    <div class="spec-row">
+      <strong>${escapeHtml(s.label || '')}</strong>
+      <span>${escapeHtml(s.value || '')}</span>
+    </div>
+  `).join('');
+}
+
+// ===== filters =====
 function renderChips(q, type, sort) {
   if (!elChips || !elMeta) return;
 
@@ -107,7 +199,11 @@ function renderChips(q, type, sort) {
   if (q) chips.push(`Zoek: ${escapeHtml(q)}`);
   if (type) chips.push(`Type: ${escapeHtml(type)}`);
   if (sort && sort !== 'relevance') {
-    const map = { priceAsc: 'Prijs ↑', priceDesc: 'Prijs ↓', titleAsc: 'Titel A–Z' };
+    const map = {
+      priceAsc: 'Prijs ↑',
+      priceDesc: 'Prijs ↓',
+      titleAsc: 'Titel A–Z'
+    };
     chips.push(`Sort: ${map[sort] || sort}`);
   }
 
@@ -134,21 +230,164 @@ function applyFilters() {
   renderGrid();
 }
 
-function specTableHtml(p) {
-  const specs = Array.isArray(p.specs) ? p.specs : [];
-  if (!specs.length) return '<div class="small">Geen specificaties beschikbaar.</div>';
+// ===== modal options =====
+function updateOptionUI() {
+  if (!currentProduct) return;
 
-  return specs.map(s => `
-    <div class="spec-row">
-      <strong>${escapeHtml(s.label || '')}</strong>
-      <span>${escapeHtml(s.value || '')}</span>
-    </div>
-  `).join('');
+  const type = currentProduct.type || '';
+
+  const optInstall = $('optInstall');
+  const optInstallHint = $('optInstallHint');
+  const optInstallPrice = $('optInstallPrice');
+
+  const optCoverliftRow = $('optCoverliftRow');
+  const optCoverlift = $('optCoverlift');
+  const optCoverliftTotal = $('optCoverliftTotal');
+
+  const optMaint = $('optMaint');
+  const optMaintTotal = $('optMaintTotal');
+
+  const optFilter = $('optFilter');
+  const optFilterTotal = $('optFilterTotal');
+
+  const optSwimFiltersetRow = $('optSwimFiltersetRow');
+  const optSwimFiltersetQty = $('optSwimFiltersetQty');
+  const optSwimFiltersetTotal = $('optSwimFiltersetTotal');
+
+  const tProduct = $('optProductTotal');
+  const tOptions = $('optOptionsTotal');
+  const tGrand = $('optGrandTotal');
+
+  const inst = installCost(type);
+
+  if (optInstallHint) {
+    optInstallHint.textContent = `Installatiekost voor type “${type || 'jacuzzi'}”: ${euro(inst)}`;
+  }
+  if (optInstallPrice) {
+    optInstallPrice.textContent = euro(inst);
+  }
+
+  const allowCoverlift = coverliftAllowed(type);
+  if (optCoverliftRow) optCoverliftRow.style.display = allowCoverlift ? '' : 'none';
+  if (!allowCoverlift && optCoverlift) optCoverlift.checked = false;
+
+  const swim = isSwimspa(type);
+  if (optSwimFiltersetRow) optSwimFiltersetRow.style.display = swim ? '' : 'none';
+  if (!swim && optSwimFiltersetQty) optSwimFiltersetQty.value = '0';
+
+  const installSelected = !!optInstall?.checked;
+  const coverliftSelected = allowCoverlift ? !!optCoverlift?.checked : false;
+  const maintSelected = !!optMaint?.checked;
+  const filterSelected = !!optFilter?.checked;
+  const swimFiltersetQty = swim ? readInt(optSwimFiltersetQty) : 0;
+
+  const installLine = installSelected ? inst : 0;
+  const coverliftLine = coverliftSelected ? PRICES.coverlift_unit : 0;
+  const maintLine = maintSelected ? PRICES.maintenance_unit : 0;
+  const filterLine = filterSelected ? PRICES.filter_unit : 0;
+  const swimFiltersetLine = swimFiltersetQty * PRICES.swim_filterset_unit;
+
+  if (optCoverliftTotal) optCoverliftTotal.textContent = euro(coverliftLine);
+  if (optMaintTotal) optMaintTotal.textContent = euro(maintLine);
+  if (optFilterTotal) optFilterTotal.textContent = euro(filterLine);
+  if (optSwimFiltersetTotal) optSwimFiltersetTotal.textContent = euro(swimFiltersetLine);
+
+  const productPrice = Number(currentProduct.price || 0);
+  const optionsTotal = installLine + coverliftLine + maintLine + filterLine + swimFiltersetLine;
+  const grand = productPrice + optionsTotal;
+
+  if (tProduct) tProduct.textContent = euro(productPrice);
+  if (tOptions) tOptions.textContent = euro(optionsTotal);
+  if (tGrand) tGrand.textContent = euro(grand);
 }
 
-// --- Modal open/close (best-effort)
+function wireOptionHandlers() {
+  const ids = [
+    'optInstall',
+    'optCoverlift',
+    'optMaint',
+    'optFilter',
+    'optSwimFiltersetQty'
+  ];
+
+  ids.forEach(id => {
+    const el = $(id);
+    if (!el) return;
+    el.addEventListener('input', updateOptionUI);
+    el.addEventListener('change', updateOptionUI);
+  });
+
+  const btnAdd = $('btnAddToOffer');
+  if (btnAdd) {
+    btnAdd.onclick = () => {
+      if (!currentProduct) return;
+
+      const type = currentProduct.type || '';
+      const inst = installCost(type);
+      const allowCoverlift = coverliftAllowed(type);
+      const swim = isSwimspa(type);
+
+      const payload = {
+        productId: currentProduct.id,
+        title: currentProduct.title,
+        type: currentProduct.type || '',
+        url: currentProduct.url || '',
+        image: currentProduct.image || '',
+        unit_price: Number(currentProduct.price || 0),
+        options: {
+          install: !!$('optInstall')?.checked,
+          install_price: inst,
+
+          cover_trap_included: true,
+          cover_trap_price: 0,
+
+          coverlift: allowCoverlift ? !!$('optCoverlift')?.checked : false,
+          coverlift_unit: PRICES.coverlift_unit,
+
+          maintenance: !!$('optMaint')?.checked,
+          maintenance_unit: PRICES.maintenance_unit,
+
+          extra_filter: !!$('optFilter')?.checked,
+          extra_filter_unit: PRICES.filter_unit,
+
+          swim_filterset_qty: swim ? readInt($('optSwimFiltersetQty')) : 0,
+          swim_filterset_unit: PRICES.swim_filterset_unit
+        }
+      };
+
+      const offer = getOffer();
+      offer.push(payload);
+      setOffer(offer);
+      alert('Toegevoegd aan offerte.');
+    };
+  }
+}
+
+function afterOpenModal(p) {
+  currentProduct = p;
+
+  const install = $('optInstall');
+  if (install) install.checked = true;
+
+  const coverlift = $('optCoverlift');
+  if (coverlift) coverlift.checked = false;
+
+  const maint = $('optMaint');
+  if (maint) maint.checked = false;
+
+  const filter = $('optFilter');
+  if (filter) filter.checked = false;
+
+  const swimFiltersetQty = $('optSwimFiltersetQty');
+  if (swimFiltersetQty) swimFiltersetQty.value = '0';
+
+  wireOptionHandlers();
+  updateOptionUI();
+}
+
+// ===== modal =====
 function openModal(p) {
-  if (!modal) return; // als je geen modal HTML hebt, doet hij niks
+  if (!modal) return;
 
   if (modalTitle) modalTitle.textContent = p.title || '—';
   if (modalPrice) modalPrice.textContent = `Prijs: ${euro(p.price || 0)}`;
@@ -158,7 +397,9 @@ function openModal(p) {
     modalImg.src = p.image || '';
     modalImg.alt = p.title || 'Product';
     modalImg.style.display = p.image ? '' : 'none';
-    modalImg.onerror = () => { modalImg.style.display = 'none'; };
+    modalImg.onerror = () => {
+      modalImg.style.display = 'none';
+    };
   }
 
   if (modalSpecs) modalSpecs.innerHTML = specTableHtml(p);
@@ -171,13 +412,12 @@ function openModal(p) {
   if (modalPrint) modalPrint.onclick = () => printProductFiche(p);
 
   modal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
+  afterOpenModal(p);
 }
 
 function closeModal() {
   if (!modal) return;
   modal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
 }
 
 if (modal) {
@@ -187,7 +427,9 @@ if (modal) {
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+    if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+      closeModal();
+    }
   });
 }
 
@@ -230,7 +472,7 @@ function printProductFiche(p) {
   win.document.close();
 }
 
-// --- Render
+// ===== render =====
 function renderGrid() {
   if (!elGrid || !tpl) return;
   elGrid.innerHTML = '';
@@ -240,15 +482,15 @@ function renderGrid() {
   for (const p of filtered) {
     const node = tpl.content.cloneNode(true);
 
-    // image
     const img = node.querySelector('.card-img');
     if (img) {
       img.src = p.image || '';
       img.alt = p.title || 'Product';
-      img.onerror = () => { img.style.display = 'none'; };
+      img.onerror = () => {
+        img.style.display = 'none';
+      };
     }
 
-    // badge/title/price/specs
     const badge = node.querySelector('[data-badge]');
     if (badge) badge.textContent = (p.type || '').toUpperCase();
 
@@ -261,12 +503,8 @@ function renderGrid() {
     const specs = node.querySelector('[data-specs]');
     if (specs) specs.innerHTML = topSpecs(p);
 
-    // OPTIONAL: if your template has a link
     const link = node.querySelector('[data-link]');
     if (link) {
-      // als je een aparte productpagina gebruikt:
-      // link.href = `product.html?id=${encodeURIComponent(p.id)}`;
-      // Maar als je “zoals jouw site” wil: klik opent modal:
       link.href = '#';
       link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -274,12 +512,10 @@ function renderGrid() {
       });
     }
 
-    // OPTIONAL: if your template has a button with data-open
     const openBtn = node.querySelector('[data-open]');
     if (openBtn) {
       openBtn.addEventListener('click', () => openModal(p));
     } else {
-      // fallback: maak de hele card klikbaar als er geen data-open is
       const card = node.querySelector('.card-link') || node.querySelector('.card') || node.firstElementChild;
       if (card) {
         card.style.cursor = 'pointer';
@@ -309,7 +545,7 @@ async function init() {
   if (elStatus) elStatus.textContent = `OK • ${products.length} producten`;
 }
 
-// --- Events (null-safe)
+// ===== events =====
 if (elSearch) elSearch.addEventListener('input', applyFilters);
 if (elType) elType.addEventListener('change', applyFilters);
 if (elSort) elSort.addEventListener('change', applyFilters);
