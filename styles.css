@@ -55,7 +55,6 @@ a{color:inherit}
 label{font-size:.85rem;color:var(--muted)}
 
 input,select{
-  background: rgba(255,255,255,.06);
   border:1px solid var(--border);
   border-radius: 12px;
   padding:10px 12px;
