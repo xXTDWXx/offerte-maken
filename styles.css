@@ -180,52 +180,77 @@ input:focus,select:focus{border-color:rgba(56,189,248,.55)}
   border-radius: 14px;
   background: rgba(255,255,255,.03);
   .options{display:flex;flex-direction:column;gap:10px}
-.opt{
-  display:grid;
-  grid-template-columns: 22px minmax(0,1fr) 110px;
+/* ===== Optievelden in productmodal ===== */
+
+.options{
+  display:flex;
+  flex-direction:column;
   gap:10px;
+}
+
+.opt{
+  display:flex;
   align-items:center;
+  gap:12px;
+
   padding:12px;
   border:1px solid var(--border);
   border-radius:16px;
-  background: rgba(255,255,255,.03);
-}
-  .opt label,
-.opt-text,
-.opt-price{
-  align-self:center;
+  background:rgba(255,255,255,.03);
+
+  cursor:pointer;
 }
 
 .opt input[type="checkbox"]{
-  margin:0;
   width:18px;
   height:18px;
-  align-self:center;
-  justify-self:start;
+  margin:0;
+  flex-shrink:0;
 }
 
 .opt-text{
+  flex:1;
   display:flex;
   flex-direction:column;
   gap:2px;
-  min-width:0;
 }
 
 .opt-title{
-  font-weight:850;
-  margin:0;
+  font-weight:800;
+  line-height:1.2;
 }
 
 .opt-price{
-  text-align:right;
   font-weight:900;
   white-space:nowrap;
 }
-.opt-row{grid-template-columns: 1fr 120px 110px}
-.opt-disabled{opacity:.75}
-.opt-title{font-weight:850}
-.opt-price{text-align:right;font-weight:900}
-.opt-qty input{width:100%}
+
+.opt-row{
+  display:grid;
+  grid-template-columns: 1fr 120px 110px;
+  gap:10px;
+  align-items:center;
+
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:rgba(255,255,255,.03);
+}
+
+.opt-row .opt-text{
+  display:flex;
+  flex-direction:column;
+}
+
+.opt-row input{
+  width:100%;
+}
+
+/* hover effect */
+.opt:hover,
+.opt-row:hover{
+  border-color:rgba(56,189,248,.4);
+  background:rgba(255,255,255,.05);
 }
 .spec-row strong{color:var(--text)}
 .spec-row span{color:var(--muted)}
