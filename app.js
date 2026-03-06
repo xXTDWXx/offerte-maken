@@ -305,19 +305,6 @@ if (elClear) {
   });
 }
 
-init().catch(e => {
-  console.error(e);
-  if (elStatus) elStatus.textContent = 'Fout';
-  showError(String(e.message || e));
-});
-// ===== Offerte opslag (localStorage) =====
-const OFFER_KEY = 'sunspa_offer_v1';
-function getOffer(){
-  try { return JSON.parse(localStorage.getItem(OFFER_KEY) || '[]'); } catch { return []; }
-}
-function setOffer(lines){
-  localStorage.setItem(OFFER_KEY, JSON.stringify(lines));
-}
 
 // ===== Pricing rules =====
 const PRICES = {
