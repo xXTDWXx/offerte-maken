@@ -250,3 +250,71 @@ input:focus,select:focus{border-color:rgba(56,189,248,.55)}
 .spec-row strong{color:var(--text)}
 .spec-row span{color:var(--muted)}
 @media (max-width: 560px){.spec-row{grid-template-columns:1fr}}
+
+  /* ===== FORCE FIX: checkbox links naast tekst ===== */
+.options{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:10px !important;
+}
+
+label.opt,
+.opt{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:12px !important;
+
+  padding:12px !important;
+  border:1px solid var(--border) !important;
+  border-radius:16px !important;
+  background:rgba(255,255,255,.03) !important;
+  cursor:pointer !important;
+}
+
+label.opt input[type="checkbox"],
+.opt input[type="checkbox"]{
+  display:block !important;
+  width:18px !important;
+  height:18px !important;
+  margin:0 !important;
+  flex:0 0 18px !important;
+}
+
+label.opt .opt-text,
+.opt .opt-text{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:2px !important;
+  flex:1 1 auto !important;
+  min-width:0 !important;
+}
+
+label.opt .opt-title,
+.opt .opt-title{
+  font-weight:800 !important;
+  line-height:1.2 !important;
+  margin:0 !important;
+}
+
+label.opt .opt-price,
+.opt .opt-price{
+  display:block !important;
+  margin-left:auto !important;
+  text-align:right !important;
+  font-weight:900 !important;
+  white-space:nowrap !important;
+}
+
+.opt-row{
+  display:grid !important;
+  grid-template-columns:1fr 120px 110px !important;
+  gap:10px !important;
+  align-items:center !important;
+
+  padding:12px !important;
+  border:1px solid var(--border) !important;
+  border-radius:16px !important;
+  background:rgba(255,255,255,.03) !important;
+}
