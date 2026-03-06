@@ -13,7 +13,6 @@ const elType = document.getElementById('typeFilter');
 const elSort = document.getElementById('sort');
 const elClear = document.getElementById('btnClear');
 
-const elSync = document.getElementById('btn-sync');
 const elStatus = document.getElementById('status');
 const elChips = document.getElementById('activeChips');
 const elMeta = document.getElementById('resultMeta');
@@ -56,17 +55,7 @@ function escapeHtml(s) {
     .replaceAll("'", '&#039;');
 }
 
-async function loadProducts({ force = false } = {}) {
-  const url = force ? `${PRODUCTS_URL}?t=${Date.now()}` : PRODUCTS_URL;
-  const res = await fetch(url, { cache: force ? 'no-store' : 'default' });
-  if (!res.ok) throw new Error(`Kan products.json niet laden (${res.status})`);
-  const json = await res.json();
 
-  // ondersteunt: [..] of {products:[..]}
-  const items = Array.isArray(json) ? json : (json.products || []);
-  if (!Array.isArray(items)) return [];
-  return items;
-}
 
 function buildTypeFilter(items) {
   if (!elType) return;
@@ -301,15 +290,6 @@ function showError(msg) {
   errorText.textContent = msg;
 }
 
-async function init() {
-  if (elStatus) elStatus.textContent = 'Laden…';
-
-  products = await loadProducts({ force: false });
-  buildTypeFilter(products);
-  applyFilters();
-
-  if (elStatus) elStatus.textContent = `OK • ${products.length} producten`;
-}
 
 // --- Events (null-safe)
 if (elSearch) elSearch.addEventListener('input', applyFilters);
@@ -322,28 +302,6 @@ if (elClear) {
     if (elType) elType.value = '';
     if (elSort) elSort.value = 'relevance';
     applyFilters();
-  });
-}
-
-if (elSync) {
-  elSync.addEventListener('click', async () => {
-    elSync.disabled = true;
-    elSync.textContent = '⏳ Bezig…';
-    if (elStatus) elStatus.textContent = 'Synchroniseren…';
-
-    try {
-      products = await loadProducts({ force: true });
-      buildTypeFilter(products);
-      applyFilters();
-      if (elStatus) elStatus.textContent = `OK • ${products.length} producten`;
-    } catch (e) {
-      console.error(e);
-      if (elStatus) elStatus.textContent = 'Fout';
-      showError(String(e.message || e));
-    } finally {
-      elSync.disabled = false;
-      elSync.textContent = '🔄 Synchroniseren';
-    }
   });
 }
 
