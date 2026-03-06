@@ -190,6 +190,11 @@ input:focus,select:focus{border-color:rgba(56,189,248,.55)}
   border-radius:16px;
   background: rgba(255,255,255,.03);
 }
+  .opt label,
+.opt-text,
+.opt-price{
+  align-self:center;
+}
 
 .opt input[type="checkbox"]{
   margin:0;
