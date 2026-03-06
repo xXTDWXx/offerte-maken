@@ -2,7 +2,7 @@
 // Verwacht: assets/products.json
 // Werkt met templates die (optioneel) data-open en/of data-link bevatten.
 
-const PRODUCTS_URL = new URL('assets/products.json', document.baseURI).toString();
+const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
 
 // --- Catalog refs
 const elGrid = document.getElementById('grid');
