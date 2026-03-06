@@ -128,33 +128,32 @@
     <div class="opt-price">€0</div>
   </label>
 
-  <div class="opt opt-row" id="optCoverliftRow">
-    <div class="opt-text">
-      <div class="opt-title">Coverlift</div>
-      <div class="small">€189 per stuk (alleen jacuzzi/zwemspa)</div>
-    </div>
-    <div class="opt-qty">
-      <input id="optCoverliftQty" type="number" min="0" step="1" value="0" />
-    </div>
-    <div class="opt-price" id="optCoverliftTotal">€0</div>
+  <label class="opt" id="optCoverliftRow">
+  <input id="optCoverlift" type="checkbox" />
+  <div class="opt-text">
+    <div class="opt-title">Coverlift</div>
+    <div class="small">€189 (alleen jacuzzi/zwemspa)</div>
   </div>
+  <div class="opt-price" id="optCoverliftTotal">€0</div>
+</label>
 
-  <div class="opt opt-row">
-    <div class="opt-text">
-      <div class="opt-title">Onderhoudspakket</div>
-      <div class="small">€179 per stuk</div>
-    </div>
-    <div class="opt-qty">
-      <input id="optMaintQty" type="number" min="0" step="1" value="0" />
-    </div>
-    <div class="opt-price" id="optMaintTotal">€0</div>
+<label class="opt">
+  <input id="optMaint" type="checkbox" />
+  <div class="opt-text">
+    <div class="opt-title">Onderhoudspakket</div>
+    <div class="small">€179</div>
   </div>
+  <div class="opt-price" id="optMaintTotal">€0</div>
+</label>
 
-  <div class="opt opt-row">
-    <div class="opt-text">
-      <div class="opt-title">Extra filter</div>
-      <div class="small">€45 per stuk</div>
-    </div>
+<label class="opt">
+  <input id="optFilter" type="checkbox" />
+  <div class="opt-text">
+    <div class="opt-title">Extra filter</div>
+    <div class="small">€45</div>
+  </div>
+  <div class="opt-price" id="optFilterTotal">€0</div>
+</label>
     <div class="opt-qty">
       <input id="optFilterQty" type="number" min="0" step="1" value="0" />
     </div>
