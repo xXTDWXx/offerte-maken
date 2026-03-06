@@ -2,7 +2,7 @@
 // Verwacht: assets/products.json
 // Werkt met templates die (optioneel) data-open en/of data-link bevatten.
 
-const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
+const PRODUCTS_URL = new URL('assets/products.json', document.baseURI).toString();
 
 // --- Catalog refs
 const elGrid = document.getElementById('grid');
@@ -13,6 +13,7 @@ const elType = document.getElementById('typeFilter');
 const elSort = document.getElementById('sort');
 const elClear = document.getElementById('btnClear');
 
+const elSync = document.getElementById('btn-sync');
 const elStatus = document.getElementById('status');
 const elChips = document.getElementById('activeChips');
 const elMeta = document.getElementById('resultMeta');
@@ -55,7 +56,17 @@ function escapeHtml(s) {
     .replaceAll("'", '&#039;');
 }
 
+async function loadProducts({ force = false } = {}) {
+  const url = force ? `${PRODUCTS_URL}?t=${Date.now()}` : PRODUCTS_URL;
+  const res = await fetch(url, { cache: force ? 'no-store' : 'default' });
+  if (!res.ok) throw new Error(`Kan products.json niet laden (${res.status})`);
+  const json = await res.json();
 
+  // ondersteunt: [..] of {products:[..]}
+  const items = Array.isArray(json) ? json : (json.products || []);
+  if (!Array.isArray(items)) return [];
+  return items;
+}
 
 function buildTypeFilter(items) {
   if (!elType) return;
@@ -161,9 +172,7 @@ function openModal(p) {
 
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
-  afterOpenModal(p);
 }
-
 
 function closeModal() {
   if (!modal) return;
@@ -290,6 +299,15 @@ function showError(msg) {
   errorText.textContent = msg;
 }
 
+async function init() {
+  if (elStatus) elStatus.textContent = 'Laden…';
+
+  products = await loadProducts({ force: false });
+  buildTypeFilter(products);
+  applyFilters();
+
+  if (elStatus) elStatus.textContent = `OK • ${products.length} producten`;
+}
 
 // --- Events (null-safe)
 if (elSearch) elSearch.addEventListener('input', applyFilters);
@@ -305,203 +323,30 @@ if (elClear) {
   });
 }
 
+if (elSync) {
+  elSync.addEventListener('click', async () => {
+    elSync.disabled = true;
+    elSync.textContent = '⏳ Bezig…';
+    if (elStatus) elStatus.textContent = 'Synchroniseren…';
 
-// ===== Pricing rules =====
-const PRICES = {
-  install_jacuzzi: 695,
-  install_swimspa: 895,
-  install_barrel_sauna: 995,
-  install_infrared: 450,
-  install_sauna: 695,
-
-  coverlift_unit: 189,
-  maintenance_unit: 179,
-  filter_unit: 45,
-  swim_filterset_unit: 250
-};
-
-function typeNorm(type){ return (type || '').toString().toLowerCase(); }
-function isSwimspa(type){ return typeNorm(type).includes('zwemspa') || typeNorm(type).includes('swim'); }
-function isInfrared(type){ return typeNorm(type).includes('infrarood'); }
-function isBarrelSauna(type){ return typeNorm(type).includes('barrel') && typeNorm(type).includes('sauna'); }
-function isSauna(type){ return typeNorm(type).includes('sauna'); }
-function isJacuzzi(type){
-  const t = typeNorm(type);
-  // als het geen sauna/infrarood/zwemspa is, behandelen we als jacuzzi
-  return !isSwimspa(t) && !isInfrared(t) && !isSauna(t);
-}
-function installCost(type){
-  if (isSwimspa(type)) return PRICES.install_swimspa;
-  if (isBarrelSauna(type)) return PRICES.install_barrel_sauna;
-  if (isInfrared(type)) return PRICES.install_infrared;
-  if (isSauna(type)) return PRICES.install_sauna;
-  return PRICES.install_jacuzzi;
-}
-function coverliftAllowed(type){
-  // enkel bij jacuzzi en zwemspa
-  return isJacuzzi(type) || isSwimspa(type);
-}
-
-// ===== Modal option refs (best-effort) =====
-function $(id){ return document.getElementById(id); }
-
-let currentProduct = null;
-
-function readInt(el){
-  const n = Number(el?.value || 0);
-  return Number.isFinite(n) ? Math.max(0, Math.floor(n)) : 0;
-}
-
-function updateOptionUI(){
-  if (!currentProduct) return;
-
-  const type = currentProduct.type || '';
-
-  const optInstall = $('optInstall');
-  const optInstallHint = $('optInstallHint');
-  const optInstallPrice = $('optInstallPrice');
-
-  const optCoverliftRow = $('optCoverliftRow');
-  const optCoverliftQty = $('optCoverliftQty');
-  const optCoverliftTotal = $('optCoverliftTotal');
-
-  const optMaintQty = $('optMaintQty');
-  const optMaintTotal = $('optMaintTotal');
-
-  const optFilterQty = $('optFilterQty');
-  const optFilterTotal = $('optFilterTotal');
-
-  const optSwimFiltersetRow = $('optSwimFiltersetRow');
-  const optSwimFiltersetQty = $('optSwimFiltersetQty');
-  const optSwimFiltersetTotal = $('optSwimFiltersetTotal');
-
-  const tProduct = $('optProductTotal');
-  const tOptions = $('optOptionsTotal');
-  const tGrand = $('optGrandTotal');
-
-  const inst = installCost(type);
-  if (optInstallHint) optInstallHint.textContent = `Installatiekost voor type “${type || 'jacuzzi'}”: ${euro(inst)}`;
-  if (optInstallPrice) optInstallPrice.textContent = euro(inst);
-
-  // Coverlift (alleen jacuzzi/zwemspa)
-  const allowCoverlift = coverliftAllowed(type);
-  if (optCoverliftRow) optCoverliftRow.style.display = allowCoverlift ? '' : 'none';
-  if (!allowCoverlift && optCoverliftQty) optCoverliftQty.value = '0';
-
-  // Zwemspa extra filterset
-  const swim = isSwimspa(type);
-  if (optSwimFiltersetRow) optSwimFiltersetRow.style.display = swim ? '' : 'none';
-  if (!swim && optSwimFiltersetQty) optSwimFiltersetQty.value = '0';
-
-  const installSelected = !!optInstall?.checked;
-  const coverliftQty = allowCoverlift ? readInt(optCoverliftQty) : 0;
-  const maintQty = readInt(optMaintQty);
-  const filterQty = readInt(optFilterQty);
-  const swimFiltersetQty = swim ? readInt(optSwimFiltersetQty) : 0;
-
-  const installLine = installSelected ? inst : 0;
-  const coverliftLine = coverliftQty * PRICES.coverlift_unit;
-  const maintLine = maintQty * PRICES.maintenance_unit;
-  const filterLine = filterQty * PRICES.filter_unit;
-  const swimFiltersetLine = swimFiltersetQty * PRICES.swim_filterset_unit;
-
-  if (optCoverliftTotal) optCoverliftTotal.textContent = euro(coverliftLine);
-  if (optMaintTotal) optMaintTotal.textContent = euro(maintLine);
-  if (optFilterTotal) optFilterTotal.textContent = euro(filterLine);
-  if (optSwimFiltersetTotal) optSwimFiltersetTotal.textContent = euro(swimFiltersetLine);
-
-  const productPrice = Number(currentProduct.price || 0);
-  const optionsTotal = installLine + coverliftLine + maintLine + filterLine + swimFiltersetLine;
-  const grand = productPrice + optionsTotal;
-
-  if (tProduct) tProduct.textContent = euro(productPrice);
-  if (tOptions) tOptions.textContent = euro(optionsTotal);
-  if (tGrand) tGrand.textContent = euro(grand);
-}
-
-function wireOptionHandlers(){
-  const ids = [
-    'optInstall',
-    'optCoverliftQty',
-    'optMaintQty',
-    'optFilterQty',
-    'optSwimFiltersetQty'
-  ];
-  ids.forEach(id => {
-    const el = $(id);
-    if (!el) return;
-    el.addEventListener('input', updateOptionUI);
-    el.addEventListener('change', updateOptionUI);
+    try {
+      products = await loadProducts({ force: true });
+      buildTypeFilter(products);
+      applyFilters();
+      if (elStatus) elStatus.textContent = `OK • ${products.length} producten`;
+    } catch (e) {
+      console.error(e);
+      if (elStatus) elStatus.textContent = 'Fout';
+      showError(String(e.message || e));
+    } finally {
+      elSync.disabled = false;
+      elSync.textContent = '🔄 Synchroniseren';
+    }
   });
-
-  const btnAdd = $('btnAddToOffer');
-  if (btnAdd){
-    btnAdd.onclick = () => {
-      if (!currentProduct) return;
-
-      const type = currentProduct.type || '';
-      const inst = installCost(type);
-      const allowCoverlift = coverliftAllowed(type);
-      const swim = isSwimspa(type);
-
-      const payload = {
-        productId: currentProduct.id,
-        title: currentProduct.title,
-        type: type,
-        url: currentProduct.url || '',
-        image: currentProduct.image || '',
-        unit_price: Number(currentProduct.price || 0),
-
-        options: {
-          install: !!$('optInstall')?.checked,
-          install_price: inst,
-
-          cover_trap_included: true,
-          cover_trap_price: 0,
-
-          coverlift_qty: allowCoverlift ? readInt($('optCoverliftQty')) : 0,
-          coverlift_unit: PRICES.coverlift_unit,
-
-          maintenance_qty: readInt($('optMaintQty')),
-          maintenance_unit: PRICES.maintenance_unit,
-
-          extra_filter_qty: readInt($('optFilterQty')),
-          extra_filter_unit: PRICES.filter_unit,
-
-          swim_filterset_qty: swim ? readInt($('optSwimFiltersetQty')) : 0,
-          swim_filterset_unit: PRICES.swim_filterset_unit
-        }
-      };
-
-      const offer = getOffer();
-      offer.push(payload);
-      setOffer(offer);
-      alert('Toegevoegd aan offerte.');
-    };
-  }
 }
 
-// ===== Koppel dit aan jouw bestaande openModal(p) =====
-// Voeg op het einde van jouw huidige openModal(p) toe:
-function afterOpenModal(p){
-  currentProduct = p;
-
-  // defaults
-  const install = $('optInstall');
-  if (install) install.checked = true;
-
-  const coverliftQty = $('optCoverliftQty');
-  if (coverliftQty) coverliftQty.value = '0';
-
-  const maintQty = $('optMaintQty');
-  if (maintQty) maintQty.value = '0';
-
-  const filterQty = $('optFilterQty');
-  if (filterQty) filterQty.value = '0';
-
-  const swimFiltersetQty = $('optSwimFiltersetQty');
-  if (swimFiltersetQty) swimFiltersetQty.value = '0';
-
-  wireOptionHandlers();
-  updateOptionUI();
-}
+init().catch(e => {
+  console.error(e);
+  if (elStatus) elStatus.textContent = 'Fout';
+  showError(String(e.message || e));
+});
