@@ -218,6 +218,7 @@ input:focus,select:focus{border-color:rgba(56,189,248,.55)}
 .opt-price{
   font-weight:900;
   white-space:nowrap;
+  visibility:hidden;
 }
 
 .opt-row{
@@ -305,7 +306,6 @@ label.opt .opt-price,
   text-align:right !important;
   font-weight:900 !important;
   white-space:nowrap !important;
-  visibility:hidden;
 }
 
 .opt-row{
