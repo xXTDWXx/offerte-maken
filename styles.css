@@ -84,6 +84,13 @@ input:focus,select:focus{border-color:rgba(56,189,248,.55)}
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+/* Telefoon */
+@media (max-width: 480px) {
+  .card-specs {
+    display: none;
+  }
+}
+
 /* Tablet en groter */
 @media (min-width: 768px) {
   .grid {
