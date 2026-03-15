@@ -7029,69 +7029,6 @@
       ]
     },
     {
-      "id": "sauna::sumum-1-persoons-infrarood-sauna",
-      "type": "Infrarood",
-      "title": "Sumum 1 persoons Infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/sumum-1-persoons-infrarood-sauna/",
-      "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Sumum-1-persoons-infrarood-sauna-1.webp",
-      "price": 1125,
-      "bullets": [],
-      "specs": [
-        {
-          "label": "Afmetingen",
-          "value": "90 x 105 x 190 cm"
-        },
-        {
-          "label": "Aantal personen",
-          "value": "1 persoon"
-        },
-        {
-          "label": "Aansluiting",
-          "value": "230 V"
-        },
-        {
-          "label": "Totaal vermogen",
-          "value": "1700 W"
-        },
-        {
-          "label": "Houtsoort",
-          "value": "Hemlock"
-        },
-        {
-          "label": "muziekinstallatie",
-          "value": "Bluetooth"
-        },
-        {
-          "label": "Aantal speakers",
-          "value": "2"
-        },
-        {
-          "label": "Besturingssysteem",
-          "value": "Digitaal besturingssysteem"
-        },
-        {
-          "label": "Ventilatie",
-          "value": "Automatische ventilatie"
-        },
-        {
-          "label": "Therapievormen",
-          "value": "Aromatherapie"
-        },
-        {
-          "label": "Stralers",
-          "value": "3 carbon stralers"
-        },
-        {
-          "label": "Aantal banken",
-          "value": "1"
-        },
-        {
-          "label": "Garantie",
-          "value": "2 jaar garantie op de cabine"
-        }
-      ]
-    },
-    {
       "id": "sauna::full-spectrum-exclusive-9101c",
       "type": "sauna",
       "title": "Full Spectrum Exclusive 9101C",
@@ -7415,69 +7352,6 @@
       ]
     },
     {
-      "id": "sauna::vitrum-1-persoons-infrarood-sauna",
-      "type": "Infrarood",
-      "title": "Vitrum 1 persoons Infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/vitrum-1-persoons-infrarood-sauna/",
-      "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Virtrum-1-persoons-infrarood-sauna.webp",
-      "price": 1995,
-      "bullets": [],
-      "specs": [
-        {
-          "label": "Aantal personen",
-          "value": "1 persoon"
-        },
-        {
-          "label": "Afmetingen",
-          "value": "89 x 105 x 186 cm"
-        },
-        {
-          "label": "Aansluiting",
-          "value": "230 V"
-        },
-        {
-          "label": "Totaal vermogen",
-          "value": "1650 W"
-        },
-        {
-          "label": "Houtsoort",
-          "value": "Red Cedar"
-        },
-        {
-          "label": "muziekinstallatie",
-          "value": "Bluetooth"
-        },
-        {
-          "label": "Aantal speakers",
-          "value": "2"
-        },
-        {
-          "label": "Besturingssysteem",
-          "value": "Binnen bedieningspaneel"
-        },
-        {
-          "label": "Ventilatie",
-          "value": "Automatische ventilatie"
-        },
-        {
-          "label": "Therapievormen",
-          "value": "Aromatherapie, Kleurentherapie"
-        },
-        {
-          "label": "Aantal banken",
-          "value": "1"
-        },
-        {
-          "label": "Garantie",
-          "value": "2 jaar garantie op de cabine"
-        },
-        {
-          "label": "Levering",
-          "value": "Afhalen showroom, Alleen leveren (+€75,-), Ook monteren (+€395,-)"
-        }
-      ]
-    },
-    {
       "id": "sauna::health-company-2",
       "type": "Infrarood",
       "title": "Health Company 2",
@@ -7699,7 +7573,7 @@
       "type": "Infrarood",
       "title": "Sumum Wit 2 persoons Infrarood sauna",
       "url": "https://www.sunspabenelux.be/p/sumum-wit-2-persoons-infrarood-sauna/",
-      "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Sumum-Wit-2-persoons-infrarood-sauna.webp",
+      "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Sumum-Wit-2-persoons-Infrarood-sauna.webp",
       "price": 2875,
       "bullets": [],
       "specs": [
@@ -8027,7 +7901,7 @@
       "type": "Infrarood",
       "title": "Sumum Hemlock 3 persoons Infrarood sauna",
       "url": "https://www.sunspabenelux.be/p/sumum-hemlock-3-persoons-infrarood-sauna/",
-      "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Sumum-Hemlock-2-persoons-infrarood-sauna.webp",
+      "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Sumum-Hemlock-2-persoons-Infrarood-sauna.webp",
       "price": 3125,
       "bullets": [],
       "specs": [
@@ -8600,7 +8474,7 @@
       "type": "Infrarood",
       "title": "Sumum Wit 3 persoons Infrarood sauna",
       "url": "https://www.sunspabenelux.be/p/sumum-wit-3-persoons-infrarood-sauna/",
-      "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Sumum-Wit-2-persoons-infrarood-sauna.webp",
+      "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Sumum-Wit-2-persoons-Infrarood-sauna.webp",
       "price": 3875,
       "bullets": [],
       "specs": [
@@ -9117,7 +8991,7 @@
       "type": "Infrarood",
       "title": "Sumum Quatro 4 persoons Infrarood Sauna",
       "url": "https://www.sunspabenelux.be/p/sumum-quatro-infrarood-sauna/",
-      "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Sumum-Quatro-infrarood-sauna.webp",
+      "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Sumum-Quatro-Infrarood-sauna.webp",
       "price": 4375,
       "bullets": [],
       "specs": [
