@@ -39,41 +39,43 @@
 
           <div class="panel-title">Keuzevakken</div>
 
-          <div class="options">
-            <label class="opt">
-              <input id="optInstall" type="checkbox" />
-              <div class="opt-text">
-                <div class="opt-title">Levering & installatie</div>
-                <div class="small" id="installHint"></div>
-              </div>
-              <div class="opt-price" id="installPrice">€0</div>
-            </label>
+          <div class="options" id="modalOptions">
+  <label class="opt-disabled">
+    <div class="opt-text">
+      <div class="opt-title"><input id="optInstall" type="checkbox" checked="" disabled="">Levering &amp; installatie&nbsp;<div class="opt-price" style="display: inline-block;" id="optInstallPrice">€&nbsp;695,00</div></div>
+    </div>
+  </label>
 
-            <label class="opt opt-disabled">
-              <input type="checkbox" checked disabled />
-              <div class="opt-text">
-                <div class="opt-title">Cover & trap</div>
-                <div class="small">Inclusief</div>
-              </div>
-            </label>
+  <label class="opt opt-disabled">
+    <div class="opt-text">
+      <div class="opt-title"><input type="checkbox" checked="" disabled="">Cover &amp; trap inclusief</div>
+  </div></label>
 
-            <label class="opt">
-              <input id="optCoverlift" type="checkbox" />
-              <div class="opt-text">
-                <div class="opt-title">Coverlift</div>
-                <div class="small">Optioneel</div>
-              </div>
-              <div class="opt-price" id="coverliftPrice">€189</div>
-            </label>
+  <label class="opt" id="optCoverliftRow">
+  <div class="opt-text">
+    <div class="opt-title"><input id="optCoverlift" type="checkbox">Coverlift € 189</div>
+  </div>
+</label>
 
-            <label class="opt">
-              <input id="optMaintenance" type="checkbox" />
-              <div class="opt-text">
-                <div class="opt-title">Onderhoudspakket</div>
-              </div>
-              <div class="opt-price" id="maintPrice">€ 179</div>
-            </label>        
-            </div>
+<label class="opt">
+  <div class="opt-text">
+    <div class="opt-title"><input id="optMaint" type="checkbox">Onderhoudspakket € 179</div>
+  </div>
+</label>
+
+
+    
+
+  <div class="opt opt-row" id="optSwimFiltersetRow" style="display:none">
+    <div class="opt-text">
+      <div class="opt-title">Filterset (zwemspa)</div>
+      <div class="small">€250 per set</div>
+    </div>
+    <div class="opt-qty">
+      <input id="optSwimFiltersetQty" type="number" min="0" step="1" value="0">
+    </div>
+  </div>
+</div>
           </div>
 
           <hr class="sep"/>
