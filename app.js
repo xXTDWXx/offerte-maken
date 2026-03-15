@@ -1,5 +1,4 @@
 // Sunspa catalogus + productfiche modal + offerte-opties
-// Verwacht: products.json in dezelfde map als index.html
 
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
 const OFFER_KEY = 'sunspa_offer_v1';
@@ -12,11 +11,6 @@ const elSearch = document.getElementById('search');
 const elType = document.getElementById('typeFilter');
 const elSort = document.getElementById('sort');
 const elClear = document.getElementById('btnClear');
-
-const elSync = document.getElementById('btn-sync');
-const elStatus = document.getElementById('status');
-const elChips = document.getElementById('activeChips');
-const elMeta = document.getElementById('resultMeta');
 
 const errorBox = document.getElementById('errorBox');
 const errorText = document.getElementById('errorText');
@@ -36,7 +30,6 @@ let filtered = [];
 let currentProduct = null;
 let optionHandlersWired = false;
 
-// ===== helpers =====
 function $(id) {
   return document.getElementById(id);
 }
@@ -87,7 +80,6 @@ const PRICES = {
   install_sauna: 695,
   coverlift_unit: 189,
   maintenance_unit: 179,
-  filter_unit: 45,
   swim_filterset_unit: 250
 };
 
@@ -126,7 +118,7 @@ function installCost(type) {
   return PRICES.install_jacuzzi;
 }
 
-function coverOptionsAllowed(type) {
+function extraOptionsAllowed(type) {
   return isJacuzzi(type) || isSwimspa(type);
 }
 
@@ -193,25 +185,6 @@ function specTableHtml(p) {
 }
 
 // ===== filters =====
-function renderChips(q, type, sort) {
-  if (!elChips || !elMeta) return;
-
-  const chips = [];
-  if (q) chips.push(`Zoek: ${escapeHtml(q)}`);
-  if (type) chips.push(`Type: ${escapeHtml(type)}`);
-  if (sort && sort !== 'relevance') {
-    const map = {
-      priceAsc: 'Prijs ↑',
-      priceDesc: 'Prijs ↓',
-      titleAsc: 'Titel A–Z'
-    };
-    chips.push(`Sort: ${map[sort] || sort}`);
-  }
-
-  elChips.innerHTML = chips.map(c => `<span class="chip">${c}</span>`).join('');
-  elMeta.textContent = `${filtered.length} producten`;
-}
-
 function applyFilters() {
   const q = elSearch ? normalize(elSearch.value) : '';
   const type = elType ? elType.value : '';
@@ -227,7 +200,6 @@ function applyFilters() {
   if (sort === 'priceDesc') filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
   if (sort === 'titleAsc') filtered.sort((a, b) => (a.title || '').localeCompare(b.title || '', 'nl'));
 
-  renderChips(q, type, sort);
   renderGrid();
 }
 
@@ -245,15 +217,12 @@ function updateOptionUI() {
   const optCoverlift = $('optCoverlift');
   const optCoverliftTotal = $('optCoverliftTotal');
 
+  const optMaintRow = $('optMaintRow');
   const optMaint = $('optMaint');
   const optMaintTotal = $('optMaintTotal');
 
-  const optFilter = $('optFilter');
-  const optFilterTotal = $('optFilterTotal');
-
   const optSwimFiltersetRow = $('optSwimFiltersetRow');
   const optSwimFiltersetQty = $('optSwimFiltersetQty');
-  const optSwimFiltersetTotal = $('optSwimFiltersetTotal');
 
   const tProduct = $('optProductTotal');
   const tOptions = $('optOptionsTotal');
@@ -265,43 +234,53 @@ function updateOptionUI() {
     optInstallPrice.textContent = euro(inst);
   }
 
-  const allowCoverOptions = coverOptionsAllowed(type);
+  const allowExtraOptions = extraOptionsAllowed(type);
 
   if (optCoverTrapRow) {
-    optCoverTrapRow.style.display = allowCoverOptions ? '' : 'none';
+    optCoverTrapRow.style.display = allowExtraOptions ? '' : 'none';
   }
 
   if (optCoverliftRow) {
-    optCoverliftRow.style.display = allowCoverOptions ? '' : 'none';
+    optCoverliftRow.style.display = allowExtraOptions ? '' : 'none';
   }
 
-  if (!allowCoverOptions && optCoverlift) {
+  if (optMaintRow) {
+    optMaintRow.style.display = allowExtraOptions ? '' : 'none';
+  }
+
+  if (!allowExtraOptions && optCoverlift) {
     optCoverlift.checked = false;
   }
 
+  if (!allowExtraOptions && optMaint) {
+    optMaint.checked = false;
+  }
+
   const swim = isSwimspa(type);
-  if (optSwimFiltersetRow) optSwimFiltersetRow.style.display = swim ? '' : 'none';
-  if (!swim && optSwimFiltersetQty) optSwimFiltersetQty.value = '0';
+
+  if (optSwimFiltersetRow) {
+    optSwimFiltersetRow.style.display = swim ? '' : 'none';
+  }
+
+  if (!swim && optSwimFiltersetQty) {
+    optSwimFiltersetQty.value = '0';
+  }
 
   const installSelected = !!optInstall?.checked;
-  const coverliftSelected = allowCoverOptions ? !!optCoverlift?.checked : false;
-  const maintSelected = !!optMaint?.checked;
-  const filterSelected = !!optFilter?.checked;
+  const coverliftSelected = allowExtraOptions ? !!optCoverlift?.checked : false;
+  const maintSelected = allowExtraOptions ? !!optMaint?.checked : false;
   const swimFiltersetQty = swim ? readInt(optSwimFiltersetQty) : 0;
 
   const installLine = installSelected ? inst : 0;
   const coverliftLine = coverliftSelected ? PRICES.coverlift_unit : 0;
   const maintLine = maintSelected ? PRICES.maintenance_unit : 0;
-  const filterLine = filterSelected ? PRICES.filter_unit : 0;
   const swimFiltersetLine = swimFiltersetQty * PRICES.swim_filterset_unit;
 
   if (optCoverliftTotal) optCoverliftTotal.textContent = euro(coverliftLine);
   if (optMaintTotal) optMaintTotal.textContent = euro(maintLine);
-  if (optFilterTotal) optFilterTotal.textContent = euro(filterLine);
-  if (optSwimFiltersetTotal) optSwimFiltersetTotal.textContent = euro(swimFiltersetLine);
 
   const productPrice = Number(currentProduct.price || 0);
-  const optionsTotal = installLine + coverliftLine + maintLine + filterLine + swimFiltersetLine;
+  const optionsTotal = installLine + coverliftLine + maintLine + swimFiltersetLine;
   const grand = productPrice + optionsTotal;
 
   if (tProduct) tProduct.textContent = euro(productPrice);
@@ -317,7 +296,6 @@ function wireOptionHandlers() {
     'optInstall',
     'optCoverlift',
     'optMaint',
-    'optFilter',
     'optSwimFiltersetQty'
   ];
 
@@ -335,7 +313,7 @@ function wireOptionHandlers() {
 
       const type = currentProduct.type || '';
       const inst = installCost(type);
-      const allowCoverOptions = coverOptionsAllowed(type);
+      const allowExtraOptions = extraOptionsAllowed(type);
       const swim = isSwimspa(type);
 
       const payload = {
@@ -350,17 +328,14 @@ function wireOptionHandlers() {
           install: !!$('optInstall')?.checked,
           install_price: inst,
 
-          cover_trap_included: allowCoverOptions,
+          cover_trap_included: allowExtraOptions,
           cover_trap_price: 0,
 
-          coverlift: allowCoverOptions ? !!$('optCoverlift')?.checked : false,
+          coverlift: allowExtraOptions ? !!$('optCoverlift')?.checked : false,
           coverlift_unit: PRICES.coverlift_unit,
 
-          maintenance: !!$('optMaint')?.checked,
+          maintenance: allowExtraOptions ? !!$('optMaint')?.checked : false,
           maintenance_unit: PRICES.maintenance_unit,
-
-          extra_filter: !!$('optFilter')?.checked,
-          extra_filter_unit: PRICES.filter_unit,
 
           swim_filterset_qty: swim ? readInt($('optSwimFiltersetQty')) : 0,
           swim_filterset_unit: PRICES.swim_filterset_unit
@@ -386,9 +361,6 @@ function afterOpenModal(p) {
 
   const maint = $('optMaint');
   if (maint) maint.checked = false;
-
-  const filter = $('optFilter');
-  if (filter) filter.checked = false;
 
   const swimFiltersetQty = $('optSwimFiltersetQty');
   if (swimFiltersetQty) swimFiltersetQty.value = '0';
@@ -515,24 +487,9 @@ function renderGrid() {
     const specs = node.querySelector('[data-specs]');
     if (specs) specs.innerHTML = topSpecs(p);
 
-    const link = node.querySelector('[data-link]');
-    if (link) {
-      link.href = '#';
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        openModal(p);
-      });
-    }
-
     const openBtn = node.querySelector('[data-open]');
     if (openBtn) {
       openBtn.addEventListener('click', () => openModal(p));
-    } else {
-      const card = node.querySelector('.card-link') || node.querySelector('.card') || node.firstElementChild;
-      if (card) {
-        card.style.cursor = 'pointer';
-        card.addEventListener('click', () => openModal(p));
-      }
     }
 
     frag.appendChild(node);
@@ -548,13 +505,9 @@ function showError(msg) {
 }
 
 async function init() {
-  if (elStatus) elStatus.textContent = 'Laden…';
-
   products = await loadProducts({ force: false });
   buildTypeFilter(products);
   applyFilters();
-
-  if (elStatus) elStatus.textContent = `OK • ${products.length} producten`;
 }
 
 // ===== events =====
@@ -571,30 +524,7 @@ if (elClear) {
   });
 }
 
-if (elSync) {
-  elSync.addEventListener('click', async () => {
-    elSync.disabled = true;
-    elSync.textContent = '⏳ Bezig…';
-    if (elStatus) elStatus.textContent = 'Synchroniseren…';
-
-    try {
-      products = await loadProducts({ force: true });
-      buildTypeFilter(products);
-      applyFilters();
-      if (elStatus) elStatus.textContent = `OK • ${products.length} producten`;
-    } catch (e) {
-      console.error(e);
-      if (elStatus) elStatus.textContent = 'Fout';
-      showError(String(e.message || e));
-    } finally {
-      elSync.disabled = false;
-      elSync.textContent = '🔄 Synchroniseren';
-    }
-  });
-}
-
 init().catch(e => {
   console.error(e);
-  if (elStatus) elStatus.textContent = 'Fout';
   showError(String(e.message || e));
 });
