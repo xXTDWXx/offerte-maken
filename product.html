@@ -40,46 +40,55 @@
           <div class="panel-title" style="margin:0 0 10px 0;color:white;">Opties</div>
 
           <div class="options" id="modalOptions">
-  <label class="opt-disabled">
-    <div class="opt-text">
-      <div class="opt-title"><input id="optInstall" type="checkbox" checked="" disabled="">Levering &amp; installatie<span class="opt-price" style="display:inline-block" id="optInstallPrice">€&nbsp;695,00</span></div>
-      <div class="small" id="optInstallHint"></div>
-    </div>
-  </label>
+            <label class="opt-disabled">
+              <div class="opt-text">
+                <div class="opt-title">
+                  <input id="optInstall" type="checkbox" checked disabled>
+                  Levering &amp; installatie
+                  <span class="opt-price" id="optInstallPrice">€&nbsp;695,00</span>
+                </div>
+                <div class="small" id="optInstallHint"></div>
+              </div>
+            </label>
 
-  <label class="opt opt-disabled">
-    <div class="opt-text">
-      <div class="opt-title"><input type="checkbox" checked="" disabled="">Cover &amp; trap inclusief</div>
-    </div>
-    <div class="opt-price" style="visibility:hidden;">€0</div>
-  </label>
+            <label class="opt opt-disabled" id="optCoverTrapRow">
+              <div class="opt-text">
+                <div class="opt-title">
+                  <input type="checkbox" checked disabled>
+                  Cover &amp; trap inclusief
+                </div>
+              </div>
+              <div class="opt-price" style="visibility:hidden;">€0</div>
+            </label>
 
-  <label class="opt" id="optCoverliftRow">
-  <div class="opt-text">
-    <div class="opt-title"><input id="optCoverlift" type="checkbox">Coverlift € 189</div>
-  </div>
-  <div class="opt-price" style="visibility:hidden" id="optCoverliftTotal">€&nbsp;189,00</div>
-</label>
+            <label class="opt" id="optCoverliftRow">
+              <div class="opt-text">
+                <div class="opt-title">
+                  <input id="optCoverlift" type="checkbox">
+                  Coverlift € 189
+                </div>
+              </div>
+              <div class="opt-price" style="visibility:hidden" id="optCoverliftTotal">€&nbsp;189,00</div>
+            </label>
 
-<label class="opt">
-  <div class="opt-text">
-    <div class="opt-title"><input id="optMaint" type="checkbox">Onderhoudspakket € 179</div>
-  </div>
-</label>
+            <label class="opt">
+              <div class="opt-text">
+                <div class="opt-title">
+                  <input id="optMaint" type="checkbox">
+                  Onderhoudspakket € 179
+                </div>
+              </div>
+            </label>
 
-
-    
-
-  <div class="opt opt-row" id="optSwimFiltersetRow" style="display:none">
-    <div class="opt-text">
-      <div class="opt-title">Filterset (zwemspa)</div>
-      <div class="small">€250 per set</div>
-    </div>
-    <div class="opt-qty">
-      <input id="optSwimFiltersetQty" type="number" min="0" step="1" value="0">
-    </div>
-  </div>
-</div>
+            <div class="opt opt-row" id="optSwimFiltersetRow" style="display:none">
+              <div class="opt-text">
+                <div class="opt-title">Filterset (zwemspa)</div>
+                <div class="small">€250 per set</div>
+              </div>
+              <div class="opt-qty">
+                <input id="optSwimFiltersetQty" type="number" min="0" step="1" value="0">
+              </div>
+            </div>
           </div>
 
           <hr class="sep"/>
@@ -90,14 +99,15 @@
               <input id="pqty" type="number" min="1" step="1" value="1" />
             </div>
 
-            <div class="totals" style="color: white;">
+            <div class="totals" style="color:white;">
               <div class="totals-row"><span>Product </span><strong id="tProduct">&nbsp;€0</strong></div>
               <div class="totals-row"><span>Opties </span><strong id="tOptions">&nbsp;€0</strong></div>
               <div class="totals-row totals-row-big"><span>Totaal </span><strong id="tTotal">&nbsp;€0</strong></div>
-              <div class="small">Alle bedragen excl. btw.</div>
+              <div class="small">Alle bedragen incl. btw & exclusief kraankosten</div>
             </div>
-          </div>
 
+            <button class="btn btn-primary" id="btnAdd" type="button">Toevoegen aan offerte</button>
+          </div>
         </div>
       </div>
     </section>
