@@ -8,6 +8,7 @@ const elGrid = document.getElementById('grid');
 const tpl = document.getElementById('cardTpl');
 
 const elSearch = document.getElementById('search');
+const elBrand = document.getElementById('brandFilter');
 const elType = document.getElementById('typeFilter');
 const elSort = document.getElementById('sort');
 const elClear = document.getElementById('btnClear');
@@ -145,6 +146,20 @@ async function loadProducts({ force = false } = {}) {
 }
 
 function buildTypeFilter(items) {
+  if (!elBrand) return;
+
+  const brands = Array.from(
+    new Set(
+      items
+        .map(p => p.brand || p.merk || '')
+        .filter(Boolean)
+    )
+  ).sort((a, b) => a.localeCompare(b, 'nl'));
+
+  elBrand.innerHTML =
+    '<option value="">Alle merken</option>' +
+    brands.map(b => `<option value="${escapeHtml(b)}">${escapeHtml(b)}</option>`).join('');
+}
   if (!elType) return;
   const types = Array.from(new Set(items.map(p => p.type).filter(Boolean))).sort();
   elType.innerHTML =
@@ -191,10 +206,14 @@ function specTableHtml(p) {
 
 function applyFilters() {
   const q = elSearch ? normalize(elSearch.value) : '';
+  const brand = elBrand ? elBrand.value : '';
   const type = elType ? elType.value : '';
   const sort = elSort ? elSort.value : 'relevance';
 
   filtered = products.filter(p => {
+    const pBrand = p.brand || p.merk || '';
+
+    if (brand && pBrand !== brand) return false;
     if (type && p.type !== type) return false;
     if (q) return productSearchBlob(p).includes(q);
     return true;
@@ -584,12 +603,14 @@ async function init() {
 }
 
 if (elSearch) elSearch.addEventListener('input', applyFilters);
+if (elBrand) elBrand.addEventListener('change', applyFilters);
 if (elType) elType.addEventListener('change', applyFilters);
 if (elSort) elSort.addEventListener('change', applyFilters);
 
 if (elClear) {
   elClear.addEventListener('click', () => {
     if (elSearch) elSearch.value = '';
+    if (elBrand) elBrand.value = '';
     if (elType) elType.value = '';
     if (elSort) elSort.value = 'relevance';
     applyFilters();
