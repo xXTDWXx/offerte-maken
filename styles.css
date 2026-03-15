@@ -319,6 +319,6 @@ label.opt .opt-price,
   background:rgba(255,255,255,.03) !important;
 }
   /* White Totals */
-  .totals{
-    color:white;
-  }
+.totals{
+  color:white;
+}
