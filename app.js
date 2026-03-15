@@ -237,7 +237,6 @@ function updateOptionUI() {
   const type = currentProduct.type || '';
 
   const optInstall = $('optInstall');
-  const optInstallHint = $('optInstallHint');
   const optInstallPrice = $('optInstallPrice');
 
   const optCoverliftRow = $('optCoverliftRow');
@@ -260,9 +259,6 @@ function updateOptionUI() {
 
   const inst = installCost(type);
 
-  if (optInstallHint) {
-    optInstallHint.textContent = `Installatiekost voor type “${type || 'jacuzzi'}”: ${euro(inst)}`;
-  }
   if (optInstallPrice) {
     optInstallPrice.textContent = euro(inst);
   }
