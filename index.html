@@ -59,7 +59,7 @@
       <div class="panel-title">Fout bij laden</div>
       <div class="small" id="errorText"></div>
       <div class="small" style="margin-top:8px">
-        Controleer of <code>assets/products.json</code> bestaat en bereikbaar is.
+        Controleer of <code>products.json</code> bestaat en bereikbaar is.
       </div>
     </section>
   </main>
@@ -82,7 +82,6 @@
     </article>
   </template>
 
-  <!-- Productfiche modal -->
   <div id="productModal" class="modal" aria-hidden="true">
     <div class="modal-backdrop" data-close></div>
 
@@ -157,6 +156,56 @@
                   <input id="optSwimFiltersetQty" type="number" min="0" step="1" value="0" />
                 </div>
               </div>
+
+              <label class="opt" id="optBarrelWoodStoveRow" style="display:none">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <input id="optBarrelWoodStove" type="checkbox" />
+                    Houtkachel + rookafvoer € 1245
+                  </div>
+                </div>
+                <div class="opt-price" id="optBarrelWoodStoveTotal" style="visibility:hidden;">€0</div>
+              </label>
+
+              <label class="opt" id="optBarrelElectricHeaterRow" style="display:none">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <input id="optBarrelElectricHeater" type="checkbox" />
+                    Elektrische kachel 8 kW € 495
+                  </div>
+                </div>
+                <div class="opt-price" id="optBarrelElectricHeaterTotal" style="visibility:hidden;">€0</div>
+              </label>
+
+              <label class="opt" id="optBarrelRoofShinglesRow" style="display:none">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <input id="optBarrelRoofShingles" type="checkbox" />
+                    Shingles dak € 399
+                  </div>
+                </div>
+                <div class="opt-price" id="optBarrelRoofShinglesTotal" style="visibility:hidden;">€0</div>
+              </label>
+
+              <label class="opt" id="optBarrelRoofHeatherRow" style="display:none">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <input id="optBarrelRoofHeather" type="checkbox" />
+                    Heidedak € 849
+                  </div>
+                </div>
+                <div class="opt-price" id="optBarrelRoofHeatherTotal" style="visibility:hidden;">€0</div>
+              </label>
+
+              <label class="opt" id="optBarrelRoofDesignRow" style="display:none">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <input id="optBarrelRoofDesign" type="checkbox" />
+                    Design dak € 899
+                  </div>
+                </div>
+                <div class="opt-price" id="optBarrelRoofDesignTotal" style="visibility:hidden;">€0</div>
+              </label>
             </div>
 
             <hr style="border:none;border-top:1px solid var(--border);margin:14px 0" />
