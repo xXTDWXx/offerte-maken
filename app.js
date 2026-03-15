@@ -34,6 +34,7 @@ const modalPrint = document.getElementById('modalPrint');
 let products = [];
 let filtered = [];
 let currentProduct = null;
+let optionHandlersWired = false;
 
 // ===== helpers =====
 function $(id) {
@@ -125,7 +126,7 @@ function installCost(type) {
   return PRICES.install_jacuzzi;
 }
 
-function coverliftAllowed(type) {
+function coverOptionsAllowed(type) {
   return isJacuzzi(type) || isSwimspa(type);
 }
 
@@ -239,6 +240,7 @@ function updateOptionUI() {
   const optInstall = $('optInstall');
   const optInstallPrice = $('optInstallPrice');
 
+  const optCoverTrapRow = $('optCoverTrapRow');
   const optCoverliftRow = $('optCoverliftRow');
   const optCoverlift = $('optCoverlift');
   const optCoverliftTotal = $('optCoverliftTotal');
@@ -263,16 +265,26 @@ function updateOptionUI() {
     optInstallPrice.textContent = euro(inst);
   }
 
-  const allowCoverlift = coverliftAllowed(type);
-  if (optCoverliftRow) optCoverliftRow.style.display = allowCoverlift ? '' : 'none';
-  if (!allowCoverlift && optCoverlift) optCoverlift.checked = false;
+  const allowCoverOptions = coverOptionsAllowed(type);
+
+  if (optCoverTrapRow) {
+    optCoverTrapRow.style.display = allowCoverOptions ? '' : 'none';
+  }
+
+  if (optCoverliftRow) {
+    optCoverliftRow.style.display = allowCoverOptions ? '' : 'none';
+  }
+
+  if (!allowCoverOptions && optCoverlift) {
+    optCoverlift.checked = false;
+  }
 
   const swim = isSwimspa(type);
   if (optSwimFiltersetRow) optSwimFiltersetRow.style.display = swim ? '' : 'none';
   if (!swim && optSwimFiltersetQty) optSwimFiltersetQty.value = '0';
 
   const installSelected = !!optInstall?.checked;
-  const coverliftSelected = allowCoverlift ? !!optCoverlift?.checked : false;
+  const coverliftSelected = allowCoverOptions ? !!optCoverlift?.checked : false;
   const maintSelected = !!optMaint?.checked;
   const filterSelected = !!optFilter?.checked;
   const swimFiltersetQty = swim ? readInt(optSwimFiltersetQty) : 0;
@@ -298,6 +310,9 @@ function updateOptionUI() {
 }
 
 function wireOptionHandlers() {
+  if (optionHandlersWired) return;
+  optionHandlersWired = true;
+
   const ids = [
     'optInstall',
     'optCoverlift',
@@ -315,12 +330,12 @@ function wireOptionHandlers() {
 
   const btnAdd = $('btnAddToOffer');
   if (btnAdd) {
-    btnAdd.onclick = () => {
+    btnAdd.addEventListener('click', () => {
       if (!currentProduct) return;
 
       const type = currentProduct.type || '';
       const inst = installCost(type);
-      const allowCoverlift = coverliftAllowed(type);
+      const allowCoverOptions = coverOptionsAllowed(type);
       const swim = isSwimspa(type);
 
       const payload = {
@@ -330,14 +345,15 @@ function wireOptionHandlers() {
         url: currentProduct.url || '',
         image: currentProduct.image || '',
         unit_price: Number(currentProduct.price || 0),
+        qty: 1,
         options: {
           install: !!$('optInstall')?.checked,
           install_price: inst,
 
-          cover_trap_included: true,
+          cover_trap_included: allowCoverOptions,
           cover_trap_price: 0,
 
-          coverlift: allowCoverlift ? !!$('optCoverlift')?.checked : false,
+          coverlift: allowCoverOptions ? !!$('optCoverlift')?.checked : false,
           coverlift_unit: PRICES.coverlift_unit,
 
           maintenance: !!$('optMaint')?.checked,
@@ -355,7 +371,7 @@ function wireOptionHandlers() {
       offer.push(payload);
       setOffer(offer);
       alert('Toegevoegd aan offerte.');
-    };
+    });
   }
 }
 
