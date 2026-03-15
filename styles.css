@@ -305,6 +305,7 @@ label.opt .opt-price,
   text-align:right !important;
   font-weight:900 !important;
   white-space:nowrap !important;
+  visibility:hidden;
 }
 
 .opt-row{
@@ -317,8 +318,4 @@ label.opt .opt-price,
   border:1px solid var(--border) !important;
   border-radius:16px !important;
   background:rgba(255,255,255,.03) !important;
-}
-  /* White Totals */
-.totals{
-  color:white;
 }
