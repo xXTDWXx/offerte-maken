@@ -1934,6 +1934,22 @@
       "bullets": [],
       "specs": [
         {
+          "label": "Afmetingen",
+          "value": "228 x 228 x 88 cm"
+        },
+        {
+          "label": "Aantal zitplaatsen",
+          "value": "5 zitplaatsen"
+        },
+        {
+          "label": "Aantal ligplaatsen",
+          "value": "1 ligplaats"
+        },
+        {
+          "label": "Aantal jets",
+          "value": "67 jets"
+        },
+        {
           "label": "Aantal speakers",
           "value": "2"
         },
