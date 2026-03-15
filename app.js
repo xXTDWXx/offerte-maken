@@ -71,7 +71,6 @@ function setOffer(lines) {
   localStorage.setItem(OFFER_KEY, JSON.stringify(lines));
 }
 
-// ===== pricing rules =====
 const PRICES = {
   install_jacuzzi: 695,
   install_swimspa: 895,
@@ -134,7 +133,6 @@ function readInt(el) {
   return Number.isFinite(n) ? Math.max(0, Math.floor(n)) : 0;
 }
 
-// ===== data loading =====
 async function loadProducts({ force = false } = {}) {
   const url = force ? `${PRODUCTS_URL}?t=${Date.now()}` : PRODUCTS_URL;
   const res = await fetch(url, { cache: force ? 'no-store' : 'default' });
@@ -191,7 +189,6 @@ function specTableHtml(p) {
   `).join('');
 }
 
-// ===== filters =====
 function applyFilters() {
   const q = elSearch ? normalize(elSearch.value) : '';
   const type = elType ? elType.value : '';
@@ -210,7 +207,6 @@ function applyFilters() {
   renderGrid();
 }
 
-// ===== modal options =====
 function updateOptionUI() {
   if (!currentProduct) return;
 
@@ -231,23 +227,17 @@ function updateOptionUI() {
   const optSwimFiltersetRow = $('optSwimFiltersetRow');
   const optSwimFiltersetQty = $('optSwimFiltersetQty');
 
-  const optBarrelWoodStoveRow = $('optBarrelWoodStoveRow');
+  const optBarrelStoveGroup = $('optBarrelStoveGroup');
   const optBarrelWoodStove = $('optBarrelWoodStove');
   const optBarrelWoodStoveTotal = $('optBarrelWoodStoveTotal');
-
-  const optBarrelElectricHeaterRow = $('optBarrelElectricHeaterRow');
   const optBarrelElectricHeater = $('optBarrelElectricHeater');
   const optBarrelElectricHeaterTotal = $('optBarrelElectricHeaterTotal');
 
-  const optBarrelRoofShinglesRow = $('optBarrelRoofShinglesRow');
+  const optBarrelRoofGroup = $('optBarrelRoofGroup');
   const optBarrelRoofShingles = $('optBarrelRoofShingles');
   const optBarrelRoofShinglesTotal = $('optBarrelRoofShinglesTotal');
-
-  const optBarrelRoofHeatherRow = $('optBarrelRoofHeatherRow');
   const optBarrelRoofHeather = $('optBarrelRoofHeather');
   const optBarrelRoofHeatherTotal = $('optBarrelRoofHeatherTotal');
-
-  const optBarrelRoofDesignRow = $('optBarrelRoofDesignRow');
   const optBarrelRoofDesign = $('optBarrelRoofDesign');
   const optBarrelRoofDesignTotal = $('optBarrelRoofDesignTotal');
 
@@ -276,11 +266,8 @@ function updateOptionUI() {
 
   const barrel = isBarrelSauna(type);
 
-  if (optBarrelWoodStoveRow) optBarrelWoodStoveRow.style.display = barrel ? '' : 'none';
-  if (optBarrelElectricHeaterRow) optBarrelElectricHeaterRow.style.display = barrel ? '' : 'none';
-  if (optBarrelRoofShinglesRow) optBarrelRoofShinglesRow.style.display = barrel ? '' : 'none';
-  if (optBarrelRoofHeatherRow) optBarrelRoofHeatherRow.style.display = barrel ? '' : 'none';
-  if (optBarrelRoofDesignRow) optBarrelRoofDesignRow.style.display = barrel ? '' : 'none';
+  if (optBarrelStoveGroup) optBarrelStoveGroup.style.display = barrel ? '' : 'none';
+  if (optBarrelRoofGroup) optBarrelRoofGroup.style.display = barrel ? '' : 'none';
 
   if (!barrel && optBarrelWoodStove) optBarrelWoodStove.checked = false;
   if (!barrel && optBarrelElectricHeater) optBarrelElectricHeater.checked = false;
@@ -371,6 +358,15 @@ function wireOptionHandlers() {
       const swim = isSwimspa(type);
       const barrel = isBarrelSauna(type);
 
+      let barrelStove = '';
+      if (barrel && $('optBarrelWoodStove')?.checked) barrelStove = 'wood';
+      if (barrel && $('optBarrelElectricHeater')?.checked) barrelStove = 'electric';
+
+      let barrelRoof = '';
+      if (barrel && $('optBarrelRoofShingles')?.checked) barrelRoof = 'shingles';
+      if (barrel && $('optBarrelRoofHeather')?.checked) barrelRoof = 'heather';
+      if (barrel && $('optBarrelRoofDesign')?.checked) barrelRoof = 'design';
+
       const payload = {
         productId: currentProduct.id,
         title: currentProduct.title,
@@ -395,19 +391,13 @@ function wireOptionHandlers() {
           swim_filterset_qty: swim ? readInt($('optSwimFiltersetQty')) : 0,
           swim_filterset_unit: PRICES.swim_filterset_unit,
 
-          barrel_wood_stove: barrel ? !!$('optBarrelWoodStove')?.checked : false,
+          barrel_stove: barrel ? barrelStove : '',
           barrel_wood_stove_unit: PRICES.barrel_wood_stove_unit,
-
-          barrel_electric_heater: barrel ? !!$('optBarrelElectricHeater')?.checked : false,
           barrel_electric_heater_unit: PRICES.barrel_electric_heater_unit,
 
-          barrel_roof_shingles: barrel ? !!$('optBarrelRoofShingles')?.checked : false,
+          barrel_roof: barrel ? barrelRoof : '',
           barrel_roof_shingles_unit: PRICES.barrel_roof_shingles_unit,
-
-          barrel_roof_heather: barrel ? !!$('optBarrelRoofHeather')?.checked : false,
           barrel_roof_heather_unit: PRICES.barrel_roof_heather_unit,
-
-          barrel_roof_design: barrel ? !!$('optBarrelRoofDesign')?.checked : false,
           barrel_roof_design_unit: PRICES.barrel_roof_design_unit
         }
       };
@@ -454,7 +444,6 @@ function afterOpenModal(p) {
   updateOptionUI();
 }
 
-// ===== modal =====
 function openModal(p) {
   if (!modal) return;
 
@@ -541,7 +530,6 @@ function printProductFiche(p) {
   win.document.close();
 }
 
-// ===== render =====
 function renderGrid() {
   if (!elGrid || !tpl) return;
   elGrid.innerHTML = '';
@@ -595,7 +583,6 @@ async function init() {
   applyFilters();
 }
 
-// ===== events =====
 if (elSearch) elSearch.addEventListener('input', applyFilters);
 if (elType) elType.addEventListener('change', applyFilters);
 if (elSort) elSort.addEventListener('change', applyFilters);
