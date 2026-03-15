@@ -1,4 +1,3 @@
-// Product detail + opties -> voeg toe aan offerte
 const PRODUCTS_URL = 'products.json';
 const CART_KEY = 'sunspa_quote_cart_v1';
 
@@ -7,9 +6,9 @@ function euro(n) {
     return new Intl.NumberFormat('nl-BE', {
       style: 'currency',
       currency: 'EUR'
-    }).format(n);
+    }).format(Number(n || 0));
   } catch {
-    return '€' + (Math.round(n * 100) / 100).toFixed(2);
+    return '€' + (Math.round(Number(n || 0) * 100) / 100).toFixed(2);
   }
 }
 
@@ -83,7 +82,7 @@ function isJacuzziType(type) {
   return !t.includes('zwemspa') && !t.includes('swim') && !t.includes('infrarood') && !t.includes('sauna');
 }
 
-function coverOptionsAllowed(type) {
+function extraOptionsAllowed(type) {
   return isJacuzziType(type) || isSwimSpaType(type);
 }
 
@@ -106,12 +105,13 @@ const optInstall = document.getElementById('optInstall');
 const optCoverTrapRow = document.getElementById('optCoverTrapRow');
 const optCoverliftRow = document.getElementById('optCoverliftRow');
 const optCoverlift = document.getElementById('optCoverlift');
+const optMaintRow = document.getElementById('optMaintRow');
 const optMaint = document.getElementById('optMaint');
+const filterRow = document.getElementById('optSwimFiltersetRow');
 const filterQty = document.getElementById('optSwimFiltersetQty');
 
 const installHint = document.getElementById('optInstallHint');
 const installPrice = document.getElementById('optInstallPrice');
-const filterRow = document.getElementById('optSwimFiltersetRow');
 const optCoverliftTotal = document.getElementById('optCoverliftTotal');
 
 const pqty = document.getElementById('pqty');
@@ -126,7 +126,7 @@ const PRICES = {
   coverTrap: 0,
   coverlift: 189,
   maintenance: 179,
-  filter: 250
+  swimFilterset: 250
 };
 
 let product = null;
@@ -144,33 +144,30 @@ function specTable(p) {
   return `<div class="spec-table">${rows}</div>`;
 }
 
-function optionsTotals() {
-  const install = installCostForType(product.type);
-  const coverlift = optCoverlift?.checked ? PRICES.coverlift : 0;
-  const maint = optMaint?.checked ? PRICES.maintenance : 0;
-  const fq = Math.max(0, Number(filterQty?.value || 0));
-  const filters = fq * PRICES.filter;
-
-  const optTotal = install + coverlift + maint + filters;
-  return { install, coverlift, maint, fq, filters, optTotal };
-}
-
 function renderVisibility() {
   if (!product) return;
 
-  const allowCoverOptions = coverOptionsAllowed(product.type);
+  const allowExtraOptions = extraOptionsAllowed(product.type);
   const swim = isSwimSpaType(product.type);
 
   if (optCoverTrapRow) {
-    optCoverTrapRow.style.display = allowCoverOptions ? '' : 'none';
+    optCoverTrapRow.style.display = allowExtraOptions ? '' : 'none';
   }
 
   if (optCoverliftRow) {
-    optCoverliftRow.style.display = allowCoverOptions ? '' : 'none';
+    optCoverliftRow.style.display = allowExtraOptions ? '' : 'none';
   }
 
-  if (!allowCoverOptions && optCoverlift) {
+  if (optMaintRow) {
+    optMaintRow.style.display = allowExtraOptions ? '' : 'none';
+  }
+
+  if (!allowExtraOptions && optCoverlift) {
     optCoverlift.checked = false;
+  }
+
+  if (!allowExtraOptions && optMaint) {
+    optMaint.checked = false;
   }
 
   if (filterRow) {
@@ -180,6 +177,20 @@ function renderVisibility() {
   if (!swim && filterQty) {
     filterQty.value = '0';
   }
+}
+
+function optionsTotals() {
+  const allowExtraOptions = extraOptionsAllowed(product.type);
+  const swim = isSwimSpaType(product.type);
+
+  const install = installCostForType(product.type);
+  const coverlift = allowExtraOptions && optCoverlift?.checked ? PRICES.coverlift : 0;
+  const maint = allowExtraOptions && optMaint?.checked ? PRICES.maintenance : 0;
+  const fq = swim ? Math.max(0, Number(filterQty?.value || 0)) : 0;
+  const filters = fq * PRICES.swimFilterset;
+
+  const optTotal = install + coverlift + maint + filters;
+  return { install, coverlift, maint, fq, filters, optTotal };
 }
 
 function renderTotals() {
@@ -210,6 +221,8 @@ function addToCart() {
   if (!product) return;
 
   const qty = Math.max(1, Number(pqty?.value || 1));
+  const allowExtraOptions = extraOptionsAllowed(product.type);
+  const swim = isSwimSpaType(product.type);
   const o = optionsTotals();
 
   const item = {
@@ -223,13 +236,18 @@ function addToCart() {
     options: {
       install: true,
       install_price: installCostForType(product.type),
-      cover_trap_included: coverOptionsAllowed(product.type),
-      coverlift: coverOptionsAllowed(product.type) ? !!optCoverlift?.checked : false,
+
+      cover_trap_included: allowExtraOptions,
+      cover_trap_price: 0,
+
+      coverlift: allowExtraOptions ? !!optCoverlift?.checked : false,
       coverlift_price: PRICES.coverlift,
-      maintenance: !!optMaint?.checked,
+
+      maintenance: allowExtraOptions ? !!optMaint?.checked : false,
       maintenance_price: PRICES.maintenance,
-      filters_qty: isSwimSpaType(product.type) ? o.fq : 0,
-      filter_unit_price: PRICES.filter
+
+      filters_qty: swim ? o.fq : 0,
+      filter_unit_price: PRICES.swimFilterset
     }
   };
 
@@ -271,9 +289,9 @@ async function init() {
   }
 
   if (optInstall) optInstall.checked = true;
-  if (filterQty) filterQty.value = '0';
   if (optCoverlift) optCoverlift.checked = false;
   if (optMaint) optMaint.checked = false;
+  if (filterQty) filterQty.value = '0';
 
   [optCoverlift, optMaint, filterQty, pqty]
     .filter(Boolean)
