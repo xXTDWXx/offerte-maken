@@ -145,7 +145,7 @@ async function loadProducts({ force = false } = {}) {
   return items;
 }
 
-function buildTypeFilter(items) {
+function buildBrandFilter(items) {
   if (!elBrand) return;
 
   const brands = Array.from(
@@ -160,8 +160,14 @@ function buildTypeFilter(items) {
     '<option value="">Alle merken</option>' +
     brands.map(b => `<option value="${escapeHtml(b)}">${escapeHtml(b)}</option>`).join('');
 }
+
+function buildTypeFilter(items) {
   if (!elType) return;
-  const types = Array.from(new Set(items.map(p => p.type).filter(Boolean))).sort();
+
+  const types = Array.from(
+    new Set(items.map(p => p.type).filter(Boolean))
+  ).sort((a, b) => a.localeCompare(b, 'nl'));
+
   elType.innerHTML =
     '<option value="">Alle types</option>' +
     types.map(t => `<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`).join('');
@@ -598,6 +604,7 @@ function showError(msg) {
 
 async function init() {
   products = await loadProducts({ force: false });
+  buildBrandFilter(products);
   buildTypeFilter(products);
   applyFilters();
 }
