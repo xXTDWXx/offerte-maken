@@ -2,176 +2,123 @@
 <html lang="nl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content= "width=device-width, user-scalable=no">
-  <title>Sunspa Catalogus</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Product • Offerte</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
   <header class="header">
     <div class="container header-row">
       <div class="brand">
-        <div class="brand-title">Sunspa Catalogus</div>
+        <div class="brand-title">Offerte samenstellen</div>
+        <div class="brand-sub">Selecteer opties voor dit product.</div>
       </div>
 
-    
+      <div class="header-actions">
+        <a class="btn btn-secondary" href="index.html">← Terug</a>
+        <a class="btn btn-primary" href="cart.html">🧾 Offerte (<span id="cartCount">0</span>)</a>
+      </div>
+    </div>
   </header>
 
   <main class="container">
-    <section class="panel">
-      <div class="panel-row">
-        <div class="field">
-          <label for="search">Zoeken</label>
-          <input id="search" type="search" placeholder="Zoek op titel, type, specificaties…" />
+    <section class="panel" id="pwrap" style="display:none">
+      <div class="product-layout">
+        <div class="product-media">
+          <img id="pimg" class="product-img" alt="" loading="lazy" />
+          <div class="small" id="pbadge"></div>
+          <div class="small"><a id="plink" target="_blank" rel="noopener">Bronpagina</a></div>
         </div>
 
-        <div class="field">
-          <label for="typeFilter">Type</label>
-          <select id="typeFilter">
-            <option value="">Alle types</option>
-          </select>
-        </div>
+        <div class="product-main">
+          <div class="product-title" id="ptitle"></div>
+          <div class="product-price" id="pprice"></div>
+          <div class="product-specs" id="pspecs"></div>
 
-        <div class="field">
-          <label for="sort">Sorteren</label>
-          <select id="sort">
-            <option value="relevance">Relevantie</option>
-            <option value="priceAsc">Prijs (laag → hoog)</option>
-            <option value="priceDesc">Prijs (hoog → laag)</option>
-            <option value="titleAsc">Titel (A → Z)</option>
-          </select>
-        </div>
+          <hr class="sep"/>
 
-        <div class="field">
-          <label>&nbsp;</label>
-          <button id="btnClear" class="btn" type="button">Wissen</button>
-        </div>
-      </div>
+          <div class="panel-title" style="margin:0 0 10px 0;color:white;">Opties</div>
 
-      <div class="panel-row panel-row-2">
-        <div class="chips" id="activeChips"></div>
-        <div class="small" id="resultMeta">—</div>
+          <div class="options" id="modalOptions">
+            <label class="opt-disabled">
+              <div class="opt-text">
+                <div class="opt-title">
+                  <input id="optInstall" type="checkbox" checked disabled>
+                  Levering &amp; installatie
+                  <span class="opt-price" id="optInstallPrice">€&nbsp;695,00</span>
+                </div>
+                <div class="small" id="optInstallHint"></div>
+              </div>
+            </label>
+
+            <label class="opt opt-disabled" id="optCoverTrapRow">
+              <div class="opt-text">
+                <div class="opt-title">
+                  <input type="checkbox" checked disabled>
+                  Cover &amp; trap inclusief
+                </div>
+              </div>
+              <div class="opt-price" style="visibility:hidden;">€0</div>
+            </label>
+
+            <label class="opt" id="optCoverliftRow">
+              <div class="opt-text">
+                <div class="opt-title">
+                  <input id="optCoverlift" type="checkbox">
+                  Coverlift € 189
+                </div>
+              </div>
+              <div class="opt-price" style="visibility:hidden" id="optCoverliftTotal">€&nbsp;189,00</div>
+            </label>
+
+            <label class="opt">
+              <div class="opt-text">
+                <div class="opt-title">
+                  <input id="optMaint" type="checkbox">
+                  Onderhoudspakket € 179
+                </div>
+              </div>
+            </label>
+
+            <div class="opt opt-row" id="optSwimFiltersetRow" style="display:none">
+              <div class="opt-text">
+                <div class="opt-title">Filterset (zwemspa)</div>
+                <div class="small">€250 per set</div>
+              </div>
+              <div class="opt-qty">
+                <input id="optSwimFiltersetQty" type="number" min="0" step="1" value="0">
+              </div>
+            </div>
+          </div>
+
+          <hr class="sep"/>
+
+          <div class="product-actions">
+            <div class="qty">
+              <label class="small" for="pqty">Aantal</label>
+              <input id="pqty" type="number" min="1" step="1" value="1" />
+            </div>
+
+            <div class="totals" style="color:white;">
+              <div class="totals-row"><span>Product </span><strong id="tProduct">&nbsp;€0</strong></div>
+              <div class="totals-row"><span>Opties </span><strong id="tOptions">&nbsp;€0</strong></div>
+              <div class="totals-row totals-row-big"><span>Totaal </span><strong id="tTotal">&nbsp;€0</strong></div>
+              <div class="small">Alle bedragen excl. btw.</div>
+            </div>
+
+            <button class="btn btn-primary" id="btnAdd" type="button">Toevoegen aan offerte</button>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="grid" id="grid"></section>
-
-    <section class="panel" id="errorBox" style="display:none">
-      <div class="panel-title">Fout bij laden</div>
-      <div class="small" id="errorText"></div>
-      <div class="small" style="margin-top:8px">
-        Controleer of <code>assets/products.json</code> bestaat en bereikbaar is.
-      </div>
+    <section class="panel" id="err" style="display:none">
+      <div class="panel-title">Product niet gevonden</div>
+      <div class="small">Ga terug naar de catalogus en probeer opnieuw.</div>
+      <div style="margin-top:12px"><a class="btn btn-secondary" href="index.html">← Terug</a></div>
     </section>
   </main>
 
-  <template id="cardTpl">
-    <article class="card">
-      <button class="card-link" type="button" data-open>
-        <div class="card-imgwrap">
-          <img class="card-img" alt="" loading="lazy" />
-          <div class="badge" data-badge></div>
-        </div>
-
-        <div class="card-body">
-          <div class="card-title" data-title></div>
-          <div class="card-price" data-price></div>
-          <div class="card-specs" data-specs></div>
-          <div class="card-cta">👉 Bekijk details</div>
-        </div>
-      </button>
-    </article>
-  </template>
-
-  <!-- Productfiche modal -->
-  <div id="productModal" class="modal" aria-hidden="true">
-    <div class="modal-backdrop" data-close></div>
-
-    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-     
-
-      <div class="modal-head">
-        <h2 id="modalTitle" class="modal-title">—</h2>
-        <div id="modalPrice" class="modal-price">Prijs: —</div>
-      </div>
-
-      <div class="modal-body">
-        <div class="modal-grid">
-          <div class="modal-media">
-            <img id="modalImg" alt="" loading="lazy" />
-            <div id="modalType" class="modal-type"></div>
-          </div>
-
-          <div class="modal-specs">
-            <div id="modalSpecs" class="spec-table"></div>
-            <hr style="border:none;border-top:1px solid var(--border);margin:14px 0">
-
-<div class="panel-title" style="margin:0 0 10px 0;color:white">Opties</div>
-
-<div class="options" id="modalOptions" style=color:white>
-  <label class="opt-disabled">
-    <div class="opt-text">
-      <div class="opt-title"><input id="optInstall" type="checkbox" checked disabled />Levering & installatie<div class="opt-price" id="optInstallPrice">€0</div></div>
-      <div class="small" id="optInstallHint"></div>
-    </div>
-  </label>
-
-  <label class="opt opt-disabled">
-    <div class="opt-text">
-      <div class="opt-title"><input type="checkbox" checked disabled />Cover & trap inclusief</div>
-    </div>
-    <div class="opt-price" style="visibility:hidden">€0</div>
-  </label>
-
-  <label class="opt" id="optCoverliftRow">
-  <div class="opt-text">
-    <div class="opt-title"><input id="optCoverlift" type="checkbox" />Coverlift € 189</div>
-  </div>
-  <div class="opt-price" id="optCoverliftTotal" style="visibility:hidden">€0</div>
-</label>
-
-<label class="opt">
-  <div class="opt-text">
-    <div class="opt-title"><input id="optMaint" type="checkbox" />Onderhoudspakket € 179</div>
-  </div>
-</label>
-
-
-    
-
-  <div class="opt opt-row" id="optSwimFiltersetRow" style="display:none">
-    <div class="opt-text">
-      <div class="opt-title">Filterset (zwemspa)</div>
-      <div class="small">€250 per set</div>
-    </div>
-    <div class="opt-qty">
-      <input id="optSwimFiltersetQty" type="number" min="0" step="1" value="0" />
-    </div>
-  </div>
-</div>
-
-<hr style="border:none;border-top:1px solid var(--border);margin:14px 0">
-
-<div class="totals" style="color:white;">
-  <div class="totals-row"><span>Product </span><strong id="optProductTotal">€0</strong></div>
-  <div class="totals-row"><span>Opties </span><strong id="optOptionsTotal">€0</strong></div>
-  <div class="totals-row totals-row-big"><span>Totaal </span><strong id="optGrandTotal">€0</strong></div>
-  <div class="small">Alle bedragen incl. btw & excl. kraankosten.</div>
-</div>
-            <div class="modal-actions">
-              <a id="modalUrl" class="btn btn-secondary" target="_blank" rel="noopener">Bekijk op website</a>
-              <button id="modalPrint" class="btn btn-primary" type="button">Print</button>
-            </div>
-
-            <div class="small" style="margin-top:10px">
-              Print maakt een fiche van alleen dit product.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="app.js"></script>
+  <script src="product.js"></script>
 </body>
 </html>
