@@ -7029,10 +7029,10 @@
       ]
     },
     {
-      "id": "sauna::sumum-1-persoons-infrarood-sauna",
-      "type": "infrarood",
+      "id": "sauna::sumum-1-persoons-Infrarood-sauna",
+      "type": "Infrarood",
       "title": "Sumum 1 persoons Infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/sumum-1-persoons-infrarood-sauna/",
+      "url": "https://www.sunspabenelux.be/p/sumum-1-persoons-Infrarood-sauna/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Sumum-1-persoons-Infrarood-sauna-1.webp",
       "price": 1125,
       "bullets": [],
@@ -7227,7 +7227,7 @@
     },
     {
       "id": "sauna::health-company-1",
-      "type": "infrarood",
+      "type": "Infrarood",
       "title": "Health Company 1",
       "url": "https://www.sunspabenelux.be/p/health-company-1/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/08/Health-Company-1.webp",
@@ -7309,11 +7309,11 @@
       ]
     },
     {
-      "id": "sauna::funda-mahogany-1-persoons-infrarood-sauna",
-      "type": "infrarood",
-      "title": "Funda Mahogany 1 persoons infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/funda-mahogany-1-persoons-infrarood-sauna/",
-      "image": "https://www.sunspabenelux.nl/wp-content/uploads/2024/11/Funda-Mahogany-1-persoons-infrarood-sauna.webp",
+      "id": "sauna::funda-mahogany-1-persoons-Infrarood-sauna",
+      "type": "Infrarood",
+      "title": "Funda Mahogany 1 persoons Infrarood sauna",
+      "url": "https://www.sunspabenelux.be/p/funda-mahogany-1-persoons-Infrarood-sauna/",
+      "image": "https://www.sunspabenelux.nl/wp-content/uploads/2024/11/Funda-Mahogany-1-persoons-Infrarood-sauna.webp",
       "price": 1750,
       "bullets": [],
       "specs": [
@@ -7388,10 +7388,10 @@
       ]
     },
     {
-      "id": "sauna::infrarood-lounge-chair",
-      "type": "infrarood",
+      "id": "sauna::Infrarood-lounge-chair",
+      "type": "Infrarood",
       "title": "Infrarood Lounge Chair",
-      "url": "https://www.sunspabenelux.be/p/infrarood-lounge-chair/",
+      "url": "https://www.sunspabenelux.be/p/Infrarood-lounge-chair/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2024/02/ir-lounge-chair.jpg",
       "price": 1995,
       "bullets": [],
@@ -7415,10 +7415,10 @@
       ]
     },
     {
-      "id": "sauna::vitrum-1-persoons-infrarood-sauna",
-      "type": "infrarood",
+      "id": "sauna::vitrum-1-persoons-Infrarood-sauna",
+      "type": "Infrarood",
       "title": "Vitrum 1 persoons Infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/vitrum-1-persoons-infrarood-sauna/",
+      "url": "https://www.sunspabenelux.be/p/vitrum-1-persoons-Infrarood-sauna/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Virtrum-1-persoons-Infrarood-sauna.webp",
       "price": 1995,
       "bullets": [],
@@ -7479,7 +7479,7 @@
     },
     {
       "id": "sauna::health-company-2",
-      "type": "infrarood",
+      "type": "Infrarood",
       "title": "Health Company 2",
       "url": "https://www.sunspabenelux.be/p/health-company-2/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/08/Health-Company-2-1.webp",
@@ -7550,7 +7550,7 @@
     },
     {
       "id": "sauna::health-company-3",
-      "type": "infrarood",
+      "type": "Infrarood",
       "title": "Health Company 3",
       "url": "https://www.sunspabenelux.be/p/health-company-3/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2022/08/Health-Company-3.webp",
@@ -7695,10 +7695,10 @@
       ]
     },
     {
-      "id": "sauna::sumum-wit-2-persoons-infrarood-sauna",
-      "type": "infrarood",
+      "id": "sauna::sumum-wit-2-persoons-Infrarood-sauna",
+      "type": "Infrarood",
       "title": "Sumum Wit 2 persoons Infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/sumum-wit-2-persoons-infrarood-sauna/",
+      "url": "https://www.sunspabenelux.be/p/sumum-wit-2-persoons-Infrarood-sauna/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Sumum-Wit-2-persoons-Infrarood-sauna.webp",
       "price": 2875,
       "bullets": [],
@@ -7774,10 +7774,10 @@
       ]
     },
     {
-      "id": "sauna::hemlock-magnus-2-persoons-uitschuifbare-infrarood-sauna",
-      "type": "infrarood",
-      "title": "Hemlock Magnus 2 persoons uitschuifbare infrarood Sauna",
-      "url": "https://www.sunspabenelux.be/p/hemlock-magnus-duae-2-persoons-infrarood-sauna/",
+      "id": "sauna::hemlock-magnus-2-persoons-uitschuifbare-Infrarood-sauna",
+      "type": "Infrarood",
+      "title": "Hemlock Magnus 2 persoons uitschuifbare Infrarood Sauna",
+      "url": "https://www.sunspabenelux.be/p/hemlock-magnus-duae-2-persoons-Infrarood-sauna/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2024/11/Magnus-duae-2_afbeelding_uitschuif-1.jpg",
       "price": 2925,
       "bullets": [],
@@ -7854,7 +7854,7 @@
     },
     {
       "id": "sauna::health-company-4",
-      "type": "infrarood",
+      "type": "Infrarood",
       "title": "Health Company 4",
       "url": "https://www.sunspabenelux.be/p/health-company-4/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2022/08/Health-Company-4.webp",
@@ -7937,7 +7937,7 @@
     },
     {
       "id": "sauna::health-company-5-hoeksauna",
-      "type": "infrarood",
+      "type": "Infrarood",
       "title": "Health Company 5 hoeksauna",
       "url": "https://www.sunspabenelux.be/p/health-company-5-hoeksauna/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/08/Health-Company-5.webp",
@@ -8023,10 +8023,10 @@
       ]
     },
     {
-      "id": "sauna::sumum-hemlock-3-persoons-infrarood-sauna",
+      "id": "sauna::sumum-hemlock-3-persoons-Infrarood-sauna",
       "type": "Infrarood",
       "title": "Sumum Hemlock 3 persoons Infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/sumum-hemlock-3-persoons-infrarood-sauna/",
+      "url": "https://www.sunspabenelux.be/p/sumum-hemlock-3-persoons-Infrarood-sauna/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Sumum-Hemlock-2-persoons-Infrarood-sauna.webp",
       "price": 3125,
       "bullets": [],
@@ -8082,10 +8082,10 @@
       ]
     },
     {
-      "id": "sauna::i100-infrarood-sauna",
-      "type": "infrarood",
-      "title": "i100 infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/i100-infrarood-sauna/",
+      "id": "sauna::i100-Infrarood-sauna",
+      "type": "Infrarood",
+      "title": "i100 Infrarood sauna",
+      "url": "https://www.sunspabenelux.be/p/i100-Infrarood-sauna/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2022/07/i100-Schuin-voor.jpg",
       "price": 3250,
       "bullets": [],
@@ -8170,7 +8170,7 @@
     },
     {
       "id": "sauna::health-company-6-hoeksauna",
-      "type": "infrarood",
+      "type": "Infrarood",
       "title": "Health Company 6 hoeksauna",
       "url": "https://www.sunspabenelux.be/p/health-company-6-hoeksauna/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/08/Health-Company-6.webp",
@@ -8252,11 +8252,11 @@
       ]
     },
     {
-      "id": "sauna::i120-infrarood-sauna",
-      "type": "infrarood",
-      "title": "i120 infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/i120-infrarood-sauna/",
-      "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/07/infrarood-sauna-i120-Schuin-voor.jpg",
+      "id": "sauna::i120-Infrarood-sauna",
+      "type": "Infrarood",
+      "title": "i120 Infrarood sauna",
+      "url": "https://www.sunspabenelux.be/p/i120-Infrarood-sauna/",
+      "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/07/Infrarood-sauna-i120-Schuin-voor.jpg",
       "price": 3495,
       "bullets": [],
       "specs": [
@@ -8430,11 +8430,11 @@
       ]
     },
     {
-      "id": "sauna::130-infrarood-sauna",
-      "type": "infrarood",
-      "title": "130 infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/130-infrarood-sauna/",
-      "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/07/130-infrarood-sauna.webp",
+      "id": "sauna::130-Infrarood-sauna",
+      "type": "Infrarood",
+      "title": "130 Infrarood sauna",
+      "url": "https://www.sunspabenelux.be/p/130-Infrarood-sauna/",
+      "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/07/130-Infrarood-sauna.webp",
       "price": 3875,
       "bullets": [],
       "specs": [
@@ -8514,7 +8514,7 @@
     },
     {
       "id": "sauna::health-company-7",
-      "type": "infrarood",
+      "type": "Infrarood",
       "title": "Health Company 7",
       "url": "https://www.sunspabenelux.be/p/health-company-7/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2022/08/Health-Company-7.webp",
@@ -8596,10 +8596,10 @@
       ]
     },
     {
-      "id": "sauna::sumum-wit-3-persoons-infrarood-sauna",
-      "type": "infrarood",
+      "id": "sauna::sumum-wit-3-persoons-Infrarood-sauna",
+      "type": "Infrarood",
       "title": "Sumum Wit 3 persoons Infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/sumum-wit-3-persoons-infrarood-sauna/",
+      "url": "https://www.sunspabenelux.be/p/sumum-wit-3-persoons-Infrarood-sauna/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Sumum-Wit-2-persoons-Infrarood-sauna.webp",
       "price": 3875,
       "bullets": [],
@@ -8659,10 +8659,10 @@
       ]
     },
     {
-      "id": "sauna::i150-infrarood-sauna",
-      "type": "infrarood",
-      "title": "i150 infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/i150-infrarood-sauna/",
+      "id": "sauna::i150-Infrarood-sauna",
+      "type": "Infrarood",
+      "title": "i150 Infrarood sauna",
+      "url": "https://www.sunspabenelux.be/p/i150-Infrarood-sauna/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2022/08/i150-2.jpg",
       "price": 3995,
       "bullets": [],
@@ -8955,10 +8955,10 @@
       ]
     },
     {
-      "id": "sauna::160-infrarood-sauna",
-      "type": "infrarood",
-      "title": "160 infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/160-infrarood-sauna/",
+      "id": "sauna::160-Infrarood-sauna",
+      "type": "Infrarood",
+      "title": "160 Infrarood sauna",
+      "url": "https://www.sunspabenelux.be/p/160-Infrarood-sauna/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/07/160-1024x1024.jpg",
       "price": 4450,
       "bullets": [],
@@ -9113,10 +9113,10 @@
       ]
     },
     {
-      "id": "sauna::sumum-quatro-4-persoons-infrarood-sauna",
-      "type": "infrarood",
+      "id": "sauna::sumum-quatro-4-persoons-Infrarood-sauna",
+      "type": "Infrarood",
       "title": "Sumum Quatro 4 persoons Infrarood Sauna",
-      "url": "https://www.sunspabenelux.be/p/sumum-quatro-infrarood-sauna/",
+      "url": "https://www.sunspabenelux.be/p/sumum-quatro-Infrarood-sauna/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/11/Sumum-Quatro-Infrarood-Sauna.webp",
       "price": 4375,
       "bullets": [],
@@ -9176,10 +9176,10 @@
       ]
     },
     {
-      "id": "sauna::i170-infrarood-sauna",
-      "type": "infrarood",
-      "title": "i170 infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/i170-infrarood-sauna/",
+      "id": "sauna::i170-Infrarood-sauna",
+      "type": "Infrarood",
+      "title": "i170 Infrarood sauna",
+      "url": "https://www.sunspabenelux.be/p/i170-Infrarood-sauna/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/07/i170.jpg",
       "price": 4450,
       "bullets": [],
@@ -9260,7 +9260,7 @@
     },
     {
       "id": "sauna::health-company-8-links",
-      "type": "infrarood",
+      "type": "Infrarood",
       "title": "Health Company 8 Links",
       "url": "https://www.sunspabenelux.be/p/health-company-8-links/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/12/Health-Company-8.webp",
@@ -9343,7 +9343,7 @@
     },
     {
       "id": "sauna::health-company-8-rechts",
-      "type": "infrarood",
+      "type": "Infrarood",
       "title": "Health Company 8 Rechts",
       "url": "https://www.sunspabenelux.be/p/health-company-8-rechts/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/12/Health-Company-8-rechts-1.webp",
@@ -9425,10 +9425,10 @@
       ]
     },
     {
-      "id": "sauna::i160c-infrarood-sauna",
-      "type": "infrarood",
-      "title": "i160C infrarood sauna",
-      "url": "https://www.sunspabenelux.be/p/i160c-infrarood-sauna/",
+      "id": "sauna::i160c-Infrarood-sauna",
+      "type": "Infrarood",
+      "title": "i160C Infrarood sauna",
+      "url": "https://www.sunspabenelux.be/p/i160c-Infrarood-sauna/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2022/07/i160c-1.jpg",
       "price": 4950,
       "bullets": [],
@@ -9741,10 +9741,10 @@
       ]
     },
     {
-      "id": "sauna::infrarood-barrelsauna-canopy",
-      "type": "barrelsauna, infrarood",
+      "id": "sauna::Infrarood-barrelsauna-canopy",
+      "type": "barrelsauna, Infrarood",
       "title": "Infrarood Barrelsauna Canopy",
-      "url": "https://www.sunspabenelux.be/p/infrarood-barrelsauna-canopy/",
+      "url": "https://www.sunspabenelux.be/p/Infrarood-barrelsauna-canopy/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/08/Infrarood-barrel-sauna-canopy-2-e1675685843208.jpg",
       "price": 5995,
       "bullets": [],
@@ -10380,11 +10380,11 @@
       ]
     },
     {
-      "id": "sauna::icombi-infraroodsauna",
+      "id": "sauna::icombi-Infraroodsauna",
       "type": "combi sauna",
-      "title": "iCombi infraroodsauna",
-      "url": "https://www.sunspabenelux.be/p/icombi-infrarood-sauna/",
-      "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/08/Icombi-infrarood-sauna-1024x1024.jpg",
+      "title": "iCombi Infraroodsauna",
+      "url": "https://www.sunspabenelux.be/p/icombi-Infrarood-sauna/",
+      "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/08/Icombi-Infrarood-sauna-1024x1024.jpg",
       "price": 7950,
       "bullets": [],
       "specs": [
