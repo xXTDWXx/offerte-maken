@@ -115,7 +115,7 @@
         },
         {
           "label": "Aantal ligplaatsen",
-          "value": "0 – enkel zitplaatsen"
+          "value": "0"
         },
         {
           "label": "Vorm",
@@ -693,7 +693,7 @@
       "specs": [
         {
           "label": "Aantal zitplaatsen",
-          "value": "0 – enkel ligplaatsen"
+          "value": "0"
         },
         {
           "label": "Aantal ligplaatsen",
@@ -1666,7 +1666,7 @@
         },
         {
           "label": "Aantal ligplaatsen",
-          "value": "0 – enkel zitplaatsen"
+          "value": "0"
         },
         {
           "label": "Aantal jets",
@@ -3820,7 +3820,7 @@
         },
         {
           "label": "Aantal ligplaatsen",
-          "value": "0 – enkel zitplaatsen"
+          "value": "0"
         },
         {
           "label": "Aantal luchtregelaars",
@@ -4300,7 +4300,7 @@
       "specs": [
         {
           "label": "Aantal zitplaatsen",
-          "value": "0 – enkel ligplaatsen"
+          "value": "0"
         },
         {
           "label": "Aantal ligplaatsen",
@@ -4931,7 +4931,7 @@
         },
         {
           "label": "Aantal ligplaatsen",
-          "value": "0 – enkel zitplaatsen"
+          "value": "0"
         },
         {
           "label": "Aantal jets",
@@ -6066,7 +6066,7 @@
         },
         {
           "label": "Aantal ligplaatsen",
-          "value": "0 – enkel zitplaatsen"
+          "value": "0"
         },
         {
           "label": "Aantal jets",
@@ -13419,7 +13419,7 @@
         },
         {
           "label": "Aantal ligplaatsen",
-          "value": "0 – enkel zitplaatsen"
+          "value": "0"
         },
         {
           "label": "Aantal zitplaatsen",
@@ -14062,7 +14062,7 @@
         },
         {
           "label": "Aantal ligplaatsen",
-          "value": "0 – enkel zitplaatsen"
+          "value": "0"
         },
         {
           "label": "Aantal zitplaatsen",
