@@ -37,24 +37,28 @@
 
           <hr class="sep"/>
 
-          <div class="panel-title">Keuzevakken</div>
+          <div class="panel-title" style="margin:0 0 10px 0;color:white;">Opties</div>
 
           <div class="options" id="modalOptions">
   <label class="opt-disabled">
     <div class="opt-text">
-      <div class="opt-title"><input id="optInstall" type="checkbox" checked="" disabled="">Levering &amp; installatie&nbsp;<div class="opt-price" style="display: inline-block;" id="optInstallPrice">€&nbsp;695,00</div></div>
+      <div class="opt-title"><input id="optInstall" type="checkbox" checked="" disabled="">Levering &amp; installatie<div class="opt-price" style="display:inline-block&quot;" id="optInstallPrice">€&nbsp;695,00</div></div>
+      <div class="small" id="optInstallHint"></div>
     </div>
   </label>
 
   <label class="opt opt-disabled">
     <div class="opt-text">
       <div class="opt-title"><input type="checkbox" checked="" disabled="">Cover &amp; trap inclusief</div>
-  </div></label>
+    </div>
+    <div class="opt-price" style="visibility:hidden;">€0</div>
+  </label>
 
   <label class="opt" id="optCoverliftRow">
   <div class="opt-text">
     <div class="opt-title"><input id="optCoverlift" type="checkbox">Coverlift € 189</div>
   </div>
+  <div class="opt-price" style="visibility:hidden" id="optCoverliftTotal">€&nbsp;189,00</div>
 </label>
 
 <label class="opt">
