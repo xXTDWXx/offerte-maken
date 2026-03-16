@@ -9,22 +9,31 @@
   --radius: 18px;
 }
 
-/* Kaarten zelfde grote */
+/* Kaarten zelfde grote & netjes uitgelijnd */
   .card {
   height: 480px;
   display: flex;
 }
 
+.card-media {
+  height: 200px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
 .card-img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+  max-height: 180px;
+  max-width: 90%;
+  object-fit: contain;
 }
 
 .card-body {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  flex: 1;
 }
 
 .card-specs {
@@ -32,6 +41,10 @@
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+}
+
+.card-cta {
+  margin-top: auto;
 }
 
 *{box-sizing:border-box}
