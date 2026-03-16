@@ -1,62 +1,43 @@
-const PRODUCTS_URL = 'products.json';
-const CART_KEY = 'sunspa_quote_cart_v1';
+const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
+const OFFER_KEY = 'sunspa_offer_v1';
+
+const errorBox = document.getElementById('errorBox');
+const errorText = document.getElementById('errorText');
+const productPage = document.getElementById('productPage');
+
+const productImg = document.getElementById('productImg');
+const productTitle = document.getElementById('productTitle');
+const productPrice = document.getElementById('productPrice');
+const productType = document.getElementById('productType');
+const productSpecs = document.getElementById('productSpecs');
+const productUrl = document.getElementById('productUrl');
+const productPrint = document.getElementById('productPrint');
+
+let currentProduct = null;
+let optionHandlersWired = false;
+
+function $(id) {
+  return document.getElementById(id);
+}
 
 function euro(n) {
+  const x = Number(n || 0);
   try {
     return new Intl.NumberFormat('nl-BE', {
       style: 'currency',
       currency: 'EUR'
-    }).format(Number(n || 0));
+    }).format(x);
   } catch {
-    return '€' + (Math.round(Number(n || 0) * 100) / 100).toFixed(2);
+    return '€' + x.toFixed(2);
   }
 }
 
 function normalize(s) {
-  return (s || '').toString().toLowerCase().trim();
-}
-
-function getCart() {
-  try {
-    return JSON.parse(localStorage.getItem(CART_KEY) || '[]');
-  } catch {
-    return [];
-  }
-}
-
-function setCart(items) {
-  localStorage.setItem(CART_KEY, JSON.stringify(items));
-}
-
-function cartCount() {
-  return getCart().reduce((a, i) => a + Math.max(1, Number(i.qty || 1)), 0);
-}
-
-function setCountTo(el) {
-  if (el) el.textContent = String(cartCount());
-}
-
-async function loadProducts(force = false) {
-  const url = force ? `${PRODUCTS_URL}?t=${Date.now()}` : PRODUCTS_URL;
-  const res = await fetch(url, { cache: force ? 'no-store' : 'default' });
-  if (!res.ok) throw new Error(`Kan products.json niet laden (${res.status})`);
-  const json = await res.json();
-  return Array.isArray(json) ? json : (json.products || []);
-}
-
-function installCostForType(type) {
-  const t = normalize(type);
-
-  if (t.includes('zwemspa') || t.includes('swim')) return 895;
-  if (t.includes('infrarood')) return 450;
-  if (t.includes('sauna barrel') || (t.includes('barrel') && t.includes('sauna'))) return 995;
-  if (t.includes('sauna')) return 695;
-
-  return 695;
+  return (s ?? '').toString().toLowerCase().trim();
 }
 
 function escapeHtml(s) {
-  return (s || '').toString()
+  return (s ?? '').toString()
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
@@ -64,250 +45,409 @@ function escapeHtml(s) {
     .replaceAll("'", '&#039;');
 }
 
-function isSwimSpaType(type) {
-  const t = normalize(type);
+function getOffer() {
+  try {
+    return JSON.parse(localStorage.getItem(OFFER_KEY) || '[]');
+  } catch {
+    return [];
+  }
+}
+
+function setOffer(lines) {
+  localStorage.setItem(OFFER_KEY, JSON.stringify(lines));
+}
+
+const PRICES = {
+  install_jacuzzi: 695,
+  install_swimspa: 895,
+  install_barrel_sauna: 995,
+  install_infrared: 450,
+  install_sauna: 695,
+
+  coverlift_unit: 189,
+  maintenance_unit: 179,
+  swim_filterset_unit: 250,
+
+  barrel_wood_stove_unit: 1245,
+  barrel_electric_heater_unit: 495,
+  barrel_roof_shingles_unit: 399,
+  barrel_roof_heather_unit: 849,
+  barrel_roof_design_unit: 899
+};
+
+function typeNorm(type) {
+  return (type || '').toString().toLowerCase();
+}
+
+function isSwimspa(type) {
+  const t = typeNorm(type);
   return t.includes('zwemspa') || t.includes('swim');
 }
 
-function isInfraredType(type) {
-  return normalize(type).includes('infrarood');
+function isInfrared(type) {
+  return typeNorm(type).includes('infrarood');
 }
 
-function isSaunaType(type) {
-  return normalize(type).includes('sauna');
+function isBarrelSauna(type) {
+  const t = typeNorm(type);
+  return t.includes('barrel') && t.includes('sauna');
 }
 
-function isJacuzziType(type) {
-  const t = normalize(type);
-  return !t.includes('zwemspa') && !t.includes('swim') && !t.includes('infrarood') && !t.includes('sauna');
+function isSauna(type) {
+  return typeNorm(type).includes('sauna');
+}
+
+function isJacuzzi(type) {
+  const t = typeNorm(type);
+  return !isSwimspa(t) && !isInfrared(t) && !isSauna(t);
+}
+
+function installCost(type) {
+  if (isSwimspa(type)) return PRICES.install_swimspa;
+  if (isBarrelSauna(type)) return PRICES.install_barrel_sauna;
+  if (isInfrared(type)) return PRICES.install_infrared;
+  if (isSauna(type)) return PRICES.install_sauna;
+  return PRICES.install_jacuzzi;
 }
 
 function extraOptionsAllowed(type) {
-  return isJacuzziType(type) || isSwimSpaType(type);
+  return isJacuzzi(type) || isSwimspa(type);
 }
 
-setCountTo(document.getElementById('cartCount'));
-
-const params = new URLSearchParams(location.search);
-const pid = params.get('id');
-
-const elWrap = document.getElementById('pwrap');
-const elErr = document.getElementById('err');
-
-const elImg = document.getElementById('pimg');
-const elBadge = document.getElementById('pbadge');
-const elLink = document.getElementById('plink');
-const elTitle = document.getElementById('ptitle');
-const elPrice = document.getElementById('pprice');
-const elSpecs = document.getElementById('pspecs');
-
-const optInstall = document.getElementById('optInstall');
-const optCoverTrapRow = document.getElementById('optCoverTrapRow');
-const optCoverliftRow = document.getElementById('optCoverliftRow');
-const optCoverlift = document.getElementById('optCoverlift');
-const optMaintRow = document.getElementById('optMaintRow');
-const optMaint = document.getElementById('optMaint');
-const filterRow = document.getElementById('optSwimFiltersetRow');
-const filterQty = document.getElementById('optSwimFiltersetQty');
-
-const installHint = document.getElementById('optInstallHint');
-const installPrice = document.getElementById('optInstallPrice');
-const optCoverliftTotal = document.getElementById('optCoverliftTotal');
-
-const pqty = document.getElementById('pqty');
-
-const tProduct = document.getElementById('tProduct');
-const tOptions = document.getElementById('tOptions');
-const tTotal = document.getElementById('tTotal');
-
-const btnAdd = document.getElementById('btnAdd');
-
-const PRICES = {
-  coverTrap: 0,
-  coverlift: 189,
-  maintenance: 179,
-  swimFilterset: 250
-};
-
-let product = null;
-
-function specTable(p) {
-  const rows = (p.specs || [])
-    .map(s => `
-      <div class="spec-row">
-        <strong>${escapeHtml(s.label)}</strong>
-        <span>${escapeHtml(s.value)}</span>
-      </div>
-    `)
-    .join('');
-
-  return `<div class="spec-table">${rows}</div>`;
+function readInt(el) {
+  const n = Number(el?.value || 0);
+  return Number.isFinite(n) ? Math.max(0, Math.floor(n)) : 0;
 }
 
-function renderVisibility() {
-  if (!product) return;
+function specTableHtml(p) {
+  const specs = Array.isArray(p.specs) ? p.specs : [];
+  if (!specs.length) return '<div class="small">Geen specificaties beschikbaar.</div>';
 
-  const allowExtraOptions = extraOptionsAllowed(product.type);
-  const swim = isSwimSpaType(product.type);
+  return specs.map(s => `
+    <div class="spec-row">
+      <strong>${escapeHtml(s.label || '')}</strong>
+      <span>${escapeHtml(s.value || '')}</span>
+    </div>
+  `).join('');
+}
 
-  if (optCoverTrapRow) {
-    optCoverTrapRow.style.display = allowExtraOptions ? '' : 'none';
-  }
+async function loadProducts() {
+  const res = await fetch(PRODUCTS_URL);
+  if (!res.ok) throw new Error(`Kan products.json niet laden (${res.status})`);
+  const json = await res.json();
+  const items = Array.isArray(json) ? json : (json.products || []);
+  return Array.isArray(items) ? items : [];
+}
 
-  if (optCoverliftRow) {
-    optCoverliftRow.style.display = allowExtraOptions ? '' : 'none';
-  }
+function getProductIdFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('id') || '';
+}
 
-  if (optMaintRow) {
-    optMaintRow.style.display = allowExtraOptions ? '' : 'none';
-  }
+function showError(msg) {
+  if (!errorBox || !errorText) return;
+  errorBox.style.display = '';
+  errorText.textContent = msg;
+}
 
-  if (!allowExtraOptions && optCoverlift) {
-    optCoverlift.checked = false;
-  }
+function updateOptionUI() {
+  if (!currentProduct) return;
 
-  if (!allowExtraOptions && optMaint) {
-    optMaint.checked = false;
-  }
+  const type = currentProduct.type || '';
 
-  if (filterRow) {
-    filterRow.style.display = swim ? '' : 'none';
-  }
+  const optInstall = $('optInstall');
+  const optInstallPrice = $('optInstallPrice');
 
-  if (!swim && filterQty) {
-    filterQty.value = '0';
+  const optCoverTrapRow = $('optCoverTrapRow');
+  const optCoverliftRow = $('optCoverliftRow');
+  const optCoverlift = $('optCoverlift');
+  const optCoverliftTotal = $('optCoverliftTotal');
+
+  const optMaintRow = $('optMaintRow');
+  const optMaint = $('optMaint');
+  const optMaintTotal = $('optMaintTotal');
+
+  const optSwimFiltersetRow = $('optSwimFiltersetRow');
+  const optSwimFiltersetQty = $('optSwimFiltersetQty');
+
+  const optBarrelStoveGroup = $('optBarrelStoveGroup');
+  const optBarrelWoodStove = $('optBarrelWoodStove');
+  const optBarrelWoodStoveTotal = $('optBarrelWoodStoveTotal');
+  const optBarrelElectricHeater = $('optBarrelElectricHeater');
+  const optBarrelElectricHeaterTotal = $('optBarrelElectricHeaterTotal');
+
+  const optBarrelRoofGroup = $('optBarrelRoofGroup');
+  const optBarrelRoofShingles = $('optBarrelRoofShingles');
+  const optBarrelRoofShinglesTotal = $('optBarrelRoofShinglesTotal');
+  const optBarrelRoofHeather = $('optBarrelRoofHeather');
+  const optBarrelRoofHeatherTotal = $('optBarrelRoofHeatherTotal');
+  const optBarrelRoofDesign = $('optBarrelRoofDesign');
+  const optBarrelRoofDesignTotal = $('optBarrelRoofDesignTotal');
+
+  const tProduct = $('optProductTotal');
+  const tOptions = $('optOptionsTotal');
+  const tGrand = $('optGrandTotal');
+
+  const inst = installCost(type);
+
+  if (optInstallPrice) optInstallPrice.textContent = euro(inst);
+
+  const allowExtraOptions = extraOptionsAllowed(type);
+
+  if (optCoverTrapRow) optCoverTrapRow.style.display = allowExtraOptions ? '' : 'none';
+  if (optCoverliftRow) optCoverliftRow.style.display = allowExtraOptions ? '' : 'none';
+  if (optMaintRow) optMaintRow.style.display = allowExtraOptions ? '' : 'none';
+
+  if (!allowExtraOptions && optCoverlift) optCoverlift.checked = false;
+  if (!allowExtraOptions && optMaint) optMaint.checked = false;
+
+  const swim = isSwimspa(type);
+  if (optSwimFiltersetRow) optSwimFiltersetRow.style.display = swim ? '' : 'none';
+  if (!swim && optSwimFiltersetQty) optSwimFiltersetQty.value = '0';
+
+  const barrel = isBarrelSauna(type);
+  if (optBarrelStoveGroup) optBarrelStoveGroup.style.display = barrel ? '' : 'none';
+  if (optBarrelRoofGroup) optBarrelRoofGroup.style.display = barrel ? '' : 'none';
+
+  if (!barrel && optBarrelWoodStove) optBarrelWoodStove.checked = false;
+  if (!barrel && optBarrelElectricHeater) optBarrelElectricHeater.checked = false;
+  if (!barrel && optBarrelRoofShingles) optBarrelRoofShingles.checked = false;
+  if (!barrel && optBarrelRoofHeather) optBarrelRoofHeather.checked = false;
+  if (!barrel && optBarrelRoofDesign) optBarrelRoofDesign.checked = false;
+
+  const installSelected = !!optInstall?.checked;
+  const coverliftSelected = allowExtraOptions ? !!optCoverlift?.checked : false;
+  const maintSelected = allowExtraOptions ? !!optMaint?.checked : false;
+  const swimFiltersetQtyValue = swim ? readInt(optSwimFiltersetQty) : 0;
+
+  const barrelWoodStoveSelected = barrel ? !!optBarrelWoodStove?.checked : false;
+  const barrelElectricHeaterSelected = barrel ? !!optBarrelElectricHeater?.checked : false;
+  const barrelRoofShinglesSelected = barrel ? !!optBarrelRoofShingles?.checked : false;
+  const barrelRoofHeatherSelected = barrel ? !!optBarrelRoofHeather?.checked : false;
+  const barrelRoofDesignSelected = barrel ? !!optBarrelRoofDesign?.checked : false;
+
+  const installLine = installSelected ? inst : 0;
+  const coverliftLine = coverliftSelected ? PRICES.coverlift_unit : 0;
+  const maintLine = maintSelected ? PRICES.maintenance_unit : 0;
+  const swimFiltersetLine = swimFiltersetQtyValue * PRICES.swim_filterset_unit;
+  const barrelWoodStoveLine = barrelWoodStoveSelected ? PRICES.barrel_wood_stove_unit : 0;
+  const barrelElectricHeaterLine = barrelElectricHeaterSelected ? PRICES.barrel_electric_heater_unit : 0;
+  const barrelRoofShinglesLine = barrelRoofShinglesSelected ? PRICES.barrel_roof_shingles_unit : 0;
+  const barrelRoofHeatherLine = barrelRoofHeatherSelected ? PRICES.barrel_roof_heather_unit : 0;
+  const barrelRoofDesignLine = barrelRoofDesignSelected ? PRICES.barrel_roof_design_unit : 0;
+
+  if (optCoverliftTotal) optCoverliftTotal.textContent = euro(coverliftLine);
+  if (optMaintTotal) optMaintTotal.textContent = euro(maintLine);
+  if (optBarrelWoodStoveTotal) optBarrelWoodStoveTotal.textContent = euro(barrelWoodStoveLine);
+  if (optBarrelElectricHeaterTotal) optBarrelElectricHeaterTotal.textContent = euro(barrelElectricHeaterLine);
+  if (optBarrelRoofShinglesTotal) optBarrelRoofShinglesTotal.textContent = euro(barrelRoofShinglesLine);
+  if (optBarrelRoofHeatherTotal) optBarrelRoofHeatherTotal.textContent = euro(barrelRoofHeatherLine);
+  if (optBarrelRoofDesignTotal) optBarrelRoofDesignTotal.textContent = euro(barrelRoofDesignLine);
+
+  const productPriceValue = Number(currentProduct.price || 0);
+  const optionsTotal =
+    installLine +
+    coverliftLine +
+    maintLine +
+    swimFiltersetLine +
+    barrelWoodStoveLine +
+    barrelElectricHeaterLine +
+    barrelRoofShinglesLine +
+    barrelRoofHeatherLine +
+    barrelRoofDesignLine;
+
+  const grand = productPriceValue + optionsTotal;
+
+  if (tProduct) tProduct.textContent = euro(productPriceValue);
+  if (tOptions) tOptions.textContent = euro(optionsTotal);
+  if (tGrand) tGrand.textContent = euro(grand);
+}
+
+function wireOptionHandlers() {
+  if (optionHandlersWired) return;
+  optionHandlersWired = true;
+
+  const ids = [
+    'optInstall',
+    'optCoverlift',
+    'optMaint',
+    'optSwimFiltersetQty',
+    'optBarrelWoodStove',
+    'optBarrelElectricHeater',
+    'optBarrelRoofShingles',
+    'optBarrelRoofHeather',
+    'optBarrelRoofDesign'
+  ];
+
+  ids.forEach(id => {
+    const el = $(id);
+    if (!el) return;
+    el.addEventListener('input', updateOptionUI);
+    el.addEventListener('change', updateOptionUI);
+  });
+
+  const btnAdd = $('btnAddToOffer');
+  if (btnAdd) {
+    btnAdd.addEventListener('click', () => {
+      if (!currentProduct) return;
+
+      const type = currentProduct.type || '';
+      const inst = installCost(type);
+      const allowExtraOptions = extraOptionsAllowed(type);
+      const swim = isSwimspa(type);
+      const barrel = isBarrelSauna(type);
+
+      let barrelStove = '';
+      if (barrel && $('optBarrelWoodStove')?.checked) barrelStove = 'wood';
+      if (barrel && $('optBarrelElectricHeater')?.checked) barrelStove = 'electric';
+
+      let barrelRoof = '';
+      if (barrel && $('optBarrelRoofShingles')?.checked) barrelRoof = 'shingles';
+      if (barrel && $('optBarrelRoofHeather')?.checked) barrelRoof = 'heather';
+      if (barrel && $('optBarrelRoofDesign')?.checked) barrelRoof = 'design';
+
+      const payload = {
+        productId: currentProduct.id,
+        title: currentProduct.title,
+        type: currentProduct.type || '',
+        url: currentProduct.url || '',
+        image: currentProduct.image || '',
+        unit_price: Number(currentProduct.price || 0),
+        qty: 1,
+        options: {
+          install: !!$('optInstall')?.checked,
+          install_price: inst,
+          cover_trap_included: allowExtraOptions,
+          cover_trap_price: 0,
+          coverlift: allowExtraOptions ? !!$('optCoverlift')?.checked : false,
+          coverlift_unit: PRICES.coverlift_unit,
+          maintenance: allowExtraOptions ? !!$('optMaint')?.checked : false,
+          maintenance_unit: PRICES.maintenance_unit,
+          swim_filterset_qty: swim ? readInt($('optSwimFiltersetQty')) : 0,
+          swim_filterset_unit: PRICES.swim_filterset_unit,
+          barrel_stove: barrel ? barrelStove : '',
+          barrel_wood_stove_unit: PRICES.barrel_wood_stove_unit,
+          barrel_electric_heater_unit: PRICES.barrel_electric_heater_unit,
+          barrel_roof: barrel ? barrelRoof : '',
+          barrel_roof_shingles_unit: PRICES.barrel_roof_shingles_unit,
+          barrel_roof_heather_unit: PRICES.barrel_roof_heather_unit,
+          barrel_roof_design_unit: PRICES.barrel_roof_design_unit
+        }
+      };
+
+      const offer = getOffer();
+      offer.push(payload);
+      setOffer(offer);
+      alert('Toegevoegd aan offerte.');
+    });
   }
 }
 
-function optionsTotals() {
-  const allowExtraOptions = extraOptionsAllowed(product.type);
-  const swim = isSwimSpaType(product.type);
+function printProductFiche(p) {
+  const win = window.open('', '_blank');
+  if (!win) return;
 
-  const install = installCostForType(product.type);
-  const coverlift = allowExtraOptions && optCoverlift?.checked ? PRICES.coverlift : 0;
-  const maint = allowExtraOptions && optMaint?.checked ? PRICES.maintenance : 0;
-  const fq = swim ? Math.max(0, Number(filterQty?.value || 0)) : 0;
-  const filters = fq * PRICES.swimFilterset;
+  const specs = (p.specs || []).map(s =>
+    `<tr><td><strong>${escapeHtml(s.label)}</strong></td><td>${escapeHtml(s.value)}</td></tr>`
+  ).join('');
 
-  const optTotal = install + coverlift + maint + filters;
-  return { install, coverlift, maint, fq, filters, optTotal };
+  const img = p.image
+    ? `<img src="${p.image}" style="width:100%;max-width:760px;border:1px solid #ddd;border-radius:12px;margin:10px 0">`
+    : '';
+
+  win.document.write(`
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>${escapeHtml(p.title || 'Product')}</title>
+        <style>
+          body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;margin:24px;color:#111}
+          h1{margin:0 0 6px 0}
+          .meta{color:#333;margin:0 0 10px 0}
+          table{width:100%;border-collapse:collapse;margin-top:12px}
+          td{border-bottom:1px solid #eee;padding:8px 0;vertical-align:top}
+          td:first-child{width:220px}
+        </style>
+      </head>
+      <body>
+        <h1>${escapeHtml(p.title || '')}</h1>
+        <div class="meta">
+          Type: ${escapeHtml(p.type || '—')}<br>
+          Prijs: ${euro(p.price || 0)}
+        </div>
+        ${img}
+        <table>${specs}</table>
+        <script>window.onload=()=>{window.print();}</script>
+      </body>
+    </html>
+  `);
+
+  win.document.close();
 }
 
-function renderTotals() {
-  if (!product) return;
+function renderProduct(p) {
+  currentProduct = p;
 
-  renderVisibility();
+  if (productTitle) productTitle.textContent = p.title || '—';
+  if (productPrice) productPrice.textContent = `Prijs: ${euro(p.price || 0)}`;
+  if (productType) productType.textContent = (p.type || '').toUpperCase();
 
-  const qty = Math.max(1, Number(pqty?.value || 1));
-  const base = Number(product.price || 0) * qty;
-
-  const o = optionsTotals();
-  const opt = o.optTotal * qty;
-
-  tProduct.textContent = euro(base);
-  tOptions.textContent = euro(opt);
-  tTotal.textContent = euro(base + opt);
-
-  if (installPrice) {
-    installPrice.textContent = euro(installCostForType(product.type));
+  if (productImg) {
+    productImg.src = p.image || '';
+    productImg.alt = p.title || 'Product';
+    productImg.style.display = p.image ? '' : 'none';
+    productImg.onerror = () => {
+      productImg.style.display = 'none';
+    };
   }
 
-  if (optCoverliftTotal) {
-    optCoverliftTotal.textContent = euro(PRICES.coverlift);
+  if (productSpecs) productSpecs.innerHTML = specTableHtml(p);
+
+  if (productUrl) {
+    productUrl.href = p.url || '#';
+    productUrl.style.display = p.url ? '' : 'none';
   }
-}
 
-function addToCart() {
-  if (!product) return;
+  if (productPrint) {
+    productPrint.onclick = () => printProductFiche(p);
+  }
 
-  const qty = Math.max(1, Number(pqty?.value || 1));
-  const allowExtraOptions = extraOptionsAllowed(product.type);
-  const swim = isSwimSpaType(product.type);
-  const o = optionsTotals();
+  const install = $('optInstall');
+  if (install) install.checked = true;
+  if ($('optCoverlift')) $('optCoverlift').checked = false;
+  if ($('optMaint')) $('optMaint').checked = false;
+  if ($('optSwimFiltersetQty')) $('optSwimFiltersetQty').value = '0';
+  if ($('optBarrelWoodStove')) $('optBarrelWoodStove').checked = false;
+  if ($('optBarrelElectricHeater')) $('optBarrelElectricHeater').checked = false;
+  if ($('optBarrelRoofShingles')) $('optBarrelRoofShingles').checked = false;
+  if ($('optBarrelRoofHeather')) $('optBarrelRoofHeather').checked = false;
+  if ($('optBarrelRoofDesign')) $('optBarrelRoofDesign').checked = false;
 
-  const item = {
-    productId: product.id,
-    title: product.title,
-    type: product.type || '',
-    unit_price: Number(product.price || 0),
-    qty,
-    url: product.url || '',
-    image: product.image || '',
-    options: {
-      install: true,
-      install_price: installCostForType(product.type),
+  wireOptionHandlers();
+  updateOptionUI();
 
-      cover_trap_included: allowExtraOptions,
-      cover_trap_price: 0,
-
-      coverlift: allowExtraOptions ? !!optCoverlift?.checked : false,
-      coverlift_price: PRICES.coverlift,
-
-      maintenance: allowExtraOptions ? !!optMaint?.checked : false,
-      maintenance_price: PRICES.maintenance,
-
-      filters_qty: swim ? o.fq : 0,
-      filter_unit_price: PRICES.swimFilterset
-    }
-  };
-
-  const cart = getCart();
-  cart.push(item);
-  setCart(cart);
-  setCountTo(document.getElementById('cartCount'));
-  alert('Toegevoegd aan offerte.');
+  if (productPage) productPage.style.display = '';
 }
 
 async function init() {
-  const items = await loadProducts(false);
-  product = items.find(p => String(p.id) === String(pid));
-
-  if (!product) {
-    elErr.style.display = '';
+  const productId = getProductIdFromUrl();
+  if (!productId) {
+    showError('Geen product-id in de URL.');
     return;
   }
 
-  elWrap.style.display = '';
+  const products = await loadProducts();
+  const product = products.find(p => p.id === productId);
 
-  elImg.src = product.image || '';
-  elImg.alt = product.title || 'Product';
-  elImg.onerror = () => {
-    elImg.src = '';
-    elImg.style.display = 'none';
-  };
-
-  elBadge.textContent = (product.type || '').toUpperCase();
-  elLink.href = product.url || '#';
-  elLink.textContent = 'Bekijk product';
-  elTitle.textContent = product.title || '';
-  elPrice.textContent = euro(product.price || 0);
-  elSpecs.innerHTML = specTable(product);
-
-  const inst = installCostForType(product.type);
-  if (installHint) {
-    installHint.textContent = `Installatiekost voor type "${product.type || 'jacuzzi'}": ${euro(inst)}`;
+  if (!product) {
+    showError('Product niet gevonden.');
+    return;
   }
 
-  if (optInstall) optInstall.checked = true;
-  if (optCoverlift) optCoverlift.checked = false;
-  if (optMaint) optMaint.checked = false;
-  if (filterQty) filterQty.value = '0';
-
-  [optCoverlift, optMaint, filterQty, pqty]
-    .filter(Boolean)
-    .forEach(el => {
-      el.addEventListener('input', renderTotals);
-      el.addEventListener('change', renderTotals);
-    });
-
-  if (btnAdd) {
-    btnAdd.addEventListener('click', addToCart);
-  }
-
-  renderTotals();
+  renderProduct(product);
 }
 
-init().catch(err => {
-  console.error(err);
-  elErr.style.display = '';
+init().catch(e => {
+  console.error(e);
+  showError(String(e.message || e));
 });
