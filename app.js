@@ -134,6 +134,26 @@ function readInt(el) {
   return Number.isFinite(n) ? Math.max(0, Math.floor(n)) : 0;
 }
 
+/**
+ * Haal merk op uit:
+ * 1. p.brand
+ * 2. p.merk
+ * 3. specs[].label === "Merk"
+ */
+function getBrand(p) {
+  if (!p || typeof p !== 'object') return '';
+
+  if (p.brand) return String(p.brand).trim();
+  if (p.merk) return String(p.merk).trim();
+
+  const specs = Array.isArray(p.specs) ? p.specs : [];
+  const specBrand = specs.find(s => normalize(s?.label) === 'merk');
+
+  if (specBrand?.value) return String(specBrand.value).trim();
+
+  return '';
+}
+
 async function loadProducts({ force = false } = {}) {
   const url = force ? `${PRODUCTS_URL}?t=${Date.now()}` : PRODUCTS_URL;
   const res = await fetch(url, { cache: force ? 'no-store' : 'default' });
@@ -151,7 +171,7 @@ function buildBrandFilter(items) {
   const brands = Array.from(
     new Set(
       items
-        .map(p => p.brand || p.merk || '')
+        .map(getBrand)
         .filter(Boolean)
     )
   ).sort((a, b) => a.localeCompare(b, 'nl'));
@@ -176,11 +196,12 @@ function buildTypeFilter(items) {
 function productSearchBlob(p) {
   const specText = (p.specs || []).map(s => `${s.label}: ${s.value}`).join(' | ');
   const bullets = (p.bullets || []).join(' | ');
-  return normalize([p.title, p.type, bullets, specText].join(' '));
+  const brand = getBrand(p);
+  return normalize([p.title, p.type, brand, bullets, specText].join(' '));
 }
 
 function topSpecs(p) {
-  const want = ['Afmetingen','Aantal zitplaatsen', 'Aantal ligplaatsen', 'Aantal jets'];
+  const want = ['Afmetingen', 'Aantal zitplaatsen', 'Aantal ligplaatsen', 'Aantal jets'];
   const specs = Array.isArray(p.specs) ? p.specs : [];
   const picked = [];
 
@@ -217,7 +238,7 @@ function applyFilters() {
   const sort = elSort ? elSort.value : 'relevance';
 
   filtered = products.filter(p => {
-    const pBrand = p.brand || p.merk || '';
+    const pBrand = getBrand(p);
 
     if (brand && pBrand !== brand) return false;
     if (type && p.type !== type) return false;
@@ -396,6 +417,7 @@ function wireOptionHandlers() {
         productId: currentProduct.id,
         title: currentProduct.title,
         type: currentProduct.type || '',
+        brand: getBrand(currentProduct),
         url: currentProduct.url || '',
         image: currentProduct.image || '',
         unit_price: Number(currentProduct.price || 0),
@@ -517,7 +539,6 @@ if (modal) {
 }
 
 function printProductFiche(p) {
-  const win = window.open('', '_blank');
   const specs = (p.specs || []).map(s =>
     `<tr><td><strong>${escapeHtml(s.label)}</strong></td><td>${escapeHtml(s.value)}</td></tr>`
   ).join('');
@@ -525,6 +546,14 @@ function printProductFiche(p) {
   const img = p.image
     ? `<img src="${p.image}" style="width:100%;max-width:760px;border:1px solid #ddd;border-radius:12px;margin:10px 0">`
     : '';
+
+  const brand = getBrand(p);
+  const brandRow = brand
+    ? `<tr><td><strong>Merk</strong></td><td>${escapeHtml(brand)}</td></tr>`
+    : '';
+
+  const win = window.open('', '_blank');
+  if (!win) return;
 
   win.document.write(`
     <html>
@@ -547,7 +576,10 @@ function printProductFiche(p) {
           Prijs: ${euro(p.price || 0)}
         </div>
         ${img}
-        <table>${specs}</table>
+        <table>
+          ${brandRow}
+          ${specs}
+        </table>
         <script>window.onload=()=>{window.print();}</script>
       </body>
     </html>
