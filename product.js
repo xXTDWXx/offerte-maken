@@ -168,7 +168,8 @@ function updateOptionUI() {
   const optMaintTotal = $('optMaintTotal');
 
   const optSwimFiltersetRow = $('optSwimFiltersetRow');
-  const optSwimFiltersetQty = $('optSwimFiltersetQty');
+  const optSwimFilterset = $('optSwimFilterset');
+  const optSwimFiltersetTotal = $('optSwimFiltersetTotal');
 
   const optBarrelStoveGroup = $('optBarrelStoveGroup');
   const optBarrelWoodStove = $('optBarrelWoodStove');
