@@ -1,29 +1,20 @@
 <!doctype html>
 <html lang="nl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Product | Sunspa Catalogus</title>
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="styles.css"/>
 
 <style>
-
-/* layout foto + rechterkant */
 .modal-grid{
   display:grid;
   grid-template-columns:420px 1fr;
   gap:40px;
-}
-
-/* layout opties + specs */
-.right-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
   align-items:start;
 }
-
 </style>
+
 </head>
 
 <body>
@@ -53,29 +44,22 @@
 
 <div class="modal-grid">
 
-<!-- FOTO -->
+<!-- LINKERKANT -->
+<div>
+
 <div class="modal-media">
-<img id="productImg" alt="" loading="lazy" />
+<img id="productImg" alt="" loading="lazy"/>
 <div id="productType" class="modal-type"></div>
 </div>
 
-
-<!-- RECHTERKANT -->
-<div>
-
-<div class="panel-title" style="margin-bottom:15px;">Opties</div>
-
-<div class="right-grid">
-
-<!-- OPTIES -->
-<div>
+<div class="panel-title" style="margin:20px 0 10px 0;">Opties</div>
 
 <div class="options">
 
 <label class="opt-disabled">
 <div class="opt-text">
 <div class="opt-title">
-<input id="optInstall" type="checkbox" checked disabled />
+<input id="optInstall" type="checkbox" checked disabled/>
 Levering & installatie
 <span class="opt-price" id="optInstallPrice">€0</span>
 </div>
@@ -85,7 +69,7 @@ Levering & installatie
 <label class="opt opt-disabled" id="optCoverTrapRow">
 <div class="opt-text">
 <div class="opt-title">
-<input type="checkbox" checked disabled />
+<input type="checkbox" checked disabled/>
 Cover & trap inclusief
 </div>
 </div>
@@ -94,7 +78,7 @@ Cover & trap inclusief
 <label class="opt" id="optCoverliftRow">
 <div class="opt-text">
 <div class="opt-title">
-<input id="optCoverlift" type="checkbox" />
+<input id="optCoverlift" type="checkbox"/>
 Coverlift €189
 </div>
 </div>
@@ -103,7 +87,7 @@ Coverlift €189
 <label class="opt" id="optCoverlift2Row" style="display:none">
 <div class="opt-text">
 <div class="opt-title">
-<input id="optCoverlift2" type="checkbox" />
+<input id="optCoverlift2" type="checkbox"/>
 2e Coverlift €189
 </div>
 </div>
@@ -112,7 +96,7 @@ Coverlift €189
 <label class="opt" id="optMaintRow">
 <div class="opt-text">
 <div class="opt-title">
-<input id="optMaint" type="checkbox" />
+<input id="optMaint" type="checkbox"/>
 Onderhoudspakket €179
 </div>
 </div>
@@ -121,7 +105,7 @@ Onderhoudspakket €179
 <label class="opt" id="optSwimFiltersetRow" style="display:none">
 <div class="opt-text">
 <div class="opt-title">
-<input id="optSwimFilterset" type="checkbox" />
+<input id="optSwimFilterset" type="checkbox"/>
 Filterset (zwemspa) €250
 </div>
 </div>
@@ -129,11 +113,9 @@ Filterset (zwemspa) €250
 
 </div>
 
+<hr style="border:none;border-top:1px solid var(--border);margin:20px 0">
 
-<!-- TOTALEN -->
-<hr style="margin:20px 0;border:none;border-top:1px solid var(--border)">
-
-<div class="totals">
+<div class="totals" style="font-size:22px">
 
 <div class="totals-row">
 <span>Product</span>
@@ -156,28 +138,22 @@ Alle bedragen incl. btw & excl. kraankosten.
 
 </div>
 
+<div class="modal-actions" style="margin-top:20px">
+<a id="productUrl" class="btn btn-secondary" target="_blank">Bekijk op website</a>
+<button id="productPrint" class="btn btn-primary">Print</button>
 </div>
 
+</div>
 
-<!-- SPECS -->
+<!-- RECHTERKANT -->
+
 <div>
 
-<div class="panel-title" style="margin-bottom:15px;">
+<div class="panel-title" style="margin-bottom:10px;">
 Specificaties
 </div>
 
 <div id="productSpecs" class="spec-table"></div>
-
-</div>
-
-
-</div>
-
-
-<div style="margin-top:25px" class="modal-actions">
-<a id="productUrl" class="btn btn-secondary" target="_blank">Bekijk op website</a>
-<button id="productPrint" class="btn btn-primary">Print</button>
-</div>
 
 </div>
 
