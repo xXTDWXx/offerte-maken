@@ -93,8 +93,18 @@ function isBarrelSauna(type) {
   return t.includes('barrel') && t.includes('sauna');
 }
 
+function isSaunaPod(type) {
+  const t = typeNorm(type);
+  return t.includes('sauna pod') || t.includes('pod sauna') || t.includes('saunapod');
+}
+
 function isSauna(type) {
-  return typeNorm(type).includes('sauna');
+  const t = typeNorm(type);
+  return t.includes('sauna');
+}
+
+function isOutdoorSaunaWithRoofAndStove(type) {
+  return isBarrelSauna(type) || isSaunaPod(type);
 }
 
 function isJacuzzi(type) {
@@ -196,7 +206,7 @@ function updateOptionUI() {
 
   const allowExtraOptions = extraOptionsAllowed(type);
   const swim = isSwimspa(type);
-  const barrel = isBarrelSauna(type);
+  const barrel = isOutdoorSaunaWithRoofAndStove(type);
 
   if (optCoverTrapRow) optCoverTrapRow.style.display = allowExtraOptions ? '' : 'none';
   if (optCoverliftRow) optCoverliftRow.style.display = allowExtraOptions ? '' : 'none';
