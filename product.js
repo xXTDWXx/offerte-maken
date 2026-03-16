@@ -163,6 +163,10 @@ function updateOptionUI() {
   const optCoverlift = $('optCoverlift');
   const optCoverliftTotal = $('optCoverliftTotal');
 
+  const optCoverlift2Row = $('optCoverlift2Row');
+  const optCoverlift2 = $('optCoverlift2');
+  const optCoverlift2Total = $('optCoverlift2Total');
+
   const optMaintRow = $('optMaintRow');
   const optMaint = $('optMaint');
   const optMaintTotal = $('optMaintTotal');
@@ -199,8 +203,15 @@ function updateOptionUI() {
   if (optCoverliftRow) optCoverliftRow.style.display = allowExtraOptions ? '' : 'none';
   if (optMaintRow) optMaintRow.style.display = allowExtraOptions ? '' : 'none';
 
+  const swim = isSwimspa(type);
+
+  if (optCoverlift2Row) optCoverlift2Row.style.display = swim ? '' : 'none';
+
   if (!allowExtraOptions && optCoverlift) optCoverlift.checked = false;
   if (!allowExtraOptions && optMaint) optMaint.checked = false;
+  if (!swim && optCoverlift2) optCoverlift2.checked = false;
+  const coverlift2 = $('optCoverlift2');
+  if (coverlift2) coverlift2.checked = false;
 
   const swim = isSwimspa(type);
   if (optSwimFiltersetRow) optSwimFiltersetRow.style.display = swim ? '' : 'none';
@@ -218,6 +229,7 @@ function updateOptionUI() {
 
   const installSelected = !!optInstall?.checked;
   const coverliftSelected = allowExtraOptions ? !!optCoverlift?.checked : false;
+  const coverlift2Selected = swim ? !!optCoverlift2?.checked : false;
   const maintSelected = allowExtraOptions ? !!optMaint?.checked : false;
   const swimFiltersetSelected = swim ? !!optSwimFilterset?.checked : false;
 
@@ -229,6 +241,7 @@ function updateOptionUI() {
 
   const installLine = installSelected ? inst : 0;
   const coverliftLine = coverliftSelected ? PRICES.coverlift_unit : 0;
+  const coverlift2Line = coverlift2Selected ? PRICES.coverlift_unit : 0;
   const maintLine = maintSelected ? PRICES.maintenance_unit : 0;
   const swimFiltersetLine = swimFiltersetSelected ? PRICES.swim_filterset_unit : 0;
   if (optSwimFiltersetTotal) optSwimFiltersetTotal.textContent = euro(swimFiltersetLine);
@@ -239,6 +252,7 @@ function updateOptionUI() {
   const barrelRoofDesignLine = barrelRoofDesignSelected ? PRICES.barrel_roof_design_unit : 0;
 
   if (optCoverliftTotal) optCoverliftTotal.textContent = euro(coverliftLine);
+  if (optCoverlift2Total) optCoverlift2Total.textContent = euro(coverlift2Line);
   if (optMaintTotal) optMaintTotal.textContent = euro(maintLine);
   if (optBarrelWoodStoveTotal) optBarrelWoodStoveTotal.textContent = euro(barrelWoodStoveLine);
   if (optBarrelElectricHeaterTotal) optBarrelElectricHeaterTotal.textContent = euro(barrelElectricHeaterLine);
@@ -250,6 +264,7 @@ function updateOptionUI() {
   const optionsTotal =
     installLine +
     coverliftLine +
+    coverlift2Line +
     maintLine +
     swimFiltersetLine +
     barrelWoodStoveLine +
@@ -272,6 +287,7 @@ function wireOptionHandlers() {
   const ids = [
     'optInstall',
     'optCoverlift',
+    'optCoverlift2',
     'optMaint',
     'optSwimFilterset',
     'optBarrelWoodStove',
