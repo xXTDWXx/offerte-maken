@@ -454,4 +454,10 @@ label.opt .opt-price,
   .modal-actions .btn {
     width: 100%;
   }
+  .modal-media,
+  .modal-specs,
+  .spec-table,
+  .spec-row {
+    min-width: 0;
+  }
 }
