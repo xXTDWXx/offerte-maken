@@ -11,9 +11,8 @@
 
 /* Kaarten zelfde grote */
   .card {
-  height: 420px;
+  height: 480px;
   display: flex;
-  flex-direction: column;
 }
 
 .card-img {
