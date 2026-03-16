@@ -1,34 +1,18 @@
-// Sunspa catalogus + productfiche modal + offerte-opties
-// Versie zonder merkfilter + zwemspa filterset als checkbox + 2e coverlift voor zwemspa's
-
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
 const OFFER_KEY = 'sunspa_offer_v1';
 
-// --- Catalog refs
-const elGrid = document.getElementById('grid');
-const tpl = document.getElementById('cardTpl');
-
-const elSearch = document.getElementById('search');
-const elType = document.getElementById('typeFilter');
-const elSort = document.getElementById('sort');
-const elClear = document.getElementById('btnClear');
-
 const errorBox = document.getElementById('errorBox');
 const errorText = document.getElementById('errorText');
-const resultMeta = document.getElementById('resultMeta');
+const productPage = document.getElementById('productPage');
 
-// --- Modal refs
-const modal = document.getElementById('productModal');
-const modalImg = document.getElementById('modalImg');
-const modalTitle = document.getElementById('modalTitle');
-const modalPrice = document.getElementById('modalPrice');
-const modalType = document.getElementById('modalType');
-const modalSpecs = document.getElementById('modalSpecs');
-const modalUrl = document.getElementById('modalUrl');
-const modalPrint = document.getElementById('modalPrint');
+const productImg = document.getElementById('productImg');
+const productTitle = document.getElementById('productTitle');
+const productPrice = document.getElementById('productPrice');
+const productType = document.getElementById('productType');
+const productSpecs = document.getElementById('productSpecs');
+const productUrl = document.getElementById('productUrl');
+const productPrint = document.getElementById('productPrint');
 
-let products = [];
-let filtered = [];
 let currentProduct = null;
 let optionHandlersWired = false;
 
@@ -130,66 +114,6 @@ function extraOptionsAllowed(type) {
   return isJacuzzi(type) || isSwimspa(type);
 }
 
-async function loadProducts({ force = false } = {}) {
-  const url = force ? `${PRODUCTS_URL}?t=${Date.now()}` : PRODUCTS_URL;
-  const res = await fetch(url, { cache: force ? 'no-store' : 'default' });
-
-  if (!res.ok) {
-    throw new Error(`Kan products.json niet laden (${res.status})`);
-  }
-
-  const json = await res.json();
-  const items = Array.isArray(json) ? json : (json.products || []);
-
-  if (!Array.isArray(items)) return [];
-  return items;
-}
-
-function buildTypeFilter(items) {
-  if (!elType) return;
-
-  const types = Array.from(
-    new Set(items.map(p => p.type).filter(Boolean))
-  ).sort((a, b) => a.localeCompare(b, 'nl'));
-
-  elType.innerHTML =
-    '<option value="">Alle types</option>' +
-    types.map(t => `<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`).join('');
-}
-
-function productSearchBlob(p) {
-  const specText = (p.specs || []).map(s => `${s.label}: ${s.value}`).join(' | ');
-  const bullets = (p.bullets || []).join(' | ');
-
-  return normalize([
-    p.title,
-    p.type,
-    bullets,
-    specText
-  ].join(' '));
-}
-
-function topSpecs(p) {
-  const want = ['Afmetingen', 'Aantal zitplaatsen', 'Aantal ligplaatsen', 'Aantal jets'];
-  const specs = Array.isArray(p.specs) ? p.specs : [];
-  const picked = [];
-
-  for (const key of want) {
-    const found = specs.find(s => normalize(s.label) === normalize(key));
-    if (found) {
-      picked.push(`${escapeHtml(found.label)}: ${escapeHtml(found.value)}`);
-    }
-  }
-
-  if (!picked.length) {
-    for (const s of specs.slice(0, 3)) {
-      picked.push(`${escapeHtml(s.label)}: ${escapeHtml(s.value)}`);
-    }
-  }
-
-  return picked.slice(0, 4).join('<br>');
-}
-
 function specTableHtml(p) {
   const specs = Array.isArray(p.specs) ? p.specs : [];
   if (!specs.length) return '<div class="small">Geen specificaties beschikbaar.</div>';
@@ -202,36 +126,24 @@ function specTableHtml(p) {
   `).join('');
 }
 
-function applyFilters() {
-  const q = elSearch ? normalize(elSearch.value) : '';
-  const type = elType ? elType.value : '';
-  const sort = elSort ? elSort.value : 'relevance';
+async function loadProducts() {
+  const res = await fetch(PRODUCTS_URL);
+  if (!res.ok) throw new Error(`Kan products.json niet laden (${res.status})`);
 
-  filtered = products.filter(p => {
-    if (type && p.type !== type) return false;
-    if (q) return productSearchBlob(p).includes(q);
-    return true;
-  });
-
-  if (sort === 'priceAsc') {
-    filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
-  }
-
-  if (sort === 'priceDesc') {
-    filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
-  }
-
-  if (sort === 'titleAsc') {
-    filtered.sort((a, b) => (a.title || '').localeCompare(b.title || '', 'nl'));
-  }
-
-  renderGrid();
-  updateMeta();
+  const json = await res.json();
+  const items = Array.isArray(json) ? json : (json.products || []);
+  return Array.isArray(items) ? items : [];
 }
 
-function updateMeta() {
-  if (!resultMeta) return;
-  resultMeta.textContent = `${filtered.length} producten`;
+function getProductIdFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('id') || '';
+}
+
+function showError(msg) {
+  if (!errorBox || !errorText) return;
+  errorBox.style.display = '';
+  errorText.textContent = msg;
 }
 
 function updateOptionUI() {
@@ -280,9 +192,7 @@ function updateOptionUI() {
 
   const inst = installCost(type);
 
-  if (optInstallPrice) {
-    optInstallPrice.textContent = euro(inst);
-  }
+  if (optInstallPrice) optInstallPrice.textContent = euro(inst);
 
   const allowExtraOptions = extraOptionsAllowed(type);
   const swim = isSwimspa(type);
@@ -337,14 +247,13 @@ function updateOptionUI() {
   if (optCoverlift2Total) optCoverlift2Total.textContent = euro(coverlift2Line);
   if (optMaintTotal) optMaintTotal.textContent = euro(maintLine);
   if (optSwimFiltersetTotal) optSwimFiltersetTotal.textContent = euro(swimFiltersetLine);
-
   if (optBarrelWoodStoveTotal) optBarrelWoodStoveTotal.textContent = euro(barrelWoodStoveLine);
   if (optBarrelElectricHeaterTotal) optBarrelElectricHeaterTotal.textContent = euro(barrelElectricHeaterLine);
   if (optBarrelRoofShinglesTotal) optBarrelRoofShinglesTotal.textContent = euro(barrelRoofShinglesLine);
   if (optBarrelRoofHeatherTotal) optBarrelRoofHeatherTotal.textContent = euro(barrelRoofHeatherLine);
   if (optBarrelRoofDesignTotal) optBarrelRoofDesignTotal.textContent = euro(barrelRoofDesignLine);
 
-  const productPrice = Number(currentProduct.price || 0);
+  const productPriceValue = Number(currentProduct.price || 0);
   const optionsTotal =
     installLine +
     coverliftLine +
@@ -357,9 +266,9 @@ function updateOptionUI() {
     barrelRoofHeatherLine +
     barrelRoofDesignLine;
 
-  const grand = productPrice + optionsTotal;
+  const grand = productPriceValue + optionsTotal;
 
-  if (tProduct) tProduct.textContent = euro(productPrice);
+  if (tProduct) tProduct.textContent = euro(productPriceValue);
   if (tOptions) tOptions.textContent = euro(optionsTotal);
   if (tGrand) tGrand.textContent = euro(grand);
 }
@@ -369,7 +278,6 @@ function wireOptionHandlers() {
   optionHandlersWired = true;
 
   const ids = [
-    'optInstall',
     'optCoverlift',
     'optCoverlift2',
     'optMaint',
@@ -387,158 +295,12 @@ function wireOptionHandlers() {
     el.addEventListener('input', updateOptionUI);
     el.addEventListener('change', updateOptionUI);
   });
-
-  const btnAdd = $('btnAddToOffer');
-  if (btnAdd) {
-    btnAdd.addEventListener('click', () => {
-      if (!currentProduct) return;
-
-      const type = currentProduct.type || '';
-      const inst = installCost(type);
-      const allowExtraOptions = extraOptionsAllowed(type);
-      const swim = isSwimspa(type);
-      const barrel = isBarrelSauna(type);
-
-      let barrelStove = '';
-      if (barrel && $('optBarrelWoodStove')?.checked) barrelStove = 'wood';
-      if (barrel && $('optBarrelElectricHeater')?.checked) barrelStove = 'electric';
-
-      let barrelRoof = '';
-      if (barrel && $('optBarrelRoofShingles')?.checked) barrelRoof = 'shingles';
-      if (barrel && $('optBarrelRoofHeather')?.checked) barrelRoof = 'heather';
-      if (barrel && $('optBarrelRoofDesign')?.checked) barrelRoof = 'design';
-
-      const payload = {
-        productId: currentProduct.id,
-        title: currentProduct.title,
-        type: currentProduct.type || '',
-        url: currentProduct.url || '',
-        image: currentProduct.image || '',
-        unit_price: Number(currentProduct.price || 0),
-        qty: 1,
-        options: {
-          install: !!$('optInstall')?.checked,
-          install_price: inst,
-
-          cover_trap_included: allowExtraOptions,
-          cover_trap_price: 0,
-
-          coverlift: allowExtraOptions ? !!$('optCoverlift')?.checked : false,
-          coverlift_unit: PRICES.coverlift_unit,
-
-          coverlift2: swim ? !!$('optCoverlift2')?.checked : false,
-          coverlift2_unit: PRICES.coverlift_unit,
-
-          maintenance: allowExtraOptions ? !!$('optMaint')?.checked : false,
-          maintenance_unit: PRICES.maintenance_unit,
-
-          swim_filterset: swim ? !!$('optSwimFilterset')?.checked : false,
-          swim_filterset_unit: PRICES.swim_filterset_unit,
-
-          barrel_stove: barrel ? barrelStove : '',
-          barrel_wood_stove_unit: PRICES.barrel_wood_stove_unit,
-          barrel_electric_heater_unit: PRICES.barrel_electric_heater_unit,
-
-          barrel_roof: barrel ? barrelRoof : '',
-          barrel_roof_shingles_unit: PRICES.barrel_roof_shingles_unit,
-          barrel_roof_heather_unit: PRICES.barrel_roof_heather_unit,
-          barrel_roof_design_unit: PRICES.barrel_roof_design_unit
-        }
-      };
-
-      const offer = getOffer();
-      offer.push(payload);
-      setOffer(offer);
-      alert('Toegevoegd aan offerte.');
-    });
-  }
-}
-
-function afterOpenModal(p) {
-  currentProduct = p;
-
-  const install = $('optInstall');
-  if (install) install.checked = true;
-
-  const coverlift = $('optCoverlift');
-  if (coverlift) coverlift.checked = false;
-
-  const coverlift2 = $('optCoverlift2');
-  if (coverlift2) coverlift2.checked = false;
-
-  const maint = $('optMaint');
-  if (maint) maint.checked = false;
-
-  const swimFilterset = $('optSwimFilterset');
-  if (swimFilterset) swimFilterset.checked = false;
-
-  const barrelWoodStove = $('optBarrelWoodStove');
-  if (barrelWoodStove) barrelWoodStove.checked = false;
-
-  const barrelElectricHeater = $('optBarrelElectricHeater');
-  if (barrelElectricHeater) barrelElectricHeater.checked = false;
-
-  const barrelRoofShingles = $('optBarrelRoofShingles');
-  if (barrelRoofShingles) barrelRoofShingles.checked = false;
-
-  const barrelRoofHeather = $('optBarrelRoofHeather');
-  if (barrelRoofHeather) barrelRoofHeather.checked = false;
-
-  const barrelRoofDesign = $('optBarrelRoofDesign');
-  if (barrelRoofDesign) barrelRoofDesign.checked = false;
-
-  wireOptionHandlers();
-  updateOptionUI();
-}
-
-function openModal(p) {
-  if (!modal) return;
-
-  if (modalTitle) modalTitle.textContent = p.title || '—';
-  if (modalPrice) modalPrice.textContent = `Prijs: ${euro(p.price || 0)}`;
-  if (modalType) modalType.textContent = (p.type || '').toUpperCase();
-
-  if (modalImg) {
-    modalImg.src = p.image || '';
-    modalImg.alt = p.title || 'Product';
-    modalImg.style.display = p.image ? '' : 'none';
-    modalImg.onerror = () => {
-      modalImg.style.display = 'none';
-    };
-  }
-
-  if (modalSpecs) modalSpecs.innerHTML = specTableHtml(p);
-
-  if (modalUrl) {
-    modalUrl.href = p.url || '#';
-    modalUrl.style.display = p.url ? '' : 'none';
-  }
-
-  if (modalPrint) modalPrint.onclick = () => printProductFiche(p);
-
-  modal.setAttribute('aria-hidden', 'false');
-  afterOpenModal(p);
-}
-
-function closeModal() {
-  if (!modal) return;
-  modal.setAttribute('aria-hidden', 'true');
-}
-
-if (modal) {
-  modal.addEventListener('click', (e) => {
-    const t = e.target;
-    if (t && t.matches('[data-close]')) closeModal();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
-      closeModal();
-    }
-  });
 }
 
 function printProductFiche(p) {
+  const win = window.open('', '_blank');
+  if (!win) return;
+
   const specs = (p.specs || []).map(s =>
     `<tr><td><strong>${escapeHtml(s.label)}</strong></td><td>${escapeHtml(s.value)}</td></tr>`
   ).join('');
@@ -546,9 +308,6 @@ function printProductFiche(p) {
   const img = p.image
     ? `<img src="${p.image}" style="width:100%;max-width:760px;border:1px solid #ddd;border-radius:12px;margin:10px 0">`
     : '';
-
-  const win = window.open('', '_blank');
-  if (!win) return;
 
   win.document.write(`
     <html>
@@ -580,68 +339,66 @@ function printProductFiche(p) {
   win.document.close();
 }
 
-function renderGrid() {
-  if (!elGrid || !tpl) return;
+function renderProduct(p) {
+  currentProduct = p;
 
-  elGrid.innerHTML = '';
-  const frag = document.createDocumentFragment();
+  if (productTitle) productTitle.textContent = p.title || '—';
+  if (productPrice) productPrice.textContent = `Prijs: ${euro(p.price || 0)}`;
+  if (productType) productType.textContent = (p.type || '').toUpperCase();
 
-  for (const p of filtered) {
-    const node = tpl.content.cloneNode(true);
-
-    const img = node.querySelector('.card-img');
-    const badge = node.querySelector('[data-badge]');
-    const title = node.querySelector('[data-title]');
-    const price = node.querySelector('[data-price]');
-    const specs = node.querySelector('[data-specs]');
-    const openBtn = node.querySelector('[data-open]');
-
-    if (img) {
-      img.src = p.image || '';
-      img.alt = p.title || 'Product';
-      img.onerror = () => {
-        img.style.display = 'none';
-      };
-    }
-
-    if (badge) badge.textContent = (p.type || '').toUpperCase();
-    if (title) title.textContent = p.title || '';
-    if (price) price.textContent = euro(p.price || 0);
-    if (specs) specs.innerHTML = topSpecs(p);
-
-    if (openBtn) {
-      openBtn.addEventListener('click', () => openModal(p));
-    }
-
-    frag.appendChild(node);
+  if (productImg) {
+    productImg.src = p.image || '';
+    productImg.alt = p.title || 'Product';
+    productImg.style.display = p.image ? '' : 'none';
+    productImg.onerror = () => {
+      productImg.style.display = 'none';
+    };
   }
 
-  elGrid.appendChild(frag);
-}
+  if (productSpecs) productSpecs.innerHTML = specTableHtml(p);
 
-function showError(msg) {
-  if (!errorBox || !errorText) return;
-  errorBox.style.display = '';
-  errorText.textContent = msg;
+  if (productUrl) {
+    productUrl.href = p.url || '#';
+    productUrl.style.display = p.url ? '' : 'none';
+  }
+
+  if (productPrint) {
+    productPrint.onclick = () => printProductFiche(p);
+  }
+
+  if ($('optInstall')) $('optInstall').checked = true;
+  if ($('optCoverlift')) $('optCoverlift').checked = false;
+  if ($('optCoverlift2')) $('optCoverlift2').checked = false;
+  if ($('optMaint')) $('optMaint').checked = false;
+  if ($('optSwimFilterset')) $('optSwimFilterset').checked = false;
+  if ($('optBarrelWoodStove')) $('optBarrelWoodStove').checked = false;
+  if ($('optBarrelElectricHeater')) $('optBarrelElectricHeater').checked = false;
+  if ($('optBarrelRoofShingles')) $('optBarrelRoofShingles').checked = false;
+  if ($('optBarrelRoofHeather')) $('optBarrelRoofHeather').checked = false;
+  if ($('optBarrelRoofDesign')) $('optBarrelRoofDesign').checked = false;
+
+  wireOptionHandlers();
+  updateOptionUI();
+
+  if (productPage) productPage.style.display = '';
 }
 
 async function init() {
-  products = await loadProducts({ force: false });
-  buildTypeFilter(products);
-  applyFilters();
-}
+  const productId = getProductIdFromUrl();
+  if (!productId) {
+    showError('Geen product-id in de URL.');
+    return;
+  }
 
-if (elSearch) elSearch.addEventListener('input', applyFilters);
-if (elType) elType.addEventListener('change', applyFilters);
-if (elSort) elSort.addEventListener('change', applyFilters);
+  const products = await loadProducts();
+  const product = products.find(p => p.id === productId);
 
-if (elClear) {
-  elClear.addEventListener('click', () => {
-    if (elSearch) elSearch.value = '';
-    if (elType) elType.value = '';
-    if (elSort) elSort.value = 'relevance';
-    applyFilters();
-  });
+  if (!product) {
+    showError('Product niet gevonden.');
+    return;
+  }
+
+  renderProduct(product);
 }
 
 init().catch(e => {
