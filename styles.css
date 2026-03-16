@@ -340,3 +340,33 @@ label.opt .opt-price,
 .totals{
   color:white !important;
 }
+
+/* Kaarten zelfde grote */
+  .card {
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-specs {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.card-cta {
+  margin-top: auto;
+}
