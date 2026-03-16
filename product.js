@@ -219,7 +219,7 @@ function updateOptionUI() {
   const installSelected = !!optInstall?.checked;
   const coverliftSelected = allowExtraOptions ? !!optCoverlift?.checked : false;
   const maintSelected = allowExtraOptions ? !!optMaint?.checked : false;
-  const swimFiltersetQtyValue = swim ? readInt(optSwimFiltersetQty) : 0;
+  const swimFiltersetSelected = swim ? !!optSwimFilterset?.checked : false;
 
   const barrelWoodStoveSelected = barrel ? !!optBarrelWoodStove?.checked : false;
   const barrelElectricHeaterSelected = barrel ? !!optBarrelElectricHeater?.checked : false;
