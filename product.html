@@ -1,169 +1,193 @@
 <!doctype html>
 <html lang="nl">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Product | Sunspa Catalogus</title>
-<link rel="stylesheet" href="styles.css"/>
-
-<style>
-.modal-grid{
-  display:grid;
-  grid-template-columns:420px 1fr;
-  gap:40px;
-  align-items:start;
-}
-</style>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product | Sunspa Catalogus</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .modal-grid{
+      display:grid;
+      grid-template-columns:420px 1fr;
+      gap:40px;
+      align-items:start;
+    }
+  </style>
 </head>
-
 <body>
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand">
+        <div class="brand-title">Sunspa Catalogus</div>
+      </div>
+      <a class="btn" href="index.html">← Terug naar overzicht</a>
+    </div>
+  </header>
 
-<header class="header">
-<div class="container header-row">
-<div class="brand">
-<div class="brand-title">Sunspa Catalogus</div>
-</div>
-<a class="btn" href="index.html">← Terug naar overzicht</a>
-</div>
-</header>
+  <main class="container">
+    <section class="panel" id="errorBox" style="display:none">
+      <div class="panel-title">Fout</div>
+      <div class="small" id="errorText"></div>
+    </section>
 
-<main class="container">
+    <section class="panel" id="productPage" style="display:none">
+      <div class="modal-head" style="margin-bottom:20px">
+        <h1 id="productTitle" class="modal-title">—</h1>
+        <div id="productPrice" class="modal-price">Prijs: —</div>
+      </div>
 
-<section class="panel" id="errorBox" style="display:none">
-<div class="panel-title">Fout</div>
-<div class="small" id="errorText"></div>
-</section>
+      <div class="modal-grid">
+        <div>
+          <div class="modal-media">
+            <img id="productImg" alt="" loading="lazy" />
+            <div id="productType" class="modal-type"></div>
+          </div>
 
-<section class="panel" id="productPage" style="display:none">
+          <div class="panel-title" style="margin:20px 0 10px 0;">Opties</div>
 
-<div class="modal-head" style="margin-bottom:20px">
-<h1 id="productTitle" class="modal-title">—</h1>
-<div id="productPrice" class="modal-price">Prijs: —</div>
-</div>
+          <div class="options">
+            <label class="opt-disabled">
+              <div class="opt-text">
+                <div class="opt-title">
+                  <input id="optInstall" type="checkbox" checked disabled />
+                  Levering & installatie
+                  <span class="opt-price" id="optInstallPrice">€0</span>
+                </div>
+              </div>
+            </label>
 
-<div class="modal-grid">
+            <label class="opt opt-disabled" id="optCoverTrapRow">
+              <div class="opt-text">
+                <div class="opt-title">
+                  <input type="checkbox" checked disabled />
+                  Cover & trap inclusief
+                </div>
+              </div>
+              <div class="opt-price" style="visibility:hidden;">€0</div>
+            </label>
 
-<!-- LINKERKANT -->
-<div>
+            <label class="opt" id="optCoverliftRow">
+              <div class="opt-text">
+                <div class="opt-title">
+                  <input id="optCoverlift" type="checkbox" />
+                  Coverlift € 189
+                </div>
+              </div>
+              <div class="opt-price" id="optCoverliftTotal" style="visibility:hidden;">€0</div>
+            </label>
 
-<div class="modal-media">
-<img id="productImg" alt="" loading="lazy"/>
-<div id="productType" class="modal-type"></div>
-</div>
+            <label class="opt" id="optCoverlift2Row" style="display:none">
+              <div class="opt-text">
+                <div class="opt-title">
+                  <input id="optCoverlift2" type="checkbox" />
+                  2e Coverlift € 189
+                </div>
+              </div>
+              <div class="opt-price" id="optCoverlift2Total" style="visibility:hidden;">€0</div>
+            </label>
 
-<div class="panel-title" style="margin:20px 0 10px 0;">Opties</div>
+            <label class="opt" id="optMaintRow">
+              <div class="opt-text">
+                <div class="opt-title">
+                  <input id="optMaint" type="checkbox" />
+                  Onderhoudspakket € 179
+                </div>
+              </div>
+              <div class="opt-price" id="optMaintTotal" style="visibility:hidden;">€0</div>
+            </label>
 
-<div class="options">
+            <label class="opt" id="optSwimFiltersetRow" style="display:none">
+              <div class="opt-text">
+                <div class="opt-title">
+                  <input id="optSwimFilterset" type="checkbox" />
+                  Filterset (zwemspa) € 250
+                </div>
+              </div>
+              <div class="opt-price" id="optSwimFiltersetTotal" style="visibility:hidden;">€0</div>
+            </label>
 
-<label class="opt-disabled">
-<div class="opt-text">
-<div class="opt-title">
-<input id="optInstall" type="checkbox" checked disabled/>
-Levering & installatie
-<span class="opt-price" id="optInstallPrice">€0</span>
-</div>
-</div>
-</label>
+            <div id="optBarrelStoveGroup" style="display:none">
+              <div class="small" style="margin:12px 0 6px 0;font-weight:600;">Kachel</div>
 
-<label class="opt opt-disabled" id="optCoverTrapRow">
-<div class="opt-text">
-<div class="opt-title">
-<input type="checkbox" checked disabled/>
-Cover & trap inclusief
-</div>
-</div>
-</label>
+              <label class="opt" id="optBarrelWoodStoveRow">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <input id="optBarrelWoodStove" name="barrelStove" type="radio" value="wood" />
+                    Houtkachel + rookafvoer € 1245
+                  </div>
+                </div>
+                <div class="opt-price" id="optBarrelWoodStoveTotal" style="visibility:hidden;">€0</div>
+              </label>
 
-<label class="opt" id="optCoverliftRow">
-<div class="opt-text">
-<div class="opt-title">
-<input id="optCoverlift" type="checkbox"/>
-Coverlift €189
-</div>
-</div>
-</label>
+              <label class="opt" id="optBarrelElectricHeaterRow">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <input id="optBarrelElectricHeater" name="barrelStove" type="radio" value="electric" />
+                    Elektrische kachel 8 kW € 495
+                  </div>
+                </div>
+                <div class="opt-price" id="optBarrelElectricHeaterTotal" style="visibility:hidden;">€0</div>
+              </label>
+            </div>
 
-<label class="opt" id="optCoverlift2Row" style="display:none">
-<div class="opt-text">
-<div class="opt-title">
-<input id="optCoverlift2" type="checkbox"/>
-2e Coverlift €189
-</div>
-</div>
-</label>
+            <div id="optBarrelRoofGroup" style="display:none">
+              <div class="small" style="margin:12px 0 6px 0;font-weight:600;">Dak</div>
 
-<label class="opt" id="optMaintRow">
-<div class="opt-text">
-<div class="opt-title">
-<input id="optMaint" type="checkbox"/>
-Onderhoudspakket €179
-</div>
-</div>
-</label>
+              <label class="opt" id="optBarrelRoofShinglesRow">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <input id="optBarrelRoofShingles" name="barrelRoof" type="radio" value="shingles" />
+                    Shingles dak € 399
+                  </div>
+                </div>
+                <div class="opt-price" id="optBarrelRoofShinglesTotal" style="visibility:hidden;">€0</div>
+              </label>
 
-<label class="opt" id="optSwimFiltersetRow" style="display:none">
-<div class="opt-text">
-<div class="opt-title">
-<input id="optSwimFilterset" type="checkbox"/>
-Filterset (zwemspa) €250
-</div>
-</div>
-</label>
+              <label class="opt" id="optBarrelRoofHeatherRow">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <input id="optBarrelRoofHeather" name="barrelRoof" type="radio" value="heather" />
+                    Heidedak € 849
+                  </div>
+                </div>
+                <div class="opt-price" id="optBarrelRoofHeatherTotal" style="visibility:hidden;">€0</div>
+              </label>
 
-</div>
+              <label class="opt" id="optBarrelRoofDesignRow">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <input id="optBarrelRoofDesign" name="barrelRoof" type="radio" value="design" />
+                    Design dak € 899
+                  </div>
+                </div>
+                <div class="opt-price" id="optBarrelRoofDesignTotal" style="visibility:hidden;">€0</div>
+              </label>
+            </div>
+          </div>
 
-<hr style="border:none;border-top:1px solid var(--border);margin:20px 0">
+          <hr style="border:none;border-top:1px solid var(--border);margin:20px 0" />
 
-<div class="totals" style="font-size:22px">
+          <div class="totals" style="font-size:22px">
+            <div class="totals-row"><span>Product</span><strong id="optProductTotal">€0</strong></div>
+            <div class="totals-row"><span>Opties</span><strong id="optOptionsTotal">€0</strong></div>
+            <div class="totals-row totals-row-big"><span>Totaal</span><strong id="optGrandTotal">€0</strong></div>
+            <div class="small">Alle bedragen incl. btw & excl. kraankosten.</div>
+          </div>
 
-<div class="totals-row">
-<span>Product</span>
-<strong id="optProductTotal">€0</strong>
-</div>
+          <div class="modal-actions" style="margin-top:20px">
+            <a id="productUrl" class="btn btn-secondary" target="_blank" rel="noopener">Bekijk op website</a>
+            <button id="productPrint" class="btn btn-primary" type="button">Print</button>
+          </div>
+        </div>
 
-<div class="totals-row">
-<span>Opties</span>
-<strong id="optOptionsTotal">€0</strong>
-</div>
+        <div>
+          <div class="panel-title" style="margin-bottom:10px;">Specificaties</div>
+          <div id="productSpecs" class="spec-table"></div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<div class="totals-row totals-row-big">
-<span>Totaal</span>
-<strong id="optGrandTotal">€0</strong>
-</div>
-
-<div class="small">
-Alle bedragen incl. btw & excl. kraankosten.
-</div>
-
-</div>
-
-<div class="modal-actions" style="margin-top:20px">
-<a id="productUrl" class="btn btn-secondary" target="_blank">Bekijk op website</a>
-<button id="productPrint" class="btn btn-primary">Print</button>
-</div>
-
-</div>
-
-<!-- RECHTERKANT -->
-
-<div>
-
-<div class="panel-title" style="margin-bottom:10px;">
-Specificaties
-</div>
-
-<div id="productSpecs" class="spec-table"></div>
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-<script src="product.js"></script>
-
+  <script src="product.js"></script>
 </body>
 </html>
