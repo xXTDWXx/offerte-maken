@@ -230,7 +230,8 @@ function updateOptionUI() {
   const installLine = installSelected ? inst : 0;
   const coverliftLine = coverliftSelected ? PRICES.coverlift_unit : 0;
   const maintLine = maintSelected ? PRICES.maintenance_unit : 0;
-  const swimFiltersetLine = swimFiltersetQtyValue * PRICES.swim_filterset_unit;
+  const swimFiltersetLine = swimFiltersetSelected ? PRICES.swim_filterset_unit : 0;
+  if (optSwimFiltersetTotal) optSwimFiltersetTotal.textContent = euro(swimFiltersetLine);
   const barrelWoodStoveLine = barrelWoodStoveSelected ? PRICES.barrel_wood_stove_unit : 0;
   const barrelElectricHeaterLine = barrelElectricHeaterSelected ? PRICES.barrel_electric_heater_unit : 0;
   const barrelRoofShinglesLine = barrelRoofShinglesSelected ? PRICES.barrel_roof_shingles_unit : 0;
@@ -272,7 +273,7 @@ function wireOptionHandlers() {
     'optInstall',
     'optCoverlift',
     'optMaint',
-    'optSwimFiltersetQty',
+    'optSwimFilterset',
     'optBarrelWoodStove',
     'optBarrelElectricHeater',
     'optBarrelRoofShingles',
@@ -416,8 +417,8 @@ function renderProduct(p) {
   const install = $('optInstall');
   if (install) install.checked = true;
   if ($('optCoverlift')) $('optCoverlift').checked = false;
-  if ($('optMaint')) $('optMaint').checked = false;
-  if ($('optSwimFiltersetQty')) $('optSwimFiltersetQty').value = '0';
+  const swimFilterset = $('optSwimFilterset');
+  if (swimFilterset) swimFilterset.checked = false;
   if ($('optBarrelWoodStove')) $('optBarrelWoodStove').checked = false;
   if ($('optBarrelElectricHeater')) $('optBarrelElectricHeater').checked = false;
   if ($('optBarrelRoofShingles')) $('optBarrelRoofShingles').checked = false;
