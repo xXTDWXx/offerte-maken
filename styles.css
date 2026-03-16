@@ -336,3 +336,6 @@ label.opt .opt-price,
   border-radius:16px !important;
   background:rgba(255,255,255,.03) !important;
 }
+.totals{
+  color:white;
+}
