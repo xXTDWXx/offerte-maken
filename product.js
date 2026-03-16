@@ -204,7 +204,7 @@ function updateOptionUI() {
 
   const swim = isSwimspa(type);
   if (optSwimFiltersetRow) optSwimFiltersetRow.style.display = swim ? '' : 'none';
-  if (!swim && optSwimFiltersetQty) optSwimFiltersetQty.value = '0';
+  if (!swim && optSwimFilterset) optSwimFilterset.checked = false;
 
   const barrel = isBarrelSauna(type);
   if (optBarrelStoveGroup) optBarrelStoveGroup.style.display = barrel ? '' : 'none';
