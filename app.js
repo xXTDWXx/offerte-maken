@@ -63,13 +63,55 @@ async function loadProducts({ force = false } = {}) {
   return items;
 }
 
+function getSpecValue(p, label) {
+  const specs = p?.specs;
+
+  if (!specs) return '';
+
+  // Geval 1: specs is een array
+  if (Array.isArray(specs)) {
+    const found = specs.find(s => normalize(s?.label) === normalize(label));
+    return found?.value || '';
+  }
+
+  // Geval 2: specs is een object
+  if (typeof specs === 'object') {
+    const key = Object.keys(specs).find(k => normalize(k) === normalize(label));
+    return key ? specs[key] : '';
+  }
+
+  return '';
+}
+
+function getMerk(p) {
+  return (
+    p?.brand ||
+    p?.merk ||
+    getSpecValue(p, 'Merk') ||
+    ''
+  );
+}
+
+function getAantalPersonen(p) {
+  return (
+    getSpecValue(p, 'Aantal personen') ||
+    getSpecValue(p, 'Aantal zitplaatsen') ||
+    getSpecValue(p, 'Zitplaatsen') ||
+    ''
+  );
+}
+
 function buildTypeFilter(items) {
   if (!elType) return;
 
   const currentValue = elType.value || '';
 
   const types = Array.from(
-    new Set(items.map(p => p.type).filter(Boolean))
+    new Set(
+      items
+        .map(p => (p?.type ?? '').toString().trim())
+        .filter(Boolean)
+    )
   ).sort((a, b) => a.localeCompare(b, 'nl'));
 
   elType.innerHTML =
@@ -81,16 +123,6 @@ function buildTypeFilter(items) {
   }
 }
 
-function getSpecValue(p, label) {
-  const specs = Array.isArray(p.specs) ? p.specs : [];
-  const found = specs.find(s => normalize(s.label) === normalize(label));
-  return found?.value || '';
-}
-
-function getMerk(p) {
-  return p.brand || p.merk || getSpecValue(p, 'Merk') || '';
-}
-
 function buildMerkFilter(items) {
   if (!elMerk) return;
 
@@ -100,6 +132,7 @@ function buildMerkFilter(items) {
     new Set(
       items
         .map(p => getMerk(p))
+        .map(m => (m ?? '').toString().trim())
         .filter(Boolean)
     )
   ).sort((a, b) => a.localeCompare(b, 'nl'));
@@ -111,14 +144,6 @@ function buildMerkFilter(items) {
   if (merken.includes(currentValue)) {
     elMerk.value = currentValue;
   }
-}
-
-function getAantalPersonen(p) {
-  return (
-    getSpecValue(p, 'Aantal personen') ||
-    getSpecValue(p, 'Aantal zitplaatsen') ||
-    getSpecValue(p, 'Zitplaatsen')
-  );
 }
 
 function buildPersonenFilter(items) {
@@ -134,13 +159,17 @@ function buildPersonenFilter(items) {
     return;
   }
 
-  const currentValue = personenFilter.value;
+  const currentValue = personenFilter.value || '';
 
   const personen = Array.from(
     new Set(
       items
-        .filter(p => normalize(p.type) === 'spa' || normalize(p.type) === "spa's")
+        .filter(p => {
+          const type = normalize(p?.type);
+          return type === 'spa' || type === "spa's";
+        })
         .map(p => getAantalPersonen(p))
+        .map(v => (v ?? '').toString().trim())
         .filter(Boolean)
     )
   ).sort((a, b) => {
@@ -150,12 +179,13 @@ function buildPersonenFilter(items) {
     if (!Number.isNaN(na) && !Number.isNaN(nb)) {
       return na - nb;
     }
+
     return a.localeCompare(b, 'nl');
   });
 
   personenFilter.innerHTML =
     '<option value="">Alle aantallen personen</option>' +
-    personen.map(a => `<option value="${escapeHtml(a)}">${escapeHtml(a)}</option>`).join('');
+    personen.map(v => `<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`).join('');
 
   personenField.style.display = '';
 
@@ -165,15 +195,21 @@ function buildPersonenFilter(items) {
 }
 
 function productSearchBlob(p) {
-  const specText = (Array.isArray(p.specs) ? p.specs : [])
-    .map(s => `${s.label}: ${s.value}`)
-    .join(' | ');
+  const bullets = Array.isArray(p?.bullets) ? p.bullets.join(' | ') : '';
 
-  const bullets = Array.isArray(p.bullets) ? p.bullets.join(' | ') : '';
+  let specText = '';
+
+  if (Array.isArray(p?.specs)) {
+    specText = p.specs.map(s => `${s.label}: ${s.value}`).join(' | ');
+  } else if (p?.specs && typeof p.specs === 'object') {
+    specText = Object.entries(p.specs)
+      .map(([key, value]) => `${key}: ${value}`)
+      .join(' | ');
+  }
 
   return normalize([
-    p.title,
-    p.type,
+    p?.title,
+    p?.type,
     getMerk(p),
     bullets,
     specText
@@ -182,26 +218,24 @@ function productSearchBlob(p) {
 
 function topSpecs(p) {
   const want = ['Merk', 'Afmetingen', 'Aantal personen', 'Aantal zitplaatsen', 'Aantal ligplaatsen', 'Aantal jets'];
-  const specs = Array.isArray(p.specs) ? p.specs : [];
   const picked = [];
 
-  const merk = getMerk(p);
-  if (merk) {
-    picked.push(`Merk: ${escapeHtml(merk)}`);
-  }
-
   for (const key of want) {
-    if (normalize(key) === 'merk') continue;
-
-    const found = specs.find(s => normalize(s.label) === normalize(key));
-    if (found) {
-      picked.push(`${escapeHtml(found.label)}: ${escapeHtml(found.value)}`);
+    const value = key === 'Merk' ? getMerk(p) : getSpecValue(p, key);
+    if (value) {
+      picked.push(`${escapeHtml(key)}: ${escapeHtml(value)}`);
     }
   }
 
   if (!picked.length) {
-    for (const s of specs.slice(0, 3)) {
-      picked.push(`${escapeHtml(s.label)}: ${escapeHtml(s.value)}`);
+    if (Array.isArray(p?.specs)) {
+      for (const s of p.specs.slice(0, 3)) {
+        picked.push(`${escapeHtml(s.label)}: ${escapeHtml(s.value)}`);
+      }
+    } else if (p?.specs && typeof p.specs === 'object') {
+      for (const [key, value] of Object.entries(p.specs).slice(0, 3)) {
+        picked.push(`${escapeHtml(key)}: ${escapeHtml(value)}`);
+      }
     }
   }
 
@@ -209,7 +243,7 @@ function topSpecs(p) {
 }
 
 function getProductUrl(p) {
-  const id = encodeURIComponent(p.id || '');
+  const id = encodeURIComponent(p?.id || '');
   return `product.html?id=${id}`;
 }
 
@@ -228,7 +262,9 @@ function renderActiveChips() {
   if (personenFilter?.value) chips.push(`Personen: ${personenFilter.value}`);
   if (elSearch?.value) chips.push(`Zoek: ${elSearch.value}`);
 
-  activeChips.innerHTML = chips.map(c => `<span class="chip">${escapeHtml(c)}</span>`).join('');
+  activeChips.innerHTML = chips
+    .map(c => `<span class="chip">${escapeHtml(c)}</span>`)
+    .join('');
 }
 
 function applyFilters() {
@@ -344,7 +380,9 @@ if (personenFilter) {
   personenFilter.addEventListener('change', applyFilters);
 }
 
-if (elSort) elSort.addEventListener('change', applyFilters);
+if (elSort) {
+  elSort.addEventListener('change', applyFilters);
+}
 
 if (elClear) {
   elClear.addEventListener('click', () => {
