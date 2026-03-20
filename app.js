@@ -9,7 +9,6 @@ const tpl = document.getElementById('cardTpl');
 
 const elSearch = document.getElementById('search');
 const elType = document.getElementById('typeFilter');
-const personenFilter = document.getElementById('personenFilter');
 const elSort = document.getElementById('sort');
 const elClear = document.getElementById('btnClear');
 
@@ -76,35 +75,6 @@ function getSpecValue(p, label) {
   const specs = Array.isArray(p.specs) ? p.specs : [];
   const found = specs.find(s => normalize(s.label) === normalize(label));
   return found?.value || '';
-}
-
-function buildPersonenFilter(items) {
-  if (!personenFilter) return;
-
-  const selectedType = elType ? elType.value : '';
-  const isSpaSelected = normalize(selectedType) === 'spa';
-
-  if (!isSpaSelected) {
-    personenFilter.innerHTML = '<option value="">Alle aantallen personen</option>';
-    personenFilter.value = '';
-    personenFilter.style.display = 'none';
-    return;
-  }
-
-  const personen = Array.from(
-    new Set(
-      items
-        .filter(p => normalize(p.type) === 'spa')
-        .map(p => getSpecValue(p, 'Aantal personen'))
-        .filter(Boolean)
-    )
-  ).sort((a, b) => a.localeCompare(b, 'nl'));
-
-  personenFilter.innerHTML =
-    '<option value="">Aantal personen</option>' +
-    personen.map(a => `<option value="${escapeHtml(a)}">${escapeHtml(a)}</option>`).join('');
-
-  personenFilter.style.display = '';
 }
 
 function productSearchBlob(p) {
