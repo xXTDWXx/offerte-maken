@@ -5,7 +5,7 @@ const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
   Voorbeeld:
   const COMPANY_LOGO_URL = 'logo.png';
 */
-const COMPANY_LOGO_URL = 'sunspa-logo-liggend.svg';
+const COMPANY_LOGO_URL = 'logo.png';
 const COMPANY_NAME = 'Sunspa';
 const COMPANY_EMAIL = '';
 const COMPANY_PHONE = '';
@@ -484,7 +484,7 @@ function printOfferte() {
       <style>
         @page {
           size: A4;
-          margin: 25mm;
+          margin: 16mm;
         }
 
         * { box-sizing: border-box; }
@@ -566,7 +566,6 @@ function printOfferte() {
         }
 
         .content-grid {
-          display:grid;
           grid-template-columns:1.1fr .9fr;
           gap:22px;
           margin-bottom:24px;
@@ -744,6 +743,8 @@ function printOfferte() {
           <div class="customer-line"><strong>Gemeente:</strong> ${escapeHtml(customer.city || '')}</div>
           <div class="customer-line"><strong>Gsm:</strong> ${escapeHtml(customer.phone || '')}</div>
         </div>
+
+        
       </div>
 
       <div class="section">
@@ -775,10 +776,12 @@ function printOfferte() {
         </div>
       </div>
 
+    
+
       <div class="note-box">
         <strong>Opmerkingen</strong><br>
         • Deze offerte is 14 dagen geldig vanaf offertedatum.<br>
-        • Alle vermelde bedragen zijn mits goede doorgang & geen obstructies inclusief btw.<br>
+        • Alle vermelde bedragen zijn inclusief btw.<br>
         • Kraankosten zijn niet inbegrepen, tenzij anders schriftelijk vermeld.<br>
         • Afbeeldingen dienen ter illustratie en kunnen afwijken van het uiteindelijke product.
       </div>
