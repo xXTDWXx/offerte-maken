@@ -105,6 +105,18 @@ function getTypeFromUrl() {
   return params.get('type') || '';
 }
 
+function getCategoryTitle(type) {
+  const map = {
+    Spa: "SPA'S",
+    Zwemspa: "ZWEMSPA'S",
+    Barrel: "BARRELS",
+    Infrarood: "INFRAROOD SAUNA",
+    Finse: "FINSE SAUNA"
+  };
+
+  return map[type] || type || 'Categorie';
+}
+
 function markActiveMenu(type) {
   const links = document.querySelectorAll('[data-category-link]');
   links.forEach(link => {
@@ -147,6 +159,7 @@ function renderGrid() {
     if (specs) specs.innerHTML = topSpecs(p);
 
     if (cardLink) {
+      cardLink.setAttribute('type', 'button');
       cardLink.addEventListener('click', () => {
         window.location.href = getProductUrl(p);
       });
@@ -174,7 +187,7 @@ async function init() {
   const currentType = getTypeFromUrl();
 
   if (pageTitle) {
-    pageTitle.textContent = currentType || 'Categorie';
+    pageTitle.textContent = getCategoryTitle(currentType);
   }
 
   markActiveMenu(currentType);
