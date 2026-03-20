@@ -463,4 +463,37 @@ label.opt .opt-price,
   .customer-grid{
     display:block;
   }
+  .category-menu {
+  background: #111;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.category-menu-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.category-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  padding: 10px 14px;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.category-link:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.category-link.is-active {
+  background: #fff;
+  color: #111;
+}
 }
