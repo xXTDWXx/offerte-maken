@@ -9,6 +9,7 @@ const tpl = document.getElementById('cardTpl');
 
 const elSearch = document.getElementById('search');
 const elType = document.getElementById('typeFilter');
+const afmetingFilter = document.getElementById('afmetingFilter');
 const elSort = document.getElementById('sort');
 const elClear = document.getElementById('btnClear');
 
@@ -71,8 +72,46 @@ function buildTypeFilter(items) {
     types.map(t => `<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`).join('');
 }
 
+function getSpecValue(p, label) {
+  const specs = Array.isArray(p.specs) ? p.specs : [];
+  const found = specs.find(s => normalize(s.label) === normalize(label));
+  return found?.value || '';
+}
+
+function buildAfmetingFilter(items) {
+  if (!afmetingFilter) return;
+
+  const selectedType = elType ? elType.value : '';
+  const isSpaSelected = normalize(selectedType) === 'spa';
+
+  if (!isSpaSelected) {
+    afmetingFilter.innerHTML = '<option value="">Alle afmetingen</option>';
+    afmetingFilter.value = '';
+    afmetingFilter.style.display = 'none';
+    return;
+  }
+
+  const afmetingen = Array.from(
+    new Set(
+      items
+        .filter(p => normalize(p.type) === 'spa')
+        .map(p => getSpecValue(p, 'Afmetingen'))
+        .filter(Boolean)
+    )
+  ).sort((a, b) => a.localeCompare(b, 'nl'));
+
+  afmetingFilter.innerHTML =
+    '<option value="">Alle afmetingen</option>' +
+    afmetingen.map(a => `<option value="${escapeHtml(a)}">${escapeHtml(a)}</option>`).join('');
+
+  afmetingFilter.style.display = '';
+}
+
 function productSearchBlob(p) {
-  const specText = (p.specs || []).map(s => `${s.label}: ${s.value}`).join(' | ');
+  const specText = (Array.isArray(p.specs) ? p.specs : [])
+    .map(s => `${s.label}: ${s.value}`)
+    .join(' | ');
+
   const bullets = (p.bullets || []).join(' | ');
 
   return normalize([
@@ -117,10 +156,19 @@ function updateMeta() {
 function applyFilters() {
   const q = elSearch ? normalize(elSearch.value) : '';
   const type = elType ? elType.value : '';
+  const afmeting = afmetingFilter ? afmetingFilter.value : '';
   const sort = elSort ? elSort.value : 'relevance';
+
+  buildAfmetingFilter(products);
 
   filtered = products.filter(p => {
     if (type && p.type !== type) return false;
+
+    if (afmeting) {
+      const productAfmeting = getSpecValue(p, 'Afmetingen');
+      if (productAfmeting !== afmeting) return false;
+    }
+
     if (q) return productSearchBlob(p).includes(q);
     return true;
   });
@@ -192,17 +240,30 @@ function showError(msg) {
 async function init() {
   products = await loadProducts({ force: false });
   buildTypeFilter(products);
+  buildAfmetingFilter(products);
   applyFilters();
 }
 
 if (elSearch) elSearch.addEventListener('input', applyFilters);
-if (elType) elType.addEventListener('change', applyFilters);
+
+if (elType) {
+  elType.addEventListener('change', () => {
+    if (afmetingFilter) afmetingFilter.value = '';
+    applyFilters();
+  });
+}
+
+if (afmetingFilter) {
+  afmetingFilter.addEventListener('change', applyFilters);
+}
+
 if (elSort) elSort.addEventListener('change', applyFilters);
 
 if (elClear) {
   elClear.addEventListener('click', () => {
     if (elSearch) elSearch.value = '';
     if (elType) elType.value = '';
+    if (afmetingFilter) afmetingFilter.value = '';
     if (elSort) elSort.value = 'relevance';
     applyFilters();
   });
