@@ -9,7 +9,7 @@ const tpl = document.getElementById('cardTpl');
 
 const elSearch = document.getElementById('search');
 const elType = document.getElementById('typeFilter');
-const afmetingFilter = document.getElementById('afmetingFilter');
+const personenFilter = document.getElementById('personenFilter');
 const elSort = document.getElementById('sort');
 const elClear = document.getElementById('btnClear');
 
@@ -78,20 +78,20 @@ function getSpecValue(p, label) {
   return found?.value || '';
 }
 
-function buildAfmetingFilter(items) {
-  if (!afmetingFilter) return;
+function buildPersonenFilter(items) {
+  if (!personenFilter) return;
 
   const selectedType = elType ? elType.value : '';
   const isSpaSelected = normalize(selectedType) === 'spa';
 
   if (!isSpaSelected) {
-    afmetingFilter.innerHTML = '<option value="">Alle afmetingen</option>';
-    afmetingFilter.value = '';
-    afmetingFilter.style.display = 'none';
+    personenFilter.innerHTML = '<option value="">Alle aantallen personen</option>';
+    personenFilter.value = '';
+    personenFilter.style.display = 'none';
     return;
   }
 
-  const afmetingen = Array.from(
+  const personen = Array.from(
     new Set(
       items
         .filter(p => normalize(p.type) === 'spa')
@@ -100,11 +100,11 @@ function buildAfmetingFilter(items) {
     )
   ).sort((a, b) => a.localeCompare(b, 'nl'));
 
-  afmetingFilter.innerHTML =
+  personenFilter.innerHTML =
     '<option value="">Aantal personen</option>' +
-    afmetingen.map(a => `<option value="${escapeHtml(a)}">${escapeHtml(a)}</option>`).join('');
+    personen.map(a => `<option value="${escapeHtml(a)}">${escapeHtml(a)}</option>`).join('');
 
-  afmetingFilter.style.display = '';
+  personenFilter.style.display = '';
 }
 
 function productSearchBlob(p) {
@@ -123,7 +123,7 @@ function productSearchBlob(p) {
 }
 
 function topSpecs(p) {
-  const want = ['Afmetingen', 'Aantal zitplaatsen', 'Aantal ligplaatsen', 'Aantal jets'];
+  const want = ['Afmetingen', 'Aantal zitplaatsen', 'Aantal ligplaatsen', 'Aantal jets', 'Aantal personen'];
   const specs = Array.isArray(p.specs) ? p.specs : [];
   const picked = [];
 
@@ -156,17 +156,17 @@ function updateMeta() {
 function applyFilters() {
   const q = elSearch ? normalize(elSearch.value) : '';
   const type = elType ? elType.value : '';
-  const afmeting = afmetingFilter ? afmetingFilter.value : '';
+  const personen = personenFilter ? personenFilter.value : '';
   const sort = elSort ? elSort.value : 'relevance';
 
-  buildAfmetingFilter(products);
+  buildPersonenFilter(products);
 
   filtered = products.filter(p => {
     if (type && p.type !== type) return false;
 
-    if (afmeting) {
-      const productAfmeting = getSpecValue(p, 'Afmetingen');
-      if (productAfmeting !== afmeting) return false;
+    if (personen) {
+      const productPersonen = getSpecValue(p, 'Aantal personen');
+      if (productPersonen !== personen) return false;
     }
 
     if (q) return productSearchBlob(p).includes(q);
@@ -240,7 +240,7 @@ function showError(msg) {
 async function init() {
   products = await loadProducts({ force: false });
   buildTypeFilter(products);
-  buildAfmetingFilter(products);
+  buildPersonenFilter(products);
   applyFilters();
 }
 
@@ -248,13 +248,13 @@ if (elSearch) elSearch.addEventListener('input', applyFilters);
 
 if (elType) {
   elType.addEventListener('change', () => {
-    if (afmetingFilter) afmetingFilter.value = '';
+    if (personenFilter) personenFilter.value = '';
     applyFilters();
   });
 }
 
-if (afmetingFilter) {
-  afmetingFilter.addEventListener('change', applyFilters);
+if (personenFilter) {
+  personenFilter.addEventListener('change', applyFilters);
 }
 
 if (elSort) elSort.addEventListener('change', applyFilters);
@@ -263,7 +263,7 @@ if (elClear) {
   elClear.addEventListener('click', () => {
     if (elSearch) elSearch.value = '';
     if (elType) elType.value = '';
-    if (afmetingFilter) afmetingFilter.value = '';
+    if (personenFilter) personenFilter.value = '';
     if (elSort) elSort.value = 'relevance';
     applyFilters();
   });
