@@ -10,6 +10,7 @@ const tpl = document.getElementById('cardTpl');
 const elSearch = document.getElementById('search');
 const elType = document.getElementById('typeFilter');
 const personenFilter = document.getElementById('personenFilter');
+const personenField = document.getElementById('personenField');
 const elSort = document.getElementById('sort');
 const elClear = document.getElementById('btnClear');
 
@@ -63,6 +64,8 @@ async function loadProducts({ force = false } = {}) {
 function buildTypeFilter(items) {
   if (!elType) return;
 
+  const currentValue = elType.value || '';
+
   const types = Array.from(
     new Set(items.map(p => p.type).filter(Boolean))
   ).sort((a, b) => a.localeCompare(b, 'nl'));
@@ -70,6 +73,10 @@ function buildTypeFilter(items) {
   elType.innerHTML =
     '<option value="">Alle types</option>' +
     types.map(t => `<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`).join('');
+
+  if (types.includes(currentValue)) {
+    elType.value = currentValue;
+  }
 }
 
 function getSpecValue(p, label) {
@@ -78,33 +85,55 @@ function getSpecValue(p, label) {
   return found?.value || '';
 }
 
-function buildPersonenFilter(items) {
-  if (!personenFilter) return;
+function getAantalPersonen(p) {
+  return (
+    getSpecValue(p, 'Aantal personen') ||
+    getSpecValue(p, 'Aantal zitplaatsen') ||
+    getSpecValue(p, 'Zitplaatsen')
+  );
+}
 
-  const selectedType = elType ? elType.value : '';
-  const isSpaSelected = normalize(selectedType) === 'spa';
+function buildPersonenFilter(items) {
+  if (!personenFilter || !personenField) return;
+
+  const selectedType = elType ? normalize(elType.value) : '';
+  const isSpaSelected = selectedType === 'spa' || selectedType === "spa's";
 
   if (!isSpaSelected) {
     personenFilter.innerHTML = '<option value="">Alle aantallen personen</option>';
     personenFilter.value = '';
-    personenFilter.style.display = 'none';
+    personenField.style.display = 'none';
     return;
   }
+
+  const currentValue = personenFilter.value;
 
   const personen = Array.from(
     new Set(
       items
-        .filter(p => normalize(p.type) === 'spa')
-        .map(p => getSpecValue(p, 'Aantal personen'))
+        .filter(p => normalize(p.type) === 'spa' || normalize(p.type) === "spa's")
+        .map(p => getAantalPersonen(p))
         .filter(Boolean)
     )
-  ).sort((a, b) => a.localeCompare(b, 'nl'));
+  ).sort((a, b) => {
+    const na = parseInt(a, 10);
+    const nb = parseInt(b, 10);
+
+    if (!Number.isNaN(na) && !Number.isNaN(nb)) {
+      return na - nb;
+    }
+    return a.localeCompare(b, 'nl');
+  });
 
   personenFilter.innerHTML =
-    '<option value="">Aantal personen</option>' +
+    '<option value="">Alle aantallen personen</option>' +
     personen.map(a => `<option value="${escapeHtml(a)}">${escapeHtml(a)}</option>`).join('');
 
-  personenFilter.style.display = '';
+  personenField.style.display = '';
+
+  if (personen.includes(currentValue)) {
+    personenFilter.value = currentValue;
+  }
 }
 
 function productSearchBlob(p) {
@@ -112,7 +141,7 @@ function productSearchBlob(p) {
     .map(s => `${s.label}: ${s.value}`)
     .join(' | ');
 
-  const bullets = (p.bullets || []).join(' | ');
+  const bullets = Array.isArray(p.bullets) ? p.bullets.join(' | ') : '';
 
   return normalize([
     p.title,
@@ -123,7 +152,7 @@ function productSearchBlob(p) {
 }
 
 function topSpecs(p) {
-  const want = ['Afmetingen', 'Aantal zitplaatsen', 'Aantal ligplaatsen', 'Aantal jets', 'Aantal personen'];
+  const want = ['Afmetingen', 'Aantal personen', 'Aantal zitplaatsen', 'Aantal ligplaatsen', 'Aantal jets'];
   const specs = Array.isArray(p.specs) ? p.specs : [];
   const picked = [];
 
@@ -165,23 +194,20 @@ function applyFilters() {
     if (type && p.type !== type) return false;
 
     if (personen) {
-      const productPersonen = getSpecValue(p, 'Aantal personen');
+      const productPersonen = getAantalPersonen(p);
       if (productPersonen !== personen) return false;
     }
 
-    if (q) return productSearchBlob(p).includes(q);
+    if (q && !productSearchBlob(p).includes(q)) return false;
+
     return true;
   });
 
   if (sort === 'priceAsc') {
     filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
-  }
-
-  if (sort === 'priceDesc') {
+  } else if (sort === 'priceDesc') {
     filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
-  }
-
-  if (sort === 'titleAsc') {
+  } else if (sort === 'titleAsc') {
     filtered.sort((a, b) => (a.title || '').localeCompare(b.title || '', 'nl'));
   }
 
