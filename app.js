@@ -9,6 +9,7 @@ const tpl = document.getElementById('cardTpl');
 
 const elSearch = document.getElementById('search');
 const elType = document.getElementById('typeFilter');
+const elMerk = document.getElementById('merkFilter');
 const personenFilter = document.getElementById('personenFilter');
 const personenField = document.getElementById('personenField');
 const elSort = document.getElementById('sort');
@@ -17,6 +18,7 @@ const elClear = document.getElementById('btnClear');
 const errorBox = document.getElementById('errorBox');
 const errorText = document.getElementById('errorText');
 const resultMeta = document.getElementById('resultMeta');
+const activeChips = document.getElementById('activeChips');
 
 let products = [];
 let filtered = [];
@@ -85,6 +87,32 @@ function getSpecValue(p, label) {
   return found?.value || '';
 }
 
+function getMerk(p) {
+  return p.brand || p.merk || getSpecValue(p, 'Merk') || '';
+}
+
+function buildMerkFilter(items) {
+  if (!elMerk) return;
+
+  const currentValue = elMerk.value || '';
+
+  const merken = Array.from(
+    new Set(
+      items
+        .map(p => getMerk(p))
+        .filter(Boolean)
+    )
+  ).sort((a, b) => a.localeCompare(b, 'nl'));
+
+  elMerk.innerHTML =
+    '<option value="">Alle merken</option>' +
+    merken.map(m => `<option value="${escapeHtml(m)}">${escapeHtml(m)}</option>`).join('');
+
+  if (merken.includes(currentValue)) {
+    elMerk.value = currentValue;
+  }
+}
+
 function getAantalPersonen(p) {
   return (
     getSpecValue(p, 'Aantal personen') ||
@@ -146,17 +174,25 @@ function productSearchBlob(p) {
   return normalize([
     p.title,
     p.type,
+    getMerk(p),
     bullets,
     specText
   ].join(' '));
 }
 
 function topSpecs(p) {
-  const want = ['Afmetingen', 'Aantal personen', 'Aantal zitplaatsen', 'Aantal ligplaatsen', 'Aantal jets'];
+  const want = ['Merk', 'Afmetingen', 'Aantal personen', 'Aantal zitplaatsen', 'Aantal ligplaatsen', 'Aantal jets'];
   const specs = Array.isArray(p.specs) ? p.specs : [];
   const picked = [];
 
+  const merk = getMerk(p);
+  if (merk) {
+    picked.push(`Merk: ${escapeHtml(merk)}`);
+  }
+
   for (const key of want) {
+    if (normalize(key) === 'merk') continue;
+
     const found = specs.find(s => normalize(s.label) === normalize(key));
     if (found) {
       picked.push(`${escapeHtml(found.label)}: ${escapeHtml(found.value)}`);
@@ -182,9 +218,23 @@ function updateMeta() {
   resultMeta.textContent = `${filtered.length} producten`;
 }
 
+function renderActiveChips() {
+  if (!activeChips) return;
+
+  const chips = [];
+
+  if (elType?.value) chips.push(`Type: ${elType.value}`);
+  if (elMerk?.value) chips.push(`Merk: ${elMerk.value}`);
+  if (personenFilter?.value) chips.push(`Personen: ${personenFilter.value}`);
+  if (elSearch?.value) chips.push(`Zoek: ${elSearch.value}`);
+
+  activeChips.innerHTML = chips.map(c => `<span class="chip">${escapeHtml(c)}</span>`).join('');
+}
+
 function applyFilters() {
   const q = elSearch ? normalize(elSearch.value) : '';
   const type = elType ? elType.value : '';
+  const merk = elMerk ? elMerk.value : '';
   const personen = personenFilter ? personenFilter.value : '';
   const sort = elSort ? elSort.value : 'relevance';
 
@@ -192,6 +242,11 @@ function applyFilters() {
 
   filtered = products.filter(p => {
     if (type && p.type !== type) return false;
+
+    if (merk) {
+      const productMerk = getMerk(p);
+      if (productMerk !== merk) return false;
+    }
 
     if (personen) {
       const productPersonen = getAantalPersonen(p);
@@ -213,6 +268,7 @@ function applyFilters() {
 
   renderGrid();
   updateMeta();
+  renderActiveChips();
 }
 
 function renderGrid() {
@@ -266,6 +322,7 @@ function showError(msg) {
 async function init() {
   products = await loadProducts({ force: false });
   buildTypeFilter(products);
+  buildMerkFilter(products);
   buildPersonenFilter(products);
   applyFilters();
 }
@@ -279,6 +336,10 @@ if (elType) {
   });
 }
 
+if (elMerk) {
+  elMerk.addEventListener('change', applyFilters);
+}
+
 if (personenFilter) {
   personenFilter.addEventListener('change', applyFilters);
 }
@@ -289,6 +350,7 @@ if (elClear) {
   elClear.addEventListener('click', () => {
     if (elSearch) elSearch.value = '';
     if (elType) elType.value = '';
+    if (elMerk) elMerk.value = '';
     if (personenFilter) personenFilter.value = '';
     if (elSort) elSort.value = 'relevance';
     applyFilters();
