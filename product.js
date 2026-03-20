@@ -1,5 +1,17 @@
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
 const OFFER_KEY = 'sunspa_offer_v1';
+const CUSTOMER_KEY = 'sunspa_customer_v1';
+
+/*
+  Zet hier het pad naar jullie logo.
+  Voorbeeld:
+  const COMPANY_LOGO_URL = 'logo.png';
+*/
+const COMPANY_LOGO_URL = 'sunspa-logo-liggend.svg';
+const COMPANY_NAME = 'Sunspa';
+const COMPANY_EMAIL = '';
+const COMPANY_PHONE = '';
+const COMPANY_WEBSITE = '';
 
 const errorBox = document.getElementById('errorBox');
 const errorText = document.getElementById('errorText');
@@ -12,6 +24,12 @@ const productType = document.getElementById('productType');
 const productSpecs = document.getElementById('productSpecs');
 const productUrl = document.getElementById('productUrl');
 const productPrint = document.getElementById('productPrint');
+const offerPrint = document.getElementById('offerPrint');
+
+const customerName = document.getElementById('customerName');
+const customerStreet = document.getElementById('customerStreet');
+const customerCity = document.getElementById('customerCity');
+const customerPhone = document.getElementById('customerPhone');
 
 let currentProduct = null;
 let optionHandlersWired = false;
@@ -45,6 +63,28 @@ function escapeHtml(s) {
     .replaceAll("'", '&#039;');
 }
 
+function formatDateBelgium(date) {
+  try {
+    return new Intl.DateTimeFormat('nl-BE', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    }).format(date);
+  } catch {
+    const d = new Date(date);
+    const dd = String(d.getDate()).padStart(2, '0');
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const yyyy = d.getFullYear();
+    return `${dd}/${mm}/${yyyy}`;
+  }
+}
+
+function addDays(date, days) {
+  const d = new Date(date);
+  d.setDate(d.getDate() + days);
+  return d;
+}
+
 function getOffer() {
   try {
     return JSON.parse(localStorage.getItem(OFFER_KEY) || '[]');
@@ -55,6 +95,44 @@ function getOffer() {
 
 function setOffer(lines) {
   localStorage.setItem(OFFER_KEY, JSON.stringify(lines));
+}
+
+function getCustomer() {
+  try {
+    return JSON.parse(localStorage.getItem(CUSTOMER_KEY) || '{}');
+  } catch {
+    return {};
+  }
+}
+
+function setCustomer(data) {
+  localStorage.setItem(CUSTOMER_KEY, JSON.stringify(data || {}));
+}
+
+function saveCustomerForm() {
+  setCustomer({
+    name: customerName?.value || '',
+    street: customerStreet?.value || '',
+    city: customerCity?.value || '',
+    phone: customerPhone?.value || ''
+  });
+}
+
+function hydrateCustomerForm() {
+  const data = getCustomer();
+
+  if (customerName) customerName.value = data.name || '';
+  if (customerStreet) customerStreet.value = data.street || '';
+  if (customerCity) customerCity.value = data.city || '';
+  if (customerPhone) customerPhone.value = data.phone || '';
+}
+
+function wireCustomerHandlers() {
+  [customerName, customerStreet, customerCity, customerPhone].forEach(el => {
+    if (!el) return;
+    el.addEventListener('input', saveCustomerForm);
+    el.addEventListener('change', saveCustomerForm);
+  });
 }
 
 const PRICES = {
@@ -307,136 +385,66 @@ function wireOptionHandlers() {
   });
 }
 
-function printOfferte(p) {
-  const selectedOptions = p.options.filter(o => o.selected);
+function getSelectedOfferLines() {
+  if (!currentProduct) return [];
 
-  const basePrice = p.price || 0;
-  const optionsTotal = selectedOptions.reduce((sum, o) => sum + (o.price || 0), 0);
-  const total = basePrice + optionsTotal;
+  const type = currentProduct.type || '';
+  const lines = [];
 
-  const today = new Date().toLocaleDateString();
+  lines.push({
+    label: currentProduct.title || 'Product',
+    price: Number(currentProduct.price || 0)
+  });
 
-  const html = `
-    <html>
-      <head>
-        <title>Offerte</title>
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            padding: 30px;
-            color: #333;
-          }
-          h1 {
-            margin-bottom: 5px;
-          }
-          .subtitle {
-            color: #777;
-            margin-bottom: 20px;
-          }
-          table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-          }
-          th, td {
-            border-bottom: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-          }
-          th {
-            background: #f5f5f5;
-          }
-          .total {
-            font-size: 18px;
-            font-weight: bold;
-          }
-          .section {
-            margin-top: 30px;
-          }
-          .right {
-            text-align: right;
-          }
-          .note {
-            margin-top: 30px;
-            font-size: 13px;
-            color: #666;
-          }
-        </style>
-      </head>
-      <body>
+  lines.push({
+    label: 'Levering & installatie',
+    price: installCost(type)
+  });
 
-        <h1>Offerte</h1>
-        <div class="subtitle">${p.name} (${p.type || ""})</div>
-        <div>Datum: ${today}</div>
+  if (extraOptionsAllowed(type)) {
+    lines.push({
+      label: 'Cover & trap inclusief',
+      price: 0
+    });
+  }
 
-        <div class="section">
-          <h3>Product</h3>
-          <table>
-            <tr>
-              <th>Omschrijving</th>
-              <th class="right">Prijs</th>
-            </tr>
-            <tr>
-              <td>${p.name}</td>
-              <td class="right">€ ${basePrice.toFixed(2)}</td>
-            </tr>
-          </table>
-        </div>
+  if ($('optCoverlift')?.checked && extraOptionsAllowed(type)) {
+    lines.push({ label: 'Coverlift', price: PRICES.coverlift_unit });
+  }
 
-        ${
-          selectedOptions.length > 0
-            ? `
-        <div class="section">
-          <h3>Geselecteerde opties</h3>
-          <table>
-            <tr>
-              <th>Optie</th>
-              <th class="right">Prijs</th>
-            </tr>
-            ${selectedOptions
-              .map(
-                o => `
-              <tr>
-                <td>${o.name}</td>
-                <td class="right">€ ${(o.price || 0).toFixed(2)}</td>
-              </tr>
-            `
-              )
-              .join("")}
-          </table>
-        </div>
-        `
-            : ""
-        }
+  if ($('optCoverlift2')?.checked && isSwimspa(type)) {
+    lines.push({ label: '2e Coverlift', price: PRICES.coverlift_unit });
+  }
 
-        <div class="section">
-          <table>
-            <tr>
-              <td class="total">Totaal (incl. btw)</td>
-              <td class="right total">€ ${total.toFixed(2)}</td>
-            </tr>
-          </table>
-        </div>
+  if ($('optMaint')?.checked && extraOptionsAllowed(type)) {
+    lines.push({ label: 'Onderhoudspakket', price: PRICES.maintenance_unit });
+  }
 
-        <div class="section">
-          <h3>Specificaties</h3>
-          <p>${p.description || ""}</p>
-        </div>
+  if ($('optSwimFilterset')?.checked && isSwimspa(type)) {
+    lines.push({ label: 'Filterset (zwemspa)', price: PRICES.swim_filterset_unit });
+  }
 
-        <div class="note">
-          * Prijzen zijn inclusief btw.<br>
-          * Transport en kraankosten niet inbegrepen.<br>
-          * Offerte geldig gedurende 14 dagen.
-        </div>
+  if ($('optBarrelWoodStove')?.checked && isOutdoorSaunaWithRoofAndStove(type)) {
+    lines.push({ label: 'Houtkachel + rookafvoer', price: PRICES.barrel_wood_stove_unit });
+  }
 
-      </body>
-    </html>
-  `;
+  if ($('optBarrelElectricHeater')?.checked && isOutdoorSaunaWithRoofAndStove(type)) {
+    lines.push({ label: 'Elektrische kachel 8 kW', price: PRICES.barrel_electric_heater_unit });
+  }
 
-  const win = window.open("", "_blank");
-  win.document.write(html);
-  win.document.close();
-  win.print();
+  if ($('optBarrelRoofShingles')?.checked && isOutdoorSaunaWithRoofAndStove(type)) {
+    lines.push({ label: 'Shingles dak', price: PRICES.barrel_roof_shingles_unit });
+  }
+
+  if ($('optBarrelRoofHeather')?.checked && isOutdoorSaunaWithRoofAndStove(type)) {
+    lines.push({ label: 'Heidedak', price: PRICES.barrel_roof_heather_unit });
+  }
+
+  if ($('optBarrelRoofDesign')?.checked && isOutdoorSaunaWithRoofAndStove(type)) {
+    lines.push({ label: 'Design dak', price: PRICES.barrel_roof_design_unit });
+  }
+
+  return lines;
 }
 
 function printProductFiche(p) {
@@ -481,6 +489,436 @@ function printProductFiche(p) {
   win.document.close();
 }
 
+function printOfferte() {
+  if (!currentProduct) return;
+
+  saveCustomerForm();
+
+  const customer = getCustomer();
+  const createdAt = new Date();
+  const validUntil = addDays(createdAt, 14);
+
+  const lines = getSelectedOfferLines();
+  setOffer(lines);
+
+  const productPrice = Number(currentProduct.price || 0);
+  const optionsOnly = lines
+    .filter(line => line.label !== (currentProduct.title || 'Product'))
+    .reduce((sum, line) => sum + Number(line.price || 0), 0);
+
+  const grandTotal = lines.reduce((sum, line) => sum + Number(line.price || 0), 0);
+
+  const visibleOptionLines = lines.filter(line =>
+    line.label !== (currentProduct.title || 'Product')
+  );
+
+  const specsHtml = (currentProduct.specs || []).length
+    ? (currentProduct.specs || []).map(s => `
+        <tr>
+          <td>${escapeHtml(s.label || '')}</td>
+          <td>${escapeHtml(s.value || '')}</td>
+        </tr>
+      `).join('')
+    : `
+      <tr>
+        <td colspan="2">Geen specificaties beschikbaar.</td>
+      </tr>
+    `;
+
+  const offerRowsHtml = lines.map(line => `
+    <tr>
+      <td>${escapeHtml(line.label)}</td>
+      <td class="amount">${euro(line.price)}</td>
+    </tr>
+  `).join('');
+
+  const contactParts = [
+    COMPANY_PHONE ? `Tel: ${escapeHtml(COMPANY_PHONE)}` : '',
+    COMPANY_EMAIL ? `E-mail: ${escapeHtml(COMPANY_EMAIL)}` : '',
+    COMPANY_WEBSITE ? `${escapeHtml(COMPANY_WEBSITE)}` : ''
+  ].filter(Boolean).join(' &nbsp;•&nbsp; ');
+
+  const customerNameHtml = customer.name ? escapeHtml(customer.name) : '........................................';
+  const customerStreetHtml = customer.street ? escapeHtml(customer.street) : '........................................';
+  const customerCityHtml = customer.city ? escapeHtml(customer.city) : '........................................';
+  const customerPhoneHtml = customer.phone ? escapeHtml(customer.phone) : '........................................';
+
+  const logoHtml = COMPANY_LOGO_URL
+    ? `<img src="${escapeHtml(COMPANY_LOGO_URL)}" alt="Logo" class="logo" onerror="this.style.display='none'">`
+    : '';
+
+  const productImageHtml = currentProduct.image
+    ? `<img src="${escapeHtml(currentProduct.image)}" alt="" class="product-image" onerror="this.style.display='none'">`
+    : '';
+
+  const html = `
+    <!doctype html>
+    <html lang="nl">
+    <head>
+      <meta charset="utf-8">
+      <title>Offerte - ${escapeHtml(currentProduct.title || 'Product')}</title>
+      <style>
+        @page {
+          size: A4;
+          margin: 16mm;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        body {
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+          color: #111827;
+          background: #ffffff;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .page {
+          width: 100%;
+        }
+
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 24px;
+          padding-bottom: 20px;
+          border-bottom: 2px solid #111827;
+        }
+
+        .logo {
+          max-width: 220px;
+          max-height: 90px;
+          object-fit: contain;
+          display: block;
+        }
+
+        .company {
+          text-align: right;
+          font-size: 12px;
+          line-height: 1.6;
+          color: #374151;
+        }
+
+        .title-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 24px;
+          margin-top: 28px;
+          margin-bottom: 24px;
+        }
+
+        .title h1 {
+          margin: 0;
+          font-size: 34px;
+          letter-spacing: 0.5px;
+        }
+
+        .title .subtitle {
+          margin-top: 8px;
+          color: #6b7280;
+          font-size: 14px;
+        }
+
+        .offer-meta {
+          min-width: 230px;
+          border: 1px solid #d1d5db;
+          border-radius: 12px;
+          overflow: hidden;
+        }
+
+        .offer-meta-row {
+          display: flex;
+          justify-content: space-between;
+          gap: 16px;
+          padding: 10px 14px;
+          border-bottom: 1px solid #e5e7eb;
+          font-size: 13px;
+        }
+
+        .offer-meta-row:last-child {
+          border-bottom: 0;
+        }
+
+        .label {
+          color: #6b7280;
+          font-weight: 600;
+        }
+
+        .content-grid {
+          display: grid;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 22px;
+          margin-bottom: 24px;
+        }
+
+        .card {
+          border: 1px solid #d1d5db;
+          border-radius: 14px;
+          padding: 18px;
+        }
+
+        .card-title {
+          font-size: 14px;
+          font-weight: 700;
+          color: #111827;
+          letter-spacing: 0.3px;
+          text-transform: uppercase;
+          margin-bottom: 12px;
+        }
+
+        .customer-line {
+          margin-bottom: 8px;
+          font-size: 14px;
+          line-height: 1.5;
+        }
+
+        .product-image {
+          width: 100%;
+          max-height: 240px;
+          object-fit: cover;
+          border-radius: 12px;
+          border: 1px solid #e5e7eb;
+          margin-top: 12px;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        .offer-table th {
+          text-align: left;
+          font-size: 12px;
+          text-transform: uppercase;
+          letter-spacing: 0.4px;
+          color: #6b7280;
+          padding: 12px 0;
+          border-bottom: 1px solid #d1d5db;
+        }
+
+        .offer-table td {
+          padding: 12px 0;
+          border-bottom: 1px solid #eceff3;
+          vertical-align: top;
+          font-size: 14px;
+        }
+
+        .amount {
+          text-align: right;
+          white-space: nowrap;
+          font-weight: 600;
+        }
+
+        .totals-box {
+          width: 360px;
+          margin-left: auto;
+          margin-top: 18px;
+          border: 1px solid #d1d5db;
+          border-radius: 14px;
+          overflow: hidden;
+        }
+
+        .totals-row {
+          display: flex;
+          justify-content: space-between;
+          gap: 16px;
+          padding: 12px 16px;
+          border-bottom: 1px solid #e5e7eb;
+          font-size: 14px;
+        }
+
+        .totals-row:last-child {
+          border-bottom: 0;
+        }
+
+        .totals-row.final {
+          background: #111827;
+          color: white;
+          font-size: 18px;
+          font-weight: 700;
+        }
+
+        .section {
+          margin-top: 26px;
+        }
+
+        .section h2 {
+          margin: 0 0 12px 0;
+          font-size: 16px;
+          text-transform: uppercase;
+          letter-spacing: 0.4px;
+        }
+
+        .spec-table td {
+          padding: 10px 0;
+          border-bottom: 1px solid #eceff3;
+          font-size: 14px;
+        }
+
+        .spec-table td:first-child {
+          width: 36%;
+          font-weight: 700;
+        }
+
+        .note-box {
+          margin-top: 28px;
+          padding: 16px 18px;
+          border: 1px solid #d1d5db;
+          border-radius: 14px;
+          background: #f9fafb;
+          font-size: 13px;
+          line-height: 1.7;
+          color: #374151;
+        }
+
+        .footer {
+          margin-top: 26px;
+          padding-top: 16px;
+          border-top: 1px solid #d1d5db;
+          font-size: 12px;
+          color: #6b7280;
+          display: flex;
+          justify-content: space-between;
+          gap: 18px;
+        }
+
+        @media print {
+          .page {
+            padding: 0;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="page">
+        <div class="header">
+          <div>
+            ${logoHtml}
+          </div>
+          <div class="company">
+            <div><strong>${escapeHtml(COMPANY_NAME)}</strong></div>
+            ${contactParts ? `<div>${contactParts}</div>` : ''}
+          </div>
+        </div>
+
+        <div class="title-row">
+          <div class="title">
+            <h1>OFFERT E</h1>
+            <div class="subtitle">
+              ${escapeHtml(currentProduct.title || '')}
+              ${currentProduct.type ? `• ${escapeHtml(currentProduct.type)}` : ''}
+            </div>
+          </div>
+
+          <div class="offer-meta">
+            <div class="offer-meta-row">
+              <span class="label">Offertedatum</span>
+              <strong>${formatDateBelgium(createdAt)}</strong>
+            </div>
+            <div class="offer-meta-row">
+              <span class="label">Geldig tot</span>
+              <strong>${formatDateBelgium(validUntil)}</strong>
+            </div>
+            <div class="offer-meta-row">
+              <span class="label">Geldigheid</span>
+              <strong>14 dagen</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-grid">
+          <div class="card">
+            <div class="card-title">Klantgegevens</div>
+            <div class="customer-line"><strong>Naam:</strong> ${customerNameHtml}</div>
+            <div class="customer-line"><strong>Straat:</strong> ${customerStreetHtml}</div>
+            <div class="customer-line"><strong>Gemeente:</strong> ${customerCityHtml}</div>
+            <div class="customer-line"><strong>Gsm:</strong> ${customerPhoneHtml}</div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Product</div>
+            <div class="customer-line"><strong>${escapeHtml(currentProduct.title || '')}</strong></div>
+            <div class="customer-line">${escapeHtml(currentProduct.type || '')}</div>
+            ${productImageHtml}
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Offertelijnen</h2>
+          <table class="offer-table">
+            <thead>
+              <tr>
+                <th>Omschrijving</th>
+                <th class="amount">Bedrag</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${offerRowsHtml}
+            </tbody>
+          </table>
+
+          <div class="totals-box">
+            <div class="totals-row">
+              <span>Product</span>
+              <strong>${euro(productPrice)}</strong>
+            </div>
+            <div class="totals-row">
+              <span>Opties + levering</span>
+              <strong>${euro(optionsOnly)}</strong>
+            </div>
+            <div class="totals-row final">
+              <span>Totaal incl. btw</span>
+              <strong>${euro(grandTotal)}</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Specificaties</h2>
+          <table class="spec-table">
+            ${specsHtml}
+          </table>
+        </div>
+
+        <div class="note-box">
+          <strong>Opmerkingen</strong><br>
+          • Deze offerte is 14 dagen geldig vanaf offertedatum.<br>
+          • Alle vermelde bedragen zijn inclusief btw.<br>
+          • Kraankosten zijn niet inbegrepen, tenzij anders schriftelijk vermeld.<br>
+          • Afbeeldingen dienen ter illustratie en kunnen afwijken van het uiteindelijke product.
+        </div>
+
+        <div class="footer">
+          <div>${escapeHtml(COMPANY_NAME)}</div>
+          <div>Offerte automatisch gegenereerd via productpagina</div>
+        </div>
+      </div>
+
+      <script>
+        window.onload = function () {
+          window.print();
+        };
+      </script>
+    </body>
+    </html>
+  `;
+
+  const win = window.open('', '_blank');
+  if (!win) {
+    alert('Pop-up geblokkeerd. Sta pop-ups toe om de offerte te printen.');
+    return;
+  }
+
+  win.document.open();
+  win.document.write(html);
+  win.document.close();
+}
+
 function renderProduct(p) {
   currentProduct = p;
 
@@ -508,6 +946,10 @@ function renderProduct(p) {
     productPrint.onclick = () => printProductFiche(p);
   }
 
+  if (offerPrint) {
+    offerPrint.onclick = () => printOfferte();
+  }
+
   if ($('optInstall')) $('optInstall').checked = true;
   if ($('optCoverlift')) $('optCoverlift').checked = false;
   if ($('optCoverlift2')) $('optCoverlift2').checked = false;
@@ -519,6 +961,8 @@ function renderProduct(p) {
   if ($('optBarrelRoofHeather')) $('optBarrelRoofHeather').checked = false;
   if ($('optBarrelRoofDesign')) $('optBarrelRoofDesign').checked = false;
 
+  hydrateCustomerForm();
+  wireCustomerHandlers();
   wireOptionHandlers();
   updateOptionUI();
 
