@@ -5,7 +5,7 @@ const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
   Voorbeeld:
   const COMPANY_LOGO_URL = 'logo.png';
 */
-const COMPANY_LOGO_URL = 'logo.png';
+const COMPANY_LOGO_URL = 'sunspa-logo-liggend.svg';
 const COMPANY_NAME = 'Sunspa';
 const COMPANY_EMAIL = '';
 const COMPANY_PHONE = '';
