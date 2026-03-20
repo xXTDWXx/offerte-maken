@@ -307,6 +307,138 @@ function wireOptionHandlers() {
   });
 }
 
+function printOfferte(p) {
+  const selectedOptions = p.options.filter(o => o.selected);
+
+  const basePrice = p.price || 0;
+  const optionsTotal = selectedOptions.reduce((sum, o) => sum + (o.price || 0), 0);
+  const total = basePrice + optionsTotal;
+
+  const today = new Date().toLocaleDateString();
+
+  const html = `
+    <html>
+      <head>
+        <title>Offerte</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            color: #333;
+          }
+          h1 {
+            margin-bottom: 5px;
+          }
+          .subtitle {
+            color: #777;
+            margin-bottom: 20px;
+          }
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+          }
+          th, td {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+          }
+          th {
+            background: #f5f5f5;
+          }
+          .total {
+            font-size: 18px;
+            font-weight: bold;
+          }
+          .section {
+            margin-top: 30px;
+          }
+          .right {
+            text-align: right;
+          }
+          .note {
+            margin-top: 30px;
+            font-size: 13px;
+            color: #666;
+          }
+        </style>
+      </head>
+      <body>
+
+        <h1>Offerte</h1>
+        <div class="subtitle">${p.name} (${p.type || ""})</div>
+        <div>Datum: ${today}</div>
+
+        <div class="section">
+          <h3>Product</h3>
+          <table>
+            <tr>
+              <th>Omschrijving</th>
+              <th class="right">Prijs</th>
+            </tr>
+            <tr>
+              <td>${p.name}</td>
+              <td class="right">€ ${basePrice.toFixed(2)}</td>
+            </tr>
+          </table>
+        </div>
+
+        ${
+          selectedOptions.length > 0
+            ? `
+        <div class="section">
+          <h3>Geselecteerde opties</h3>
+          <table>
+            <tr>
+              <th>Optie</th>
+              <th class="right">Prijs</th>
+            </tr>
+            ${selectedOptions
+              .map(
+                o => `
+              <tr>
+                <td>${o.name}</td>
+                <td class="right">€ ${(o.price || 0).toFixed(2)}</td>
+              </tr>
+            `
+              )
+              .join("")}
+          </table>
+        </div>
+        `
+            : ""
+        }
+
+        <div class="section">
+          <table>
+            <tr>
+              <td class="total">Totaal (incl. btw)</td>
+              <td class="right total">€ ${total.toFixed(2)}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="section">
+          <h3>Specificaties</h3>
+          <p>${p.description || ""}</p>
+        </div>
+
+        <div class="note">
+          * Prijzen zijn inclusief btw.<br>
+          * Transport en kraankosten niet inbegrepen.<br>
+          * Offerte geldig gedurende 14 dagen.
+        </div>
+
+      </body>
+    </html>
+  `;
+
+  const win = window.open("", "_blank");
+  win.document.write(html);
+  win.document.close();
+  win.print();
+}
+
 function printProductFiche(p) {
   const win = window.open('', '_blank');
   if (!win) return;
