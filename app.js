@@ -130,8 +130,6 @@ function applyFilters() {
   const type = elType ? elType.value : '';
   const sort = elSort ? elSort.value : 'relevance';
 
-  buildPersonenFilter(products);
-
   filtered = products.filter(p => {
     if (type && p.type !== type) return false;
 
