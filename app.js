@@ -9,6 +9,7 @@ const tpl = document.getElementById('cardTpl');
 
 const elSearch = document.getElementById('search');
 const elType = document.getElementById('typeFilter');
+const personenFilter = document.getElementById('personenFilter');
 const elSort = document.getElementById('sort');
 const elClear = document.getElementById('btnClear');
 
@@ -77,7 +78,34 @@ function getSpecValue(p, label) {
   return found?.value || '';
 }
 
+function buildPersonenFilter(items) {
+  if (!personenFilter) return;
 
+  const selectedType = elType ? elType.value : '';
+  const isSpaSelected = normalize(selectedType) === 'spa';
+
+  if (!isSpaSelected) {
+    personenFilter.innerHTML = '<option value="">Alle aantallen personen</option>';
+    personenFilter.value = '';
+    personenFilter.style.display = 'none';
+    return;
+  }
+
+  const personen = Array.from(
+    new Set(
+      items
+        .filter(p => normalize(p.type) === 'spa')
+        .map(p => getSpecValue(p, 'Aantal personen'))
+        .filter(Boolean)
+    )
+  ).sort((a, b) => a.localeCompare(b, 'nl'));
+
+  personenFilter.innerHTML =
+    '<option value="">Aantal personen</option>' +
+    personen.map(a => `<option value="${escapeHtml(a)}">${escapeHtml(a)}</option>`).join('');
+
+  personenFilter.style.display = '';
+}
 
 function productSearchBlob(p) {
   const specText = (Array.isArray(p.specs) ? p.specs : [])
@@ -128,10 +156,18 @@ function updateMeta() {
 function applyFilters() {
   const q = elSearch ? normalize(elSearch.value) : '';
   const type = elType ? elType.value : '';
+  const personen = personenFilter ? personenFilter.value : '';
   const sort = elSort ? elSort.value : 'relevance';
+
+  buildPersonenFilter(products);
 
   filtered = products.filter(p => {
     if (type && p.type !== type) return false;
+
+    if (personen) {
+      const productPersonen = getSpecValue(p, 'Aantal personen');
+      if (productPersonen !== personen) return false;
+    }
 
     if (q) return productSearchBlob(p).includes(q);
     return true;
@@ -204,6 +240,7 @@ function showError(msg) {
 async function init() {
   products = await loadProducts({ force: false });
   buildTypeFilter(products);
+  buildPersonenFilter(products);
   applyFilters();
 }
 
@@ -216,7 +253,9 @@ if (elType) {
   });
 }
 
-
+if (personenFilter) {
+  personenFilter.addEventListener('change', applyFilters);
+}
 
 if (elSort) elSort.addEventListener('change', applyFilters);
 
@@ -224,6 +263,7 @@ if (elClear) {
   elClear.addEventListener('click', () => {
     if (elSearch) elSearch.value = '';
     if (elType) elType.value = '';
+    if (personenFilter) personenFilter.value = '';
     if (elSort) elSort.value = 'relevance';
     applyFilters();
   });
