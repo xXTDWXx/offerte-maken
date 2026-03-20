@@ -490,7 +490,7 @@ function printOfferte() {
         * { box-sizing: border-box; }
 
         body {
-          margin: 0;
+          margin: 36px;
           font-family: Arial, Helvetica, sans-serif;
           color: #111827;
           background: #fff;
