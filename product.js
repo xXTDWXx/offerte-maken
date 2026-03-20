@@ -709,7 +709,7 @@ function printOfferte() {
             ${currentProduct.type ? `• ${escapeHtml(currentProduct.type)}` : ''}
           </div>
         </div>
-
+<br>
         <div class="offer-meta">
           <div class="offer-meta-row">
             <span class="label">Offertedatum</span>
