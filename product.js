@@ -703,17 +703,8 @@ function printOfferte() {
     </head>
     <body>
       <div class="header">
-        <div>${logoHtml}</div>
-        <div class="company">
-          <div><strong>${escapeHtml(COMPANY_NAME)}</strong></div>
-          ${contactParts ? `<div>${contactParts}</div>` : ''}
-        </div>
-      </div>
-
-      <div class="title-row">
-        <div class="title">
-          <h1>OFFERTE</h1>
-          <div class="subtitle">
+        <h1>OFFERTE</h1>
+        <div class="subtitle">
             ${escapeHtml(currentProduct.title || '')}
             ${currentProduct.type ? `• ${escapeHtml(currentProduct.type)}` : ''}
           </div>
