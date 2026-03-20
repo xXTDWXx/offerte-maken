@@ -464,36 +464,90 @@ label.opt .opt-price,
     display:block;
   }
   .category-menu {
-  background: #111;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
 }
 
 .category-menu-row {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
   align-items: center;
-  padding: 12px 0;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 14px 0;
 }
 
 .category-link {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.02em;
-  padding: 10px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
   border-radius: 999px;
-  transition: background 0.2s ease, color 0.2s ease;
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  color: #0f172a;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .category-link:hover {
-  background: rgba(255,255,255,0.12);
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.16);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+  transform: translateY(-1px);
+}
+
+.category-link:active {
+  transform: translateY(0);
 }
 
 .category-link.is-active {
-  background: #fff;
-  color: #111;
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+}
+
+.category-link:focus-visible {
+  outline: 2px solid #0f172a;
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .category-menu-row {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 12px 0;
+    scrollbar-width: none;
+  }
+
+  .category-menu-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-link {
+    flex: 0 0 auto;
+    font-size: 12px;
+    padding: 0 16px;
+    min-height: 40px;
+    white-space: nowrap;
+  }
 }
 }
