@@ -1828,6 +1828,7 @@
     {
       "id": "spa::vogue-majesty",
       "type": "spa",
+      "merk": "Vogue",
       "title": "Vogue Majesty",
       "url": "https://www.sunspabenelux.be/p/vogue-majesty/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/Majesty-Vogue-.webp",
@@ -2158,6 +2159,7 @@
       "id": "spa::myspa-boston",
       "type": "spa",
       "title": "MySpa Boston",
+      "merk": "Myspa",
       "url": "https://www.sunspabenelux.be/p/myspa-boston/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-boston-1.jpg",
       "price": 7250,
@@ -2284,6 +2286,7 @@
     {
       "id": "spa::myspa-nashville",
       "type": "spa",
+      "merk": "Myspa",
       "title": "MySpa Nashville",
       "url": "https://www.sunspabenelux.be/p/myspa-nashville/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-nashville-1.png",
@@ -2804,6 +2807,7 @@
     {
       "id": "spa::myspa-quebec",
       "type": "spa",
+      "merk": "Myspa",
       "title": "MySpa Quebec",
       "url": "https://www.sunspabenelux.be/p/myspa-quebec/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-quebec-jacuzzi-1.jpg",
@@ -2935,6 +2939,7 @@
     {
       "id": "spa::vogue-angora",
       "type": "spa",
+      "merk": "Vogue",
       "title": "Vogue Angora",
       "url": "https://www.sunspabenelux.be/p/vogue-angora/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Angora-1.webp",
@@ -3423,6 +3428,7 @@
     {
       "id": "spa::myspa-double-dutch",
       "type": "spa",
+      "merk": "Myspa",
       "title": "MySpa Double Dutch",
       "url": "https://www.sunspabenelux.be/p/myspa-double-dutch/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/myspa-double-dutch-jacuzzi-1.jpg",
@@ -3550,6 +3556,7 @@
     {
       "id": "spa::myspa-colorado",
       "type": "spa",
+      "merk": "Myspa",
       "title": "MySpa Colorado",
       "url": "https://www.sunspabenelux.be/p/myspa-colorado/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-colorado-jacuzzi-1.jpg",
@@ -3947,6 +3954,7 @@
     {
       "id": "spa::myspa-lake-city",
       "type": "spa",
+      "merk": "Myspa",
       "title": "MySpa Lake City",
       "url": "https://www.sunspabenelux.be/p/myspa-lake-city/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/myspa-lake-city-jacuzzi-1.jpg",
@@ -4078,6 +4086,7 @@
     {
       "id": "spa::myspa-houston",
       "type": "spa",
+      "merk": "Myspa",
       "title": "MySpa Houston",
       "url": "https://www.sunspabenelux.be/p/myspa-houston/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/myspa-houston-jacuzzi-1.jpg",
@@ -4205,6 +4214,7 @@
     {
       "id": "spa::vogue-classic",
       "type": "spa",
+      "merk": "Vogue",
       "title": "Vogue Classic",
       "url": "https://www.sunspabenelux.be/p/vogue-classic/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Classic-1.webp",
@@ -4308,6 +4318,7 @@
     {
       "id": "spa::legend-spa-hera",
       "type": "spa",
+      "merk": "Legend",
       "title": "Legend Spa Hera",
       "url": "https://www.sunspabenelux.be/p/legend-spa-hera/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/09/Hera-Gecko-top-1.jpg",
@@ -4709,6 +4720,7 @@
     {
       "id": "spa::vogue-dynasty",
       "type": "spa",
+      "merk": "Vogue",
       "title": "Vogue Dynasty",
       "url": "https://www.sunspabenelux.be/p/vogue-dynasty/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Dynasty-1.webp",
@@ -4812,6 +4824,7 @@
     {
       "id": "spa::legend-spa-apollo",
       "type": "spa",
+      "merk": "Legend",
       "title": "Legend Spa Apollo",
       "url": "https://www.sunspabenelux.be/p/legend-spa-apollo/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/LEG2000-1CL-Top-view-1024x1024-1.jpg",
@@ -4931,6 +4944,7 @@
     {
       "id": "spa::vogue-discovery",
       "type": "spa",
+      "merk": "Vogue",
       "title": "Vogue Discovery",
       "url": "https://www.sunspabenelux.be/p/vogue-discovery/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Discovery-1.webp",
@@ -5300,6 +5314,7 @@
     {
       "id": "spa::legend-spa-athene",
       "type": "spa",
+      "merk": "Legend",
       "title": "Legend Spa Athene",
       "url": "https://www.sunspabenelux.be/p/legend-spa-athene/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/legend-spa-athene-jacuzzi-1.jpg",
@@ -5419,6 +5434,7 @@
     {
       "id": "spa::myspa-grand-canyon",
       "type": "spa",
+      "merk": "Myspa",
       "title": "MySpa Grand Canyon",
       "url": "https://www.sunspabenelux.be/p/myspa-grand-canyon/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/myspa-grand-canyon-jacuzzi-1.jpg",
@@ -5677,6 +5693,7 @@
     {
       "id": "spa::myspa-seattle-xline",
       "type": "spa",
+      "merk": "Myspa",
       "title": "MySpa Seattle Xline",
       "url": "https://www.sunspabenelux.be/p/myspa-seattle/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/myspa-seattle-jacuzzi.png",
@@ -5812,6 +5829,7 @@
     {
       "id": "spa::legend-spa-aphrodite",
       "type": "spa",
+      "merk": "Legend",
       "title": "Legend Spa Aphrodite",
       "url": "https://www.sunspabenelux.be/p/legend-spa-aphrodite/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/LEG2100-2CL-Top-view-1024x1002-1.jpg",
@@ -6209,6 +6227,7 @@
     {
       "id": "spa::legend-spa-zeus",
       "type": "spa",
+      "merk": "Legend",
       "title": "Legend Spa Zeus",
       "url": "https://www.sunspabenelux.be/p/legend-spa-zeus/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/legend-spa-zeus-jacuzzi-1.jpg",
@@ -6479,6 +6498,7 @@
     {
       "id": "spa::legend-spa-poseidon",
       "type": "spa",
+      "merk": "Legend",
       "title": "Legend Spa Poseidon",
       "url": "https://www.sunspabenelux.be/p/legend-spa-poseidon/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/LEG2600-2CL-Top-view-1024x1012-1.jpg",
@@ -7181,6 +7201,7 @@
     {
       "id": "sauna::health-company-1",
       "type": "Infrarood",
+      "merk": "Health Company",
       "title": "Health Company 1",
       "url": "https://www.sunspabenelux.be/p/health-company-1/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/08/Health-Company-1.webp",
@@ -7370,6 +7391,7 @@
     {
       "id": "sauna::health-company-2",
       "type": "Infrarood",
+      "merk": "Health Company",
       "title": "Health Company 2",
       "url": "https://www.sunspabenelux.be/p/health-company-2/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/08/Health-Company-2-1.webp",
@@ -7441,6 +7463,7 @@
     {
       "id": "sauna::health-company-3",
       "type": "Infrarood",
+      "merk": "Health Company",
       "title": "Health Company 3",
       "url": "https://www.sunspabenelux.be/p/health-company-3/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2022/08/Health-Company-3.webp",
@@ -7745,6 +7768,7 @@
     {
       "id": "sauna::health-company-4",
       "type": "Infrarood",
+      "merk": "Health Company",
       "title": "Health Company 4",
       "url": "https://www.sunspabenelux.be/p/health-company-4/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2022/08/Health-Company-4.webp",
@@ -7828,6 +7852,7 @@
     {
       "id": "sauna::health-company-5-hoeksauna",
       "type": "Infrarood",
+      "merk": "Health Company",
       "title": "Health Company 5 hoeksauna",
       "url": "https://www.sunspabenelux.be/p/health-company-5-hoeksauna/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/08/Health-Company-5.webp",
@@ -8061,6 +8086,7 @@
     {
       "id": "sauna::health-company-6-hoeksauna",
       "type": "Infrarood",
+      "merk": "Health Company",
       "title": "Health Company 6 hoeksauna",
       "url": "https://www.sunspabenelux.be/p/health-company-6-hoeksauna/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/08/Health-Company-6.webp",
@@ -8405,6 +8431,7 @@
     {
       "id": "sauna::health-company-7",
       "type": "Infrarood",
+      "merk": "Health Company",
       "title": "Health Company 7",
       "url": "https://www.sunspabenelux.be/p/health-company-7/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2022/08/Health-Company-7.webp",
@@ -9151,6 +9178,7 @@
     {
       "id": "sauna::health-company-8-links",
       "type": "Infrarood",
+      "merk": "Health Company",
       "title": "Health Company 8 Links",
       "url": "https://www.sunspabenelux.be/p/health-company-8-links/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/12/Health-Company-8.webp",
@@ -9234,6 +9262,7 @@
     {
       "id": "sauna::health-company-8-rechts",
       "type": "Infrarood",
+      "merk": "Health Company",
       "title": "Health Company 8 Rechts",
       "url": "https://www.sunspabenelux.be/p/health-company-8-rechts/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/12/Health-Company-8-rechts-1.webp",
