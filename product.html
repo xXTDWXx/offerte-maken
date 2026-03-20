@@ -12,6 +12,62 @@
       gap:40px;
       align-items:start;
     }
+
+    .customer-box{
+      margin-top:20px;
+      padding:16px;
+      border:1px solid var(--border, #e5e7eb);
+      border-radius:14px;
+      background:#fff;
+    }
+
+    .customer-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .field-full{
+      grid-column:1 / -1;
+    }
+
+    .field label{
+      font-size:14px;
+      font-weight:600;
+      color:#374151;
+    }
+
+    .field input{
+      width:100%;
+      box-sizing:border-box;
+      padding:12px 14px;
+      border:1px solid #d1d5db;
+      border-radius:10px;
+      font-size:15px;
+      outline:none;
+      background:#fff;
+    }
+
+    .field input:focus{
+      border-color:#111827;
+    }
+
+    @media (max-width: 980px){
+      .modal-grid{
+        grid-template-columns:1fr;
+      }
+
+      .customer-grid{
+        grid-template-columns:1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -174,10 +230,37 @@
             <div class="small">Alle bedragen incl. btw & excl. kraankosten.</div>
           </div>
 
-          <div class="modal-actions" style="margin-top:20px">
+          <div class="customer-box">
+            <div class="panel-title" style="margin-bottom:4px;">Klantgegevens</div>
+            <div class="small">Deze gegevens komen automatisch op de offerte.</div>
+
+            <div class="customer-grid">
+              <div class="field">
+                <label for="customerName">Naam</label>
+                <input id="customerName" type="text" placeholder="Naam klant" />
+              </div>
+
+              <div class="field">
+                <label for="customerPhone">Gsm</label>
+                <input id="customerPhone" type="text" placeholder="+32 ..." />
+              </div>
+
+              <div class="field field-full">
+                <label for="customerStreet">Straat</label>
+                <input id="customerStreet" type="text" placeholder="Straat + huisnummer" />
+              </div>
+
+              <div class="field field-full">
+                <label for="customerCity">Gemeente</label>
+                <input id="customerCity" type="text" placeholder="Postcode + gemeente" />
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-actions" style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
             <a id="productUrl" class="btn btn-secondary" target="_blank" rel="noopener">Bekijk op website</a>
             <button id="productPrint" class="btn btn-secondary" type="button">Print productfiche</button>
-            <button onclick="printOfferte(product)">Print offerte</button>
+            <button id="offerPrint" class="btn btn-primary" type="button">Print offerte</button>
           </div>
         </div>
 
