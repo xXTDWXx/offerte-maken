@@ -719,10 +719,6 @@ function printOfferte() {
             <span class="label">Geldig tot</span>
             <strong>${formatDateBelgium(validUntil)}</strong>
           </div>
-          <div class="offer-meta-row">
-            <span class="label">Geldigheid</span>
-            <strong>14 dagen</strong>
-          </div>
         </div>
       </div>
 <br>
