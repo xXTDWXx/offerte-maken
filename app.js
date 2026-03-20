@@ -77,6 +77,8 @@ function getSpecValue(p, label) {
   return found?.value || '';
 }
 
+
+
 function productSearchBlob(p) {
   const specText = (Array.isArray(p.specs) ? p.specs : [])
     .map(s => `${s.label}: ${s.value}`)
@@ -126,18 +128,12 @@ function updateMeta() {
 function applyFilters() {
   const q = elSearch ? normalize(elSearch.value) : '';
   const type = elType ? elType.value : '';
-  const personen = personenFilter ? personenFilter.value : '';
   const sort = elSort ? elSort.value : 'relevance';
 
   buildPersonenFilter(products);
 
   filtered = products.filter(p => {
     if (type && p.type !== type) return false;
-
-    if (personen) {
-      const productPersonen = getSpecValue(p, 'Aantal personen');
-      if (productPersonen !== personen) return false;
-    }
 
     if (q) return productSearchBlob(p).includes(q);
     return true;
@@ -210,7 +206,6 @@ function showError(msg) {
 async function init() {
   products = await loadProducts({ force: false });
   buildTypeFilter(products);
-  buildPersonenFilter(products);
   applyFilters();
 }
 
@@ -223,9 +218,7 @@ if (elType) {
   });
 }
 
-if (personenFilter) {
-  personenFilter.addEventListener('change', applyFilters);
-}
+
 
 if (elSort) elSort.addEventListener('change', applyFilters);
 
@@ -233,7 +226,6 @@ if (elClear) {
   elClear.addEventListener('click', () => {
     if (elSearch) elSearch.value = '';
     if (elType) elType.value = '';
-    if (personenFilter) personenFilter.value = '';
     if (elSort) elSort.value = 'relevance';
     applyFilters();
   });
