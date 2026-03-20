@@ -95,13 +95,13 @@ function buildAfmetingFilter(items) {
     new Set(
       items
         .filter(p => normalize(p.type) === 'spa')
-        .map(p => getSpecValue(p, 'Afmetingen'))
+        .map(p => getSpecValue(p, 'Aantal personen'))
         .filter(Boolean)
     )
   ).sort((a, b) => a.localeCompare(b, 'nl'));
 
   afmetingFilter.innerHTML =
-    '<option value="">Alle afmetingen</option>' +
+    '<option value="">Aantal personen</option>' +
     afmetingen.map(a => `<option value="${escapeHtml(a)}">${escapeHtml(a)}</option>`).join('');
 
   afmetingFilter.style.display = '';
