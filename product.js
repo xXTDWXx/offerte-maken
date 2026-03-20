@@ -484,7 +484,7 @@ function printOfferte() {
       <style>
         @page {
           size: A4;
-          margin: 16mm;
+          margin: 25mm;
         }
 
         * { box-sizing: border-box; }
@@ -713,7 +713,7 @@ function printOfferte() {
 
       <div class="title-row">
         <div class="title">
-          <h1>OFFERT E</h1>
+          <h1>OFFERTE</h1>
           <div class="subtitle">
             ${escapeHtml(currentProduct.title || '')}
             ${currentProduct.type ? `• ${escapeHtml(currentProduct.type)}` : ''}
@@ -783,17 +783,10 @@ function printOfferte() {
         </div>
       </div>
 
-      <div class="section">
-        <h2>Specificaties</h2>
-        <table class="spec-table">
-          ${specsHtml}
-        </table>
-      </div>
-
       <div class="note-box">
         <strong>Opmerkingen</strong><br>
         • Deze offerte is 14 dagen geldig vanaf offertedatum.<br>
-        • Alle vermelde bedragen zijn inclusief btw.<br>
+        • Alle vermelde bedragen zijn mits goede doorgang & geen obstructies inclusief btw.<br>
         • Kraankosten zijn niet inbegrepen, tenzij anders schriftelijk vermeld.<br>
         • Afbeeldingen dienen ter illustratie en kunnen afwijken van het uiteindelijke product.
       </div>
