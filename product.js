@@ -703,7 +703,7 @@ function printOfferte() {
     </head>
     <body>
       <div class="header">
-        <h1>OFFERTE</h1>
+        <h1>OFFERTE</h1><br>
         <div class="subtitle">
             ${escapeHtml(currentProduct.title || '')}
             ${currentProduct.type ? `• ${escapeHtml(currentProduct.type)}` : ''}
@@ -725,7 +725,7 @@ function printOfferte() {
           </div>
         </div>
       </div>
-
+<br>
       <div class="content-grid">
         <div class="card">
           <div class="card-title">Klantgegevens</div>
