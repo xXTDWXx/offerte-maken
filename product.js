@@ -749,7 +749,6 @@ function printOfferte() {
           <div class="card-title">Product</div>
           <div class="customer-line"><strong>${escapeHtml(currentProduct.title || '')}</strong></div>
           <div class="customer-line">${escapeHtml(currentProduct.type || '')}</div>
-          ${productImageHtml}
         </div>
       </div>
 
