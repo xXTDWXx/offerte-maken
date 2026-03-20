@@ -1,13 +1,11 @@
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
-const OFFER_KEY = 'sunspa_offer_v1';
-const CUSTOMER_KEY = 'sunspa_customer_v1';
 
 /*
   Zet hier het pad naar jullie logo.
   Voorbeeld:
   const COMPANY_LOGO_URL = 'logo.png';
 */
-const COMPANY_LOGO_URL = 'sunspa-logo-liggend.svg';
+const COMPANY_LOGO_URL = 'logo.png';
 const COMPANY_NAME = 'Sunspa';
 const COMPANY_EMAIL = '';
 const COMPANY_PHONE = '';
@@ -33,6 +31,7 @@ const customerPhone = document.getElementById('customerPhone');
 
 let currentProduct = null;
 let optionHandlersWired = false;
+let customerHandlersWired = false;
 
 function $(id) {
   return document.getElementById(id);
@@ -50,12 +49,8 @@ function euro(n) {
   }
 }
 
-function normalize(s) {
-  return (s ?? '').toString().toLowerCase().trim();
-}
-
 function escapeHtml(s) {
-  return (s ?? '').toString()
+  return String(s ?? '')
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
@@ -64,19 +59,11 @@ function escapeHtml(s) {
 }
 
 function formatDateBelgium(date) {
-  try {
-    return new Intl.DateTimeFormat('nl-BE', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
-    }).format(date);
-  } catch {
-    const d = new Date(date);
-    const dd = String(d.getDate()).padStart(2, '0');
-    const mm = String(d.getMonth() + 1).padStart(2, '0');
-    const yyyy = d.getFullYear();
-    return `${dd}/${mm}/${yyyy}`;
-  }
+  return new Intl.DateTimeFormat('nl-BE', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  }).format(date);
 }
 
 function addDays(date, days) {
@@ -85,76 +72,8 @@ function addDays(date, days) {
   return d;
 }
 
-function getOffer() {
-  try {
-    return JSON.parse(localStorage.getItem(OFFER_KEY) || '[]');
-  } catch {
-    return [];
-  }
-}
-
-function setOffer(lines) {
-  localStorage.setItem(OFFER_KEY, JSON.stringify(lines));
-}
-
-function getCustomer() {
-  try {
-    return JSON.parse(localStorage.getItem(CUSTOMER_KEY) || '{}');
-  } catch {
-    return {};
-  }
-}
-
-function setCustomer(data) {
-  localStorage.setItem(CUSTOMER_KEY, JSON.stringify(data || {}));
-}
-
-function saveCustomerForm() {
-  setCustomer({
-    name: customerName?.value || '',
-    street: customerStreet?.value || '',
-    city: customerCity?.value || '',
-    phone: customerPhone?.value || ''
-  });
-}
-
-function hydrateCustomerForm() {
-  const data = getCustomer();
-
-  if (customerName) customerName.value = data.name || '';
-  if (customerStreet) customerStreet.value = data.street || '';
-  if (customerCity) customerCity.value = data.city || '';
-  if (customerPhone) customerPhone.value = data.phone || '';
-}
-
-function wireCustomerHandlers() {
-  [customerName, customerStreet, customerCity, customerPhone].forEach(el => {
-    if (!el) return;
-    el.addEventListener('input', saveCustomerForm);
-    el.addEventListener('change', saveCustomerForm);
-  });
-}
-
-const PRICES = {
-  install_jacuzzi: 695,
-  install_swimspa: 895,
-  install_barrel_sauna: 995,
-  install_infrared: 450,
-  install_sauna: 695,
-
-  coverlift_unit: 189,
-  maintenance_unit: 179,
-  swim_filterset_unit: 250,
-
-  barrel_wood_stove_unit: 1245,
-  barrel_electric_heater_unit: 495,
-  barrel_roof_shingles_unit: 399,
-  barrel_roof_heather_unit: 849,
-  barrel_roof_design_unit: 899
-};
-
 function typeNorm(type) {
-  return (type || '').toString().toLowerCase();
+  return String(type || '').toLowerCase();
 }
 
 function isSwimspa(type) {
@@ -177,8 +96,7 @@ function isSaunaPod(type) {
 }
 
 function isSauna(type) {
-  const t = typeNorm(type);
-  return t.includes('sauna');
+  return typeNorm(type).includes('sauna');
 }
 
 function isOutdoorSaunaWithRoofAndStove(type) {
@@ -189,6 +107,24 @@ function isJacuzzi(type) {
   const t = typeNorm(type);
   return !isSwimspa(t) && !isInfrared(t) && !isSauna(t);
 }
+
+const PRICES = {
+  install_jacuzzi: 695,
+  install_swimspa: 895,
+  install_barrel_sauna: 995,
+  install_infrared: 450,
+  install_sauna: 695,
+
+  coverlift_unit: 189,
+  maintenance_unit: 179,
+  swim_filterset_unit: 250,
+
+  barrel_wood_stove_unit: 1245,
+  barrel_electric_heater_unit: 495,
+  barrel_roof_shingles_unit: 399,
+  barrel_roof_heather_unit: 849,
+  barrel_roof_design_unit: 899
+};
 
 function installCost(type) {
   if (isSwimspa(type)) return PRICES.install_swimspa;
@@ -234,12 +170,30 @@ function showError(msg) {
   errorText.textContent = msg;
 }
 
+function getCustomerData() {
+  return {
+    name: customerName ? customerName.value.trim() : '',
+    street: customerStreet ? customerStreet.value.trim() : '',
+    city: customerCity ? customerCity.value.trim() : '',
+    phone: customerPhone ? customerPhone.value.trim() : ''
+  };
+}
+
+function wireCustomerHandlers() {
+  if (customerHandlersWired) return;
+  customerHandlersWired = true;
+
+  [customerName, customerStreet, customerCity, customerPhone].forEach(el => {
+    if (!el) return;
+    el.addEventListener('input', () => {});
+  });
+}
+
 function updateOptionUI() {
   if (!currentProduct) return;
 
   const type = currentProduct.type || '';
 
-  const optInstall = $('optInstall');
   const optInstallPrice = $('optInstallPrice');
 
   const optCoverTrapRow = $('optCoverTrapRow');
@@ -307,29 +261,16 @@ function updateOptionUI() {
   if (!barrel && optBarrelRoofHeather) optBarrelRoofHeather.checked = false;
   if (!barrel && optBarrelRoofDesign) optBarrelRoofDesign.checked = false;
 
-  const installSelected = !!optInstall?.checked;
-  const coverliftSelected = allowExtraOptions ? !!optCoverlift?.checked : false;
-  const coverlift2Selected = swim ? !!optCoverlift2?.checked : false;
-  const maintSelected = allowExtraOptions ? !!optMaint?.checked : false;
-  const swimFiltersetSelected = swim ? !!optSwimFilterset?.checked : false;
+  const coverliftLine = (allowExtraOptions && optCoverlift?.checked) ? PRICES.coverlift_unit : 0;
+  const coverlift2Line = (swim && optCoverlift2?.checked) ? PRICES.coverlift_unit : 0;
+  const maintLine = (allowExtraOptions && optMaint?.checked) ? PRICES.maintenance_unit : 0;
+  const swimFiltersetLine = (swim && optSwimFilterset?.checked) ? PRICES.swim_filterset_unit : 0;
 
-  const barrelWoodStoveSelected = barrel ? !!optBarrelWoodStove?.checked : false;
-  const barrelElectricHeaterSelected = barrel ? !!optBarrelElectricHeater?.checked : false;
-  const barrelRoofShinglesSelected = barrel ? !!optBarrelRoofShingles?.checked : false;
-  const barrelRoofHeatherSelected = barrel ? !!optBarrelRoofHeather?.checked : false;
-  const barrelRoofDesignSelected = barrel ? !!optBarrelRoofDesign?.checked : false;
-
-  const installLine = installSelected ? inst : 0;
-  const coverliftLine = coverliftSelected ? PRICES.coverlift_unit : 0;
-  const coverlift2Line = coverlift2Selected ? PRICES.coverlift_unit : 0;
-  const maintLine = maintSelected ? PRICES.maintenance_unit : 0;
-  const swimFiltersetLine = swimFiltersetSelected ? PRICES.swim_filterset_unit : 0;
-
-  const barrelWoodStoveLine = barrelWoodStoveSelected ? PRICES.barrel_wood_stove_unit : 0;
-  const barrelElectricHeaterLine = barrelElectricHeaterSelected ? PRICES.barrel_electric_heater_unit : 0;
-  const barrelRoofShinglesLine = barrelRoofShinglesSelected ? PRICES.barrel_roof_shingles_unit : 0;
-  const barrelRoofHeatherLine = barrelRoofHeatherSelected ? PRICES.barrel_roof_heather_unit : 0;
-  const barrelRoofDesignLine = barrelRoofDesignSelected ? PRICES.barrel_roof_design_unit : 0;
+  const barrelWoodStoveLine = (barrel && optBarrelWoodStove?.checked) ? PRICES.barrel_wood_stove_unit : 0;
+  const barrelElectricHeaterLine = (barrel && optBarrelElectricHeater?.checked) ? PRICES.barrel_electric_heater_unit : 0;
+  const barrelRoofShinglesLine = (barrel && optBarrelRoofShingles?.checked) ? PRICES.barrel_roof_shingles_unit : 0;
+  const barrelRoofHeatherLine = (barrel && optBarrelRoofHeather?.checked) ? PRICES.barrel_roof_heather_unit : 0;
+  const barrelRoofDesignLine = (barrel && optBarrelRoofDesign?.checked) ? PRICES.barrel_roof_design_unit : 0;
 
   if (optCoverliftTotal) optCoverliftTotal.textContent = euro(coverliftLine);
   if (optCoverlift2Total) optCoverlift2Total.textContent = euro(coverlift2Line);
@@ -343,7 +284,7 @@ function updateOptionUI() {
 
   const productPriceValue = Number(currentProduct.price || 0);
   const optionsTotal =
-    installLine +
+    inst +
     coverliftLine +
     coverlift2Line +
     maintLine +
@@ -456,7 +397,7 @@ function printProductFiche(p) {
   ).join('');
 
   const img = p.image
-    ? `<img src="${p.image}" style="width:100%;max-width:760px;border:1px solid #ddd;border-radius:12px;margin:10px 0">`
+    ? `<img src="${escapeHtml(p.image)}" style="width:100%;max-width:760px;border:1px solid #ddd;border-radius:12px;margin:10px 0">`
     : '';
 
   win.document.write(`
@@ -481,7 +422,7 @@ function printProductFiche(p) {
         </div>
         ${img}
         <table>${specs}</table>
-        <script>window.onload=()=>{window.print();}</script>
+        <script>window.onload=()=>window.print();</script>
       </body>
     </html>
   `);
@@ -492,38 +433,17 @@ function printProductFiche(p) {
 function printOfferte() {
   if (!currentProduct) return;
 
-  saveCustomerForm();
-
-  const customer = getCustomer();
+  const customer = getCustomerData();
   const createdAt = new Date();
   const validUntil = addDays(createdAt, 14);
-
   const lines = getSelectedOfferLines();
-  setOffer(lines);
 
-  const productPrice = Number(currentProduct.price || 0);
+  const productPriceValue = Number(currentProduct.price || 0);
   const optionsOnly = lines
     .filter(line => line.label !== (currentProduct.title || 'Product'))
     .reduce((sum, line) => sum + Number(line.price || 0), 0);
 
   const grandTotal = lines.reduce((sum, line) => sum + Number(line.price || 0), 0);
-
-  const visibleOptionLines = lines.filter(line =>
-    line.label !== (currentProduct.title || 'Product')
-  );
-
-  const specsHtml = (currentProduct.specs || []).length
-    ? (currentProduct.specs || []).map(s => `
-        <tr>
-          <td>${escapeHtml(s.label || '')}</td>
-          <td>${escapeHtml(s.value || '')}</td>
-        </tr>
-      `).join('')
-    : `
-      <tr>
-        <td colspan="2">Geen specificaties beschikbaar.</td>
-      </tr>
-    `;
 
   const offerRowsHtml = lines.map(line => `
     <tr>
@@ -532,16 +452,14 @@ function printOfferte() {
     </tr>
   `).join('');
 
-  const contactParts = [
-    COMPANY_PHONE ? `Tel: ${escapeHtml(COMPANY_PHONE)}` : '',
-    COMPANY_EMAIL ? `E-mail: ${escapeHtml(COMPANY_EMAIL)}` : '',
-    COMPANY_WEBSITE ? `${escapeHtml(COMPANY_WEBSITE)}` : ''
-  ].filter(Boolean).join(' &nbsp;•&nbsp; ');
-
-  const customerNameHtml = customer.name ? escapeHtml(customer.name) : '........................................';
-  const customerStreetHtml = customer.street ? escapeHtml(customer.street) : '........................................';
-  const customerCityHtml = customer.city ? escapeHtml(customer.city) : '........................................';
-  const customerPhoneHtml = customer.phone ? escapeHtml(customer.phone) : '........................................';
+  const specsHtml = (currentProduct.specs || []).length
+    ? (currentProduct.specs || []).map(s => `
+        <tr>
+          <td>${escapeHtml(s.label || '')}</td>
+          <td>${escapeHtml(s.value || '')}</td>
+        </tr>
+      `).join('')
+    : `<tr><td colspan="2">Geen specificaties beschikbaar.</td></tr>`;
 
   const logoHtml = COMPANY_LOGO_URL
     ? `<img src="${escapeHtml(COMPANY_LOGO_URL)}" alt="Logo" class="logo" onerror="this.style.display='none'">`
@@ -550,6 +468,12 @@ function printOfferte() {
   const productImageHtml = currentProduct.image
     ? `<img src="${escapeHtml(currentProduct.image)}" alt="" class="product-image" onerror="this.style.display='none'">`
     : '';
+
+  const contactParts = [
+    COMPANY_PHONE ? `Tel: ${escapeHtml(COMPANY_PHONE)}` : '',
+    COMPANY_EMAIL ? `E-mail: ${escapeHtml(COMPANY_EMAIL)}` : '',
+    COMPANY_WEBSITE ? `${escapeHtml(COMPANY_WEBSITE)}` : ''
+  ].filter(Boolean).join(' &nbsp;•&nbsp; ');
 
   const html = `
     <!doctype html>
@@ -563,340 +487,320 @@ function printOfferte() {
           margin: 16mm;
         }
 
-        * {
-          box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
           margin: 0;
           font-family: Arial, Helvetica, sans-serif;
           color: #111827;
-          background: #ffffff;
+          background: #fff;
           -webkit-print-color-adjust: exact;
           print-color-adjust: exact;
         }
 
-        .page {
-          width: 100%;
-        }
-
         .header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          gap: 24px;
-          padding-bottom: 20px;
-          border-bottom: 2px solid #111827;
+          display:flex;
+          justify-content:space-between;
+          align-items:flex-start;
+          gap:24px;
+          padding-bottom:20px;
+          border-bottom:2px solid #111827;
         }
 
         .logo {
-          max-width: 220px;
-          max-height: 90px;
-          object-fit: contain;
-          display: block;
+          max-width:220px;
+          max-height:90px;
+          object-fit:contain;
+          display:block;
         }
 
         .company {
-          text-align: right;
-          font-size: 12px;
-          line-height: 1.6;
-          color: #374151;
+          text-align:right;
+          font-size:12px;
+          line-height:1.6;
+          color:#374151;
         }
 
         .title-row {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          gap: 24px;
-          margin-top: 28px;
-          margin-bottom: 24px;
+          display:flex;
+          justify-content:space-between;
+          align-items:flex-start;
+          gap:24px;
+          margin-top:28px;
+          margin-bottom:24px;
         }
 
         .title h1 {
-          margin: 0;
-          font-size: 34px;
-          letter-spacing: 0.5px;
+          margin:0;
+          font-size:34px;
+          letter-spacing:.5px;
         }
 
         .title .subtitle {
-          margin-top: 8px;
-          color: #6b7280;
-          font-size: 14px;
+          margin-top:8px;
+          color:#6b7280;
+          font-size:14px;
         }
 
         .offer-meta {
-          min-width: 230px;
-          border: 1px solid #d1d5db;
-          border-radius: 12px;
-          overflow: hidden;
+          min-width:230px;
+          border:1px solid #d1d5db;
+          border-radius:12px;
+          overflow:hidden;
         }
 
         .offer-meta-row {
-          display: flex;
-          justify-content: space-between;
-          gap: 16px;
-          padding: 10px 14px;
-          border-bottom: 1px solid #e5e7eb;
-          font-size: 13px;
+          display:flex;
+          justify-content:space-between;
+          gap:16px;
+          padding:10px 14px;
+          border-bottom:1px solid #e5e7eb;
+          font-size:13px;
         }
 
-        .offer-meta-row:last-child {
-          border-bottom: 0;
-        }
+        .offer-meta-row:last-child { border-bottom:0; }
 
         .label {
-          color: #6b7280;
-          font-weight: 600;
+          color:#6b7280;
+          font-weight:600;
         }
 
         .content-grid {
-          display: grid;
-          grid-template-columns: 1.1fr 0.9fr;
-          gap: 22px;
-          margin-bottom: 24px;
+          display:grid;
+          grid-template-columns:1.1fr .9fr;
+          gap:22px;
+          margin-bottom:24px;
         }
 
         .card {
-          border: 1px solid #d1d5db;
-          border-radius: 14px;
-          padding: 18px;
+          border:1px solid #d1d5db;
+          border-radius:14px;
+          padding:18px;
         }
 
         .card-title {
-          font-size: 14px;
-          font-weight: 700;
-          color: #111827;
-          letter-spacing: 0.3px;
-          text-transform: uppercase;
-          margin-bottom: 12px;
+          font-size:14px;
+          font-weight:700;
+          color:#111827;
+          letter-spacing:.3px;
+          text-transform:uppercase;
+          margin-bottom:12px;
         }
 
         .customer-line {
-          margin-bottom: 8px;
-          font-size: 14px;
-          line-height: 1.5;
+          margin-bottom:8px;
+          font-size:14px;
+          line-height:1.5;
         }
 
         .product-image {
-          width: 100%;
-          max-height: 240px;
-          object-fit: cover;
-          border-radius: 12px;
-          border: 1px solid #e5e7eb;
-          margin-top: 12px;
+          width:100%;
+          max-height:240px;
+          object-fit:cover;
+          border-radius:12px;
+          border:1px solid #e5e7eb;
+          margin-top:12px;
         }
 
         table {
-          width: 100%;
-          border-collapse: collapse;
+          width:100%;
+          border-collapse:collapse;
         }
 
         .offer-table th {
-          text-align: left;
-          font-size: 12px;
-          text-transform: uppercase;
-          letter-spacing: 0.4px;
-          color: #6b7280;
-          padding: 12px 0;
-          border-bottom: 1px solid #d1d5db;
+          text-align:left;
+          font-size:12px;
+          text-transform:uppercase;
+          letter-spacing:.4px;
+          color:#6b7280;
+          padding:12px 0;
+          border-bottom:1px solid #d1d5db;
         }
 
         .offer-table td {
-          padding: 12px 0;
-          border-bottom: 1px solid #eceff3;
-          vertical-align: top;
-          font-size: 14px;
+          padding:12px 0;
+          border-bottom:1px solid #eceff3;
+          vertical-align:top;
+          font-size:14px;
         }
 
         .amount {
-          text-align: right;
-          white-space: nowrap;
-          font-weight: 600;
+          text-align:right;
+          white-space:nowrap;
+          font-weight:600;
         }
 
         .totals-box {
-          width: 360px;
-          margin-left: auto;
-          margin-top: 18px;
-          border: 1px solid #d1d5db;
-          border-radius: 14px;
-          overflow: hidden;
+          width:360px;
+          margin-left:auto;
+          margin-top:18px;
+          border:1px solid #d1d5db;
+          border-radius:14px;
+          overflow:hidden;
         }
 
         .totals-row {
-          display: flex;
-          justify-content: space-between;
-          gap: 16px;
-          padding: 12px 16px;
-          border-bottom: 1px solid #e5e7eb;
-          font-size: 14px;
+          display:flex;
+          justify-content:space-between;
+          gap:16px;
+          padding:12px 16px;
+          border-bottom:1px solid #e5e7eb;
+          font-size:14px;
         }
 
-        .totals-row:last-child {
-          border-bottom: 0;
-        }
+        .totals-row:last-child { border-bottom:0; }
 
         .totals-row.final {
-          background: #111827;
-          color: white;
-          font-size: 18px;
-          font-weight: 700;
+          background:#111827;
+          color:#fff;
+          font-size:18px;
+          font-weight:700;
         }
 
         .section {
-          margin-top: 26px;
+          margin-top:26px;
         }
 
         .section h2 {
-          margin: 0 0 12px 0;
-          font-size: 16px;
-          text-transform: uppercase;
-          letter-spacing: 0.4px;
+          margin:0 0 12px 0;
+          font-size:16px;
+          text-transform:uppercase;
+          letter-spacing:.4px;
         }
 
         .spec-table td {
-          padding: 10px 0;
-          border-bottom: 1px solid #eceff3;
-          font-size: 14px;
+          padding:10px 0;
+          border-bottom:1px solid #eceff3;
+          font-size:14px;
         }
 
         .spec-table td:first-child {
-          width: 36%;
-          font-weight: 700;
+          width:36%;
+          font-weight:700;
         }
 
         .note-box {
-          margin-top: 28px;
-          padding: 16px 18px;
-          border: 1px solid #d1d5db;
-          border-radius: 14px;
-          background: #f9fafb;
-          font-size: 13px;
-          line-height: 1.7;
-          color: #374151;
+          margin-top:28px;
+          padding:16px 18px;
+          border:1px solid #d1d5db;
+          border-radius:14px;
+          background:#f9fafb;
+          font-size:13px;
+          line-height:1.7;
+          color:#374151;
         }
 
         .footer {
-          margin-top: 26px;
-          padding-top: 16px;
-          border-top: 1px solid #d1d5db;
-          font-size: 12px;
-          color: #6b7280;
-          display: flex;
-          justify-content: space-between;
-          gap: 18px;
-        }
-
-        @media print {
-          .page {
-            padding: 0;
-          }
+          margin-top:26px;
+          padding-top:16px;
+          border-top:1px solid #d1d5db;
+          font-size:12px;
+          color:#6b7280;
+          display:flex;
+          justify-content:space-between;
+          gap:18px;
         }
       </style>
     </head>
     <body>
-      <div class="page">
-        <div class="header">
-          <div>
-            ${logoHtml}
-          </div>
-          <div class="company">
-            <div><strong>${escapeHtml(COMPANY_NAME)}</strong></div>
-            ${contactParts ? `<div>${contactParts}</div>` : ''}
-          </div>
+      <div class="header">
+        <div>${logoHtml}</div>
+        <div class="company">
+          <div><strong>${escapeHtml(COMPANY_NAME)}</strong></div>
+          ${contactParts ? `<div>${contactParts}</div>` : ''}
         </div>
+      </div>
 
-        <div class="title-row">
-          <div class="title">
-            <h1>OFFERT E</h1>
-            <div class="subtitle">
-              ${escapeHtml(currentProduct.title || '')}
-              ${currentProduct.type ? `• ${escapeHtml(currentProduct.type)}` : ''}
-            </div>
-          </div>
-
-          <div class="offer-meta">
-            <div class="offer-meta-row">
-              <span class="label">Offertedatum</span>
-              <strong>${formatDateBelgium(createdAt)}</strong>
-            </div>
-            <div class="offer-meta-row">
-              <span class="label">Geldig tot</span>
-              <strong>${formatDateBelgium(validUntil)}</strong>
-            </div>
-            <div class="offer-meta-row">
-              <span class="label">Geldigheid</span>
-              <strong>14 dagen</strong>
-            </div>
+      <div class="title-row">
+        <div class="title">
+          <h1>OFFERT E</h1>
+          <div class="subtitle">
+            ${escapeHtml(currentProduct.title || '')}
+            ${currentProduct.type ? `• ${escapeHtml(currentProduct.type)}` : ''}
           </div>
         </div>
 
-        <div class="content-grid">
-          <div class="card">
-            <div class="card-title">Klantgegevens</div>
-            <div class="customer-line"><strong>Naam:</strong> ${customerNameHtml}</div>
-            <div class="customer-line"><strong>Straat:</strong> ${customerStreetHtml}</div>
-            <div class="customer-line"><strong>Gemeente:</strong> ${customerCityHtml}</div>
-            <div class="customer-line"><strong>Gsm:</strong> ${customerPhoneHtml}</div>
+        <div class="offer-meta">
+          <div class="offer-meta-row">
+            <span class="label">Offertedatum</span>
+            <strong>${formatDateBelgium(createdAt)}</strong>
           </div>
-
-          <div class="card">
-            <div class="card-title">Product</div>
-            <div class="customer-line"><strong>${escapeHtml(currentProduct.title || '')}</strong></div>
-            <div class="customer-line">${escapeHtml(currentProduct.type || '')}</div>
-            ${productImageHtml}
+          <div class="offer-meta-row">
+            <span class="label">Geldig tot</span>
+            <strong>${formatDateBelgium(validUntil)}</strong>
+          </div>
+          <div class="offer-meta-row">
+            <span class="label">Geldigheid</span>
+            <strong>14 dagen</strong>
           </div>
         </div>
+      </div>
 
-        <div class="section">
-          <h2>Offertelijnen</h2>
-          <table class="offer-table">
-            <thead>
-              <tr>
-                <th>Omschrijving</th>
-                <th class="amount">Bedrag</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${offerRowsHtml}
-            </tbody>
-          </table>
+      <div class="content-grid">
+        <div class="card">
+          <div class="card-title">Klantgegevens</div>
+          <div class="customer-line"><strong>Naam:</strong> ${escapeHtml(customer.name || '')}</div>
+          <div class="customer-line"><strong>Straat:</strong> ${escapeHtml(customer.street || '')}</div>
+          <div class="customer-line"><strong>Gemeente:</strong> ${escapeHtml(customer.city || '')}</div>
+          <div class="customer-line"><strong>Gsm:</strong> ${escapeHtml(customer.phone || '')}</div>
+        </div>
 
-          <div class="totals-box">
-            <div class="totals-row">
-              <span>Product</span>
-              <strong>${euro(productPrice)}</strong>
-            </div>
-            <div class="totals-row">
-              <span>Opties + levering</span>
-              <strong>${euro(optionsOnly)}</strong>
-            </div>
-            <div class="totals-row final">
-              <span>Totaal incl. btw</span>
-              <strong>${euro(grandTotal)}</strong>
-            </div>
+        <div class="card">
+          <div class="card-title">Product</div>
+          <div class="customer-line"><strong>${escapeHtml(currentProduct.title || '')}</strong></div>
+          <div class="customer-line">${escapeHtml(currentProduct.type || '')}</div>
+          ${productImageHtml}
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Offertelijnen</h2>
+        <table class="offer-table">
+          <thead>
+            <tr>
+              <th>Omschrijving</th>
+              <th class="amount">Bedrag</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${offerRowsHtml}
+          </tbody>
+        </table>
+
+        <div class="totals-box">
+          <div class="totals-row">
+            <span>Product</span>
+            <strong>${euro(productPriceValue)}</strong>
+          </div>
+          <div class="totals-row">
+            <span>Opties + levering</span>
+            <strong>${euro(optionsOnly)}</strong>
+          </div>
+          <div class="totals-row final">
+            <span>Totaal incl. btw</span>
+            <strong>${euro(grandTotal)}</strong>
           </div>
         </div>
+      </div>
 
-        <div class="section">
-          <h2>Specificaties</h2>
-          <table class="spec-table">
-            ${specsHtml}
-          </table>
-        </div>
+      <div class="section">
+        <h2>Specificaties</h2>
+        <table class="spec-table">
+          ${specsHtml}
+        </table>
+      </div>
 
-        <div class="note-box">
-          <strong>Opmerkingen</strong><br>
-          • Deze offerte is 14 dagen geldig vanaf offertedatum.<br>
-          • Alle vermelde bedragen zijn inclusief btw.<br>
-          • Kraankosten zijn niet inbegrepen, tenzij anders schriftelijk vermeld.<br>
-          • Afbeeldingen dienen ter illustratie en kunnen afwijken van het uiteindelijke product.
-        </div>
+      <div class="note-box">
+        <strong>Opmerkingen</strong><br>
+        • Deze offerte is 14 dagen geldig vanaf offertedatum.<br>
+        • Alle vermelde bedragen zijn inclusief btw.<br>
+        • Kraankosten zijn niet inbegrepen, tenzij anders schriftelijk vermeld.<br>
+        • Afbeeldingen dienen ter illustratie en kunnen afwijken van het uiteindelijke product.
+      </div>
 
-        <div class="footer">
-          <div>${escapeHtml(COMPANY_NAME)}</div>
-          <div>Offerte automatisch gegenereerd via productpagina</div>
-        </div>
+      <div class="footer">
+        <div>${escapeHtml(COMPANY_NAME)}</div>
+        <div>Offerte automatisch gegenereerd via productpagina</div>
       </div>
 
       <script>
@@ -935,7 +839,9 @@ function renderProduct(p) {
     };
   }
 
-  if (productSpecs) productSpecs.innerHTML = specTableHtml(p);
+  if (productSpecs) {
+    productSpecs.innerHTML = specTableHtml(p);
+  }
 
   if (productUrl) {
     productUrl.href = p.url || '#';
@@ -943,11 +849,15 @@ function renderProduct(p) {
   }
 
   if (productPrint) {
-    productPrint.onclick = () => printProductFiche(p);
+    productPrint.addEventListener('click', function () {
+      printProductFiche(p);
+    });
   }
 
   if (offerPrint) {
-    offerPrint.onclick = () => printOfferte();
+    offerPrint.addEventListener('click', function () {
+      printOfferte();
+    });
   }
 
   if ($('optInstall')) $('optInstall').checked = true;
@@ -961,7 +871,6 @@ function renderProduct(p) {
   if ($('optBarrelRoofHeather')) $('optBarrelRoofHeather').checked = false;
   if ($('optBarrelRoofDesign')) $('optBarrelRoofDesign').checked = false;
 
-  hydrateCustomerForm();
   wireCustomerHandlers();
   wireOptionHandlers();
   updateOptionUI();
@@ -977,7 +886,7 @@ async function init() {
   }
 
   const products = await loadProducts();
-  const product = products.find(p => p.id === productId);
+  const product = products.find(p => String(p.id) === String(productId));
 
   if (!product) {
     showError('Product niet gevonden.');
