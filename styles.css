@@ -460,4 +460,7 @@ label.opt .opt-price,
   .spec-row {
     min-width: 0;
   }
+  .customer-grid{
+    display:block;
+  }
 }
