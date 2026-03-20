@@ -170,7 +170,7 @@ input:focus,select:focus{border-color:rgba(56,189,248,.55)}
   box-shadow: var(--shadow);
 }
 .card-imgwrap{position:relative;aspect-ratio: 4/3;background: rgba(255,255,255,.03)}
-.card-img{width:100%;height:324px;object-fit:cover;display:block;background:white;}
+.card-img{width:100%;height:100%;object-fit:cover;display:block;background:white;}
 .badge{
   position:absolute;left:12px;top:12px;
   background: rgba(0,0,0,.45);
