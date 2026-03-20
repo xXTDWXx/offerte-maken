@@ -744,16 +744,9 @@ function printOfferte() {
           <div class="customer-line"><strong>Gemeente:</strong> ${escapeHtml(customer.city || '')}</div>
           <div class="customer-line"><strong>Gsm:</strong> ${escapeHtml(customer.phone || '')}</div>
         </div>
-
-        <div class="card">
-          <div class="card-title">Product</div>
-          <div class="customer-line"><strong>${escapeHtml(currentProduct.title || '')}</strong></div>
-          <div class="customer-line">${escapeHtml(currentProduct.type || '')}</div>
-        </div>
       </div>
 
       <div class="section">
-        <h2>Offertelijnen</h2>
         <table class="offer-table">
           <thead>
             <tr>
