@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <title>Sunspa Categorie</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand">
+        <div class="brand-title">Sunspa Catalogus</div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="category-menu">
+    <div class="container category-menu-row">
+      <a href="category.html?type=Spa's" class="category-link" data-category-link="Spa's">SPA'S</a>
+      <a href="category.html?type=Zwemspa's" class="category-link" data-category-link="Zwemspa's">ZWEMSPA'S</a>
+      <a href="category.html?type=Barrels" class="category-link" data-category-link="Barrels">BARRELS</a>
+      <a href="category.html?type=Infrarood sauna" class="category-link" data-category-link="Infrarood sauna">INFRAROOD SAUNA</a>
+      <a href="category.html?type=Finse sauna" class="category-link" data-category-link="Finse sauna">FINSE SAUNA</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="panel">
+      <div class="panel-row" style="justify-content:space-between; align-items:center;">
+        <div>
+          <div class="panel-title" id="pageTitle">Categorie</div>
+          <div class="small" id="resultMeta">—</div>
+        </div>
+        <a href="index.html" class="btn">← Terug naar overzicht</a>
+      </div>
+    </section>
+
+    <section class="grid" id="grid"></section>
+
+    <section class="panel" id="errorBox" style="display:none">
+      <div class="panel-title">Fout bij laden</div>
+      <div class="small" id="errorText"></div>
+    </section>
+  </main>
+
+  <template id="cardTpl">
+    <article class="card">
+      <button class="card-link" type="button" data-open>
+        <div class="card-imgwrap">
+          <img class="card-img" alt="" loading="lazy" />
+          <div class="badge" data-badge></div>
+        </div>
+
+        <div class="card-body">
+          <div class="card-title" data-title></div>
+          <div class="card-price" data-price></div>
+          <div class="card-specs" data-specs></div>
+          <div class="card-cta">👉 Bekijk details</div>
+        </div>
+      </button>
+    </article>
+  </template>
+
+  <script src="category.js"></script>
+</body>
+</html>
