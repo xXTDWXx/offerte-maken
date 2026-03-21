@@ -63,15 +63,7 @@ function getMerk(p) {
 }
 
 function topSpecs(p) {
-  const want = [
-    'Merk',
-    'Afmetingen',
-    'Aantal personen',
-    'Aantal zitplaatsen',
-    'Aantal ligplaatsen',
-    'Aantal jets'
-  ];
-
+  const want = ['Merk', 'Afmetingen', 'Aantal personen', 'Aantal zitplaatsen', 'Aantal ligplaatsen', 'Aantal jets'];
   const picked = [];
 
   for (const key of want) {
@@ -160,12 +152,25 @@ function markActiveMenu(type) {
   });
 }
 
+function setElementVisible(el, visible) {
+  if (!el) return;
+  el.style.display = visible ? '' : 'none';
+}
+
 function setupFilterVisibility() {
   const currentType = getTypeFromUrl();
   const showSpaFilters = isSpaCategory(currentType);
 
-  if (!showSpaFilters && filtersPanel) {
-    filtersPanel.remove();
+  const brandField = brandFilter?.closest('.field');
+  const searchField = searchInput?.closest('.field');
+  const sortField = sortFilter?.closest('.field');
+
+  setElementVisible(brandField, showSpaFilters);
+  setElementVisible(searchField, showSpaFilters);
+  setElementVisible(sortField, showSpaFilters);
+
+  if (filtersPanel) {
+    setElementVisible(filtersPanel, showSpaFilters);
   }
 }
 
@@ -259,7 +264,6 @@ function renderGrid() {
   if (!elGrid || !tpl) return;
 
   elGrid.innerHTML = '';
-
   const frag = document.createDocumentFragment();
 
   for (const p of filtered) {
