@@ -107,11 +107,12 @@ function getTypeFromUrl() {
 
 function getCategoryTitle(type) {
   const map = {
-    Spa: "SPA'S",
-    Zwemspa: "ZWEMSPA'S",
-    Barrel: "BARRELS",
-    Infrarood: "INFRAROOD SAUNA",
-    Finse: "FINSE SAUNA"
+    Spa: "SPA",
+    Zwemspa: "ZWEMSPA",
+    Barrel: "BARRELSAUNA",
+    Infrarood: "INFRAROOD",
+    Finse: "SAUNA",
+    Pod: "Sauna Pod"
   };
 
   return map[type] || type || 'Categorie';
