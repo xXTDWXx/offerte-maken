@@ -112,7 +112,8 @@ function getCategoryTitle(type) {
     Barrel: "BARRELSAUNA",
     Infrarood: "INFRAROOD",
     Finse: "SAUNA",
-    Pod: "Sauna Pod"
+    Pod: "SAUNA POD",
+    Combi: "COMBI SAUNA"
   };
 
   return map[type] || type || 'Categorie';
