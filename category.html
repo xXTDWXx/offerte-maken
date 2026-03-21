@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sunspa Categorie</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -12,56 +12,51 @@
     <div class="container header-row">
       <div class="brand">
         <div class="brand-title">Sunspa Catalogus</div>
-
       </div>
     </div>
   </header>
 
   <nav class="category-menu">
     <div class="container category-menu-row">
-      <a href="category.html?type=Spa" class="category-link">SPA</a>
-      <a href="category.html?type=Zwemspa" class="category-link">ZWEMSPA</a>
-      <a href="category.html?type=Barrelsauna" class="category-link">BARRELSAUNA</a>
-      <a href="category.html?type=Infrarood" class="category-link">INFRAROOD</a>
-      <a href="category.html?type=combi sauna" class="category-link">COMBI SAUNA</a>
-      <a href="category.html?type=sauna" class="category-link">FINSE SAUNA</a>
-      <a href="category.html?type=sauna pod" class="category-link">SAUNA POD</a>
+      <a href="category.html?type=Spa" class="category-link" data-category-link="Spa">SPA</a>
+      <a href="category.html?type=Zwemspa" class="category-link" data-category-link="Zwemspa">ZWEMSPA</a>
+      <a href="category.html?type=Barrelsauna" class="category-link" data-category-link="Barrelsauna">BARRELSAUNA</a>
+      <a href="category.html?type=Infrarood" class="category-link" data-category-link="Infrarood">INFRAROOD</a>
+      <a href="category.html?type=combi sauna" class="category-link" data-category-link="combi sauna">COMBI SAUNA</a>
+      <a href="category.html?type=sauna" class="category-link" data-category-link="sauna">FINSE SAUNA</a>
+      <a href="category.html?type=sauna pod" class="category-link" data-category-link="sauna pod">SAUNA POD</a>
       <a href="stroom.html" class="category-link">STROOMVEREISTEN</a>
     </div>
   </nav>
-
-  
 
   <main class="container">
     <section class="panel">
       <div class="panel-row" style="justify-content:space-between; align-items:center;">
         <div>
           <div class="panel-title" id="pageTitle">Categorie</div>
-          <div class="small" id="resultMeta">—</div>
+          <div class="small" id="resultMetaTop">—</div>
         </div>
         <a href="index.html" class="btn">← Terug naar overzicht</a>
       </div>
+
+      <div class="panel-row" id="filtersPanel" style="gap:16px; flex-wrap:wrap; align-items:end;">
         <div class="field">
           <label for="search">Zoeken</label>
           <input id="search" type="search" placeholder="Zoek op titel, type, specificaties…" />
         </div>
 
-
-
-
-
         <div class="field">
-  <label for="brandFilter">Merk</label>
-  <select id="brandFilter">
-    <option value="">Alle merken</option>
-    <option value="Sunspa">Sunspa</option>
-    <option value="Myspa">Myspa</option>
-    <option value="Vogue">Vogue</option>
-    <option value="Legend">Legend</option>
-    <option value="Fox">Fox</option>
-    <option value="Elite">Elite</option>
-  </select>
-</div>
+          <label for="brandFilter">Merk</label>
+          <select id="brandFilter">
+            <option value="">Alle merken</option>
+            <option value="Sunspa">Sunspa</option>
+            <option value="Myspa">Myspa</option>
+            <option value="Vogue">Vogue</option>
+            <option value="Legend">Legend</option>
+            <option value="Fox">Fox</option>
+            <option value="Elite">Elite</option>
+          </select>
+        </div>
 
         <div class="field">
           <label for="sort">Sorteren</label>
@@ -70,32 +65,22 @@
             <option value="priceAsc">Prijs (laag → hoog)</option>
             <option value="priceDesc">Prijs (hoog → laag)</option>
             <option value="titleAsc">Titel (A → Z)</option>
-
-
-
           </select>
         </div>
 
         <div class="field">
           <label>&nbsp;</label>
           <button id="btnClear" class="btn" type="button">Wissen</button>
-
-
-
-
-
         </div>
+      </div>
 
       <div class="panel-row panel-row-2">
         <div class="chips" id="activeChips"></div>
-        <div class="small" id="resultMeta">—</div>
+        <div class="small" id="resultMetaBottom">—</div>
       </div>
     </section>
 
     <section class="grid" id="grid"></section>
-
-
-
 
     <section class="panel" id="errorBox" style="display:none">
       <div class="panel-title">Fout bij laden</div>
