@@ -1,96 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Categorie</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <title>Sunspa Categorie</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <header class="header">
     <div class="container header-row">
-      <div>
-        <div class="brand-title">SUNSPA BENELUX</div>
-        <div class="brand-sub">Categorie overzicht</div>
+      <div class="brand">
+        <div class="brand-title">Sunspa Catalogus</div>
+
       </div>
     </div>
   </header>
 
   <nav class="category-menu">
     <div class="container category-menu-row">
-      <a href="category.html?type=Spa" class="category-link" data-category-link="Spa">Spa</a>
-      <a href="category.html?type=Zwemspa" class="category-link" data-category-link="Zwemspa">Zwemspa</a>
-      <a href="category.html?type=Barrel" class="category-link" data-category-link="Barrel">Barrelsauna</a>
-      <a href="category.html?type=Infrarood" class="category-link" data-category-link="Infrarood">Infrarood</a>
-      <a href="category.html?type=Finse" class="category-link" data-category-link="Finse">Sauna</a>
-      <a href="category.html?type=Pod" class="category-link" data-category-link="Pod">Sauna Pod</a>
-      <a href="category.html?type=Combi" class="category-link" data-category-link="Combi">Combi Sauna</a>
+      <a href="category.html?type=Spa" class="category-link">SPA</a>
+      <a href="category.html?type=Zwemspa" class="category-link">ZWEMSPA</a>
+      <a href="category.html?type=Barrelsauna" class="category-link">BARRELSAUNA</a>
+      <a href="category.html?type=Infrarood" class="category-link">INFRAROOD</a>
+      <a href="category.html?type=combi sauna" class="category-link">COMBI SAUNA</a>
+      <a href="category.html?type=sauna" class="category-link">FINSE SAUNA</a>
+      <a href="category.html?type=sauna pod" class="category-link">SAUNA POD</a>
     </div>
   </nav>
 
+  
+
   <main class="container">
     <section class="panel">
-      <div class="panel-row panel-row-2">
+      <div class="panel-row" style="justify-content:space-between; align-items:center;">
         <div>
           <div class="panel-title" id="pageTitle">Categorie</div>
-          <div class="small" id="resultMeta">0 producten</div>
+          <div class="small" id="resultMeta">—</div>
         </div>
+        <a href="index.html" class="btn">← Terug naar overzicht</a>
       </div>
-    </section>
-
-    <!-- Filters: alleen voor Spa -->
-    <section class="panel" id="filtersPanel">
-      <div class="panel-title">Filters</div>
-      <div class="panel-row">
         <div class="field">
-          <label for="searchInput">Zoeken</label>
-          <input
-            id="searchInput"
-            type="text"
-            placeholder="Zoek op naam, merk, afmetingen..."
-          />
+          <label for="search">Zoeken</label>
+          <input id="search" type="search" placeholder="Zoek op titel, type, specificaties…" />
         </div>
 
+
+
+
+
         <div class="field">
-          <label for="brandFilter">Merk</label>
-          <select id="brandFilter">
-            <option value="">Alle merken</option>
-            <option value="Sunspa">Sunspa</option>
-            <option value="Myspa">Myspa</option>
-            <option value="Vogue">Vogue</option>
-            <option value="Legend">Legend</option>
-            <option value="Fox">Fox</option>
-            <option value="Elite">Elite</option>
+  <label for="brandFilter">Merk</label>
+  <select id="brandFilter">
+    <option value="">Alle merken</option>
+    <option value="Sunspa">Sunspa</option>
+    <option value="Myspa">Myspa</option>
+    <option value="Vogue">Vogue</option>
+    <option value="Legend">Legend</option>
+    <option value="Fox">Fox</option>
+    <option value="Elite">Elite</option>
+  </select>
+</div>
+
+        <div class="field">
+          <label for="sort">Sorteren</label>
+          <select id="sort">
+            <option value="relevance">Relevantie</option>
+            <option value="priceAsc">Prijs (laag → hoog)</option>
+            <option value="priceDesc">Prijs (hoog → laag)</option>
+            <option value="titleAsc">Titel (A → Z)</option>
+
+
+
           </select>
         </div>
 
         <div class="field">
-          <label for="sortFilter">Sorteer</label>
-          <select id="sortFilter">
-            <option value="">Standaard</option>
-            <option value="price-asc">Prijs laag → hoog</option>
-            <option value="price-desc">Prijs hoog → laag</option>
-            <option value="title-asc">Naam A → Z</option>
-          </select>
+          <label>&nbsp;</label>
+          <button id="btnClear" class="btn" type="button">Wissen</button>
+
+
+
+
+
         </div>
+
+      <div class="panel-row panel-row-2">
+        <div class="chips" id="activeChips"></div>
+        <div class="small" id="resultMeta">—</div>
       </div>
     </section>
 
-    <section class="panel" id="errorBox" style="display:none;">
-      <div class="panel-title">Fout</div>
-      <div id="errorText"></div>
-    </section>
+    <section class="grid" id="grid"></section>
 
-    <section>
-      <div class="grid" id="grid"></div>
+
+
+
+    <section class="panel" id="errorBox" style="display:none">
+      <div class="panel-title">Fout bij laden</div>
+      <div class="small" id="errorText"></div>
+      <div class="small" style="margin-top:8px">
+        Controleer of <code>products.json</code> bestaat en bereikbaar is.
+      </div>
     </section>
   </main>
 
   <template id="cardTpl">
     <article class="card">
-      <button class="card-link" data-open>
+      <button class="card-link" type="button" data-open>
         <div class="card-imgwrap">
-          <img class="card-img" src="" alt="" />
+          <img class="card-img" alt="" loading="lazy" />
           <div class="badge" data-badge></div>
         </div>
 
@@ -98,7 +117,7 @@
           <div class="card-title" data-title></div>
           <div class="card-price" data-price></div>
           <div class="card-specs" data-specs></div>
-          <div class="card-cta">Bekijk product</div>
+          <div class="card-cta">👉 Bekijk details</div>
         </div>
       </button>
     </article>
