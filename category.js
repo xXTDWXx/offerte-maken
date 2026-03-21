@@ -171,48 +171,51 @@ function setElementVisible(el, visible) {
 
 function setupFilterVisibility() {
   const currentType = getTypeFromUrl();
-  const showSpaFilters = isSpaCategory(currentType);
+  const showBrandFilter = isSpaCategory(currentType);
 
-  setElementVisible(filtersPanel, showSpaFilters);
+  setElementVisible(filtersPanel, true);
+
+  const brandField = brandFilter?.closest('.field');
+  setElementVisible(brandField, showBrandFilter);
 }
 
 function loadFiltersFromUrl() {
   const currentType = getTypeFromUrl();
-
-  if (!isSpaCategory(currentType)) {
-    if (brandFilter) brandFilter.value = '';
-    if (searchInput) searchInput.value = '';
-    if (sortFilter) sortFilter.value = 'relevance';
-    return;
-  }
+  const showBrandFilter = isSpaCategory(currentType);
 
   const brand = getBrandFromUrl();
   const search = getSearchFromUrl();
   const sort = getSortFromUrl();
 
-  if (brandFilter) brandFilter.value = brand;
-  if (searchInput) searchInput.value = search;
-  if (sortFilter) sortFilter.value = sort;
+  if (brandFilter) {
+    brandFilter.value = showBrandFilter ? brand : '';
+  }
+
+  if (searchInput) {
+    searchInput.value = search;
+  }
+
+  if (sortFilter) {
+    sortFilter.value = sort;
+  }
 }
 
 function updateUrlFromFilters() {
   const params = new URLSearchParams();
   const currentType = getTypeFromUrl();
-  const showSpaFilters = isSpaCategory(currentType);
+  const showBrandFilter = isSpaCategory(currentType);
 
   if (currentType) {
     params.set('type', currentType);
   }
 
-  if (showSpaFilters) {
-    const brand = brandFilter?.value || '';
-    const search = searchInput?.value || '';
-    const sort = sortFilter?.value || 'relevance';
+  const brand = showBrandFilter ? (brandFilter?.value || '') : '';
+  const search = searchInput?.value || '';
+  const sort = sortFilter?.value || 'relevance';
 
-    if (brand) params.set('merk', brand);
-    if (search) params.set('zoek', search);
-    if (sort && sort !== 'relevance') params.set('sort', sort);
-  }
+  if (brand) params.set('merk', brand);
+  if (search) params.set('zoek', search);
+  if (sort && sort !== 'relevance') params.set('sort', sort);
 
   const query = params.toString();
   const newUrl = query
@@ -223,12 +226,6 @@ function updateUrlFromFilters() {
 }
 
 function sortProducts(items) {
-  const currentType = getTypeFromUrl();
-
-  if (!isSpaCategory(currentType)) {
-    return items;
-  }
-
   const sort = sortFilter?.value || 'relevance';
 
   if (sort === 'priceAsc') {
@@ -306,7 +303,7 @@ function updateChips() {
   if (!activeChips) return;
 
   const currentType = getTypeFromUrl();
-  const showSpaFilters = isSpaCategory(currentType);
+  const showBrandFilter = isSpaCategory(currentType);
 
   const chips = [];
 
@@ -314,28 +311,26 @@ function updateChips() {
     chips.push(`<span class="chip">Categorie: ${escapeHtml(getCategoryTitle(currentType))}</span>`);
   }
 
-  if (showSpaFilters) {
-    const brand = brandFilter?.value || '';
-    const search = searchInput?.value || '';
-    const sort = sortFilter?.value || 'relevance';
+  const brand = showBrandFilter ? (brandFilter?.value || '') : '';
+  const search = searchInput?.value || '';
+  const sort = sortFilter?.value || 'relevance';
 
-    if (brand) {
-      chips.push(`<span class="chip">Merk: ${escapeHtml(brand)}</span>`);
-    }
+  if (brand) {
+    chips.push(`<span class="chip">Merk: ${escapeHtml(brand)}</span>`);
+  }
 
-    if (search) {
-      chips.push(`<span class="chip">Zoek: ${escapeHtml(search)}</span>`);
-    }
+  if (search) {
+    chips.push(`<span class="chip">Zoek: ${escapeHtml(search)}</span>`);
+  }
 
-    if (sort && sort !== 'relevance') {
-      const sortLabels = {
-        priceAsc: 'Prijs laag → hoog',
-        priceDesc: 'Prijs hoog → laag',
-        titleAsc: 'Titel A → Z'
-      };
+  if (sort && sort !== 'relevance') {
+    const sortLabels = {
+      priceAsc: 'Prijs laag → hoog',
+      priceDesc: 'Prijs hoog → laag',
+      titleAsc: 'Titel A → Z'
+    };
 
-      chips.push(`<span class="chip">Sortering: ${escapeHtml(sortLabels[sort] || sort)}</span>`);
-    }
+    chips.push(`<span class="chip">Sortering: ${escapeHtml(sortLabels[sort] || sort)}</span>`);
   }
 
   activeChips.innerHTML = chips.join('');
@@ -343,10 +338,10 @@ function updateChips() {
 
 function filterProducts() {
   const currentType = getTypeFromUrl();
-  const showSpaFilters = isSpaCategory(currentType);
+  const showBrandFilter = isSpaCategory(currentType);
 
-  const selectedBrand = showSpaFilters ? (brandFilter?.value || '') : '';
-  const searchValue = showSpaFilters ? normalize(searchInput?.value || '') : '';
+  const selectedBrand = showBrandFilter ? (brandFilter?.value || '') : '';
+  const searchValue = normalize(searchInput?.value || '');
 
   filtered = products.filter(p => {
     const matchType = !currentType || normalize(p.type) === normalize(currentType);
@@ -379,9 +374,15 @@ function filterProducts() {
 }
 
 function clearFilters() {
-  if (brandFilter) brandFilter.value = '';
+  const currentType = getTypeFromUrl();
+
+  if (brandFilter && isSpaCategory(currentType)) {
+    brandFilter.value = '';
+  }
+
   if (searchInput) searchInput.value = '';
   if (sortFilter) sortFilter.value = 'relevance';
+
   filterProducts();
 }
 
