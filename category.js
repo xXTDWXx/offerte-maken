@@ -2,15 +2,19 @@ const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
 
 const elGrid = document.getElementById('grid');
 const tpl = document.getElementById('cardTpl');
-const resultMeta = document.getElementById('resultMeta');
+
+const resultMetaTop = document.getElementById('resultMetaTop');
+const resultMetaBottom = document.getElementById('resultMetaBottom');
 const pageTitle = document.getElementById('pageTitle');
 const errorBox = document.getElementById('errorBox');
 const errorText = document.getElementById('errorText');
 
 const brandFilter = document.getElementById('brandFilter');
-const searchInput = document.getElementById('searchInput');
-const sortFilter = document.getElementById('sortFilter');
+const searchInput = document.getElementById('search');
+const sortFilter = document.getElementById('sort');
 const filtersPanel = document.getElementById('filtersPanel');
+const btnClear = document.getElementById('btnClear');
+const activeChips = document.getElementById('activeChips');
 
 let products = [];
 let filtered = [];
@@ -63,7 +67,15 @@ function getMerk(p) {
 }
 
 function topSpecs(p) {
-  const want = ['Merk', 'Afmetingen', 'Aantal personen', 'Aantal zitplaatsen', 'Aantal ligplaatsen', 'Aantal jets'];
+  const want = [
+    'Merk',
+    'Afmetingen',
+    'Aantal personen',
+    'Aantal zitplaatsen',
+    'Aantal ligplaatsen',
+    'Aantal jets'
+  ];
+
   const picked = [];
 
   for (const key of want) {
@@ -122,7 +134,7 @@ function getSearchFromUrl() {
 }
 
 function getSortFromUrl() {
-  return getParams().get('sort') || '';
+  return getParams().get('sort') || 'relevance';
 }
 
 function isSpaCategory(type) {
@@ -133,11 +145,11 @@ function getCategoryTitle(type) {
   const map = {
     Spa: 'SPA',
     Zwemspa: 'ZWEMSPA',
-    Barrel: 'BARRELSAUNA',
+    Barrelsauna: 'BARRELSAUNA',
     Infrarood: 'INFRAROOD',
-    Finse: 'SAUNA',
-    Pod: 'SAUNA POD',
-    Combi: 'COMBI SAUNA'
+    'combi sauna': 'COMBI SAUNA',
+    sauna: 'FINSE SAUNA',
+    'sauna pod': 'SAUNA POD'
   };
 
   return map[type] || type || 'Categorie';
@@ -161,17 +173,7 @@ function setupFilterVisibility() {
   const currentType = getTypeFromUrl();
   const showSpaFilters = isSpaCategory(currentType);
 
-  const brandField = brandFilter?.closest('.field');
-  const searchField = searchInput?.closest('.field');
-  const sortField = sortFilter?.closest('.field');
-
-  setElementVisible(brandField, showSpaFilters);
-  setElementVisible(searchField, showSpaFilters);
-  setElementVisible(sortField, showSpaFilters);
-
-  if (filtersPanel) {
-    setElementVisible(filtersPanel, showSpaFilters);
-  }
+  setElementVisible(filtersPanel, showSpaFilters);
 }
 
 function loadFiltersFromUrl() {
@@ -180,7 +182,7 @@ function loadFiltersFromUrl() {
   if (!isSpaCategory(currentType)) {
     if (brandFilter) brandFilter.value = '';
     if (searchInput) searchInput.value = '';
-    if (sortFilter) sortFilter.value = '';
+    if (sortFilter) sortFilter.value = 'relevance';
     return;
   }
 
@@ -194,42 +196,22 @@ function loadFiltersFromUrl() {
 }
 
 function updateUrlFromFilters() {
-  const params = getParams();
+  const params = new URLSearchParams();
   const currentType = getTypeFromUrl();
   const showSpaFilters = isSpaCategory(currentType);
 
   if (currentType) {
     params.set('type', currentType);
-  } else {
-    params.delete('type');
   }
 
   if (showSpaFilters) {
     const brand = brandFilter?.value || '';
     const search = searchInput?.value || '';
-    const sort = sortFilter?.value || '';
+    const sort = sortFilter?.value || 'relevance';
 
-    if (brand) {
-      params.set('merk', brand);
-    } else {
-      params.delete('merk');
-    }
-
-    if (search) {
-      params.set('zoek', search);
-    } else {
-      params.delete('zoek');
-    }
-
-    if (sort) {
-      params.set('sort', sort);
-    } else {
-      params.delete('sort');
-    }
-  } else {
-    params.delete('merk');
-    params.delete('zoek');
-    params.delete('sort');
+    if (brand) params.set('merk', brand);
+    if (search) params.set('zoek', search);
+    if (sort && sort !== 'relevance') params.set('sort', sort);
   }
 
   const query = params.toString();
@@ -247,13 +229,13 @@ function sortProducts(items) {
     return items;
   }
 
-  const sort = sortFilter?.value || '';
+  const sort = sortFilter?.value || 'relevance';
 
-  if (sort === 'price-asc') {
+  if (sort === 'priceAsc') {
     items.sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
-  } else if (sort === 'price-desc') {
+  } else if (sort === 'priceDesc') {
     items.sort((a, b) => Number(b.price || 0) - Number(a.price || 0));
-  } else if (sort === 'title-asc') {
+  } else if (sort === 'titleAsc') {
     items.sort((a, b) => normalize(a.title).localeCompare(normalize(b.title)));
   }
 
@@ -264,6 +246,17 @@ function renderGrid() {
   if (!elGrid || !tpl) return;
 
   elGrid.innerHTML = '';
+
+  if (!filtered.length) {
+    elGrid.innerHTML = `
+      <div class="panel">
+        <div class="panel-title">Geen producten gevonden</div>
+        <div class="small">Pas je filters of zoekterm aan.</div>
+      </div>
+    `;
+    return;
+  }
+
   const frag = document.createDocumentFragment();
 
   for (const p of filtered) {
@@ -303,9 +296,49 @@ function renderGrid() {
 }
 
 function updateMeta() {
-  if (resultMeta) {
-    resultMeta.textContent = `${filtered.length} producten`;
+  const text = `${filtered.length} producten`;
+
+  if (resultMetaTop) resultMetaTop.textContent = text;
+  if (resultMetaBottom) resultMetaBottom.textContent = text;
+}
+
+function updateChips() {
+  if (!activeChips) return;
+
+  const currentType = getTypeFromUrl();
+  const showSpaFilters = isSpaCategory(currentType);
+
+  const chips = [];
+
+  if (currentType) {
+    chips.push(`<span class="chip">Categorie: ${escapeHtml(getCategoryTitle(currentType))}</span>`);
   }
+
+  if (showSpaFilters) {
+    const brand = brandFilter?.value || '';
+    const search = searchInput?.value || '';
+    const sort = sortFilter?.value || 'relevance';
+
+    if (brand) {
+      chips.push(`<span class="chip">Merk: ${escapeHtml(brand)}</span>`);
+    }
+
+    if (search) {
+      chips.push(`<span class="chip">Zoek: ${escapeHtml(search)}</span>`);
+    }
+
+    if (sort && sort !== 'relevance') {
+      const sortLabels = {
+        priceAsc: 'Prijs laag → hoog',
+        priceDesc: 'Prijs hoog → laag',
+        titleAsc: 'Titel A → Z'
+      };
+
+      chips.push(`<span class="chip">Sortering: ${escapeHtml(sortLabels[sort] || sort)}</span>`);
+    }
+  }
+
+  activeChips.innerHTML = chips.join('');
 }
 
 function filterProducts() {
@@ -318,13 +351,21 @@ function filterProducts() {
   filtered = products.filter(p => {
     const matchType = !currentType || normalize(p.type) === normalize(currentType);
     const matchBrand = !selectedBrand || normalize(getMerk(p)) === normalize(selectedBrand);
-    const matchSearch =
-      !searchValue ||
-      normalize(p.title).includes(searchValue) ||
-      normalize(getMerk(p)).includes(searchValue) ||
-      normalize(getSpecValue(p, 'Afmetingen')).includes(searchValue) ||
-      normalize(getSpecValue(p, 'Aantal personen')).includes(searchValue) ||
-      normalize(getSpecValue(p, 'Aantal jets')).includes(searchValue);
+
+    const searchableText = [
+      p.title,
+      p.type,
+      getMerk(p),
+      getSpecValue(p, 'Afmetingen'),
+      getSpecValue(p, 'Aantal personen'),
+      getSpecValue(p, 'Aantal zitplaatsen'),
+      getSpecValue(p, 'Aantal ligplaatsen'),
+      getSpecValue(p, 'Aantal jets')
+    ]
+      .map(normalize)
+      .join(' ');
+
+    const matchSearch = !searchValue || searchableText.includes(searchValue);
 
     return matchType && matchBrand && matchSearch;
   });
@@ -332,14 +373,23 @@ function filterProducts() {
   filtered = sortProducts([...filtered]);
 
   updateUrlFromFilters();
+  updateChips();
   renderGrid();
   updateMeta();
+}
+
+function clearFilters() {
+  if (brandFilter) brandFilter.value = '';
+  if (searchInput) searchInput.value = '';
+  if (sortFilter) sortFilter.value = 'relevance';
+  filterProducts();
 }
 
 function bindFilters() {
   brandFilter?.addEventListener('change', filterProducts);
   searchInput?.addEventListener('input', filterProducts);
   sortFilter?.addEventListener('change', filterProducts);
+  btnClear?.addEventListener('click', clearFilters);
 }
 
 function showError(msg) {
@@ -356,10 +406,10 @@ async function init() {
   }
 
   markActiveMenu(currentType);
+  setupFilterVisibility();
 
   products = await loadProducts();
 
-  setupFilterVisibility();
   loadFiltersFromUrl();
   bindFilters();
   filterProducts();
