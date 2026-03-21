@@ -180,25 +180,59 @@ function updateMeta() {
 }
 
 function filterProducts() {
-  const selectedBrand = brandFilter.value;
-  const selectedCategory = document.getElementById("categoryFilter")?.value || "";
-  const searchValue = document.getElementById("searchInput")?.value.toLowerCase() || "";
+  const brandFilter = document.getElementById("brandFilter");
+const categoryFilter = document.getElementById("categoryFilter");
+const searchInput = document.getElementById("searchInput");
+
+function updateUrlFromFilters() {
+  const params = new URLSearchParams(window.location.search);
+
+  const brand = brandFilter?.value || "";
+  const category = categoryFilter?.value || "";
+  const search = searchInput?.value || "";
+
+  if (brand) {
+    params.set("merk", brand);
+  } else {
+    params.delete("merk");
+  }
+
+  if (category) {
+    params.set("categorie", category);
+  } else {
+    params.delete("categorie");
+  }
+
+  if (search) {
+    params.set("zoek", search);
+  } else {
+    params.delete("zoek");
+  }
+
+  const newUrl = `${window.location.pathname}?${params.toString()}`;
+  window.history.replaceState({}, "", newUrl);
+}
+
+function filterProducts() {
+  const selectedBrand = brandFilter?.value || "";
+  const selectedCategory = categoryFilter?.value || "";
+  const searchValue = searchInput?.value.toLowerCase() || "";
 
   const filtered = products.filter(product => {
     const matchCategory = !selectedCategory || product.category === selectedCategory;
-
-    const matchBrand =
-      selectedCategory !== "spa"
-        ? true
-        : !selectedBrand || product.brand === selectedBrand;
-
-    const matchSearch =
-      !searchValue || product.name.toLowerCase().includes(searchValue);
+    const matchBrand = !selectedBrand || product.brand === selectedBrand;
+    const matchSearch = !searchValue || product.name.toLowerCase().includes(searchValue);
 
     return matchCategory && matchBrand && matchSearch;
   });
 
+  updateUrlFromFilters();
   renderProducts(filtered);
+}
+
+brandFilter?.addEventListener("change", filterProducts);
+categoryFilter?.addEventListener("change", filterProducts);
+searchInput?.addEventListener("input", filterProducts);
 }
 
 function showError(msg) {
