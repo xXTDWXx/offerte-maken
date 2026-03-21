@@ -179,6 +179,28 @@ function updateMeta() {
   }
 }
 
+function filterProducts() {
+  const selectedBrand = brandFilter.value;
+  const selectedCategory = document.getElementById("categoryFilter")?.value || "";
+  const searchValue = document.getElementById("searchInput")?.value.toLowerCase() || "";
+
+  const filtered = products.filter(product => {
+    const matchCategory = !selectedCategory || product.category === selectedCategory;
+
+    const matchBrand =
+      selectedCategory !== "spa"
+        ? true
+        : !selectedBrand || product.brand === selectedBrand;
+
+    const matchSearch =
+      !searchValue || product.name.toLowerCase().includes(searchValue);
+
+    return matchCategory && matchBrand && matchSearch;
+  });
+
+  renderProducts(filtered);
+}
+
 function showError(msg) {
   if (!errorBox || !errorText) return;
   errorBox.style.display = '';
