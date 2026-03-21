@@ -13484,6 +13484,7 @@
     {
       "id": "spa::fox-elite-moraira",
       "type": "spa",
+      "merk": "Elite",
       "title": "Fox Elite Moraira",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-moraira/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/Fox-Elite-Moraira-582x582.webp",
@@ -13610,6 +13611,7 @@
     {
       "id": "spa::fox-elite-sevilla",
       "type": "spa",
+      "merk": "Elite",
       "title": "Fox Elite Sevilla",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-sevilla/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Sevilla-top-582x578.jpg",
@@ -13737,6 +13739,7 @@
     {
       "id": "spa::fox-elite-granada",
       "type": "spa",
+      "merk": "Elite",
       "title": "Fox Elite Granada",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-granada/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Granada.jpg",
@@ -13863,6 +13866,7 @@
     {
       "id": "spa::fox-elite-javea",
       "type": "spa",
+      "merk": "Elite",
       "title": "Fox Elite Javea",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-javea/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Javea.jpg",
@@ -13989,6 +13993,7 @@
     {
       "id": "spa::fox-elite-barcelona",
       "type": "spa",
+      "merk": "Elite",
       "title": "Fox Elite Barcelona",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-barcelona/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Barcelona.webp",
@@ -14115,6 +14120,7 @@
     {
       "id": "spa::fox-elite-valencia",
       "type": "spa",
+      "merk": "Elite",
       "title": "Fox Elite Valencia",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-valencia/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Sevilla-582x582.jpg",
@@ -14242,6 +14248,7 @@
     {
       "id": "spa::fox-elite-formentera",
       "type": "spa",
+      "merk": "Elite",
       "title": "Fox Elite Formentera",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-formentera/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/Fox-Elite-Formentera-582x582.jpg",
@@ -14369,6 +14376,7 @@
     {
       "id": "spa::fox-elite-denia",
       "type": "spa",
+      "merk": "Elite",
       "title": "Fox Elite Denia",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-denia/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/Fox-Elite-Denia-582x582.jpg",
@@ -14500,6 +14508,7 @@
     {
       "id": "spa::fox-elite-majorca",
       "type": "spa",
+      "merk": "Elite",
       "title": "Fox Elite Majorca",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-majorca/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Majorca-582x558.jpg",
@@ -14631,6 +14640,7 @@
     {
       "id": "spa::fox-elite-palma",
       "type": "spa",
+      "merk": "Elite",
       "title": "Fox Elite Palma",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-palma/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Palma-582x565.jpg",
@@ -14762,6 +14772,7 @@
     {
       "id": "spa::fox-elite-altea",
       "type": "spa",
+      "merk": "Elite",
       "title": "Fox Elite Altea",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-altea/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/ELT2700-2CL-Top-view-582x571.jpg",
