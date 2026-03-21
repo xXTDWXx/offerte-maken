@@ -7,6 +7,9 @@ const pageTitle = document.getElementById('pageTitle');
 const errorBox = document.getElementById('errorBox');
 const errorText = document.getElementById('errorText');
 
+const brandFilter = document.getElementById('brandFilter');
+const searchInput = document.getElementById('searchInput');
+
 let products = [];
 let filtered = [];
 
@@ -105,15 +108,25 @@ function getTypeFromUrl() {
   return params.get('type') || '';
 }
 
+function getBrandFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('merk') || '';
+}
+
+function getSearchFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('zoek') || '';
+}
+
 function getCategoryTitle(type) {
   const map = {
-    Spa: "SPA",
-    Zwemspa: "ZWEMSPA",
-    Barrel: "BARRELSAUNA",
-    Infrarood: "INFRAROOD",
-    Finse: "SAUNA",
-    Pod: "SAUNA POD",
-    Combi: "COMBI SAUNA"
+    Spa: 'SPA',
+    Zwemspa: 'ZWEMSPA',
+    Barrel: 'BARRELSAUNA',
+    Infrarood: 'INFRAROOD',
+    Finse: 'SAUNA',
+    Pod: 'SAUNA POD',
+    Combi: 'COMBI SAUNA'
   };
 
   return map[type] || type || 'Categorie';
@@ -129,6 +142,52 @@ function markActiveMenu(type) {
       link.classList.remove('is-active');
     }
   });
+}
+
+function loadFiltersFromUrl() {
+  const brand = getBrandFromUrl();
+  const search = getSearchFromUrl();
+
+  if (brandFilter) {
+    brandFilter.value = brand;
+  }
+
+  if (searchInput) {
+    searchInput.value = search;
+  }
+}
+
+function updateUrlFromFilters() {
+  const params = new URLSearchParams(window.location.search);
+  const currentType = getTypeFromUrl();
+
+  const brand = brandFilter?.value || '';
+  const search = searchInput?.value || '';
+
+  if (currentType) {
+    params.set('type', currentType);
+  } else {
+    params.delete('type');
+  }
+
+  if (brand) {
+    params.set('merk', brand);
+  } else {
+    params.delete('merk');
+  }
+
+  if (search) {
+    params.set('zoek', search);
+  } else {
+    params.delete('zoek');
+  }
+
+  const query = params.toString();
+  const newUrl = query
+    ? `${window.location.pathname}?${query}`
+    : window.location.pathname;
+
+  window.history.replaceState({}, '', newUrl);
 }
 
 function renderGrid() {
@@ -180,59 +239,31 @@ function updateMeta() {
 }
 
 function filterProducts() {
-  const brandFilter = document.getElementById("brandFilter");
-const categoryFilter = document.getElementById("categoryFilter");
-const searchInput = document.getElementById("searchInput");
+  const currentType = getTypeFromUrl();
+  const selectedBrand = brandFilter?.value || '';
+  const searchValue = normalize(searchInput?.value || '');
 
-function updateUrlFromFilters() {
-  const params = new URLSearchParams(window.location.search);
+  filtered = products.filter(p => {
+    const matchType = !currentType || normalize(p.type) === normalize(currentType);
+    const matchBrand = !selectedBrand || normalize(getMerk(p)) === normalize(selectedBrand);
+    const matchSearch =
+      !searchValue ||
+      normalize(p.title).includes(searchValue) ||
+      normalize(getMerk(p)).includes(searchValue) ||
+      normalize(getSpecValue(p, 'Afmetingen')).includes(searchValue) ||
+      normalize(getSpecValue(p, 'Aantal personen')).includes(searchValue);
 
-  const brand = brandFilter?.value || "";
-  const category = categoryFilter?.value || "";
-  const search = searchInput?.value || "";
-
-  if (brand) {
-    params.set("merk", brand);
-  } else {
-    params.delete("merk");
-  }
-
-  if (category) {
-    params.set("categorie", category);
-  } else {
-    params.delete("categorie");
-  }
-
-  if (search) {
-    params.set("zoek", search);
-  } else {
-    params.delete("zoek");
-  }
-
-  const newUrl = `${window.location.pathname}?${params.toString()}`;
-  window.history.replaceState({}, "", newUrl);
-}
-
-function filterProducts() {
-  const selectedBrand = brandFilter?.value || "";
-  const selectedCategory = categoryFilter?.value || "";
-  const searchValue = searchInput?.value.toLowerCase() || "";
-
-  const filtered = products.filter(product => {
-    const matchCategory = !selectedCategory || product.category === selectedCategory;
-    const matchBrand = !selectedBrand || product.brand === selectedBrand;
-    const matchSearch = !searchValue || product.name.toLowerCase().includes(searchValue);
-
-    return matchCategory && matchBrand && matchSearch;
+    return matchType && matchBrand && matchSearch;
   });
 
   updateUrlFromFilters();
-  renderProducts(filtered);
+  renderGrid();
+  updateMeta();
 }
 
-brandFilter?.addEventListener("change", filterProducts);
-categoryFilter?.addEventListener("change", filterProducts);
-searchInput?.addEventListener("input", filterProducts);
+function bindFilters() {
+  brandFilter?.addEventListener('change', filterProducts);
+  searchInput?.addEventListener('input', filterProducts);
 }
 
 function showError(msg) {
@@ -252,10 +283,9 @@ async function init() {
 
   products = await loadProducts();
 
-  filtered = products.filter(p => normalize(p.type) === normalize(currentType));
-
-  renderGrid();
-  updateMeta();
+  loadFiltersFromUrl();
+  bindFilters();
+  filterProducts();
 }
 
 init().catch(e => {
