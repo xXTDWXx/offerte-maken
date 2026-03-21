@@ -174,27 +174,6 @@ select:focus {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-/* Kolom stroom */
-@media screen and (min-width: 850px) {
-    .col+.col .col-inner {
-        margin-left: 0;
-        margin-right: auto;
-    }
-}
-.col-inner {
-    border-radius: 20px !important;
-}
-.col-inner {
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    flex: 1 0 auto;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    width: 100%;
-}
-
 /* Cards */
 .card {
   min-height: 480px;
