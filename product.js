@@ -6,7 +6,7 @@ const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
   const COMPANY_LOGO_URL = 'logo.png';
 */
 const COMPANY_LOGO_URL = 'logo.png';
-const COMPANY_NAME = 'Sunspa';
+const COMPANY_NAME = 'Sunspa Benelux';
 const COMPANY_EMAIL = '';
 const COMPANY_PHONE = '';
 const COMPANY_WEBSITE = '';
@@ -118,6 +118,7 @@ const PRICES = {
   coverlift_unit: 189,
   maintenance_unit: 179,
   swim_filterset_unit: 250,
+  warmtepomp_unit: 2795,
 
   barrel_wood_stove_unit: 1245,
   barrel_electric_heater_unit: 495,
