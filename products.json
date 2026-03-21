@@ -3,6 +3,7 @@
     {
       "id": "spa::sunspa-new-york",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa New York",
       "url": "https://www.sunspabenelux.be/p/sunspa-new-york/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/newyork.jpg",
@@ -130,6 +131,7 @@
     {
       "id": "spa::sunspa-aquavera",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Aquavera",
       "url": "https://www.sunspabenelux.be/p/sunspa-aquavera/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/06/Aquatique-spa-BJ2000-2MD-Side_768px-1536x1536.png",
@@ -229,6 +231,7 @@
     {
       "id": "spa::sunspa-serenza",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Serenza",
       "url": "https://www.sunspabenelux.be/p/sunspa-serenza/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-Side_768px-1536x1536.png",
@@ -328,6 +331,7 @@
     {
       "id": "spa::goldline-spa",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Goldline Spa",
       "url": "https://www.sunspabenelux.be/p/goldline-spa/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/06/Goldline-Spa-1-650x650.webp",
@@ -435,6 +439,7 @@
     {
       "id": "spa::maxicuzzi-explore",
       "type": "spa",
+      "merk": "Maxicuzzi",
       "title": "Maxicuzzi Explore",
       "url": "https://www.sunspabenelux.be/p/maxicuzzi-explore/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-explore.jpg",
@@ -554,6 +559,7 @@
     {
       "id": "spa::sunspa-san-marino-1",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa San Marino 1",
       "url": "https://www.sunspabenelux.be/p/sunspa-san-marino-1/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/sanmarino1.jpg",
@@ -685,6 +691,7 @@
     {
       "id": "spa::sunspa-san-marino-2",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa San Marino 2",
       "url": "https://www.sunspabenelux.be/p/sunspa-san-marino-2/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/sanmarino21.jpg",
@@ -816,6 +823,7 @@
     {
       "id": "spa::sunspa-marbella",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Marbella",
       "url": "https://www.sunspabenelux.be/p/sunspa-marbella/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/sunspa-marbella-2.jpg",
@@ -947,6 +955,7 @@
     {
       "id": "spa::sunspa-monaco",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Monaco",
       "url": "https://www.sunspabenelux.be/p/sunspa-monaco/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/sunspa-monaco-1.jpg",
@@ -1078,6 +1087,7 @@
     {
       "id": "spa::maxicuzzi-relax",
       "type": "spa",
+      "merk": "Maxicuzzi",
       "title": "Maxicuzzi Relax",
       "url": "https://www.sunspabenelux.be/p/maxicuzzi-relax/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-relax.jpg",
@@ -1197,6 +1207,7 @@
     {
       "id": "spa::maxicuzzi-duo",
       "type": "spa",
+      "merk": "Maxicuzzi",
       "title": "Maxicuzzi Duo",
       "url": "https://www.sunspabenelux.be/p/maxicuzzi-duo/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-duo.jpg",
@@ -1312,6 +1323,7 @@
     {
       "id": "spa::sunspa-nice",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Nice",
       "url": "https://www.sunspabenelux.be/p/sunspa-nice/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/nice.jpg",
@@ -1443,6 +1455,7 @@
     {
       "id": "spa::sunspa-milano",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Milano",
       "url": "https://www.sunspabenelux.be/p/sunspa-milano/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/milano.jpg",
@@ -1574,6 +1587,7 @@
     {
       "id": "spa::sunspa-marrakech",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Marrakech",
       "url": "https://www.sunspabenelux.be/p/sunspa-marrakech/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/marrakech.jpg",
@@ -1693,6 +1707,7 @@
     {
       "id": "spa::sunspa-london",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa London",
       "url": "https://www.sunspabenelux.be/p/sunspa-london/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/london.jpg",
@@ -1928,6 +1943,7 @@
     {
       "id": "spa::maxicuzzi-divine",
       "type": "spa",
+      "merk": "Maxicuzzi",
       "title": "Maxicuzzi Divine",
       "url": "https://www.sunspabenelux.be/p/maxicuzzi-divine/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-divine.jpg",
@@ -2023,6 +2039,7 @@
     {
       "id": "spa::sunspa-palermo",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Palermo",
       "url": "https://www.sunspabenelux.be/p/sunspa-palermo/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/palermo.jpg",
@@ -2414,6 +2431,7 @@
     {
       "id": "spa::sunspa-napoli",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Napoli",
       "url": "https://www.sunspabenelux.be/p/sunspa-napoli/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/napoli.jpg",
@@ -2545,6 +2563,7 @@
     {
       "id": "spa::sunspa-tenerife",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Tenerife",
       "url": "https://www.sunspabenelux.be/p/sunspa-tenerife/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/tenerife.jpg",
@@ -2676,6 +2695,7 @@
     {
       "id": "spa::sunspa-orlando",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Orlando",
       "url": "https://www.sunspabenelux.be/p/sunspa-orlando/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/orlando.jpg",
@@ -3039,6 +3059,7 @@
     {
       "id": "spa::sunspa-vancouver",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Vancouver",
       "url": "https://www.sunspabenelux.be/p/sunspa-vancouver/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/vancouver.jpg",
@@ -3170,6 +3191,7 @@
     {
       "id": "spa::sunspa-lima",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Lima",
       "url": "https://www.sunspabenelux.be/p/sunspa-lima/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/lima.jpg",
@@ -3301,6 +3323,7 @@
     {
       "id": "spa::sunspa-san-diego",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa San Diego",
       "url": "https://www.sunspabenelux.be/p/sunspa-san-diego/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/sandiego.jpg",
@@ -3688,6 +3711,7 @@
     {
       "id": "spa::fox-spa-essence",
       "type": "spa",
+      "merk": "Fox",
       "title": "Fox Spa Essence",
       "url": "https://www.sunspabenelux.be/p/fox-spa-essence/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/fox-spa-essence.jpg",
@@ -3831,6 +3855,7 @@
     {
       "id": "spa::python-hottub-spa",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Python hottub spa",
       "url": "https://www.sunspabenelux.be/p/python-hottub-spa/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2022/05/python-vrijstaand.jpg",
@@ -4438,6 +4463,7 @@
     {
       "id": "spa::fox-spa-vision",
       "type": "spa",
+      "merk": "Fox",
       "title": "Fox Spa Vision",
       "url": "https://www.sunspabenelux.be/p/fox-spa-vision/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/fox-spa-vision.jpg",
@@ -4581,6 +4607,7 @@
     {
       "id": "spa::fox-spa-mystic",
       "type": "spa",
+      "merk": "Fox",
       "title": "Fox Spa Mystic",
       "url": "https://www.sunspabenelux.be/p/fox-spa-mystic/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/foxspamystic.jpg",
@@ -5043,6 +5070,7 @@
     },
     {
       "id": "spa::sunspa-palm-springs",
+      "merk": "Sunspa",
       "type": "spa",
       "title": "Sunspa Palm Springs",
       "url": "https://www.sunspabenelux.be/p/sunspa-palm-springs/",
@@ -5179,6 +5207,7 @@
     {
       "id": "spa::sunspa-roma",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Roma",
       "url": "https://www.sunspabenelux.be/p/sunspa-roma/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/roma.jpg",
@@ -5558,6 +5587,7 @@
     {
       "id": "spa::sunspa-lyon",
       "type": "spa",
+      "merk": "Sunspa",
       "title": "Sunspa Lyon",
       "url": "https://www.sunspabenelux.be/p/sunspa-lyon/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/lyon.jpg",
@@ -5949,6 +5979,7 @@
     {
       "id": "spa::fox-spa-prisma",
       "type": "spa",
+      "merk": "Fox",
       "title": "Fox Spa Prisma",
       "url": "https://www.sunspabenelux.be/p/fox-spa-prisma/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/prisma.jpg",
@@ -6088,6 +6119,7 @@
     {
       "id": "spa::fox-spa-cosmos",
       "type": "spa",
+      "merk": "Fox",
       "title": "Fox Spa Cosmos",
       "url": "https://www.sunspabenelux.be/p/fox-spa-cosmos/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/cosmos.jpg",
@@ -6347,6 +6379,7 @@
     {
       "id": "spa::fox-spa-dream",
       "type": "spa",
+      "merk": "Fox",
       "title": "Fox Spa Dream",
       "url": "https://www.sunspabenelux.be/p/fox-spa-dream/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/fox-spa-dream.jpg",
@@ -6618,6 +6651,7 @@
     {
       "id": "spa::fox-spa-eternal",
       "type": "spa",
+      "merk": "Fox",
       "title": "Fox Spa Eternal",
       "url": "https://www.sunspabenelux.be/p/fox-spa-eternal/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/fox-spa-eternal.jpg",
@@ -6765,6 +6799,7 @@
     {
       "id": "spa::fox-spa-vortex",
       "type": "spa",
+      "merk": "Fox",
       "title": "Fox Spa Vortex",
       "url": "https://www.sunspabenelux.be/p/fox-spa-vortex/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/vortex-1.jpg",
@@ -6916,6 +6951,7 @@
     {
       "id": "spa::fox-spa-eclipse",
       "type": "spa",
+      "merk": "Fox",
       "title": "Fox Spa Eclipse",
       "url": "https://www.sunspabenelux.be/p/fox-spa-eclipse/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2022/05/fox-spa-eclipse-1.jpg",
