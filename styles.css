@@ -409,7 +409,6 @@ label.opt {
 
 .opt input[type="checkbox"],
 label.opt input[type="checkbox"] {
-  display: block;
   width: 18px;
   height: 18px;
   margin: 0;
