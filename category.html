@@ -28,6 +28,8 @@
     </div>
   </nav>
 
+  
+
   <main class="container">
     <section class="panel">
       <div class="panel-row" style="justify-content:space-between; align-items:center;">
@@ -37,6 +39,44 @@
         </div>
         <a href="index.html" class="btn">← Terug naar overzicht</a>
       </div>
+        <div class="field">
+          <label for="search">Zoeken</label>
+          <input id="search" type="search" placeholder="Zoek op titel, type, specificaties…" />
+        </div>
+
+        <div class="field">
+          <label for="typeFilter">Type</label>
+          <select id="typeFilter">
+            <option value="">Alle types</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="merkFilter">Merk</label>
+          <select id="merkFilter">
+            <option value="">Alle merken</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="sort">Sorteren</label>
+          <select id="sort">
+            <option value="relevance">Relevantie</option>
+            <option value="priceAsc">Prijs (laag → hoog)</option>
+            <option value="priceDesc">Prijs (hoog → laag)</option>
+            <option value="titleAsc">Titel (A → Z)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>&nbsp;</label>
+          <button id="btnClear" class="btn" type="button">Wissen</button>
+        </div>
+
+      <div class="panel-row panel-row-2">
+        <div class="chips" id="activeChips"></div>
+        <div class="small" id="resultMeta">—</div>
+      </div>
     </section>
 
     <section class="grid" id="grid"></section>
@@ -44,6 +84,9 @@
     <section class="panel" id="errorBox" style="display:none">
       <div class="panel-title">Fout bij laden</div>
       <div class="small" id="errorText"></div>
+      <div class="small" style="margin-top:8px">
+        Controleer of <code>products.json</code> bestaat en bereikbaar is.
+      </div>
     </section>
   </main>
 
