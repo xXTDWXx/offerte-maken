@@ -54,7 +54,6 @@ a {
 }
 
 .header-row {
-  display: flex;
   gap: 14px;
   align-items: center;
   justify-content: space-between;
