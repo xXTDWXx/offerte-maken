@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welke spa past? | Sunspa Catalogus</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand">
+        <div class="brand-title">Sunspa Catalogus</div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="category-menu">
+    <div class="container category-menu-row">
+      <a href="index.html" class="category-link">OVERZICHT</a>
+      <a href="category.html?type=Spa" class="category-link">SPA</a>
+      <a href="category.html?type=Zwemspa" class="category-link">ZWEMSPA</a>
+      <a href="category.html?type=Barrelsauna" class="category-link">BARRELSAUNA</a>
+      <a href="category.html?type=Infrarood" class="category-link">INFRAROOD</a>
+      <a href="category.html?type=combi sauna" class="category-link">COMBI SAUNA</a>
+      <a href="category.html?type=sauna" class="category-link">FINSE SAUNA</a>
+      <a href="category.html?type=sauna pod" class="category-link">SAUNA POD</a>
+      <a href="ruimte.html" class="category-link is-active">WELKE SPA PAST?</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="panel">
+      <div class="panel-row" style="justify-content:space-between; align-items:center;">
+        <div>
+          <div class="panel-title">Welke spa past in jouw ruimte?</div>
+          <div class="small">
+            Vul de beschikbare lengte en breedte in. We tonen alleen spa’s die binnen deze afmetingen passen.
+          </div>
+        </div>
+        <a href="index.html" class="btn">← Terug naar overzicht</a>
+      </div>
+
+      <div class="panel-row" style="gap:16px; flex-wrap:wrap; align-items:end;">
+        <div class="field">
+          <label for="maxLength">Beschikbare lengte</label>
+          <input id="maxLength" type="number" min="0" step="1" placeholder="bv. 230" />
+        </div>
+
+        <div class="field">
+          <label for="maxWidth">Beschikbare breedte</label>
+          <input id="maxWidth" type="number" min="0" step="1" placeholder="bv. 210" />
+        </div>
+
+        <div class="field">
+          <label for="unit">Eenheid</label>
+          <select id="unit">
+            <option value="cm">cm</option>
+            <option value="m">meter</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="brandFilter">Merk</label>
+          <select id="brandFilter">
+            <option value="">Alle merken</option>
+            <option value="Sunspa">Sunspa</option>
+            <option value="Myspa">Myspa</option>
+            <option value="Vogue">Vogue</option>
+            <option value="Legend">Legend</option>
+            <option value="Fox">Fox</option>
+            <option value="Elite">Elite</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="sort">Sorteren</label>
+          <select id="sort">
+            <option value="fitBest">Beste match</option>
+            <option value="priceAsc">Prijs (laag → hoog)</option>
+            <option value="priceDesc">Prijs (hoog → laag)</option>
+            <option value="titleAsc">Titel (A → Z)</option>
+            <option value="sizeAsc">Kleinste eerst</option>
+            <option value="sizeDesc">Grootste eerst</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>&nbsp;</label>
+          <button id="btnClear" class="btn" type="button">Wissen</button>
+        </div>
+      </div>
+
+      <div class="panel-row panel-row-2">
+        <div class="chips" id="activeChips"></div>
+        <div class="small" id="resultMeta">—</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">Werking</div>
+      <div class="small">
+        We vergelijken jouw ingevulde ruimte met de specificatie <strong>Afmetingen</strong> van elke spa.
+        Een model wordt getoond als de lengte en breedte van de spa binnen jouw ruimte passen, in beide richtingen.
+      </div>
+    </section>
+
+    <section class="grid" id="grid"></section>
+
+    <section class="panel" id="errorBox" style="display:none">
+      <div class="panel-title">Fout bij laden</div>
+      <div class="small" id="errorText"></div>
+      <div class="small" style="margin-top:8px">
+        Controleer of <code>products.json</code> bestaat en bereikbaar is.
+      </div>
+    </section>
+  </main>
+
+  <template id="cardTpl">
+    <article class="card">
+      <button class="card-link" type="button" data-open>
+        <div class="card-imgwrap">
+          <img class="card-img" alt="" loading="lazy" />
+          <div class="badge" data-badge></div>
+        </div>
+
+        <div class="card-body">
+          <div class="card-title" data-title></div>
+          <div class="card-price" data-price></div>
+          <div class="card-specs" data-specs></div>
+          <div class="card-cta">👉 Bekijk details</div>
+        </div>
+      </button>
+    </article>
+  </template>
+
+  <script src="ruimte.js"></script>
+</body>
+</html>
