@@ -23,12 +23,8 @@ html {
 
 body {
   margin: 0;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background:
-    radial-gradient(circle at top, rgba(92, 200, 255, 0.08), transparent 30%),
-    linear-gradient(180deg, #08101c 0%, var(--bg) 100%);
-  color: var(--text);
-  line-height: 1.6;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: white;
 }
 
 .page {
@@ -67,8 +63,7 @@ body {
 
 .intro {
   margin: 0;
-  max-width: 70ch;
-  color: var(--muted);
+  color: white;
 }
 
 .brand-section {
@@ -76,6 +71,7 @@ body {
 }
 
 .brand-section h2 {
+  color:black;
   margin: 0 0 14px;
   font-size: clamp(1.25rem, 2vw, 1.7rem);
   font-weight: 800;
