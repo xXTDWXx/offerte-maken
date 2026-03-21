@@ -434,7 +434,6 @@ label.opt .opt-title {
 
 .opt-price,
 label.opt .opt-price {
-  display: block;
   margin-left: auto;
   text-align: right;
   font-weight: 900;
