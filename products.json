@@ -14904,6 +14904,237 @@
         "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/ELT2700-2CL-Top-view-582x571.jpg",
         "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/Fox-elite-altea-sideview.jpg"
       ]
-    }
+    },
+    {
+    "id": "spa::bullfrog-a5l-luxury",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A5L Luxury",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 18195,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "3 zitplaatsen" },
+      { "label": "Afmetingen", "value": "172 x 213 x 81 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  },
+  {
+    "id": "spa::bullfrog-a5l-select",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A5L Select",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 20095,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "3 zitplaatsen" },
+      { "label": "Afmetingen", "value": "172 x 213 x 81 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  },
+
+  {
+    "id": "spa::bullfrog-a6l-choice",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A6L Choice",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 17695,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "6 zitplaatsen" },
+      { "label": "Afmetingen", "value": "203 x 224 x 86 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  },
+  {
+    "id": "spa::bullfrog-a6l-luxury",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A6L Luxury",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 19995,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "6 zitplaatsen" },
+      { "label": "Afmetingen", "value": "203 x 224 x 86 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  },
+  {
+    "id": "spa::bullfrog-a6l-select",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A6L Select",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 21495,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "6 zitplaatsen" },
+      { "label": "Afmetingen", "value": "203 x 224 x 86 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  },
+
+  {
+    "id": "spa::bullfrog-a7l-choice",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A7L Choice",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 21795,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "7 zitplaatsen" },
+      { "label": "Afmetingen", "value": "224 x 224 x 92 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  },
+  {
+    "id": "spa::bullfrog-a7l-luxury",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A7L Luxury",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 24095,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "7 zitplaatsen" },
+      { "label": "Afmetingen", "value": "224 x 224 x 92 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  },
+  {
+    "id": "spa::bullfrog-a7l-select",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A7L Select",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 25995,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "7 zitplaatsen" },
+      { "label": "Afmetingen", "value": "224 x 224 x 92 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  },
+
+  {
+    "id": "spa::bullfrog-a7d-choice",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A7D Choice",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 21795,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "7 zitplaatsen" },
+      { "label": "Afmetingen", "value": "224 x 224 x 92 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  },
+  {
+    "id": "spa::bullfrog-a7d-luxury",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A7D Luxury",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 24095,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "7 zitplaatsen" },
+      { "label": "Afmetingen", "value": "224 x 224 x 92 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  },
+  {
+    "id": "spa::bullfrog-a7d-select",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A7D Select",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 25995,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "7 zitplaatsen" },
+      { "label": "Afmetingen", "value": "224 x 224 x 92 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  },
+
+  {
+    "id": "spa::bullfrog-a8l-choice",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A8L Choice",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 24795,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "8 zitplaatsen" },
+      { "label": "Afmetingen", "value": "239 x 239 x 97 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  },
+  {
+    "id": "spa::bullfrog-a8l-luxury",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A8L Luxury",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 27095,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "8 zitplaatsen" },
+      { "label": "Afmetingen", "value": "239 x 239 x 97 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  },
+  {
+    "id": "spa::bullfrog-a8l-select",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A8L Select",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 29495,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "8 zitplaatsen" },
+      { "label": "Afmetingen", "value": "239 x 239 x 97 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  },
+
+  {
+    "id": "spa::bullfrog-a9l-select",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A9L Select",
+    "url": "https://www.sunspabenelux.nl/",
+    "image": "",
+    "price": 32495,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "9 zitplaatsen" },
+      { "label": "Afmetingen", "value": "277 x 239 x 97 cm" },
+      { "label": "Jetsysteem", "value": "JetPaks (configureerbaar)" }
+    ]
+  }
+]
   ]
 }
