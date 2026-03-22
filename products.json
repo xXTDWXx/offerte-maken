@@ -15556,6 +15556,69 @@
       { "label": "Prijs categorie", "value": "€ 22.000+" },
       { "label": "Bullfrog Serie", "value": "M-serie" }
     ]
+  },
+    {
+    "id": "spa::bullfrog-stil5",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa STIL5",
+    "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-stil5/",
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/stil5-582x582.webp",
+    "price": 17595,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "4 zitplaatsen" },
+      { "label": "Aantal ligplaatsen", "value": "0" },
+      { "label": "Afmetingen", "value": "169 x 208 x 79 cm" },
+      { "label": "Inhoud", "value": "780 L" },
+      { "label": "Aantal kussens", "value": "3" },
+      { "label": "Massage pomp 1", "value": "2,5 PK" },
+      { "label": "Mini-LED verlichting", "value": "Premium interieurverlichting" },
+      { "label": "Leeg gewicht", "value": "295 kg" },
+      { "label": "Gevuld gewicht", "value": "1075 kg" },
+      { "label": "Frame", "value": "EnduraFrame™" },
+      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
+      { "label": "Stroom", "value": "220V / 50Amp" },
+      { "label": "Waterval", "value": "Ja" },
+      { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "4 personen" },
+      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Premium JetPak® Seats", "value": "3" },
+      { "label": "Bullfrog Serie", "value": "STIL-serie" }
+    ]
+  },
+  {
+    "id": "spa::bullfrog-stil7",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa STIL7",
+    "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-stil7/",
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/stil7-582x582.webp",
+    "price": 20295,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "6 zitplaatsen" },
+      { "label": "Aantal ligplaatsen", "value": "0" },
+      { "label": "Afmetingen", "value": "224 x 213 x 86 cm" },
+      { "label": "Inhoud", "value": "1180 L" },
+      { "label": "Aantal kussens", "value": "4" },
+      { "label": "Massage pomp 1", "value": "2,5 PK" },
+      { "label": "Massage pomp 2", "value": "2,5 PK" },
+      { "label": "Mini-LED verlichting", "value": "Premium interieurverlichting" },
+      { "label": "Leeg gewicht", "value": "375 kg" },
+      { "label": "Gevuld gewicht", "value": "1555 kg" },
+      { "label": "Frame", "value": "EnduraFrame™" },
+      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
+      { "label": "Stroom", "value": "220V / 50Amp" },
+      { "label": "Waterval", "value": "Ja" },
+      { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "6 personen" },
+      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Premium JetPak® Seats", "value": "3" },
+      { "label": "Bullfrog Serie", "value": "STIL-serie" }
+    ]
   }
 ]
 }
