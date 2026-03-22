@@ -14905,85 +14905,13 @@
         "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/Fox-elite-altea-sideview.jpg"
       ]
     },
-   {
-    "id": "spa::bullfrog-a5l-luxury",
-    "type": "spa",
-    "merk": "Bullfrog",
-    "title": "Bullfrog Spa A5L Luxury",
-    "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a5l-luxury/",
-    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a5l-luxury-582x582.webp",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a5l-luxury-582x582.webp",
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a5l-select.jpg"
-    ],
-    "price": 18195,
-    "bullets": [],
-    "specs": [
-      { "label": "Aantal zitplaatsen", "value": "3 zitplaatsen" },
-      { "label": "Aantal ligplaatsen", "value": "1 ligplaats" },
-      { "label": "Afmetingen", "value": "172 x 213 x 81 cm" },
-      { "label": "Inhoud", "value": "765 L" },
-      { "label": "Aantal kussens", "value": "3" },
-      { "label": "Massage pomp 1", "value": "2,5 PK" },
-      { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
-      { "label": "Leeg gewicht", "value": "290 kg" },
-      { "label": "Gevuld gewicht", "value": "1377 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
-      { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
-      { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
-      { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Bullfrog Serie", "value": "A-serie" },
-      { "label": "Uitvoering (Bullfrog)", "value": "Luxury" }
-    ]
-  },
-  {
-    "id": "spa::bullfrog-a5l-select",
-    "type": "spa",
-    "merk": "Bullfrog",
-    "title": "Bullfrog Spa A5L Select",
-    "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a5l-select/",
-    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a5l-select.jpg",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a5l-select.jpg",
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A5L_Top-Down-582x582.jpg"
-    ],
-    "price": 20095,
-    "bullets": [],
-    "specs": [
-      { "label": "Aantal zitplaatsen", "value": "3 zitplaatsen" },
-      { "label": "Aantal ligplaatsen", "value": "1 ligplaats" },
-      { "label": "Afmetingen", "value": "172 x 213 x 81 cm" },
-      { "label": "Inhoud", "value": "765 L" },
-      { "label": "Aantal kussens", "value": "3" },
-      { "label": "Massage pomp 1", "value": "2,5 PK" },
-      { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
-      { "label": "Leeg gewicht", "value": "290 kg" },
-      { "label": "Gevuld gewicht", "value": "1377 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
-      { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
-      { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
-      { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Bullfrog Serie", "value": "A-serie" },
-      { "label": "Uitvoering (Bullfrog)", "value": "Select" }
-    ]
-  },
-  {
+    {
     "id": "spa::bullfrog-a6l-choice",
     "type": "spa",
     "merk": "Bullfrog",
     "title": "Bullfrog Spa A6L Choice",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a6l-bullfrog-spa-a6l-choice/",
-    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/A6L-Choice_3pt-Snow_Coastal.png.jpg",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/A6L-Choice_3pt-Snow_Coastal.png.jpg",
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a6l-select-582x582.webp"
-    ],
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a6l-select-582x582.webp",
     "price": 17695,
     "bullets": [],
     "specs": [
@@ -15003,9 +14931,46 @@
       { "label": "Stroom", "value": "220V / 50Amp" },
       { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "6 personen" },
       { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Breedte", "value": "200 – 225 cm" },
+      { "label": "Lengte", "value": "225 – 250 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Choice" }
+    ]
+  },
+  {
+    "id": "spa::bullfrog-a5l-luxury",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A5L Luxury",
+    "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a5l-luxury/",
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a5l-luxury-582x582.webp",
+    "price": 18195,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "3 zitplaatsen" },
+      { "label": "Aantal ligplaatsen", "value": "1 ligplaats" },
+      { "label": "Afmetingen", "value": "172 x 213 x 81 cm" },
+      { "label": "Inhoud", "value": "765 L" },
+      { "label": "Aantal kussens", "value": "3" },
+      { "label": "Massage pomp 1", "value": "2,5 PK" },
+      { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
+      { "label": "Leeg gewicht", "value": "290 kg" },
+      { "label": "Gevuld gewicht", "value": "1377 kg" },
+      { "label": "Frame", "value": "EnduraFrame™" },
+      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
+      { "label": "Stroom", "value": "220V / 50Amp" },
+      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "3 personen" },
+      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Prijs categorie", "value": "€ 18.000 – 20.000" },
+      { "label": "Lengte", "value": "0 – 200 cm" },
+      { "label": "Breedte", "value": "200 – 225 cm" },
+      { "label": "Bullfrog Serie", "value": "A-serie" },
+      { "label": "Uitvoering (Bullfrog)", "value": "Luxury" }
     ]
   },
   {
@@ -15014,11 +14979,7 @@
     "merk": "Bullfrog",
     "title": "Bullfrog Spa A6L Luxury",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a6l-luxury/",
-    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/A6L-Choice_3pt-Snow_Coastal.png.jpg",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/A6L-Choice_3pt-Snow_Coastal.png.jpg",
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a6l-select-582x582.webp"
-    ],
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a6l-select-582x582.webp",
     "price": 19995,
     "bullets": [],
     "specs": [
@@ -15038,9 +14999,43 @@
       { "label": "Stroom", "value": "220V / 50Amp" },
       { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "6 personen" },
       { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Breedte", "value": "200 – 225 cm" },
+      { "label": "Lengte", "value": "225 – 250 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Luxury" }
+    ]
+  },
+  {
+    "id": "spa::bullfrog-a5l-select",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A5L Select",
+    "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a5l-select/",
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A5L_Top-Down-582x582.jpg",
+    "price": 20095,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "3 zitplaatsen" },
+      { "label": "Aantal ligplaatsen", "value": "1 ligplaats" },
+      { "label": "Afmetingen", "value": "172 x 213 x 81 cm" },
+      { "label": "Inhoud", "value": "765 L" },
+      { "label": "Aantal kussens", "value": "3" },
+      { "label": "Massage pomp 1", "value": "2,5 PK" },
+      { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
+      { "label": "Leeg gewicht", "value": "290 kg" },
+      { "label": "Gevuld gewicht", "value": "1377 kg" },
+      { "label": "Frame", "value": "EnduraFrame™" },
+      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
+      { "label": "Stroom", "value": "220V / 50Amp" },
+      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "3 personen" },
+      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Bullfrog Serie", "value": "A-serie" },
+      { "label": "Uitvoering (Bullfrog)", "value": "Select" }
     ]
   },
   {
@@ -15049,11 +15044,7 @@
     "merk": "Bullfrog",
     "title": "Bullfrog Spa A6L Select",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a6l-select/",
-    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A6L-Select_3pt-Mist_Timber-1536x864.png.jpg",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A6L-Select_3pt-Mist_Timber-1536x864.png.jpg",
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A6L_2-Pump_Top-Down-582x582.jpg"
-    ],
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A6L_2-Pump_Top-Down-582x582.jpg",
     "price": 21495,
     "bullets": [],
     "specs": [
@@ -15074,7 +15065,10 @@
       { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
       { "label": "WiFi", "value": "Ja" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "6 personen" },
       { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Breedte", "value": "200 – 225 cm" },
+      { "label": "Lengte", "value": "225 – 250 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Select" }
     ]
@@ -15085,11 +15079,7 @@
     "merk": "Bullfrog",
     "title": "Bullfrog Spa A7L Choice",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7l-choice/",
-    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/A7L-Choice_3pt-Snow_Coastal-2048x1152.png.jpg",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/A7L-Choice_3pt-Snow_Coastal-2048x1152.png.jpg",
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7l-choice-582x582.webp"
-    ],
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7l-choice-582x582.webp",
     "price": 21795,
     "bullets": [],
     "specs": [
@@ -15108,8 +15098,47 @@
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
       { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "WiFi", "value": "Ja" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "7 personen" },
       { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Breedte", "value": "200 – 225 cm" },
+      { "label": "Lengte", "value": "200 – 225 cm" },
+      { "label": "Bullfrog Serie", "value": "A-serie" },
+      { "label": "Uitvoering (Bullfrog)", "value": "Choice" }
+    ]
+  },
+  {
+    "id": "spa::bullfrog-a7d-choice",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A7D Choice",
+    "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7d-choice/",
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7d-select-582x582.webp",
+    "price": 21795,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "7 zitplaatsen" },
+      { "label": "Aantal ligplaatsen", "value": "2 ligplaatsen" },
+      { "label": "Afmetingen", "value": "224 x 224 x 92 cm" },
+      { "label": "Inhoud", "value": "1423 L" },
+      { "label": "Aantal kussens", "value": "5" },
+      { "label": "Massage pomp 1", "value": "2,5 PK" },
+      { "label": "Massage pomp 2", "value": "2,5 PK" },
+      { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
+      { "label": "Leeg gewicht", "value": "408 kg" },
+      { "label": "Gevuld gewicht", "value": "2253 kg" },
+      { "label": "Frame", "value": "EnduraFrame™" },
+      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
+      { "label": "Stroom", "value": "220V / 50Amp" },
+      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "WiFi", "value": "Ja" },
+      { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "7 personen" },
+      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Lengte", "value": "200 – 225 cm" },
+      { "label": "Breedte", "value": "200 – 225 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Choice" }
     ]
@@ -15120,11 +15149,7 @@
     "merk": "Bullfrog",
     "title": "Bullfrog Spa A7L Luxury",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7l-luxury/",
-    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A7L-Select_3pt-Mist_Timber-650x650-1.jpg",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A7L-Select_3pt-Mist_Timber-650x650-1.jpg",
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A7L_Top-Down-scaled-582x582.png"
-    ],
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7l-choice-582x582.webp",
     "price": 24095,
     "bullets": [],
     "specs": [
@@ -15145,78 +15170,12 @@
       { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
       { "label": "WiFi", "value": "Ja" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "7 personen" },
       { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Breedte", "value": "200 – 225 cm" },
+      { "label": "Lengte", "value": "200 – 225 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Luxury" }
-    ]
-  },
-  {
-    "id": "spa::bullfrog-a7l-select",
-    "type": "spa",
-    "merk": "Bullfrog",
-    "title": "Bullfrog Spa A7L Select",
-    "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7l-select/",
-    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A7L-Select_3pt-Mist_Timber-650x650-1.jpg",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A7L-Select_3pt-Mist_Timber-650x650-1.jpg",
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A7L_Top-Down-scaled-582x582.png"
-    ],
-    "price": 25995,
-    "bullets": [],
-    "specs": [
-      { "label": "Aantal zitplaatsen", "value": "7 zitplaatsen" },
-      { "label": "Aantal ligplaatsen", "value": "1 ligplaats" },
-      { "label": "Afmetingen", "value": "224 x 224 x 92 cm" },
-      { "label": "Inhoud", "value": "1393 L" },
-      { "label": "Aantal kussens", "value": "5" },
-      { "label": "Massage pomp 1", "value": "2,5 PK" },
-      { "label": "Massage pomp 2", "value": "2,5 PK" },
-      { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
-      { "label": "Leeg gewicht", "value": "397 kg" },
-      { "label": "Gevuld gewicht", "value": "2321 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
-      { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
-      { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
-      { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Bullfrog Serie", "value": "A-serie" },
-      { "label": "Uitvoering (Bullfrog)", "value": "Select" }
-    ]
-  },
-  {
-    "id": "spa::bullfrog-a7d-choice",
-    "type": "spa",
-    "merk": "Bullfrog",
-    "title": "Bullfrog Spa A7D Choice",
-    "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7d-choice/",
-    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7d-select-582x582.webp",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7d-select-582x582.webp"
-    ],
-    "price": 21795,
-    "bullets": [],
-    "specs": [
-      { "label": "Aantal zitplaatsen", "value": "7 zitplaatsen" },
-      { "label": "Aantal ligplaatsen", "value": "2 ligplaatsen" },
-      { "label": "Afmetingen", "value": "224 x 224 x 92 cm" },
-      { "label": "Inhoud", "value": "1423 L" },
-      { "label": "Aantal kussens", "value": "5" },
-      { "label": "Massage pomp 1", "value": "2,5 PK" },
-      { "label": "Massage pomp 2", "value": "2,5 PK" },
-      { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
-      { "label": "Leeg gewicht", "value": "408 kg" },
-      { "label": "Gevuld gewicht", "value": "2253 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
-      { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
-      { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
-      { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Bullfrog Serie", "value": "A-serie" },
-      { "label": "Uitvoering (Bullfrog)", "value": "Choice" }
     ]
   },
   {
@@ -15226,9 +15185,6 @@
     "title": "Bullfrog Spa A7D Luxury",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7d-luxury/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7d-select-582x582.webp",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7d-select-582x582.webp"
-    ],
     "price": 24095,
     "bullets": [],
     "specs": [
@@ -15248,21 +15204,55 @@
       { "label": "Stroom", "value": "220V / 50Amp" },
       { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "7 personen" },
       { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Lengte", "value": "200 – 225 cm" },
+      { "label": "Breedte", "value": "200 – 225 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Luxury" }
+    ]
+  },
+  {
+    "id": "spa::bullfrog-a8l-choice",
+    "type": "spa",
+    "merk": "Bullfrog",
+    "title": "Bullfrog Spa A8L Choice",
+    "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a8l-choice/",
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a8l-choice-582x582.webp",
+    "price": 24795,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal zitplaatsen", "value": "8 zitplaatsen" },
+      { "label": "Aantal ligplaatsen", "value": "0 – enkel zitplaatsen" },
+      { "label": "Afmetingen", "value": "239 x 239 x 97 cm" },
+      { "label": "Inhoud", "value": "1730 L" },
+      { "label": "Aantal kussens", "value": "6" },
+      { "label": "Massage pomp 1", "value": "2,5 PK" },
+      { "label": "Massage pomp 2", "value": "2,5 PK" },
+      { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
+      { "label": "Leeg gewicht", "value": "447 kg" },
+      { "label": "Gevuld gewicht", "value": "2796 kg" },
+      { "label": "Frame", "value": "EnduraFrame™" },
+      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
+      { "label": "Stroom", "value": "220V / 50Amp" },
+      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "8 personen" },
+      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Lengte", "value": "225 – 250 cm" },
+      { "label": "Breedte", "value": "225 – 240 cm" },
+      { "label": "Bullfrog Serie", "value": "A-serie" },
+      { "label": "Uitvoering (Bullfrog)", "value": "Choice" }
     ]
   },
   {
     "id": "spa::bullfrog-a7d-select",
     "type": "spa",
     "merk": "Bullfrog",
-    "title": "Bullfrog Spa A7D Select",
+    "title": "Bullfrog Spa A7D select",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7d-select/",
-    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7d-select-582x582.webp",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7d-select-582x582.webp"
-    ],
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A7D_Top-Down-582x582.jpg",
     "price": 25995,
     "bullets": [],
     "specs": [
@@ -15282,44 +15272,46 @@
       { "label": "Stroom", "value": "220V / 50Amp" },
       { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "7 personen" },
       { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Lengte", "value": "200 – 225 cm" },
+      { "label": "Breedte", "value": "200 – 225 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Select" }
     ]
   },
   {
-    "id": "spa::bullfrog-a8l-choice",
+    "id": "spa::bullfrog-a7l-select",
     "type": "spa",
     "merk": "Bullfrog",
-    "title": "Bullfrog Spa A8L Choice",
-    "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a8l-choice/",
-    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A8L_Choice_3pt-Almond_Coastal-scaled-1536x1024-1.jpg",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A8L_Choice_3pt-Almond_Coastal-scaled-1536x1024-1.jpg",
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a8l-choice-582x582.webp"
-    ],
-    "price": 24795,
+    "title": "Bullfrog Spa A7L Select",
+    "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7l-select/",
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A7L_Top-Down-scaled-582x582.png",
+    "price": 25995,
     "bullets": [],
     "specs": [
-      { "label": "Aantal zitplaatsen", "value": "8 zitplaatsen" },
-      { "label": "Aantal ligplaatsen", "value": "0" },
-      { "label": "Afmetingen", "value": "239 x 239 x 97 cm" },
-      { "label": "Inhoud", "value": "1730 L" },
-      { "label": "Aantal kussens", "value": "6" },
+      { "label": "Aantal zitplaatsen", "value": "7 zitplaatsen" },
+      { "label": "Aantal ligplaatsen", "value": "1 ligplaats" },
+      { "label": "Afmetingen", "value": "224 x 224 x 92 cm" },
+      { "label": "Inhoud", "value": "1393 L" },
+      { "label": "Aantal kussens", "value": "5" },
       { "label": "Massage pomp 1", "value": "2,5 PK" },
       { "label": "Massage pomp 2", "value": "2,5 PK" },
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
-      { "label": "Leeg gewicht", "value": "447 kg" },
-      { "label": "Gevuld gewicht", "value": "2796 kg" },
+      { "label": "Leeg gewicht", "value": "397 kg" },
+      { "label": "Gevuld gewicht", "value": "2321 kg" },
       { "label": "Frame", "value": "EnduraFrame™" },
       { "label": "Filter", "value": "Simplicity™ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
       { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "7 personen" },
       { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Breedte", "value": "200 – 225 cm" },
+      { "label": "Lengte", "value": "200 – 225 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
-      { "label": "Uitvoering (Bullfrog)", "value": "Choice" }
+      { "label": "Uitvoering (Bullfrog)", "value": "Select" }
     ]
   },
   {
@@ -15328,16 +15320,12 @@
     "merk": "Bullfrog",
     "title": "Bullfrog Spa A8L Luxury",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a8l-luxury/",
-    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A8L_Choice_3pt-Almond_Coastal-scaled-1536x1024-1.jpg",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A8L_Choice_3pt-Almond_Coastal-scaled-1536x1024-1.jpg",
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a8l-choice-582x582.webp"
-    ],
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a8l-choice-582x582.webp",
     "price": 27095,
     "bullets": [],
     "specs": [
       { "label": "Aantal zitplaatsen", "value": "8 zitplaatsen" },
-      { "label": "Aantal ligplaatsen", "value": "0" },
+      { "label": "Aantal ligplaatsen", "value": "0 – enkel zitplaatsen" },
       { "label": "Afmetingen", "value": "239 x 239 x 97 cm" },
       { "label": "Inhoud", "value": "1730 L" },
       { "label": "Aantal kussens", "value": "6" },
@@ -15352,7 +15340,10 @@
       { "label": "Stroom", "value": "220V / 50Amp" },
       { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "8 personen" },
       { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Lengte", "value": "225 – 250 cm" },
+      { "label": "Breedte", "value": "225 – 240 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Luxury" }
     ]
@@ -15363,16 +15354,12 @@
     "merk": "Bullfrog",
     "title": "Bullfrog Spa A8L Select",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a8l-select/",
-    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A8L-Select_3pt-Mist_Timber-650x650-1.jpg",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A8L-Select_3pt-Mist_Timber-650x650-1.jpg",
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A8L_Top-Down-scaled-582x582.png"
-    ],
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A8L_Top-Down-scaled-582x582.png",
     "price": 29495,
     "bullets": [],
     "specs": [
       { "label": "Aantal zitplaatsen", "value": "8 zitplaatsen" },
-      { "label": "Aantal ligplaatsen", "value": "0" },
+      { "label": "Aantal ligplaatsen", "value": "0 – enkel zitplaatsen" },
       { "label": "Afmetingen", "value": "239 x 239 x 97 cm" },
       { "label": "Inhoud", "value": "1730 L" },
       { "label": "Aantal kussens", "value": "6" },
@@ -15387,7 +15374,10 @@
       { "label": "Stroom", "value": "220V / 50Amp" },
       { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "8 personen" },
       { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Lengte", "value": "225 – 250 cm" },
+      { "label": "Breedte", "value": "225 – 240 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Select" }
     ]
@@ -15398,11 +15388,7 @@
     "merk": "Bullfrog",
     "title": "Bullfrog Spa A9L Select",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a9l/",
-    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A9L-Select_3pt-Mist_Timber-e1750670851415.png.jpg",
-    "images": [
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A9L-Select_3pt-Mist_Timber-e1750670851415.png.jpg",
-      "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A9L_Top-Down-scaled-582x582.png"
-    ],
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A9L_Top-Down-scaled-582x582.png",
     "price": 32495,
     "bullets": [],
     "specs": [
@@ -15423,7 +15409,11 @@
       { "label": "Stroom", "value": "220V / 50Amp" },
       { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
+      { "label": "Aantal personen", "value": "9 personen" },
       { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Lengte", "value": "250 – 300 cm" },
+      { "label": "Prijs categorie", "value": "€ 22.000+" },
+      { "label": "Breedte", "value": "200 – 225 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Select" }
     ]
