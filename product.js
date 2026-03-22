@@ -44,7 +44,7 @@ function isBullfrogProduct(product) {
 function toggleBullfrogUi(product) {
   const hide = isBullfrogProduct(product);
 
-  document.querySelectorAll('.options, .Totals').forEach(el => {
+  document.querySelectorAll('.options, .totals').forEach(el => {
     el.style.display = hide ? 'none' : '';
   });
 }
