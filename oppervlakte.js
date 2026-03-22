@@ -71,6 +71,23 @@ function getMerk(p) {
   return p?.brand || p?.merk || getSpecValue(p, 'Merk') || '';
 }
 
+function getShowrooms(p) {
+  const value = p?.showroom || p?.showrooms || getSpecValue(p, 'Showroom') || '';
+
+  if (Array.isArray(value)) {
+    return value.filter(Boolean);
+  }
+
+  if (typeof value === 'string') {
+    return value
+      .split(',')
+      .map(s => s.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+}
+
 function getProductUrl(p) {
   const id = encodeURIComponent(p?.id || '');
   return `product.html?id=${id}`;
