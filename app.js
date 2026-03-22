@@ -35,7 +35,7 @@ function euro(n) {
   }
 }
 
-const isBullfrog = product.merk === "Bullfrog";
+const isBullfrog = product.merk === "Bullfrog"; 
 
 return (
   <>
