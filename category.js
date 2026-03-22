@@ -271,11 +271,7 @@ function renderGrid() {
     return;
   }
 
-  if (product.merk?.toLowerCase() === "bullfrog") {
-  document.querySelectorAll('.options, .Totals').forEach(el => {
-    el.style.display = 'none';
-  });
-}
+ 
 
   const frag = document.createDocumentFragment();
 
