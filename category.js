@@ -44,6 +44,23 @@ function escapeHtml(s) {
     .replaceAll("'", '&#039;');
 }
 
+function getShowrooms(p) {
+  const value = p?.showroom || p?.showrooms || getSpecValue(p, 'Showroom') || '';
+
+  if (Array.isArray(value)) {
+    return value.filter(Boolean);
+  }
+
+  if (typeof value === 'string') {
+    return value
+      .split(',')
+      .map(s => s.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+}
+
 function getSpecValue(p, label) {
   const specs = p?.specs;
 
