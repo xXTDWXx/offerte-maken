@@ -85,7 +85,6 @@ a {
 .badge-location {
   position: absolute;
   left: 10px;
-  bottom: 10px;
   z-index: 2;
   max-width: calc(100% - 20px);
   white-space: normal;
