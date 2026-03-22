@@ -77,6 +77,23 @@ a {
   flex-wrap: wrap;
 }
 
+/* Locatie-badge */
+.card-imgwrap {
+  position: relative;
+}
+
+.badge-location {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  top: auto;
+  right: auto;
+  z-index: 2;
+  max-width: calc(100% - 20px);
+  white-space: normal;
+  line-height: 1.2;
+}
+
 /* Panels */
 .panel {
   background: rgba(17, 24, 38, 0.85);
