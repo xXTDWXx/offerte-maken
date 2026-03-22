@@ -289,6 +289,17 @@ function renderGrid() {
     const price = node.querySelector('[data-price]');
     const specs = node.querySelector('[data-specs]');
 
+    const showrooms = getShowrooms(p);
+
+if (showroomBadge) {
+  if (showrooms.length) {
+    showroomBadge.textContent = `Showroom: ${showrooms.join(' • ')}`;
+    showroomBadge.style.display = '';
+  } else {
+    showroomBadge.style.display = 'none';
+  }
+}
+
     if (img) {
       img.src = p.image || '';
       img.alt = p.title || 'Product';
