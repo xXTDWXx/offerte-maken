@@ -94,7 +94,7 @@ a {
   position: absolute;
   left: 10px;
   z-index: 2;
-  visibility: visible;
+  visibility: visible !important;
   max-width: calc(100% - 20px);
   white-space: normal;
   line-height: 1.2;
