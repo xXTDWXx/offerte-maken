@@ -37,12 +37,6 @@ function $(id) {
   return document.getElementById(id);
 }
 
- if (product.merk?.toLowerCase() === "bullfrog") {
-  document.querySelectorAll('.options, .Totals').forEach(el => {
-    el.style.display = 'none';
-  });
-}
-
 function euro(n) {
   const x = Number(n || 0);
   try {
