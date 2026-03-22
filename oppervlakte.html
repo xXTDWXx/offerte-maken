@@ -25,7 +25,7 @@
       <a href="category.html?type=combi sauna" class="category-link">COMBI SAUNA</a>
       <a href="category.html?type=sauna" class="category-link">FINSE SAUNA</a>
       <a href="category.html?type=sauna pod" class="category-link">SAUNA POD</a>
-      <a href="oppervlakte.html" class="category-link is-active">WELKE SPA PAST IN UW TUIN?</a>
+      <a href="ruimte.html" class="category-link is-active">WELKE SPA PAST?</a>
     </div>
   </nav>
 
@@ -35,7 +35,8 @@
         <div>
           <div class="panel-title">Welke spa past in jouw ruimte?</div>
           <div class="small">
-            Vul de beschikbare lengte en breedte in. We tonen alleen spa’s die binnen deze afmetingen passen.
+            Kies de beschikbare afmeting. We tonen alleen spa’s waarvan de specificatie
+            <strong>Afmetingen</strong> binnen die ruimte past.
           </div>
         </div>
         <a href="index.html" class="btn">← Terug naar overzicht</a>
@@ -43,20 +44,15 @@
 
       <div class="panel-row" style="gap:16px; flex-wrap:wrap; align-items:end;">
         <div class="field">
-          <label for="maxLength">Beschikbare lengte</label>
-          <input id="maxLength" type="number" min="0" step="1" placeholder="bv. 230" />
-        </div>
-
-        <div class="field">
-          <label for="maxWidth">Beschikbare breedte</label>
-          <input id="maxWidth" type="number" min="0" step="1" placeholder="bv. 210" />
-        </div>
-
-        <div class="field">
-          <label for="unit">Eenheid</label>
-          <select id="unit">
-            <option value="cm">cm</option>
-            <option value="m">meter</option>
+          <label for="spaceSelect">Beschikbare ruimte</label>
+          <select id="spaceSelect">
+            <option value="">Kies een afmeting</option>
+            <option value="160x215">160 x 215 cm</option>
+            <option value="205x205">205 x 205 cm</option>
+            <option value="215x215">215 x 215 cm</option>
+            <option value="230x230">230 x 230 cm</option>
+            <option value="250x250">250 x 250 cm</option>
+            <option value="300x300">300 x 300 cm</option>
           </select>
         </div>
 
@@ -98,10 +94,10 @@
     </section>
 
     <section class="panel">
-      <div class="panel-title">Werking</div>
+      <div class="panel-title">Hoe werkt het?</div>
       <div class="small">
-        We vergelijken jouw ingevulde ruimte met de specificatie <strong>Afmetingen</strong> van elke spa.
-        Een model wordt getoond als de lengte en breedte van de spa binnen jouw ruimte passen, in beide richtingen.
+        De gekozen ruimte wordt vergeleken met de specificatie <strong>Afmetingen</strong> van elke spa.
+        Een spa wordt alleen getoond als die binnen de gekozen lengte en breedte past.
       </div>
     </section>
 
