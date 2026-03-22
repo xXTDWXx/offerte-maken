@@ -92,8 +92,8 @@ function parseDimensionsToCm(raw) {
   const looksLikeMeters = a <= 10 && b <= 10;
 
   if (usesMeters || looksLikeMeters) {
-    a = a * 100;
-    b = b * 100;
+    a = a * 1;
+    b = b * 1;
   }
 
   a = Math.round(a);
