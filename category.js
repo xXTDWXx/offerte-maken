@@ -288,7 +288,7 @@ function renderGrid() {
 
 if (showroomBadge) {
   if (showrooms.length) {
-    showroomBadge.textContent = `Showroom: ${showrooms.join(' • ')}`;
+    showroomBadge.textContent = `📍 ${showrooms.join(' • ')}`;
     showroomBadge.style.display = '';
   } else {
     showroomBadge.style.display = 'none';
