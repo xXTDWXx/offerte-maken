@@ -48,6 +48,23 @@ function escapeHtml(s) {
     .replaceAll("'", '&#039;');
 }
 
+function getShowrooms(p) {
+  const value = p?.showroom || p?.showrooms || getSpecValue(p, 'Showroom') || '';
+
+  if (Array.isArray(value)) {
+    return value.filter(Boolean);
+  }
+
+  if (typeof value === 'string') {
+    return value
+      .split(',')
+      .map(s => s.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+}
+
 async function loadProducts({ force = false } = {}) {
   const url = force ? `${PRODUCTS_URL}?t=${Date.now()}` : PRODUCTS_URL;
   const res = await fetch(url, { cache: force ? 'no-store' : 'default' });
