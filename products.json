@@ -1844,7 +1844,7 @@
       "id": "spa::vogue-majesty",
       "type": "spa",
       "merk": "Vogue",
-      "showroom": ["Brugge", "Lievegem"]
+      "showroom": ["Brugge", "Lievegem"],
       "title": "Vogue Majesty",
       "url": "https://www.sunspabenelux.be/p/vogue-majesty/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/Majesty-Vogue-.webp",
@@ -2960,7 +2960,7 @@
     {
       "id": "spa::vogue-angora",
       "type": "spa",
-      "showroom": ["Brugge", "Lievegem"]
+      "showroom": ["Brugge", "Lievegem"],
       "merk": "Vogue",
       "title": "Vogue Angora",
       "url": "https://www.sunspabenelux.be/p/vogue-angora/",
@@ -4241,7 +4241,7 @@
     {
       "id": "spa::vogue-classic",
       "type": "spa",
-      "showroom": ["Brugge", "Lievegem"]
+      "showroom": ["Brugge", "Lievegem"],
       "merk": "Vogue",
       "title": "Vogue Classic",
       "url": "https://www.sunspabenelux.be/p/vogue-classic/",
@@ -4750,7 +4750,7 @@
     {
       "id": "spa::vogue-dynasty",
       "type": "spa",
-      "showroom": ["Brugge", "Lievegem"]
+      "showroom": ["Brugge", "Lievegem"],
       "merk": "Vogue",
       "title": "Vogue Dynasty",
       "url": "https://www.sunspabenelux.be/p/vogue-dynasty/",
