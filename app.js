@@ -163,12 +163,6 @@ function buildMerkFilter(items) {
   }
 }
 
-if (product.merk?.toLowerCase() === "bullfrog") {
-  document.querySelectorAll('.options, .Totals').forEach(el => {
-    el.style.display = 'none';
-  });
-}
-
 function buildPersonenFilter(items) {
   if (!personenFilter || !personenField) return;
 
