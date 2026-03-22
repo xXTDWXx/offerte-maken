@@ -35,6 +35,26 @@ function euro(n) {
   }
 }
 
+const isBullfrog = product.merk === "Bullfrog";
+
+return (
+  <>
+    <Price value={product.price} />
+
+    {isBullfrog ? (
+      <div className="offerte-box">
+        Vraag een detailofferte aan een medewerker
+      </div>
+    ) : (
+      <>
+        <DeliveryOptions />
+        <InstallationOptions />
+        <ExtraOptions />
+      </>
+    )}
+  </>
+);
+
 function normalize(s) {
   return (s ?? '').toString().toLowerCase().trim();
 }
