@@ -6,9 +6,7 @@ const resultMeta = document.getElementById('resultMeta');
 const errorBox = document.getElementById('errorBox');
 const errorText = document.getElementById('errorText');
 
-const maxLengthInput = document.getElementById('maxLength');
-const maxWidthInput = document.getElementById('maxWidth');
-const unitSelect = document.getElementById('unit');
+const spaceSelect = document.getElementById('spaceSelect');
 const brandFilter = document.getElementById('brandFilter');
 const sortFilter = document.getElementById('sort');
 const btnClear = document.getElementById('btnClear');
@@ -16,6 +14,15 @@ const activeChips = document.getElementById('activeChips');
 
 let products = [];
 let filtered = [];
+
+const SPACE_OPTIONS = {
+  '160x215': { lengthCm: 215, widthCm: 160, label: '160 x 215 cm' },
+  '205x205': { lengthCm: 205, widthCm: 205, label: '205 x 205 cm' },
+  '215x215': { lengthCm: 215, widthCm: 215, label: '215 x 215 cm' },
+  '230x230': { lengthCm: 230, widthCm: 230, label: '230 x 230 cm' },
+  '250x250': { lengthCm: 250, widthCm: 250, label: '250 x 250 cm' },
+  '300x300': { lengthCm: 300, widthCm: 300, label: '300 x 300 cm' }
+};
 
 function euro(n) {
   const x = Number(n || 0);
@@ -69,47 +76,6 @@ function getProductUrl(p) {
   return `product.html?id=${id}`;
 }
 
-function topSpecs(p, dims) {
-  const lines = [];
-
-  if (getMerk(p)) lines.push(`Merk: ${escapeHtml(getMerk(p))}`);
-  if (getSpecValue(p, 'Afmetingen')) lines.push(`Afmetingen: ${escapeHtml(getSpecValue(p, 'Afmetingen'))}`);
-  if (getSpecValue(p, 'Aantal personen')) lines.push(`Aantal personen: ${escapeHtml(getSpecValue(p, 'Aantal personen'))}`);
-  if (getSpecValue(p, 'Aantal jets')) lines.push(`Aantal jets: ${escapeHtml(getSpecValue(p, 'Aantal jets'))}`);
-
-  if (dims?.lengthCm && dims?.widthCm) {
-    lines.push(`Past binnen: ${dims.lengthCm} × ${dims.widthCm} cm`);
-  }
-
-  return lines.slice(0, 5).join('<br>');
-}
-
-async function loadProducts() {
-  const res = await fetch(PRODUCTS_URL);
-
-  if (!res.ok) {
-    throw new Error(`Kan products.json niet laden (${res.status})`);
-  }
-
-  const json = await res.json();
-  const items = Array.isArray(json) ? json : (json.products || []);
-  return Array.isArray(items) ? items : [];
-}
-
-function toCm(value, unit) {
-  const n = Number(value || 0);
-  if (!Number.isFinite(n) || n <= 0) return 0;
-  return unit === 'm' ? n * 100 : n;
-}
-
-/**
- * Probeert afmetingen uit tekst te halen.
- * Voorbeelden die werken:
- * - 200 x 200 x 90 cm
- * - 200x200 cm
- * - 2,00 x 2,00 m
- * - 230 x 210
- */
 function parseDimensionsToCm(raw) {
   const text = normalize(raw)
     .replaceAll(',', '.')
@@ -126,8 +92,8 @@ function parseDimensionsToCm(raw) {
   const looksLikeMeters = a <= 10 && b <= 10;
 
   if (usesMeters || looksLikeMeters) {
-    a = a * 1;
-    b = b * 1;
+    a = a * 100;
+    b = b * 100;
   }
 
   a = Math.round(a);
@@ -147,29 +113,30 @@ function getProductDimensions(p) {
   return parseDimensionsToCm(fromSpec);
 }
 
-function fitsInSpace(productDims, maxLengthCm, maxWidthCm) {
-  if (!productDims) return false;
-  if (!maxLengthCm || !maxWidthCm) return true;
+function getSelectedSpace() {
+  const key = spaceSelect?.value || '';
+  return SPACE_OPTIONS[key] || null;
+}
 
-  const spaceLong = Math.max(maxLengthCm, maxWidthCm);
-  const spaceShort = Math.min(maxLengthCm, maxWidthCm);
+function fitsInSpace(productDims, selectedSpace) {
+  if (!productDims || !selectedSpace) return false;
 
   return (
-    productDims.lengthCm <= spaceLong &&
-    productDims.widthCm <= spaceShort
+    productDims.lengthCm <= selectedSpace.lengthCm &&
+    productDims.widthCm <= selectedSpace.widthCm
   );
 }
 
-function getUnusedSpaceScore(productDims, maxLengthCm, maxWidthCm) {
-  if (!productDims || !maxLengthCm || !maxWidthCm) return Number.MAX_SAFE_INTEGER;
+function getUnusedSpaceScore(productDims, selectedSpace) {
+  if (!productDims || !selectedSpace) return Number.MAX_SAFE_INTEGER;
 
-  const spaceLong = Math.max(maxLengthCm, maxWidthCm);
-  const spaceShort = Math.min(maxLengthCm, maxWidthCm);
-
-  return (spaceLong - productDims.lengthCm) + (spaceShort - productDims.widthCm);
+  return (
+    (selectedSpace.lengthCm - productDims.lengthCm) +
+    (selectedSpace.widthCm - productDims.widthCm)
+  );
 }
 
-function sortProducts(items, maxLengthCm, maxWidthCm) {
+function sortProducts(items, selectedSpace) {
   const sort = sortFilter?.value || 'fitBest';
 
   if (sort === 'priceAsc') {
@@ -198,37 +165,55 @@ function sortProducts(items, maxLengthCm, maxWidthCm) {
     items.sort((a, b) => {
       const da = getProductDimensions(a);
       const db = getProductDimensions(b);
-
-      const scoreA = getUnusedSpaceScore(da, maxLengthCm, maxWidthCm);
-      const scoreB = getUnusedSpaceScore(db, maxLengthCm, maxWidthCm);
-
-      return scoreA - scoreB;
+      return getUnusedSpaceScore(da, selectedSpace) - getUnusedSpaceScore(db, selectedSpace);
     });
   }
 
   return items;
 }
 
-function updateChips(maxLengthCm, maxWidthCm) {
+function topSpecs(p, dims) {
+  const lines = [];
+
+  if (getMerk(p)) lines.push(`Merk: ${escapeHtml(getMerk(p))}`);
+  if (getSpecValue(p, 'Afmetingen')) lines.push(`Afmetingen: ${escapeHtml(getSpecValue(p, 'Afmetingen'))}`);
+  if (getSpecValue(p, 'Aantal personen')) lines.push(`Aantal personen: ${escapeHtml(getSpecValue(p, 'Aantal personen'))}`);
+  if (getSpecValue(p, 'Aantal jets')) lines.push(`Aantal jets: ${escapeHtml(getSpecValue(p, 'Aantal jets'))}`);
+
+  if (dims?.lengthCm && dims?.widthCm) {
+    lines.push(`Formaat: ${dims.widthCm} x ${dims.lengthCm} cm`);
+  }
+
+  return lines.slice(0, 5).join('<br>');
+}
+
+async function loadProducts() {
+  const res = await fetch(PRODUCTS_URL);
+
+  if (!res.ok) {
+    throw new Error(`Kan products.json niet laden (${res.status})`);
+  }
+
+  const json = await res.json();
+  const items = Array.isArray(json) ? json : (json.products || []);
+  return Array.isArray(items) ? items : [];
+}
+
+function updateChips(selectedSpace) {
   if (!activeChips) return;
 
   const chips = [];
   const brand = brandFilter?.value || '';
-  const unit = unitSelect?.value || 'cm';
+  const sort = sortFilter?.value || 'fitBest';
 
-  if (maxLengthCm && maxWidthCm) {
-    if (unit === 'm') {
-      chips.push(`<span class="chip">Ruimte: ${escapeHtml(String(maxLengthCm / 100))} × ${escapeHtml(String(maxWidthCm / 100))} m</span>`);
-    } else {
-      chips.push(`<span class="chip">Ruimte: ${escapeHtml(String(maxLengthCm))} × ${escapeHtml(String(maxWidthCm))} cm</span>`);
-    }
+  if (selectedSpace) {
+    chips.push(`<span class="chip">Ruimte: ${escapeHtml(selectedSpace.label)}</span>`);
   }
 
   if (brand) {
     chips.push(`<span class="chip">Merk: ${escapeHtml(brand)}</span>`);
   }
 
-  const sort = sortFilter?.value || 'fitBest';
   const sortLabels = {
     fitBest: 'Beste match',
     priceAsc: 'Prijs laag → hoog',
@@ -248,16 +233,26 @@ function updateMeta() {
   resultMeta.textContent = `${filtered.length} spa’s gevonden`;
 }
 
-function renderGrid(maxLengthCm, maxWidthCm) {
+function renderGrid() {
   if (!elGrid || !tpl) return;
 
   elGrid.innerHTML = '';
+
+  if (!spaceSelect?.value) {
+    elGrid.innerHTML = `
+      <div class="panel">
+        <div class="panel-title">Kies eerst een afmeting</div>
+        <div class="small">Selecteer hierboven de beschikbare ruimte om passende spa’s te bekijken.</div>
+      </div>
+    `;
+    return;
+  }
 
   if (!filtered.length) {
     elGrid.innerHTML = `
       <div class="panel">
         <div class="panel-title">Geen passende spa’s gevonden</div>
-        <div class="small">Vergroot de beschikbare afmetingen of pas je merkfilter aan.</div>
+        <div class="small">Kies een grotere afmeting of pas het merk aan.</div>
       </div>
     `;
     return;
@@ -284,7 +279,12 @@ function renderGrid(maxLengthCm, maxWidthCm) {
       };
     }
 
-    if (badge) badge.textContent = dims ? `${dims.lengthCm}×${dims.widthCm} CM` : (p.type || '').toUpperCase();
+    if (badge) {
+      badge.textContent = dims
+        ? `${dims.widthCm} x ${dims.lengthCm} cm`
+        : (p.type || '').toUpperCase();
+    }
+
     if (title) title.textContent = p.title || '';
     if (price) price.textContent = euro(p.price || 0);
     if (specs) specs.innerHTML = topSpecs(p, dims);
@@ -302,9 +302,16 @@ function renderGrid(maxLengthCm, maxWidthCm) {
 }
 
 function filterProducts() {
-  const maxLengthCm = toCm(maxLengthInput?.value, unitSelect?.value || 'cm');
-  const maxWidthCm = toCm(maxWidthInput?.value, unitSelect?.value || 'cm');
+  const selectedSpace = getSelectedSpace();
   const selectedBrand = brandFilter?.value || '';
+
+  if (!selectedSpace) {
+    filtered = [];
+    updateChips(null);
+    updateMeta();
+    renderGrid();
+    return;
+  }
 
   filtered = products.filter(p => {
     if (normalize(p.type) !== 'spa') return false;
@@ -313,31 +320,27 @@ function filterProducts() {
     if (!dims) return false;
 
     const matchBrand = !selectedBrand || normalize(getMerk(p)) === normalize(selectedBrand);
-    const matchSize = fitsInSpace(dims, maxLengthCm, maxWidthCm);
+    const matchSize = fitsInSpace(dims, selectedSpace);
 
     return matchBrand && matchSize;
   });
 
-  filtered = sortProducts([...filtered], maxLengthCm, maxWidthCm);
+  filtered = sortProducts([...filtered], selectedSpace);
 
-  updateChips(maxLengthCm, maxWidthCm);
+  updateChips(selectedSpace);
   updateMeta();
-  renderGrid(maxLengthCm, maxWidthCm);
+  renderGrid();
 }
 
 function clearFilters() {
-  if (maxLengthInput) maxLengthInput.value = '';
-  if (maxWidthInput) maxWidthInput.value = '';
-  if (unitSelect) unitSelect.value = 'cm';
+  if (spaceSelect) spaceSelect.value = '';
   if (brandFilter) brandFilter.value = '';
   if (sortFilter) sortFilter.value = 'fitBest';
   filterProducts();
 }
 
 function bindEvents() {
-  maxLengthInput?.addEventListener('input', filterProducts);
-  maxWidthInput?.addEventListener('input', filterProducts);
-  unitSelect?.addEventListener('change', filterProducts);
+  spaceSelect?.addEventListener('change', filterProducts);
   brandFilter?.addEventListener('change', filterProducts);
   sortFilter?.addEventListener('change', filterProducts);
   btnClear?.addEventListener('click', clearFilters);
