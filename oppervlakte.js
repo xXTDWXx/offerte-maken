@@ -284,6 +284,7 @@ function renderGrid() {
     const cardLink = node.querySelector('[data-open]');
     const img = node.querySelector('.card-img');
     const badge = node.querySelector('[data-badge]');
+    const showroomBadge = node.querySelector('[data-showroom]');
     const title = node.querySelector('[data-title]');
     const price = node.querySelector('[data-price]');
     const specs = node.querySelector('[data-specs]');
