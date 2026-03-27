@@ -130,6 +130,17 @@ function getProductDimensions(p) {
   return parseDimensionsToCm(fromSpec);
 }
 
+function getLigplaatsen(product) {
+  const spec = (product.specs || []).find(
+    s => s.label.toLowerCase().includes('ligplaatsen')
+  );
+
+  if (!spec) return 0;
+
+  const match = spec.value.match(/\d+/);
+  return match ? Number(match[0]) : 0;
+}
+
 function getSelectedSpace() {
   const key = spaceSelect?.value || '';
   return SPACE_OPTIONS[key] || null;
@@ -380,6 +391,18 @@ function showError(msg) {
   errorBox.style.display = '';
   errorText.textContent = msg;
 }
+
+const selectedLigplaatsen = document.getElementById('filterLigplaatsen')?.value;
+
+filteredProducts = products.filter(product => {
+  const ligplaatsen = getLigplaatsen(product);
+
+  if (selectedLigplaatsen && ligplaatsen !== Number(selectedLigplaatsen)) {
+    return false;
+  }
+
+  return true;
+});
 
 async function init() {
   products = await loadProducts();
