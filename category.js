@@ -373,40 +373,48 @@ function updateChips() {
 }
 
 function filterProducts() {
-  const currentType = getTypeFromUrl();
-  const showBrandFilter = isSpaCategory(currentType);
+  const selectedSpace = getSelectedSpace();
+  const selectedBrand = brandFilter?.value || '';
+  const selectedLigplaatsen = ligplaatsenFilter?.value || '';
+  const selectedShowroom = getShowroomFromUrl(); // 👈 NIEUW
 
-  const selectedBrand = showBrandFilter ? (brandFilter?.value || '') : '';
-  const searchValue = normalize(searchInput?.value || '');
+  if (!selectedSpace) {
+    filtered = [];
+    updateChips(null);
+    updateMeta();
+    renderGrid();
+    return;
+  }
 
   filtered = products.filter(p => {
-    const matchType = !currentType || normalize(p.type) === normalize(currentType);
-    const matchBrand = !selectedBrand || normalize(getMerk(p)) === normalize(selectedBrand);
+    if (normalize(p.type) !== 'spa') return false;
 
-    const searchableText = [
-      p.title,
-      p.type,
-      getMerk(p),
-      getSpecValue(p, 'Afmetingen'),
-      getSpecValue(p, 'Aantal personen'),
-      getSpecValue(p, 'Aantal zitplaatsen'),
-      getSpecValue(p, 'Aantal ligplaatsen'),
-      getSpecValue(p, 'Aantal jets')
-    ]
-      .map(normalize)
-      .join(' ');
+    const dims = getProductDimensions(p);
+    if (!dims) return false;
 
-    const matchSearch = !searchValue || searchableText.includes(searchValue);
+    const ligplaatsen = getLigplaatsen(p);
+    const showrooms = getShowrooms(p); // 👈 je had deze al
 
-    return matchType && matchBrand && matchSearch;
+    const matchBrand =
+      !selectedBrand || normalize(getMerk(p)) === normalize(selectedBrand);
+
+    const matchSize = fitsInSpace(dims, selectedSpace);
+
+    const matchLigplaatsen =
+      !selectedLigplaatsen || ligplaatsen === Number(selectedLigplaatsen);
+
+    const matchShowroom =
+      !selectedShowroom ||
+      showrooms.map(s => normalize(s)).includes(normalize(selectedShowroom));
+
+    return matchBrand && matchSize && matchLigplaatsen && matchShowroom;
   });
 
-  filtered = sortProducts([...filtered]);
+  filtered = sortProducts([...filtered], selectedSpace);
 
-  updateUrlFromFilters();
-  updateChips();
-  renderGrid();
+  updateChips(selectedSpace);
   updateMeta();
+  renderGrid();
 }
 
 function clearFilters() {
