@@ -47,7 +47,7 @@ a {
 .header {
   top: 0;
   z-index: 10;
-  background: rgba(11, 15, 20, 0.75);
+  background: rgb(255 255 255);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
@@ -102,7 +102,7 @@ a {
 
 /* Panels */
 .panel {
-  background: rgba(17, 24, 38, 0.85);
+  background: rgb(104 167 214);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   border-radius: var(--radius);
@@ -210,7 +210,7 @@ select:focus {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  background: rgba(15, 23, 36, 0.9);
+  background: rgb(104 167 214);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
@@ -486,7 +486,7 @@ label.opt .opt-price {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgb(73 75 79);
+  background: rgb(104 167 214);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(15, 23, 42, 0.08);
