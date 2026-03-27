@@ -9,6 +9,7 @@ const errorText = document.getElementById('errorText');
 const spaceSelect = document.getElementById('spaceSelect');
 const brandFilter = document.getElementById('brandFilter');
 const sortFilter = document.getElementById('sort');
+const ligplaatsenFilter = document.getElementById('filterLigplaatsen');
 const btnClear = document.getElementById('btnClear');
 const activeChips = document.getElementById('activeChips');
 
@@ -109,8 +110,8 @@ function parseDimensionsToCm(raw) {
   const looksLikeMeters = a <= 10 && b <= 10;
 
   if (usesMeters || looksLikeMeters) {
-    a = a * 1;
-    b = b * 1;
+    a = a * 100;
+    b = b * 100;
   }
 
   a = Math.round(a);
@@ -132,12 +133,12 @@ function getProductDimensions(p) {
 
 function getLigplaatsen(product) {
   const spec = (product.specs || []).find(
-    s => s.label.toLowerCase().includes('ligplaatsen')
+    s => normalize(s?.label).includes('ligplaatsen')
   );
 
   if (!spec) return 0;
 
-  const match = spec.value.match(/\d+/);
+  const match = String(spec.value || '').match(/\d+/);
   return match ? Number(match[0]) : 0;
 }
 
@@ -206,7 +207,9 @@ function topSpecs(p, dims) {
   if (getMerk(p)) lines.push(`Merk: ${escapeHtml(getMerk(p))}`);
   if (getSpecValue(p, 'Afmetingen')) lines.push(`Afmetingen: ${escapeHtml(getSpecValue(p, 'Afmetingen'))}`);
   if (getSpecValue(p, 'Aantal personen')) lines.push(`Aantal personen: ${escapeHtml(getSpecValue(p, 'Aantal personen'))}`);
+  if (getSpecValue(p, 'Aantal ligplaatsen')) lines.push(`Aantal ligplaatsen: ${escapeHtml(getSpecValue(p, 'Aantal ligplaatsen'))}`);
   if (getSpecValue(p, 'Aantal jets')) lines.push(`Aantal jets: ${escapeHtml(getSpecValue(p, 'Aantal jets'))}`);
+  if (getSpecValue(p, 'Jet type')) lines.push(`Jet type: ${escapeHtml(getSpecValue(p, 'Jet type'))}`);
 
   if (dims?.lengthCm && dims?.widthCm) {
     lines.push(`Formaat: ${dims.widthCm} x ${dims.lengthCm} cm`);
@@ -232,6 +235,7 @@ function updateChips(selectedSpace) {
 
   const chips = [];
   const brand = brandFilter?.value || '';
+  const ligplaatsen = ligplaatsenFilter?.value || '';
   const sort = sortFilter?.value || 'fitBest';
 
   if (selectedSpace) {
@@ -240,6 +244,10 @@ function updateChips(selectedSpace) {
 
   if (brand) {
     chips.push(`<span class="chip">Merk: ${escapeHtml(brand)}</span>`);
+  }
+
+  if (ligplaatsen) {
+    chips.push(`<span class="chip">Ligplaatsen: ${escapeHtml(ligplaatsen)}</span>`);
   }
 
   const sortLabels = {
@@ -280,7 +288,7 @@ function renderGrid() {
     elGrid.innerHTML = `
       <div class="panel">
         <div class="panel-title">Geen passende spa’s gevonden</div>
-        <div class="small">Kies een grotere afmeting of pas het merk aan.</div>
+        <div class="small">Kies een grotere afmeting of pas je filters aan.</div>
       </div>
     `;
     return;
@@ -302,14 +310,14 @@ function renderGrid() {
 
     const showrooms = getShowrooms(p);
 
-if (showroomBadge) {
-  if (showrooms.length) {
-    showroomBadge.textContent = `📍 ${showrooms.join(' • ')}`;
-    showroomBadge.style.display = '';
-  } else {
-    showroomBadge.style.display = 'none';
-  }
-}
+    if (showroomBadge) {
+      if (showrooms.length) {
+        showroomBadge.textContent = `📍 ${showrooms.join(' • ')}`;
+        showroomBadge.style.display = '';
+      } else {
+        showroomBadge.style.display = 'none';
+      }
+    }
 
     if (img) {
       img.src = p.image || '';
@@ -344,6 +352,7 @@ if (showroomBadge) {
 function filterProducts() {
   const selectedSpace = getSelectedSpace();
   const selectedBrand = brandFilter?.value || '';
+  const selectedLigplaatsen = ligplaatsenFilter?.value || '';
 
   if (!selectedSpace) {
     filtered = [];
@@ -359,10 +368,17 @@ function filterProducts() {
     const dims = getProductDimensions(p);
     if (!dims) return false;
 
-    const matchBrand = !selectedBrand || normalize(getMerk(p)) === normalize(selectedBrand);
+    const ligplaatsen = getLigplaatsen(p);
+
+    const matchBrand =
+      !selectedBrand || normalize(getMerk(p)) === normalize(selectedBrand);
+
     const matchSize = fitsInSpace(dims, selectedSpace);
 
-    return matchBrand && matchSize;
+    const matchLigplaatsen =
+      !selectedLigplaatsen || ligplaatsen === Number(selectedLigplaatsen);
+
+    return matchBrand && matchSize && matchLigplaatsen;
   });
 
   filtered = sortProducts([...filtered], selectedSpace);
@@ -375,6 +391,7 @@ function filterProducts() {
 function clearFilters() {
   if (spaceSelect) spaceSelect.value = '';
   if (brandFilter) brandFilter.value = '';
+  if (ligplaatsenFilter) ligplaatsenFilter.value = '';
   if (sortFilter) sortFilter.value = 'fitBest';
   filterProducts();
 }
@@ -383,7 +400,7 @@ function bindEvents() {
   spaceSelect?.addEventListener('change', filterProducts);
   brandFilter?.addEventListener('change', filterProducts);
   sortFilter?.addEventListener('change', filterProducts);
-  document.getElementById('filterLigplaatsen')?.addEventListener('change', applyFilters);
+  ligplaatsenFilter?.addEventListener('change', filterProducts);
   btnClear?.addEventListener('click', clearFilters);
 }
 
@@ -392,18 +409,6 @@ function showError(msg) {
   errorBox.style.display = '';
   errorText.textContent = msg;
 }
-
-const selectedLigplaatsen = document.getElementById('filterLigplaatsen')?.value;
-
-filteredProducts = products.filter(product => {
-  const ligplaatsen = getLigplaatsen(product);
-
-  if (selectedLigplaatsen && ligplaatsen !== Number(selectedLigplaatsen)) {
-    return false;
-  }
-
-  return true;
-});
 
 async function init() {
   products = await loadProducts();
