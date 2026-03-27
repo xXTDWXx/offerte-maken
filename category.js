@@ -396,8 +396,10 @@ function filterProducts() {
     const showrooms = getShowrooms(p);
 
     const matchShowroom =
-      !selectedShowroom ||
-      showrooms.map(s => normalize(s)).includes(normalize(selectedShowroom));
+  !selectedShowroom ||
+  selectedShowroom === 'all'
+    ? showrooms.length > 0
+    : showrooms.map(s => normalize(s)).includes(normalize(selectedShowroom));
 
     return matchType && matchBrand && matchSearch && matchShowroom;
   });
