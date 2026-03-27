@@ -19,6 +19,11 @@ const activeChips = document.getElementById('activeChips');
 let products = [];
 let filtered = [];
 
+function getShowroomFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('showroom') || '';
+}
+
 function euro(n) {
   const x = Number(n || 0);
   try {
