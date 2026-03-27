@@ -373,46 +373,38 @@ function updateChips() {
 }
 
 function filterProducts() {
-  const selectedSpace = getSelectedSpace();
+  const currentType = getTypeFromUrl();
   const selectedBrand = brandFilter?.value || '';
-  const selectedLigplaatsen = ligplaatsenFilter?.value || '';
-  const selectedShowroom = getShowroomFromUrl(); // 👈 NIEUW
-
-  if (!selectedSpace) {
-    filtered = [];
-    updateChips(null);
-    updateMeta();
-    renderGrid();
-    return;
-  }
+  const search = searchInput?.value || '';
+  const selectedShowroom = getShowroomFromUrl();
 
   filtered = products.filter(p => {
-    if (normalize(p.type) !== 'spa') return false;
+    // type filter
+    const matchType =
+      !currentType || normalize(p.type) === normalize(currentType);
 
-    const dims = getProductDimensions(p);
-    if (!dims) return false;
-
-    const ligplaatsen = getLigplaatsen(p);
-    const showrooms = getShowrooms(p); // 👈 je had deze al
-
+    // merk filter
     const matchBrand =
       !selectedBrand || normalize(getMerk(p)) === normalize(selectedBrand);
 
-    const matchSize = fitsInSpace(dims, selectedSpace);
+    // zoek filter
+    const matchSearch =
+      !search ||
+      normalize(p.title).includes(normalize(search));
 
-    const matchLigplaatsen =
-      !selectedLigplaatsen || ligplaatsen === Number(selectedLigplaatsen);
+    // showroom filter 🔥
+    const showrooms = getShowrooms(p);
 
     const matchShowroom =
       !selectedShowroom ||
       showrooms.map(s => normalize(s)).includes(normalize(selectedShowroom));
 
-    return matchBrand && matchSize && matchLigplaatsen && matchShowroom;
+    return matchType && matchBrand && matchSearch && matchShowroom;
   });
 
-  filtered = sortProducts([...filtered], selectedSpace);
+  filtered = sortProducts([...filtered]);
 
-  updateChips(selectedSpace);
+  updateChips();
   updateMeta();
   renderGrid();
 }
