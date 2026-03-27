@@ -379,27 +379,26 @@ function filterProducts() {
   const selectedShowroom = getShowroomFromUrl();
 
   filtered = products.filter(p => {
-    // type filter
     const matchType =
       !currentType || normalize(p.type) === normalize(currentType);
 
-    // merk filter
     const matchBrand =
       !selectedBrand || normalize(getMerk(p)) === normalize(selectedBrand);
 
-    // zoek filter
     const matchSearch =
-      !search ||
-      normalize(p.title).includes(normalize(search));
+      !search || normalize(p.title).includes(normalize(search));
 
-    // showroom filter 🔥
     const showrooms = getShowrooms(p);
 
-    const matchShowroom =
-  !selectedShowroom ||
-  selectedShowroom === 'all'
-    ? showrooms.length > 0
-    : showrooms.map(s => normalize(s)).includes(normalize(selectedShowroom));
+    let matchShowroom = true;
+
+    if (selectedShowroom === 'all') {
+      matchShowroom = showrooms.length > 0;
+    } else if (selectedShowroom) {
+      matchShowroom = showrooms
+        .map(s => normalize(s))
+        .includes(normalize(selectedShowroom));
+    }
 
     return matchType && matchBrand && matchSearch && matchShowroom;
   });
