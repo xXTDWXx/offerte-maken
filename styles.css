@@ -102,7 +102,7 @@ a {
 
 /* Panels */
 .panel {
-  background: rgb(104 167 214);
+  background: rgb(64 114 152);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   border-radius: var(--radius);
