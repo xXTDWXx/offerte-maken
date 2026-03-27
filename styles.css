@@ -394,7 +394,8 @@ select:focus {
 }
 
 .spec-row span {
-  color: var(--muted);
+  color: black;
+  font-weight: bold;
 }
 
 /* Options */
