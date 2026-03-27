@@ -7414,6 +7414,7 @@
     {
       "id": "sauna::Infrarood-lounge-chair",
       "type": "Infrarood",
+      "showroom": ["Brugge", "Lievegem"],
       "title": "Infrarood Lounge Chair",
       "url": "https://www.sunspabenelux.be/p/Infrarood-lounge-chair/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2024/02/ir-lounge-chair.jpg",
