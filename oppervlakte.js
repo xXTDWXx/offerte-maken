@@ -383,6 +383,7 @@ function bindEvents() {
   spaceSelect?.addEventListener('change', filterProducts);
   brandFilter?.addEventListener('change', filterProducts);
   sortFilter?.addEventListener('change', filterProducts);
+  document.getElementById('filterLigplaatsen')?.addEventListener('change', applyFilters);
   btnClear?.addEventListener('click', clearFilters);
 }
 
