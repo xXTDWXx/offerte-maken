@@ -45,7 +45,6 @@ a {
 
 /* Header */
 .header {
-  position: sticky;
   top: 0;
   z-index: 10;
   background: rgba(11, 15, 20, 0.75);
