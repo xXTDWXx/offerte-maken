@@ -45,6 +45,7 @@ a {
 
 img {
   max-width: 100%;
+  width:35%;
 }
 
 .container {
@@ -216,7 +217,6 @@ select:focus {
   padding: 0 18px;
   background: rgb(104 167 214);
   color: #0f172a;
-  font-weight: 800;
   text-transform: uppercase;
   transition:
     background 0.2s ease,
