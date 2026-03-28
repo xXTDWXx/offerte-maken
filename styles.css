@@ -64,30 +64,28 @@ img {
 
 /* Header */
 .header {
-  position: relative;
-  z-index: 20;
+  top: 0;
+  z-index: 10;
   background: rgb(255 255 255);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
 
 .header-row {
-  display: flex;
   gap: 14px;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 .brand-title {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: 0.2px;
-  color: #0f172a;
 }
 
 .brand-sub {
-  font-size: 0.95rem;
-  color: #5b6b79;
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 .header-actions {
