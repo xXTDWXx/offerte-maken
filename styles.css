@@ -198,7 +198,6 @@ select:focus {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgb(104 167 214);
   border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
 }
