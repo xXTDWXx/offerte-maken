@@ -8324,6 +8324,10 @@
           "value": "2 personen"
         },
         {
+          "label": "Afmeting",
+          "value": "170 x 185 Ø"
+        },
+        {
           "label": "Accessoires",
           "value": "Sauna emmer & sauna lepel, Saunastenen, Thermometer & hygrometer, Zandloper"
         },
@@ -9029,6 +9033,10 @@
           "value": "Infra4Health"
         },
         {
+          "label": "Afmetingen",
+          "value": "170 x 185 Ø"
+        },
+        {
           "label": "Ventilatie",
           "value": "Ja"
         },
@@ -9506,6 +9514,10 @@
           "value": "Sauna emmer & sauna lepel, Saunastenen, Thermometer & hygrometer, Zandloper"
         },
         {
+          "label": "Afmetingen",
+          "value": "210 x 185 Ø"
+        },
+        {
           "label": "Aantal banken",
           "value": "2"
         },
@@ -9585,6 +9597,10 @@
           "value": "2"
         },
         {
+          "label": "Afmetingen",
+          "value": "210 x 185 Ø"
+        },
+        {
           "label": "Aantal personen",
           "value": "4 personen"
         },
@@ -9662,6 +9678,10 @@
         {
           "label": "Aantal banken",
           "value": "2"
+        },
+        {
+          "label": "Afmetingen",
+          "value": "230 x 185 Ø"
         },
         {
           "label": "Aantal personen",
@@ -9824,6 +9844,10 @@
         {
           "label": "Aantal banken",
           "value": "2"
+        },
+        {
+          "label": "Afmetingen",
+          "value": "270 x 214 Ø"
         },
         {
           "label": "Aantal personen",
@@ -10130,6 +10154,10 @@
           "value": "2"
         },
         {
+          "label": "Afmetingen",
+          "value": "270 x 214 Ø"
+        },
+        {
           "label": "Accessoires",
           "value": "Sauna emmer & sauna lepel, Saunastenen, Thermometer & hygrometer, Zandloper"
         },
@@ -10292,6 +10320,10 @@
         {
           "label": "Aantal banken",
           "value": "2"
+        },
+        {
+          "label": "Afmetingen",
+          "value": "286 x 214 Ø"
         },
         {
           "label": "Accessoires",
@@ -10552,7 +10584,7 @@
       "specs": [
         {
           "label": "Afmetingen",
-          "value": "400 x 214 x 230 cm"
+          "value": "393 x 214 x 230 cm"
         },
         {
           "label": "Merk",
@@ -10716,7 +10748,7 @@
       "specs": [
         {
           "label": "Afmetingen",
-          "value": "400 x 214 x 230cm"
+          "value": "393 x 214 x 230cm"
         },
         {
           "label": "Merk",
