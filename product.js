@@ -448,71 +448,522 @@ function printOfferte() {
 
   const customer = getCustomerData();
   const lines = getSelectedOfferLines();
-
   const total = lines.reduce((sum, l) => sum + Number(l.price || 0), 0);
-
-  const rows = lines.map(l => `
-    <tr>
-      <td>${escapeHtml(l.label)}</td>
-      <td style="text-align:right">${euro(l.price)}</td>
-    </tr>
-  `).join('');
 
   const today = new Date();
   const validUntil = addDays(today, 14);
+  const offerNumber = `OFF-${today.getFullYear()}${String(today.getMonth() + 1).padStart(2, '0')}${String(today.getDate()).padStart(2, '0')}`;
+
+  const rows = lines.map((line, index) => `
+    <tr>
+      <td class="col-num">${index + 1}</td>
+      <td class="col-desc">${escapeHtml(line.label)}</td>
+      <td class="col-price">${euro(line.price)}</td>
+    </tr>
+  `).join('');
+
+  const logoHtml = COMPANY_LOGO_URL
+    ? `<img src="${escapeHtml(COMPANY_LOGO_URL)}" alt="${escapeHtml(COMPANY_NAME)}" class="offer-logo">`
+    : '';
+
+  const companyInfo = [
+    COMPANY_NAME,
+    COMPANY_PHONE,
+    COMPANY_EMAIL,
+    COMPANY_WEBSITE
+  ].filter(Boolean).map(v => `<div>${escapeHtml(v)}</div>`).join('');
+
+  const customerNameHtml = customer.name ? escapeHtml(customer.name) : '—';
+  const customerStreetHtml = customer.street ? escapeHtml(customer.street) : '—';
+  const customerCityHtml = customer.city ? escapeHtml(customer.city) : '—';
+  const customerPhoneHtml = customer.phone ? escapeHtml(customer.phone) : '—';
 
   const win = window.open('', '_blank');
   if (!win) return;
 
   win.document.write(`
-    <html>
+    <!doctype html>
+    <html lang="nl">
       <head>
         <meta charset="utf-8">
-        <title>Offerte</title>
+        <title>Offerte ${escapeHtml(currentProduct.title || '')}</title>
         <style>
-          body { font-family: system-ui, Arial; margin: 24px; color:#111 }
-          h1 { margin-bottom: 6px }
-          .top { display:flex; justify-content:space-between; margin-bottom:20px }
-          .logo { max-width:180px }
-          table { width:100%; border-collapse:collapse; margin-top:20px }
-          td { padding:8px 0; border-bottom:1px solid #eee }
-          .total { font-weight:bold; font-size:1.1rem }
+          @page {
+            size: A4;
+            margin: 16mm;
+          }
+
+          * {
+            box-sizing: border-box;
+          }
+
+          html, body {
+            margin: 0;
+            padding: 0;
+            background: #f3f6fa;
+            color: #1f2937;
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            line-height: 1.45;
+          }
+
+          body {
+            padding: 24px;
+          }
+
+          .sheet {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1px solid #dbe3ec;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+          }
+
+          .header {
+            background: linear-gradient(135deg, #407298 0%, #68a7d6 100%);
+            color: #ffffff;
+            padding: 28px 32px;
+          }
+
+          .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+          }
+
+          .brand {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+          }
+
+          .offer-logo {
+            max-width: 120px;
+            max-height: 80px;
+            object-fit: contain;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 8px;
+          }
+
+          .brand-title {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 0 0 8px 0;
+          }
+
+          .brand-meta {
+            font-size: 13px;
+            opacity: 0.95;
+          }
+
+          .offer-meta {
+            min-width: 220px;
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 16px;
+            padding: 14px 16px;
+          }
+
+          .offer-meta-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 4px 0;
+          }
+
+          .offer-meta-label {
+            font-weight: 700;
+            opacity: 0.95;
+          }
+
+          .offer-meta-value {
+            font-weight: 800;
+            text-align: right;
+          }
+
+          .content {
+            padding: 28px 32px 32px;
+          }
+
+          .intro {
+            margin-bottom: 22px;
+          }
+
+          .intro h2 {
+            margin: 0 0 8px 0;
+            font-size: 22px;
+            color: #0f172a;
+          }
+
+          .intro p {
+            margin: 0;
+            color: #475569;
+          }
+
+          .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 24px;
+          }
+
+          .card {
+            border: 1px solid #dbe3ec;
+            border-radius: 16px;
+            padding: 18px;
+            background: #f8fbff;
+          }
+
+          .card-title {
+            margin: 0 0 12px 0;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #407298;
+            font-weight: 800;
+          }
+
+          .card-line {
+            margin: 4px 0;
+            color: #0f172a;
+          }
+
+          .product-highlight {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
+            border: 1px solid #dbe3ec;
+            border-radius: 16px;
+            padding: 18px 20px;
+            background: #ffffff;
+            margin-bottom: 22px;
+          }
+
+          .product-highlight-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #64748b;
+            font-weight: 800;
+            margin-bottom: 6px;
+          }
+
+          .product-highlight-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0;
+          }
+
+          .product-highlight-type {
+            margin-top: 4px;
+            color: #475569;
+            font-weight: 600;
+          }
+
+          .product-highlight-price {
+            white-space: nowrap;
+            text-align: right;
+          }
+
+          .product-highlight-price small {
+            display: block;
+            color: #64748b;
+            font-size: 12px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 800;
+          }
+
+          .product-highlight-price strong {
+            font-size: 26px;
+            color: #407298;
+          }
+
+          table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border: 1px solid #dbe3ec;
+            border-radius: 16px;
+            background: #ffffff;
+          }
+
+          thead th {
+            background: #eef5fb;
+            color: #274863;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            text-align: left;
+            padding: 14px 16px;
+            border-bottom: 1px solid #dbe3ec;
+          }
+
+          tbody td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #edf2f7;
+            vertical-align: top;
+          }
+
+          tbody tr:last-child td {
+            border-bottom: none;
+          }
+
+          .col-num {
+            width: 60px;
+            color: #64748b;
+            font-weight: 700;
+          }
+
+          .col-desc {
+            color: #0f172a;
+            font-weight: 600;
+          }
+
+          .col-price {
+            width: 180px;
+            text-align: right;
+            font-weight: 800;
+            color: #0f172a;
+            white-space: nowrap;
+          }
+
+          .summary {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-end;
+          }
+
+          .summary-box {
+            width: 320px;
+            border: 1px solid #dbe3ec;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #ffffff;
+          }
+
+          .summary-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 18px;
+            border-bottom: 1px solid #edf2f7;
+          }
+
+          .summary-row:last-child {
+            border-bottom: none;
+          }
+
+          .summary-row.total {
+            background: #407298;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 800;
+          }
+
+          .terms {
+            margin-top: 28px;
+            border-top: 1px solid #dbe3ec;
+            padding-top: 20px;
+          }
+
+          .terms-title {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            font-weight: 800;
+            color: #274863;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+          }
+
+          .terms ul {
+            margin: 0;
+            padding-left: 18px;
+            color: #475569;
+          }
+
+          .terms li {
+            margin: 6px 0;
+          }
+
+          .footer {
+            margin-top: 28px;
+            padding-top: 18px;
+            border-top: 1px solid #dbe3ec;
+            color: #64748b;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+          }
+
+          @media print {
+            body {
+              background: #ffffff;
+              padding: 0;
+            }
+
+            .sheet {
+              max-width: 100%;
+              border: none;
+              border-radius: 0;
+              box-shadow: none;
+            }
+          }
+
+          @media (max-width: 700px) {
+            .header-top,
+            .info-grid,
+            .product-highlight,
+            .footer {
+              display: block;
+            }
+
+            .offer-meta {
+              margin-top: 18px;
+            }
+
+            .product-highlight-price {
+              margin-top: 14px;
+              text-align: left;
+            }
+
+            .summary {
+              justify-content: stretch;
+            }
+
+            .summary-box {
+              width: 100%;
+            }
+          }
         </style>
       </head>
       <body>
+        <div class="sheet">
+          <div class="header">
+            <div class="header-top">
+              <div class="brand">
+                ${logoHtml}
+                <div>
+                  <h1 class="brand-title">${escapeHtml(COMPANY_NAME || 'Offerte')}</h1>
+                  <div class="brand-meta">${companyInfo || ''}</div>
+                </div>
+              </div>
 
-        <div class="top">
-          <div>
-            ${COMPANY_LOGO_URL ? `<img src="${COMPANY_LOGO_URL}" class="logo">` : ''}
-            <h1>${COMPANY_NAME}</h1>
+              <div class="offer-meta">
+                <div class="offer-meta-row">
+                  <div class="offer-meta-label">Offertenummer</div>
+                  <div class="offer-meta-value">${escapeHtml(offerNumber)}</div>
+                </div>
+                <div class="offer-meta-row">
+                  <div class="offer-meta-label">Datum</div>
+                  <div class="offer-meta-value">${formatDateBelgium(today)}</div>
+                </div>
+                <div class="offer-meta-row">
+                  <div class="offer-meta-label">Geldig tot</div>
+                  <div class="offer-meta-value">${formatDateBelgium(validUntil)}</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <strong>Datum:</strong> ${formatDateBelgium(today)}<br>
-            <strong>Geldig tot:</strong> ${formatDateBelgium(validUntil)}
+
+          <div class="content">
+            <div class="intro">
+              <h2>Offerte</h2>
+              <p>Bedankt voor uw interesse. Hieronder vindt u een overzicht van de geselecteerde configuratie en bijhorende opties.</p>
+            </div>
+
+            <div class="info-grid">
+              <div class="card">
+                <div class="card-title">Klantgegevens</div>
+                <div class="card-line"><strong>Naam:</strong> ${customerNameHtml}</div>
+                <div class="card-line"><strong>Adres:</strong> ${customerStreetHtml}</div>
+                <div class="card-line"><strong>Plaats:</strong> ${customerCityHtml}</div>
+                <div class="card-line"><strong>Telefoon:</strong> ${customerPhoneHtml}</div>
+              </div>
+
+              <div class="card">
+                <div class="card-title">Leveringsgegevens</div>
+                <div class="card-line"><strong>Firma:</strong> ${escapeHtml(COMPANY_NAME || '—')}</div>
+                <div class="card-line"><strong>Producttype:</strong> ${escapeHtml(currentProduct.type || '—')}</div>
+                <div class="card-line"><strong>Product:</strong> ${escapeHtml(currentProduct.title || '—')}</div>
+                <div class="card-line"><strong>Referentie:</strong> ${escapeHtml(String(currentProduct.id || '—'))}</div>
+              </div>
+            </div>
+
+            <div class="product-highlight">
+              <div>
+                <div class="product-highlight-label">Geselecteerd product</div>
+                <h3 class="product-highlight-title">${escapeHtml(currentProduct.title || '—')}</h3>
+                <div class="product-highlight-type">${escapeHtml(currentProduct.type || '—')}</div>
+              </div>
+              <div class="product-highlight-price">
+                <small>Totaal offertebedrag</small>
+                <strong>${euro(total)}</strong>
+              </div>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Omschrijving</th>
+                  <th style="text-align:right">Prijs</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${rows}
+              </tbody>
+            </table>
+
+            <div class="summary">
+              <div class="summary-box">
+                <div class="summary-row">
+                  <span>Subtotaal</span>
+                  <strong>${euro(total)}</strong>
+                </div>
+                <div class="summary-row">
+                  <span>BTW</span>
+                  <strong>Incl.</strong>
+                </div>
+                <div class="summary-row total">
+                  <span>Totaal</span>
+                  <strong>${euro(total)}</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="terms">
+              <h4 class="terms-title">Opmerkingen</h4>
+              <ul>
+                <li>Deze offerte is geldig tot en met ${formatDateBelgium(validUntil)}.</li>
+                <li>Prijzen zijn in euro en tenzij anders vermeld inclusief btw.</li>
+                <li>Levering en plaatsing volgens afgesproken voorwaarden.</li>
+                <li>Eventuele bijkomende werken zijn niet inbegrepen tenzij expliciet vermeld.</li>
+              </ul>
+            </div>
+
+            <div class="footer">
+              <div>Met vriendelijke groeten,<br><strong>${escapeHtml(COMPANY_NAME || '')}</strong></div>
+              <div>Dit document werd automatisch opgesteld op ${formatDateBelgium(today)}.</div>
+            </div>
           </div>
         </div>
-
-        <h2>Klantgegevens</h2>
-        <div>
-          ${escapeHtml(customer.name)}<br>
-          ${escapeHtml(customer.street)}<br>
-          ${escapeHtml(customer.city)}<br>
-          ${escapeHtml(customer.phone)}
-        </div>
-
-        <h2>Offerte</h2>
-        <table>
-          ${rows}
-          <tr class="total">
-            <td>Totaal</td>
-            <td style="text-align:right">${euro(total)}</td>
-          </tr>
-        </table>
 
         <script>
-          window.onload = () => window.print();
+          window.onload = function () {
+            window.print();
+          };
         </script>
-
       </body>
     </html>
   `);
