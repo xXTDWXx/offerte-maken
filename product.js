@@ -5,11 +5,11 @@ const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
   Voorbeeld:
   const COMPANY_LOGO_URL = 'logo.png';
 */
-const COMPANY_LOGO_URL = 'logo.png';
+const COMPANY_LOGO_URL = 'logo.svg';
 const COMPANY_NAME = 'Sunspa Benelux';
-const COMPANY_EMAIL = '';
-const COMPANY_PHONE = '';
-const COMPANY_WEBSITE = '';
+const COMPANY_EMAIL = 'sunspabrugge@gmail.com';
+const COMPANY_PHONE = '0483399967';
+const COMPANY_WEBSITE = 'www.sunspabenelux.be';
 
 const errorBox = document.getElementById('errorBox');
 const errorText = document.getElementById('errorText');
@@ -861,10 +861,6 @@ function printOfferte() {
 
               <div class="offer-meta">
                 <div class="offer-meta-row">
-                  <div class="offer-meta-label">Offertenummer</div>
-                  <div class="offer-meta-value">${escapeHtml(offerNumber)}</div>
-                </div>
-                <div class="offer-meta-row">
                   <div class="offer-meta-label">Datum</div>
                   <div class="offer-meta-value">${formatDateBelgium(today)}</div>
                 </div>
@@ -896,7 +892,6 @@ function printOfferte() {
                 <div class="card-line"><strong>Firma:</strong> ${escapeHtml(COMPANY_NAME || '—')}</div>
                 <div class="card-line"><strong>Producttype:</strong> ${escapeHtml(currentProduct.type || '—')}</div>
                 <div class="card-line"><strong>Product:</strong> ${escapeHtml(currentProduct.title || '—')}</div>
-                <div class="card-line"><strong>Referentie:</strong> ${escapeHtml(String(currentProduct.id || '—'))}</div>
               </div>
             </div>
 
@@ -904,7 +899,6 @@ function printOfferte() {
               <div>
                 <div class="product-highlight-label">Geselecteerd product</div>
                 <h3 class="product-highlight-title">${escapeHtml(currentProduct.title || '—')}</h3>
-                <div class="product-highlight-type">${escapeHtml(currentProduct.type || '—')}</div>
               </div>
               <div class="product-highlight-price">
                 <small>Totaal offertebedrag</small>
@@ -932,7 +926,7 @@ function printOfferte() {
                   <strong>${euro(total)}</strong>
                 </div>
                 <div class="summary-row">
-                  <span>BTW</span>
+                  <span>21% BTW</span>
                   <strong>Incl.</strong>
                 </div>
                 <div class="summary-row total">
@@ -948,7 +942,7 @@ function printOfferte() {
                 <li>Deze offerte is geldig tot en met ${formatDateBelgium(validUntil)}.</li>
                 <li>Prijzen zijn in euro en tenzij anders vermeld inclusief btw.</li>
                 <li>Levering en plaatsing volgens afgesproken voorwaarden.</li>
-                <li>Eventuele bijkomende werken zijn niet inbegrepen tenzij expliciet vermeld.</li>
+                <li>Exclusief kraankosten tenzij anders vermeld.</li>
               </ul>
             </div>
 
