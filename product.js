@@ -443,6 +443,83 @@ function printProductFiche(p) {
   win.document.close();
 }
 
+function printOfferte() {
+  if (!currentProduct) return;
+
+  const customer = getCustomerData();
+  const lines = getSelectedOfferLines();
+
+  const total = lines.reduce((sum, l) => sum + Number(l.price || 0), 0);
+
+  const rows = lines.map(l => `
+    <tr>
+      <td>${escapeHtml(l.label)}</td>
+      <td style="text-align:right">${euro(l.price)}</td>
+    </tr>
+  `).join('');
+
+  const today = new Date();
+  const validUntil = addDays(today, 14);
+
+  const win = window.open('', '_blank');
+  if (!win) return;
+
+  win.document.write(`
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Offerte</title>
+        <style>
+          body { font-family: system-ui, Arial; margin: 24px; color:#111 }
+          h1 { margin-bottom: 6px }
+          .top { display:flex; justify-content:space-between; margin-bottom:20px }
+          .logo { max-width:180px }
+          table { width:100%; border-collapse:collapse; margin-top:20px }
+          td { padding:8px 0; border-bottom:1px solid #eee }
+          .total { font-weight:bold; font-size:1.1rem }
+        </style>
+      </head>
+      <body>
+
+        <div class="top">
+          <div>
+            ${COMPANY_LOGO_URL ? `<img src="${COMPANY_LOGO_URL}" class="logo">` : ''}
+            <h1>${COMPANY_NAME}</h1>
+          </div>
+          <div>
+            <strong>Datum:</strong> ${formatDateBelgium(today)}<br>
+            <strong>Geldig tot:</strong> ${formatDateBelgium(validUntil)}
+          </div>
+        </div>
+
+        <h2>Klantgegevens</h2>
+        <div>
+          ${escapeHtml(customer.name)}<br>
+          ${escapeHtml(customer.street)}<br>
+          ${escapeHtml(customer.city)}<br>
+          ${escapeHtml(customer.phone)}
+        </div>
+
+        <h2>Offerte</h2>
+        <table>
+          ${rows}
+          <tr class="total">
+            <td>Totaal</td>
+            <td style="text-align:right">${euro(total)}</td>
+          </tr>
+        </table>
+
+        <script>
+          window.onload = () => window.print();
+        </script>
+
+      </body>
+    </html>
+  `);
+
+  win.document.close();
+}
+
 function renderProduct(p) {
   currentProduct = p;
 
