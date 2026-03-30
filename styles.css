@@ -710,3 +710,73 @@ label.opt .opt-price {
     white-space: nowrap;
   }
 }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    zoom: 1;
+  }
+
+  .sheet {
+    max-width: 100% !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #407298 0%, #68a7d6 100%) !important;
+    color: #ffffff !important;
+  }
+
+  .offer-meta {
+    background: rgba(255, 255, 255, 0.14) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    color: #ffffff !important;
+  }
+
+  .offer-meta-label,
+  .offer-meta-value,
+  .brand-title,
+  .brand-meta {
+    color: #ffffff !important;
+  }
+
+  thead th {
+    background: #eef5fb !important;
+    color: #274863 !important;
+  }
+
+  .card {
+    background: #f8fbff !important;
+    border: 1px solid #dbe3ec !important;
+  }
+
+  .product-highlight {
+    background: #ffffff !important;
+    border: 1px solid #dbe3ec !important;
+  }
+
+  .summary-row.total {
+    background: #407298 !important;
+    color: #ffffff !important;
+  }
+
+  .col-price,
+  .product-highlight-price strong {
+    color: #407298 !important;
+  }
+}
