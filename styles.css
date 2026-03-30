@@ -10,6 +10,28 @@
   --container: 1600px;
 }
 
+html, body {
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+* {
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+.header,
+.offer-meta,
+.summary-row.total,
+thead th,
+.card,
+.product-highlight,
+.summary-box,
+.sheet {
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
 * {
   box-sizing: border-box;
 }
