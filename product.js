@@ -229,8 +229,11 @@ function updateOptionUI() {
   const optSwimFiltersetTotal = $('optSwimFiltersetTotal');
 
   const optBarrelStoveGroup = $('optBarrelStoveGroup');
+  const optBarrelWoodStoveRow = $('optBarrelWoodStoveRow');
   const optBarrelWoodStove = $('optBarrelWoodStove');
   const optBarrelWoodStoveTotal = $('optBarrelWoodStoveTotal');
+
+  const optBarrelElectricHeaterRow = $('optBarrelElectricHeaterRow');
   const optBarrelElectricHeater = $('optBarrelElectricHeater');
   const optBarrelElectricHeaterTotal = $('optBarrelElectricHeaterTotal');
 
@@ -241,6 +244,7 @@ function updateOptionUI() {
   const optBarrelRoofHeatherTotal = $('optBarrelRoofHeatherTotal');
   const optBarrelRoofDesign = $('optBarrelRoofDesign');
   const optBarrelRoofDesignTotal = $('optBarrelRoofDesignTotal');
+
   const optBarrelInfraredModuleRow = $('optBarrelInfraredModuleRow');
   const optBarrelInfraredModule = $('optBarrelInfraredModule');
   const optBarrelInfraredModuleTotal = $('optBarrelInfraredModuleTotal');
@@ -255,7 +259,14 @@ function updateOptionUI() {
 
   const allowExtraOptions = extraOptionsAllowed(type);
   const swim = isSwimspa(type);
-  const barrel = isOutdoorSaunaWithRoofAndStove(type);
+  const outdoorSauna = isOutdoorSaunaWithRoofAndStove(type);
+  const barrelSauna = isBarrelSauna(type);
+  const sauna = isSauna(type);
+  const showStoveGroup = outdoorSauna || sauna;
+  const showElectricHeater = sauna;
+  const showWoodStove = outdoorSauna;
+  const showRoofGroup = outdoorSauna;
+  const showInfraredModule = barrelSauna;
 
   if (optCoverTrapRow) optCoverTrapRow.style.display = allowExtraOptions ? '' : 'none';
   if (optCoverliftRow) optCoverliftRow.style.display = allowExtraOptions ? '' : 'none';
@@ -269,28 +280,31 @@ function updateOptionUI() {
   if (!swim && optCoverlift2) optCoverlift2.checked = false;
   if (!swim && optSwimFilterset) optSwimFilterset.checked = false;
 
-  if (optBarrelStoveGroup) optBarrelStoveGroup.style.display = barrel ? '' : 'none';
-  if (optBarrelRoofGroup) optBarrelRoofGroup.style.display = barrel ? '' : 'none';
-  if (optBarrelInfraredModuleRow) optBarrelInfraredModuleRow.style.display = isBarrelSauna(type) ? '' : 'none';
+  if (optBarrelStoveGroup) optBarrelStoveGroup.style.display = showStoveGroup ? '' : 'none';
+  if (optBarrelWoodStoveRow) optBarrelWoodStoveRow.style.display = showWoodStove ? '' : 'none';
+  if (optBarrelElectricHeaterRow) optBarrelElectricHeaterRow.style.display = showElectricHeater ? '' : 'none';
 
-  if (!barrel && optBarrelWoodStove) optBarrelWoodStove.checked = false;
-  if (!barrel && optBarrelElectricHeater) optBarrelElectricHeater.checked = false;
-  if (!barrel && optBarrelRoofShingles) optBarrelRoofShingles.checked = false;
-  if (!barrel && optBarrelRoofHeather) optBarrelRoofHeather.checked = false;
-  if (!barrel && optBarrelRoofDesign) optBarrelRoofDesign.checked = false;
-  if (!isBarrelSauna(type) && optBarrelInfraredModule) optBarrelInfraredModule.checked = false;
+  if (optBarrelRoofGroup) optBarrelRoofGroup.style.display = showRoofGroup ? '' : 'none';
+  if (optBarrelInfraredModuleRow) optBarrelInfraredModuleRow.style.display = showInfraredModule ? '' : 'none';
+
+  if (!showWoodStove && optBarrelWoodStove) optBarrelWoodStove.checked = false;
+  if (!showElectricHeater && optBarrelElectricHeater) optBarrelElectricHeater.checked = false;
+  if (!showRoofGroup && optBarrelRoofShingles) optBarrelRoofShingles.checked = false;
+  if (!showRoofGroup && optBarrelRoofHeather) optBarrelRoofHeather.checked = false;
+  if (!showRoofGroup && optBarrelRoofDesign) optBarrelRoofDesign.checked = false;
+  if (!showInfraredModule && optBarrelInfraredModule) optBarrelInfraredModule.checked = false;
 
   const coverliftLine = (allowExtraOptions && optCoverlift?.checked) ? PRICES.coverlift_unit : 0;
   const coverlift2Line = (swim && optCoverlift2?.checked) ? PRICES.coverlift_unit : 0;
   const maintLine = (allowExtraOptions && optMaint?.checked) ? PRICES.maintenance_unit : 0;
   const swimFiltersetLine = (swim && optSwimFilterset?.checked) ? PRICES.swim_filterset_unit : 0;
 
-  const barrelWoodStoveLine = (barrel && optBarrelWoodStove?.checked) ? PRICES.barrel_wood_stove_unit : 0;
-  const barrelElectricHeaterLine = (barrel && optBarrelElectricHeater?.checked) ? PRICES.barrel_electric_heater_unit : 0;
-  const barrelRoofShinglesLine = (barrel && optBarrelRoofShingles?.checked) ? PRICES.barrel_roof_shingles_unit : 0;
-  const barrelRoofHeatherLine = (barrel && optBarrelRoofHeather?.checked) ? PRICES.barrel_roof_heather_unit : 0;
-  const barrelRoofDesignLine = (barrel && optBarrelRoofDesign?.checked) ? PRICES.barrel_roof_design_unit : 0;
-  const barrelInfraredModuleLine = (isBarrelSauna(type) && optBarrelInfraredModule?.checked) ? PRICES.barrel_infrared_module_unit : 0;
+  const barrelWoodStoveLine = (showWoodStove && optBarrelWoodStove?.checked) ? PRICES.barrel_wood_stove_unit : 0;
+  const barrelElectricHeaterLine = (showElectricHeater && optBarrelElectricHeater?.checked) ? PRICES.barrel_electric_heater_unit : 0;
+  const barrelRoofShinglesLine = (showRoofGroup && optBarrelRoofShingles?.checked) ? PRICES.barrel_roof_shingles_unit : 0;
+  const barrelRoofHeatherLine = (showRoofGroup && optBarrelRoofHeather?.checked) ? PRICES.barrel_roof_heather_unit : 0;
+  const barrelRoofDesignLine = (showRoofGroup && optBarrelRoofDesign?.checked) ? PRICES.barrel_roof_design_unit : 0;
+  const barrelInfraredModuleLine = (showInfraredModule && optBarrelInfraredModule?.checked) ? PRICES.barrel_infrared_module_unit : 0;
 
   if (optCoverliftTotal) optCoverliftTotal.textContent = euro(coverliftLine);
   if (optCoverlift2Total) optCoverlift2Total.textContent = euro(coverlift2Line);
@@ -305,17 +319,17 @@ function updateOptionUI() {
 
   const productPriceValue = Number(currentProduct.price || 0);
   const optionsTotal =
-  inst +
-  coverliftLine +
-  coverlift2Line +
-  maintLine +
-  swimFiltersetLine +
-  barrelWoodStoveLine +
-  barrelElectricHeaterLine +
-  barrelRoofShinglesLine +
-  barrelRoofHeatherLine +
-  barrelRoofDesignLine +
-  barrelInfraredModuleLine;
+    inst +
+    coverliftLine +
+    coverlift2Line +
+    maintLine +
+    swimFiltersetLine +
+    barrelWoodStoveLine +
+    barrelElectricHeaterLine +
+    barrelRoofShinglesLine +
+    barrelRoofHeatherLine +
+    barrelRoofDesignLine +
+    barrelInfraredModuleLine;
 
   const grand = productPriceValue + optionsTotal;
 
@@ -329,17 +343,17 @@ function wireOptionHandlers() {
   optionHandlersWired = true;
 
   const ids = [
-  'optCoverlift',
-  'optCoverlift2',
-  'optMaint',
-  'optSwimFilterset',
-  'optBarrelWoodStove',
-  'optBarrelElectricHeater',
-  'optBarrelRoofShingles',
-  'optBarrelRoofHeather',
-  'optBarrelRoofDesign',
-  'optBarrelInfraredModule'
-];
+    'optCoverlift',
+    'optCoverlift2',
+    'optMaint',
+    'optSwimFilterset',
+    'optBarrelWoodStove',
+    'optBarrelElectricHeater',
+    'optBarrelRoofShingles',
+    'optBarrelRoofHeather',
+    'optBarrelRoofDesign',
+    'optBarrelInfraredModule'
+  ];
 
   ids.forEach(id => {
     const el = $(id);
@@ -392,7 +406,7 @@ function getSelectedOfferLines() {
     lines.push({ label: 'Houtkachel + rookafvoer', price: PRICES.barrel_wood_stove_unit });
   }
 
-  if ($('optBarrelElectricHeater')?.checked && isOutdoorSaunaWithRoofAndStove(type)) {
+  if ($('optBarrelElectricHeater')?.checked && isSauna(type)) {
     lines.push({ label: 'Elektrische kachel 8 kW', price: PRICES.barrel_electric_heater_unit });
   }
 
@@ -407,8 +421,9 @@ function getSelectedOfferLines() {
   if ($('optBarrelRoofDesign')?.checked && isOutdoorSaunaWithRoofAndStove(type)) {
     lines.push({ label: 'Design dak', price: PRICES.barrel_roof_design_unit });
   }
+
   if ($('optBarrelInfraredModule')?.checked && isBarrelSauna(type)) {
-  lines.push({ label: 'Infrarood module', price: PRICES.barrel_infrared_module_unit });
+    lines.push({ label: 'Infrarood module', price: PRICES.barrel_infrared_module_unit });
   }
 
   return lines;
@@ -1226,10 +1241,10 @@ function printOfferte() {
             <div class="info-grid">
               <div class="card">
                 <div class="card-title">Klantgegevens</div>
-                <div class="card-line"><strong>Naam:</strong> _______________________</div>
-                <div class="card-line"><strong>Adres:</strong> _______________________</div>
-                <div class="card-line"><strong>Plaats:</strong> _______________________</div>
-                <div class="card-line"><strong>Telefoon:</strong> _______________________</div>
+                <div class="card-line"><strong>Naam:</strong> ${customerNameHtml}</div>
+                <div class="card-line"><strong>Adres:</strong> ${customerStreetHtml}</div>
+                <div class="card-line"><strong>Plaats:</strong> ${customerCityHtml}</div>
+                <div class="card-line"><strong>Telefoon:</strong> ${customerPhoneHtml}</div>
               </div>
 
               <div class="card">
