@@ -531,6 +531,38 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Options */
+
+.opt-inline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.opt-inline input[type="checkbox"] {
+  margin: 0;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+}
+
+.opt-inline .opt-text {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.opt-inline .opt-title {
+  display: flex;
+  align-items: center;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.opt-inline .opt-price {
+  margin-left: auto;
+  white-space: nowrap;
+}
 .options {
   display: flex;
   flex-direction: column;
