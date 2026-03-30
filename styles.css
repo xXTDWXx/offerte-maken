@@ -526,6 +526,7 @@ label.opt {
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.03);
   cursor: pointer;
+  width: 50%;
 }
 
 .opt input[type="checkbox"],
@@ -628,7 +629,7 @@ label.opt .opt-price {
   }
 
   .modal-media {
-    width: 100%;
+    width: 50%;
     overflow: hidden;
   }
 
