@@ -671,8 +671,6 @@ label.opt .opt-price {
   }
 
   .category-menu-row {
-    justify-content: flex-start;
-    flex-wrap: nowrap;
     overflow-x: auto;
     padding: 10px 0;
     scrollbar-width: none;
@@ -685,7 +683,7 @@ label.opt .opt-price {
   .category-link {
     flex: 0 0 auto;
     font-size: 12px;
-    padding: 0 16px;
+    padding: 0 9px;
     min-height: 42px;
     white-space: nowrap;
   }
