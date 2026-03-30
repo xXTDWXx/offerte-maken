@@ -1213,10 +1213,10 @@ function printOfferte() {
             <div class="info-grid">
               <div class="card">
                 <div class="card-title">Klantgegevens</div>
-                <div class="card-line"><strong>Naam:</strong> ${customerNameHtml}</div>
-                <div class="card-line"><strong>Adres:</strong> ${customerStreetHtml}</div>
-                <div class="card-line"><strong>Plaats:</strong> ${customerCityHtml}</div>
-                <div class="card-line"><strong>Telefoon:</strong> ${customerPhoneHtml}</div>
+                <div class="card-line"><strong>Naam:</strong> _______________________</div>
+                <div class="card-line"><strong>Adres:</strong> _______________________</div>
+                <div class="card-line"><strong>Plaats:</strong> _______________________</div>
+                <div class="card-line"><strong>Telefoon:</strong> _______________________</div>
               </div>
 
               <div class="card">
@@ -1260,7 +1260,7 @@ function printOfferte() {
                   <strong>${euro(total)}</strong>
                 </div>
                 <div class="summary-row">
-                  <span>BTW</span>
+                  <span>21% BTW</span>
                   <strong>Incl.</strong>
                 </div>
                 <div class="summary-row total">
@@ -1274,14 +1274,14 @@ function printOfferte() {
               <h4 class="terms-title">Opmerkingen</h4>
               <ul>
                 <li>Deze offerte is geldig tot en met ${formatDateBelgium(validUntil)}.</li>
-                <li>Prijzen zijn in euro en tenzij anders vermeld inclusief btw.</li>
+                <li>Prijzen zijn in euro en tenzij anders vermeld inclusief 21% btw.</li>
                 <li>Levering en plaatsing volgens afgesproken voorwaarden (goede doorgang & hulp).</li>
                 <li>Kraankosten exclusief.</li>
               </ul>
             </div>
 
             <div class="footer">
-              <div>Met vriendelijke groeten,<br><strong>${escapeHtml(COMPANY_NAME || '')}</strong></div>
+              <div>Met vriendelijke groeten,<br><strong>Team Sunspa Brugge/Lievegem</strong></div>
               <div>Dit document werd automatisch opgesteld op ${formatDateBelgium(today)}.</div>
             </div>
           </div>
