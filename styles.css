@@ -657,12 +657,7 @@ label.opt .opt-price {
   .grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
-    margin: 20px 0 28px;
-  }
-
-  .card,
-  .card-link {
-    height: auto;
+    margin: 20px 20px 28px;
   }
 
   .card-imgwrap {
@@ -671,7 +666,7 @@ label.opt .opt-price {
   }
 
   .card-specs {
-    display: none;
+    font-size: small;
   }
 
   .category-menu-row {
