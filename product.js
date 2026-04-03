@@ -696,6 +696,8 @@ function printOfferte() {
 
           .card-line strong {
             font-weight: 800;
+            display: inline-block;
+            margin-bottom: 14px;
           }
 
           .product-highlight {
