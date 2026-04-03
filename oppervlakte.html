@@ -35,97 +35,113 @@
     </div>
   </nav>
 
-  <main class="container">
-    <section class="panel">
-      <div class="panel-row" style="justify-content:space-between; align-items:center;">
-        <div>
-          <div class="panel-title">Welke spa past in uw ruimte?</div>
-          <div class="small">
-            Kies de beschikbare afmeting. We tonen alleen spa’s waarvan de specificatie
-            <strong>Afmetingen</strong> binnen die ruimte past.
+  <main>
+  <section class="finder-hero">
+    <div class="container">
+      <div class="finder-hero-card">
+        <div class="finder-eyebrow">ZOEK UW IDEALE SPA</div>
+        <h1 class="finder-title">Welke spa past het best in uw ruimte?</h1>
+        <p class="finder-lead">
+          Kies de beschikbare afmeting en verfijn verder op ligplaatsen, reeks en sortering.
+          We tonen alleen spa’s waarvan de specificatie <strong>Afmetingen</strong> binnen die ruimte past.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container finder-layout">
+      <aside class="finder-sidebar">
+        <div class="finder-filter-card">
+          <h2>Maak uw keuze</h2>
+          <p>
+            Gebruik de filters hieronder om snel de best passende spa’s te tonen.
+          </p>
+
+          <div class="finder-filter-group">
+            <label for="spaceSelect">Beschikbare ruimte</label>
+            <select id="spaceSelect">
+              <option value="">Kies een afmeting</option>
+              <option value="160x215">160 x 215 cm</option>
+              <option value="205x205">205 x 205 cm</option>
+              <option value="215x215">215 x 215 cm</option>
+              <option value="230x230">230 x 230 cm</option>
+              <option value="250x250">250 x 250 cm</option>
+              <option value="300x300">300 x 300 cm</option>
+            </select>
+          </div>
+
+          <div class="finder-filter-group">
+            <label for="filterLigplaatsen">Aantal ligplaatsen</label>
+            <select id="filterLigplaatsen">
+              <option value="">Maakt niet uit</option>
+              <option value="1">1 ligplaats</option>
+              <option value="2">2 ligplaatsen</option>
+            </select>
+          </div>
+
+          <div class="finder-filter-group">
+            <label for="brandFilter">Reeks</label>
+            <select id="brandFilter">
+              <option value="">Alle reeksen</option>
+              <option value="Sunspa">Sunspa</option>
+              <option value="Myspa">Myspa</option>
+              <option value="Vogue">Vogue</option>
+              <option value="Legend">Legend</option>
+              <option value="Fox">Fox</option>
+              <option value="Elite">Elite</option>
+            </select>
+          </div>
+
+          <div class="finder-filter-group">
+            <label for="sort">Sorteren</label>
+            <select id="sort">
+              <option value="fitBest">Beste match</option>
+              <option value="priceAsc">Prijs (laag → hoog)</option>
+              <option value="priceDesc">Prijs (hoog → laag)</option>
+              <option value="titleAsc">Titel (A → Z)</option>
+              <option value="sizeAsc">Kleinste eerst</option>
+              <option value="sizeDesc">Grootste eerst</option>
+            </select>
+          </div>
+
+          <div class="finder-actions">
+            <button id="btnClear" class="finder-btn finder-btn-secondary" type="button">Wissen</button>
+            <a href="index.html" class="finder-btn finder-btn-secondary finder-btn-link">← Terug</a>
           </div>
         </div>
-        <a href="index.html" class="btn">← Terug naar overzicht</a>
-      </div>
+      </aside>
 
-      <div class="panel-row" style="gap:16px; flex-wrap:wrap; align-items:end;">
-        <div class="field">
-          <label for="spaceSelect">Beschikbare ruimte</label>
-          <select id="spaceSelect">
-            <option value="">Kies een afmeting</option>
-            <option value="160x215">160 x 215 cm</option>
-            <option value="205x205">205 x 205 cm</option>
-            <option value="215x215">215 x 215 cm</option>
-            <option value="230x230">230 x 230 cm</option>
-            <option value="250x250">250 x 250 cm</option>
-            <option value="300x300">300 x 300 cm</option>
-          </select>
+      <section class="finder-results">
+        <div class="finder-results-head">
+          <div>
+            <h2>Resultaten</h2>
+            <div class="finder-results-count" id="resultMeta">—</div>
+          </div>
+          <div class="chips" id="activeChips"></div>
         </div>
 
-        <div class="field">
-  <label>Aantal Ligplaatsen</label>
-  <select id="filterLigplaatsen">
-    <option value="">Maakt niet uit</option>
-    <option value="1">1 ligplaats</option>
-    <option value="2">2 ligplaatsen</option>
-  </select>
-</div>
+        <section class="finder-info-card">
+          <div class="finder-info-title">Hoe werkt het?</div>
+          <div class="finder-info-text">
+            De gekozen ruimte wordt vergeleken met de specificatie <strong>Afmetingen</strong> van elke spa.
+            Een spa wordt alleen getoond als die binnen de gekozen lengte en breedte past.
+          </div>
+        </section>
 
-        <div class="field">
-          <label for="brandFilter">Reeks</label>
-          <select id="brandFilter">
-            <option value="">Alle reeksen</option>
-            <option value="Sunspa">Sunspa</option>
-            <option value="Myspa">Myspa</option>
-            <option value="Vogue">Vogue</option>
-            <option value="Legend">Legend</option>
-            <option value="Fox">Fox</option>
-            <option value="Elite">Elite</option>
-          </select>
-        </div>
+        <section class="grid finder-grid" id="grid"></section>
 
-        <div class="field">
-          <label for="sort">Sorteren</label>
-          <select id="sort">
-            <option value="fitBest">Beste match</option>
-            <option value="priceAsc">Prijs (laag → hoog)</option>
-            <option value="priceDesc">Prijs (hoog → laag)</option>
-            <option value="titleAsc">Titel (A → Z)</option>
-            <option value="sizeAsc">Kleinste eerst</option>
-            <option value="sizeDesc">Grootste eerst</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label>&nbsp;</label>
-          <button id="btnClear" class="btn" type="button">Wissen</button>
-        </div>
-      </div>
-
-      <div class="panel-row panel-row-2">
-        <div class="chips" id="activeChips"></div>
-        <div class="small" id="resultMeta">—</div>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="panel-title">Hoe werkt het?</div>
-      <div class="small">
-        De gekozen ruimte wordt vergeleken met de specificatie <strong>Afmetingen</strong> van elke spa.
-        Een spa wordt alleen getoond als die binnen de gekozen lengte en breedte past.
-      </div>
-    </section>
-
-    <section class="grid" id="grid"></section>
-
-    <section class="panel" id="errorBox" style="display:none">
-      <div class="panel-title">Fout bij laden</div>
-      <div class="small" id="errorText"></div>
-      <div class="small" style="margin-top:8px">
-        Controleer of <code>products.json</code> bestaat en bereikbaar is.
-      </div>
-    </section>
-  </main>
+        <section class="finder-empty-card" id="errorBox" style="display:none">
+          <div class="finder-info-title">Fout bij laden</div>
+          <div class="finder-info-text" id="errorText"></div>
+          <div class="finder-info-text" style="margin-top:8px">
+            Controleer of <code>products.json</code> bestaat en bereikbaar is.
+          </div>
+        </section>
+      </section>
+    </div>
+  </section>
+</main>
 
   <template id="cardTpl">
     <article class="card">
