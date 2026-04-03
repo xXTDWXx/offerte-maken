@@ -1241,10 +1241,10 @@ function printOfferte() {
             <div class="info-grid">
               <div class="card">
                 <div class="card-title">Klantgegevens</div>
-                <div class="card-line"><strong>Naam:</strong> _____________________</div>
-                <div class="card-line"><strong>Adres:</strong> _____________________</div>
-                <div class="card-line"><strong>Plaats:</strong> _____________________</div>
-                <div class="card-line"><strong>Telefoon:</strong> _____________________</div>
+                <div class="card-line"><strong>Naam:</strong> __________________________________________</div>
+                <div class="card-line"><strong>Adres:</strong> __________________________________________</div>
+                <div class="card-line"><strong>Plaats:</strong> __________________________________________</div>
+                <div class="card-line"><strong>Telefoon:</strong> __________________________________________</div>
               </div>
 
               <div class="card">
