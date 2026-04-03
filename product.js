@@ -898,7 +898,7 @@ function printOfferte() {
             .info-grid,
             .product-highlight,
             .footer {
-              display: block;
+              
             }
 
             .offer-meta {
