@@ -7,7 +7,7 @@
   --finder-accent: #1f5aa6;
   --finder-accent-soft: #e9f1ff;
   --finder-radius: 22px;
-  --finder-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+  --finder-shadow: 0 10px 28px rgba(15, 23, 42, 0.08); 
 }
 
 body {
