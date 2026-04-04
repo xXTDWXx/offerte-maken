@@ -127,7 +127,7 @@ function parseDimensionsToCm(raw) {
 }
 
 function getProductDimensions(p) {
-  const fromSpec = getSpecValue(p, 'Afmetingen');
+  const fromSpec = getSpecValue(p, 'Afmeting');
   return parseDimensionsToCm(fromSpec);
 }
 
@@ -205,7 +205,7 @@ function topSpecs(p, dims) {
   const lines = [];
 
   if (getMerk(p)) lines.push(`Merk: ${escapeHtml(getMerk(p))}`);
-  if (getSpecValue(p, 'Afmetingen')) lines.push(`Afmetingen: ${escapeHtml(getSpecValue(p, 'Afmetingen'))}`);
+  if (getSpecValue(p, 'Afmeting')) lines.push(`Afmeting: ${escapeHtml(getSpecValue(p, 'Afmeting'))}`);
   if (getSpecValue(p, 'Aantal personen')) lines.push(`Aantal personen: ${escapeHtml(getSpecValue(p, 'Aantal personen'))}`);
   if (getSpecValue(p, 'Aantal ligplaatsen')) lines.push(`Aantal ligplaatsen: ${escapeHtml(getSpecValue(p, 'Aantal ligplaatsen'))}`);
   if (getSpecValue(p, 'Aantal jets')) lines.push(`Aantal jets: ${escapeHtml(getSpecValue(p, 'Aantal jets'))}`);
