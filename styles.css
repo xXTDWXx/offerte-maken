@@ -132,6 +132,7 @@ img {
   font-weight: 800;
   margin-bottom: 12px;
   font-size: 1.05rem;
+  color: black;
 }
 
 .panel-row {
@@ -455,11 +456,13 @@ select:focus {
   margin: 0;
   font-size: 1.35rem;
   font-weight: 900;
+  color: black;
 }
 
 .modal-price {
   font-weight: 900;
   font-size: 1.1rem;
+  color: black;
 }
 
 .modal-grid {
@@ -520,7 +523,7 @@ select:focus {
 }
 
 .spec-row span {
-  color: #ffffff;
+  color: black;
   font-weight: 700;
 }
 
@@ -550,6 +553,7 @@ select:focus {
   align-items: center;
   line-height: 1.2;
   margin: 0;
+  color: black;
 }
 
 .opt-inline .opt-price {
