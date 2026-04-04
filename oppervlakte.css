@@ -1260,13 +1260,11 @@ body {
 
 .card-imgwrap {
   position: relative;
-  background: #edf2f7;
 }
 
 .card-img {
   width: 100%;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
   display: block;
 }
 
