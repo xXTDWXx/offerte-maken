@@ -718,6 +718,15 @@ label.opt .opt-price {
     font-size: small;
   }
 
+  .card-link {
+    width: 104%;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+  }
+
   .category-menu-row {
     overflow-x: auto;
     padding: 10px 0;
