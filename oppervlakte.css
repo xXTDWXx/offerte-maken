@@ -738,7 +738,7 @@ label.opt .opt-price {
     min-height: 42px;
     white-space: nowrap;
   }
-}
+} 
 
 @page {
   size: A4 portrait;
@@ -1419,11 +1419,6 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
-  }
-
-  .finder-grid,
-  .results-grid {
-    grid-template-columns: 1fr;
   }
 }
 
