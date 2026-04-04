@@ -644,7 +644,7 @@ label.opt .opt-price {
   gap: 18px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: start;
-  margin: 20px 0;
+  margin: 20px -15px;
 }
 
 /* Large TV screens */
@@ -1229,7 +1229,7 @@ body {
 }
 
 .finder-grid {
-  gap: 18px;
+  gap: 6px;
 }
 
 .card {
@@ -1243,7 +1243,7 @@ body {
 }
 
 .card-link {
-  width: 100%;
+  width: 104%;
   border: 0;
   background: transparent;
   padding: 0;
