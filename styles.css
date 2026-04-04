@@ -519,7 +519,7 @@ select:focus {
 }
 
 .spec-row strong {
-  color: var(--text);
+  color: black;
 }
 
 .spec-row span {
