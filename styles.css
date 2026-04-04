@@ -578,6 +578,7 @@ label.opt {
   background: rgba(255, 255, 255, 0.03);
   cursor: pointer;
   width: 57%;
+  margin-bottom: 6px;
 }
 
 .opt input[type="checkbox"],
