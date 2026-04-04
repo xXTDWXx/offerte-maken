@@ -179,9 +179,9 @@ select:focus {
 
 /* Buttons */
 .btn {
-  border: 1px solid var(--border);
-  background: rgb(64 114 152);
-  color: var(--text);
+  border: 1px solid var(--finder-line);
+  background: rgb(255 255 255);
+  color: black;
   padding: 12px 16px;
   border-radius: 14px;
   cursor: pointer;
