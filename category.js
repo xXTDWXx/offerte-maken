@@ -93,7 +93,7 @@ function topSpecs(p) {
     'Merk',
     'Afmetingen',
     'Aantal personen',
-    'Aantal zitplaatsen',
+    'zitplaatsen',
     'Aantal ligplaatsen',
     'Aantal jets'
   ];
