@@ -91,10 +91,10 @@ function getMerk(p) {
 function topSpecs(p) {
   const want = [
     'Merk',
-    'Afmetingen',
+    'Afmeting',
     'Aantal personen',
     'Zitplaatsen',
-    'Aantal ligplaatsen',
+    'Ligplaatsen',
     'Aantal jets'
   ];
 
