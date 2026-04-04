@@ -73,7 +73,6 @@ img {
 .container {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 20px 24px;
 }
 
 .small {
