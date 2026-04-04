@@ -68,6 +68,7 @@ a {
 img {
   max-width: 100%;
   width:35%;
+  margin: 10px;
 }
 
 .container {
