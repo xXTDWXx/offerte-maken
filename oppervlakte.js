@@ -207,7 +207,7 @@ function topSpecs(p, dims) {
   if (getMerk(p)) lines.push(`Merk: ${escapeHtml(getMerk(p))}`);
   if (getSpecValue(p, 'Afmeting')) lines.push(`Afmeting: ${escapeHtml(getSpecValue(p, 'Afmeting'))}`);
   if (getSpecValue(p, 'Aantal personen')) lines.push(`Aantal personen: ${escapeHtml(getSpecValue(p, 'Aantal personen'))}`);
-  if (getSpecValue(p, 'Aantal ligplaatsen')) lines.push(`Aantal ligplaatsen: ${escapeHtml(getSpecValue(p, 'Aantal ligplaatsen'))}`);
+  if (getSpecValue(p, 'Ligplaatsen')) lines.push(`Ligplaatsen: ${escapeHtml(getSpecValue(p, 'Ligplaatsen'))}`);
   if (getSpecValue(p, 'Aantal jets')) lines.push(`Aantal jets: ${escapeHtml(getSpecValue(p, 'Aantal jets'))}`);
   if (getSpecValue(p, 'Jet type')) lines.push(`Jet type: ${escapeHtml(getSpecValue(p, 'Jet type'))}`);
 
