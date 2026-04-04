@@ -120,7 +120,7 @@ img {
 
 /* Panels */
 .panel {
-  background: rgb(64 114 152);
+  background: rgb(255 255 255);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   border-radius: var(--radius);
@@ -157,12 +157,12 @@ img {
 label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #ffffff;
+  color: black;
 }
 
 input,
 select {
-  border: 1px solid var(--border);
+  border: 1px solid var(--finder-line);
   border-radius: 12px;
   padding: 12px 14px;
   outline: none;
