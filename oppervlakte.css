@@ -1396,6 +1396,7 @@ body {
   .filter-group label {
     font-size: 0.88rem;
     margin-bottom: 6px;
+    color:black;
   }
 
   .finder-filter-group select,
