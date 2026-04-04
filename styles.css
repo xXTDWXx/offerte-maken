@@ -700,10 +700,6 @@ label.opt .opt-price {
 
 /* Mobile */
 @media (max-width: 768px) {
-  .container {
-    padding: 14px;
-  }
-
   .grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
