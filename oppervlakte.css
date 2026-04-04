@@ -120,7 +120,7 @@ img {
 
 /* Panels */
 .panel {
-  background: rgb(64 114 152);
+  background: rgb(255 255 255);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   border-radius: var(--radius);
