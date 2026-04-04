@@ -234,7 +234,7 @@ function productSearchBlob(p) {
 }
 
 function topSpecs(p) {
-  const want = ['Merk', 'Afmetingen', 'Aantal personen', 'Aantal zitplaatsen', 'Aantal ligplaatsen', 'Aantal jets'];
+  const want = ['Merk', 'Afmetingen', 'Aantal personen', 'zitplaatsen', 'Aantal ligplaatsen', 'Aantal jets'];
   const picked = [];
 
   for (const key of want) {
