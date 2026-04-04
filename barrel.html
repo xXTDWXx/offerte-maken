@@ -1,251 +1,169 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="barrel.css" />
-  <title>Zoek uw ideale barrel sauna</title>
-  
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welke spa past? | Sunspa Catalogus</title>
+  <link rel="stylesheet" href="oppervlakte.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <a class="brand" href="index.html">Sunspa Catalogus</a>
-      <nav class="nav" aria-label="Hoofdnavigatie">
-        <a href="index.html">OVERZICHT</a>
-        <a href="spa.html">SPA</a>
-        <a href="zwemspa.html">ZWEMSPA</a>
-        <a class="active" href="barrel-sauna.html">BARREL SAUNA</a>
-        <a href="infrarood.html">INFRAROOD</a>
-        <a href="combi-sauna.html">COMBI SAUNA</a>
-        <a href="finse-sauna.html">FINSE SAUNA</a>
-        <a href="sauna-pod.html">SAUNA POD</a>
-      </nav>
+  <header class="header">
+    <div class="container header-row">
+      <div class="brand">
+        <img src="logo.svg" alt="Sunspa Benelux logo" class="logo" />
+      </div>
     </div>
   </header>
 
+  <nav class="category-menu">
+    <div class="container category-menu-row">
+      <a href="category.html?type=Spa" class="category-link">SPA</a>
+      <a href="category.html?type=Zwemspa" class="category-link">ZWEMSPA</a>
+      <a href="category.html?type=Barrelsauna" class="category-link">BARRELSAUNA</a>
+      <a href="category.html?type=Infrarood" class="category-link">INFRAROOD</a>
+      <a href="category.html?type=combi sauna" class="category-link">COMBI SAUNA</a>
+      <a href="category.html?type=sauna" class="category-link">FINSE SAUNA</a>
+      <a href="category.html?type=sauna pod" class="category-link">SAUNA POD</a>
+    </div>
+  </nav>
+
+  <nav class="category-menu">
+    <div class="container category-menu-row">
+      <a href="oppervlakte.html" class="category-link is-active">ZOEK UW IDEALE SPA</a>
+      <a href="category.html?showroom=all" class="category-link is-active">IN DE SHOWROOM</a>
+      <a href="stroom.html" class="category-link is-active">STROOMVEREISTEN</a>
+    </div>
+  </nav>
+
   <main>
-    <section class="hero">
+    <section class="finder-hero">
       <div class="container">
-        <div class="hero-card">
-          <div class="eyebrow">ZOEK UW IDEALE BARREL SAUNA</div>
-          <h1>Vind snel de barrel sauna die het best past bij uw wensen</h1>
-          <p class="lead">
-            Filter op diepte, afwerking van de achterkant, type kachel en dakafwerking.
-            Zo kan de klant in enkele klikken de best passende barrel sauna bekijken.
+        <div class="finder-hero-card">
+          <div class="finder-eyebrow">ZOEK UW IDEALE SPA</div>
+          <h1 class="finder-title">Welke spa past het best in uw ruimte?</h1>
+          <p class="finder-lead">
+            Kies de beschikbare afmeting en verfijn verder op ligplaatsen, reeks en sortering.
+            We tonen alleen spa’s waarvan de specificatie <strong>Afmetingen</strong> binnen die ruimte past.
           </p>
         </div>
       </div>
     </section>
 
     <section>
-      <div class="container layout">
-        <aside class="filter-card">
-          <h2>Maak uw keuze</h2>
-          <p>Gebruik de filters hieronder om de juiste barrel sauna te tonen.</p>
+      <div class="container finder-layout">
+        <aside class="finder-sidebar">
+          <div class="finder-filter-card">
+            <h2>Maak uw keuze</h2>
+            <p>
+              Gebruik de filters hieronder om snel de best passende spa’s te tonen.
+            </p>
 
-          <!-- FILTER GRID START -->
-<div class="mobile-filter-grid">
-  <div class="filter-group">
-            <label for="diepte">Keuze 1: Diepte</label>
-            <select id="diepte">
-              <option value="">Alle dieptes</option>
-              <option value="170">170</option>
-              <option value="210">210</option>
-              <option value="230">230</option>
-              <option value="270">270</option>
-              <option value="300">300</option>
-              <option value="400">400</option>
-            </select>
-          </div>
+            <div class="finder-filter-grid">
+              <div class="finder-filter-group">
+                <label for="spaceSelect">Beschikbare ruimte</label>
+                <select id="spaceSelect">
+                  <option value="">Kies een afmeting</option>
+                  <option value="160x215">160 x 215 cm</option>
+                  <option value="205x205">205 x 205 cm</option>
+                  <option value="215x215">215 x 215 cm</option>
+                  <option value="230x230">230 x 230 cm</option>
+                  <option value="250x250">250 x 250 cm</option>
+                  <option value="300x300">300 x 300 cm</option>
+                </select>
+              </div>
 
-          <!-- FILTER GRID START -->
-<div class="mobile-filter-grid">
-  <div class="filter-group">
-            <label for="achterkant">Keuze 2: Afwerking achterkant</label>
-            <select id="achterkant">
-              <option value="">Alle afwerkingen</option>
-              <option value="Dicht">Dicht</option>
-              <option value="Half glas">Half glas</option>
-            </select>
-          </div>
+              <div class="finder-filter-group">
+                <label for="filterLigplaatsen">Aantal ligplaatsen</label>
+                <select id="filterLigplaatsen">
+                  <option value="">Maakt niet uit</option>
+                  <option value="1">1 ligplaats</option>
+                  <option value="2">2 ligplaatsen</option>
+                </select>
+              </div>
 
-          <!-- FILTER GRID START -->
-<div class="mobile-filter-grid">
-  <div class="filter-group">
-            <label for="kachel">Keuze 3: Kachel</label>
-            <select id="kachel">
-              <option value="">Alle types</option>
-              <option value="Hout">Hout</option>
-              <option value="Elektrisch">Elektrisch</option>
-            </select>
-          </div>
+              <div class="finder-filter-group">
+                <label for="brandFilter">Reeks</label>
+                <select id="brandFilter">
+                  <option value="">Alle reeksen</option>
+                  <option value="Sunspa">Sunspa</option>
+                  <option value="Myspa">Myspa</option>
+                  <option value="Vogue">Vogue</option>
+                  <option value="Legend">Legend</option>
+                  <option value="Fox">Fox</option>
+                  <option value="Elite">Elite</option>
+                </select>
+              </div>
 
-          <!-- FILTER GRID START -->
-<div class="mobile-filter-grid">
-  <div class="filter-group">
-            <label for="dak">Keuze 4: Afwerking dak</label>
-            <select id="dak">
-              <option value="">Alle dakafwerkingen</option>
-              <option value="Shingles">Shingles</option>
-              <option value="Cedar latjes">Cedar latjes</option>
-              <option value="Heidemat">Heidemat</option>
-            </select>
-          </div>
-
+              <div class="finder-filter-group">
+                <label for="sort">Sorteren</label>
+                <select id="sort">
+                  <option value="fitBest">Beste match</option>
+                  <option value="priceAsc">Prijs (laag → hoog)</option>
+                  <option value="priceDesc">Prijs (hoog → laag)</option>
+                  <option value="titleAsc">Titel (A → Z)</option>
+                  <option value="sizeAsc">Kleinste eerst</option>
+                  <option value="sizeDesc">Grootste eerst</option>
+                </select>
+              </div>
             </div>
-<!-- FILTER GRID END -->
 
-          <div class="actions">
-            <button class="btn-primary" id="filterBtn" type="button">Toon resultaat</button>
-            <button class="btn-secondary" id="resetBtn" type="button">Reset</button>
+            <div class="finder-actions">
+              <button id="btnClear" class="finder-btn finder-btn-secondary" type="button">Wissen</button>
+              <a href="index.html" class="finder-btn finder-btn-secondary finder-btn-link">← Terug</a>
+            </div>
           </div>
         </aside>
 
-        <section>
-          <div class="results-head">
-            <h2>Resultaten</h2>
-            <div class="results-count" id="resultsCount">0 modellen gevonden</div>
+        <section class="finder-results">
+          <div class="finder-results-head">
+            <div>
+              <h2>Resultaten</h2>
+              <div class="finder-results-count" id="resultMeta">—</div>
+            </div>
+            <div class="chips" id="activeChips"></div>
           </div>
 
-          <div class="results-grid" id="resultsGrid"></div>
+          <section class="finder-info-card">
+            <div class="finder-info-title">Hoe werkt het?</div>
+            <div class="finder-info-text">
+              De gekozen ruimte wordt vergeleken met de specificatie <strong>Afmetingen</strong> van elke spa.
+              Een spa wordt alleen getoond als die binnen de gekozen lengte en breedte past.
+            </div>
+          </section>
 
-          <div class="empty-state hidden" id="emptyState">
-            <h3>Geen barrel sauna gevonden</h3>
-            <p>Pas één of meerdere filters aan om opnieuw te zoeken.</p>
-          </div>
+          <section class="grid finder-grid" id="grid"></section>
+
+          <section class="finder-empty-card" id="errorBox" style="display:none">
+            <div class="finder-info-title">Fout bij laden</div>
+            <div class="finder-info-text" id="errorText"></div>
+            <div class="finder-info-text" style="margin-top:8px">
+              Controleer of <code>products.json</code> bestaat en bereikbaar is.
+            </div>
+          </section>
         </section>
       </div>
     </section>
   </main>
 
-  <script>
-    const barrelSaunas = [
-      {
-        naam: 'Barrel Sauna 170 Dicht - Hout - Shingles',
-        diepte: '170',
-        achterkant: 'Dicht',
-        kachel: 'Hout',
-        dak: 'Shingles',
-        image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
-        link: '#'
-      },
-      {
-        naam: 'Barrel Sauna 210 Half glas - Elektrisch - Cedar latjes',
-        diepte: '210',
-        achterkant: 'Half glas',
-        kachel: 'Elektrisch',
-        dak: 'Cedar latjes',
-        image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
-        link: '#'
-      },
-      {
-        naam: 'Barrel Sauna 230 Dicht - Elektrisch - Heidemat',
-        diepte: '230',
-        achterkant: 'Dicht',
-        kachel: 'Elektrisch',
-        dak: 'Heidemat',
-        image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
-        link: '#'
-      },
-      {
-        naam: 'Barrel Sauna 270 Half glas - Hout - Shingles',
-        diepte: '270',
-        achterkant: 'Half glas',
-        kachel: 'Hout',
-        dak: 'Shingles',
-        image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
-        link: '#'
-      },
-      {
-        naam: 'Barrel Sauna 300 Dicht - Hout - Cedar latjes',
-        diepte: '300',
-        achterkant: 'Dicht',
-        kachel: 'Hout',
-        dak: 'Cedar latjes',
-        image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
-        link: '#'
-      },
-      {
-        naam: 'Barrel Sauna 400 Half glas - Elektrisch - Shingles',
-        diepte: '400',
-        achterkant: 'Half glas',
-        kachel: 'Elektrisch',
-        dak: 'Shingles',
-        image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
-        link: '#'
-      }
-    ];
+  <template id="cardTpl">
+    <article class="card">
+      <button class="card-link" type="button" data-open>
+        <div class="card-imgwrap">
+          <img class="card-img" alt="" loading="lazy" />
+          <div class="badge" data-badge></div>
+          <div class="badge badge-location" data-showroom></div>
+        </div>
 
-    const diepteSelect = document.getElementById('diepte');
-    const achterkantSelect = document.getElementById('achterkant');
-    const kachelSelect = document.getElementById('kachel');
-    const dakSelect = document.getElementById('dak');
-    const filterBtn = document.getElementById('filterBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const resultsGrid = document.getElementById('resultsGrid');
-    const resultsCount = document.getElementById('resultsCount');
-    const emptyState = document.getElementById('emptyState');
+        <div class="card-body">
+          <div class="card-title" data-title></div>
+          <div class="card-price" data-price></div>
+          <div class="card-specs" data-specs></div>
+          <div class="card-cta">👉 Bekijk details</div>
+        </div>
+      </button>
+    </article>
+  </template>
 
-    function matchesFilter(item) {
-      const matchDiepte = !diepteSelect.value || item.diepte === diepteSelect.value;
-      const matchAchterkant = !achterkantSelect.value || item.achterkant === achterkantSelect.value;
-      const matchKachel = !kachelSelect.value || item.kachel === kachelSelect.value;
-      const matchDak = !dakSelect.value || item.dak === dakSelect.value;
-      return matchDiepte && matchAchterkant && matchKachel && matchDak;
-    }
-
-    function renderResults() {
-      const filtered = barrelSaunas.filter(matchesFilter);
-      resultsGrid.innerHTML = '';
-      resultsCount.textContent = `${filtered.length} model${filtered.length === 1 ? '' : 'len'} gevonden`;
-
-      if (!filtered.length) {
-        emptyState.classList.remove('hidden');
-        return;
-      }
-
-      emptyState.classList.add('hidden');
-
-      filtered.forEach(item => {
-        const card = document.createElement('article');
-        card.className = 'result-card';
-        card.innerHTML = `
-          <img class="result-image" src="${item.image}" alt="${item.naam}">
-          <div class="result-body">
-            <h3 class="result-title">${item.naam}</h3>
-            <div class="badges">
-              <span class="badge">Diepte ${item.diepte}</span>
-              <span class="badge">${item.kachel}</span>
-            </div>
-            <ul class="specs">
-              <li><strong>Achterkant:</strong> ${item.achterkant}</li>
-              <li><strong>Kachel:</strong> ${item.kachel}</li>
-              <li><strong>Dakafwerking:</strong> ${item.dak}</li>
-            </ul>
-            <a class="result-link" href="${item.link}">Bekijk detail</a>
-          </div>
-        `;
-        resultsGrid.appendChild(card);
-      });
-    }
-
-    function resetFilters() {
-      diepteSelect.value = '';
-      achterkantSelect.value = '';
-      kachelSelect.value = '';
-      dakSelect.value = '';
-      renderResults();
-    }
-
-    filterBtn.addEventListener('click', renderResults);
-    resetBtn.addEventListener('click', resetFilters);
-    diepteSelect.addEventListener('change', renderResults);
-    achterkantSelect.addEventListener('change', renderResults);
-    kachelSelect.addEventListener('change', renderResults);
-    dakSelect.addEventListener('change', renderResults);
-
-    renderResults();
-  </script>
+  <script src="oppervlakte.js"></script>
 </body>
 </html>
