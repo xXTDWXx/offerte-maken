@@ -706,8 +706,7 @@ label.opt .opt-price {
 
   .grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
-    margin: 20px 0px 28px;
+    margin: 10px;
   }
 
   .card-imgwrap {
