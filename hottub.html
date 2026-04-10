@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stel je hottub samen</title>
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --text: #1d2b36;
+      --muted: #6a7885;
+      --line: #dde5ec;
+      --brand: #1f5f93;
+      --brand-soft: rgba(31, 95, 147, 0.12);
+      --shadow: 0 10px 30px rgba(14, 28, 45, 0.08);
+      --radius: 18px;
+      --radius-sm: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    .page {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 22px 16px 48px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #f2f7fb 100%);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      color: #163c5d;
+      font-size: 34px;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 860px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .main {
+      display: grid;
+      gap: 20px;
+    }
+
+    .section {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .section h2 {
+      margin: 0 0 8px;
+      color: #173c5a;
+      font-size: 26px;
+    }
+
+    .section-intro {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .auto-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .auto-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .choice-card,
+    .simple-card,
+    .swatch-card {
+      position: relative;
+      display: block;
+      background: #fff;
+      border: 2px solid var(--line);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .choice-card:hover,
+    .simple-card:hover,
+    .swatch-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      border-color: #bfd0df;
+    }
+
+    .choice-card input,
+    .simple-card input,
+    .swatch-card input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .choice-card:has(input:checked),
+    .simple-card:has(input:checked),
+    .swatch-card:has(input:checked) {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 4px var(--brand-soft);
+    }
+
+    .choice-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+      background: #edf3f7;
+    }
+
+    .choice-content {
+      padding: 16px;
+    }
+
+    .choice-content h3 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      color: #163c5d;
+    }
+
+    .choice-content p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .choice-price {
+      margin-top: 8px !important;
+      font-weight: 700;
+      color: #173c5a !important;
+      font-size: 17px !important;
+    }
+
+    .simple-card {
+      padding: 16px;
+      min-height: 118px;
+    }
+
+    .simple-card h3 {
+      margin: 0 0 7px;
+      font-size: 19px;
+      color: #173c5a;
+    }
+
+    .simple-card .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .simple-card .price {
+      font-weight: 700;
+      color: #173c5a;
+      font-size: 18px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #edf4fa;
+      color: var(--brand);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .swatch-card {
+      padding: 16px;
+      min-height: 130px;
+    }
+
+    .swatch-preview {
+      width: 100%;
+      height: 52px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.08);
+      margin-bottom: 14px;
+    }
+
+    .swatch-card h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      color: #173c5a;
+    }
+
+    .swatch-card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .summary {
+      position: sticky;
+      top: 18px;
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .summary h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      color: #173c5a;
+    }
+
+    .total-box {
+      padding: 18px;
+      border-radius: 16px;
+      background: #f2f7fb;
+      border: 1px solid #d6e4f0;
+      margin-bottom: 18px;
+    }
+
+    .total-box small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .total-box strong {
+      display: block;
+      font-size: 34px;
+      color: #173c5a;
+      line-height: 1.1;
+    }
+
+    .summary-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .summary-row .left {
+      color: var(--muted);
+      min-width: 100px;
+    }
+
+    .summary-row .right {
+      text-align: right;
+      color: #173c5a;
+      font-weight: 700;
+    }
+
+    .summary-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .summary-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      border-radius: 999px;
+      padding: 13px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: #edf3f8;
+      color: #173c5a;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 1100px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .summary {
+        position: static;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .grid-4,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .choice-card img {
+        height: 190px;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .section {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <h1>Stel je hottub samen</h1>
+      <p>
+        Kies eerst het model, daarna de afwerking, het formaat en alle gewenste opties.
+        De totaalprijs wordt automatisch berekend op basis van je selectie.
+      </p>
+    </section>
+
+    <div class="layout">
+      <main class="main">
+
+        <section class="section">
+          <h2>1. Kies je model</h2>
+          <p class="section-intro">Start met de vorm van je hottub.</p>
+          <div class="grid-3">
+            <label class="choice-card">
+              <input type="radio" name="model" value="rond" checked>
+              <img src="images/RONDE HOTTUB.jpg" alt="Ronde hottub">
+              <div class="choice-content">
+                <h3>Rond model</h3>
+                <p>200 of 220 cm diameter</p>
+                <p class="choice-price">Vanaf € 3.490</p>
+              </div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="model" value="ovaal">
+              <img src="images/OVALE HOTTUB.jpg" alt="Ovale hottub">
+              <div class="choice-content">
+                <h3>Ovaal model</h3>
+                <p>180 × 120 × 89 cm · 2 personen</p>
+                <p class="choice-price">Vanaf € 2.590</p>
+              </div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="model" value="vierkant">
+              <img src="images/SQUARE HOTTUB.jpg" alt="Vierkante hottub">
+              <div class="choice-content">
+                <h3>Vierkant model</h3>
+                <p>200 × 200 × 101 cm · 6–8 personen</p>
+                <p class="choice-price">Vanaf € 3.950</p>
+              </div>
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>2. Kies je houtsoort</h2>
+          <p class="section-intro">De prijs wordt later exact bepaald op basis van model en gekozen formaat.</p>
+          <div class="auto-grid" id="woodOptions"></div>
+        </section>
+
+        <section class="section">
+          <h2>3. Kies je diameter / formaat</h2>
+          <p class="section-intro">De beschikbare afmetingen hangen af van het gekozen model.</p>
+          <div class="grid-3" id="sizeOptions"></div>
+        </section>
+
+        <section class="section">
+          <h2>4. Kies je kuipkleur</h2>
+          <p class="section-intro">Geen prijsverschil tussen deze kleuren.</p>
+          <div class="grid-3">
+            <label class="swatch-card">
+              <input type="radio" name="kleur" value="Pearl White" checked>
+              <div class="swatch-preview" style="background: linear-gradient(135deg,#ffffff,#f0f0f0);"></div>
+              <h3>Pearl White</h3>
+              <p>+ € 0</p>
+            </label>
+
+            <label class="swatch-card">
+              <input type="radio" name="kleur" value="Metallic Grey">
+              <div class="swatch-preview" style="background: linear-gradient(135deg,#4d5662,#9aa3ad);"></div>
+              <h3>Metallic Grey</h3>
+              <p>+ € 0</p>
+            </label>
+
+            <label class="swatch-card">
+              <input type="radio" name="kleur" value="Metallic Gold">
+              <div class="swatch-preview" style="background: linear-gradient(135deg,#9e7a40,#d2b173);"></div>
+              <h3>Metallic Gold</h3>
+              <p>+ € 0</p>
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>5. Kies je kachel</h2>
+          <p class="section-intro">Intern of extern, volgens de brochure.</p>
+          <div class="grid-2">
+            <label class="choice-card">
+              <input type="radio" name="kachel" value="0" checked>
+              <img src="images/KACHEL EXTERN.jpg" alt="Externe kachel">
+              <div class="choice-content">
+                <h3>Kachel extern</h3>
+                <p>Extra ruimte in hottub · 304 standaard RVS kachel</p>
+                <p class="choice-price">+ € 0</p>
+              </div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="kachel" value="250">
+              <img src="images/KACHEL INTERN.jpg" alt="Interne kachel">
+              <div class="choice-content">
+                <h3>Kachel intern</h3>
+                <p>Verhoogde zitplek · geïntegreerde houtkachel</p>
+                <p class="choice-price">+ € 250</p>
+              </div>
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>6. Kies je systeem</h2>
+          <p class="section-intro">Standaard houtgestookt, elektrisch of hybride.</p>
+          <div class="grid-3">
+            <label class="simple-card">
+              <input type="radio" name="systeem" value="0" checked>
+              <span class="badge">Standaard</span>
+              <h3>Houtgestookt</h3>
+              <div class="meta">Klassieke opstelling zonder meerprijs</div>
+              <div class="price">+ € 0</div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="systeem" value="350">
+              <img src="images/GECKO Systeem.jpg" alt="Gecko systeem">
+              <div class="choice-content">
+                <h3>Gecko systeem</h3>
+                <p>Volledig elektrisch</p>
+                <p class="choice-price">+ € 350</p>
+              </div>
+            </label>
+
+            <label class="simple-card">
+              <input type="radio" name="systeem" value="950">
+              <span class="badge">Combinatie</span>
+              <h3>Hybride systeem</h3>
+              <div class="meta">Elektrisch + houtkachel</div>
+              <div class="price">+ € 950</div>
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>7. Kies je massage</h2>
+          <p class="section-intro">Kies het gewenste jetsysteem.</p>
+          <div class="auto-grid">
+            <label class="simple-card">
+              <input type="radio" name="massage" value="0" checked>
+              <span class="badge">Standaard</span>
+              <h3>Geen massage</h3>
+              <div class="meta">Zonder jets</div>
+              <div class="price">+ € 0</div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="massage" value="690">
+              <img src="images/MASSAGE.jpg" alt="Massage opties">
+              <div class="choice-content">
+                <h3>12 Airjets</h3>
+                <p>Luchtmassage</p>
+                <p class="choice-price">+ € 690</p>
+              </div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="massage" value="690">
+              <img src="images/MASSAGE.jpg" alt="Massage opties">
+              <div class="choice-content">
+                <h3>8 Waterjets</h3>
+                <p>Watermassage</p>
+                <p class="choice-price">+ € 690</p>
+              </div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="massage" value="1090">
+              <img src="images/MASSAGE.jpg" alt="Massage opties">
+              <div class="choice-content">
+                <h3>14 Waterjets</h3>
+                <p>Extra uitgebreide watermassage</p>
+                <p class="choice-price">+ € 1.090</p>
+              </div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="massage" value="950">
+              <img src="images/MASSAGE.jpg" alt="Massage opties">
+              <div class="choice-content">
+                <h3>12 Combi-jets</h3>
+                <p>Combinatie van lucht en water</p>
+                <p class="choice-price">+ € 950</p>
+              </div>
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>8. Kies je verlichting</h2>
+          <p class="section-intro">Sfeerverlichting in de hottub.</p>
+          <div class="auto-grid">
+            <label class="simple-card">
+              <input type="radio" name="verlichting" value="0" checked>
+              <span class="badge">Standaard</span>
+              <h3>Geen verlichting</h3>
+              <div class="meta">Zonder leds</div>
+              <div class="price">+ € 0</div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="verlichting" value="190">
+              <img src="images/MASSAGE.jpg" alt="Verlichting">
+              <div class="choice-content">
+                <h3>1 hoofdled</h3>
+                <p>1 hoofdled in hottub</p>
+                <p class="choice-price">+ € 190</p>
+              </div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="verlichting" value="250">
+              <img src="images/MASSAGE.jpg" alt="Verlichting">
+              <div class="choice-content">
+                <h3>2 hoofdleds</h3>
+                <p>2 hoofdleds in hottub</p>
+                <p class="choice-price">+ € 250</p>
+              </div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="verlichting" value="275">
+              <img src="images/MASSAGE.jpg" alt="Verlichting">
+              <div class="choice-content">
+                <h3>3 hoofdleds</h3>
+                <p>3 hoofdleds in hottub</p>
+                <p class="choice-price">+ € 275</p>
+              </div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="verlichting" value="290">
+              <img src="images/MASSAGE.jpg" alt="Mini leds">
+              <div class="choice-content">
+                <h3>12 mini leds</h3>
+                <p>Fijne sfeerverlichting</p>
+                <p class="choice-price">+ € 290</p>
+              </div>
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>9. Kies je filter</h2>
+          <p class="section-intro">Voor helderder en proper water.</p>
+          <div class="auto-grid">
+            <label class="simple-card">
+              <input type="radio" name="filter" value="0" checked>
+              <span class="badge">Standaard</span>
+              <h3>Geen extra filter</h3>
+              <div class="meta">Zonder filtersysteem</div>
+              <div class="price">+ € 0</div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="filter" value="390">
+              <img src="images/FILTER.jpg" alt="Zandfilter">
+              <div class="choice-content">
+                <h3>Zandfilter</h3>
+                <p>Extra filtering van het water</p>
+                <p class="choice-price">+ € 390</p>
+              </div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="filter" value="790">
+              <img src="images/FILTER.jpg" alt="Zandfilter met UV">
+              <div class="choice-content">
+                <h3>Zandfilter + UV</h3>
+                <p>Extra waterbehandeling</p>
+                <p class="choice-price">+ € 790</p>
+              </div>
+            </label>
+
+            <label class="choice-card">
+              <input type="radio" name="filter" value="199">
+              <img src="images/FILTER.jpg" alt="Filterbox">
+              <div class="choice-content">
+                <h3>Filterbox</h3>
+                <p>Compacte filteroplossing</p>
+                <p class="choice-price">+ € 199</p>
+              </div>
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>10. Kies je isolatie</h2>
+          <p class="section-intro">Verbeter het warmtebehoud van je hottub.</p>
+          <div class="auto-grid">
+            <label class="simple-card">
+              <input type="checkbox" name="isolatie" value="190" data-label="Kuipisolatie">
+              <span class="badge">Isolatie</span>
+              <h3>Kuipisolatie</h3>
+              <div class="meta">Extra isolatie van de kuip</div>
+              <div class="price">+ € 190</div>
+            </label>
+
+            <label class="choice-card">
+              <input type="checkbox" name="isolatie" value="250" data-label="Thermocover">
+              <img src="images/THERMOCOVER.jpg" alt="Thermocover">
+              <div class="choice-content">
+                <h3>Thermocover</h3>
+                <p>Isolerende cover</p>
+                <p class="choice-price">+ € 250</p>
+              </div>
+            </label>
+
+            <label class="simple-card">
+              <input type="checkbox" name="isolatie" value="275" data-label="Houten cover">
+              <span class="badge">Cover</span>
+              <h3>Houten cover</h3>
+              <div class="meta">Massieve houten afdekking</div>
+              <div class="price">+ € 275</div>
+            </label>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>11. Kies je extra accessoires</h2>
+          <p class="section-intro">Werk je hottub verder af met extra opties.</p>
+          <div class="auto-grid">
+            <label class="simple-card">
+              <input type="checkbox" name="extra" value="170" data-label="Beitsen">
+              <span class="badge">Afwerking</span>
+              <h3>Beitsen</h3>
+              <div class="meta">Beschermende afwerking van het hout</div>
+              <div class="price">+ € 170</div>
+            </label>
+
+            <label class="choice-card">
+              <input type="checkbox" name="extra" value="170" data-label="RVS banden">
+              <img src="images/RVS BANDEN.jpg" alt="RVS banden">
+              <div class="choice-content">
+                <h3>RVS banden</h3>
+                <p>Strakke metalen afwerking</p>
+                <p class="choice-price">+ € 170</p>
+              </div>
+            </label>
+
+            <label class="choice-card">
+              <input type="checkbox" name="extra" value="0" data-label="Kachelbescherming">
+              <img src="images/KACHEL BESCHERMING.jpg" alt="Kachelbescherming">
+              <div class="choice-content">
+                <h3>Kachelbescherming</h3>
+                <p>Prijs niet vermeld</p>
+                <p class="choice-price">Op aanvraag</p>
+              </div>
+            </label>
+
+            <label class="simple-card">
+              <input type="checkbox" name="extra" value="75" data-label="+1m rookkanaal">
+              <span class="badge">Rookkanaal</span>
+              <h3>+1 m rookkanaal</h3>
+              <div class="meta">Extra lengte</div>
+              <div class="price">+ € 75</div>
+            </label>
+
+            <label class="simple-card">
+              <input type="checkbox" name="extra" value="299" data-label="Coverlift">
+              <span class="badge">Gebruiksgemak</span>
+              <h3>Coverlift</h3>
+              <div class="meta">Makkelijk openen en sluiten van de cover</div>
+              <div class="price">+ € 299</div>
+            </label>
+
+            <label class="choice-card">
+              <input type="checkbox" name="extra" value="250" data-label="Gecko Wifi systeem">
+              <img src="images/Gecko wifi module.webp" alt="Gecko wifi systeem">
+              <div class="choice-content">
+                <h3>Gecko Wifi systeem</h3>
+                <p>Bediening via smartphone</p>
+                <p class="choice-price">+ € 250</p>
+              </div>
+            </label>
+          </div>
+
+          <p class="section-intro" style="margin-top:18px;">
+            Onze hottubs worden standaard geleverd met 2 m RVS rookkanaal, trapje, minibar, thermometer en waterafvoer.
+          </p>
+        </section>
+      </main>
+
+      <aside class="summary">
+        <h2>Je samenstelling</h2>
+
+        <div class="total-box">
+          <small>Totaalprijs</small>
+          <strong id="totalPrice">€ 3.490</strong>
+        </div>
+
+        <div class="summary-list" id="summaryList"></div>
+
+        <div class="summary-actions">
+          <button class="btn btn-primary" type="button">Offerte aanvragen</button>
+          <button class="btn btn-secondary" type="button" id="resetBtn">Opnieuw beginnen</button>
+        </div>
+
+        <p class="summary-note">
+          Kachelbescherming staat als “op aanvraag” omdat er geen prijs op de brochure zichtbaar was.
+        </p>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const config = {
+      rond: {
+        label: "Rond model",
+        sizes: [
+          { id: "200", label: "200 cm Ø", note: "4-5 personen · 1300 L" },
+          { id: "220", label: "220 cm Ø", note: "6-7 personen · 1600 L" }
+        ],
+        woods: {
+          fichte: {
+            label: "Fichte",
+            image: "images/Fichte hout.jpg",
+            prices: { "200": 3490, "220": 3950 }
+          },
+          thermo: {
+            label: "Thermo",
+            image: "images/Thermo hout.jpg",
+            prices: { "200": 3750, "220": 4190 }
+          },
+          wpcbrown: {
+            label: "WPC Brown",
+            image: "images/WPC BROWN.jpg",
+            prices: { "200": 3750, "220": 4190 }
+          },
+          wpcblack: {
+            label: "WPC Black",
+            image: "images/WPC BLACK.png",
+            prices: { "200": 3750, "220": 4190 }
+          },
+          redcedar: {
+            label: "Red Cedar",
+            image: "images/RED CEDAR.jpg",
+            prices: { "200": 4950, "220": 5490 }
+          }
+        }
+      },
+
+      ovaal: {
+        label: "Ovaal model",
+        sizes: [
+          { id: "180x120", label: "180 × 120 × 89 cm", note: "2 personen · 700 L" }
+        ],
+        woods: {
+          fichte: {
+            label: "Fichte",
+            image: "images/Fichte hout.jpg",
+            prices: { "180x120": 2590 }
+          },
+          thermo: {
+            label: "Thermo",
+            image: "images/Thermo hout.jpg",
+            prices: { "180x120": 2690 }
+          },
+          wpcbrown: {
+            label: "WPC Brown",
+            image: "images/WPC BROWN.jpg",
+            prices: { "180x120": 2690 }
+          },
+          wpcblack: {
+            label: "WPC Black",
+            image: "images/WPC BLACK.png",
+            prices: { "180x120": 2690 }
+          },
+          redcedar: {
+            label: "Red Cedar",
+            image: "images/RED CEDAR.jpg",
+            prices: { "180x120": 3590 }
+          }
+        }
+      },
+
+      vierkant: {
+        label: "Vierkant model",
+        sizes: [
+          { id: "200x200", label: "200 × 200 × 101 cm", note: "6-8 personen · 1600 L" }
+        ],
+        woods: {
+          fichte: {
+            label: "Fichte",
+            image: "images/Fichte hout.jpg",
+            prices: { "200x200": 3950 }
+          },
+          thermo: {
+            label: "Thermo",
+            image: "images/Thermo hout.jpg",
+            prices: { "200x200": 4200 }
+          },
+          wpcbrown: {
+            label: "WPC Brown",
+            image: "images/WPC BROWN.jpg",
+            prices: { "200x200": 4190 }
+          },
+          wpcblack: {
+            label: "WPC Black",
+            image: "images/WPC BLACK.png",
+            prices: { "200x200": 4190 }
+          },
+          redcedar: {
+            label: "Red Cedar",
+            image: "images/RED CEDAR.jpg",
+            prices: { "200x200": 5690 }
+          }
+        }
+      }
+    };
+
+    function euro(value) {
+      return "€ " + Number(value).toLocaleString("nl-BE");
+    }
+
+    function selectedRadio(name) {
+      return document.querySelector(`input[name="${name}"]:checked`);
+    }
+
+    function selectedRadioValue(name) {
+      const el = selectedRadio(name);
+      return el ? el.value : null;
+    }
+
+    function selectedRadioNumber(name) {
+      const value = selectedRadioValue(name);
+      return value ? Number(value) : 0;
+    }
+
+    function selectedCheckboxes(name) {
+      return [...document.querySelectorAll(`input[name="${name}"]:checked`)];
+    }
+
+    function getCurrentModelKey() {
+      return selectedRadioValue("model") || "rond";
+    }
+
+    function getCurrentWoodKey() {
+      return selectedRadioValue("wood");
+    }
+
+    function getCurrentSizeKey() {
+      return selectedRadioValue("size");
+    }
+
+    function renderWoodOptions() {
+      const modelKey = getCurrentModelKey();
+      const woods = config[modelKey].woods;
+      const container = document.getElementById("woodOptions");
+      const currentWood = getCurrentWoodKey();
+
+      container.innerHTML = "";
+
+      Object.entries(woods).forEach(([key, wood], index) => {
+        const minPrice = Math.min(...Object.values(wood.prices));
+        const checked = currentWood ? currentWood === key : index === 0;
+
+        container.insertAdjacentHTML("beforeend", `
+          <label class="choice-card">
+            <input type="radio" name="wood" value="${key}" ${checked ? "checked" : ""}>
+            <img src="${wood.image}" alt="${wood.label}">
+            <div class="choice-content">
+              <h3>${wood.label}</h3>
+              <p>Afwerking / houtsoort</p>
+              <p class="choice-price">Vanaf ${euro(minPrice)}</p>
+            </div>
+          </label>
+        `);
+      });
+
+      document.querySelectorAll('input[name="wood"]').forEach(input => {
+        input.addEventListener("change", () => {
+          renderSizeOptions();
+          updateSummary();
+        });
+      });
+    }
+
+    function renderSizeOptions() {
+      const modelKey = getCurrentModelKey();
+      const woodKey = getCurrentWoodKey() || Object.keys(config[modelKey].woods)[0];
+      const currentSize = getCurrentSizeKey();
+      const sizeWrap = document.getElementById("sizeOptions");
+      const model = config[modelKey];
+      const wood = model.woods[woodKey];
+
+      sizeWrap.innerHTML = "";
+
+      model.sizes.forEach((size, index) => {
+        const checked = currentSize ? currentSize === size.id : index === 0;
+        const price = wood.prices[size.id];
+
+        sizeWrap.insertAdjacentHTML("beforeend", `
+          <label class="simple-card">
+            <input type="radio" name="size" value="${size.id}" ${checked ? "checked" : ""}>
+            <span class="badge">${model.label}</span>
+            <h3>${size.label}</h3>
+            <div class="meta">${size.note}</div>
+            <div class="price">${euro(price)}</div>
+          </label>
+        `);
+      });
+
+      document.querySelectorAll('input[name="size"]').forEach(input => {
+        input.addEventListener("change", updateSummary);
+      });
+    }
+
+    function getBasePrice() {
+      const modelKey = getCurrentModelKey();
+      const woodKey = getCurrentWoodKey();
+      const sizeKey = getCurrentSizeKey();
+
+      if (!modelKey || !woodKey || !sizeKey) return 0;
+      return config[modelKey].woods[woodKey].prices[sizeKey] || 0;
+    }
+
+    function getBaseLabels() {
+      const modelKey = getCurrentModelKey();
+      const woodKey = getCurrentWoodKey();
+      const sizeKey = getCurrentSizeKey();
+
+      const model = config[modelKey];
+      const wood = model.woods[woodKey];
+      const size = model.sizes.find(s => s.id === sizeKey);
+
+      return {
+        model: model ? model.label : "-",
+        wood: wood ? wood.label : "-",
+        size: size ? size.label : "-"
+      };
+    }
+
+    function getLabelFromSelected(name) {
+      const input = selectedRadio(name);
+      if (!input) return "-";
+      const card = input.closest("label");
+      const h3 = card.querySelector("h3");
+      return h3 ? h3.textContent.trim() : "-";
+    }
+
+    function getCheckedLabels(name) {
+      return selectedCheckboxes(name).map(input => input.dataset.label || input.value);
+    }
+
+    function updateSummary() {
+      const basePrice = getBasePrice();
+      const kachel = selectedRadioNumber("kachel");
+      const systeem = selectedRadioNumber("systeem");
+      const massage = selectedRadioNumber("massage");
+      const verlichting = selectedRadioNumber("verlichting");
+      const filter = selectedRadioNumber("filter");
+
+      const isolatieItems = selectedCheckboxes("isolatie");
+      const extraItems = selectedCheckboxes("extra");
+
+      const isolatieTotal = isolatieItems.reduce((sum, item) => sum + Number(item.value), 0);
+      const extraTotal = extraItems.reduce((sum, item) => sum + Number(item.value), 0);
+
+      const total = basePrice + kachel + systeem + massage + verlichting + filter + isolatieTotal + extraTotal;
+
+      document.getElementById("totalPrice").textContent = euro(total);
+
+      const labels = getBaseLabels();
+      const kleur = selectedRadioValue("kleur") || "-";
+      const isolatieText = getCheckedLabels("isolatie").length ? getCheckedLabels("isolatie").join(", ") : "Geen";
+      const extraText = getCheckedLabels("extra").length ? getCheckedLabels("extra").join(", ") : "Geen";
+
+      const rows = [
+        ["Model", labels.model],
+        ["Houtsoort", labels.wood],
+        ["Formaat", labels.size],
+        ["Kuipkleur", kleur],
+        ["Kachel", getLabelFromSelected("kachel")],
+        ["Systeem", getLabelFromSelected("systeem")],
+        ["Massage", getLabelFromSelected("massage")],
+        ["Verlichting", getLabelFromSelected("verlichting")],
+        ["Filter", getLabelFromSelected("filter")],
+        ["Isolatie", isolatieText],
+        ["Extra's", extraText]
+      ];
+
+      const summaryList = document.getElementById("summaryList");
+      summaryList.innerHTML = rows.map(([left, right]) => `
+        <div class="summary-row">
+          <div class="left">${left}</div>
+          <div class="right">${right}</div>
+        </div>
+      `).join("");
+    }
+
+    function bindStaticInputs() {
+      const names = ["kleur", "kachel", "systeem", "massage", "verlichting", "filter", "isolatie", "extra"];
+      names.forEach(name => {
+        document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+          input.addEventListener("change", updateSummary);
+        });
+      });
+    }
+
+    function rebuildDynamicSections() {
+      renderWoodOptions();
+      renderSizeOptions();
+      updateSummary();
+    }
+
+    document.querySelectorAll('input[name="model"]').forEach(input => {
+      input.addEventListener("change", () => {
+        rebuildDynamicSections();
+      });
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      window.location.reload();
+    });
+
+    bindStaticInputs();
+    rebuildDynamicSections();
+  </script>
+</body>
+</html>
