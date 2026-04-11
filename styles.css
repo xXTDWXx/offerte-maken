@@ -582,6 +582,7 @@ label.opt {
   cursor: pointer;
   width: 57%;
   margin-right: 6px;
+  margin-bottom: 6px;
 }
 
 .opt input[type="checkbox"],
