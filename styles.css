@@ -15,6 +15,10 @@ html, body {
   print-color-adjust: exact !important;
 }
 
+#optBarrelStoveGroup {
+  display: flex;
+}
+
 * {
   -webkit-print-color-adjust: exact !important;
   print-color-adjust: exact !important;
@@ -568,7 +572,6 @@ select:focus {
 
 .opt,
 label.opt {
-  display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 12px;
@@ -578,7 +581,7 @@ label.opt {
   background: rgba(255, 255, 255, 0.03);
   cursor: pointer;
   width: 57%;
-  margin-bottom: 6px;
+  margin-right: 6px;
 }
 
 .opt input[type="checkbox"],
