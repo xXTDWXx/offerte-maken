@@ -19,6 +19,10 @@ html, body {
   display: flex;
 }
 
+#optBarrelRoofGroup {
+  display: flex;
+}
+
 * {
   -webkit-print-color-adjust: exact !important;
   print-color-adjust: exact !important;
@@ -574,8 +578,6 @@ select:focus {
 label.opt {
   align-items: center;
   justify-content: flex-start;
-  gap: 12px;
-  padding: 12px;
   border: 1px solid var(--finder-line);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.03);
