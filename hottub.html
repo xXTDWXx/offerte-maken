@@ -267,48 +267,40 @@
         </section>
 
         <section class="section">
-          <h2>9. Kies je filter</h2>
-          <p class="section-intro">Voor helderder en proper water.</p>
-          <div class="auto-grid">
-            <label class="simple-card">
-              <input type="radio" name="filter" value="0" checked>
-              <span class="badge">Standaard</span>
-              <h3>Geen extra filter</h3>
-              <div class="meta">Zonder filtersysteem</div>
-              <div class="price">+ € 0</div>
-            </label>
+  <h2>9. Kies je filter</h2>
+  <p class="section-intro">Voor helderder en proper water. Meerdere keuzes mogelijk.</p>
+  <div class="auto-grid">
+    <label class="choice-card">
+      <input type="checkbox" name="filter" value="390" data-label="Zandfilter">
+      <img src="FILTER.jpg" alt="Zandfilter">
+      <div class="choice-content">
+        <h3>Zandfilter</h3>
+        <p>Extra filtering van het water</p>
+        <p class="choice-price">+ € 390</p>
+      </div>
+    </label>
 
-            <label class="choice-card">
-              <input type="radio" name="filter" value="390">
-              <img src="FILTER.jpg" alt="Zandfilter">
-              <div class="choice-content">
-                <h3>Zandfilter</h3>
-                <p>Extra filtering van het water</p>
-                <p class="choice-price">+ € 390</p>
-              </div>
-            </label>
+    <label class="choice-card">
+      <input type="checkbox" name="filter" value="790" data-label="Zandfilter + UV">
+      <img src="FILTER.jpg" alt="Zandfilter met UV">
+      <div class="choice-content">
+        <h3>Zandfilter + UV</h3>
+        <p>Extra waterbehandeling</p>
+        <p class="choice-price">+ € 790</p>
+      </div>
+    </label>
 
-            <label class="choice-card">
-              <input type="radio" name="filter" value="790">
-              <img src="FILTER.jpg" alt="Zandfilter met UV">
-              <div class="choice-content">
-                <h3>Zandfilter + UV</h3>
-                <p>Extra waterbehandeling</p>
-                <p class="choice-price">+ € 790</p>
-              </div>
-            </label>
-
-            <label class="choice-card">
-              <input type="radio" name="filter" value="199">
-              <img src="Filterbox.jpg" alt="Filterbox">
-              <div class="choice-content">
-                <h3>Filterbox</h3>
-                <p>Strakke afwerking</p>
-                <p class="choice-price">+ € 199</p>
-              </div>
-            </label>
-          </div>
-        </section>
+    <label class="choice-card">
+      <input type="checkbox" name="filter" value="199" data-label="Filterbox">
+      <img src="Filterbox.jpg" alt="Filterbox">
+      <div class="choice-content">
+        <h3>Filterbox</h3>
+        <p>Strakke afwerking</p>
+        <p class="choice-price">+ € 199</p>
+      </div>
+    </label>
+  </div>
+</section>
 
         <section class="section">
           <h2>10. Kies je isolatie</h2>
@@ -703,7 +695,9 @@
     const systeem = selectedRadioNumber("systeem");
     const massage = selectedRadioNumber("massage");
     const verlichting = selectedRadioNumber("verlichting");
-    const filter = selectedRadioNumber("filter");
+
+    const filterItems = selectedCheckboxes("filter");
+    const filter = filterItems.reduce((sum, item) => sum + Number(item.value), 0);
 
     const isolatieItems = selectedCheckboxes("isolatie");
     const extraItems = selectedCheckboxes("extra");
@@ -723,7 +717,9 @@
       systeemLabel: getLabelFromSelected("systeem"),
       massageLabel: getLabelFromSelected("massage"),
       verlichtingLabel: getLabelFromSelected("verlichting"),
-      filterLabel: getLabelFromSelected("filter"),
+      filterLabel: filterItems.length
+        ? filterItems.map(input => input.dataset.label || getLabelFromCheckbox(input)).join(", ")
+        : "Geen",
       isolatieLabels: getCheckedLabels("isolatie"),
       extraLabels: getCheckedLabels("extra"),
       basePrice,
@@ -736,6 +732,12 @@
       extraTotal,
       total
     };
+  }
+
+  function getLabelFromCheckbox(input) {
+    const card = input.closest("label");
+    const h3 = card ? card.querySelector("h3") : null;
+    return h3 ? h3.textContent.trim() : (input.dataset.label || input.value);
   }
 
   function updateSummary() {
@@ -784,48 +786,48 @@
   }
 
   function getOfferRowsHtml() {
-  const current = getCurrentConfiguration();
+    const current = getCurrentConfiguration();
 
-  const lines = [
-    { label: `${current.model} / ${current.wood} / ${current.size}`, price: current.basePrice },
-    { label: `Kuipkleur: ${current.kleur}`, price: 0 },
-    { label: `Kachel: ${current.kachelLabel}`, price: current.kachel },
-    { label: `Systeem: ${current.systeemLabel}`, price: current.systeem },
-    { label: `Massage: ${current.massageLabel}`, price: current.massage },
-    { label: `Verlichting: ${current.verlichtingLabel}`, price: current.verlichting },
-    { label: `Filter: ${current.filterLabel}`, price: current.filter }
-  ];
+    const lines = [
+      { label: `${current.model} / ${current.wood} / ${current.size}`, price: current.basePrice },
+      { label: `Kuipkleur: ${current.kleur}`, price: 0 },
+      { label: `Kachel: ${current.kachelLabel}`, price: current.kachel },
+      { label: `Systeem: ${current.systeemLabel}`, price: current.systeem },
+      { label: `Massage: ${current.massageLabel}`, price: current.massage },
+      { label: `Verlichting: ${current.verlichtingLabel}`, price: current.verlichting },
+      { label: `Filter: ${current.filterLabel}`, price: current.filter }
+    ];
 
-  const isolatieItems = selectedCheckboxes("isolatie");
-  if (isolatieItems.length) {
-    const isolatieLabels = isolatieItems.map(input => input.dataset.label || input.value).join(", ");
-    const isolatiePrice = isolatieItems.reduce((sum, input) => sum + Number(input.value), 0);
+    const isolatieItems = selectedCheckboxes("isolatie");
+    if (isolatieItems.length) {
+      const isolatieLabels = isolatieItems.map(input => input.dataset.label || getLabelFromCheckbox(input)).join(", ");
+      const isolatiePrice = isolatieItems.reduce((sum, input) => sum + Number(input.value), 0);
 
-    lines.push({
-      label: `Isolatie: ${isolatieLabels}`,
-      price: isolatiePrice
-    });
+      lines.push({
+        label: `Isolatie: ${isolatieLabels}`,
+        price: isolatiePrice
+      });
+    }
+
+    const extraItems = selectedCheckboxes("extra");
+    if (extraItems.length) {
+      const extraLabels = extraItems.map(input => input.dataset.label || getLabelFromCheckbox(input)).join(", ");
+      const extraPrice = extraItems.reduce((sum, input) => sum + Number(input.value), 0);
+
+      lines.push({
+        label: `Extra's: ${extraLabels}`,
+        price: extraPrice
+      });
+    }
+
+    return lines.map((item, index) => `
+      <tr>
+        <td class="col-num">${index + 1}</td>
+        <td class="col-desc">${escapeHtml(item.label)}</td>
+        <td class="col-price">${euro(item.price)}</td>
+      </tr>
+    `).join("");
   }
-
-  const extraItems = selectedCheckboxes("extra");
-  if (extraItems.length) {
-    const extraLabels = extraItems.map(input => input.dataset.label || input.value).join(", ");
-    const extraPrice = extraItems.reduce((sum, input) => sum + Number(input.value), 0);
-
-    lines.push({
-      label: `Extra's: ${extraLabels}`,
-      price: extraPrice
-    });
-  }
-
-  return lines.map((item, index) => `
-    <tr>
-      <td class="col-num">${index + 1}</td>
-      <td class="col-desc">${escapeHtml(item.label)}</td>
-      <td class="col-price">${euro(item.price)}</td>
-    </tr>
-  `).join("");
-}
 
   function printOffer() {
     const current = getCurrentConfiguration();
@@ -1066,12 +1068,6 @@
               line-height: 1.1;
               font-weight: 800;
               color: #0f172a;
-            }
-
-            .product-highlight-type {
-              margin-top: 6px;
-              font-size: 14px;
-              color: #64748b;
             }
 
             .product-highlight-price {
@@ -1425,12 +1421,6 @@
                 line-height: 1.1 !important;
               }
 
-              .product-highlight-type {
-                margin-top: 1mm !important;
-                font-size: 10.5px !important;
-                color: #64748b !important;
-              }
-
               .product-highlight-price small {
                 font-size: 9px !important;
                 margin-bottom: 1mm !important;
@@ -1555,6 +1545,7 @@
                 <div class="brand">
                   ${logoHtml}
                   <div class="brand-copy">
+                    <h1 class="brand-title">${escapeHtml(COMPANY_NAME || "Offerte")}</h1>
                     <div class="brand-meta">${companyInfo || ""}</div>
                   </div>
                 </div>
