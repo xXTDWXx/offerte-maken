@@ -15,13 +15,13 @@ html, body {
   print-color-adjust: exact !important;
 }
 
-#optBarrelStoveGroup {
+/* #optBarrelStoveGroup {
   display: flex;
 }
 
 #optBarrelRoofGroup {
   display: flex;
-}
+} */
 
 * {
   -webkit-print-color-adjust: exact !important;
