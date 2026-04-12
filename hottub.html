@@ -783,40 +783,48 @@
   }
 
   function getOfferRowsHtml() {
-    const current = getCurrentConfiguration();
+  const current = getCurrentConfiguration();
 
-    const lines = [
-      { label: `${current.model} / ${current.wood} / ${current.size}`, price: current.basePrice },
-      { label: `Kuipkleur: ${current.kleur}`, price: 0 },
-      { label: `Kachel: ${current.kachelLabel}`, price: current.kachel },
-      { label: `Systeem: ${current.systeemLabel}`, price: current.systeem },
-      { label: `Massage: ${current.massageLabel}`, price: current.massage },
-      { label: `Verlichting: ${current.verlichtingLabel}`, price: current.verlichting },
-      { label: `Filter: ${current.filterLabel}`, price: current.filter }
-    ];
+  const lines = [
+    { label: `${current.model} / ${current.wood} / ${current.size}`, price: current.basePrice },
+    { label: `Kuipkleur: ${current.kleur}`, price: 0 },
+    { label: `Kachel: ${current.kachelLabel}`, price: current.kachel },
+    { label: `Systeem: ${current.systeemLabel}`, price: current.systeem },
+    { label: `Massage: ${current.massageLabel}`, price: current.massage },
+    { label: `Verlichting: ${current.verlichtingLabel}`, price: current.verlichting },
+    { label: `Filter: ${current.filterLabel}`, price: current.filter }
+  ];
 
-    selectedCheckboxes("isolatie").forEach(input => {
-      lines.push({
-        label: `Isolatie: ${input.dataset.label || input.value}`,
-        price: Number(input.value)
-      });
+  const isolatieItems = selectedCheckboxes("isolatie");
+  if (isolatieItems.length) {
+    const isolatieLabels = isolatieItems.map(input => input.dataset.label || input.value).join(", ");
+    const isolatiePrice = isolatieItems.reduce((sum, input) => sum + Number(input.value), 0);
+
+    lines.push({
+      label: `Isolatie: ${isolatieLabels}`,
+      price: isolatiePrice
     });
-
-    selectedCheckboxes("extra").forEach(input => {
-      lines.push({
-        label: `Extra: ${input.dataset.label || input.value}`,
-        price: Number(input.value)
-      });
-    });
-
-    return lines.map((item, index) => `
-      <tr>
-        <td class="col-num">${index + 1}</td>
-        <td class="col-desc">${escapeHtml(item.label)}</td>
-        <td class="col-price">${euro(item.price)}</td>
-      </tr>
-    `).join("");
   }
+
+  const extraItems = selectedCheckboxes("extra");
+  if (extraItems.length) {
+    const extraLabels = extraItems.map(input => input.dataset.label || input.value).join(", ");
+    const extraPrice = extraItems.reduce((sum, input) => sum + Number(input.value), 0);
+
+    lines.push({
+      label: `Extra's: ${extraLabels}`,
+      price: extraPrice
+    });
+  }
+
+  return lines.map((item, index) => `
+    <tr>
+      <td class="col-num">${index + 1}</td>
+      <td class="col-desc">${escapeHtml(item.label)}</td>
+      <td class="col-price">${euro(item.price)}</td>
+    </tr>
+  `).join("");
+}
 
   function printOffer() {
     const current = getCurrentConfiguration();
