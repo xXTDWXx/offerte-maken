@@ -579,6 +579,7 @@ select:focus {
   flex-direction: column;
   gap: 10px;
   margin-top:36px;
+  width: 56%;
 }
 
 .opt,
