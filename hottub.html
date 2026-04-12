@@ -424,9 +424,9 @@
   const COMPANY_NAME = "Sunspa Brugge/Lievegem";
   const COMPANY_INFO_LINES = [
     "Sunspa Brugge/Lievegem",
-    "Tel: 0483 39 99 67",
-    "E-mail: sunspabrugge@gmail.com",
-    "Website: www.sunspabenelux.be"
+    "Tel: __________________________________",
+    "E-mail: __________________________________",
+    "Website: __________________________________"
   ];
   const COMPANY_LOGO = "logo.svg"; // pas aan naar jouw echte logo-bestand
 
@@ -965,14 +965,6 @@
               color: #ffffff;
             }
 
-            @media screen and (max-width: 820px) {
-              .header-top,
-              .info-grid,
-              .product-highlight,
-              .footer {
-                display: block;
-              }
-
             .offer-meta-value {
               font-size: 15px;
               font-weight: 800;
@@ -1229,6 +1221,14 @@
             .footer strong {
               color: #0f172a;
             }
+
+            @media screen and (max-width: 820px) {
+              .header-top,
+              .info-grid,
+              .product-highlight,
+              .footer {
+                display: block;
+              }
 
               .offer-meta {
                 margin-top: 18px;
