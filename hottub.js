@@ -18,27 +18,27 @@ const COMPANY_NAME = "Sunspa Brugge/Lievegem";
       woods: {
         fichte: {
           label: "Fichte",
-          image: "Fichte hout.jpg",
+          image: "images/Fichte hout.jpg",
           prices: { "200": 3490, "220": 3950 }
         },
         thermo: {
           label: "Thermo",
-          image: "Thermo hout.jpg",
+          image: "images/Thermo hout.jpg",
           prices: { "200": 3750, "220": 4190 }
         },
         wpcbrown: {
           label: "WPC Brown",
-          image: "WPC BROWN.jpg",
+          image: "images/WPC BROWN.jpg",
           prices: { "200": 3750, "220": 4190 }
         },
         wpcblack: {
           label: "WPC Black",
-          image: "WPC BLACK.png",
+          image: "images/WPC BLACK.png",
           prices: { "200": 3750, "220": 4190 }
         },
         redcedar: {
           label: "Red Cedar",
-          image: "RED CEDAR.jpg",
+          image: "images/RED CEDAR.jpg",
           prices: { "200": 4950, "220": 5490 }
         }
       }
@@ -52,27 +52,27 @@ const COMPANY_NAME = "Sunspa Brugge/Lievegem";
       woods: {
         fichte: {
           label: "Fichte",
-          image: "Fichte hout.jpg",
+          image: "images/Fichte hout.jpg",
           prices: { "180x120": 2590 }
         },
         thermo: {
           label: "Thermo",
-          image: "Thermo hout.jpg",
+          image: "images/Thermo hout.jpg",
           prices: { "180x120": 2690 }
         },
         wpcbrown: {
           label: "WPC Brown",
-          image: "WPC BROWN.jpg",
+          image: "images/WPC BROWN.jpg",
           prices: { "180x120": 2690 }
         },
         wpcblack: {
           label: "WPC Black",
-          image: "WPC BLACK.png",
+          image: "images/WPC BLACK.png",
           prices: { "180x120": 2690 }
         },
         redcedar: {
           label: "Red Cedar",
-          image: "RED CEDAR.jpg",
+          image: "images/RED CEDAR.jpg",
           prices: { "180x120": 3590 }
         }
       }
@@ -86,27 +86,27 @@ const COMPANY_NAME = "Sunspa Brugge/Lievegem";
       woods: {
         fichte: {
           label: "Fichte",
-          image: "Fichte hout.jpg",
+          image: "images/Fichte hout.jpg",
           prices: { "200x200": 3950 }
         },
         thermo: {
           label: "Thermo",
-          image: "Thermo hout.jpg",
+          image: "images/Thermo hout.jpg",
           prices: { "200x200": 4200 }
         },
         wpcbrown: {
           label: "WPC Brown",
-          image: "WPC BROWN.jpg",
+          image: "images/WPC BROWN.jpg",
           prices: { "200x200": 4190 }
         },
         wpcblack: {
           label: "WPC Black",
-          image: "WPC BLACK.png",
+          image: "images/WPC BLACK.png",
           prices: { "200x200": 4190 }
         },
         redcedar: {
           label: "Red Cedar",
-          image: "RED CEDAR.jpg",
+          image: "images/RED CEDAR.jpg",
           prices: { "200x200": 5690 }
         }
       }
