@@ -263,7 +263,7 @@
       }
     }
 
-    @media (max-width: 720px) {
+    /* @media (max-width: 720px) {
       body { padding: 12px; }
       .banner {
         min-height: 820px;
@@ -276,4 +276,4 @@
       .lead { font-size: 17px; }
       .btn { width: 100%; }
       .corner-card { margin: 0 24px 24px; }
-    }
+    } */
