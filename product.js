@@ -1248,6 +1248,7 @@ function printOfferte() {
                 <div class="card-line"><strong>Adres:</strong> __________________________________________</div>
                 <div class="card-line"><strong>Plaats:</strong> __________________________________________</div>
                 <div class="card-line"><strong>Telefoon:</strong> __________________________________________</div>
+                <div class="card-line"><strong>Email:</strong> __________________________________________</div>
               </div>
 
               <div class="card">
