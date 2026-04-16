@@ -185,12 +185,24 @@
             </label>
 
             <label class="opt opt-inline" id="optWarmtepompRow" style="display:none">
-  <div class="opt-text">
-    <div class="opt-title">
-      Warmtepomp incl. afstelling* € 2795
+  <div class="opt-text" style="width:100%;">
+    <div class="opt-title" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+      <span>Warmtepomp incl. afstelling* € 2795</span>
+
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button id="optWarmtepompMinus" type="button" class="btn btn-secondary" style="min-width:42px;padding:8px 12px;">−</button>
+        <input
+          id="optWarmtepompQty"
+          type="number"
+          min="0"
+          step="1"
+          value="0"
+          inputmode="numeric"
+          style="width:70px;text-align:center;padding:8px 10px;border:1px solid #d1d5db;border-radius:10px;"
+        />
+        <button id="optWarmtepompPlus" type="button" class="btn btn-secondary" style="min-width:42px;padding:8px 12px;">+</button>
+      </div>
     </div>
-    <div class="small">Aantal warmtepompen</div>
-    <input id="optWarmtepompQty" type="number" min="0" step="1" value="0" />
   </div>
 </label>
 
