@@ -1018,16 +1018,16 @@ function printOfferte() {
 }
 
     .sheet {
-      width: 194mm !important;
-      max-width: 194mm !important;
-      min-height: 281mm !important;
-      margin: 0 auto !important;
-      border: none !important;
-      border-radius: 0 !important;
-      box-shadow: none !important;
-      overflow: hidden !important;
-      page-break-inside: avoid !important;
-    }
+  width: 194mm !important;
+  max-width: 194mm !important;
+  min-height: auto !important;
+  margin: 0 auto !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  page-break-inside: avoid !important;
+}
 
     .header {
       background: #ffffff !important;
