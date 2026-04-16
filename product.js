@@ -598,55 +598,30 @@ function printOfferte() {
     padding: 14px;
   }
   
-  .info-grid-single {
+ .info-grid-single {
+  display: grid;
   grid-template-columns: 1fr;
+  width: 100%;
 }
 
 .customer-card {
-  max-width: 100%;
-}
-
-.customer-grid-print {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px 22px;
-}
-
-.field-print {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.field-print-full {
-  grid-column: 1 / -1;
-}
-
-.field-label-print {
-  font-size: 14px;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.field-line-print {
-  height: 24px;
-  border-bottom: 1.5px solid #64748b;
-}
-  
- .info-grid-single {
-  grid-template-columns: 1fr;
+  width: 100%;
+  max-width: none;
+  display: block;
 }
 
 .customer-inline-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px 24px;
+  width: 100%;
 }
 
 .field-inline {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
 }
 
 .field-inline-full {
@@ -658,10 +633,12 @@ function printOfferte() {
   font-weight: 700;
   font-size: 14px;
   color: #0f172a;
+  white-space: nowrap;
 }
 
 .line-inline {
   flex: 1;
+  min-width: 0;
   border-bottom: 1.5px solid #64748b;
   height: 16px;
 }
@@ -1057,88 +1034,48 @@ function printOfferte() {
     @media print {
 
   .info-grid-single {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    margin-bottom: 3mm !important;
-  }
-
-  .customer-card {
-    padding: 4mm 5mm !important;
-  }
-
-  .customer-inline-grid {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 2mm 6mm !important;
-  }
-
-  .field-inline {
-    display: flex !important;
-    align-items: center !important;
-    gap: 3mm !important;
-  }
-
-  .field-inline-full {
-    grid-column: 1 / -1 !important;
-  }
-
-  .label-inline {
-    min-width: 22mm !important;
-    font-size: 10.5px !important;
-    font-weight: 700 !important;
-  }
-
-  .line-inline {
-    flex: 1 !important;
-    border-bottom: 0.4mm solid #64748b !important;
-    height: 4mm !important;
-  }
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  width: 100% !important;
+  margin-bottom: 3mm !important;
 }
 
 .customer-card {
+  width: 100% !important;
+  max-width: none !important;
   padding: 4mm 5mm !important;
 }
 
-.customer-grid-print {
+.customer-inline-grid {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
-  gap: 2.2mm 6mm !important;
+  gap: 2mm 6mm !important;
+  width: 100% !important;
 }
 
-.field-print {
-  gap: 1.2mm !important;
+.field-inline {
+  display: flex !important;
+  align-items: center !important;
+  gap: 3mm !important;
+  min-width: 0 !important;
 }
 
-.field-print-full {
+.field-inline-full {
   grid-column: 1 / -1 !important;
 }
 
-.field-label-print {
+.label-inline {
+  min-width: 22mm !important;
   font-size: 10.5px !important;
   font-weight: 700 !important;
-  color: #0f172a !important;
+  white-space: nowrap !important;
 }
 
-.field-line-print {
-  height: 5mm !important;
+.line-inline {
+  flex: 1 !important;
+  min-width: 0 !important;
   border-bottom: 0.4mm solid #64748b !important;
-}
-    
-    .info-grid-single {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: 0 !important;
-  margin-bottom: 4mm !important;
-}
-
-.customer-two-col {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 1mm 6mm !important;
-}
-
-.customer-two-col-full {
-  grid-column: 1 / -1 !important;
+  height: 4mm !important;
 }
 
     .sheet {
