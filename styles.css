@@ -617,6 +617,13 @@ label.opt .opt-title {
   margin: 0;
 }
 
+.warmtepomp {
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .opt-price,
 label.opt .opt-price {
   margin-left: auto;
