@@ -1290,23 +1290,19 @@ function printOfferte() {
               <p>Bedankt voor uw interesse. Hieronder vindt u een overzicht van de geselecteerde configuratie en bijhorende opties.</p>
             </div>
 
-            <div class="info-grid">
-              <div class="card">
-                <div class="card-title">Klantgegevens</div>
-                <div class="card-line"><strong>Naam:</strong> __________________________________________</div>
-                <div class="card-line"><strong>Adres:</strong> __________________________________________</div>
-                <div class="card-line"><strong>Plaats:</strong> __________________________________________</div>
-                <div class="card-line"><strong>Telefoon:</strong> __________________________________________</div>
-                <div class="card-line"><strong>Email:</strong> __________________________________________</div>
-              </div>
+         <div class="info-grid info-grid-single">
+  <div class="card">
+    <div class="card-title">Klantgegevens</div>
 
-              <div class="card">
-                <div class="card-title">Leveringsgegevens</div>
-                <div class="card-line"><strong>Firma:</strong> ${escapeHtml(COMPANY_NAME || '—')}</div>
-                <div class="card-line"><strong>Producttype:</strong> ${productTypeHtml}</div>
-                <div class="card-line"><strong>Product:</strong> ${productTitleHtml}</div>
-              </div>
-            </div>
+    <div class="customer-two-col">
+      <div class="card-line"><strong>Naam:</strong> __________________________________________</div>
+      <div class="card-line"><strong>Telefoon:</strong> __________________________________________</div>
+      <div class="card-line"><strong>Adres:</strong> __________________________________________</div>
+      <div class="card-line"><strong>Email:</strong> __________________________________________</div>
+      <div class="card-line customer-two-col-full"><strong>Plaats:</strong> __________________________________________</div>
+    </div>
+  </div>
+</div>
 
             <div class="product-highlight">
               <div>
