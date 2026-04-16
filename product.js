@@ -602,6 +602,41 @@ function printOfferte() {
   grid-template-columns: 1fr;
 }
 
+.customer-card {
+  max-width: 100%;
+}
+
+.customer-grid-print {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 22px;
+}
+
+.field-print {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field-print-full {
+  grid-column: 1 / -1;
+}
+
+.field-label-print {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.field-line-print {
+  height: 24px;
+  border-bottom: 1.5px solid #64748b;
+}
+  
+  .info-grid-single {
+  grid-template-columns: 1fr;
+}
+
 .customer-two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1007,6 +1042,42 @@ function printOfferte() {
   margin-bottom: 4mm !important;
 }
 
+.customer-card {
+  padding: 4mm 5mm !important;
+}
+
+.customer-grid-print {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 2.2mm 6mm !important;
+}
+
+.field-print {
+  gap: 1.2mm !important;
+}
+
+.field-print-full {
+  grid-column: 1 / -1 !important;
+}
+
+.field-label-print {
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+}
+
+.field-line-print {
+  height: 5mm !important;
+  border-bottom: 0.4mm solid #64748b !important;
+}
+    
+    .info-grid-single {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  margin-bottom: 4mm !important;
+}
+
 .customer-two-col {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
@@ -1321,16 +1392,35 @@ function printOfferte() {
               <p>Bedankt voor uw interesse. Hieronder vindt u een overzicht van de geselecteerde configuratie en bijhorende opties.</p>
             </div>
 
-         <div class="info-grid info-grid-single">
-  <div class="card">
+       <div class="info-grid info-grid-single">
+  <div class="card customer-card">
     <div class="card-title">Klantgegevens</div>
 
-    <div class="customer-two-col">
-      <div class="card-line"><strong>Naam:</strong> __________________________________________</div>
-      <div class="card-line"><strong>Telefoon:</strong> __________________________________________</div>
-      <div class="card-line"><strong>Adres:</strong> __________________________________________</div>
-      <div class="card-line"><strong>Email:</strong> __________________________________________</div>
-      <div class="card-line customer-two-col-full"><strong>Plaats:</strong> __________________________________________</div>
+    <div class="customer-grid-print">
+      <div class="field-print">
+        <div class="field-label-print">Naam:</div>
+        <div class="field-line-print"></div>
+      </div>
+
+      <div class="field-print">
+        <div class="field-label-print">Telefoon:</div>
+        <div class="field-line-print"></div>
+      </div>
+
+      <div class="field-print">
+        <div class="field-label-print">Adres:</div>
+        <div class="field-line-print"></div>
+      </div>
+
+      <div class="field-print">
+        <div class="field-label-print">Email:</div>
+        <div class="field-line-print"></div>
+      </div>
+
+      <div class="field-print field-print-full">
+        <div class="field-label-print">Plaats:</div>
+        <div class="field-line-print"></div>
+      </div>
     </div>
   </div>
 </div>
