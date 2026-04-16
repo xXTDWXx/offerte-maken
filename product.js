@@ -1392,34 +1392,34 @@ function printOfferte() {
               <p>Bedankt voor uw interesse. Hieronder vindt u een overzicht van de geselecteerde configuratie en bijhorende opties.</p>
             </div>
 
-       <div class="info-grid info-grid-single">
+      <div class="info-grid info-grid-single">
   <div class="card customer-card">
     <div class="card-title">Klantgegevens</div>
 
-    <div class="customer-grid-print">
-      <div class="field-print">
-        <div class="field-label-print">Naam:</div>
-        <div class="field-line-print"></div>
+    <div class="customer-inline-grid">
+      <div class="field-inline">
+        <span class="label-inline">Naam</span>
+        <span class="line-inline"></span>
       </div>
 
-      <div class="field-print">
-        <div class="field-label-print">Telefoon:</div>
-        <div class="field-line-print"></div>
+      <div class="field-inline">
+        <span class="label-inline">Telefoon</span>
+        <span class="line-inline"></span>
       </div>
 
-      <div class="field-print">
-        <div class="field-label-print">Adres:</div>
-        <div class="field-line-print"></div>
+      <div class="field-inline">
+        <span class="label-inline">Adres</span>
+        <span class="line-inline"></span>
       </div>
 
-      <div class="field-print">
-        <div class="field-label-print">Email:</div>
-        <div class="field-line-print"></div>
+      <div class="field-inline">
+        <span class="label-inline">Email</span>
+        <span class="line-inline"></span>
       </div>
 
-      <div class="field-print field-print-full">
-        <div class="field-label-print">Plaats:</div>
-        <div class="field-line-print"></div>
+      <div class="field-inline field-inline-full">
+        <span class="label-inline">Plaats</span>
+        <span class="line-inline"></span>
       </div>
     </div>
   </div>
