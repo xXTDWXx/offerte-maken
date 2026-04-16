@@ -120,6 +120,12 @@ function isJacuzzi(type) {
   return !isSwimspa(t) && !isInfrared(t) && !isSauna(t);
 }
 
+function toPositiveInt(value) {
+  const n = parseInt(value, 10);
+  if (!Number.isFinite(n) || n < 0) return 0;
+  return n;
+}
+
 const PRICES = {
   install_jacuzzi: 695,
   install_swimspa: 895,
@@ -229,7 +235,7 @@ function updateOptionUI() {
   const optSwimFiltersetTotal = $('optSwimFiltersetTotal');
 
   const optWarmtepompRow = $('optWarmtepompRow');
-  const optWarmtepomp = $('optWarmtepomp');
+  const optWarmtepompQty = $('optWarmtepompQty');
   const optWarmtepompTotal = $('optWarmtepompTotal');
 
   const optBarrelStoveGroup = $('optBarrelStoveGroup');
@@ -284,7 +290,7 @@ function updateOptionUI() {
   if (!allowExtraOptions && optMaint) optMaint.checked = false;
   if (!swim && optCoverlift2) optCoverlift2.checked = false;
   if (!swim && optSwimFilterset) optSwimFilterset.checked = false;
-  if (!swim && optWarmtepomp) optWarmtepomp.checked = false;
+  if (!swim && optWarmtepompQty) optWarmtepompQty.value = '0';
 
   if (optBarrelStoveGroup) optBarrelStoveGroup.style.display = showStoveGroup ? '' : 'none';
   if (optBarrelWoodStoveRow) optBarrelWoodStoveRow.style.display = showWoodStove ? '' : 'none';
@@ -300,11 +306,16 @@ function updateOptionUI() {
   if (!showRoofGroup && optBarrelRoofDesign) optBarrelRoofDesign.checked = false;
   if (!showInfraredModule && optBarrelInfraredModule) optBarrelInfraredModule.checked = false;
 
+  const warmtepompQty = swim ? toPositiveInt(optWarmtepompQty?.value) : 0;
+  if (optWarmtepompQty && String(warmtepompQty) !== String(optWarmtepompQty.value)) {
+    optWarmtepompQty.value = String(warmtepompQty);
+  }
+
   const coverliftLine = (allowExtraOptions && optCoverlift?.checked) ? PRICES.coverlift_unit : 0;
   const coverlift2Line = (swim && optCoverlift2?.checked) ? PRICES.coverlift_unit : 0;
   const maintLine = (allowExtraOptions && optMaint?.checked) ? PRICES.maintenance_unit : 0;
   const swimFiltersetLine = (swim && optSwimFilterset?.checked) ? PRICES.swim_filterset_unit : 0;
-  const warmtepompLine = (swim && optWarmtepomp?.checked) ? PRICES.warmtepomp_unit : 0;
+  const warmtepompLine = warmtepompQty * PRICES.warmtepomp_unit;
 
   const barrelWoodStoveLine = (showWoodStove && optBarrelWoodStove?.checked) ? PRICES.barrel_wood_stove_unit : 0;
   const barrelElectricHeaterLine = (showElectricHeater && optBarrelElectricHeater?.checked) ? PRICES.barrel_electric_heater_unit : 0;
@@ -356,7 +367,7 @@ function wireOptionHandlers() {
     'optCoverlift2',
     'optMaint',
     'optSwimFilterset',
-    'optWarmtepomp',
+    'optWarmtepompQty',
     'optBarrelWoodStove',
     'optBarrelElectricHeater',
     'optBarrelRoofShingles',
@@ -412,8 +423,12 @@ function getSelectedOfferLines() {
     lines.push({ label: 'Filterset (zwemspa)', price: PRICES.swim_filterset_unit });
   }
 
-  if ($('optWarmtepomp')?.checked && isSwimspa(type)) {
-    lines.push({ label: 'Warmtepomp incl. afstelling', price: PRICES.warmtepomp_unit });
+  const warmtepompQty = isSwimspa(type) ? toPositiveInt($('optWarmtepompQty')?.value) : 0;
+  if (warmtepompQty > 0) {
+    lines.push({
+      label: `Warmtepomp incl. afstelling x ${warmtepompQty}`,
+      price: warmtepompQty * PRICES.warmtepomp_unit
+    });
   }
 
   if ($('optBarrelWoodStove')?.checked && isOutdoorSaunaWithRoofAndStove(type)) {
@@ -912,7 +927,7 @@ function printOfferte() {
             .info-grid,
             .product-highlight,
             .footer {
-              
+
             }
 
             .offer-meta {
@@ -1390,7 +1405,7 @@ function renderProduct(p) {
   if ($('optCoverlift2')) $('optCoverlift2').checked = false;
   if ($('optMaint')) $('optMaint').checked = false;
   if ($('optSwimFilterset')) $('optSwimFilterset').checked = false;
-  if ($('optWarmtepomp')) $('optWarmtepomp').checked = false;
+  if ($('optWarmtepompQty')) $('optWarmtepompQty').value = '0';
   if ($('optBarrelWoodStove')) $('optBarrelWoodStove').checked = false;
   if ($('optBarrelElectricHeater')) $('optBarrelElectricHeater').checked = false;
   if ($('optBarrelRoofShingles')) $('optBarrelRoofShingles').checked = false;
