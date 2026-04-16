@@ -597,6 +597,20 @@ function printOfferte() {
   body {
     padding: 14px;
   }
+  
+  .info-grid-single {
+  grid-template-columns: 1fr;
+}
+
+.customer-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+}
+
+.customer-two-col-full {
+  grid-column: 1 / -1;
+}
 
   .sheet {
     width: 100%;
@@ -985,6 +999,23 @@ function printOfferte() {
       font-size: 11px !important;
       line-height: 1.28 !important;
     }
+    
+    .info-grid-single {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  margin-bottom: 4mm !important;
+}
+
+.customer-two-col {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 1mm 6mm !important;
+}
+
+.customer-two-col-full {
+  grid-column: 1 / -1 !important;
+}
 
     .sheet {
       width: 194mm !important;
