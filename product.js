@@ -633,18 +633,37 @@ function printOfferte() {
   border-bottom: 1.5px solid #64748b;
 }
   
-  .info-grid-single {
+ .info-grid-single {
   grid-template-columns: 1fr;
 }
 
-.customer-two-col {
+.customer-inline-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px 24px;
+  gap: 10px 24px;
 }
 
-.customer-two-col-full {
+.field-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.field-inline-full {
   grid-column: 1 / -1;
+}
+
+.label-inline {
+  min-width: 70px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.line-inline {
+  flex: 1;
+  border-bottom: 1.5px solid #64748b;
+  height: 16px;
 }
 
   .sheet {
@@ -1035,11 +1054,45 @@ function printOfferte() {
       line-height: 1.28 !important;
     }
     
-    .info-grid-single {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: 0 !important;
-  margin-bottom: 4mm !important;
+    @media print {
+
+  .info-grid-single {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    margin-bottom: 3mm !important;
+  }
+
+  .customer-card {
+    padding: 4mm 5mm !important;
+  }
+
+  .customer-inline-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2mm 6mm !important;
+  }
+
+  .field-inline {
+    display: flex !important;
+    align-items: center !important;
+    gap: 3mm !important;
+  }
+
+  .field-inline-full {
+    grid-column: 1 / -1 !important;
+  }
+
+  .label-inline {
+    min-width: 22mm !important;
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+  }
+
+  .line-inline {
+    flex: 1 !important;
+    border-bottom: 0.4mm solid #64748b !important;
+    height: 4mm !important;
+  }
 }
 
 .customer-card {
