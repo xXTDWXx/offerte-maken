@@ -1407,14 +1407,16 @@ function printOfferte() {
       </div>
 
       <div class="field-inline">
-        <span class="label-inline">Email</span>
+        <span class="label-inline">Plaats</span>
         <span class="line-inline"></span>
       </div>
 
       <div class="field-inline">
-        <span class="label-inline">Plaats</span>
+        <span class="label-inline">Email</span>
         <span class="line-inline"></span>
       </div>
+
+      
     </div>
   </div>
 </div>
