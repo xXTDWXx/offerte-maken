@@ -1103,8 +1103,6 @@ function printOfferte() {
     .header {
       background: #ffffff !important;
       color: #274863 !important;
-      border: 1px solid #cfd8e3 !important;
-      border-radius: 10px !important;
       padding: 20px 30px 10px !important;
     }
 
