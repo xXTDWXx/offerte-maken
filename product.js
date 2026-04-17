@@ -889,10 +889,38 @@ function printOfferte() {
   }
 
   .summary {
-    margin-top: 18px;
-    display: flex;
-    justify-content: flex-end;
-  }
+  display: flex;
+  justify-content: space-between; /* BELANGRIJK */
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.summary-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 6px;
+}
+
+.summary-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.summary-line span:first-child {
+  min-width: 140px;
+  font-weight: 600;
+}
+
+.line-fill {
+  flex: 1;
+  border-bottom: 1.5px solid #64748b;
+  height: 14px;
+}
 
   .summary-box {
     width: 320px;
@@ -1259,14 +1287,39 @@ function printOfferte() {
       justify-content: flex-end !important;
     }
 
-    .summary-box {
-      width: 52mm !important;
-      border: 1px solid #dbe3ec !important;
-      border-radius: 10px !important;
-      overflow: hidden !important;
-      background: #ffffff !important;
-      page-break-inside: avoid !important;
-    }
+    .summary {
+  display: flex;
+  justify-content: space-between; /* BELANGRIJK */
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.summary-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 6px;
+}
+
+.summary-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.summary-line span:first-child {
+  min-width: 140px;
+  font-weight: 600;
+}
+
+.line-fill {
+  flex: 1;
+  border-bottom: 1.5px solid #64748b;
+  height: 14px;
+}
 
     .summary-row {
       gap: 4mm !important;
@@ -1427,6 +1480,18 @@ function printOfferte() {
             </div>
 
             <div class="summary">
+  <div class="summary-left">
+    <div class="summary-line">
+      <span>Voorschot</span>
+      <span class="line-fill"></span>
+    </div>
+
+    <div class="summary-line">
+      <span>Leveringstermijn</span>
+      <span class="line-fill"></span>
+    </div>
+  </div>
+  
   <div class="summary-box">
     <div class="summary-row">
       <span>Subtotaal excl. btw</span>
