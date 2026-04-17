@@ -1396,12 +1396,12 @@ function printOfferte() {
       </div>
 
       <div class="field-inline">
-        <span class="label-inline">Telefoon 2</span>
+        <span class="label-inline">Adres</span>
         <span class="line-inline"></span>
       </div>
 
       <div class="field-inline">
-        <span class="label-inline">Adres</span>
+        <span class="label-inline">Telefoon 2</span>
         <span class="line-inline"></span>
       </div>
 
@@ -1410,7 +1410,7 @@ function printOfferte() {
         <span class="line-inline"></span>
       </div>
 
-      <div class="field-inline field-inline-full">
+      <div class="field-inline">
         <span class="label-inline">Plaats</span>
         <span class="line-inline"></span>
       </div>
