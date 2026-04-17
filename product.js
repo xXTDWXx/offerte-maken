@@ -849,7 +849,7 @@ function printOfferte() {
   thead th {
     background: #eef3f8;
     color: #314f72;
-    padding: 16px 18px;
+    padding: 8px 18px;
     font-size: 12px;
     font-weight: 800;
     text-transform: uppercase;
@@ -859,7 +859,7 @@ function printOfferte() {
   }
 
   tbody td {
-    padding: 15px 18px;
+    padding: 8px 18px;
     font-size: 14px;
     color: #0f172a;
     border-bottom: 1px solid #e9eef4;
@@ -905,7 +905,7 @@ function printOfferte() {
     display: flex;
     justify-content: space-between;
     gap: 18px;
-    padding: 14px 18px;
+    padding: 10px 18px;
     border-bottom: 1px solid #e9eef4;
     font-size: 14px;
     color: #0f172a;
