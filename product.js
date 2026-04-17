@@ -1042,361 +1042,255 @@ function printOfferte() {
   }
 
   @media print {
-    html,
-    body {
-      width: 210mm;
-      height: 297mm;
-      margin: 0 !important;
-      padding: 0 !important;
-      background: #ffffff !important;
-      color: #1f2937 !important;
-    }
+  html,
+  body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #1f2937 !important;
+  }
 
-    body {
-      font-size: 11px !important;
-      line-height: 1.28 !important;
-    }
-    
-    @media print {
+  body {
+    font-size: 11px !important;
+    line-height: 1.28 !important;
+  }
 
-    .info-grid {
-    display: grid;
-    gap: 18px;
-    margin-bottom: 18px;
+  /* PAGINA STRUCTUUR */
+  .sheet {
+    width: 194mm !important;
+    max-width: 194mm !important;
+    min-height: 281mm !important;
+    margin: 0 auto !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .content {
+    padding: 7mm 8mm 6mm 8mm !important;
+    flex: 1 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* DIT IS DE FIX */
+  .bottom-fixed {
+    margin-top: auto !important;
+  }
+
+  /* HEADER */
+  .header {
+    background: #ffffff !important;
+    color: #274863 !important;
+    padding: 20px 30px 10px !important;
+  }
+
+  .header-top {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 10mm !important;
+  }
+
+  .brand {
+    display: flex !important;
+    gap: 10px !important;
+    align-items: flex-start !important;
+  }
+
+  .offer-logo {
+    width: 280px !important;
+    max-height: 20mm !important;
+    background: #ffffff !important;
+    border: 1px solid #dbe3ec !important;
+    border-radius: 8px !important;
+    padding: 3mm !important;
+  }
+
+  .offer-meta {
+    min-width: 58mm !important;
+    background: #f6f9fc !important;
+    border: 1px solid #dbe3ec !important;
+    border-radius: 10px !important;
+    padding: 5mm 6mm !important;
+  }
+
+  .offer-meta-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 8mm !important;
+    padding: 1.5mm 0 !important;
+  }
+
+  .offer-meta-label,
+  .offer-meta-value {
+    font-size: 10.5px !important;
+    color: #274863 !important;
+  }
+
+  /* KLANTGEGEVENS */
+  .info-grid {
+    display: grid !important;
+    gap: 4mm !important;
+    margin-bottom: 5mm !important;
   }
 
   .info-grid-single {
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 100%;
-}
-
-.customer-card {
-  width: 100%;
-  max-width: none;
-  display: block;
-}
-
-.customer-inline-grid {
-  display: grid;
-  gap: 10px 24px;
-  width: 100%;
-  grid-template-columns: 1fr 1fr;
-}
-
-.field-inline {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-}
-
-.field-inline-full {
-  grid-column: 1 / -1;
-}
-
-.label-inline {
-  min-width: 70px;
-  font-weight: 700;
-  font-size: 14px;
-  color: #0f172a;
-  white-space: nowrap;
-}
-
-.line-inline {
-  flex: 1;
-  min-width: 0;
-  border-bottom: 1.5px solid #64748b;
-  height: 16px;
-}
-
-    .sheet {
-  width: 194mm !important;
-  max-width: 194mm !important;
-  min-height: auto !important;
-  margin: 0 auto !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  overflow: visible !important;
-  page-break-inside: avoid !important;
-}
-
-    .header {
-      background: #ffffff !important;
-      color: #274863 !important;
-      padding: 20px 30px 10px !important;
-    }
-
-    .header-top {
-      display: flex !important;
-      justify-content: space-between !important;
-      align-items: flex-start !important;
-      gap: 10mm !important;
-    }
-
-    .brand {
-      display: flex !important;
-      gap: 10px !important;
-      align-items: flex-start !important;
-    }
-
-    .offer-logo {
-      width: 280px !important;
-      max-height: 20mm !important;
-      background: #ffffff !important;
-      border: 1px solid #dbe3ec !important;
-      border-radius: 8px !important;
-      padding: 3mm !important;
-    }
-
-    .brand-title {
-      font-size: 20px !important;
-      line-height: 1.05 !important;
-      margin: 0 0 4px 0 !important;
-      color: #274863 !important;
-    }
-
-    .brand-meta {
-      font-size: 10.5px !important;
-      line-height: 1.35 !important;
-      color: #4b5f75 !important;
-    }
-
-    .offer-meta {
-      min-width: 58mm !important;
-      background: #f6f9fc !important;
-      border: 1px solid #dbe3ec !important;
-      border-radius: 10px !important;
-      padding: 5mm 6mm !important;
-      color: #274863 !important;
-      backdrop-filter: none !important;
-    }
-
-    .offer-meta-row {
-      gap: 8mm !important;
-      padding: 1.5mm 0 !important;
-    }
-
-    .offer-meta-label,
-    .offer-meta-value {
-      color: #274863 !important;
-      font-size: 10.5px !important;
-    }
-
-    .content {
-      padding: 7mm 8mm 6mm 8mm !important;
-      min-height: 235mm !important;
-      display: flex !important;
-      flex-direction: column !important;
-    }
-
-    .bottom-fixed {
-      margin-top: auto !important;
-    }
-
-    .intro {
-      margin-bottom: 5mm !important;
-    }
-
-    .intro h2 {
-      font-size: 18px !important;
-      margin: 0 0 2mm 0 !important;
-      color: #0f172a !important;
-    }
-
-    .intro p {
-      margin: 0 !important;
-      font-size: 11px !important;
-      color: #475569 !important;
-    }
-
-    .info-grid {
-      display: grid !important;
-      gap: 4mm !important;
-      margin-bottom: 5mm !important;
-    }
-
-    .card {
-      border: 1px solid #dbe3ec !important;
-      border-radius: 10px !important;
-      padding: 5mm !important;
-      background: #ffffff !important;
-      page-break-inside: avoid !important;
-    }
-
-    .card-title {
-      margin: 0 0 3mm 0 !important;
-      font-size: 10px !important;
-      letter-spacing: 0.06em !important;
-      color: #407298 !important;
-    }
-
-    .card-line {
-      margin: 1.5mm 0 !important;
-      font-size: 11px !important;
-      line-height: 1.3 !important;
-    }
-
-    .table-wrap {
-      border: 1px solid #dbe3ec !important;
-      border-radius: 10px !important;
-      overflow: hidden !important;
-      background: #ffffff !important;
-      page-break-inside: avoid !important;
-    }
-
-    table {
-      width: 100% !important;
-      border-collapse: collapse !important;
-    }
-
-    thead th {
-    background: #eef3f8;
-    color: #314f72;
-    padding: 8px 18px;
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    text-align: left;
-    border-bottom: 1px solid #d7e0e9;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
   }
 
-    tbody td {
-    padding: 8px 18px;
-    font-size: 14px;
-    color: #0f172a;
-    border-bottom: 1px solid #e9eef4;
-    vertical-align: top;
+  .customer-card {
+    width: 100% !important;
+    max-width: none !important;
   }
 
-    .col-num {
-      width: 10mm !important;
-    }
-
-    .col-price {
-      width: 34mm !important;
-      text-align: right !important;
-      white-space: nowrap !important;
-    }
-
-    .summary {
-      margin-top: 4mm !important;
-      display: flex !important;
-      justify-content: flex-end !important;
-    }
-
-    .summary {
-  display: flex;
-  justify-content: space-between; /* BELANGRIJK */
-  align-items: flex-start;
-  gap: 40px;
-}
-
-.summary-left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding-top: 6px;
-}
-
-.summary-line {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
-  color: #0f172a;
-}
-
-.summary-line span:first-child {
-  min-width: 140px;
-  font-weight: 600;
-}
-
-.line-fill {
-  flex: 1;
-  border-bottom: 1.5px solid #64748b;
-  height: 14px;
-}
-
-    .summary-row {
-      gap: 4mm !important;
-      padding: 5px 18px;
-      border-bottom: 1px solid #edf2f7 !important;
-      font-size: 11px !important;
-    }
-
-    .summary-row.total {
-      background: #f4f7fa !important;
-      color: #274863 !important;
-      font-size: 13px !important;
-      font-weight: 800 !important;
-    }
-
-    .terms {
-      margin-top: 5mm !important;
-      padding-top: 4mm !important;
-      border-top: 1px solid #dbe3ec !important;
-      page-break-inside: avoid !important;
-    }
-
-    .terms-title {
-      margin: 0 0 2mm 0 !important;
-      font-size: 10px !important;
-      color: #274863 !important;
-    }
-
-    .terms ul {
-      margin: 0 !important;
-      padding-left: 5mm !important;
-    }
-
-    .terms li {
-      margin: 1.2mm 0 !important;
-      font-size: 10px !important;
-      line-height: 1.25 !important;
-      color: #475569 !important;
-    }
-
-    .signature-section {
-  margin-top: 6mm !important;
-  padding-top: 4mm !important;
-  border-top: 1px solid #dbe3ec !important;
-  page-break-inside: avoid !important;
-}
-
-.signature-grid {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 5mm 8mm !important;
-}
-
-.signature-label {
-  font-size: 10px !important;
-  font-weight: 700 !important;
-  margin-bottom: 10mm !important;
-  color: #274863 !important;
-}
-
-.signature-line {
-  border-bottom: 1px solid #64748b !important;
-  height: 5mm !important;
-}
-
-    .footer {
-      margin-top: 4mm !important;
-      padding-top: 3mm !important;
-      border-top: 1px solid #dbe3ec !important;
-      color: #64748b !important;
-      font-size: 9.5px !important;
-      display: flex !important;
-      justify-content: space-between !important;
-      gap: 6mm !important;
-      page-break-inside: avoid !important;
-    }
+  .customer-inline-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px 24px !important;
   }
+
+  .field-inline {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  .label-inline {
+    min-width: 70px !important;
+    font-weight: 700 !important;
+  }
+
+  .line-inline {
+    flex: 1 !important;
+    border-bottom: 1.5px solid #64748b !important;
+    height: 16px !important;
+  }
+
+  /* TABEL */
+  .table-wrap {
+    border: 1px solid #dbe3ec !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    background: #ffffff !important;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  thead th {
+    background: #eef3f8 !important;
+    padding: 8px 18px !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+  }
+
+  tbody td {
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+  }
+
+  .col-price {
+    text-align: right !important;
+  }
+
+  /* SAMENVATTING */
+  .summary {
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 20mm !important;
+    margin-top: 4mm !important;
+  }
+
+  .summary-left {
+    flex: 1 !important;
+  }
+
+  .summary-line {
+    display: flex !important;
+    gap: 12px !important;
+  }
+
+  .line-fill {
+    flex: 1 !important;
+    border-bottom: 1px solid #64748b !important;
+  }
+
+  .summary-box {
+    width: 52mm !important;
+  }
+
+  .summary-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    padding: 3mm 4mm !important;
+  }
+
+  .summary-row.total {
+    background: #f4f7fa !important;
+    font-weight: 800 !important;
+  }
+
+  /* HANDTEKENING */
+  .signature-section {
+    margin-top: 6mm !important;
+    padding-top: 4mm !important;
+    border-top: 1px solid #dbe3ec !important;
+  }
+
+  .signature-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 5mm 8mm !important;
+  }
+
+  .signature-label {
+    font-size: 10px !important;
+    margin-bottom: 10mm !important;
+  }
+
+  .signature-line {
+    border-bottom: 1px solid #64748b !important;
+    height: 5mm !important;
+  }
+
+  /* VOORWAARDEN */
+  .terms {
+    margin-top: 5mm !important;
+    padding-top: 4mm !important;
+    border-top: 1px solid #dbe3ec !important;
+  }
+
+  .terms-title {
+    font-size: 10px !important;
+  }
+
+  .terms li {
+    font-size: 10px !important;
+    margin: 1.2mm 0 !important;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 4mm !important;
+    padding-top: 3mm !important;
+    border-top: 1px solid #dbe3ec !important;
+    font-size: 9.5px !important;
+
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+}
 </style>
       </head>
       <body>
