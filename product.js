@@ -1031,6 +1031,12 @@ function printOfferte() {
     
     @media print {
 
+    .info-grid {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
   .info-grid-single {
   display: grid;
   grid-template-columns: 1fr;
