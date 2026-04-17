@@ -715,8 +715,7 @@ function printOfferte() {
   }
 
   .offer-logo {
-    width: 170px;
-    max-width: 170px;
+    width: 280px;
     height: auto;
     display: block;
     background: #ffffff;
@@ -1143,8 +1142,7 @@ function printOfferte() {
     }
 
     .offer-logo {
-      max-width: 42mm !important;
-      width: 42mm !important;
+      width: 280px !important;
       max-height: 20mm !important;
       background: #ffffff !important;
       border: 1px solid #dbe3ec !important;
