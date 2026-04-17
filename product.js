@@ -834,64 +834,6 @@ function printOfferte() {
     margin-bottom: 14px;
   }
 
-  .product-highlight {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 18px;
-    background: #ffffff;
-    border: 1px solid #d7e0e9;
-    border-radius: 18px;
-    padding: 18px 22px;
-    margin-bottom: 18px;
-  }
-
-  .product-highlight-label {
-    margin: 0 0 8px 0;
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #64748b;
-  }
-
-  .product-highlight-title {
-    margin: 0;
-    font-size: 28px;
-    line-height: 1.1;
-    font-weight: 800;
-    color: #0f172a;
-  }
-
-  .product-highlight-type {
-    margin-top: 6px;
-    font-size: 14px;
-    color: #64748b;
-  }
-
-  .product-highlight-price {
-    text-align: right;
-    white-space: nowrap;
-  }
-
-  .product-highlight-price small {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #64748b;
-  }
-
-  .product-highlight-price strong {
-    display: block;
-    font-size: 30px;
-    line-height: 1.05;
-    font-weight: 800;
-    color: #4f6f96;
-  }
-
   .table-wrap {
     border: 1px solid #d7e0e9;
     border-radius: 18px;
@@ -1011,6 +953,34 @@ function printOfferte() {
     line-height: 1.35;
   }
 
+  .signature-section {
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid #d7e0e9;
+}
+
+.signature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 28px;
+}
+
+.signature-box {
+  min-width: 0;
+}
+
+.signature-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 30px;
+}
+
+.signature-line {
+  border-bottom: 1.5px solid #64748b;
+  height: 18px;
+}
+
   .footer {
     margin-top: 18px;
     padding-top: 16px;
@@ -1037,11 +1007,6 @@ function printOfferte() {
     .offer-meta {
       margin-top: 18px;
       min-width: 0;
-    }
-
-    .product-highlight-price {
-      margin-top: 14px;
-      text-align: left;
     }
 
     .summary {
@@ -1246,49 +1211,6 @@ function printOfferte() {
       line-height: 1.3 !important;
     }
 
-    .product-highlight {
-      display: flex !important;
-      justify-content: space-between !important;
-      align-items: center !important;
-      gap: 4mm !important;
-      border: 1px solid #dbe3ec !important;
-      border-radius: 10px !important;
-      padding: 5mm 6mm !important;
-      background: #ffffff !important;
-      margin-bottom: 5mm !important;
-      page-break-inside: avoid !important;
-    }
-
-    .product-highlight-label {
-      font-size: 10px !important;
-      letter-spacing: 0.06em !important;
-      margin-bottom: 1mm !important;
-      color: #64748b !important;
-    }
-
-    .product-highlight-title {
-      font-size: 18px !important;
-      margin: 0 !important;
-      line-height: 1.1 !important;
-    }
-
-    .product-highlight-type {
-      margin-top: 1mm !important;
-      font-size: 10.5px !important;
-      color: #64748b !important;
-    }
-
-    .product-highlight-price small {
-      font-size: 9px !important;
-      margin-bottom: 1mm !important;
-      color: #64748b !important;
-    }
-
-    .product-highlight-price strong {
-      font-size: 18px !important;
-      color: #407298 !important;
-    }
-
     .table-wrap {
       border: 1px solid #dbe3ec !important;
       border-radius: 10px !important;
@@ -1381,6 +1303,31 @@ function printOfferte() {
       color: #475569 !important;
     }
 
+    .signature-section {
+  margin-top: 6mm !important;
+  padding-top: 4mm !important;
+  border-top: 1px solid #dbe3ec !important;
+  page-break-inside: avoid !important;
+}
+
+.signature-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 5mm 8mm !important;
+}
+
+.signature-label {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  margin-bottom: 10mm !important;
+  color: #274863 !important;
+}
+
+.signature-line {
+  border-bottom: 1px solid #64748b !important;
+  height: 5mm !important;
+}
+
     .footer {
       margin-top: 4mm !important;
       padding-top: 3mm !important;
@@ -1464,17 +1411,6 @@ function printOfferte() {
   </div>
 </div>
 
-            <div class="product-highlight">
-              <div>
-                <div class="product-highlight-label">Geselecteerd product</div>
-                <h3 class="product-highlight-title">${productTitleHtml}</h3>
-              </div>
-              <div class="product-highlight-price">
-                <small>Totaal offertebedrag</small>
-                <strong>${euro(total)}</strong>
-              </div>
-            </div>
-
             <div class="table-wrap">
               <table>
                 <thead>
@@ -1506,6 +1442,30 @@ function printOfferte() {
                 </div>
               </div>
             </div>
+
+            <div class="signature-section">
+  <div class="signature-grid">
+    <div class="signature-box">
+      <div class="signature-label">Naam koper</div>
+      <div class="signature-line"></div>
+    </div>
+
+    <div class="signature-box">
+      <div class="signature-label">Handtekening koper</div>
+      <div class="signature-line"></div>
+    </div>
+
+    <div class="signature-box">
+      <div class="signature-label">Naam verkoper</div>
+      <div class="signature-line"></div>
+    </div>
+
+    <div class="signature-box">
+      <div class="signature-label">Handtekening verkoper</div>
+      <div class="signature-line"></div>
+    </div>
+  </div>
+</div>
 
             <div class="terms">
   <h4 class="terms-title">Opmerkingen</h4>
