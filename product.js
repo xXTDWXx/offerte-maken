@@ -657,6 +657,12 @@ function printOfferte() {
   grid-template-columns: 1fr 1fr;
 }
 
+.offer-meta-line {
+  width: 26mm !important;
+  height: 10px !important;
+  border-bottom: 1px solid #64748b !important;
+}
+
 .field-inline {
   display: flex;
   align-items: center;
@@ -1247,6 +1253,12 @@ function printOfferte() {
     font-weight: 600 !important;
   }
 
+  .offer-meta-line {
+  width: 26mm !important;
+  height: 10px !important;
+  border-bottom: 1px solid #64748b !important;
+}
+
   .col-price {
     width: 34mm !important;
     text-align: right !important;
@@ -1414,7 +1426,7 @@ function printOfferte() {
                 </div>
                 <div class="offer-meta-row">
                   <div class="offer-meta-label">Geldig tot</div>
-                  <div class="offer-meta-value">______________</div>
+                  <div class="offer-meta-value offer-meta-line"></div>
                 </div>
               </div>
             </div>
