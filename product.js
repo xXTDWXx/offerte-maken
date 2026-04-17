@@ -1439,7 +1439,7 @@ function printOfferte() {
       <strong>${euro(btw)}</strong>
     </div>
     <div class="summary-row total">
-      <span>Totaal incl. btw</span>
+      <span>Totaal</span>
       <strong>${euro(totalIncl)}</strong>
     </div>
   </div>
