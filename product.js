@@ -612,7 +612,6 @@ function printOfferte() {
 
 .customer-inline-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 10px 24px;
   width: 100%;
 }
@@ -763,7 +762,6 @@ function printOfferte() {
 
   .info-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 18px;
     margin-bottom: 18px;
   }
@@ -1394,6 +1392,11 @@ function printOfferte() {
 
       <div class="field-inline">
         <span class="label-inline">Telefoon</span>
+        <span class="line-inline"></span>
+      </div>
+
+      <div class="field-inline">
+        <span class="label-inline">Telefoon 2</span>
         <span class="line-inline"></span>
       </div>
 
