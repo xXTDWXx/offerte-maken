@@ -531,9 +531,10 @@ function printProductFiche(p) {
 function getTermsHtml(type, validUntil) {
   const terms = [];
 
-  terms.push(`<li>Deze offerte is geldig tot en met ${formatDateBelgium(validUntil)}.<br>
+  terms.push(`<li>Deze offerte is geldig tot en met ${formatDateBelgium(validUntil)}.
   Prijzen zijn in euro en tenzij anders vermeld inclusief 21% btw.<br>
-  Levering & plaatsing volgens afgesproken voorwaarden (voldoende doorgang, geen obstakels & hulp)</li>`);
+  Levering & plaatsing volgens afgesproken voorwaarden (voldoende doorgang, geen obstakels & hulp)<br>
+  Betalingsvoorwaarden: 10% voorschot bij bestelling, restbedrag uiterlijk één week vóor levering.</li>`);
 
   if (isJacuzzi(type) || isSwimspa(type)) {
     terms.push(`
