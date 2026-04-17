@@ -1429,21 +1429,21 @@ function printOfferte() {
             </div>
 
             <div class="summary">
-              <div class="summary-box">
-                <div class="summary-row">
-                  <span>Subtotaal</span>
-                  <strong>${euro(total)}</strong>
-                </div>
-                <div class="summary-row">
-                  <span>${euro(btw)}</span>
-                  <strong>Incl.</strong>
-                </div>
-                <div class="summary-row total">
-                  <span>Totaal</span>
-                  <strong>${euro(total)}</strong>
-                </div>
-              </div>
-            </div>
+  <div class="summary-box">
+    <div class="summary-row">
+      <span>Subtotaal excl. btw</span>
+      <strong>${euro(subtotal)}</strong>
+    </div>
+    <div class="summary-row">
+      <span>21% btw</span>
+      <strong>${euro(btw)}</strong>
+    </div>
+    <div class="summary-row total">
+      <span>Totaal incl. btw</span>
+      <strong>${euro(totalIncl)}</strong>
+    </div>
+  </div>
+</div>
 
             <div class="signature-section">
   <div class="signature-grid">
