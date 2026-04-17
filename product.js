@@ -924,8 +924,6 @@ function printOfferte() {
 
   .summary-box {
     width: 320px;
-    border: 1px solid #d7e0e9;
-    border-radius: 18px;
     overflow: hidden;
     background: #ffffff;
   }
