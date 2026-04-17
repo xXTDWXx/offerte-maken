@@ -1372,10 +1372,6 @@ function printOfferte() {
           </div>
 
           <div class="content">
-            <div class="intro">
-              <h2>Offerte</h2>
-              <p>Bedankt voor uw interesse. Hieronder vindt u een overzicht van de geselecteerde configuratie en bijhorende opties.</p>
-            </div>
 
       <div class="info-grid info-grid-single">
   <div class="card customer-card">
