@@ -527,6 +527,45 @@ function printProductFiche(p) {
   win.document.close();
 }
 
+
+function getTermsHtml(type, validUntil) {
+  const terms = [];
+
+  terms.push(`<li>Deze offerte is geldig tot en met ${formatDateBelgium(validUntil)}.</li>`);
+  terms.push(`<li>Prijzen zijn in euro en tenzij anders vermeld inclusief 21% btw.</li>`);
+  terms.push(`<li>Levering en plaatsing volgens afgesproken voorwaarden (goede doorgang & hulp).</li>`);
+  terms.push(`<li>Kraankosten exclusief.</li>`);
+
+  if (isJacuzzi(type) || isSwimspa(type)) {
+    terms.push(`
+      <li>
+        Sunspa Benelux verleent een garantie van 5 jaar op de kuip,
+        2 jaar op de technische en elektronische onderdelen en 1 jaar op de UV
+        vanaf de datum van levering.
+      </li>
+    `);
+  } else if (isInfrared(type)) {
+    terms.push(`
+      <li>
+        Sunspa Benelux verleent een garantie van 20 jaar op de full spectrum stralers
+        en 2 jaar op de technische en elektronische onderdelen vanaf de dag van levering.
+        Stralers dienen altijd door de klant zelf vervangen te worden,
+        ook tijdens de garantieperiode.
+      </li>
+    `);
+  } else if (isSauna(type) || isBarrelSauna(type)) {
+    terms.push(`
+      <li>
+        Sunspa Benelux verleent een garantie van 2 jaar op de technische en elektronische onderdelen
+        vanaf de datum van levering.
+        Door logistieke reden kan het inpakmateriaal niet terug meegenomen worden.
+      </li>
+    `);
+  }
+
+  return terms.join('');
+}
+
 function printOfferte() {
   if (!currentProduct) return;
 
@@ -558,7 +597,8 @@ function printOfferte() {
   ].filter(Boolean).map(v => `<div>${escapeHtml(v)}</div>`).join('');
 
   const productTitleHtml = escapeHtml(currentProduct.title || '—');
-  const productTypeHtml = escapeHtml(currentProduct.type || '—');
+  const productType = currentProduct.type || '';
+  const termsHtml = getTermsHtml(productType, validUntil);
 
   const win = window.open('', '_blank');
   if (!win) return;
@@ -1469,15 +1509,11 @@ function printOfferte() {
             </div>
 
             <div class="terms">
-              <h4 class="terms-title">Opmerkingen</h4>
-              <ul>
-                <li>Deze offerte is geldig tot en met ${formatDateBelgium(validUntil)}.</li>
-                <li>Prijzen zijn in euro en tenzij anders vermeld inclusief 21% btw.</li>
-                <li>Levering en plaatsing volgens afgesproken voorwaarden (goede doorgang & hulp).</li>
-                <li>Kraankosten exclusief.</li>
-              </ul>
-            </div>
-
+  <h4 class="terms-title">Opmerkingen</h4>
+  <ul>
+    ${termsHtml}
+  </ul>
+</div>
             <div class="footer">
               <div>Met vriendelijke groeten,<br><strong>Team Sunspa Brugge/Lievegem</strong></div>
               <div>Dit document werd automatisch opgesteld op ${formatDateBelgium(today)}.</div>
