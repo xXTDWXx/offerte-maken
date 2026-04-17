@@ -557,8 +557,7 @@ function getTermsHtml(type, validUntil) {
     terms.push(`
       <li>
         Sunspa Benelux verleent een garantie van 2 jaar op de technische en elektronische onderdelen
-        vanaf de datum van levering.<br>
-        Door logistieke reden kan het inpakmateriaal niet terug meegenomen worden.
+        vanaf de datum van levering. Door logistieke reden kan het inpakmateriaal niet terug meegenomen worden.
       </li>
     `);
   }
