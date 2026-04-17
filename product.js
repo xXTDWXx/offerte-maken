@@ -1059,30 +1059,22 @@ function printOfferte() {
 
   /* PAGINA STRUCTUUR */
   .sheet {
-    width: 194mm !important;
-    max-width: 194mm !important;
-    min-height: 281mm !important;
-    margin: 0 auto !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    overflow: visible !important;
-
-    display: flex !important;
-    flex-direction: column !important;
-  }
+  width: 194mm !important;
+  max-width: 194mm !important;
+  margin: 0 auto !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
 
   .content {
-    padding: 7mm 8mm 6mm 8mm !important;
-    flex: 1 !important;
-
-    display: flex !important;
-    flex-direction: column !important;
+    padding: 5mm 7mm 4mm 7mm !important;
   }
 
   /* DIT IS DE FIX */
   .bottom-fixed {
-    margin-top: auto !important;
+    margin-top: 5mm !important;
   }
 
   /* HEADER */
@@ -1206,11 +1198,11 @@ function printOfferte() {
 
   /* SAMENVATTING */
   .summary {
-    display: flex !important;
-    justify-content: space-between !important;
-    gap: 20mm !important;
-    margin-top: 4mm !important;
-  }
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 8mm !important;
+  margin-top: 3mm !important;
+}
 
   .summary-left {
     flex: 1 !important;
@@ -1243,21 +1235,21 @@ function printOfferte() {
 
   /* HANDTEKENING */
   .signature-section {
-    margin-top: 6mm !important;
-    padding-top: 4mm !important;
-    border-top: 1px solid #dbe3ec !important;
-  }
+  margin-top: 4mm !important;
+  padding-top: 3mm !important;
+  border-top: 1px solid #dbe3ec !important;
+}
 
   .signature-grid {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 5mm 8mm !important;
-  }
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 4mm 6mm !important;
+}
 
   .signature-label {
-    font-size: 10px !important;
-    margin-bottom: 10mm !important;
-  }
+  font-size: 9px !important;
+  margin-bottom: 6mm !important;
+}
 
   .signature-line {
     border-bottom: 1px solid #64748b !important;
@@ -1266,30 +1258,31 @@ function printOfferte() {
 
   /* VOORWAARDEN */
   .terms {
-    margin-top: 5mm !important;
-    padding-top: 4mm !important;
-    border-top: 1px solid #dbe3ec !important;
-  }
+  margin-top: 3mm !important;
+  padding-top: 3mm !important;
+  border-top: 1px solid #dbe3ec !important;
+}
 
   .terms-title {
     font-size: 10px !important;
   }
 
   .terms li {
-    font-size: 10px !important;
-    margin: 1.2mm 0 !important;
-  }
+  font-size: 9px !important;
+  line-height: 1.15 !important;
+  margin: 0.8mm 0 !important;
+}
 
   /* FOOTER */
   .footer {
-    margin-top: 4mm !important;
-    padding-top: 3mm !important;
-    border-top: 1px solid #dbe3ec !important;
-    font-size: 9.5px !important;
-
-    display: flex !important;
-    justify-content: space-between !important;
-  }
+  margin-top: 3mm !important;
+  padding-top: 2mm !important;
+  border-top: 1px solid #dbe3ec !important;
+  font-size: 8.5px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 4mm !important;
+}
 }
 </style>
       </head>
