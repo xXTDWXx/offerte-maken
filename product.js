@@ -1475,7 +1475,7 @@ function printOfferte() {
 </div>
             <div class="footer">
               <div>Met vriendelijke groeten,<br><strong>Team Sunspa Brugge/Lievegem</strong></div>
-              <div>Dit document werd automatisch opgesteld op ${formatDateBelgium(today)}.</div>
+              <div>Wellnessmarkt BV | BE 0843 104 796 | BE75 3800 1777 8151</div>
             </div>
           </div>
         </div>
