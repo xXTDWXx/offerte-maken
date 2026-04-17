@@ -1400,9 +1400,6 @@ function printOfferte() {
             <div class="header-top">
               <div class="brand">
                 ${logoHtml}
-                <div class="brand-copy">
-                  <div class="brand-meta">${companyInfo || ''}</div>
-                </div>
               </div>
               <div class="offer-meta">
                 <div class="offer-meta-row">
