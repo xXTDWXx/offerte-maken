@@ -1224,19 +1224,24 @@ function printOfferte() {
     }
 
     thead th {
-      background: #f4f7fa !important;
-      color: #274863 !important;
-      font-size: 10px !important;
-      padding: 3.2mm 4mm !important;
-      border-bottom: 1px solid #dbe3ec !important;
-    }
+    background: #eef3f8;
+    color: #314f72;
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: left;
+    border-bottom: 1px solid #d7e0e9;
+  }
 
     tbody td {
-      padding: 3mm 4mm !important;
-      border-bottom: 1px solid #edf2f7 !important;
-      font-size: 11px !important;
-      line-height: 1.25 !important;
-    }
+    padding: 8px 18px;
+    font-size: 14px;
+    color: #0f172a;
+    border-bottom: 1px solid #e9eef4;
+    vertical-align: top;
+  }
 
     .col-num {
       width: 10mm !important;
