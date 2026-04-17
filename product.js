@@ -1357,7 +1357,7 @@ function printOfferte() {
               <div class="brand">
                 ${logoHtml}
                 <div class="brand-copy">
-                  <h1 class="brand-title">${'Offerte')}</h1>
+                  <h1 class="brand-title">Offerte</h1>
                   <div class="brand-meta">${companyInfo || ''}</div>
                 </div>
               </div>
