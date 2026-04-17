@@ -1041,7 +1041,7 @@ function printOfferte() {
     
   }
 
-  @media print {
+ @media print {
   html,
   body {
     width: 210mm;
@@ -1054,84 +1054,93 @@ function printOfferte() {
 
   body {
     font-size: 11px !important;
-    line-height: 1.28 !important;
+    line-height: 1.22 !important;
   }
 
-  /* PAGINA STRUCTUUR */
   .sheet {
-  width: 194mm !important;
-  max-width: 194mm !important;
-  margin: 0 auto !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  overflow: visible !important;
-}
-
-  .content {
-    padding: 5mm 7mm 4mm 7mm !important;
+    width: 194mm !important;
+    max-width: 194mm !important;
+    min-height: 281mm !important;
+    margin: 0 auto !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
-  /* DIT IS DE FIX */
-  .bottom-fixed {
-    margin-top: 5mm !important;
-  }
-
-  /* HEADER */
   .header {
     background: #ffffff !important;
     color: #274863 !important;
-    padding: 20px 30px 10px !important;
+    padding: 4mm 6mm 2mm 6mm !important;
   }
 
   .header-top {
     display: flex !important;
     justify-content: space-between !important;
     align-items: flex-start !important;
-    gap: 10mm !important;
+    gap: 6mm !important;
   }
 
   .brand {
     display: flex !important;
-    gap: 10px !important;
     align-items: flex-start !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
   }
 
   .offer-logo {
-    width: 280px !important;
-    max-height: 20mm !important;
+    width: 72mm !important;
+    max-width: 72mm !important;
+    height: auto !important;
+    display: block !important;
     background: #ffffff !important;
     border: 1px solid #dbe3ec !important;
     border-radius: 8px !important;
-    padding: 3mm !important;
+    padding: 2.5mm !important;
   }
 
   .offer-meta {
-    min-width: 58mm !important;
+    display: block !important;
+    flex: 0 0 52mm !important;
+    width: 52mm !important;
+    min-width: 52mm !important;
     background: #f6f9fc !important;
     border: 1px solid #dbe3ec !important;
     border-radius: 10px !important;
-    padding: 5mm 6mm !important;
+    padding: 4mm 5mm !important;
+    color: #274863 !important;
+    margin-left: auto !important;
   }
 
   .offer-meta-row {
     display: flex !important;
     justify-content: space-between !important;
-    gap: 8mm !important;
-    padding: 1.5mm 0 !important;
+    align-items: center !important;
+    gap: 6mm !important;
+    padding: 1.2mm 0 !important;
   }
 
   .offer-meta-label,
   .offer-meta-value {
-    font-size: 10.5px !important;
     color: #274863 !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
   }
 
-  /* KLANTGEGEVENS */
+  .content {
+    padding: 4mm 6mm 4mm 6mm !important;
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
   .info-grid {
     display: grid !important;
-    gap: 4mm !important;
-    margin-bottom: 5mm !important;
+    gap: 3mm !important;
+    margin-bottom: 3mm !important;
   }
 
   .info-grid-single {
@@ -1142,37 +1151,61 @@ function printOfferte() {
   .customer-card {
     width: 100% !important;
     max-width: none !important;
+    display: block !important;
   }
 
   .customer-inline-grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 10px 24px !important;
+    gap: 6px 18px !important;
+    width: 100% !important;
   }
 
   .field-inline {
     display: flex !important;
     align-items: center !important;
-    gap: 10px !important;
+    gap: 8px !important;
+    min-width: 0 !important;
   }
 
   .label-inline {
-    min-width: 70px !important;
+    min-width: 62px !important;
     font-weight: 700 !important;
+    font-size: 11px !important;
+    color: #0f172a !important;
+    white-space: nowrap !important;
   }
 
   .line-inline {
     flex: 1 !important;
-    border-bottom: 1.5px solid #64748b !important;
-    height: 16px !important;
+    min-width: 0 !important;
+    border-bottom: 1px solid #64748b !important;
+    height: 12px !important;
   }
 
-  /* TABEL */
+  .card {
+    border: 1px solid #dbe3ec !important;
+    border-radius: 10px !important;
+    padding: 4mm !important;
+    background: #ffffff !important;
+    page-break-inside: avoid !important;
+  }
+
+  .card-title {
+    margin: 0 0 2.5mm 0 !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.06em !important;
+    color: #407298 !important;
+  }
+
   .table-wrap {
     border: 1px solid #dbe3ec !important;
     border-radius: 10px !important;
     overflow: hidden !important;
     background: #ffffff !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 3mm !important;
   }
 
   table {
@@ -1182,107 +1215,188 @@ function printOfferte() {
 
   thead th {
     background: #eef3f8 !important;
-    padding: 8px 18px !important;
-    font-size: 12px !important;
+    color: #314f72 !important;
+    padding: 6px 14px !important;
+    font-size: 10px !important;
     font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    text-align: left !important;
+    border-bottom: 1px solid #d7e0e9 !important;
   }
 
   tbody td {
-    padding: 8px 18px !important;
-    font-size: 13px !important;
+    padding: 6px 14px !important;
+    font-size: 11px !important;
+    color: #0f172a !important;
+    border-bottom: 1px solid #e9eef4 !important;
+    vertical-align: top !important;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none !important;
+  }
+
+  .col-num {
+    width: 10mm !important;
+    font-weight: 800 !important;
+    color: #475569 !important;
+  }
+
+  .col-desc {
+    font-weight: 600 !important;
   }
 
   .col-price {
+    width: 34mm !important;
     text-align: right !important;
+    white-space: nowrap !important;
+    font-weight: 800 !important;
   }
 
-  /* SAMENVATTING */
   .summary {
-  display: flex !important;
-  justify-content: space-between !important;
-  gap: 8mm !important;
-  margin-top: 3mm !important;
-}
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 8mm !important;
+    margin-top: 2mm !important;
+  }
 
   .summary-left {
-    flex: 1 !important;
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    padding-top: 2px !important;
   }
 
   .summary-line {
     display: flex !important;
-    gap: 12px !important;
+    align-items: center !important;
+    gap: 10px !important;
+    font-size: 11px !important;
+    color: #0f172a !important;
+  }
+
+  .summary-line span:first-child {
+    min-width: 90px !important;
+    font-weight: 600 !important;
   }
 
   .line-fill {
     flex: 1 !important;
     border-bottom: 1px solid #64748b !important;
+    height: 10px !important;
   }
 
   .summary-box {
-    width: 52mm !important;
+    width: 54mm !important;
+    min-width: 54mm !important;
+    background: #ffffff !important;
   }
 
   .summary-row {
     display: flex !important;
     justify-content: space-between !important;
-    padding: 3mm 4mm !important;
+    gap: 4mm !important;
+    padding: 4px 10px !important;
+    border-bottom: 1px solid #edf2f7 !important;
+    font-size: 10px !important;
+    color: #0f172a !important;
+  }
+
+  .summary-row:last-child {
+    border-bottom: none !important;
+  }
+
+  .summary-row strong {
+    font-weight: 800 !important;
+    white-space: nowrap !important;
   }
 
   .summary-row.total {
     background: #f4f7fa !important;
+    color: #274863 !important;
+    font-size: 12px !important;
     font-weight: 800 !important;
   }
 
-  /* HANDTEKENING */
+  .bottom-fixed {
+    margin-top: auto !important;
+    padding-top: 3mm !important;
+  }
+
   .signature-section {
-  margin-top: 4mm !important;
-  padding-top: 3mm !important;
-  border-top: 1px solid #dbe3ec !important;
-}
+    margin-top: 0 !important;
+    padding-top: 3mm !important;
+    border-top: 1px solid #dbe3ec !important;
+    page-break-inside: avoid !important;
+  }
 
   .signature-grid {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  gap: 4mm 6mm !important;
-}
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4mm 6mm !important;
+  }
+
+  .signature-box {
+    min-width: 0 !important;
+  }
 
   .signature-label {
-  font-size: 9px !important;
-  margin-bottom: 6mm !important;
-}
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    color: #274863 !important;
+    margin-bottom: 6mm !important;
+  }
 
   .signature-line {
     border-bottom: 1px solid #64748b !important;
-    height: 5mm !important;
+    height: 4mm !important;
   }
 
-  /* VOORWAARDEN */
   .terms {
-  margin-top: 3mm !important;
-  padding-top: 3mm !important;
-  border-top: 1px solid #dbe3ec !important;
-}
+    margin-top: 3mm !important;
+    padding-top: 3mm !important;
+    border-top: 1px solid #dbe3ec !important;
+    page-break-inside: avoid !important;
+  }
 
   .terms-title {
+    margin: 0 0 2mm 0 !important;
     font-size: 10px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.06em !important;
+    color: #274863 !important;
+  }
+
+  .terms ul {
+    margin: 0 !important;
+    padding-left: 5mm !important;
   }
 
   .terms li {
-  font-size: 9px !important;
-  line-height: 1.15 !important;
-  margin: 0.8mm 0 !important;
-}
+    margin: 0.8mm 0 !important;
+    font-size: 8.7px !important;
+    line-height: 1.15 !important;
+    color: #475569 !important;
+  }
 
-  /* FOOTER */
   .footer {
-  margin-top: 3mm !important;
-  padding-top: 2mm !important;
-  border-top: 1px solid #dbe3ec !important;
-  font-size: 8.5px !important;
-  display: flex !important;
-  justify-content: space-between !important;
-  gap: 4mm !important;
-}
+    margin-top: 3mm !important;
+    padding-top: 2mm !important;
+    border-top: 1px solid #dbe3ec !important;
+    color: #64748b !important;
+    font-size: 8px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 4mm !important;
+    page-break-inside: avoid !important;
+  }
+
+  .footer strong {
+    color: #0f172a !important;
+  }
 }
 </style>
       </head>
@@ -1430,7 +1544,6 @@ function printOfferte() {
               Sunspa Benelux | 0483 39 99 67 | sunspabrugge@gmail.com/gentsunspa@gmail.com</div>
             </div>
           </div>
-        </div>
         </div>
 
         <script>
