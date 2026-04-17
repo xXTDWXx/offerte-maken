@@ -570,7 +570,9 @@ function printOfferte() {
 
   const customer = getCustomerData();
   const lines = getSelectedOfferLines();
-  const total = lines.reduce((sum, l) => sum + Number(l.price || 0), 0);
+  const totalIncl = lines.reduce((sum, l) => sum + Number(l.price || 0), 0);
+  const subtotal = totalIncl / 1.21;
+  const btw = totalIncl - subtotal;
 
   const today = new Date();
   const validUntil = addDays(today, 14);
@@ -1437,7 +1439,7 @@ function printOfferte() {
                   <strong>${euro(total)}</strong>
                 </div>
                 <div class="summary-row">
-                  <span>21% BTW</span>
+                  <span>${euro(btw)}</span>
                   <strong>Incl.</strong>
                 </div>
                 <div class="summary-row total">
