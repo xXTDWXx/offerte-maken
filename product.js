@@ -904,7 +904,7 @@ function printOfferte() {
     display: flex;
     justify-content: space-between;
     gap: 18px;
-    padding: 10px 18px;
+    padding: 5px 18px;
     border-bottom: 1px solid #e9eef4;
     font-size: 14px;
     color: #0f172a;
@@ -1270,7 +1270,7 @@ function printOfferte() {
 
     .summary-row {
       gap: 4mm !important;
-      padding: 3mm 4mm !important;
+      padding: 5px 18px;
       border-bottom: 1px solid #edf2f7 !important;
       font-size: 11px !important;
     }
