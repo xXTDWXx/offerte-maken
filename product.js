@@ -1042,9 +1042,7 @@ function printOfferte() {
       justify-content: stretch;
     }
 
-    .summary-box {
-      width: 100%;
-    }
+    
   }
 
   @media print {
