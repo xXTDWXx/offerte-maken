@@ -1181,7 +1181,6 @@ function printOfferte() {
 
     .info-grid {
       display: grid !important;
-      grid-template-columns: 1fr 1fr !important;
       gap: 4mm !important;
       margin-bottom: 5mm !important;
     }
