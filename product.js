@@ -531,17 +531,16 @@ function printProductFiche(p) {
 function getTermsHtml(type, validUntil) {
   const terms = [];
 
-  terms.push(`<li>Deze offerte is geldig tot en met ${formatDateBelgium(validUntil)}.</li>`);
-  terms.push(`<li>Prijzen zijn in euro en tenzij anders vermeld inclusief 21% btw.</li>`);
-  terms.push(`<li>Levering en plaatsing volgens afgesproken voorwaarden (goede doorgang & hulp).</li>`);
-  terms.push(`<li>Kraankosten exclusief.</li>`);
+  terms.push(`<li>Deze offerte is geldig tot en met ${formatDateBelgium(validUntil)}.<br>
+  Prijzen zijn in euro en tenzij anders vermeld inclusief 21% btw.<br>
+  Levering & plaatsing volgens afgesproken voorwaarden (voldoende doorgang, geen obstakels & hulp)</li>`);
 
   if (isJacuzzi(type) || isSwimspa(type)) {
     terms.push(`
       <li>
         Sunspa Benelux verleent een garantie van 5 jaar op de kuip,
-        2 jaar op de technische en elektronische onderdelen en 1 jaar op de UV
-        vanaf de datum van levering.
+        2 jaar op de technische en elektronische onderdelen<br>
+        en 1 jaar op de UV vanaf de datum van levering.
       </li>
     `);
   } else if (isInfrared(type)) {
@@ -557,7 +556,7 @@ function getTermsHtml(type, validUntil) {
     terms.push(`
       <li>
         Sunspa Benelux verleent een garantie van 2 jaar op de technische en elektronische onderdelen
-        vanaf de datum van levering.
+        vanaf de datum van levering.<br>
         Door logistieke reden kan het inpakmateriaal niet terug meegenomen worden.
       </li>
     `);
