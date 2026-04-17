@@ -704,7 +704,6 @@ function printOfferte() {
   }
 
   .brand-meta div {
-    visibility: hidden;
     margin: 2px 0;
   }
 
