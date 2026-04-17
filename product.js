@@ -531,8 +531,7 @@ function printProductFiche(p) {
 function getTermsHtml(type, validUntil) {
   const terms = [];
 
-  terms.push(`<li>Deze offerte is geldig tot en met ${formatDateBelgium(validUntil)}.
-  Prijzen zijn exclusief kraankosten tenzij anders vermeld.<br>
+  terms.push(`<li>Prijzen zijn exclusief kraankosten tenzij anders vermeld.<br>
   Levering & plaatsing volgens afgesproken voorwaarden (voldoende doorgang, geen obstakels & hulp)<br>
   Betalingsvoorwaarden: 10% voorschot bij bestelling, restbedrag uiterlijk één week vóor levering.</li>`);
 
@@ -1412,7 +1411,7 @@ function printOfferte() {
                 </div>
                 <div class="offer-meta-row">
                   <div class="offer-meta-label">Geldig tot</div>
-                  <div class="offer-meta-value">${formatDateBelgium(validUntil)}</div>
+                  <div class="offer-meta-value">______________</div>
                 </div>
               </div>
             </div>
