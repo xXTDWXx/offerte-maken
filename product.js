@@ -698,7 +698,7 @@ function printOfferte() {
   .header {
     background: linear-gradient(135deg, #5f7fa4 0%, #7fa3ca 100%);
     color: #ffffff;
-    padding: 28px 32px 26px;
+    padding: 20px 30px 10px;
   }
 
   .header-top {
@@ -1105,7 +1105,7 @@ function printOfferte() {
       color: #274863 !important;
       border: 1px solid #cfd8e3 !important;
       border-radius: 10px !important;
-      padding: 10mm 10mm 7mm 10mm !important;
+      padding: 20px 30px 10px !important;
     }
 
     .header-top {
