@@ -532,7 +532,7 @@ function getTermsHtml(type, validUntil) {
   const terms = [];
 
   terms.push(`<li>Deze offerte is geldig tot en met ${formatDateBelgium(validUntil)}.
-  Prijzen zijn in euro en tenzij anders vermeld inclusief 21% btw.<br>
+  Prijzen zijn exclusief kraankosten tenzij anders vermeld.<br>
   Levering & plaatsing volgens afgesproken voorwaarden (voldoende doorgang, geen obstakels & hulp)<br>
   Betalingsvoorwaarden: 10% voorschot bij bestelling, restbedrag uiterlijk één week vóor levering.</li>`);
 
