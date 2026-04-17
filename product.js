@@ -540,7 +540,7 @@ function getTermsHtml(type, validUntil) {
     terms.push(`
       <li>
         Sunspa Benelux verleent een garantie van 5 jaar op de kuip,
-        2 jaar op de technische en elektronische onderdelen<br>
+        2 jaar op de technische en elektronische onderdelen
         en 1 jaar op de UV vanaf de datum van levering.
       </li>
     `);
