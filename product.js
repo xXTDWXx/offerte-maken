@@ -1535,7 +1535,8 @@ function printOfferte() {
 </div>
             <div class="footer">
               <div>Met vriendelijke groeten,<br><strong>Team Sunspa Brugge/Lievegem</strong></div>
-              <div>Wellnessmarkt BV | BE 0843 104 796 | BE75 3800 1777 8151</div>
+              <div>Wellnessmarkt BV | BE 0843 104 796 | BE75 3800 1777 8151<br>
+              Sunspa Benelux | 0483 39 99 67 | sunspabrugge@gmail.com/gentsunspa@gmail.com</div>
             </div>
           </div>
         </div>
