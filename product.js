@@ -1186,6 +1186,13 @@ function printOfferte() {
 
     .content {
       padding: 7mm 8mm 6mm 8mm !important;
+      min-height: 235mm !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    .bottom-fixed {
+      margin-top: auto !important;
     }
 
     .intro {
@@ -1498,6 +1505,8 @@ function printOfferte() {
   </div>
 </div>
 
+
+<div class="bottom-fixed">
             <div class="signature-section">
   <div class="signature-grid">
     <div class="signature-box">
@@ -1534,6 +1543,7 @@ function printOfferte() {
               Sunspa Benelux | 0483 39 99 67 | sunspabrugge@gmail.com/gentsunspa@gmail.com</div>
             </div>
           </div>
+        </div>
         </div>
 
         <script>
