@@ -88,6 +88,15 @@ function typeNorm(type) {
   return String(type || '').toLowerCase();
 }
 
+function titleNorm(title) {
+  return String(title || '').trim().toLowerCase();
+}
+
+function isRoundSpaWithoutCoverlift(product) {
+  const title = titleNorm(product?.title);
+  return title === 'marrakech' || title === 'python';
+}
+
 function isSwimspa(type) {
   const t = typeNorm(type);
   return t.includes('zwemspa') || t.includes('swim');
@@ -275,6 +284,7 @@ function updateOptionUI() {
   if (optInstallPrice) optInstallPrice.textContent = euro(inst);
 
   const allowExtraOptions = extraOptionsAllowed(type);
+  const allowCoverlift = allowExtraOptions && !isRoundSpaWithoutCoverlift(currentProduct);
   const swim = isSwimspa(type);
   const outdoorSauna = isOutdoorSaunaWithRoofAndStove(type);
   const barrelSauna = isBarrelSauna(type);
@@ -286,14 +296,14 @@ function updateOptionUI() {
   const showInfraredModule = barrelSauna;
 
   if (optCoverTrapRow) optCoverTrapRow.style.display = allowExtraOptions ? '' : 'none';
-  if (optCoverliftRow) optCoverliftRow.style.display = allowExtraOptions ? '' : 'none';
+  if (optCoverliftRow) optCoverliftRow.style.display = allowCoverlift ? '' : 'none';
   if (optMaintRow) optMaintRow.style.display = allowExtraOptions ? '' : 'none';
 
   if (optCoverlift2Row) optCoverlift2Row.style.display = swim ? '' : 'none';
   if (optSwimFiltersetRow) optSwimFiltersetRow.style.display = swim ? '' : 'none';
   if (optWarmtepompRow) optWarmtepompRow.style.display = swim ? '' : 'none';
 
-  if (!allowExtraOptions && optCoverlift) optCoverlift.checked = false;
+  if (!allowCoverlift && optCoverlift) optCoverlift.checked = false;
   if (!allowExtraOptions && optMaint) optMaint.checked = false;
   if (!swim && optCoverlift2) optCoverlift2.checked = false;
   if (!swim && optSwimFilterset) optSwimFilterset.checked = false;
@@ -318,7 +328,7 @@ function updateOptionUI() {
     optWarmtepompQty.value = String(warmtepompQty);
   }
 
-  const coverliftLine = (allowExtraOptions && optCoverlift?.checked) ? PRICES.coverlift_unit : 0;
+  const coverliftLine = (allowCoverlift && optCoverlift?.checked) ? PRICES.coverlift_unit : 0;
   const coverlift2Line = (swim && optCoverlift2?.checked) ? PRICES.coverlift_unit : 0;
   const maintLine = (allowExtraOptions && optMaint?.checked) ? PRICES.maintenance_unit : 0;
   const swimFiltersetLine = (swim && optSwimFilterset?.checked) ? PRICES.swim_filterset_unit : 0;
@@ -416,6 +426,7 @@ function getSelectedOfferLines() {
 
   const type = currentProduct.type || '';
   const lines = [];
+  const allowCoverlift = extraOptionsAllowed(type) && !isRoundSpaWithoutCoverlift(currentProduct);
 
   lines.push({
     label: currentProduct.title || 'Product',
@@ -434,7 +445,7 @@ function getSelectedOfferLines() {
     });
   }
 
-  if ($('optCoverlift')?.checked && extraOptionsAllowed(type)) {
+  if ($('optCoverlift')?.checked && allowCoverlift) {
     lines.push({ label: 'Coverlift', price: PRICES.coverlift_unit });
   }
 
