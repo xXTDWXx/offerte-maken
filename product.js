@@ -1163,7 +1163,7 @@ function printOfferte() {
   .customer-inline-grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 6px 18px !important;
+    gap: 16px 18px !important;
     width: 100% !important;
   }
 
