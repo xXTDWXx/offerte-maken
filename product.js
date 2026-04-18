@@ -1356,7 +1356,7 @@ function printOfferte() {
   }
 
   .signature-label {
-    font-size: 9px !important;
+    font-size: 15px !important;
     font-weight: 700 !important;
     color: #274863 !important;
     margin-bottom: 6mm !important;
