@@ -414,833 +414,978 @@ const COMPANY_NAME = "Sunspa Brugge/Lievegem";
     `).join("");
   }
 
+  function getTermsHtml() {
+    return `
+      <li>Prijzen zijn exclusief kraankosten tenzij anders vermeld.<br>
+      Levering & plaatsing volgens afgesproken voorwaarden (voldoende doorgang, geen obstakels & hulp)<br>
+      Betalingsvoorwaarden: 10% voorschot bij bestelling, restbedrag uiterlijk één week vóor levering.</li>
+      <li>Sunspa Benelux verleent een garantie van 2 jaar op de technische en elektronische onderdelen vanaf de datum van levering.</li>
+    `;
+  }
+
   function printOffer() {
     const current = getCurrentConfiguration();
+    const totalIncl = getCurrentConfiguration().total;
+    const subtotal = totalIncl / 1.21;
+    const btw = totalIncl - subtotal;
 
     const today = new Date();
-    const validUntil = addDays(today, 30);
-
-    const productTypeHtml = escapeHtml(current.model);
     const productTitleHtml = escapeHtml(`${current.model} - ${current.wood} - ${current.size}`);
     const rows = getOfferRowsHtml();
 
-    const companyInfo = COMPANY_INFO_LINES
-      .map(line => `<div>${escapeHtml(line)}</div>`)
-      .join("");
-
     const logoHtml = COMPANY_LOGO
-      ? `<img class="offer-logo" src="${encodeURI(COMPANY_LOGO)}" alt="${escapeHtml(COMPANY_NAME)}">`
+      ? `<img src="${escapeHtml(COMPANY_LOGO)}" alt="${escapeHtml(COMPANY_NAME)}" class="offer-logo">`
       : "";
 
-    const win = window.open("", "_blank", "width=1100,height=900");
+    const termsHtml = getTermsHtml();
 
-    if (!win) {
-      alert("Pop-up geblokkeerd. Sta pop-ups toe om de offerte te printen.");
-      return;
-    }
+    const win = window.open("", "_blank");
+    if (!win) return;
 
     win.document.open();
     win.document.write(`
-      <!doctype html>
-      <html lang="nl">
-        <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Offerte ${productTitleHtml}</title>
-          <style>
-            @page {
-              size: A4 portrait;
-              margin: 8mm;
-            }
-
-            * {
-              box-sizing: border-box;
-              -webkit-print-color-adjust: exact;
-              print-color-adjust: exact;
-            }
-
-            html,
-            body {
-              margin: 0;
-              padding: 0;
-              background: #f2f4f7;
-              color: #1f2937;
-              font-family: "Segoe UI", Arial, Helvetica, sans-serif;
-              font-size: 14px;
-              line-height: 1.4;
-            }
-
-            body {
-              padding: 14px;
-            }
-
-            .sheet {
-              width: 100%;
-              max-width: 920px;
-              margin: 0 auto;
-              background: #ffffff;
-              border: 1px solid #d9e1ea;
-              border-radius: 18px;
-              overflow: hidden;
-              box-shadow: 0 12px 34px rgba(15, 23, 42, 0.08);
-            }
-
-            .header {
-              background: linear-gradient(135deg, #5f7fa4 0%, #7fa3ca 100%);
-              color: #ffffff;
-              padding: 28px 32px 26px;
-            }
-
-            .header-top {
-              display: flex;
-              justify-content: space-between;
-              align-items: flex-start;
-              gap: 24px;
-            }
-
-            .brand {
-              display: flex;
-              align-items: flex-start;
-              gap: 18px;
-              min-width: 0;
-            }
-
-            .offer-logo {
-              width: 170px;
-              max-width: 170px;
-              height: auto;
-              display: block;
-              background: #ffffff;
-              border-radius: 14px;
-              padding: 8px 10px;
-            }
-
-            .brand-copy {
-              min-width: 0;
-            }
-
-            .brand-title {
-              margin: 0 0 10px 0;
-              font-size: 42px;
-              line-height: 0.98;
-              font-weight: 800;
-              letter-spacing: -0.02em;
-              color: #ffffff;
-            }
-
-            .brand-meta {
-              font-size: 15px;
-              line-height: 1.45;
-              color: rgba(255, 255, 255, 0.98);
-            }
-
-            .brand-meta div {
-              margin: 2px 0;
-            }
-
-            .offer-meta {
-              min-width: 280px;
-              padding: 18px 22px;
-              border-radius: 18px;
-              background: rgba(255, 255, 255, 0.14);
-              border: 1px solid rgba(255, 255, 255, 0.18);
-              backdrop-filter: blur(3px);
-            }
-
-            .offer-meta-row {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              gap: 24px;
-              padding: 4px 0;
-            }
-
-            .offer-meta-label {
-              font-size: 15px;
-              font-weight: 700;
-              color: #ffffff;
-            }
-
-            .offer-meta-value {
-              font-size: 15px;
-              font-weight: 800;
-              color: #ffffff;
-              text-align: right;
-              white-space: nowrap;
-            }
-
-            .content {
-              padding: 28px 32px 28px;
-            }
-
-            .intro {
-              margin-bottom: 22px;
-            }
-
-            .intro h2 {
-              margin: 0 0 10px 0;
-              font-size: 32px;
-              line-height: 1.1;
-              font-weight: 800;
-              color: #0f172a;
-            }
-
-            .intro p {
-              margin: 0;
-              font-size: 15px;
-              color: #475569;
-            }
-
-            .info-grid {
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              gap: 18px;
-              margin-bottom: 18px;
-            }
-
-            .card {
-              background: #f8fafc;
-              border: 1px solid #d7e0e9;
-              border-radius: 18px;
-              padding: 18px 20px;
-            }
-
-            .card-title {
-              margin: 0 0 14px 0;
-              font-size: 12px;
-              font-weight: 800;
-              text-transform: uppercase;
-              letter-spacing: 0.08em;
-              color: #4f6f96;
-            }
-
-            .card-line {
-              margin: 8px 0;
-              font-size: 14px;
-              color: #0f172a;
-            }
-
-            .card-line strong {
-              font-weight: 800;
-              display: inline-block;
-              margin-bottom: 14px;
-            }
-
-            .product-highlight {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              gap: 18px;
-              background: #ffffff;
-              border: 1px solid #d7e0e9;
-              border-radius: 18px;
-              padding: 18px 22px;
-              margin-bottom: 18px;
-            }
-
-            .product-highlight-label {
-              margin: 0 0 8px 0;
-              font-size: 12px;
-              font-weight: 800;
-              text-transform: uppercase;
-              letter-spacing: 0.08em;
-              color: #64748b;
-            }
-
-            .product-highlight-title {
-              margin: 0;
-              font-size: 28px;
-              line-height: 1.1;
-              font-weight: 800;
-              color: #0f172a;
-            }
-
-            .product-highlight-price {
-              text-align: right;
-              white-space: nowrap;
-            }
-
-            .product-highlight-price small {
-              display: block;
-              margin-bottom: 6px;
-              font-size: 12px;
-              font-weight: 800;
-              text-transform: uppercase;
-              letter-spacing: 0.08em;
-              color: #64748b;
-            }
-
-            .product-highlight-price strong {
-              display: block;
-              font-size: 30px;
-              line-height: 1.05;
-              font-weight: 800;
-              color: #4f6f96;
-            }
-
-            .table-wrap {
-              border: 1px solid #d7e0e9;
-              border-radius: 18px;
-              overflow: hidden;
-              background: #ffffff;
-            }
-
-            table {
-              width: 100%;
-              border-collapse: collapse;
-            }
-
-            thead th {
-              background: #eef3f8;
-              color: #314f72;
-              padding: 16px 18px;
-              font-size: 12px;
-              font-weight: 800;
-              text-transform: uppercase;
-              letter-spacing: 0.08em;
-              text-align: left;
-              border-bottom: 1px solid #d7e0e9;
-            }
-
-            tbody td {
-              padding: 15px 18px;
-              font-size: 14px;
-              color: #0f172a;
-              border-bottom: 1px solid #e9eef4;
-              vertical-align: top;
-            }
-
-            tbody tr:last-child td {
-              border-bottom: none;
-            }
-
-            .col-num {
-              width: 70px;
-              font-weight: 800;
-              color: #475569;
-            }
-
-            .col-desc {
-              font-weight: 600;
-            }
-
-            .col-price {
-              width: 190px;
-              text-align: right;
-              white-space: nowrap;
-              font-weight: 800;
-            }
-
-            .summary {
-              margin-top: 18px;
-              display: flex;
-              justify-content: flex-end;
-            }
-
-            .summary-box {
-              width: 320px;
-              border: 1px solid #d7e0e9;
-              border-radius: 18px;
-              overflow: hidden;
-              background: #ffffff;
-            }
-
-            .summary-row {
-              display: flex;
-              justify-content: space-between;
-              gap: 18px;
-              padding: 14px 18px;
-              border-bottom: 1px solid #e9eef4;
-              font-size: 14px;
-              color: #0f172a;
-            }
-
-            .summary-row:last-child {
-              border-bottom: none;
-            }
-
-            .summary-row strong {
-              font-weight: 800;
-            }
-
-            .summary-row.total {
-              background: #f3f7fb;
-              color: #314f72;
-              font-size: 17px;
-              font-weight: 800;
-            }
-
-            .terms {
-              margin-top: 22px;
-              padding-top: 18px;
-              border-top: 1px solid #d7e0e9;
-            }
-
-            .terms-title {
-              margin: 0 0 10px 0;
-              font-size: 12px;
-              font-weight: 800;
-              text-transform: uppercase;
-              letter-spacing: 0.08em;
-              color: #314f72;
-            }
-
-            .terms ul {
-              margin: 0;
-              padding-left: 18px;
-              color: #475569;
-            }
-
-            .terms li {
-              margin: 8px 0;
-              font-size: 13px;
-              line-height: 1.35;
-            }
-
-            .footer {
-              margin-top: 18px;
-              padding-top: 16px;
-              border-top: 1px solid #d7e0e9;
-              display: flex;
-              justify-content: space-between;
-              gap: 20px;
-              font-size: 12px;
-              color: #64748b;
-            }
-
-            .footer strong {
-              color: #0f172a;
-            }
-
-            @media screen and (max-width: 820px) {
-              .header-top,
-              .info-grid,
-              .product-highlight,
-              .footer {
-                display: block;
-              }
-
-              .offer-meta {
-                margin-top: 18px;
-                min-width: 0;
-              }
-
-              .product-highlight-price {
-                margin-top: 14px;
-                text-align: left;
-              }
-
-              .summary {
-                justify-content: stretch;
-              }
-
-              .summary-box {
-                width: 100%;
-              }
-            }
-
-            @media print {
-              html,
-              body {
-                width: 210mm;
-                height: 297mm;
-                margin: 0 !important;
-                padding: 0 !important;
-                background: #ffffff !important;
-                color: #1f2937 !important;
-              }
-
-              body {
-                font-size: 11px !important;
-                line-height: 1.28 !important;
-              }
-
-              .sheet {
-                width: 194mm !important;
-                max-width: 194mm !important;
-                min-height: 281mm !important;
-                margin: 0 auto !important;
-                border: none !important;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                overflow: hidden !important;
-                page-break-inside: avoid !important;
-              }
-
-              .header {
-                background: #ffffff !important;
-                color: #274863 !important;
-                border: 1px solid #cfd8e3 !important;
-                border-radius: 10px !important;
-                padding: 10mm 10mm 7mm 10mm !important;
-              }
-
-              .header-top {
-                display: flex !important;
-                justify-content: space-between !important;
-                align-items: flex-start !important;
-                gap: 10mm !important;
-              }
-
-              .brand {
-                display: flex !important;
-                gap: 10px !important;
-                align-items: flex-start !important;
-              }
-
-              .offer-logo {
-                max-width: 42mm !important;
-                width: 42mm !important;
-                max-height: 20mm !important;
-                background: #ffffff !important;
-                border: 1px solid #dbe3ec !important;
-                border-radius: 8px !important;
-                padding: 3mm !important;
-              }
-
-              .brand-title {
-                font-size: 20px !important;
-                line-height: 1.05 !important;
-                margin: 0 0 4px 0 !important;
-                color: #274863 !important;
-              }
-
-              .brand-meta {
-                font-size: 10.5px !important;
-                line-height: 1.35 !important;
-                color: #4b5f75 !important;
-              }
-
-              .offer-meta {
-                min-width: 58mm !important;
-                background: #f6f9fc !important;
-                border: 1px solid #dbe3ec !important;
-                border-radius: 10px !important;
-                padding: 5mm 6mm !important;
-                color: #274863 !important;
-                backdrop-filter: none !important;
-              }
-
-              .offer-meta-row {
-                gap: 8mm !important;
-                padding: 1.5mm 0 !important;
-              }
-
-              .offer-meta-label,
-              .offer-meta-value {
-                color: #274863 !important;
-                font-size: 10.5px !important;
-              }
-
-              .content {
-                padding: 7mm 8mm 6mm 8mm !important;
-              }
-
-              .intro {
-                margin-bottom: 5mm !important;
-              }
-
-              .intro h2 {
-                font-size: 18px !important;
-                margin: 0 0 2mm 0 !important;
-                color: #0f172a !important;
-              }
-
-              .intro p {
-                margin: 0 !important;
-                font-size: 11px !important;
-                color: #475569 !important;
-              }
-
-              .info-grid {
-                display: grid !important;
-                grid-template-columns: 1fr 1fr !important;
-                gap: 4mm !important;
-                margin-bottom: 5mm !important;
-              }
-
-              .card {
-                border: 1px solid #dbe3ec !important;
-                border-radius: 10px !important;
-                padding: 5mm !important;
-                background: #ffffff !important;
-                page-break-inside: avoid !important;
-              }
-
-              .card-title {
-                margin: 0 0 3mm 0 !important;
-                font-size: 10px !important;
-                letter-spacing: 0.06em !important;
-                color: #407298 !important;
-              }
-
-              .card-line {
-                margin: 1.5mm 0 !important;
-                font-size: 11px !important;
-                line-height: 1.3 !important;
-              }
-
-              .product-highlight {
-                display: flex !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                gap: 4mm !important;
-                border: 1px solid #dbe3ec !important;
-                border-radius: 10px !important;
-                padding: 5mm 6mm !important;
-                background: #ffffff !important;
-                margin-bottom: 5mm !important;
-                page-break-inside: avoid !important;
-              }
-
-              .product-highlight-label {
-                font-size: 10px !important;
-                letter-spacing: 0.06em !important;
-                margin-bottom: 1mm !important;
-                color: #64748b !important;
-              }
-
-              .product-highlight-title {
-                font-size: 18px !important;
-                margin: 0 !important;
-                line-height: 1.1 !important;
-              }
-
-              .product-highlight-price small {
-                font-size: 9px !important;
-                margin-bottom: 1mm !important;
-                color: #64748b !important;
-              }
-
-              .product-highlight-price strong {
-                font-size: 18px !important;
-                color: #407298 !important;
-              }
-
-              .table-wrap {
-                border: 1px solid #dbe3ec !important;
-                border-radius: 10px !important;
-                overflow: hidden !important;
-                background: #ffffff !important;
-                page-break-inside: avoid !important;
-              }
-
-              table {
-                width: 100% !important;
-                border-collapse: collapse !important;
-              }
-
-              thead th {
-                background: #f4f7fa !important;
-                color: #274863 !important;
-                font-size: 10px !important;
-                padding: 3.2mm 4mm !important;
-                border-bottom: 1px solid #dbe3ec !important;
-              }
-
-              tbody td {
-                padding: 3mm 4mm !important;
-                border-bottom: 1px solid #edf2f7 !important;
-                font-size: 11px !important;
-                line-height: 1.25 !important;
-              }
-
-              .col-num {
-                width: 10mm !important;
-              }
-
-              .col-price {
-                width: 34mm !important;
-                text-align: right !important;
-                white-space: nowrap !important;
-              }
-
-              .summary {
-                margin-top: 4mm !important;
-                display: flex !important;
-                justify-content: flex-end !important;
-              }
-
-              .summary-box {
-                width: 52mm !important;
-                border: 1px solid #dbe3ec !important;
-                border-radius: 10px !important;
-                overflow: hidden !important;
-                background: #ffffff !important;
-                page-break-inside: avoid !important;
-              }
-
-              .summary-row {
-                gap: 4mm !important;
-                padding: 3mm 4mm !important;
-                border-bottom: 1px solid #edf2f7 !important;
-                font-size: 11px !important;
-              }
-
-              .summary-row.total {
-                background: #f4f7fa !important;
-                color: #274863 !important;
-                font-size: 13px !important;
-                font-weight: 800 !important;
-              }
-
-              .terms {
-                margin-top: 5mm !important;
-                padding-top: 4mm !important;
-                border-top: 1px solid #dbe3ec !important;
-                page-break-inside: avoid !important;
-              }
-
-              .terms-title {
-                margin: 0 0 2mm 0 !important;
-                font-size: 10px !important;
-                color: #274863 !important;
-              }
-
-              .terms ul {
-                margin: 0 !important;
-                padding-left: 5mm !important;
-              }
-
-              .terms li {
-                margin: 1.2mm 0 !important;
-                font-size: 10px !important;
-                line-height: 1.25 !important;
-                color: #475569 !important;
-              }
-
-              .footer {
-                margin-top: 4mm !important;
-                padding-top: 3mm !important;
-                border-top: 1px solid #dbe3ec !important;
-                color: #64748b !important;
-                font-size: 9.5px !important;
-                display: flex !important;
-                justify-content: space-between !important;
-                gap: 6mm !important;
-                page-break-inside: avoid !important;
-              }
-            }
-          </style>
-        </head>
-        <body>
-          <div class="sheet">
-            <div class="header">
-              <div class="header-top">
-                <div class="brand">
-                  ${logoHtml}
-                  <div class="brand-copy">
-                    <h1 class="brand-title">${escapeHtml(COMPANY_NAME || "Offerte")}</h1>
-                    <div class="brand-meta">${companyInfo || ""}</div>
-                  </div>
-                </div>
-
-                <div class="offer-meta">
-                  <div class="offer-meta-row">
-                    <div class="offer-meta-label">Datum</div>
-                    <div class="offer-meta-value">${formatDateBelgium(today)}</div>
-                  </div>
-                  <div class="offer-meta-row">
-                    <div class="offer-meta-label">Geldig tot</div>
-                    <div class="offer-meta-value">${formatDateBelgium(validUntil)}</div>
-                  </div>
-                </div>
+    <!doctype html>
+    <html lang="nl">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Offerte ${productTitleHtml}</title>
+       <style>
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f2f4f7;
+    color: #1f2937;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  body {
+    padding: 14px;
+  }
+  
+ .info-grid-single {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+.customer-card {
+  width: 100%;
+  max-width: none;
+  display: block;
+}
+
+.customer-inline-grid {
+  display: grid;
+  gap: 10px 24px;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+}
+
+.offer-meta-line {
+  width: 26mm !important;
+  height: 10px !important;
+  border-bottom: 1px solid #64748b !important;
+}
+
+.field-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.field-inline-full {
+  grid-column: 1 / -1;
+}
+
+.label-inline {
+  min-width: 70px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #0f172a;
+  white-space: nowrap;
+}
+
+.line-inline {
+  flex: 1;
+  min-width: 0;
+  border-bottom: 1.5px solid #64748b;
+  height: 16px;
+}
+
+  .sheet {
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #d9e1ea;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 12px 34px rgba(15, 23, 42, 0.08);
+  }
+
+  .header {
+    background: linear-gradient(135deg, #5f7fa4 0%, #7fa3ca 100%);
+    color: #ffffff;
+    padding: 20px 30px 10px;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    min-width: 0;
+  }
+
+  .offer-logo {
+    width: 280px;
+    height: auto;
+    display: block;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 8px 10px;
+  }
+
+  .brand-copy {
+    min-width: 0;
+  }
+
+  .brand-title {
+    margin: 0 0 10px 0;
+    font-size: 42px;
+    line-height: 0.98;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+  }
+
+  .brand-meta {
+    font-size: 15px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.98);
+  }
+
+  .brand-meta div {
+    margin: 2px 0;
+  }
+
+  .offer-meta {
+    min-width: 280px;
+    padding: 18px 22px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(3px);
+  }
+
+  .offer-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 4px 0;
+  }
+
+  .offer-meta-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .offer-meta-value {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .content {
+    padding: 28px 32px 28px;
+  }
+
+  .intro {
+    margin-bottom: 22px;
+  }
+
+  .intro h2 {
+    margin: 0 0 10px 0;
+    font-size: 32px;
+    line-height: 1.1;
+    font-weight: 800;
+    color: #0f172a;
+  }
+
+  .intro p {
+    margin: 0;
+    font-size: 15px;
+    color: #475569;
+  }
+
+  .info-grid {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .card {
+    background: #f8fafc;
+    border: 1px solid #d7e0e9;
+    border-radius: 18px;
+    padding: 18px 20px;
+  }
+
+  .card-title {
+    margin: 0 0 14px 0;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #4f6f96;
+  }
+
+  .card-line {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #0f172a;
+  }
+
+  .card-line strong {
+    font-weight: 800;
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+
+  .table-wrap {
+    border: 1px solid #d7e0e9;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead th {
+    background: #eef3f8;
+    color: #314f72;
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: left;
+    border-bottom: 1px solid #d7e0e9;
+  }
+
+  tbody td {
+    padding: 8px 18px;
+    font-size: 14px;
+    color: #0f172a;
+    border-bottom: 1px solid #e9eef4;
+    vertical-align: top;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .col-num {
+    width: 70px;
+    font-weight: 800;
+    color: #475569;
+  }
+
+  .col-desc {
+    font-weight: 600;
+  }
+
+  .col-price {
+    width: 190px;
+    text-align: right;
+    white-space: nowrap;
+    font-weight: 800;
+  }
+
+  .summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.summary-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 6px;
+}
+
+.summary-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.summary-line span:first-child {
+  min-width: 140px;
+  font-weight: 600;
+}
+
+.line-fill {
+  flex: 1;
+  border-bottom: 1.5px solid #64748b;
+  height: 14px;
+}
+
+  .summary-box {
+    width: 320px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 5px 18px;
+    border-bottom: 1px solid #e9eef4;
+    font-size: 14px;
+    color: #0f172a;
+  }
+
+  .summary-row:last-child {
+    border-bottom: none;
+  }
+
+  .summary-row strong {
+    font-weight: 800;
+  }
+
+  .summary-row.total {
+    background: #f3f7fb;
+    color: #314f72;
+    font-size: 17px;
+    font-weight: 800;
+  }
+
+  .terms {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid #d7e0e9;
+  }
+
+  .terms-title {
+    margin: 0 0 10px 0;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #314f72;
+  }
+
+  .terms ul {
+    margin: 0;
+    padding-left: 18px;
+    color: #475569;
+  }
+
+  .terms li {
+    margin: 8px 0;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .signature-section {
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px solid #d7e0e9;
+}
+
+.signature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 28px;
+}
+
+.signature-box {
+  min-width: 0;
+}
+
+.signature-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 30px;
+}
+
+.signature-line {
+  border-bottom: 1.5px solid #64748b;
+  height: 18px;
+}
+
+  .footer {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #d7e0e9;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 12px;
+    color: #64748b;
+  }
+
+  .footer strong {
+    color: #0f172a;
+  }
+
+ @media print {
+  html,
+  body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #1f2937 !important;
+  }
+
+  body {
+    font-size: 11px !important;
+    line-height: 1.22 !important;
+  }
+
+  .sheet {
+    width: 194mm !important;
+    max-width: 194mm !important;
+    min-height: 281mm !important;
+    margin: 0 auto !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .header {
+    background: #ffffff !important;
+    color: #274863 !important;
+    padding: 4mm 6mm 2mm 6mm !important;
+  }
+
+  .header-top {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 6mm !important;
+  }
+
+  .brand {
+    display: flex !important;
+    align-items: flex-start !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .offer-logo {
+    width: 72mm !important;
+    max-width: 72mm !important;
+    height: auto !important;
+    display: block !important;
+    background: #ffffff !important;
+    border-radius: 8px !important;
+    padding: 2.5mm !important;
+  }
+
+  .offer-meta {
+    display: block !important;
+    flex: 0 0 52mm !important;
+    width: 52mm !important;
+    min-width: 52mm !important;
+    background: #f6f9fc !important;
+    border: 1px solid #dbe3ec !important;
+    border-radius: 10px !important;
+    padding: 4mm 5mm !important;
+    color: #274863 !important;
+    margin-left: auto !important;
+  }
+
+  .offer-meta-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 6mm !important;
+    padding: 1.2mm 0 !important;
+  }
+
+  .offer-meta-label,
+  .offer-meta-value {
+    color: #274863 !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+  }
+
+  .content {
+    padding: 4mm 6mm 4mm 6mm !important;
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .info-grid {
+    display: grid !important;
+    gap: 3mm !important;
+    margin-bottom: 3mm !important;
+  }
+
+  .info-grid-single {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+
+  .customer-card {
+    width: 100% !important;
+    max-width: none !important;
+    display: block !important;
+  }
+
+  .customer-inline-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px 18px !important;
+    width: 100% !important;
+  }
+
+  .field-inline {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    min-width: 0 !important;
+  }
+
+  .label-inline {
+    min-width: 62px !important;
+    font-weight: 700 !important;
+    font-size: 11px !important;
+    color: #0f172a !important;
+    white-space: nowrap !important;
+  }
+
+  .line-inline {
+    flex: 1 !important;
+    min-width: 0 !important;
+    border-bottom: 1px solid #64748b !important;
+    height: 12px !important;
+  }
+
+  .card {
+    border: 1px solid #dbe3ec !important;
+    border-radius: 10px !important;
+    padding: 4mm !important;
+    background: #ffffff !important;
+    page-break-inside: avoid !important;
+  }
+
+  .card-title {
+    margin: 0 0 2.5mm 0 !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.06em !important;
+    color: #407298 !important;
+  }
+
+  .table-wrap {
+    border: 1px solid #dbe3ec !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    background: #ffffff !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 3mm !important;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  thead th {
+    background: #eef3f8 !important;
+    color: #314f72 !important;
+    padding: 6px 14px !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    text-align: left !important;
+    border-bottom: 1px solid #d7e0e9 !important;
+  }
+
+  tbody td {
+    padding: 6px 14px !important;
+    font-size: 16px !important;
+    color: #0f172a !important;
+    border-bottom: 1px solid #e9eef4 !important;
+    vertical-align: top !important;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none !important;
+  }
+
+  .col-num {
+    width: 10mm !important;
+    font-weight: 800 !important;
+    color: #475569 !important;
+  }
+
+  .col-desc {
+    font-weight: 600 !important;
+  }
+
+  .offer-meta-line {
+  width: 26mm !important;
+  height: 10px !important;
+  border-bottom: 1px solid #64748b !important;
+}
+
+  .col-price {
+    width: 34mm !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+    font-weight: 800 !important;
+  }
+
+  .summary {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 8mm !important;
+    margin-top: 2mm !important;
+  }
+
+  .summary-left {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    padding-top: 2px !important;
+  }
+
+  .summary-line {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    font-size: 11px !important;
+    color: #0f172a !important;
+  }
+
+  .summary-line span:first-child {
+    min-width: 90px !important;
+    font-weight: 600 !important;
+  }
+
+  .line-fill {
+    flex: 1 !important;
+    border-bottom: 1px solid #64748b !important;
+    height: 10px !important;
+  }
+
+  .summary-box {
+    width: 320px !important;
+    min-width: 54mm !important;
+    background: #ffffff !important;
+  }
+
+  .summary-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 4mm !important;
+    padding: 4px 10px !important;
+    border-bottom: 1px solid #edf2f7 !important;
+    font-size: 10px !important;
+    color: #0f172a !important;
+  }
+
+  .summary-row:last-child {
+    border-bottom: none !important;
+  }
+
+  .summary-row strong {
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+  }
+
+  .summary-row.total {
+    background: #f4f7fa !important;
+    color: #274863 !important;
+    font-size: 18px !important;
+    font-weight: 800 !important;
+  }
+
+  .bottom-fixed {
+    margin-top: auto !important;
+    padding-top: 3mm !important;
+  }
+
+  .signature-section {
+    margin-top: 0 !important;
+    padding-top: 3mm !important;
+    border-top: 1px solid #dbe3ec !important;
+    page-break-inside: avoid !important;
+  }
+
+  .signature-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4mm 6mm !important;
+  }
+
+  .signature-box {
+    min-width: 0 !important;
+  }
+
+  .signature-label {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #274863 !important;
+    margin-bottom: 6mm !important;
+  }
+
+  .signature-line {
+    border-bottom: 1px solid #64748b !important;
+    height: 4mm !important;
+  }
+
+  .terms {
+    margin-top: 3mm !important;
+    padding-top: 3mm !important;
+    border-top: 1px solid #dbe3ec !important;
+    page-break-inside: avoid !important;
+  }
+
+  .terms-title {
+    margin: 0 0 2mm 0 !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.06em !important;
+    color: #274863 !important;
+  }
+
+  .terms ul {
+    margin: 0 !important;
+    padding-left: 5mm !important;
+  }
+
+  .terms li {
+    margin: 0.8mm 0 !important;
+    font-size: 8.7px !important;
+    line-height: 1.15 !important;
+    color: #475569 !important;
+  }
+
+  .footer {
+    margin-top: 3mm !important;
+    padding-top: 2mm !important;
+    border-top: 1px solid #dbe3ec !important;
+    color: #64748b !important;
+    font-size: 8px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 4mm !important;
+    page-break-inside: avoid !important;
+  }
+
+  .footer strong {
+    color: #0f172a !important;
+  }
+}
+</style>
+      </head>
+      <body>
+        <div class="sheet">
+          <div class="header">
+            <div class="header-top">
+              <div class="brand">
+                ${logoHtml}
               </div>
-            </div>
-
-            <div class="content">
-              <div class="intro">
-                <h2>Offerte</h2>
-                <p>Bedankt voor uw interesse. Hieronder vindt u een overzicht van de geselecteerde configuratie en bijhorende opties.</p>
-              </div>
-
-              <div class="info-grid">
-                <div class="card">
-                  <div class="card-title">Klantgegevens</div>
-                  <div class="card-line"><strong>Naam:</strong> __________________________________________</div>
-                  <div class="card-line"><strong>Adres:</strong> __________________________________________</div>
-                  <div class="card-line"><strong>Plaats:</strong> __________________________________________</div>
-                  <div class="card-line"><strong>Telefoon:</strong> __________________________________________</div>
+              <div class="offer-meta">
+                <div class="offer-meta-row">
+                  <div class="offer-meta-label">Datum</div>
+                  <div class="offer-meta-value">${formatDateBelgium(today)}</div>
                 </div>
-
-                <div class="card">
-                  <div class="card-title">Leveringsgegevens</div>
-                  <div class="card-line"><strong>Firma:</strong> ${escapeHtml(COMPANY_NAME || "—")}</div>
-                  <div class="card-line"><strong>Producttype:</strong> ${productTypeHtml}</div>
-                  <div class="card-line"><strong>Product:</strong> ${productTitleHtml}</div>
+                <div class="offer-meta-row">
+                  <div class="offer-meta-label">Geldig tot</div>
+                  <div class="offer-meta-value offer-meta-line"></div>
                 </div>
-              </div>
-
-              <div class="product-highlight">
-                <div>
-                  <div class="product-highlight-label">Geselecteerd product</div>
-                  <h3 class="product-highlight-title">${productTitleHtml}</h3>
-                </div>
-                <div class="product-highlight-price">
-                  <small>Totaal offertebedrag</small>
-                  <strong>${euro(current.total)}</strong>
-                </div>
-              </div>
-
-              <div class="table-wrap">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Omschrijving</th>
-                      <th style="text-align:right">Prijs</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    ${rows}
-                  </tbody>
-                </table>
-              </div>
-
-              <div class="summary">
-                <div class="summary-box">
-                  <div class="summary-row">
-                    <span>Subtotaal</span>
-                    <strong>${euro(current.total)}</strong>
-                  </div>
-                  <div class="summary-row">
-                    <span>21% BTW</span>
-                    <strong>Incl.</strong>
-                  </div>
-                  <div class="summary-row total">
-                    <span>Totaal</span>
-                    <strong>${euro(current.total)}</strong>
-                  </div>
-                </div>
-              </div>
-
-              <div class="terms">
-                <h4 class="terms-title">Opmerkingen</h4>
-                <ul>
-                  <li>Deze offerte is geldig tot en met ${formatDateBelgium(validUntil)}.</li>
-                  <li>Prijzen zijn in euro en tenzij anders vermeld inclusief 21% btw.</li>
-                  <li>Levering en plaatsing volgens afgesproken voorwaarden (goede doorgang & hulp).</li>
-                  <li>Kraankosten exclusief.</li>
-                </ul>
-              </div>
-
-              <div class="footer">
-                <div>Met vriendelijke groeten,<br><strong>Team Sunspa Brugge/Lievegem</strong></div>
-                <div>Dit document werd automatisch opgesteld op ${formatDateBelgium(today)}.</div>
               </div>
             </div>
           </div>
 
-          <script>
-            window.onload = function () {
-              setTimeout(function () {
-                window.print();
-              }, 250);
-            };
-          <\/script>
-        </body>
-      </html>
-    `);
+          <div class="content">
+
+      <div class="info-grid info-grid-single">
+  <div class="card customer-card">
+    <div class="card-title">Klantgegevens</div>
+
+    <div class="customer-inline-grid">
+      <div class="field-inline">
+        <span class="label-inline">Naam</span>
+        <span class="line-inline"></span>
+      </div>
+
+      <div class="field-inline">
+        <span class="label-inline">Telefoon</span>
+        <span class="line-inline"></span>
+      </div>
+
+      <div class="field-inline">
+        <span class="label-inline">Adres</span>
+        <span class="line-inline"></span>
+      </div>
+
+      <div class="field-inline">
+        <span class="label-inline">Telefoon 2</span>
+        <span class="line-inline"></span>
+      </div>
+
+      <div class="field-inline">
+        <span class="label-inline">Plaats</span>
+        <span class="line-inline"></span>
+      </div>
+
+      <div class="field-inline">
+        <span class="label-inline">Email</span>
+        <span class="line-inline"></span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Omschrijving</th>
+                    <th style="text-align:right">Prijs</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${rows}
+                </tbody>
+              </table>
+            </div>
+
+            <div class="summary">
+  <div class="summary-left">
+    <div class="summary-line">
+      <span>Voorschot</span>
+      <span class="line-fill"></span>
+    </div>
+
+    <div class="summary-line">
+      <span>Leveringstermijn</span>
+      <span class="line-fill"></span>
+    </div>
+  </div>
+  
+  <div class="summary-box">
+    <div class="summary-row">
+      <span>Subtotaal excl. btw</span>
+      <strong>${euro(subtotal)}</strong>
+    </div>
+    <div class="summary-row">
+      <span>21% btw</span>
+      <strong>${euro(btw)}</strong>
+    </div>
+    <div class="summary-row total">
+      <span>Totaal</span>
+      <strong>${euro(totalIncl)}</strong>
+    </div>
+  </div>
+</div>
+
+
+<div class="bottom-fixed">
+            <div class="signature-section">
+  <div class="signature-grid">
+    <div class="signature-box">
+      <div class="signature-label">Naam koper</div>
+      <div class="signature-line"></div>
+    </div>
+
+    <div class="signature-box">
+      <div class="signature-label">Handtekening koper</div>
+      <div class="signature-line"></div>
+    </div>
+
+    <div class="signature-box">
+      <div class="signature-label">Naam verkoper</div>
+      <div class="signature-line"></div>
+    </div>
+
+    <div class="signature-box">
+      <div class="signature-label">Handtekening verkoper</div>
+      <div class="signature-line"></div>
+    </div>
+  </div>
+</div>
+
+            <div class="terms">
+  <h4 class="terms-title">Opmerkingen</h4>
+  <ul>
+    ${termsHtml}
+  </ul>
+</div>
+            <div class="footer">
+              <div>Met vriendelijke groeten,<br><strong>Team Sunspa Brugge/Lievegem</strong></div>
+              <div>Wellnessmarkt BV | BE 0843 104 796 | BE75 3800 1777 8151<br>
+              Sunspa Benelux | 0483 39 99 67 | sunspabrugge@gmail.com/gentsunspa@gmail.com</div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          window.onload = function () {
+            setTimeout(function () {
+              window.print();
+            }, 250);
+          };
+        </script>
+      </body>
+    </html>
+  `);
     win.document.close();
   }
 
