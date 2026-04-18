@@ -94,7 +94,7 @@ function titleNorm(title) {
 
 function isRoundSpaWithoutCoverlift(product) {
   const title = titleNorm(product?.title);
-  return title === 'marrakech' || title === 'python';
+  return title.includes('marrakech') || title.includes('python');
 }
 
 function isSwimspa(type) {
