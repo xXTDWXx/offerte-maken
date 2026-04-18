@@ -1302,7 +1302,7 @@ function printOfferte() {
   }
 
   .summary-box {
-    width: 54mm !important;
+    width: 320px !important;
     min-width: 54mm !important;
     background: #ffffff !important;
   }
