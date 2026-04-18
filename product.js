@@ -1233,7 +1233,7 @@ function printOfferte() {
 
   tbody td {
     padding: 6px 14px !important;
-    font-size: 11px !important;
+    font-size: 16px !important;
     color: #0f172a !important;
     border-bottom: 1px solid #e9eef4 !important;
     vertical-align: top !important;
@@ -1329,7 +1329,7 @@ function printOfferte() {
   .summary-row.total {
     background: #f4f7fa !important;
     color: #274863 !important;
-    font-size: 12px !important;
+    font-size: 18px !important;
     font-weight: 800 !important;
   }
 
