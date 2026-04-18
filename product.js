@@ -1102,8 +1102,6 @@ function printOfferte() {
     height: auto !important;
     display: block !important;
     background: #ffffff !important;
-    border: 1px solid #dbe3ec !important;
-    border-radius: 8px !important;
     padding: 2.5mm !important;
   }
 
