@@ -1,48 +1,172 @@
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
 
-const elGrid = document.getElementById('grid');
-const tpl = document.getElementById('cardTpl');
-const resultMeta = document.getElementById('resultMeta');
-const errorBox = document.getElementById('errorBox');
-const errorText = document.getElementById('errorText');
-
-const spaceSelect = document.getElementById('spaceSelect');
-const brandFilter = document.getElementById('brandFilter');
-const sortFilter = document.getElementById('sort');
-const ligplaatsenFilter = document.getElementById('filterLigplaatsen');
-const btnClear = document.getElementById('btnClear');
-const activeChips = document.getElementById('activeChips');
-
-let products = [];
-let filtered = [];
-
-const SPACE_OPTIONS = {
-  '160x215': { lengthCm: 215, widthCm: 160, label: '160 x 215 cm' },
-  '205x205': { lengthCm: 205, widthCm: 205, label: '205 x 205 cm' },
-  '215x215': { lengthCm: 215, widthCm: 215, label: '215 x 215 cm' },
-  '230x230': { lengthCm: 230, widthCm: 230, label: '230 x 230 cm' },
-  '250x250': { lengthCm: 250, widthCm: 250, label: '250 x 250 cm' },
-  '300x300': { lengthCm: 300, widthCm: 300, label: '300 x 300 cm' }
+const state = {
+  products: [],
+  filtered: [],
+  selections: {
+    type: '',
+    persons: '',
+    size: '',
+    budget: '',
+    extra: ''
+  }
 };
 
-function euro(n) {
-  const x = Number(n || 0);
-  try {
-    return new Intl.NumberFormat('nl-BE', {
-      style: 'currency',
-      currency: 'EUR'
-    }).format(x);
-  } catch {
-    return '€' + x.toFixed(2);
+const TYPE_OPTIONS = [
+  {
+    value: 'spa',
+    label: 'Een jacuzzi',
+    description: 'Massage, wellness en comfort voor thuis.',
+    image: 'https://www.sunspabenelux.be/wp-content/uploads/2022/05/sunspa-marbella-2.jpg'
+  },
+  {
+    value: 'barrelsauna',
+    label: 'Barrel sauna',
+    description: 'Compacte buitensauna met warme natuurlijke uitstraling.',
+    image: 'https://www.sunspabenelux.be/wp-content/uploads/2022/07/barrelsauna-tr210.jpg'
+  },
+  {
+    value: 'Infrarood',
+    label: 'Infrarood sauna',
+    description: 'Snelle opwarming en ontspanning binnenshuis.',
+    image: 'https://www.sunspabenelux.be/wp-content/uploads/2022/07/i120-infrarood-sauna.webp'
+  },
+  {
+    value: 'zwemspa',
+    label: 'Zwemspa',
+    description: 'Zwemmen, trainen en ontspannen in één product.',
+    image: 'https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-pacific.jpg'
   }
+];
+
+const PERSON_OPTIONS = {
+  spa: [
+    { value: '1-3', label: '1 tot 3 personen' },
+    { value: '4-5', label: '4 tot 5 personen' },
+    { value: '6+', label: '6 personen of meer' }
+  ],
+  barrelsauna: [
+    { value: '1-2', label: '1 tot 2 personen' },
+    { value: '3-4', label: '3 tot 4 personen' },
+    { value: '5+', label: '5 personen of meer' }
+  ],
+  Infrarood: [
+    { value: '1', label: '1 persoon' },
+    { value: '2', label: '2 personen' },
+    { value: '3+', label: '3 personen of meer' }
+  ],
+  zwemspa: [
+    { value: '1-4', label: '1 tot 4 personen' },
+    { value: '5-9', label: '5 tot 9 personen' },
+    { value: '10+', label: '10 personen of meer' }
+  ]
+};
+
+const SIZE_OPTIONS = {
+  spa: [
+    { value: 'compact', label: 'Compact', description: 'Tot en met 200 cm' },
+    { value: 'medium', label: 'Medium', description: '200 tot 220 cm' },
+    { value: 'large', label: 'Groot', description: '220 tot 240 cm' },
+    { value: 'xl', label: 'XL', description: '240 cm of groter' }
+  ],
+  barrelsauna: [
+    { value: 'compact', label: 'Compact', description: 'Tot en met 200 cm lengte' },
+    { value: 'medium', label: 'Medium', description: '200 tot 240 cm lengte' },
+    { value: 'large', label: 'Groot', description: '240 tot 300 cm lengte' },
+    { value: 'xl', label: 'XL', description: '300 cm of langer' }
+  ],
+  Infrarood: [
+    { value: 'compact', label: 'Compact', description: 'Tot en met 120 cm breedte/lengte' },
+    { value: 'medium', label: 'Medium', description: '120 tot 160 cm' },
+    { value: 'large', label: 'Groot', description: '160 tot 200 cm' },
+    { value: 'xl', label: 'XL', description: '200 cm of groter' }
+  ],
+  zwemspa: [
+    { value: 'medium', label: 'Medium', description: 'Tot en met 400 cm lengte' },
+    { value: 'large', label: 'Groot', description: '400 tot 500 cm lengte' },
+    { value: 'xl', label: 'XL', description: '500 tot 650 cm lengte' },
+    { value: 'xxl', label: 'XXL', description: '650 cm of langer' }
+  ]
+};
+
+const BUDGET_OPTIONS = {
+  spa: [
+    { value: '4000-6000', label: '€ 4.000 – € 6.000', min: 4000, max: 6000 },
+    { value: '6000-8000', label: '€ 6.000 – € 8.000', min: 6000, max: 8000 },
+    { value: '8000-10000', label: '€ 8.000 – € 10.000', min: 8000, max: 10000 },
+    { value: '10000-15000', label: '€ 10.000 – € 15.000', min: 10000, max: 15000 },
+    { value: '15000+', label: '€ 15.000+', min: 15000, max: Infinity }
+  ],
+  barrelsauna: [
+    { value: '4000-6000', label: '€ 4.000 – € 6.000', min: 4000, max: 6000 },
+    { value: '6000-8000', label: '€ 6.000 – € 8.000', min: 6000, max: 8000 },
+    { value: '8000-10000', label: '€ 8.000 – € 10.000', min: 8000, max: 10000 },
+    { value: '10000-15000', label: '€ 10.000 – € 15.000', min: 10000, max: 15000 },
+    { value: '15000+', label: '€ 15.000+', min: 15000, max: Infinity }
+  ],
+  Infrarood: [
+    { value: '1000-3000', label: '€ 1.000 – € 3.000', min: 1000, max: 3000 },
+    { value: '3000-5000', label: '€ 3.000 – € 5.000', min: 3000, max: 5000 },
+    { value: '5000+', label: '€ 5.000+', min: 5000, max: Infinity }
+  ],
+  zwemspa: [
+    { value: '10000-15000', label: '€ 10.000 – € 15.000', min: 10000, max: 15000 },
+    { value: '15000-20000', label: '€ 15.000 – € 20.000', min: 15000, max: 20000 },
+    { value: '20000-30000', label: '€ 20.000 – € 30.000', min: 20000, max: 30000 },
+    { value: '30000+', label: '€ 30.000+', min: 30000, max: Infinity }
+  ]
+};
+
+const EXTRA_OPTIONS = {
+  spa: [
+    { value: 'any', label: 'Geen voorkeur', description: 'Toon alle passende jacuzzi’s.' },
+    { value: '1', label: '1 ligplaats', description: 'Met één ligplaats.' },
+    { value: '2', label: '2 ligplaatsen', description: 'Met twee ligplaatsen.' }
+  ],
+  barrelsauna: [
+    { value: 'any', label: 'Geen voorkeur', description: 'Toon alle passende barrel sauna’s.' },
+    { value: 'closed', label: 'Dicht achteraan', description: 'Volledig gesloten achterzijde.' },
+    { value: 'halfglass', label: 'Half glas achteraan', description: 'Meer lichtinval en open gevoel.' }
+  ],
+  Infrarood: [
+    { value: 'any', label: 'Geen extra voorkeur', description: 'Toon alle passende infrarood sauna’s.' }
+  ],
+  zwemspa: [
+    { value: 'any', label: 'Geen extra voorkeur', description: 'Toon alle passende zwemspa’s.' }
+  ]
+};
+
+const elements = {
+  typeOptions: document.getElementById('typeOptions'),
+  personOptions: document.getElementById('personOptions'),
+  sizeOptions: document.getElementById('sizeOptions'),
+  budgetOptions: document.getElementById('budgetOptions'),
+  extraOptions: document.getElementById('extraOptions'),
+  selectionSummary: document.getElementById('selectionSummary'),
+  progressItems: [...document.querySelectorAll('.progress-item')],
+  steps: {
+    1: document.getElementById('step1'),
+    2: document.getElementById('step2'),
+    3: document.getElementById('step3'),
+    4: document.getElementById('step4'),
+    5: document.getElementById('step5')
+  },
+  step5Description: document.getElementById('step5Description'),
+  resultMeta: document.getElementById('resultMeta'),
+  resultGrid: document.getElementById('resultGrid'),
+  emptyState: document.getElementById('emptyState'),
+  errorBox: document.getElementById('errorBox'),
+  errorText: document.getElementById('errorText'),
+  resetWizard: document.getElementById('resetWizard'),
+  resultCardTemplate: document.getElementById('resultCardTemplate')
+};
+
+function normalize(value) {
+  return String(value || '').toLowerCase().trim();
 }
 
-function normalize(s) {
-  return (s ?? '').toString().toLowerCase().trim();
-}
-
-function escapeHtml(s) {
-  return (s ?? '').toString()
+function escapeHtml(value) {
+  return String(value || '')
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
@@ -50,373 +174,364 @@ function escapeHtml(s) {
     .replaceAll("'", '&#039;');
 }
 
-function getSpecValue(p, label) {
-  const specs = p?.specs;
-
-  if (!specs) return '';
-
-  if (Array.isArray(specs)) {
-    const found = specs.find(s => normalize(s?.label) === normalize(label));
-    return found?.value || '';
-  }
-
-  if (typeof specs === 'object') {
-    const key = Object.keys(specs).find(k => normalize(k) === normalize(label));
-    return key ? specs[key] : '';
-  }
-
-  return '';
+function euro(value) {
+  return new Intl.NumberFormat('nl-BE', {
+    style: 'currency',
+    currency: 'EUR',
+    maximumFractionDigits: 0
+  }).format(Number(value || 0));
 }
 
-function getMerk(p) {
-  return p?.brand || p?.merk || getSpecValue(p, 'Merk') || '';
+function getSpecValue(product, label) {
+  const specs = Array.isArray(product?.specs) ? product.specs : [];
+  const match = specs.find(spec => normalize(spec?.label) === normalize(label));
+  return match?.value || '';
 }
 
-function getShowrooms(p) {
-  const value = p?.showroom || p?.showrooms || getSpecValue(p, 'Showroom') || '';
-
-  if (Array.isArray(value)) {
-    return value.filter(Boolean);
-  }
-
-  if (typeof value === 'string') {
-    return value
-      .split(',')
-      .map(s => s.trim())
-      .filter(Boolean);
-  }
-
-  return [];
+function parseNumbers(text) {
+  return [...String(text || '').matchAll(/\d+(?:[.,]\d+)?/g)]
+    .map(match => Number(match[0].replace(',', '.')))
+    .filter(Number.isFinite);
 }
 
-function getProductUrl(p) {
-  const id = encodeURIComponent(p?.id || '');
-  return `product.html?id=${id}`;
-}
-
-function parseDimensionsToCm(raw) {
-  const text = normalize(raw)
-    .replaceAll(',', '.')
-    .replace(/\s+/g, ' ');
-
-  if (!text) return null;
-
-  const matches = [...text.matchAll(/(\d+(?:\.\d+)?)/g)].map(m => Number(m[1]));
-  if (matches.length < 2) return null;
-
-  let [a, b] = matches;
-
-  const usesMeters = text.includes(' m') || text.endsWith('m') || text.includes('meter');
-  const looksLikeMeters = a <= 10 && b <= 10;
-
-  if (usesMeters || looksLikeMeters) {
-    a = a * 1;
-    b = b * 1;
-  }
-
-  a = Math.round(a);
-  b = Math.round(b);
-
-  if (!a || !b) return null;
-
+function getDimensions(product) {
+  const raw = getSpecValue(product, 'Afmeting');
+  const normalized = normalize(raw).replace('ø', ' x ').replaceAll('×', ' x ');
+  const nums = parseNumbers(normalized);
+  if (nums.length < 2) return null;
   return {
-    lengthCm: Math.max(a, b),
-    widthCm: Math.min(a, b),
+    longest: Math.max(nums[0], nums[1]),
+    shortest: Math.min(nums[0], nums[1]),
     raw
   };
 }
 
-function getProductDimensions(p) {
-  const fromSpec = getSpecValue(p, 'Afmeting');
-  return parseDimensionsToCm(fromSpec);
+function getPersonCount(product) {
+  const source = getSpecValue(product, 'Aantal personen') || getSpecValue(product, 'Zitplaatsen');
+  const nums = parseNumbers(source);
+  return nums.length ? nums[nums.length - 1] : 0;
 }
 
 function getLigplaatsen(product) {
-  const spec = (product.specs || []).find(
-    s => normalize(s?.label).includes('ligplaatsen')
-  );
-
-  if (!spec) return 0;
-
-  const match = String(spec.value || '').match(/\d+/);
-  return match ? Number(match[0]) : 0;
+  const value = getSpecValue(product, 'Ligplaatsen');
+  const nums = parseNumbers(value);
+  return nums.length ? nums[0] : 0;
 }
 
-function getSelectedSpace() {
-  const key = spaceSelect?.value || '';
-  return SPACE_OPTIONS[key] || null;
+function getBudgetOption(type, key) {
+  return (BUDGET_OPTIONS[type] || []).find(option => option.value === key) || null;
 }
 
-function fitsInSpace(productDims, selectedSpace) {
-  if (!productDims || !selectedSpace) return false;
-
-  return (
-    productDims.lengthCm <= selectedSpace.lengthCm &&
-    productDims.widthCm <= selectedSpace.widthCm
-  );
+function fitsBudget(product, option) {
+  const price = Number(product.price || 0);
+  if (!option) return true;
+  return price >= option.min && price < option.max;
 }
 
-function getUnusedSpaceScore(productDims, selectedSpace) {
-  if (!productDims || !selectedSpace) return Number.MAX_SAFE_INTEGER;
-
-  return (
-    (selectedSpace.lengthCm - productDims.lengthCm) +
-    (selectedSpace.widthCm - productDims.widthCm)
-  );
+function fitsPersons(product, type, selection) {
+  const count = getPersonCount(product);
+  if (!selection) return true;
+  if (selection === '1') return count === 1;
+  if (selection === '2') return count === 2;
+  if (selection === '3+') return count >= 3;
+  if (selection === '1-2') return count >= 1 && count <= 2;
+  if (selection === '3-4') return count >= 3 && count <= 4;
+  if (selection === '5+') return count >= 5;
+  if (selection === '1-3') return count >= 1 && count <= 3;
+  if (selection === '4-5') return count >= 4 && count <= 5;
+  if (selection === '6+') return count >= 6;
+  if (selection === '1-4') return count >= 1 && count <= 4;
+  if (selection === '5-9') return count >= 5 && count <= 9;
+  if (selection === '10+') return count >= 10;
+  return true;
 }
 
-function sortProducts(items, selectedSpace) {
-  const sort = sortFilter?.value || 'fitBest';
+function fitsSize(product, type, selection) {
+  const dims = getDimensions(product);
+  if (!selection || !dims) return true;
+  const value = dims.longest;
 
-  if (sort === 'priceAsc') {
-    items.sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
-  } else if (sort === 'priceDesc') {
-    items.sort((a, b) => Number(b.price || 0) - Number(a.price || 0));
-  } else if (sort === 'titleAsc') {
-    items.sort((a, b) => normalize(a.title).localeCompare(normalize(b.title)));
-  } else if (sort === 'sizeAsc') {
-    items.sort((a, b) => {
-      const da = getProductDimensions(a);
-      const db = getProductDimensions(b);
-      const areaA = da ? da.lengthCm * da.widthCm : Number.MAX_SAFE_INTEGER;
-      const areaB = db ? db.lengthCm * db.widthCm : Number.MAX_SAFE_INTEGER;
-      return areaA - areaB;
-    });
-  } else if (sort === 'sizeDesc') {
-    items.sort((a, b) => {
-      const da = getProductDimensions(a);
-      const db = getProductDimensions(b);
-      const areaA = da ? da.lengthCm * da.widthCm : -1;
-      const areaB = db ? db.lengthCm * db.widthCm : -1;
-      return areaB - areaA;
-    });
-  } else {
-    items.sort((a, b) => {
-      const da = getProductDimensions(a);
-      const db = getProductDimensions(b);
-      return getUnusedSpaceScore(da, selectedSpace) - getUnusedSpaceScore(db, selectedSpace);
-    });
+  if (type === 'zwemspa') {
+    if (selection === 'medium') return value <= 400;
+    if (selection === 'large') return value > 400 && value <= 500;
+    if (selection === 'xl') return value > 500 && value <= 650;
+    if (selection === 'xxl') return value > 650;
+    return true;
   }
 
-  return items;
+  if (selection === 'compact') return value <= 200;
+  if (selection === 'medium') return value > 200 && value <= 220;
+  if (selection === 'large') return value > 220 && value <= 240;
+  if (selection === 'xl') return value > 240;
+  return true;
 }
 
-function topSpecs(p, dims) {
-  const lines = [];
-
-  if (getMerk(p)) lines.push(`Merk: ${escapeHtml(getMerk(p))}`);
-  if (getSpecValue(p, 'Afmeting')) lines.push(`Afmeting: ${escapeHtml(getSpecValue(p, 'Afmeting'))}`);
-  if (getSpecValue(p, 'Aantal personen')) lines.push(`Aantal personen: ${escapeHtml(getSpecValue(p, 'Aantal personen'))}`);
-  if (getSpecValue(p, 'Ligplaatsen')) lines.push(`Ligplaatsen: ${escapeHtml(getSpecValue(p, 'Ligplaatsen'))}`);
-  if (getSpecValue(p, 'Aantal jets')) lines.push(`Aantal jets: ${escapeHtml(getSpecValue(p, 'Aantal jets'))}`);
-  if (getSpecValue(p, 'Jet type')) lines.push(`Jet type: ${escapeHtml(getSpecValue(p, 'Jet type'))}`);
-
-  if (dims?.lengthCm && dims?.widthCm) {
-    lines.push(`Formaat: ${dims.widthCm} x ${dims.lengthCm} cm`);
+function fitsExtra(product, type, selection) {
+  if (!selection || selection === 'any') return true;
+  if (type === 'spa') {
+    return getLigplaatsen(product) === Number(selection);
   }
-
-  return lines.slice(0, 5).join('<br>');
-}
-
-async function loadProducts() {
-  const res = await fetch(PRODUCTS_URL);
-
-  if (!res.ok) {
-    throw new Error(`Kan products.json niet laden (${res.status})`);
-  }
-
-  const json = await res.json();
-  const items = Array.isArray(json) ? json : (json.products || []);
-  return Array.isArray(items) ? items : [];
-}
-
-function updateChips(selectedSpace) {
-  if (!activeChips) return;
-
-  const chips = [];
-  const brand = brandFilter?.value || '';
-  const ligplaatsen = ligplaatsenFilter?.value || '';
-  const sort = sortFilter?.value || 'fitBest';
-
-  if (selectedSpace) {
-    chips.push(`<span class="chip">Ruimte: ${escapeHtml(selectedSpace.label)}</span>`);
-  }
-
-  if (brand) {
-    chips.push(`<span class="chip">Merk: ${escapeHtml(brand)}</span>`);
-  }
-
-  if (ligplaatsen) {
-    chips.push(`<span class="chip">Ligplaatsen: ${escapeHtml(ligplaatsen)}</span>`);
-  }
-
-  const sortLabels = {
-    fitBest: 'Beste match',
-    priceAsc: 'Prijs laag → hoog',
-    priceDesc: 'Prijs hoog → laag',
-    titleAsc: 'Titel A → Z',
-    sizeAsc: 'Kleinste eerst',
-    sizeDesc: 'Grootste eerst'
-  };
-
-  chips.push(`<span class="chip">Sortering: ${escapeHtml(sortLabels[sort] || sort)}</span>`);
-
-  activeChips.innerHTML = chips.join('');
-}
-
-function updateMeta() {
-  if (!resultMeta) return;
-  resultMeta.textContent = `${filtered.length} spa’s gevonden`;
-}
-
-function renderGrid() {
-  if (!elGrid || !tpl) return;
-
-  elGrid.innerHTML = '';
-
-  if (!spaceSelect?.value) {
-    elGrid.innerHTML = `
-      <div class="panel">
-        <div class="panel-title">Kies eerst een afmeting</div>
-        <div class="small">Selecteer hierboven de beschikbare ruimte om passende spa’s te bekijken.</div>
-      </div>
-    `;
-    return;
-  }
-
-  if (!filtered.length) {
-    elGrid.innerHTML = `
-      <div class="panel">
-        <div class="panel-title">Geen passende spa’s gevonden</div>
-        <div class="small">Kies een grotere afmeting of pas je filters aan.</div>
-      </div>
-    `;
-    return;
-  }
-
-  const frag = document.createDocumentFragment();
-
-  for (const p of filtered) {
-    const dims = getProductDimensions(p);
-    const node = tpl.content.cloneNode(true);
-
-    const cardLink = node.querySelector('[data-open]');
-    const img = node.querySelector('.card-img');
-    const badge = node.querySelector('[data-badge]');
-    const showroomBadge = node.querySelector('[data-showroom]');
-    const title = node.querySelector('[data-title]');
-    const price = node.querySelector('[data-price]');
-    const specs = node.querySelector('[data-specs]');
-
-    const showrooms = getShowrooms(p);
-
-    if (showroomBadge) {
-      if (showrooms.length) {
-        showroomBadge.textContent = `📍 ${showrooms.join(' • ')}`;
-        showroomBadge.style.display = '';
-      } else {
-        showroomBadge.style.display = 'none';
-      }
+  if (type === 'barrelsauna') {
+    const title = normalize(product.title);
+    const back = normalize(getSpecValue(product, 'Achterzijde Barrel'));
+    if (selection === 'halfglass') {
+      return title.includes('halfglas') || back.includes('half glas');
     }
-
-    if (img) {
-      img.src = p.image || '';
-      img.alt = p.title || 'Product';
-      img.onerror = () => {
-        img.style.display = 'none';
-      };
+    if (selection === 'closed') {
+      return !title.includes('halfglas') && (back.includes('dichte') || back.includes('dicht') || !back.includes('half glas'));
     }
-
-    if (badge) {
-      badge.textContent = dims
-        ? `${dims.widthCm} x ${dims.lengthCm} cm`
-        : (p.type || '').toUpperCase();
-    }
-
-    if (title) title.textContent = p.title || '';
-    if (price) price.textContent = euro(p.price || 0);
-    if (specs) specs.innerHTML = topSpecs(p, dims);
-
-    if (cardLink) {
-      cardLink.addEventListener('click', () => {
-        window.location.href = getProductUrl(p);
-      });
-    }
-
-    frag.appendChild(node);
   }
+  return true;
+}
 
-  elGrid.appendChild(frag);
+function getRelevantProducts() {
+  return state.products.filter(product => normalize(product.type) === normalize(state.selections.type));
+}
+
+function sortResults(items) {
+  return [...items].sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
 }
 
 function filterProducts() {
-  const selectedSpace = getSelectedSpace();
-  const selectedBrand = brandFilter?.value || '';
-  const selectedLigplaatsen = ligplaatsenFilter?.value || '';
+  const type = state.selections.type;
+  const budget = getBudgetOption(type, state.selections.budget);
 
-  if (!selectedSpace) {
-    filtered = [];
-    updateChips(null);
-    updateMeta();
-    renderGrid();
+  const items = getRelevantProducts().filter(product => {
+    return fitsPersons(product, type, state.selections.persons)
+      && fitsSize(product, type, state.selections.size)
+      && fitsBudget(product, budget)
+      && fitsExtra(product, type, state.selections.extra);
+  });
+
+  state.filtered = sortResults(items);
+}
+
+function setStepState(stepNumber, open) {
+  const step = elements.steps[stepNumber];
+  if (!step) return;
+  step.classList.toggle('is-open', open);
+  step.classList.toggle('is-locked', !open);
+}
+
+function updateProgress() {
+  const completed = {
+    1: !!state.selections.type,
+    2: !!state.selections.persons,
+    3: !!state.selections.size,
+    4: !!state.selections.budget,
+    5: !!state.selections.extra
+  };
+
+  elements.progressItems.forEach(item => {
+    const step = Number(item.dataset.step);
+    item.classList.remove('is-active', 'is-complete');
+    if (completed[step]) {
+      item.classList.add('is-complete');
+    }
+  });
+
+  const nextStep = !completed[1] ? 1 : !completed[2] ? 2 : !completed[3] ? 3 : !completed[4] ? 4 : 5;
+  const activeItem = elements.progressItems.find(item => Number(item.dataset.step) === nextStep);
+  activeItem?.classList.add('is-active');
+
+  setStepState(1, true);
+  setStepState(2, completed[1]);
+  setStepState(3, completed[2]);
+  setStepState(4, completed[3]);
+  setStepState(5, completed[4]);
+}
+
+function optionCard(option, group, selectedValue, onClick, variant = 'default') {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = `choice-card ${variant === 'type' ? 'choice-card-type' : ''}`;
+  if (selectedValue === option.value) button.classList.add('is-selected');
+
+  button.innerHTML = `
+    ${option.image ? `<div class="choice-image-wrap"><img src="${option.image}" alt="${escapeHtml(option.label)}" class="choice-image"></div>` : ''}
+    <div class="choice-content-wrap">
+      <div class="choice-title">${escapeHtml(option.label)}</div>
+      ${option.description ? `<div class="choice-description">${escapeHtml(option.description)}</div>` : ''}
+    </div>
+  `;
+
+  button.addEventListener('click', () => onClick(group, option.value));
+  return button;
+}
+
+function renderTypeOptions() {
+  elements.typeOptions.innerHTML = '';
+  TYPE_OPTIONS.forEach(option => {
+    elements.typeOptions.appendChild(optionCard(option, 'type', state.selections.type, handleSelection, 'type'));
+  });
+}
+
+function renderSimpleOptions(target, options, group, selectedValue) {
+  target.innerHTML = '';
+  options.forEach(option => {
+    target.appendChild(optionCard(option, group, selectedValue, handleSelection));
+  });
+}
+
+function renderDynamicSteps() {
+  const type = state.selections.type;
+  renderSimpleOptions(elements.personOptions, PERSON_OPTIONS[type] || [], 'persons', state.selections.persons);
+  renderSimpleOptions(elements.sizeOptions, SIZE_OPTIONS[type] || [], 'size', state.selections.size);
+  renderSimpleOptions(elements.budgetOptions, BUDGET_OPTIONS[type] || [], 'budget', state.selections.budget);
+  renderSimpleOptions(elements.extraOptions, EXTRA_OPTIONS[type] || [], 'extra', state.selections.extra);
+
+  if (type === 'spa') {
+    elements.step5Description.textContent = 'Kies of u één of twee ligplaatsen wenst.';
+  } else if (type === 'barrelsauna') {
+    elements.step5Description.textContent = 'Kies of u een dichte achterzijde of half glas achteraan wenst.';
+  } else {
+    elements.step5Description.textContent = 'Geen verplichte extra voorkeur. U kunt alle passende modellen bekijken.';
+  }
+}
+
+function updateSummary() {
+  const selections = [];
+  const typeLabel = TYPE_OPTIONS.find(option => option.value === state.selections.type)?.label;
+  if (typeLabel) selections.push(['Type', typeLabel]);
+  const personLabel = (PERSON_OPTIONS[state.selections.type] || []).find(option => option.value === state.selections.persons)?.label;
+  if (personLabel) selections.push(['Personen', personLabel]);
+  const sizeLabel = (SIZE_OPTIONS[state.selections.type] || []).find(option => option.value === state.selections.size)?.label;
+  if (sizeLabel) selections.push(['Afmeting', sizeLabel]);
+  const budgetLabel = (BUDGET_OPTIONS[state.selections.type] || []).find(option => option.value === state.selections.budget)?.label;
+  if (budgetLabel) selections.push(['Budget', budgetLabel]);
+  const extraLabel = (EXTRA_OPTIONS[state.selections.type] || []).find(option => option.value === state.selections.extra)?.label;
+  if (extraLabel) selections.push(['Voorkeur', extraLabel]);
+
+  if (!selections.length) {
+    elements.selectionSummary.innerHTML = '<div class="summary-empty">Nog geen keuzes gemaakt.</div>';
     return;
   }
 
-  filtered = products.filter(p => {
-    if (normalize(p.type) !== 'spa') return false;
+  elements.selectionSummary.innerHTML = selections.map(([label, value]) => `
+    <div class="summary-row">
+      <span>${escapeHtml(label)}</span>
+      <strong>${escapeHtml(value)}</strong>
+    </div>
+  `).join('');
+}
 
-    const dims = getProductDimensions(p);
-    if (!dims) return false;
+function renderResults() {
+  elements.resultGrid.innerHTML = '';
+  elements.emptyState.hidden = true;
 
-    const ligplaatsen = getLigplaatsen(p);
+  if (!state.selections.extra) {
+    elements.resultMeta.textContent = 'Maak uw keuzes om uw persoonlijke selectie te zien.';
+    return;
+  }
 
-    const matchBrand =
-      !selectedBrand || normalize(getMerk(p)) === normalize(selectedBrand);
+  filterProducts();
 
-    const matchSize = fitsInSpace(dims, selectedSpace);
+  if (!state.filtered.length) {
+    elements.resultMeta.textContent = 'Er werden geen exacte matches gevonden voor uw selectie.';
+    elements.emptyState.hidden = false;
+    return;
+  }
 
-    const matchLigplaatsen =
-      !selectedLigplaatsen || ligplaatsen === Number(selectedLigplaatsen);
+  elements.resultMeta.textContent = `${state.filtered.length} model${state.filtered.length > 1 ? 'len' : ''} gevonden voor uw selectie.`;
 
-    return matchBrand && matchSize && matchLigplaatsen;
+  const fragment = document.createDocumentFragment();
+  state.filtered.forEach(product => {
+    const node = elements.resultCardTemplate.content.cloneNode(true);
+    const link = node.querySelector('.result-card-link');
+    const img = node.querySelector('.result-image');
+    const badge = node.querySelector('.result-badge');
+    const title = node.querySelector('.result-title');
+    const price = node.querySelector('.result-price');
+    const specs = node.querySelector('.result-spec-list');
+    const dims = getDimensions(product);
+
+    link.href = product.url || `product.html?id=${encodeURIComponent(product.id || '')}`;
+    img.src = product.image || '';
+    img.alt = product.title || '';
+    title.textContent = product.title || '';
+    price.textContent = euro(product.price || 0);
+    badge.textContent = dims?.raw || product.type || '';
+
+    const specLines = [];
+    const persons = getSpecValue(product, 'Aantal personen');
+    const ligplaatsen = getSpecValue(product, 'Ligplaatsen');
+    if (persons) specLines.push(`<span><strong>Personen:</strong> ${escapeHtml(persons)}</span>`);
+    if (ligplaatsen && normalize(state.selections.type) === 'spa') specLines.push(`<span><strong>Ligplaatsen:</strong> ${escapeHtml(ligplaatsen)}</span>`);
+    if (dims?.raw) specLines.push(`<span><strong>Afmeting:</strong> ${escapeHtml(dims.raw)}</span>`);
+    specs.innerHTML = specLines.join('');
+
+    fragment.appendChild(node);
   });
 
-  filtered = sortProducts([...filtered], selectedSpace);
-
-  updateChips(selectedSpace);
-  updateMeta();
-  renderGrid();
+  elements.resultGrid.appendChild(fragment);
 }
 
-function clearFilters() {
-  if (spaceSelect) spaceSelect.value = '';
-  if (brandFilter) brandFilter.value = '';
-  if (ligplaatsenFilter) ligplaatsenFilter.value = '';
-  if (sortFilter) sortFilter.value = 'fitBest';
-  filterProducts();
+function rerender() {
+  renderTypeOptions();
+  if (state.selections.type) renderDynamicSteps();
+  updateSummary();
+  updateProgress();
+  renderResults();
 }
 
-function bindEvents() {
-  spaceSelect?.addEventListener('change', filterProducts);
-  brandFilter?.addEventListener('change', filterProducts);
-  sortFilter?.addEventListener('change', filterProducts);
-  ligplaatsenFilter?.addEventListener('change', filterProducts);
-  btnClear?.addEventListener('click', clearFilters);
+function resetFrom(group) {
+  if (group === 'type') {
+    state.selections = { type: state.selections.type, persons: '', size: '', budget: '', extra: '' };
+  }
+  if (group === 'persons') {
+    state.selections.size = '';
+    state.selections.budget = '';
+    state.selections.extra = '';
+  }
+  if (group === 'size') {
+    state.selections.budget = '';
+    state.selections.extra = '';
+  }
+  if (group === 'budget') {
+    state.selections.extra = '';
+  }
 }
 
-function showError(msg) {
-  if (!errorBox || !errorText) return;
-  errorBox.style.display = '';
-  errorText.textContent = msg;
+function handleSelection(group, value) {
+  if (group === 'type' && state.selections.type !== value) {
+    state.selections.type = value;
+    resetFrom('type');
+  } else {
+    state.selections[group] = value;
+    resetFrom(group);
+    state.selections[group] = value;
+  }
+  rerender();
+}
+
+function resetWizard() {
+  state.selections = { type: '', persons: '', size: '', budget: '', extra: '' };
+  elements.personOptions.innerHTML = '';
+  elements.sizeOptions.innerHTML = '';
+  elements.budgetOptions.innerHTML = '';
+  elements.extraOptions.innerHTML = '';
+  rerender();
+}
+
+async function loadProducts() {
+  const response = await fetch(PRODUCTS_URL);
+  if (!response.ok) throw new Error(`Kan products.json niet laden (${response.status})`);
+  const data = await response.json();
+  return Array.isArray(data) ? data : (Array.isArray(data.products) ? data.products : []);
+}
+
+function showError(message) {
+  elements.errorBox.hidden = false;
+  elements.errorText.textContent = message;
 }
 
 async function init() {
-  products = await loadProducts();
-  bindEvents();
-  filterProducts();
+  state.products = await loadProducts();
+  elements.resetWizard.addEventListener('click', resetWizard);
+  rerender();
 }
 
-init().catch(e => {
-  console.error(e);
-  showError(String(e.message || e));
+init().catch(error => {
+  console.error(error);
+  showError(String(error.message || error));
 });
