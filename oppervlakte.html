@@ -56,21 +56,24 @@
             <div class="wizard-step-card compact-step-card">
               <div class="step-head compact-step-head">
                 <div>
+                  <div class="screen-actions compact-last-actions">
+                <button type="button" class="ghost-btn" data-back="size">Vorige stap</button>
+              </div>
                   <div class="step-kicker">Stap 3</div>
                   <h2>Laatste voorkeur</h2>
                   <p id="step4Description">Kies een extra voorkeur om uw selectie verder te verfijnen.</p>
                 </div>
               </div>
               <div class="option-grid compact-option-grid" id="extraOptions"></div>
-              <div class="screen-actions compact-last-actions">
-                <button type="button" class="ghost-btn" data-back="size">Vorige stap</button>
-              </div>
             </div>
           </section>
 
           <section class="wizard-screen" id="screen-results">
             <section class="result-head-card">
               <div>
+                <div class="screen-actions">
+              <button type="button" class="ghost-btn" data-back="extra">Vorige stap</button>
+            </div>
                 <div class="step-kicker">Stap 4</div>
                 <h2>Uw resultaten</h2>
                 <p id="resultMeta">Hier verschijnen de modellen die passen bij uw keuze.</p>
@@ -89,9 +92,7 @@
               <p id="errorText"></p>
             </section>
 
-            <div class="screen-actions">
-              <button type="button" class="ghost-btn" data-back="extra">Vorige stap</button>
-            </div>
+            
           </section>
         </section>
       </div>
