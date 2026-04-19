@@ -101,13 +101,71 @@ const elements = {
   nextButtons: [...document.querySelectorAll('.next-btn')]
 };
 
-function optionCard(option, selectedValue, onClick) {
+function normalize(value) {
+  return String(value || '').toLowerCase().trim();
+}
+
+function escapeHtml(value) {
+  return String(value || '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+function euro(value) {
+  return new Intl.NumberFormat('nl-BE', {
+    style: 'currency',
+    currency: 'EUR',
+    maximumFractionDigits: 0
+  }).format(Number(value || 0));
+}
+
+function getSpecValue(product, label) {
+  const specs = Array.isArray(product?.specs) ? product.specs : [];
+  const match = specs.find(spec => normalize(spec?.label) === normalize(label));
+  return match?.value || '';
+}
+
+function parseNumbers(text) {
+  return [...String(text || '').matchAll(/\d+(?:[.,]\d+)?/g)]
+    .map(match => Number(match[0].replace(',', '.')))
+    .filter(Number.isFinite);
+}
+
+function getDimensions(product) {
+  const raw = getSpecValue(product, 'Afmeting');
+  const normalized = normalize(raw).replace('ø', ' x ').replaceAll('×', ' x ');
+  const nums = parseNumbers(normalized);
+  if (nums.length < 2) return null;
+  return {
+    longest: Math.max(nums[0], nums[1]),
+    shortest: Math.min(nums[0], nums[1]),
+    raw
+  };
+}
+
+function getLigplaatsen(product) {
+  const value = getSpecValue(product, 'Ligplaatsen');
+  const nums = parseNumbers(value);
+  return nums.length ? nums[0] : 0;
+}
+
+function optionCard(option, selectedValue, onClick, variant = 'default') {
   const button = document.createElement('button');
   button.type = 'button';
-  button.className = 'choice-card';
+  button.className = `choice-card ${variant === 'type' ? 'choice-card-type' : ''}`;
   if (selectedValue === option.value) button.classList.add('is-selected');
 
-  button.innerHTML = `<div class="choice-title">${option.label}</div>`;
+  button.innerHTML = `
+    ${option.image ? `<div class="choice-image-wrap"><img src="${option.image}" alt="${escapeHtml(option.label)}" class="choice-image"></div>` : ''}
+    <div class="choice-content-wrap">
+      <div class="choice-title">${escapeHtml(option.label)}</div>
+      ${option.description ? `<div class="choice-description">${escapeHtml(option.description)}</div>` : ''}
+    </div>
+  `;
+
   button.addEventListener('click', onClick);
   return button;
 }
@@ -121,13 +179,21 @@ function showScreen(screenName) {
 
 function nextScreen() {
   const index = SCREEN_ORDER.indexOf(state.currentScreen);
-  if (index < SCREEN_ORDER.length - 1) showScreen(SCREEN_ORDER[index + 1]);
+  if (index < SCREEN_ORDER.length - 1) {
+    showScreen(SCREEN_ORDER[index + 1]);
+  }
+}
+
+function canProceed(step) {
+  if (step === 'type') return !!state.selections.type;
+  if (step === 'size') return !!state.selections.size;
+  if (step === 'extra') return !!state.selections.extra;
+  return true;
 }
 
 function updateNextButtons() {
   elements.nextButtons.forEach(btn => {
-    const step = btn.dataset.step;
-    btn.disabled = !state.selections[step];
+    btn.disabled = !canProceed(btn.dataset.step);
   });
 }
 
@@ -136,7 +202,23 @@ function renderTypeOptions() {
   TYPE_OPTIONS.forEach(option => {
     elements.typeOptions.appendChild(optionCard(option, state.selections.type, () => {
       state.selections.type = option.value;
+      state.selections.size = '';
+      state.selections.extra = '';
       renderTypeOptions();
+      renderCurrentStep();
+      updateNextButtons();
+    }, 'type'));
+  });
+}
+
+function renderSimpleOptions(target, options, selectedValue, key) {
+  target.innerHTML = '';
+  options.forEach(option => {
+    target.appendChild(optionCard(option, selectedValue, () => {
+      state.selections[key] = option.value;
+      if (key === 'size') {
+        state.selections.extra = '';
+      }
       renderCurrentStep();
       updateNextButtons();
     }));
@@ -145,33 +227,131 @@ function renderTypeOptions() {
 
 function renderCurrentStep() {
   const type = state.selections.type;
-  if (!type) return;
 
-  elements.sizeOptions.innerHTML = '';
-  SIZE_OPTIONS[type].forEach(opt => {
-    elements.sizeOptions.appendChild(optionCard(opt, state.selections.size, () => {
-      state.selections.size = opt.value;
-      renderCurrentStep();
-      updateNextButtons();
-    }));
-  });
+  if (!type) {
+    elements.sizeOptions.innerHTML = '';
+    elements.extraOptions.innerHTML = '';
+    return;
+  }
 
-  elements.extraOptions.innerHTML = '';
-  EXTRA_OPTIONS[type].forEach(opt => {
-    elements.extraOptions.appendChild(optionCard(opt, state.selections.extra, () => {
-      state.selections.extra = opt.value;
-      updateNextButtons();
-    }));
-  });
+  renderSimpleOptions(elements.sizeOptions, SIZE_OPTIONS[type] || [], state.selections.size, 'size');
+  renderSimpleOptions(elements.extraOptions, EXTRA_OPTIONS[type] || [], state.selections.extra, 'extra');
+
+  if (type === 'spa') {
+    elements.step4Description.textContent = 'Kies of u één of twee ligplaatsen wenst.';
+  } else if (type === 'barrelsauna') {
+    elements.step4Description.textContent = 'Kies of u een dichte achterzijde of halfglas achteraan wenst.';
+  } else {
+    elements.step4Description.textContent = 'Geen extra voorkeur nodig. Laat dit op geen voorkeur staan of kies verder.';
+  }
+}
+
+function fitsSize(product, type, sizeKey) {
+  const dims = getDimensions(product);
+  if (!dims || !sizeKey) return true;
+  const value = dims.longest;
+
+  if (type === 'spa') {
+    if (sizeKey === 'spa-205') return value <= 205;
+    if (sizeKey === 'spa-205-220') return value > 205 && value <= 220;
+    if (sizeKey === 'spa-220-240') return value > 220 && value <= 240;
+    if (sizeKey === 'spa-240+') return value > 240;
+  }
+
+  if (type === 'barrelsauna') {
+    if (sizeKey === 'barrel-200') return value <= 200;
+    if (sizeKey === 'barrel-200-240') return value > 200 && value <= 240;
+    if (sizeKey === 'barrel-240-300') return value > 240 && value <= 300;
+    if (sizeKey === 'barrel-300+') return value > 300;
+  }
+
+  if (type === 'Infrarood') {
+    if (sizeKey === 'ir-120') return value <= 120;
+    if (sizeKey === 'ir-120-160') return value > 120 && value <= 160;
+    if (sizeKey === 'ir-160-200') return value > 160 && value <= 200;
+    if (sizeKey === 'ir-200+') return value > 200;
+  }
+
+  if (type === 'zwemspa') {
+    if (sizeKey === 'swim-400') return value <= 400;
+    if (sizeKey === 'swim-400-500') return value > 400 && value <= 500;
+    if (sizeKey === 'swim-500-650') return value > 500 && value <= 650;
+    if (sizeKey === 'swim-650+') return value > 650;
+  }
+
+  return true;
+}
+
+function fitsExtra(product, type, extraKey) {
+  if (!extraKey || extraKey === 'any') return true;
+
+  if (type === 'spa') {
+    return getLigplaatsen(product) === Number(extraKey);
+  }
+
+  if (type === 'barrelsauna') {
+    const title = normalize(product.title);
+    if (extraKey === 'halfglass') return title.includes('halfglas');
+    if (extraKey === 'closed') return !title.includes('halfglas');
+  }
+
+  return true;
 }
 
 function filterProducts() {
-  return state.products.filter(p => p.type === state.selections.type);
+  const type = state.selections.type;
+  state.filtered = state.products.filter(product => {
+    return normalize(product.type) === normalize(type)
+      && fitsSize(product, type, state.selections.size)
+      && fitsExtra(product, type, state.selections.extra);
+  }).sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
 }
 
 function renderResults() {
-  const results = filterProducts();
-  elements.resultGrid.innerHTML = results.map(p => `<div>${p.title}</div>`).join('');
+  filterProducts();
+  elements.resultGrid.innerHTML = '';
+  elements.emptyState.hidden = true;
+
+  if (!state.filtered.length) {
+    elements.resultMeta.textContent = 'Geen exacte match gevonden voor uw selectie.';
+    elements.emptyState.hidden = false;
+    return;
+  }
+
+  elements.resultMeta.textContent = `${state.filtered.length} model${state.filtered.length > 1 ? 'len' : ''} gevonden.`;
+
+  const fragment = document.createDocumentFragment();
+  state.filtered.forEach(product => {
+    const node = elements.resultCardTemplate.content.cloneNode(true);
+    const link = node.querySelector('.result-card-link');
+    const img = node.querySelector('.result-image');
+    const badge = node.querySelector('.result-badge');
+    const title = node.querySelector('.result-title');
+    const price = node.querySelector('.result-price');
+    const specs = node.querySelector('.result-spec-list');
+    const dims = getDimensions(product);
+
+    link.href = `product.html?id=${encodeURIComponent(product.id || '')}`;
+    img.src = product.image || '';
+    img.alt = product.title || '';
+    title.textContent = product.title || '';
+    price.textContent = euro(product.price || 0);
+    badge.textContent = dims?.raw || product.type || '';
+
+    const specLines = [];
+    if (dims?.raw) specLines.push(`<span><strong>Afmeting:</strong> ${escapeHtml(dims.raw)}</span>`);
+    if (state.selections.type === 'spa') {
+      const ligplaatsen = getSpecValue(product, 'Ligplaatsen');
+      if (ligplaatsen) specLines.push(`<span><strong>Ligplaatsen:</strong> ${escapeHtml(ligplaatsen)}</span>`);
+    }
+    if (state.selections.type === 'barrelsauna') {
+      specLines.push(`<span><strong>Afwerking:</strong> ${normalize(product.title).includes('halfglas') ? 'Halfglas' : 'Dichte achterzijde'}</span>`);
+    }
+    specs.innerHTML = specLines.join('');
+    fragment.appendChild(node);
+  });
+
+  elements.resultGrid.appendChild(fragment);
 }
 
 function attachNavigation() {
@@ -182,7 +362,7 @@ function attachNavigation() {
   elements.nextButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const step = btn.dataset.step;
-      if (!state.selections[step]) return;
+      if (!canProceed(step)) return;
 
       if (step === 'extra') {
         renderResults();
@@ -194,13 +374,28 @@ function attachNavigation() {
   });
 }
 
-async function init() {
-  const res = await fetch(PRODUCTS_URL);
-  state.products = await res.json();
+async function loadProducts() {
+  const response = await fetch(PRODUCTS_URL);
+  if (!response.ok) throw new Error(`Kan products.json niet laden (${response.status})`);
+  const data = await response.json();
+  return Array.isArray(data) ? data : (Array.isArray(data.products) ? data.products : []);
+}
 
+function showError(message) {
+  elements.errorBox.hidden = false;
+  elements.errorText.textContent = message;
+}
+
+async function init() {
+  state.products = await loadProducts();
   attachNavigation();
   renderTypeOptions();
+  renderCurrentStep();
+  updateNextButtons();
   showScreen('type');
 }
 
-init();
+init().catch(error => {
+  console.error(error);
+  showError(String(error.message || error));
+});
