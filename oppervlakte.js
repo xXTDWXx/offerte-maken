@@ -208,6 +208,7 @@ function renderTypeOptions() {
       renderTypeOptions();
       renderCurrentStep();
       updateNextButtons();
+      showScreen('size');
     }, 'type'));
   });
 }
@@ -221,6 +222,7 @@ function renderSimpleOptions(target, options, selectedValue, key) {
         state.selections.extra = '';
         renderCurrentStep();
         updateNextButtons();
+        showScreen('extra');
         return;
       }
 
@@ -310,10 +312,9 @@ function fitsExtra(product, type, extraKey) {
     if (extraKey === 'closed') return !title.includes('halfglas');
   }
 
-  // 🔥 NIEUW: infrarood filtering
   if (type === 'Infrarood') {
     if (extraKey === 'ontspanning') {
-      return true; // toon alles
+      return true;
     }
 
     if (extraKey === 'spiertherapie') {
@@ -393,17 +394,7 @@ function attachNavigation() {
   });
 
   elements.nextButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const step = btn.dataset.step;
-      if (!canProceed(step)) return;
-
-      if (step === 'extra') {
-        renderResults();
-        showScreen('results');
-      } else {
-        nextScreen();
-      }
-    });
+    btn.remove();
   });
 }
 
