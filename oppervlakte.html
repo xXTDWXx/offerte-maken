@@ -15,32 +15,20 @@
     </div>
   </header>
 
-  <main class="wizard-page">
-    <section class="wizard-hero">
-      <div class="container">
-        <div class="wizard-hero-card">
-          <div class="wizard-eyebrow">SHOWROOM KEUZEHULP</div>
-          <h1>Vind stap voor stap het product dat bij u past</h1>
-          <p>
-            Kies eerst welk type product u zoekt. Daarna begeleiden we u op afmeting en extra voorkeuren.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="wizard-main">
-      <div class="container wizard-single-layout no-sidebar">
+  <main class="wizard-page compact-wizard-page">
+    <section class="wizard-main compact-wizard-main">
+      <div class="container wizard-single-layout no-sidebar compact-layout">
         <section class="wizard-screen-wrap">
           <section class="wizard-screen is-active" id="screen-type">
-            <div class="wizard-step-card wizard-step-card-large">
-              <div class="step-head step-head-centered">
+            <div class="wizard-step-card wizard-step-card-large compact-step-card">
+              <div class="step-head step-head-centered compact-step-head">
                 <div>
                   <div class="step-kicker">Stap 1</div>
                   <h2>Wat zoekt u?</h2>
                   <p>Kies eerst het producttype waarin u wilt zoeken.</p>
                 </div>
               </div>
-              <div class="option-grid option-grid-hero" id="typeOptions"></div>
+              <div class="option-grid option-grid-hero compact-option-grid" id="typeOptions"></div>
               <div class="screen-actions align-right">
                 <button type="button" class="ghost-btn next-btn" data-step="type" disabled>Volgende stap</button>
               </div>
@@ -48,15 +36,15 @@
           </section>
 
           <section class="wizard-screen" id="screen-size">
-            <div class="wizard-step-card">
-              <div class="step-head">
+            <div class="wizard-step-card compact-step-card">
+              <div class="step-head compact-step-head">
                 <div>
                   <div class="step-kicker">Stap 2</div>
                   <h2>Welke afmeting wenst u?</h2>
                   <p>Kies de afmetingscategorie die het best bij uw ruimte past.</p>
                 </div>
               </div>
-              <div class="option-grid" id="sizeOptions"></div>
+              <div class="option-grid compact-option-grid" id="sizeOptions"></div>
               <div class="screen-actions">
                 <button type="button" class="ghost-btn" data-back="type">Vorige stap</button>
                 <button type="button" class="ghost-btn next-btn" data-step="size" disabled>Volgende stap</button>
@@ -65,18 +53,17 @@
           </section>
 
           <section class="wizard-screen" id="screen-extra">
-            <div class="wizard-step-card">
-              <div class="step-head">
+            <div class="wizard-step-card compact-step-card">
+              <div class="step-head compact-step-head">
                 <div>
                   <div class="step-kicker">Stap 3</div>
                   <h2>Laatste voorkeur</h2>
                   <p id="step4Description">Kies een extra voorkeur om uw selectie verder te verfijnen.</p>
                 </div>
               </div>
-              <div class="option-grid" id="extraOptions"></div>
-              <div class="screen-actions">
+              <div class="option-grid compact-option-grid" id="extraOptions"></div>
+              <div class="screen-actions compact-last-actions">
                 <button type="button" class="ghost-btn" data-back="size">Vorige stap</button>
-                <button type="button" class="ghost-btn next-btn" data-step="extra" disabled>Bekijk resultaten</button>
               </div>
             </div>
           </section>
