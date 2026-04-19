@@ -40,47 +40,47 @@ const TYPE_OPTIONS = [
 
 const SIZE_OPTIONS = {
   spa: [
-    { value: 'spa-205', label: 'Tot en met 205 cm' },
-    { value: 'spa-205-220', label: '205 tot 220 cm' },
-    { value: 'spa-220-240', label: '220 tot 240 cm' },
-    { value: 'spa-240+', label: '240 cm of groter' }
+    { value: 'spa-205', label: 'Tot en met 205 cm', description: 'Compacte jacuzzi’s tot 205 cm.' },
+    { value: 'spa-205-220', label: '205 tot 220 cm', description: 'Middelgrote jacuzzi’s van 205 tot 220 cm.' },
+    { value: 'spa-220-240', label: '220 tot 240 cm', description: 'Ruimere jacuzzi’s van 220 tot 240 cm.' },
+    { value: 'spa-240+', label: '240 cm of groter', description: 'XL jacuzzi’s vanaf 240 cm.' }
   ],
   barrelsauna: [
-    { value: 'barrel-200', label: 'Tot en met 200 cm' },
-    { value: 'barrel-200-240', label: '200 tot 240 cm' },
-    { value: 'barrel-240-300', label: '240 tot 300 cm' },
-    { value: 'barrel-300+', label: '300 cm of groter' }
+    { value: 'barrel-200', label: 'Tot en met 200 cm', description: 'Compacte barrel sauna’s.' },
+    { value: 'barrel-200-240', label: '200 tot 240 cm', description: 'Middelgrote barrel sauna’s.' },
+    { value: 'barrel-240-300', label: '240 tot 300 cm', description: 'Ruime barrel sauna’s.' },
+    { value: 'barrel-300+', label: '300 cm of groter', description: 'XL barrel sauna’s.' }
   ],
   Infrarood: [
-    { value: 'ir-120', label: 'Tot en met 120 cm' },
-    { value: 'ir-120-160', label: '120 tot 160 cm' },
-    { value: 'ir-160-200', label: '160 tot 200 cm' },
-    { value: 'ir-200+', label: '200 cm of groter' }
+    { value: 'ir-120', label: 'Tot en met 120 cm', description: 'Compacte infrarood sauna’s.' },
+    { value: 'ir-120-160', label: '120 tot 160 cm', description: 'Middelgrote infrarood sauna’s.' },
+    { value: 'ir-160-200', label: '160 tot 200 cm', description: 'Grotere infrarood sauna’s.' },
+    { value: 'ir-200+', label: '200 cm of groter', description: 'Zeer ruime infrarood sauna’s.' }
   ],
   zwemspa: [
-    { value: 'swim-400', label: 'Tot en met 400 cm' },
-    { value: 'swim-400-500', label: '400 tot 500 cm' },
-    { value: 'swim-500-650', label: '500 tot 650 cm' },
-    { value: 'swim-650+', label: '650 cm of groter' }
+    { value: 'swim-400', label: 'Tot en met 400 cm', description: 'Compacte zwemspa’s.' },
+    { value: 'swim-400-500', label: '400 tot 500 cm', description: 'Middelgrote zwemspa’s.' },
+    { value: 'swim-500-650', label: '500 tot 650 cm', description: 'Ruime zwemspa’s.' },
+    { value: 'swim-650+', label: '650 cm of groter', description: 'XL zwemspa’s.' }
   ]
 };
 
 const EXTRA_OPTIONS = {
   spa: [
-    { value: 'any', label: 'Geen voorkeur' },
-    { value: '1', label: '1 ligplaats' },
-    { value: '2', label: '2 ligplaatsen' }
+    { value: 'any', label: 'Geen voorkeur', description: 'Toon alle passende jacuzzi’s.' },
+    { value: '1', label: '1 ligplaats', description: 'Met één ligplaats.' },
+    { value: '2', label: '2 ligplaatsen', description: 'Met twee ligplaatsen.' }
   ],
   barrelsauna: [
-    { value: 'any', label: 'Geen voorkeur' },
-    { value: 'closed', label: 'Dichte achterzijde' },
-    { value: 'halfglass', label: 'Halfglas achterzijde' }
+    { value: 'any', label: 'Geen voorkeur', description: 'Toon alle passende barrel sauna’s.' },
+    { value: 'closed', label: 'Dichte achterzijde', description: 'Volledig gesloten achterzijde.' },
+    { value: 'halfglass', label: 'Halfglas achterzijde', description: 'Model met halfglas achteraan.' }
   ],
   Infrarood: [
-    { value: 'any', label: 'Geen extra voorkeur' }
+    { value: 'any', label: 'Geen extra voorkeur', description: 'Toon alle passende infrarood sauna’s.' }
   ],
   zwemspa: [
-    { value: 'any', label: 'Geen extra voorkeur' }
+    { value: 'any', label: 'Geen extra voorkeur', description: 'Toon alle passende zwemspa’s.' }
   ]
 };
 
@@ -218,7 +218,19 @@ function renderSimpleOptions(target, options, selectedValue, key) {
       state.selections[key] = option.value;
       if (key === 'size') {
         state.selections.extra = '';
+        renderCurrentStep();
+        updateNextButtons();
+        return;
       }
+
+      if (key === 'extra') {
+        renderCurrentStep();
+        updateNextButtons();
+        renderResults();
+        showScreen('results');
+        return;
+      }
+
       renderCurrentStep();
       updateNextButtons();
     }));
