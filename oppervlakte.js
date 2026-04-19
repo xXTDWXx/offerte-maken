@@ -310,6 +310,24 @@ function fitsExtra(product, type, extraKey) {
     if (extraKey === 'closed') return !title.includes('halfglas');
   }
 
+  // 🔥 NIEUW: infrarood filtering
+  if (type === 'Infrarood') {
+    if (extraKey === 'ontspanning') {
+      return true; // toon alles
+    }
+
+    if (extraKey === 'spiertherapie') {
+      const brand = normalize(
+        getSpecValue(product, 'Merk') || product.brand || ''
+      );
+
+      return (
+        brand.includes('infra4health') ||
+        brand.includes('health company')
+      );
+    }
+  }
+
   return true;
 }
 
