@@ -120,18 +120,15 @@ const elements = {
   sizeOptions: document.getElementById('sizeOptions'),
   budgetOptions: document.getElementById('budgetOptions'),
   extraOptions: document.getElementById('extraOptions'),
-  selectionSummary: document.getElementById('selectionSummary'),
-  progressItems: [...document.querySelectorAll('.progress-item')],
-  screens: [...document.querySelectorAll('.wizard-screen')],
   step4Description: document.getElementById('step4Description'),
   resultMeta: document.getElementById('resultMeta'),
   resultGrid: document.getElementById('resultGrid'),
   emptyState: document.getElementById('emptyState'),
   errorBox: document.getElementById('errorBox'),
   errorText: document.getElementById('errorText'),
-  resetWizard: document.getElementById('resetWizard'),
   resultCardTemplate: document.getElementById('resultCardTemplate'),
-  backButtons: [...document.querySelectorAll('[data-back]')]
+  backButtons: [...document.querySelectorAll('[data-back]')],
+  nextButtons: [...document.querySelectorAll('.next-btn')]
 };
 
 function normalize(value) {
@@ -212,7 +209,6 @@ function showScreen(screenName) {
   elements.screens.forEach(screen => {
     screen.classList.toggle('is-active', screen.id === `screen-${screenName}`);
   });
-  updateProgress();
 }
 
 function nextScreen() {
@@ -222,20 +218,10 @@ function nextScreen() {
   }
 }
 
-function updateProgress() {
-  const progressMap = {
-    type: 1,
-    size: 2,
-    budget: 3,
-    extra: 4,
-    results: 5
-  };
-  const currentStep = progressMap[state.currentScreen] || 1;
-  elements.progressItems.forEach(item => {
-    const step = Number(item.dataset.step);
-    item.classList.remove('is-active', 'is-complete');
-    if (step < currentStep) item.classList.add('is-complete');
-    if (step === currentStep) item.classList.add('is-active');
+function updateNextButtons() {
+  elements.nextButtons.forEach(button => {
+    const step = button.dataset.step;
+    button.disabled = !canProceed(step);
   });
 }
 
@@ -247,8 +233,9 @@ function renderTypeOptions() {
       state.selections.size = '';
       state.selections.budget = '';
       state.selections.extra = '';
-      updateSummary();
       renderTypeOptions();
+      renderCurrentStep();
+      updateNextButtons();
     }, 'type'));
   });
 }
@@ -265,15 +252,21 @@ function renderSimpleOptions(target, options, selectedValue, key) {
       if (key === 'budget') {
         state.selections.extra = '';
       }
-      updateSummary();
       renderCurrentStep();
+      updateNextButtons();
     }));
   });
 }
 
 function renderCurrentStep() {
   const type = state.selections.type;
-  if (!type) return;
+
+  if (!type) {
+    elements.sizeOptions.innerHTML = '';
+    elements.budgetOptions.innerHTML = '';
+    elements.extraOptions.innerHTML = '';
+    return;
+  }
 
   renderSimpleOptions(elements.sizeOptions, SIZE_OPTIONS[type] || [], state.selections.size, 'size');
   renderSimpleOptions(elements.budgetOptions, BUDGET_OPTIONS[type] || [], state.selections.budget, 'budget');
@@ -286,31 +279,6 @@ function renderCurrentStep() {
   } else {
     elements.step4Description.textContent = 'Geen extra voorkeur nodig. Laat dit op geen voorkeur staan of kies verder.';
   }
-}
-
-function updateSummary() {
-  const rows = [];
-  const type = TYPE_OPTIONS.find(option => option.value === state.selections.type)?.label;
-  const size = (SIZE_OPTIONS[state.selections.type] || []).find(option => option.value === state.selections.size)?.label;
-  const budget = (BUDGET_OPTIONS[state.selections.type] || []).find(option => option.value === state.selections.budget)?.label;
-  const extra = (EXTRA_OPTIONS[state.selections.type] || []).find(option => option.value === state.selections.extra)?.label;
-
-  if (type) rows.push(['Type', type]);
-  if (size) rows.push(['Afmeting', size]);
-  if (budget) rows.push(['Budget', budget]);
-  if (extra) rows.push(['Voorkeur', extra]);
-
-  if (!rows.length) {
-    elements.selectionSummary.innerHTML = '<div class="summary-empty">Nog geen keuzes gemaakt.</div>';
-    return;
-  }
-
-  elements.selectionSummary.innerHTML = rows.map(([label, value]) => `
-    <div class="summary-row">
-      <span>${escapeHtml(label)}</span>
-      <strong>${escapeHtml(value)}</strong>
-    </div>
-  `).join('');
 }
 
 function fitsSize(product, type, sizeKey) {
@@ -429,21 +397,6 @@ function renderResults() {
   elements.resultGrid.appendChild(fragment);
 }
 
-function resetWizard() {
-  state.currentScreen = 'type';
-  state.selections = { type: '', size: '', budget: '', extra: '' };
-  state.filtered = [];
-  elements.sizeOptions.innerHTML = '';
-  elements.budgetOptions.innerHTML = '';
-  elements.extraOptions.innerHTML = '';
-  elements.resultGrid.innerHTML = '';
-  elements.emptyState.hidden = true;
-  elements.resultMeta.textContent = 'Hier verschijnen de modellen die passen bij uw keuze.';
-  updateSummary();
-  renderTypeOptions();
-  showScreen('type');
-}
-
 function canProceed(screen) {
   if (screen === 'type') return !!state.selections.type;
   if (screen === 'size') return !!state.selections.size;
@@ -452,46 +405,31 @@ function canProceed(screen) {
   return true;
 }
 
-function attachNextButtons() {
-  document.querySelectorAll('.next-step-btn').forEach(btn => btn.remove());
+function attachNavigation() {
+  elements.backButtons.forEach(button => {
+    button.addEventListener('click', () => showScreen(button.dataset.back));
+  });
 
-  const map = [
-    { screen: 'type', target: 'typeOptions' },
-    { screen: 'size', target: 'sizeOptions' },
-    { screen: 'budget', target: 'budgetOptions' },
-    { screen: 'extra', target: 'extraOptions' }
-  ];
-
-  map.forEach(({ screen, target }) => {
-    const container = document.getElementById(target);
-    if (!container) return;
-    const wrap = document.createElement('div');
-    wrap.className = 'screen-actions';
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'ghost-btn next-step-btn';
-    btn.textContent = 'Volgende stap';
-    btn.disabled = !canProceed(screen);
-    btn.addEventListener('click', () => {
+  elements.nextButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const screen = button.dataset.step;
       if (!canProceed(screen)) return;
+
       if (screen === 'extra') {
         renderResults();
         showScreen('results');
-      } else {
-        nextScreen();
+        return;
       }
+
+      nextScreen();
     });
-    wrap.appendChild(btn);
-    container.parentElement.appendChild(wrap);
   });
 }
 
 function rerenderAll() {
   renderTypeOptions();
   renderCurrentStep();
-  updateSummary();
-  updateProgress();
-  attachNextButtons();
+  updateNextButtons();
 }
 
 async function loadProducts() {
@@ -507,11 +445,10 @@ function showError(message) {
 }
 
 async function init() {
+  elements.screens = [...document.querySelectorAll('.wizard-screen')];
+
   state.products = await loadProducts();
-  elements.resetWizard.addEventListener('click', resetWizard);
-  elements.backButtons.forEach(button => {
-    button.addEventListener('click', () => showScreen(button.dataset.back));
-  });
+  attachNavigation();
   rerenderAll();
   showScreen('type');
 }
