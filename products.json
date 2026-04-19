@@ -7451,6 +7451,10 @@
       "bullets": [],
       "specs": [
         {
+          "label": "Merk",
+          "value": "Health Company"
+        },
+        {
           "label": "Aantal personen",
           "value": "2 personen"
         },
@@ -7522,6 +7526,10 @@
       "price": 2495,
       "bullets": [],
       "specs": [
+        {
+          "label": "Merk",
+          "value": "Health Company"
+        },
         {
           "label": "Aantal personen",
           "value": "2 personen"
@@ -7829,6 +7837,10 @@
       "price": 2985,
       "bullets": [],
       "specs": [
+        {
+          "label": "Merk",
+          "value": "Health Company"
+        },
         {
           "label": "Aantal personen",
           "value": "3 personen"
@@ -8148,6 +8160,10 @@
       "price": 3495,
       "bullets": [],
       "specs": [
+        {
+          "label": "Merk",
+          "value": "Health Company"
+        },
         {
           "label": "Aantal personen",
           "value": "4 personen"
@@ -8503,6 +8519,10 @@
       "price": 3695,
       "bullets": [],
       "specs": [
+        {
+          "label": "Merk",
+          "value": "Health Company"
+        },
         {
           "label": "Aantal personen",
           "value": "4 personen"
@@ -9259,6 +9279,10 @@
       "bullets": [],
       "specs": [
         {
+          "label": "Merk",
+          "value": "Health Company"
+        },
+        {
           "label": "Aantal personen",
           "value": "5 personen"
         },
@@ -9342,6 +9366,10 @@
       "price": 4595,
       "bullets": [],
       "specs": [
+        {
+          "label": "Merk",
+          "value": "Health Company"
+        },
         {
           "label": "Aantal personen",
           "value": "5 personen"
