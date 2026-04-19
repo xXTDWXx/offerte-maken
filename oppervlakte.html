@@ -29,29 +29,7 @@
     </section>
 
     <section class="wizard-main">
-      <div class="container wizard-single-layout">
-        <aside class="wizard-sidebar-card">
-          <div class="wizard-sidebar-top">
-            <div>
-              <div class="wizard-sidebar-label">Uw selectie</div>
-              <h2>Keuzehulp</h2>
-            </div>
-            <button type="button" id="resetWizard" class="ghost-btn">Opnieuw starten</button>
-          </div>
-
-          <div class="progress-list">
-            <div class="progress-item is-active" data-step="1"><span class="progress-number">1</span><span class="progress-text">Type product</span></div>
-            <div class="progress-item" data-step="2"><span class="progress-number">2</span><span class="progress-text">Afmeting</span></div>
-            <div class="progress-item" data-step="3"><span class="progress-number">3</span><span class="progress-text">Budget</span></div>
-            <div class="progress-item" data-step="4"><span class="progress-number">4</span><span class="progress-text">Extra voorkeur</span></div>
-            <div class="progress-item" data-step="5"><span class="progress-number">5</span><span class="progress-text">Resultaten</span></div>
-          </div>
-
-          <div class="selection-summary" id="selectionSummary">
-            <div class="summary-empty">Nog geen keuzes gemaakt.</div>
-          </div>
-        </aside>
-
+      <div class="container wizard-single-layout no-sidebar">
         <section class="wizard-screen-wrap">
           <section class="wizard-screen is-active" id="screen-type">
             <div class="wizard-step-card wizard-step-card-large">
@@ -63,6 +41,9 @@
                 </div>
               </div>
               <div class="option-grid option-grid-hero" id="typeOptions"></div>
+              <div class="screen-actions align-right">
+                <button type="button" class="ghost-btn next-btn" data-step="type" disabled>Volgende stap</button>
+              </div>
             </div>
           </section>
 
@@ -78,6 +59,7 @@
               <div class="option-grid" id="sizeOptions"></div>
               <div class="screen-actions">
                 <button type="button" class="ghost-btn" data-back="type">Vorige stap</button>
+                <button type="button" class="ghost-btn next-btn" data-step="size" disabled>Volgende stap</button>
               </div>
             </div>
           </section>
@@ -94,6 +76,7 @@
               <div class="option-grid" id="budgetOptions"></div>
               <div class="screen-actions">
                 <button type="button" class="ghost-btn" data-back="size">Vorige stap</button>
+                <button type="button" class="ghost-btn next-btn" data-step="budget" disabled>Volgende stap</button>
               </div>
             </div>
           </section>
@@ -110,6 +93,7 @@
               <div class="option-grid" id="extraOptions"></div>
               <div class="screen-actions">
                 <button type="button" class="ghost-btn" data-back="budget">Vorige stap</button>
+                <button type="button" class="ghost-btn next-btn" data-step="extra" disabled>Bekijk resultaten</button>
               </div>
             </div>
           </section>
