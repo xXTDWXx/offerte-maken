@@ -42,15 +42,14 @@
           <div class="wizard-eyebrow">SHOWROOM KEUZEHULP</div>
           <h1>Vind stap voor stap het product dat bij u past</h1>
           <p>
-            Kies eerst welk type product u zoekt. Daarna begeleiden we u verder op aantal personen,
-            afmeting, budget en extra voorkeuren. Zo krijgt u enkel relevante modellen te zien.
+            Kies eerst welk type product u zoekt. Daarna begeleiden we u op afmeting, budget en eventuele extra voorkeuren.
           </p>
         </div>
       </div>
     </section>
 
     <section class="wizard-main">
-      <div class="container wizard-layout">
+      <div class="container wizard-single-layout">
         <aside class="wizard-sidebar-card">
           <div class="wizard-sidebar-top">
             <div>
@@ -60,27 +59,12 @@
             <button type="button" id="resetWizard" class="ghost-btn">Opnieuw starten</button>
           </div>
 
-          <div class="progress-list" id="progressList">
-            <div class="progress-item is-active" data-step="1">
-              <span class="progress-number">1</span>
-              <span class="progress-text">Type product</span>
-            </div>
-            <div class="progress-item" data-step="2">
-              <span class="progress-number">2</span>
-              <span class="progress-text">Aantal personen</span>
-            </div>
-            <div class="progress-item" data-step="3">
-              <span class="progress-number">3</span>
-              <span class="progress-text">Afmeting</span>
-            </div>
-            <div class="progress-item" data-step="4">
-              <span class="progress-number">4</span>
-              <span class="progress-text">Budget</span>
-            </div>
-            <div class="progress-item" data-step="5">
-              <span class="progress-number">5</span>
-              <span class="progress-text">Extra voorkeur</span>
-            </div>
+          <div class="progress-list">
+            <div class="progress-item is-active" data-step="1"><span class="progress-number">1</span><span class="progress-text">Type product</span></div>
+            <div class="progress-item" data-step="2"><span class="progress-number">2</span><span class="progress-text">Afmeting</span></div>
+            <div class="progress-item" data-step="3"><span class="progress-number">3</span><span class="progress-text">Budget</span></div>
+            <div class="progress-item" data-step="4"><span class="progress-number">4</span><span class="progress-text">Extra voorkeur</span></div>
+            <div class="progress-item" data-step="5"><span class="progress-number">5</span><span class="progress-text">Resultaten</span></div>
           </div>
 
           <div class="selection-summary" id="selectionSummary">
@@ -88,82 +72,92 @@
           </div>
         </aside>
 
-        <section class="wizard-content">
-          <section class="wizard-step-card is-open" id="step1">
-            <div class="step-head">
-              <div>
-                <div class="step-kicker">Stap 1</div>
-                <h2>Welk type product wenst u?</h2>
-                <p>Kies eerst de productgroep waarin u wilt zoeken.</p>
+        <section class="wizard-screen-wrap">
+          <section class="wizard-screen is-active" id="screen-type">
+            <div class="wizard-step-card wizard-step-card-large">
+              <div class="step-head step-head-centered">
+                <div>
+                  <div class="step-kicker">Stap 1</div>
+                  <h2>Wat zoekt u?</h2>
+                  <p>Kies eerst het producttype waarin u wilt zoeken.</p>
+                </div>
               </div>
+              <div class="option-grid option-grid-hero" id="typeOptions"></div>
             </div>
-            <div class="option-grid option-grid-type" id="typeOptions"></div>
           </section>
 
-          <section class="wizard-step-card is-locked" id="step2">
-            <div class="step-head">
-              <div>
-                <div class="step-kicker">Stap 2</div>
-                <h2>Voor hoeveel personen?</h2>
-                <p>Kies hoeveel personen u ongeveer wenst te ontvangen.</p>
+          <section class="wizard-screen" id="screen-size">
+            <div class="wizard-step-card">
+              <div class="step-head">
+                <div>
+                  <div class="step-kicker">Stap 2</div>
+                  <h2>Welke afmeting wenst u?</h2>
+                  <p>Kies de afmetingscategorie die het best bij uw ruimte past.</p>
+                </div>
+              </div>
+              <div class="option-grid" id="sizeOptions"></div>
+              <div class="screen-actions">
+                <button type="button" class="ghost-btn" data-back="type">Vorige stap</button>
               </div>
             </div>
-            <div class="option-grid" id="personOptions"></div>
           </section>
 
-          <section class="wizard-step-card is-locked" id="step3">
-            <div class="step-head">
-              <div>
-                <div class="step-kicker">Stap 3</div>
-                <h2>Welke afmeting past het best?</h2>
-                <p>Kies de ruimteklasse die het best aansluit bij uw beschikbare plaats.</p>
+          <section class="wizard-screen" id="screen-budget">
+            <div class="wizard-step-card">
+              <div class="step-head">
+                <div>
+                  <div class="step-kicker">Stap 3</div>
+                  <h2>Welk budget heeft u in gedachten?</h2>
+                  <p>We tonen enkel modellen binnen uw gewenste prijsvork.</p>
+                </div>
+              </div>
+              <div class="option-grid" id="budgetOptions"></div>
+              <div class="screen-actions">
+                <button type="button" class="ghost-btn" data-back="size">Vorige stap</button>
               </div>
             </div>
-            <div class="option-grid" id="sizeOptions"></div>
           </section>
 
-          <section class="wizard-step-card is-locked" id="step4">
-            <div class="step-head">
-              <div>
-                <div class="step-kicker">Stap 4</div>
-                <h2>Welk budget heeft u in gedachten?</h2>
-                <p>We tonen enkel modellen binnen uw gewenste prijsvork.</p>
+          <section class="wizard-screen" id="screen-extra">
+            <div class="wizard-step-card">
+              <div class="step-head">
+                <div>
+                  <div class="step-kicker">Stap 4</div>
+                  <h2>Laatste voorkeur</h2>
+                  <p id="step4Description">Kies een extra voorkeur om uw selectie verder te verfijnen.</p>
+                </div>
+              </div>
+              <div class="option-grid" id="extraOptions"></div>
+              <div class="screen-actions">
+                <button type="button" class="ghost-btn" data-back="budget">Vorige stap</button>
               </div>
             </div>
-            <div class="option-grid" id="budgetOptions"></div>
           </section>
 
-          <section class="wizard-step-card is-locked" id="step5">
-            <div class="step-head">
+          <section class="wizard-screen" id="screen-results">
+            <section class="result-head-card">
               <div>
                 <div class="step-kicker">Stap 5</div>
-                <h2>Laatste voorkeur</h2>
-                <p id="step5Description">Kies een extra voorkeur om uw selectie verder te verfijnen.</p>
+                <h2>Uw resultaten</h2>
+                <p id="resultMeta">Hier verschijnen de modellen die passen bij uw keuze.</p>
               </div>
+            </section>
+
+            <section class="result-grid" id="resultGrid"></section>
+
+            <section class="result-empty-card" id="emptyState" hidden>
+              <h3>Geen exacte match gevonden</h3>
+              <p>Pas één van uw keuzes aan of ga een stap terug.</p>
+            </section>
+
+            <section class="result-empty-card" id="errorBox" hidden>
+              <h3>Fout bij laden</h3>
+              <p id="errorText"></p>
+            </section>
+
+            <div class="screen-actions">
+              <button type="button" class="ghost-btn" data-back="extra">Vorige stap</button>
             </div>
-            <div class="option-grid" id="extraOptions"></div>
-          </section>
-
-          <section class="result-head-card" id="resultHead">
-            <div>
-              <div class="step-kicker">Resultaat</div>
-              <h2>Modellen die bij uw keuze passen</h2>
-              <p id="resultMeta">Maak uw keuzes om uw persoonlijke selectie te zien.</p>
-            </div>
-          </section>
-
-          <section class="result-grid" id="resultGrid"></section>
-
-          <section class="result-empty-card" id="emptyState" hidden>
-            <h3>Geen exacte match gevonden</h3>
-            <p>
-              Pas één van uw keuzes aan of start opnieuw. Zo kunnen we andere modellen tonen die wel passen.
-            </p>
-          </section>
-
-          <section class="result-empty-card" id="errorBox" hidden>
-            <h3>Fout bij laden</h3>
-            <p id="errorText"></p>
           </section>
         </section>
       </div>
@@ -172,7 +166,7 @@
 
   <template id="resultCardTemplate">
     <article class="result-card">
-      <a class="result-card-link" target="_blank" rel="noopener">
+      <a class="result-card-link">
         <div class="result-image-wrap">
           <img class="result-image" alt="" loading="lazy" />
           <div class="result-badge"></div>
