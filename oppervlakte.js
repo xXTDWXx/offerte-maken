@@ -77,7 +77,8 @@ const EXTRA_OPTIONS = {
     { value: 'halfglass', label: 'Halfglas achterzijde', description: 'Model met halfglas achteraan.' }
   ],
   Infrarood: [
-    { value: 'any', label: 'Geen extra voorkeur', description: 'Toon alle passende infrarood sauna’s.' }
+    { value: 'ontspanning', label: 'Enkel ontspanning', description: 'Voor rust, warmte en algemeen welzijn.' },
+    { value: 'spiertherapie', label: 'Spiertherapie', description: 'Gericht op herstel en verlichting van spierklachten.' }
   ],
   zwemspa: [
     { value: 'any', label: 'Geen extra voorkeur', description: 'Toon alle passende zwemspa’s.' }
@@ -253,6 +254,8 @@ function renderCurrentStep() {
     elements.step4Description.textContent = 'Kies of u één of twee ligplaatsen wenst.';
   } else if (type === 'barrelsauna') {
     elements.step4Description.textContent = 'Kies of u een dichte achterzijde of halfglas achteraan wenst.';
+  } else if (type === 'Infrarood') {
+    elements.step4Description.textContent = 'Wat is voor u het belangrijkste gebruik?';
   } else {
     elements.step4Description.textContent = 'Geen extra voorkeur nodig. Laat dit op geen voorkeur staan of kies verder.';
   }
