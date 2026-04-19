@@ -3,9 +3,9 @@ const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
 const state = {
   products: [],
   filtered: [],
+  currentScreen: 'type',
   selections: {
     type: '',
-    persons: '',
     size: '',
     budget: '',
     extra: ''
@@ -39,53 +39,30 @@ const TYPE_OPTIONS = [
   }
 ];
 
-const PERSON_OPTIONS = {
-  spa: [
-    { value: '1-3', label: '1 tot 3 personen' },
-    { value: '4-5', label: '4 tot 5 personen' },
-    { value: '6+', label: '6 personen of meer' }
-  ],
-  barrelsauna: [
-    { value: '1-2', label: '1 tot 2 personen' },
-    { value: '3-4', label: '3 tot 4 personen' },
-    { value: '5+', label: '5 personen of meer' }
-  ],
-  Infrarood: [
-    { value: '1', label: '1 persoon' },
-    { value: '2', label: '2 personen' },
-    { value: '3+', label: '3 personen of meer' }
-  ],
-  zwemspa: [
-    { value: '1-4', label: '1 tot 4 personen' },
-    { value: '5-9', label: '5 tot 9 personen' },
-    { value: '10+', label: '10 personen of meer' }
-  ]
-};
-
 const SIZE_OPTIONS = {
   spa: [
-    { value: 'compact', label: 'Compact', description: 'Tot en met 200 cm' },
-    { value: 'medium', label: 'Medium', description: '200 tot 220 cm' },
-    { value: 'large', label: 'Groot', description: '220 tot 240 cm' },
-    { value: 'xl', label: 'XL', description: '240 cm of groter' }
+    { value: 'spa-205', label: 'Tot en met 205 cm', description: 'Compacte jacuzzi’s tot 205 cm.' },
+    { value: 'spa-205-220', label: '205 tot 220 cm', description: 'Middelgrote jacuzzi’s van 205 tot 220 cm.' },
+    { value: 'spa-220-240', label: '220 tot 240 cm', description: 'Ruimere jacuzzi’s van 220 tot 240 cm.' },
+    { value: 'spa-240+', label: '240 cm of groter', description: 'XL jacuzzi’s vanaf 240 cm.' }
   ],
   barrelsauna: [
-    { value: 'compact', label: 'Compact', description: 'Tot en met 200 cm lengte' },
-    { value: 'medium', label: 'Medium', description: '200 tot 240 cm lengte' },
-    { value: 'large', label: 'Groot', description: '240 tot 300 cm lengte' },
-    { value: 'xl', label: 'XL', description: '300 cm of langer' }
+    { value: 'barrel-200', label: 'Tot en met 200 cm', description: 'Compacte barrel sauna’s.' },
+    { value: 'barrel-200-240', label: '200 tot 240 cm', description: 'Middelgrote barrel sauna’s.' },
+    { value: 'barrel-240-300', label: '240 tot 300 cm', description: 'Ruime barrel sauna’s.' },
+    { value: 'barrel-300+', label: '300 cm of groter', description: 'XL barrel sauna’s.' }
   ],
   Infrarood: [
-    { value: 'compact', label: 'Compact', description: 'Tot en met 120 cm breedte/lengte' },
-    { value: 'medium', label: 'Medium', description: '120 tot 160 cm' },
-    { value: 'large', label: 'Groot', description: '160 tot 200 cm' },
-    { value: 'xl', label: 'XL', description: '200 cm of groter' }
+    { value: 'ir-120', label: 'Tot en met 120 cm', description: 'Compacte infrarood sauna’s.' },
+    { value: 'ir-120-160', label: '120 tot 160 cm', description: 'Middelgrote infrarood sauna’s.' },
+    { value: 'ir-160-200', label: '160 tot 200 cm', description: 'Grotere infrarood sauna’s.' },
+    { value: 'ir-200+', label: '200 cm of groter', description: 'Zeer ruime infrarood sauna’s.' }
   ],
   zwemspa: [
-    { value: 'medium', label: 'Medium', description: 'Tot en met 400 cm lengte' },
-    { value: 'large', label: 'Groot', description: '400 tot 500 cm lengte' },
-    { value: 'xl', label: 'XL', description: '500 tot 650 cm lengte' },
-    { value: 'xxl', label: 'XXL', description: '650 cm of langer' }
+    { value: 'swim-400', label: 'Tot en met 400 cm', description: 'Compacte zwemspa’s.' },
+    { value: 'swim-400-500', label: '400 tot 500 cm', description: 'Middelgrote zwemspa’s.' },
+    { value: 'swim-500-650', label: '500 tot 650 cm', description: 'Ruime zwemspa’s.' },
+    { value: 'swim-650+', label: '650 cm of groter', description: 'XL zwemspa’s.' }
   ]
 };
 
@@ -125,8 +102,8 @@ const EXTRA_OPTIONS = {
   ],
   barrelsauna: [
     { value: 'any', label: 'Geen voorkeur', description: 'Toon alle passende barrel sauna’s.' },
-    { value: 'closed', label: 'Dicht achteraan', description: 'Volledig gesloten achterzijde.' },
-    { value: 'halfglass', label: 'Half glas achteraan', description: 'Meer lichtinval en open gevoel.' }
+    { value: 'closed', label: 'Dichte achterzijde', description: 'Volledig gesloten achterzijde.' },
+    { value: 'halfglass', label: 'Halfglas achterzijde', description: 'Model met halfglas achteraan.' }
   ],
   Infrarood: [
     { value: 'any', label: 'Geen extra voorkeur', description: 'Toon alle passende infrarood sauna’s.' }
@@ -136,29 +113,25 @@ const EXTRA_OPTIONS = {
   ]
 };
 
+const SCREEN_ORDER = ['type', 'size', 'budget', 'extra', 'results'];
+
 const elements = {
   typeOptions: document.getElementById('typeOptions'),
-  personOptions: document.getElementById('personOptions'),
   sizeOptions: document.getElementById('sizeOptions'),
   budgetOptions: document.getElementById('budgetOptions'),
   extraOptions: document.getElementById('extraOptions'),
   selectionSummary: document.getElementById('selectionSummary'),
   progressItems: [...document.querySelectorAll('.progress-item')],
-  steps: {
-    1: document.getElementById('step1'),
-    2: document.getElementById('step2'),
-    3: document.getElementById('step3'),
-    4: document.getElementById('step4'),
-    5: document.getElementById('step5')
-  },
-  step5Description: document.getElementById('step5Description'),
+  screens: [...document.querySelectorAll('.wizard-screen')],
+  step4Description: document.getElementById('step4Description'),
   resultMeta: document.getElementById('resultMeta'),
   resultGrid: document.getElementById('resultGrid'),
   emptyState: document.getElementById('emptyState'),
   errorBox: document.getElementById('errorBox'),
   errorText: document.getElementById('errorText'),
   resetWizard: document.getElementById('resetWizard'),
-  resultCardTemplate: document.getElementById('resultCardTemplate')
+  resultCardTemplate: document.getElementById('resultCardTemplate'),
+  backButtons: [...document.querySelectorAll('[data-back]')]
 };
 
 function normalize(value) {
@@ -206,12 +179,6 @@ function getDimensions(product) {
   };
 }
 
-function getPersonCount(product) {
-  const source = getSpecValue(product, 'Aantal personen') || getSpecValue(product, 'Zitplaatsen');
-  const nums = parseNumbers(source);
-  return nums.length ? nums[nums.length - 1] : 0;
-}
-
 function getLigplaatsen(product) {
   const value = getSpecValue(product, 'Ligplaatsen');
   const nums = parseNumbers(value);
@@ -222,126 +189,7 @@ function getBudgetOption(type, key) {
   return (BUDGET_OPTIONS[type] || []).find(option => option.value === key) || null;
 }
 
-function fitsBudget(product, option) {
-  const price = Number(product.price || 0);
-  if (!option) return true;
-  return price >= option.min && price < option.max;
-}
-
-function fitsPersons(product, type, selection) {
-  const count = getPersonCount(product);
-  if (!selection) return true;
-  if (selection === '1') return count === 1;
-  if (selection === '2') return count === 2;
-  if (selection === '3+') return count >= 3;
-  if (selection === '1-2') return count >= 1 && count <= 2;
-  if (selection === '3-4') return count >= 3 && count <= 4;
-  if (selection === '5+') return count >= 5;
-  if (selection === '1-3') return count >= 1 && count <= 3;
-  if (selection === '4-5') return count >= 4 && count <= 5;
-  if (selection === '6+') return count >= 6;
-  if (selection === '1-4') return count >= 1 && count <= 4;
-  if (selection === '5-9') return count >= 5 && count <= 9;
-  if (selection === '10+') return count >= 10;
-  return true;
-}
-
-function fitsSize(product, type, selection) {
-  const dims = getDimensions(product);
-  if (!selection || !dims) return true;
-  const value = dims.longest;
-
-  if (type === 'zwemspa') {
-    if (selection === 'medium') return value <= 400;
-    if (selection === 'large') return value > 400 && value <= 500;
-    if (selection === 'xl') return value > 500 && value <= 650;
-    if (selection === 'xxl') return value > 650;
-    return true;
-  }
-
-  if (selection === 'compact') return value <= 200;
-  if (selection === 'medium') return value > 200 && value <= 220;
-  if (selection === 'large') return value > 220 && value <= 240;
-  if (selection === 'xl') return value > 240;
-  return true;
-}
-
-function fitsExtra(product, type, selection) {
-  if (!selection || selection === 'any') return true;
-  if (type === 'spa') {
-    return getLigplaatsen(product) === Number(selection);
-  }
-  if (type === 'barrelsauna') {
-    const title = normalize(product.title);
-    const back = normalize(getSpecValue(product, 'Achterzijde Barrel'));
-    if (selection === 'halfglass') {
-      return title.includes('halfglas') || back.includes('half glas');
-    }
-    if (selection === 'closed') {
-      return !title.includes('halfglas') && (back.includes('dichte') || back.includes('dicht') || !back.includes('half glas'));
-    }
-  }
-  return true;
-}
-
-function getRelevantProducts() {
-  return state.products.filter(product => normalize(product.type) === normalize(state.selections.type));
-}
-
-function sortResults(items) {
-  return [...items].sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
-}
-
-function filterProducts() {
-  const type = state.selections.type;
-  const budget = getBudgetOption(type, state.selections.budget);
-
-  const items = getRelevantProducts().filter(product => {
-    return fitsPersons(product, type, state.selections.persons)
-      && fitsSize(product, type, state.selections.size)
-      && fitsBudget(product, budget)
-      && fitsExtra(product, type, state.selections.extra);
-  });
-
-  state.filtered = sortResults(items);
-}
-
-function setStepState(stepNumber, open) {
-  const step = elements.steps[stepNumber];
-  if (!step) return;
-  step.classList.toggle('is-open', open);
-  step.classList.toggle('is-locked', !open);
-}
-
-function updateProgress() {
-  const completed = {
-    1: !!state.selections.type,
-    2: !!state.selections.persons,
-    3: !!state.selections.size,
-    4: !!state.selections.budget,
-    5: !!state.selections.extra
-  };
-
-  elements.progressItems.forEach(item => {
-    const step = Number(item.dataset.step);
-    item.classList.remove('is-active', 'is-complete');
-    if (completed[step]) {
-      item.classList.add('is-complete');
-    }
-  });
-
-  const nextStep = !completed[1] ? 1 : !completed[2] ? 2 : !completed[3] ? 3 : !completed[4] ? 4 : 5;
-  const activeItem = elements.progressItems.find(item => Number(item.dataset.step) === nextStep);
-  activeItem?.classList.add('is-active');
-
-  setStepState(1, true);
-  setStepState(2, completed[1]);
-  setStepState(3, completed[2]);
-  setStepState(4, completed[3]);
-  setStepState(5, completed[4]);
-}
-
-function optionCard(option, group, selectedValue, onClick, variant = 'default') {
+function optionCard(option, selectedValue, onClick, variant = 'default') {
   const button = document.createElement('button');
   button.type = 'button';
   button.className = `choice-card ${variant === 'type' ? 'choice-card-type' : ''}`;
@@ -355,59 +203,109 @@ function optionCard(option, group, selectedValue, onClick, variant = 'default') 
     </div>
   `;
 
-  button.addEventListener('click', () => onClick(group, option.value));
+  button.addEventListener('click', onClick);
   return button;
+}
+
+function showScreen(screenName) {
+  state.currentScreen = screenName;
+  elements.screens.forEach(screen => {
+    screen.classList.toggle('is-active', screen.id === `screen-${screenName}`);
+  });
+  updateProgress();
+}
+
+function nextScreen() {
+  const index = SCREEN_ORDER.indexOf(state.currentScreen);
+  if (index >= 0 && index < SCREEN_ORDER.length - 1) {
+    showScreen(SCREEN_ORDER[index + 1]);
+  }
+}
+
+function updateProgress() {
+  const progressMap = {
+    type: 1,
+    size: 2,
+    budget: 3,
+    extra: 4,
+    results: 5
+  };
+  const currentStep = progressMap[state.currentScreen] || 1;
+  elements.progressItems.forEach(item => {
+    const step = Number(item.dataset.step);
+    item.classList.remove('is-active', 'is-complete');
+    if (step < currentStep) item.classList.add('is-complete');
+    if (step === currentStep) item.classList.add('is-active');
+  });
 }
 
 function renderTypeOptions() {
   elements.typeOptions.innerHTML = '';
   TYPE_OPTIONS.forEach(option => {
-    elements.typeOptions.appendChild(optionCard(option, 'type', state.selections.type, handleSelection, 'type'));
+    elements.typeOptions.appendChild(optionCard(option, state.selections.type, () => {
+      state.selections.type = option.value;
+      state.selections.size = '';
+      state.selections.budget = '';
+      state.selections.extra = '';
+      updateSummary();
+      renderTypeOptions();
+    }, 'type'));
   });
 }
 
-function renderSimpleOptions(target, options, group, selectedValue) {
+function renderSimpleOptions(target, options, selectedValue, key) {
   target.innerHTML = '';
   options.forEach(option => {
-    target.appendChild(optionCard(option, group, selectedValue, handleSelection));
+    target.appendChild(optionCard(option, selectedValue, () => {
+      state.selections[key] = option.value;
+      if (key === 'size') {
+        state.selections.budget = '';
+        state.selections.extra = '';
+      }
+      if (key === 'budget') {
+        state.selections.extra = '';
+      }
+      updateSummary();
+      renderCurrentStep();
+    }));
   });
 }
 
-function renderDynamicSteps() {
+function renderCurrentStep() {
   const type = state.selections.type;
-  renderSimpleOptions(elements.personOptions, PERSON_OPTIONS[type] || [], 'persons', state.selections.persons);
-  renderSimpleOptions(elements.sizeOptions, SIZE_OPTIONS[type] || [], 'size', state.selections.size);
-  renderSimpleOptions(elements.budgetOptions, BUDGET_OPTIONS[type] || [], 'budget', state.selections.budget);
-  renderSimpleOptions(elements.extraOptions, EXTRA_OPTIONS[type] || [], 'extra', state.selections.extra);
+  if (!type) return;
+
+  renderSimpleOptions(elements.sizeOptions, SIZE_OPTIONS[type] || [], state.selections.size, 'size');
+  renderSimpleOptions(elements.budgetOptions, BUDGET_OPTIONS[type] || [], state.selections.budget, 'budget');
+  renderSimpleOptions(elements.extraOptions, EXTRA_OPTIONS[type] || [], state.selections.extra, 'extra');
 
   if (type === 'spa') {
-    elements.step5Description.textContent = 'Kies of u één of twee ligplaatsen wenst.';
+    elements.step4Description.textContent = 'Kies of u één of twee ligplaatsen wenst.';
   } else if (type === 'barrelsauna') {
-    elements.step5Description.textContent = 'Kies of u een dichte achterzijde of half glas achteraan wenst.';
+    elements.step4Description.textContent = 'Kies of u een dichte achterzijde of halfglas achteraan wenst.';
   } else {
-    elements.step5Description.textContent = 'Geen verplichte extra voorkeur. U kunt alle passende modellen bekijken.';
+    elements.step4Description.textContent = 'Geen extra voorkeur nodig. Laat dit op geen voorkeur staan of kies verder.';
   }
 }
 
 function updateSummary() {
-  const selections = [];
-  const typeLabel = TYPE_OPTIONS.find(option => option.value === state.selections.type)?.label;
-  if (typeLabel) selections.push(['Type', typeLabel]);
-  const personLabel = (PERSON_OPTIONS[state.selections.type] || []).find(option => option.value === state.selections.persons)?.label;
-  if (personLabel) selections.push(['Personen', personLabel]);
-  const sizeLabel = (SIZE_OPTIONS[state.selections.type] || []).find(option => option.value === state.selections.size)?.label;
-  if (sizeLabel) selections.push(['Afmeting', sizeLabel]);
-  const budgetLabel = (BUDGET_OPTIONS[state.selections.type] || []).find(option => option.value === state.selections.budget)?.label;
-  if (budgetLabel) selections.push(['Budget', budgetLabel]);
-  const extraLabel = (EXTRA_OPTIONS[state.selections.type] || []).find(option => option.value === state.selections.extra)?.label;
-  if (extraLabel) selections.push(['Voorkeur', extraLabel]);
+  const rows = [];
+  const type = TYPE_OPTIONS.find(option => option.value === state.selections.type)?.label;
+  const size = (SIZE_OPTIONS[state.selections.type] || []).find(option => option.value === state.selections.size)?.label;
+  const budget = (BUDGET_OPTIONS[state.selections.type] || []).find(option => option.value === state.selections.budget)?.label;
+  const extra = (EXTRA_OPTIONS[state.selections.type] || []).find(option => option.value === state.selections.extra)?.label;
 
-  if (!selections.length) {
+  if (type) rows.push(['Type', type]);
+  if (size) rows.push(['Afmeting', size]);
+  if (budget) rows.push(['Budget', budget]);
+  if (extra) rows.push(['Voorkeur', extra]);
+
+  if (!rows.length) {
     elements.selectionSummary.innerHTML = '<div class="summary-empty">Nog geen keuzes gemaakt.</div>';
     return;
   }
 
-  elements.selectionSummary.innerHTML = selections.map(([label, value]) => `
+  elements.selectionSummary.innerHTML = rows.map(([label, value]) => `
     <div class="summary-row">
       <span>${escapeHtml(label)}</span>
       <strong>${escapeHtml(value)}</strong>
@@ -415,24 +313,87 @@ function updateSummary() {
   `).join('');
 }
 
+function fitsSize(product, type, sizeKey) {
+  const dims = getDimensions(product);
+  if (!dims || !sizeKey) return true;
+  const value = dims.longest;
+
+  if (type === 'spa') {
+    if (sizeKey === 'spa-205') return value <= 205;
+    if (sizeKey === 'spa-205-220') return value > 205 && value <= 220;
+    if (sizeKey === 'spa-220-240') return value > 220 && value <= 240;
+    if (sizeKey === 'spa-240+') return value > 240;
+  }
+
+  if (type === 'barrelsauna') {
+    if (sizeKey === 'barrel-200') return value <= 200;
+    if (sizeKey === 'barrel-200-240') return value > 200 && value <= 240;
+    if (sizeKey === 'barrel-240-300') return value > 240 && value <= 300;
+    if (sizeKey === 'barrel-300+') return value > 300;
+  }
+
+  if (type === 'Infrarood') {
+    if (sizeKey === 'ir-120') return value <= 120;
+    if (sizeKey === 'ir-120-160') return value > 120 && value <= 160;
+    if (sizeKey === 'ir-160-200') return value > 160 && value <= 200;
+    if (sizeKey === 'ir-200+') return value > 200;
+  }
+
+  if (type === 'zwemspa') {
+    if (sizeKey === 'swim-400') return value <= 400;
+    if (sizeKey === 'swim-400-500') return value > 400 && value <= 500;
+    if (sizeKey === 'swim-500-650') return value > 500 && value <= 650;
+    if (sizeKey === 'swim-650+') return value > 650;
+  }
+
+  return true;
+}
+
+function fitsBudget(product, type, budgetKey) {
+  const option = getBudgetOption(type, budgetKey);
+  if (!option) return true;
+  const price = Number(product.price || 0);
+  return price >= option.min && price < option.max;
+}
+
+function fitsExtra(product, type, extraKey) {
+  if (!extraKey || extraKey === 'any') return true;
+
+  if (type === 'spa') {
+    return getLigplaatsen(product) === Number(extraKey);
+  }
+
+  if (type === 'barrelsauna') {
+    const title = normalize(product.title);
+    if (extraKey === 'halfglass') return title.includes('halfglas');
+    if (extraKey === 'closed') return !title.includes('halfglas');
+  }
+
+  return true;
+}
+
+function filterProducts() {
+  const type = state.selections.type;
+  state.filtered = state.products.filter(product => {
+    return normalize(product.type) === normalize(type)
+      && fitsSize(product, type, state.selections.size)
+      && fitsBudget(product, type, state.selections.budget)
+      && fitsExtra(product, type, state.selections.extra);
+  }).sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
+}
+
 function renderResults() {
+  filterProducts();
   elements.resultGrid.innerHTML = '';
   elements.emptyState.hidden = true;
 
-  if (!state.selections.extra) {
-    elements.resultMeta.textContent = 'Maak uw keuzes om uw persoonlijke selectie te zien.';
-    return;
-  }
-
-  filterProducts();
-
   if (!state.filtered.length) {
-    elements.resultMeta.textContent = 'Er werden geen exacte matches gevonden voor uw selectie.';
+    elements.resultMeta.textContent = 'Geen exacte match gevonden voor uw selectie.';
     elements.emptyState.hidden = false;
     return;
   }
 
-  elements.resultMeta.textContent = `${state.filtered.length} model${state.filtered.length > 1 ? 'len' : ''} gevonden voor uw selectie.`;
+  elements.resultMeta.textContent = `${state.filtered.length} model${state.filtered.length > 1 ? 'len' : ''} gevonden.`;
 
   const fragment = document.createDocumentFragment();
   state.filtered.forEach(product => {
@@ -445,7 +406,7 @@ function renderResults() {
     const specs = node.querySelector('.result-spec-list');
     const dims = getDimensions(product);
 
-    link.href = product.url || `product.html?id=${encodeURIComponent(product.id || '')}`;
+    link.href = `product.html?id=${encodeURIComponent(product.id || '')}`;
     img.src = product.image || '';
     img.alt = product.title || '';
     title.textContent = product.title || '';
@@ -453,64 +414,84 @@ function renderResults() {
     badge.textContent = dims?.raw || product.type || '';
 
     const specLines = [];
-    const persons = getSpecValue(product, 'Aantal personen');
-    const ligplaatsen = getSpecValue(product, 'Ligplaatsen');
-    if (persons) specLines.push(`<span><strong>Personen:</strong> ${escapeHtml(persons)}</span>`);
-    if (ligplaatsen && normalize(state.selections.type) === 'spa') specLines.push(`<span><strong>Ligplaatsen:</strong> ${escapeHtml(ligplaatsen)}</span>`);
     if (dims?.raw) specLines.push(`<span><strong>Afmeting:</strong> ${escapeHtml(dims.raw)}</span>`);
+    if (state.selections.type === 'spa') {
+      const ligplaatsen = getSpecValue(product, 'Ligplaatsen');
+      if (ligplaatsen) specLines.push(`<span><strong>Ligplaatsen:</strong> ${escapeHtml(ligplaatsen)}</span>`);
+    }
+    if (state.selections.type === 'barrelsauna') {
+      specLines.push(`<span><strong>Afwerking:</strong> ${normalize(product.title).includes('halfglas') ? 'Halfglas' : 'Dichte achterzijde'}</span>`);
+    }
     specs.innerHTML = specLines.join('');
-
     fragment.appendChild(node);
   });
 
   elements.resultGrid.appendChild(fragment);
 }
 
-function rerender() {
-  renderTypeOptions();
-  if (state.selections.type) renderDynamicSteps();
-  updateSummary();
-  updateProgress();
-  renderResults();
-}
-
-function resetFrom(group) {
-  if (group === 'type') {
-    state.selections = { type: state.selections.type, persons: '', size: '', budget: '', extra: '' };
-  }
-  if (group === 'persons') {
-    state.selections.size = '';
-    state.selections.budget = '';
-    state.selections.extra = '';
-  }
-  if (group === 'size') {
-    state.selections.budget = '';
-    state.selections.extra = '';
-  }
-  if (group === 'budget') {
-    state.selections.extra = '';
-  }
-}
-
-function handleSelection(group, value) {
-  if (group === 'type' && state.selections.type !== value) {
-    state.selections.type = value;
-    resetFrom('type');
-  } else {
-    state.selections[group] = value;
-    resetFrom(group);
-    state.selections[group] = value;
-  }
-  rerender();
-}
-
 function resetWizard() {
-  state.selections = { type: '', persons: '', size: '', budget: '', extra: '' };
-  elements.personOptions.innerHTML = '';
+  state.currentScreen = 'type';
+  state.selections = { type: '', size: '', budget: '', extra: '' };
+  state.filtered = [];
   elements.sizeOptions.innerHTML = '';
   elements.budgetOptions.innerHTML = '';
   elements.extraOptions.innerHTML = '';
-  rerender();
+  elements.resultGrid.innerHTML = '';
+  elements.emptyState.hidden = true;
+  elements.resultMeta.textContent = 'Hier verschijnen de modellen die passen bij uw keuze.';
+  updateSummary();
+  renderTypeOptions();
+  showScreen('type');
+}
+
+function canProceed(screen) {
+  if (screen === 'type') return !!state.selections.type;
+  if (screen === 'size') return !!state.selections.size;
+  if (screen === 'budget') return !!state.selections.budget;
+  if (screen === 'extra') return !!state.selections.extra;
+  return true;
+}
+
+function attachNextButtons() {
+  document.querySelectorAll('.next-step-btn').forEach(btn => btn.remove());
+
+  const map = [
+    { screen: 'type', target: 'typeOptions' },
+    { screen: 'size', target: 'sizeOptions' },
+    { screen: 'budget', target: 'budgetOptions' },
+    { screen: 'extra', target: 'extraOptions' }
+  ];
+
+  map.forEach(({ screen, target }) => {
+    const container = document.getElementById(target);
+    if (!container) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'screen-actions';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'ghost-btn next-step-btn';
+    btn.textContent = 'Volgende stap';
+    btn.disabled = !canProceed(screen);
+    btn.addEventListener('click', () => {
+      if (!canProceed(screen)) return;
+      if (screen === 'extra') {
+        renderResults();
+        showScreen('results');
+      } else {
+        nextScreen();
+      }
+    });
+    wrap.appendChild(btn);
+    container.parentElement.appendChild(wrap);
+  });
+}
+
+function rerenderAll() {
+  renderTypeOptions();
+  renderCurrentStep();
+  updateSummary();
+  updateProgress();
+  attachNextButtons();
 }
 
 async function loadProducts() {
@@ -528,7 +509,11 @@ function showError(message) {
 async function init() {
   state.products = await loadProducts();
   elements.resetWizard.addEventListener('click', resetWizard);
-  rerender();
+  elements.backButtons.forEach(button => {
+    button.addEventListener('click', () => showScreen(button.dataset.back));
+  });
+  rerenderAll();
+  showScreen('type');
 }
 
 init().catch(error => {
