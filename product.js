@@ -156,6 +156,10 @@ function isJacuzzi(type) {
   return !isSwimspa(t) && !isInfrared(t) && !isSauna(t);
 }
 
+function hasSpaColorOptions(type) {
+  return isJacuzzi(type) || isSwimspa(type);
+}
+
 function toPositiveInt(value) {
   const n = parseInt(value, 10);
   if (!Number.isFinite(n) || n < 0) return 0;
@@ -454,8 +458,9 @@ function getSelectedOfferLines() {
   const type = currentProduct.type || '';
   const lines = [];
   const allowCoverlift = extraOptionsAllowed(type) && !isRoundSpaWithoutCoverlift(currentProduct);
-  const innerColor = $('spaInnerColor')?.value || '';
-  const cabinetColor = $('spaCabinetColor')?.value || '';
+  const showSpaColors = hasSpaColorOptions(type);
+  const innerColor = showSpaColors ? ($('spaInnerColor')?.value || '') : '';
+  const cabinetColor = showSpaColors ? ($('spaCabinetColor')?.value || '') : '';
 
   let productLabel = currentProduct.title || 'Product';
   const colorParts = [];
@@ -966,8 +971,8 @@ function printOfferte() {
 }
 
 .summary-line span:first-child {
-  min-width: 140px;
-  font-weight: 600;
+    min-width: 140px;
+    font-weight: 600;
 }
 
 .line-fill {
@@ -1622,8 +1627,16 @@ function printOfferte() {
 function renderProduct(p) {
   currentProduct = p;
 
+  const type = p.type || '';
+  const colorSelects = document.querySelector('.color-selects');
+  const showSpaColors = hasSpaColorOptions(type);
+
+  if (colorSelects) {
+    colorSelects.style.display = showSpaColors ? 'grid' : 'none';
+  }
+
   const cabinetSelect = $('spaCabinetColor');
-  if (cabinetSelect) {
+  if (cabinetSelect && showSpaColors) {
     let colors = [];
     const merk = getMerk(p).toLowerCase();
 
