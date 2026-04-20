@@ -132,6 +132,12 @@ img {
   flex-wrap: wrap;
 }
 
+.kassa {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
 /* Panels */
 .panel {
   background: rgb(255 255 255);
