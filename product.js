@@ -454,10 +454,23 @@ function getSelectedOfferLines() {
   const type = currentProduct.type || '';
   const lines = [];
   const allowCoverlift = extraOptionsAllowed(type) && !isRoundSpaWithoutCoverlift(currentProduct);
+  const innerColor = $('spaInnerColor')?.value || '';
+  const cabinetColor = $('spaCabinetColor')?.value || '';
+
+  let productLabel = currentProduct.title || 'Product';
+  const colorParts = [];
+
+  if (innerColor) colorParts.push(`Kuipkleur: ${innerColor}`);
+  if (cabinetColor) colorParts.push(`Omkastingkleur: ${cabinetColor}`);
+
+  if (colorParts.length) {
+    productLabel += ` <span style="font-weight:400;color:#475569;">(${escapeHtml(colorParts.join(' • '))})</span>`;
+  }
 
   lines.push({
-    label: currentProduct.title || 'Product',
-    price: Number(currentProduct.price || 0)
+    label: productLabel,
+    price: Number(currentProduct.price || 0),
+    is_html: true
   });
 
   lines.push({
@@ -617,7 +630,7 @@ function printOfferte() {
   const rows = lines.map((line, index) => `
     <tr>
       <td class="col-num">${index + 1}</td>
-      <td class="col-desc">${escapeHtml(line.label)}</td>
+      <td class="col-desc">${line.is_html ? line.label : escapeHtml(line.label)}</td>
       <td class="col-price">${euro(line.price)}</td>
     </tr>
   `).join('');
