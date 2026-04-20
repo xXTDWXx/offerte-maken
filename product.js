@@ -1646,6 +1646,26 @@ async function init() {
     return;
   }
 
+  const cabinetSelect = document.getElementById('spaCabinetColor');
+
+if (cabinetSelect) {
+  let colors = [];
+
+  const merk = (p.merk || p.brand || '').toLowerCase();
+
+  if (merk.includes('vogue')) {
+    colors = ['taupe', 'black', 'grey'];
+  } else if (merk.includes('elite')) {
+    colors = ['palm black', 'ancient grey'];
+  } else {
+    colors = ['graphite', 'grey', 'chocolate'];
+  }
+
+  cabinetSelect.innerHTML = colors
+    .map(c => `<option value="${c}">${c}</option>`)
+    .join('');
+}
+
   const products = await loadProducts();
   const product = products.find(p => String(p.id) === String(productId));
 
