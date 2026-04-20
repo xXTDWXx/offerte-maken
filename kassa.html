@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kassa kleine producten</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+.grid-products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:20px}
+.product-card{background:#fff;border:1px solid #ddd;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.counter{display:flex;gap:8px;align-items:center}
+.counter button{width:32px;height:32px}
+.total-bar{position:sticky;bottom:0;background:#fff;padding:16px;border-top:2px solid #ddd;display:flex;justify-content:space-between}
+</style>
+</head>
+<body>
+<div class="grid-products" id="grid"></div>
+<div class="total-bar">
+<div><strong>Totaal:</strong> <span id="total">€0</span></div>
+<div>
+<button onclick="resetAll()">Reset</button>
+<button onclick="printBon()">Bon printen</button>
+</div>
+</div>
+<script>
+let products=[];
+let cart={};
+
+fetch('kleineproducten.json').then(r=>r.json()).then(data=>{
+products=data;
+render();
+});
+
+function render(){
+const grid=document.getElementById('grid');
+grid.innerHTML='';
+products.forEach(p=>{
+const qty=cart[p.id]||0;
+const el=document.createElement('div');
+el.className='product-card';
+el.innerHTML=`
+<div><strong>${p.title}</strong></div>
+<div>€ ${p.price.toFixed(2)}</div>
+<div class="counter">
+<button onclick="change('${p.id}',-1)">-</button>
+<span>${qty}</span>
+<button onclick="change('${p.id}',1)">+</button>
+</div>
+`;
+grid.appendChild(el);
+});
+updateTotal();
+}
+
+function change(id,delta){
+cart[id]=(cart[id]||0)+delta;
+if(cart[id]<0)cart[id]=0;
+render();
+}
+
+function updateTotal(){
+let t=0;
+products.forEach(p=>{t+= (cart[p.id]||0)*p.price});
+document.getElementById('total').innerText='€ '+t.toFixed(2);
+}
+
+function resetAll(){cart={};render();}
+
+function printBon(){
+let rows='';
+let total=0;
+products.forEach(p=>{
+const q=cart[p.id]||0;
+if(q>0){
+const line=q*p.price;
+total+=line;
+rows+=`<tr><td>${p.title}</td><td>${q}</td><td>€ ${line.toFixed(2)}</td></tr>`;
+}
+});
+const w=window.open('');
+w.document.write(`
+<h2>Bon</h2>
+<table border="1" style="width:100%">
+<tr><th>Product</th><th>Aantal</th><th>Prijs</th></tr>
+${rows}
+</table>
+<h3>Totaal: € ${total.toFixed(2)}</h3>
+<script>window.print()<\/script>
+`);
+}
+</script>
+</body>
+</html>
