@@ -61,7 +61,7 @@
     }
 
     .color-selects{
-      margin:20px 0;
+      margin:0 0 20px 0;
       display:grid;
       gap:12px;
     }
@@ -109,44 +109,40 @@
       <div class="modal-grid">
         <div>
           <div class="img-options" style="display:flex;">
-          <!-- <div class="modal-media">
-            <img id="productImg" alt="" loading="lazy" />
-          </div> -->
-
             <div class="modal-media">
-            <img id="productImg" alt="Barrelsauna TR170 – Halfglas" loading="lazy" src="https://www.sunspabenelux.be/wp-content/uploads/2022/11/barrelsauna-tr170-half-glas-650x650.jpg">
+              <img id="productImg" alt="Barrelsauna TR170 – Halfglas" loading="lazy" src="https://www.sunspabenelux.be/wp-content/uploads/2022/11/barrelsauna-tr170-half-glas-650x650.jpg">
 
-    <div class="totals" style="font-size:22px;">
-            <div class="totals-row"><span>Product </span><strong id="optProductTotal">€&nbsp;4.195,00</strong></div>
-            <div class="totals-row"><span>Opties </span><strong id="optOptionsTotal">€&nbsp;995,00</strong></div>
-            <div class="totals-row totals-row-big"><span>Totaal </span><strong id="optGrandTotal">€&nbsp;5.190,00</strong></div>
-            <div class="small">Alle bedragen incl. btw &amp; excl. kraankosten.</div>
+              <div class="totals" style="font-size:22px;">
+                <div class="totals-row"><span>Product </span><strong id="optProductTotal">€&nbsp;4.195,00</strong></div>
+                <div class="totals-row"><span>Opties </span><strong id="optOptionsTotal">€&nbsp;995,00</strong></div>
+                <div class="totals-row totals-row-big"><span>Totaal </span><strong id="optGrandTotal">€&nbsp;5.190,00</strong></div>
+                <div class="small">Alle bedragen incl. btw &amp; excl. kraankosten.</div>
 
-    <div class="modal-actions">
-            <a id="productUrl" class="btn btn-secondary" target="_blank" rel="noopener" href="https://www.sunspabenelux.be/p/barrelsauna-tr170-halfglas/">Bekijk op website</a>
-            <!-- <button id="productPrint" class="btn btn-secondary" type="button">Print productfiche</button> -->
-            <button id="offerPrint" class="btn btn-primary" type="button">Print offerte</button>
-          </div>
-          </div>
-          </div>
-
-          <div class="color-selects">
-            <div class="field">
-              <label for="spaInnerColor">Binnenkleur</label>
-              <select id="spaInnerColor">
-                <option value="silver marble">silver marble</option>
-                <option value="black marble">black marble</option>
-                <option value="pure white">pure white</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="spaCabinetColor">Omkastingkleur</label>
-              <select id="spaCabinetColor"></select>
+                <div class="modal-actions">
+                  <a id="productUrl" class="btn btn-secondary" target="_blank" rel="noopener" href="https://www.sunspabenelux.be/p/barrelsauna-tr170-halfglas/">Bekijk op website</a>
+                  <button id="offerPrint" class="btn btn-primary" type="button">Print offerte</button>
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="options">
+            <div class="color-selects">
+              <div class="field">
+                <label for="spaInnerColor">Binnenkleur</label>
+                <select id="spaInnerColor">
+                  <option value="silver marble">silver marble</option>
+                  <option value="black marble">black marble</option>
+                  <option value="pure white">pure white</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="spaCabinetColor">Omkastingkleur</label>
+                <select id="spaCabinetColor"></select>
+              </div>
+            </div>
+
             <label class="opt-disabled opt-inline">
               <div class="opt-text">
                 <div class="opt-title">
@@ -164,7 +160,6 @@
                   Cover & trap inclusief
                 </div>
               </div>
-              <!-- <div class="opt-price" style="visibility:hidden;">€0</div> -->
             </label>
 
             <label class="opt opt-inline" id="optCoverliftRow">
@@ -175,7 +170,6 @@
                   Coverlift € 189
                 </div>
               </div>
-              <!-- <div class="opt-price" id="optCoverliftTotal" style="visibility:hidden;">€0</div> -->
             </label>
 
             <label class="opt opt-inline" id="optCoverlift2Row" style="display:none">
@@ -186,7 +180,6 @@
                   2e Coverlift € 189
                 </div>
               </div>
-              <!-- <div class="opt-price" id="optCoverlift2Total" style="visibility:hidden;">€0</div> -->
             </label>
 
             <label class="opt opt-inline" id="optMaintRow">
@@ -197,7 +190,6 @@
                   Onderhoudspakket € 179
                 </div>
               </div>
-              <!-- <div class="opt-price" id="optMaintTotal" style="visibility:hidden;">€0</div> -->
             </label>
 
             <label class="opt opt-inline" id="optSwimFiltersetRow" style="display:none">
@@ -208,31 +200,30 @@
                   Filterset (zwemspa) € 250
                 </div>
               </div>
-              <!-- <div class="opt-price" id="optSwimFiltersetTotal" style="visibility:hidden;">€0</div> -->
             </label>
 
             <label class="opt opt-inline" id="optWarmtepompRow" style="display:none">
-  <div class="opt-text" style="width:100%;">
-    <div class="opt-title" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-      <span style="margin-left: 9px;margin-top: 5px;">Warmtepomp incl. afstelling* € 2795</span>
+              <div class="opt-text" style="width:100%;">
+                <div class="opt-title" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+                  <span style="margin-left: 9px;margin-top: 5px;">Warmtepomp incl. afstelling* € 2795</span>
 
-      <div class="opt-counter">
-        <img src="images/warmtepomp.jpg" alt="Warmtepomp"/>
-        <button id="optWarmtepompMinus" type="button" class="opt-counter-btn">−</button>
-        <input
-          id="optWarmtepompQty"
-          type="number"
-          min="0"
-          step="1"
-          value="0"
-          inputmode="numeric"
-          class="opt-counter-input"
-        />
-        <button id="optWarmtepompPlus" type="button" class="opt-counter-btn">+</button>
-      </div>
-    </div>
-  </div>
-</label>
+                  <div class="opt-counter">
+                    <img src="images/warmtepomp.jpg" alt="Warmtepomp"/>
+                    <button id="optWarmtepompMinus" type="button" class="opt-counter-btn">−</button>
+                    <input
+                      id="optWarmtepompQty"
+                      type="number"
+                      min="0"
+                      step="1"
+                      value="0"
+                      inputmode="numeric"
+                      class="opt-counter-input"
+                    />
+                    <button id="optWarmtepompPlus" type="button" class="opt-counter-btn">+</button>
+                  </div>
+                </div>
+              </div>
+            </label>
 
             <div id="optBarrelStoveGroup" style="display:none">
               <label class="opt opt-inline" id="optBarrelWoodStoveRow">
@@ -243,7 +234,6 @@
                     Houtkachel + rookafvoer € 1245
                   </div>
                 </div>
-                <!-- <div class="opt-price" id="optBarrelWoodStoveTotal" style="visibility:hidden;">€0</div> -->
               </label>
 
               <label class="opt opt-inline" id="optBarrelElectricHeaterRow">
@@ -254,7 +244,6 @@
                     Elektrische kachel 8 kW € 495
                   </div>
                 </div>
-                <!-- <div class="opt-price" id="optBarrelElectricHeaterTotal" style="visibility:hidden;">€0</div> -->
               </label>
             </div>
 
@@ -267,7 +256,6 @@
                     Shingles dak € 399
                   </div>
                 </div>
-                <!-- <div class="opt-price" id="optBarrelRoofShinglesTotal" style="visibility:hidden;">€0</div> -->
               </label>
 
               <label class="opt opt-inline" id="optBarrelRoofHeatherRow">
@@ -278,7 +266,6 @@
                     Heidedak € 849
                   </div>
                 </div>
-                <!-- <div class="opt-price" id="optBarrelRoofHeatherTotal" style="visibility:hidden;">€0</div> -->
               </label>
 
               <label class="opt opt-inline" id="optBarrelRoofDesignRow">
@@ -289,24 +276,23 @@
                     Design dak € 899
                   </div>
                 </div>
-                <!-- <div class="opt-price" id="optBarrelRoofDesignTotal" style="visibility:hidden;">€0</div> -->
               </label>
             </div>
+
             <label class="opt opt-inline" id="optBarrelInfraredModuleRow" style="display:none">
-  <input id="optBarrelInfraredModule" type="checkbox" />
-  <div class="opt-text">
-    <div class="opt-title">Infrarood module € 699</div>
-  </div>
-  <!-- <div class="opt-price" id="optBarrelInfraredModuleTotal" style="visibility:hidden;">€0</div> -->
-</label>
-          </div>
+              <input id="optBarrelInfraredModule" type="checkbox" />
+              <div class="opt-text">
+                <div class="opt-title">Infrarood module € 699</div>
+              </div>
+            </label>
           </div>
 
           <hr style="border:none;border-top:1px solid var(--border);margin:20px 0" />
 
           <div>
-          <div class="panel-title" style="margin-bottom:10px;">Specificaties</div>
-          <div id="productSpecs" class="spec-table"></div>
+            <div class="panel-title" style="margin-bottom:10px;">Specificaties</div>
+            <div id="productSpecs" class="spec-table"></div>
+          </div>
         </div>
       </div>
     </section>
