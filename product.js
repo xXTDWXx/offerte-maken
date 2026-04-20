@@ -460,8 +460,8 @@ function getSelectedOfferLines() {
   let productLabel = currentProduct.title || 'Product';
   const colorParts = [];
 
-  if (innerColor) colorParts.push(`Kuipkleur: ${innerColor}`);
-  if (cabinetColor) colorParts.push(`Omkastingkleur: ${cabinetColor}`);
+  if (innerColor) colorParts.push(`${innerColor}`);
+  if (cabinetColor) colorParts.push(`${cabinetColor}`);
 
   if (colorParts.length) {
     productLabel += ` <span style="font-weight:400;color:#475569;">(${escapeHtml(colorParts.join(' • '))})</span>`;
