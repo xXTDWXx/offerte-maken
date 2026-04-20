@@ -37,8 +37,35 @@ function $(id) {
   return document.getElementById(id);
 }
 
+function getSpecValue(product, label) {
+  const specs = product?.specs;
+
+  if (!specs) return '';
+
+  if (Array.isArray(specs)) {
+    const found = specs.find(s => String(s?.label || '').toLowerCase() === String(label || '').toLowerCase());
+    return found?.value || '';
+  }
+
+  if (typeof specs === 'object') {
+    const key = Object.keys(specs).find(k => String(k || '').toLowerCase() === String(label || '').toLowerCase());
+    return key ? specs[key] : '';
+  }
+
+  return '';
+}
+
+function getMerk(product) {
+  return String(
+    product?.merk ||
+    product?.brand ||
+    getSpecValue(product, 'Merk') ||
+    ''
+  ).trim();
+}
+
 function isBullfrogProduct(product) {
-  return product?.merk?.toLowerCase() === 'bullfrog';
+  return getMerk(product).toLowerCase() === 'bullfrog';
 }
 
 function toggleBullfrogUi(product) {
@@ -537,7 +564,6 @@ function printProductFiche(p) {
 
   win.document.close();
 }
-
 
 function getTermsHtml(type, validUntil) {
   const terms = [];
@@ -1583,6 +1609,24 @@ function printOfferte() {
 function renderProduct(p) {
   currentProduct = p;
 
+  const cabinetSelect = $('spaCabinetColor');
+  if (cabinetSelect) {
+    let colors = [];
+    const merk = getMerk(p).toLowerCase();
+
+    if (merk.includes('vogue')) {
+      colors = ['taupe', 'black', 'grey'];
+    } else if (merk.includes('elite')) {
+      colors = ['palm black', 'ancient grey'];
+    } else {
+      colors = ['graphite', 'grey', 'chocolate'];
+    }
+
+    cabinetSelect.innerHTML = colors
+      .map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`)
+      .join('');
+  }
+
   toggleBullfrogUi(p);
 
   if (productTitle) productTitle.textContent = p.title || '—';
@@ -1645,26 +1689,6 @@ async function init() {
     showError('Geen product-id in de URL.');
     return;
   }
-
-  const cabinetSelect = document.getElementById('spaCabinetColor');
-
-if (cabinetSelect) {
-  let colors = [];
-
-  const merk = (p.merk || p.brand || '').toLowerCase();
-
-  if (merk.includes('vogue')) {
-    colors = ['taupe', 'black', 'grey'];
-  } else if (merk.includes('elite')) {
-    colors = ['palm black', 'ancient grey'];
-  } else {
-    colors = ['graphite', 'grey', 'chocolate'];
-  }
-
-  cabinetSelect.innerHTML = colors
-    .map(c => `<option value="${c}">${c}</option>`)
-    .join('');
-}
 
   const products = await loadProducts();
   const product = products.find(p => String(p.id) === String(productId));
