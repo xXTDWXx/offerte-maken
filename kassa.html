@@ -23,6 +23,11 @@
 </div>
 </div>
 <script>
+const COMPANY_NAME = 'Sunspa Benelux';
+const COMPANY_EMAIL = 'sunspabrugge@gmail.com';
+const COMPANY_PHONE = '0483399967';
+const COMPANY_WEBSITE = 'www.sunspabenelux.be';
+
 let products=[];
 let cart={};
 
@@ -30,6 +35,8 @@ fetch('kleineproducten.json').then(r=>r.json()).then(data=>{
 products=data;
 render();
 });
+
+function euro(n){return '€ '+n.toFixed(2).replace('.',',');}
 
 function render(){
 const grid=document.getElementById('grid');
@@ -40,51 +47,51 @@ const el=document.createElement('div');
 el.className='product-card';
 el.innerHTML=`
 <div><strong>${p.title}</strong></div>
-<div>€ ${p.price.toFixed(2)}</div>
+<div>${euro(p.price)}</div>
 <div class="counter">
 <button onclick="change('${p.id}',-1)">-</button>
 <span>${qty}</span>
 <button onclick="change('${p.id}',1)">+</button>
-</div>
-`;
+</div>`;
 grid.appendChild(el);
 });
 updateTotal();
 }
 
-function change(id,delta){
-cart[id]=(cart[id]||0)+delta;
-if(cart[id]<0)cart[id]=0;
-render();
-}
+function change(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<0)cart[id]=0;render();}
 
-function updateTotal(){
-let t=0;
-products.forEach(p=>{t+= (cart[p.id]||0)*p.price});
-document.getElementById('total').innerText='€ '+t.toFixed(2);
-}
+function updateTotal(){let t=0;products.forEach(p=>{t+=(cart[p.id]||0)*p.price});document.getElementById('total').innerText=euro(t);} 
 
 function resetAll(){cart={};render();}
 
 function printBon(){
 let rows='';
 let total=0;
-products.forEach(p=>{
+products.forEach((p,i)=>{
 const q=cart[p.id]||0;
-if(q>0){
-const line=q*p.price;
-total+=line;
-rows+=`<tr><td>${p.title}</td><td>${q}</td><td>€ ${line.toFixed(2)}</td></tr>`;
-}
+if(q>0){const line=q*p.price;total+=line;rows+=`<tr><td>${i+1}</td><td>${p.title} x ${q}</td><td style="text-align:right">${euro(line)}</td></tr>`;}
 });
+const btw=total*0.21;
+const excl=total-btw;
+
 const w=window.open('');
 w.document.write(`
-<h2>Bon</h2>
-<table border="1" style="width:100%">
-<tr><th>Product</th><th>Aantal</th><th>Prijs</th></tr>
+<style>
+body{font-family:Arial;padding:20px}
+table{width:100%;border-collapse:collapse}
+td,th{padding:8px;border-bottom:1px solid #ddd}
+</style>
+<h2>${COMPANY_NAME}</h2>
+<div>${COMPANY_PHONE} - ${COMPANY_EMAIL}</div>
+<h3>Bon</h3>
+<table>
+<tr><th>#</th><th>Omschrijving</th><th style="text-align:right">Prijs</th></tr>
 ${rows}
 </table>
-<h3>Totaal: € ${total.toFixed(2)}</h3>
+<br>
+<div>Subtotaal: ${euro(excl)}</div>
+<div>BTW: ${euro(btw)}</div>
+<h2>Totaal: ${euro(total)}</h2>
 <script>window.print()<\/script>
 `);
 }
