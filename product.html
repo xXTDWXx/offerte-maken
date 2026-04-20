@@ -111,180 +111,180 @@
           <div class="img-options" style="display:flex;">
             <div class="modal-media">
               <img id="productImg" alt="Barrelsauna TR170 – Halfglas" loading="lazy" src="https://www.sunspabenelux.be/wp-content/uploads/2022/11/barrelsauna-tr170-half-glas-650x650.jpg">
+            </div>
 
-              <div class="totals" style="font-size:22px;">
-                <div class="totals-row"><span>Product </span><strong id="optProductTotal">€&nbsp;4.195,00</strong></div>
-                <div class="totals-row"><span>Opties </span><strong id="optOptionsTotal">€&nbsp;995,00</strong></div>
-                <div class="totals-row totals-row-big"><span>Totaal </span><strong id="optGrandTotal">€&nbsp;5.190,00</strong></div>
-                <div class="small">Alle bedragen incl. btw &amp; excl. kraankosten.</div>
+            <div class="options" style="margin-left:20px; flex:1;">
+              <div class="color-selects">
+                <div class="field">
+                  <label for="spaInnerColor">Binnenkleur</label>
+                  <select id="spaInnerColor">
+                    <option value="silver marble">silver marble</option>
+                    <option value="black marble">black marble</option>
+                    <option value="pure white">pure white</option>
+                  </select>
+                </div>
 
-                <div class="modal-actions">
-                  <a id="productUrl" class="btn btn-secondary" target="_blank" rel="noopener" href="https://www.sunspabenelux.be/p/barrelsauna-tr170-halfglas/">Bekijk op website</a>
-                  <button id="offerPrint" class="btn btn-primary" type="button">Print offerte</button>
+                <div class="field">
+                  <label for="spaCabinetColor">Omkastingkleur</label>
+                  <select id="spaCabinetColor"></select>
                 </div>
               </div>
+
+              <label class="opt-disabled opt-inline">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <input id="optInstall" type="checkbox" checked disabled />
+                    Levering & installatie
+                    <span class="opt-price" id="optInstallPrice">€0</span>
+                  </div>
+                </div>
+              </label>
+
+              <label class="opt opt-disabled opt-inline" id="optCoverTrapRow">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <input type="checkbox" checked disabled />
+                    Cover & trap inclusief
+                  </div>
+                </div>
+              </label>
+
+              <label class="opt opt-inline" id="optCoverliftRow">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <img src="images/Coverlift.jpg" alt="Coverlift beugel"/>
+                    <input id="optCoverlift" type="checkbox" />
+                    Coverlift € 189
+                  </div>
+                </div>
+              </label>
+
+              <label class="opt opt-inline" id="optCoverlift2Row" style="display:none">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <img src="images/Coverlift.jpg" alt="Coverlift beugel"/>
+                    <input id="optCoverlift2" type="checkbox" />
+                    2e Coverlift € 189
+                  </div>
+                </div>
+              </label>
+
+              <label class="opt opt-inline" id="optMaintRow">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <img src="images/Onderhoudspakket.webp" alt="Onderhoudspakket"/>
+                    <input id="optMaint" type="checkbox" />
+                    Onderhoudspakket € 179
+                  </div>
+                </div>
+              </label>
+
+              <label class="opt opt-inline" id="optSwimFiltersetRow" style="display:none">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <img src="images/FiltersetZwemspa.jpg" alt="Onderhoudspakket"/>
+                    <input id="optSwimFilterset" type="checkbox" />
+                    Filterset (zwemspa) € 250
+                  </div>
+                </div>
+              </label>
+
+              <label class="opt opt-inline" id="optWarmtepompRow" style="display:none">
+                <div class="opt-text" style="width:100%;">
+                  <div class="opt-title" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+                    <span style="margin-left: 9px;margin-top: 5px;">Warmtepomp incl. afstelling* € 2795</span>
+
+                    <div class="opt-counter">
+                      <img src="images/warmtepomp.jpg" alt="Warmtepomp"/>
+                      <button id="optWarmtepompMinus" type="button" class="opt-counter-btn">−</button>
+                      <input
+                        id="optWarmtepompQty"
+                        type="number"
+                        min="0"
+                        step="1"
+                        value="0"
+                        inputmode="numeric"
+                        class="opt-counter-input"
+                      />
+                      <button id="optWarmtepompPlus" type="button" class="opt-counter-btn">+</button>
+                    </div>
+                  </div>
+                </div>
+              </label>
+
+              <div id="optBarrelStoveGroup" style="display:none">
+                <label class="opt opt-inline" id="optBarrelWoodStoveRow">
+                  <div class="opt-text">
+                    <div class="opt-title">
+                      <input id="optBarrelWoodStove" name="barrelStove" type="radio" value="wood" />
+                      <img src="images/houtkachel.webp" alt="houtkachel" />
+                      Houtkachel + rookafvoer € 1245
+                    </div>
+                  </div>
+                </label>
+
+                <label class="opt opt-inline" id="optBarrelElectricHeaterRow">
+                  <div class="opt-text">
+                    <div class="opt-title">
+                      <input id="optBarrelElectricHeater" name="barrelStove" type="radio" value="electric" />
+                      <img src="images/elektrische kachel.jpg" alt="shingles" />
+                      Elektrische kachel 8 kW € 495
+                    </div>
+                  </div>
+                </label>
+              </div>
+
+              <div id="optBarrelRoofGroup" style="display:none">
+                <label class="opt opt-inline" id="optBarrelRoofShinglesRow">
+                  <div class="opt-text">
+                    <div class="opt-title">
+                      <input id="optBarrelRoofShingles" name="barrelRoof" type="radio" value="shingles" />
+                      <img src="images/dakshingles.jpg" alt="shingles" />
+                      Shingles dak € 399
+                    </div>
+                  </div>
+                </label>
+
+                <label class="opt opt-inline" id="optBarrelRoofHeatherRow">
+                  <div class="opt-text">
+                    <div class="opt-title">
+                      <input id="optBarrelRoofHeather" name="barrelRoof" type="radio" value="heather" />
+                      <img src="images/heide.jpg" alt="heidedak" />
+                      Heidedak € 849
+                    </div>
+                  </div>
+                </label>
+
+                <label class="opt opt-inline" id="optBarrelRoofDesignRow">
+                  <div class="opt-text">
+                    <div class="opt-title">
+                      <input id="optBarrelRoofDesign" name="barrelRoof" type="radio" value="design" />
+                      <img src="images/cedar latjes.jpg" alt="design dak" />
+                      Design dak € 899
+                    </div>
+                  </div>
+                </label>
+              </div>
+
+              <label class="opt opt-inline" id="optBarrelInfraredModuleRow" style="display:none">
+                <input id="optBarrelInfraredModule" type="checkbox" />
+                <div class="opt-text">
+                  <div class="opt-title">Infrarood module € 699</div>
+                </div>
+              </label>
             </div>
           </div>
 
-          <div class="options">
-            <div class="color-selects">
-              <div class="field">
-                <label for="spaInnerColor">Binnenkleur</label>
-                <select id="spaInnerColor">
-                  <option value="silver marble">silver marble</option>
-                  <option value="black marble">black marble</option>
-                  <option value="pure white">pure white</option>
-                </select>
-              </div>
+          <div class="totals" style="font-size:22px; margin-top:20px;">
+            <div class="totals-row"><span>Product </span><strong id="optProductTotal">€&nbsp;4.195,00</strong></div>
+            <div class="totals-row"><span>Opties </span><strong id="optOptionsTotal">€&nbsp;995,00</strong></div>
+            <div class="totals-row totals-row-big"><span>Totaal </span><strong id="optGrandTotal">€&nbsp;5.190,00</strong></div>
+            <div class="small">Alle bedragen incl. btw &amp; excl. kraankosten.</div>
 
-              <div class="field">
-                <label for="spaCabinetColor">Omkastingkleur</label>
-                <select id="spaCabinetColor"></select>
-              </div>
+            <div class="modal-actions">
+              <a id="productUrl" class="btn btn-secondary" target="_blank" rel="noopener" href="https://www.sunspabenelux.be/p/barrelsauna-tr170-halfglas/">Bekijk op website</a>
+              <button id="offerPrint" class="btn btn-primary" type="button">Print offerte</button>
             </div>
-
-            <label class="opt-disabled opt-inline">
-              <div class="opt-text">
-                <div class="opt-title">
-                  <input id="optInstall" type="checkbox" checked disabled />
-                  Levering & installatie
-                  <span class="opt-price" id="optInstallPrice">€0</span>
-                </div>
-              </div>
-            </label>
-
-            <label class="opt opt-disabled opt-inline" id="optCoverTrapRow">
-              <div class="opt-text">
-                <div class="opt-title">
-                  <input type="checkbox" checked disabled />
-                  Cover & trap inclusief
-                </div>
-              </div>
-            </label>
-
-            <label class="opt opt-inline" id="optCoverliftRow">
-              <div class="opt-text">
-                <div class="opt-title">
-                  <img src="images/Coverlift.jpg" alt="Coverlift beugel"/>
-                  <input id="optCoverlift" type="checkbox" />
-                  Coverlift € 189
-                </div>
-              </div>
-            </label>
-
-            <label class="opt opt-inline" id="optCoverlift2Row" style="display:none">
-              <div class="opt-text">
-                <div class="opt-title">
-                  <img src="images/Coverlift.jpg" alt="Coverlift beugel"/>
-                  <input id="optCoverlift2" type="checkbox" />
-                  2e Coverlift € 189
-                </div>
-              </div>
-            </label>
-
-            <label class="opt opt-inline" id="optMaintRow">
-              <div class="opt-text">
-                <div class="opt-title">
-                  <img src="images/Onderhoudspakket.webp" alt="Onderhoudspakket"/>
-                  <input id="optMaint" type="checkbox" />
-                  Onderhoudspakket € 179
-                </div>
-              </div>
-            </label>
-
-            <label class="opt opt-inline" id="optSwimFiltersetRow" style="display:none">
-              <div class="opt-text">
-                <div class="opt-title">
-                  <img src="images/FiltersetZwemspa.jpg" alt="Onderhoudspakket"/>
-                  <input id="optSwimFilterset" type="checkbox" />
-                  Filterset (zwemspa) € 250
-                </div>
-              </div>
-            </label>
-
-            <label class="opt opt-inline" id="optWarmtepompRow" style="display:none">
-              <div class="opt-text" style="width:100%;">
-                <div class="opt-title" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-                  <span style="margin-left: 9px;margin-top: 5px;">Warmtepomp incl. afstelling* € 2795</span>
-
-                  <div class="opt-counter">
-                    <img src="images/warmtepomp.jpg" alt="Warmtepomp"/>
-                    <button id="optWarmtepompMinus" type="button" class="opt-counter-btn">−</button>
-                    <input
-                      id="optWarmtepompQty"
-                      type="number"
-                      min="0"
-                      step="1"
-                      value="0"
-                      inputmode="numeric"
-                      class="opt-counter-input"
-                    />
-                    <button id="optWarmtepompPlus" type="button" class="opt-counter-btn">+</button>
-                  </div>
-                </div>
-              </div>
-            </label>
-
-            <div id="optBarrelStoveGroup" style="display:none">
-              <label class="opt opt-inline" id="optBarrelWoodStoveRow">
-                <div class="opt-text">
-                  <div class="opt-title">
-                    <input id="optBarrelWoodStove" name="barrelStove" type="radio" value="wood" />
-                    <img src="images/houtkachel.webp" alt="houtkachel" />
-                    Houtkachel + rookafvoer € 1245
-                  </div>
-                </div>
-              </label>
-
-              <label class="opt opt-inline" id="optBarrelElectricHeaterRow">
-                <div class="opt-text">
-                  <div class="opt-title">
-                    <input id="optBarrelElectricHeater" name="barrelStove" type="radio" value="electric" />
-                    <img src="images/elektrische kachel.jpg" alt="shingles" />
-                    Elektrische kachel 8 kW € 495
-                  </div>
-                </div>
-              </label>
-            </div>
-
-            <div id="optBarrelRoofGroup" style="display:none">
-              <label class="opt opt-inline" id="optBarrelRoofShinglesRow">
-                <div class="opt-text">
-                  <div class="opt-title">
-                    <input id="optBarrelRoofShingles" name="barrelRoof" type="radio" value="shingles" />
-                    <img src="images/dakshingles.jpg" alt="shingles" />
-                    Shingles dak € 399
-                  </div>
-                </div>
-              </label>
-
-              <label class="opt opt-inline" id="optBarrelRoofHeatherRow">
-                <div class="opt-text">
-                  <div class="opt-title">
-                    <input id="optBarrelRoofHeather" name="barrelRoof" type="radio" value="heather" />
-                    <img src="images/heide.jpg" alt="heidedak" />
-                    Heidedak € 849
-                  </div>
-                </div>
-              </label>
-
-              <label class="opt opt-inline" id="optBarrelRoofDesignRow">
-                <div class="opt-text">
-                  <div class="opt-title">
-                    <input id="optBarrelRoofDesign" name="barrelRoof" type="radio" value="design" />
-                    <img src="images/cedar latjes.jpg" alt="design dak" />
-                    Design dak € 899
-                  </div>
-                </div>
-              </label>
-            </div>
-
-            <label class="opt opt-inline" id="optBarrelInfraredModuleRow" style="display:none">
-              <input id="optBarrelInfraredModule" type="checkbox" />
-              <div class="opt-text">
-                <div class="opt-title">Infrarood module € 699</div>
-              </div>
-            </label>
           </div>
 
           <hr style="border:none;border-top:1px solid var(--border);margin:20px 0" />
