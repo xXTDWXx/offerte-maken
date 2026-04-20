@@ -43,7 +43,8 @@
       color:#374151;
     }
 
-    .field input{
+    .field input,
+    .field select{
       width:100%;
       box-sizing:border-box;
       padding:12px 14px;
@@ -54,8 +55,15 @@
       background:#fff;
     }
 
-    .field input:focus{
+    .field input:focus,
+    .field select:focus{
       border-color:#111827;
+    }
+
+    .color-selects{
+      margin:20px 0;
+      display:grid;
+      gap:12px;
     }
 
     .modal-actions{
@@ -122,6 +130,21 @@
           </div>
           </div>
 
+          <div class="color-selects">
+            <div class="field">
+              <label for="spaInnerColor">Binnenkleur</label>
+              <select id="spaInnerColor">
+                <option value="silver marble">silver marble</option>
+                <option value="black marble">black marble</option>
+                <option value="pure white">pure white</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="spaCabinetColor">Omkastingkleur</label>
+              <select id="spaCabinetColor"></select>
+            </div>
+          </div>
 
           <div class="options">
             <label class="opt-disabled opt-inline">
@@ -281,48 +304,7 @@
 
           <hr style="border:none;border-top:1px solid var(--border);margin:20px 0" />
 
-          <!-- <div class="totals" style="font-size:22px">
-            <div class="totals-row"><span>Product </span><strong id="optProductTotal">€0</strong></div>
-            <div class="totals-row"><span>Opties </span><strong id="optOptionsTotal">€0</strong></div>
-            <div class="totals-row totals-row-big"><span>Totaal </span><strong id="optGrandTotal">€0</strong></div>
-            <div class="small">Alle bedragen incl. btw & excl. kraankosten.</div>
-          </div> -->
-
-          <!-- <div class="customer-box">
-            <div class="panel-title" style="margin-bottom:4px;">Klantgegevens</div>
-            <div class="small">Deze gegevens komen automatisch op de offerte.</div>
-
-            <div class="customer-grid">
-              <div class="field">
-                <label for="customerName">Naam</label>
-                <input id="customerName" type="text" placeholder="Naam klant" />
-              </div>
-
-              <div class="field">
-                <label for="customerPhone">Gsm</label>
-                <input id="customerPhone" type="text" placeholder="+32 ..." />
-              </div>
-
-              <div class="field field-full">
-                <label for="customerStreet">Straat</label>
-                <input id="customerStreet" type="text" placeholder="Straat + huisnummer" />
-              </div>
-
-              <div class="field field-full">
-                <label for="customerCity">Gemeente</label>
-                <input id="customerCity" type="text" placeholder="Postcode + gemeente" />
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="modal-actions">
-            <a id="productUrl" class="btn btn-secondary" target="_blank" rel="noopener">Bekijk op website</a> -->
-            <!-- <button id="productPrint" class="btn btn-secondary" type="button">Print productfiche</button> -->
-            <!-- <button id="offerPrint" class="btn btn-primary" type="button">Print offerte</button>
-          </div>
-        </div> -->
-
-        <div>
+          <div>
           <div class="panel-title" style="margin-bottom:10px;">Specificaties</div>
           <div id="productSpecs" class="spec-table"></div>
         </div>
