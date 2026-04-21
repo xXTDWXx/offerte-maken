@@ -13,10 +13,10 @@
 .product-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px;box-shadow:0 6px 18px rgba(0,0,0,0.05);transition:transform .2s, box-shadow .2s}
 .product-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,0.08)}
 .img-wrap{width:100%;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #f1f5f9}
-.product-img{width: fit-content;}
+.product-img{width: fit-content;max-width:100%;height:auto;display:block}
 .product-title{font-weight:700;font-size:14px;color:#0f172a;min-height:38px;line-height:1.35}
 .product-price{font-weight:800;color:#407298}
-.counter{display:flex;gap:8px;align-items:center;margin-top:auto;margin-left: 13px;}
+.counter{display:flex;gap:8px;align-items:center;margin-top:auto;margin-left:13px}
 .counter button{width:34px;height:34px;border-radius:8px;border:1px solid #ccc;background:#fff;font-weight:bold;cursor:pointer}
 .counter span{min-width:24px;text-align:center;font-weight:700}
 .total-bar{position:sticky;bottom:0;background:#fff;padding:16px;border-top:2px solid #ddd;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
@@ -27,17 +27,18 @@
 <body>
 <div class="grid-products" id="grid"></div>
 <div class="total-bar">
-<div><strong>Totaal:</strong> <span id="total">€0</span></div>
+<div><strong>Totaal:</strong> <span id="total">€ 0,00</span></div>
 <div>
 <button class="btn btn-primary" onclick="resetAll()">Reset</button>
 <button class="btn btn-primary" onclick="printBon()">Bon printen</button>
 </div>
 </div>
 <script>
-const COMPANY_NAME = 'Sunspa Benelux';
+const COMPANY_NAME = 'Sunspa Brugge/Lievegem';
 const COMPANY_EMAIL = 'sunspabrugge@gmail.com';
 const COMPANY_PHONE = '0483399967';
 const COMPANY_WEBSITE = 'www.sunspabenelux.be';
+const COMPANY_LOGO = 'logo.svg';
 
 let products = [];
 let cart = {};
@@ -65,7 +66,27 @@ fetch('kleineproducten.json')
   });
 
 function euro(n) {
-  return '€ ' + Number(n).toFixed(2).replace('.', ',');
+  return '€ ' + Number(n).toLocaleString('nl-BE', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function formatDateBelgium(date) {
+  return new Intl.DateTimeFormat('nl-BE', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  }).format(date);
 }
 
 function render() {
@@ -78,9 +99,9 @@ function render() {
     el.className = 'product-card';
     el.innerHTML = `
       <div class="img-wrap">
-        ${p.image ? `<img src="${p.image}" class="product-img" alt="${p.title}">` : ''}
+        ${p.image ? `<img src="${p.image}" class="product-img" alt="${escapeHtml(p.title)}">` : ''}
       </div>
-      <div class="product-title">${p.title}</div>
+      <div class="product-title">${escapeHtml(p.title)}</div>
       <div class="product-price">${euro(p.price)}</div>
       <div class="counter">
         <button onclick="change('${p.id}',-1)">-</button>
@@ -99,12 +120,15 @@ function change(id, delta) {
   render();
 }
 
+function getCartItems() {
+  return products
+    .map(p => ({ ...p, qty: cart[p.id] || 0, lineTotal: (cart[p.id] || 0) * p.price }))
+    .filter(p => p.qty > 0);
+}
+
 function updateTotal() {
-  let t = 0;
-  products.forEach(p => {
-    t += (cart[p.id] || 0) * p.price;
-  });
-  document.getElementById('total').innerText = euro(t);
+  const total = getCartItems().reduce((sum, p) => sum + p.lineTotal, 0);
+  document.getElementById('total').innerText = euro(total);
 }
 
 function resetAll() {
@@ -113,45 +137,207 @@ function resetAll() {
 }
 
 function printBon() {
-  let rows = '';
-  let total = 0;
+  const items = getCartItems();
+  if (!items.length) {
+    alert('Er staan nog geen producten in de bon.');
+    return;
+  }
 
-  products.forEach((p, i) => {
-    const q = cart[p.id] || 0;
-    if (q > 0) {
-      const line = q * p.price;
-      total += line;
-      rows += `<tr><td>${i + 1}</td><td>${p.title} x ${q}</td><td style="text-align:right">${euro(line)}</td></tr>`;
-    }
-  });
-
+  const total = items.reduce((sum, item) => sum + item.lineTotal, 0);
   const btw = total * 0.21;
   const excl = total - btw;
+  const today = new Date();
+  const rows = items.map((item, index) => `
+    <tr>
+      <td class="col-num">${index + 1}</td>
+      <td class="col-desc">${escapeHtml(item.title)} × ${item.qty}</td>
+      <td class="col-price">${euro(item.lineTotal)}</td>
+    </tr>
+  `).join('');
+  const logoHtml = COMPANY_LOGO ? `<img class="offer-logo" src="${encodeURI(COMPANY_LOGO)}" alt="${escapeHtml(COMPANY_NAME)}">` : '';
 
-  const w = window.open('', '_blank');
+  const w = window.open('', '_blank', 'width=1100,height=900');
   if (!w) {
     alert('Popup geblokkeerd door de browser.');
     return;
   }
 
+  w.document.open();
   w.document.write(`
-    <style>
-      body{font-family:Arial;padding:20px}
-      table{width:100%;border-collapse:collapse}
-      td,th{padding:8px;border-bottom:1px solid #ddd}
-    </style>
-    <h2>${COMPANY_NAME}</h2>
-    <div>${COMPANY_PHONE} - ${COMPANY_EMAIL}</div>
-    <h3>Bon</h3>
-    <table>
-      <tr><th>#</th><th>Omschrijving</th><th style="text-align:right">Prijs</th></tr>
-      ${rows}
-    </table>
-    <br>
-    <div>Subtotaal: ${euro(excl)}</div>
-    <div>BTW: ${euro(btw)}</div>
-    <h2>Totaal: ${euro(total)}</h2>
-    <script>window.print()<\/script>
+    <!doctype html>
+    <html lang="nl">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bon ${formatDateBelgium(today)}</title>
+        <style>
+          @page { size: A4 portrait; margin: 8mm; }
+          * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+          html, body { margin: 0; padding: 0; background: #f2f4f7; color: #1f2937; font-family: "Segoe UI", Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.4; }
+          body { padding: 14px; }
+          .sheet { width: 100%; max-width: 920px; margin: 0 auto; background: #ffffff; border: 1px solid #d9e1ea; border-radius: 18px; overflow: hidden; box-shadow: 0 12px 34px rgba(15, 23, 42, 0.08); }
+          .header { background: linear-gradient(135deg, #5f7fa4 0%, #7fa3ca 100%); color: #ffffff; padding: 28px 32px 26px; }
+          .header-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+          .brand { display: flex; align-items: flex-start; gap: 18px; min-width: 0; }
+          .offer-logo { width: 170px; max-width: 170px; height: auto; display: block; background: #ffffff; border-radius: 14px; padding: 8px 10px; }
+          .offer-meta { min-width: 280px; padding: 18px 22px; border-radius: 18px; background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.18); backdrop-filter: blur(3px); }
+          .offer-meta-row { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 4px 0; }
+          .offer-meta-label { font-size: 15px; font-weight: 700; color: #ffffff; }
+          .offer-meta-value { font-size: 15px; font-weight: 800; color: #ffffff; text-align: right; white-space: nowrap; }
+          .offer-meta-line { width: 26mm; height: 10px; border-bottom: 1px solid rgba(255,255,255,0.95); }
+          .content { padding: 28px 32px 28px; }
+          .intro { margin-bottom: 22px; }
+          .intro h2 { margin: 0 0 10px 0; font-size: 32px; line-height: 1.1; font-weight: 800; color: #0f172a; }
+          .intro p { margin: 0; font-size: 15px; color: #475569; }
+          .product-highlight { display: flex; justify-content: space-between; align-items: center; gap: 18px; background: #ffffff; border: 1px solid #d7e0e9; border-radius: 18px; padding: 18px 22px; margin-bottom: 18px; }
+          .product-highlight-label { margin: 0 0 8px 0; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; }
+          .product-highlight-title { margin: 0; font-size: 28px; line-height: 1.1; font-weight: 800; color: #0f172a; }
+          .product-highlight-price { text-align: right; white-space: nowrap; }
+          .product-highlight-price small { display: block; margin-bottom: 6px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; }
+          .product-highlight-price strong { display: block; font-size: 30px; line-height: 1.05; font-weight: 800; color: #4f6f96; }
+          .table-wrap { border: 1px solid #d7e0e9; border-radius: 18px; overflow: hidden; background: #ffffff; }
+          table { width: 100%; border-collapse: collapse; }
+          thead th { background: #eef3f8; color: #314f72; padding: 16px 18px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; text-align: left; border-bottom: 1px solid #d7e0e9; }
+          tbody td { padding: 15px 18px; font-size: 14px; color: #0f172a; border-bottom: 1px solid #e9eef4; vertical-align: top; }
+          tbody tr:last-child td { border-bottom: none; }
+          .col-num { width: 70px; font-weight: 800; color: #475569; }
+          .col-desc { font-weight: 600; }
+          .col-price { width: 190px; text-align: right; white-space: nowrap; font-weight: 800; }
+          .summary { margin-top: 18px; display: flex; justify-content: flex-end; }
+          .summary-box { width: 320px; border: 1px solid #d7e0e9; border-radius: 18px; overflow: hidden; background: #ffffff; }
+          .summary-row { display: flex; justify-content: space-between; gap: 18px; padding: 14px 18px; border-bottom: 1px solid #e9eef4; font-size: 14px; color: #0f172a; }
+          .summary-row:last-child { border-bottom: none; }
+          .summary-row strong { font-weight: 800; }
+          .summary-row.total { background: #f3f7fb; color: #314f72; font-size: 17px; font-weight: 800; }
+          .footer { margin-top: 18px; padding-top: 16px; border-top: 1px solid #d7e0e9; display: flex; justify-content: space-between; gap: 20px; font-size: 12px; color: #64748b; }
+          .footer strong { color: #0f172a; }
+          @media screen and (max-width: 820px) {
+            .header-top, .product-highlight, .footer { display: block; }
+            .offer-meta { margin-top: 18px; min-width: 0; }
+            .product-highlight-price { margin-top: 14px; text-align: left; }
+            .summary { justify-content: stretch; }
+            .summary-box { width: 100%; }
+          }
+          @media print {
+            html, body { width: 210mm; height: 297mm; margin: 0 !important; padding: 0 !important; background: #ffffff !important; color: #1f2937 !important; }
+            body { font-size: 11px !important; line-height: 1.28 !important; }
+            .sheet { width: 194mm !important; max-width: 194mm !important; min-height: 281mm !important; margin: 0 auto !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; overflow: hidden !important; page-break-inside: avoid !important; }
+            .header { background: #ffffff !important; color: #274863 !important; border: 1px solid #cfd8e3 !important; border-radius: 10px !important; padding: 10mm 10mm 7mm 10mm !important; }
+            .header-top { display: flex !important; justify-content: space-between !important; align-items: flex-start !important; gap: 10mm !important; }
+            .brand { display: flex !important; gap: 10px !important; align-items: flex-start !important; }
+            .offer-logo { max-width: 42mm !important; width: 42mm !important; max-height: 20mm !important; background: #ffffff !important; border-radius: 8px !important; padding: 3mm !important; }
+            .offer-meta { min-width: 58mm !important; background: #f6f9fc !important; border: 1px solid #dbe3ec !important; border-radius: 10px !important; padding: 5mm 6mm !important; color: #274863 !important; backdrop-filter: none !important; }
+            .offer-meta-row { gap: 8mm !important; padding: 1.5mm 0 !important; }
+            .offer-meta-label, .offer-meta-value { color: #274863 !important; font-size: 10.5px !important; }
+            .offer-meta-line { width: 26mm !important; height: 10px !important; border-bottom: 1px solid #64748b !important; }
+            .content { padding: 7mm 8mm 6mm 8mm !important; }
+            .intro { margin-bottom: 5mm !important; }
+            .intro h2 { font-size: 18px !important; margin: 0 0 2mm 0 !important; color: #0f172a !important; }
+            .intro p { margin: 0 !important; font-size: 11px !important; color: #475569 !important; }
+            .product-highlight { display: flex !important; justify-content: space-between !important; align-items: center !important; gap: 4mm !important; border: 1px solid #dbe3ec !important; border-radius: 10px !important; padding: 5mm 6mm !important; background: #ffffff !important; margin-bottom: 5mm !important; page-break-inside: avoid !important; }
+            .product-highlight-label { font-size: 10px !important; letter-spacing: 0.06em !important; margin-bottom: 1mm !important; color: #64748b !important; }
+            .product-highlight-title { font-size: 18px !important; margin: 0 !important; line-height: 1.1 !important; }
+            .product-highlight-price small { font-size: 9px !important; margin-bottom: 1mm !important; color: #64748b !important; }
+            .product-highlight-price strong { font-size: 18px !important; color: #407298 !important; }
+            .table-wrap { border: 1px solid #dbe3ec !important; border-radius: 10px !important; overflow: hidden !important; background: #ffffff !important; page-break-inside: avoid !important; }
+            table { width: 100% !important; border-collapse: collapse !important; }
+            thead th { background: #f4f7fa !important; color: #274863 !important; font-size: 10px !important; padding: 3.2mm 4mm !important; border-bottom: 1px solid #dbe3ec !important; }
+            tbody td { padding: 3mm 4mm !important; border-bottom: 1px solid #edf2f7 !important; font-size: 11px !important; line-height: 1.25 !important; }
+            .col-num { width: 10mm !important; }
+            .col-price { width: 34mm !important; text-align: right !important; white-space: nowrap !important; }
+            .summary { margin-top: 4mm !important; display: flex !important; justify-content: flex-end !important; }
+            .summary-box { width: 52mm !important; border: 1px solid #dbe3ec !important; border-radius: 10px !important; overflow: hidden !important; background: #ffffff !important; page-break-inside: avoid !important; }
+            .summary-row { gap: 4mm !important; padding: 3mm 4mm !important; border-bottom: 1px solid #edf2f7 !important; font-size: 11px !important; }
+            .summary-row.total { background: #f4f7fa !important; color: #274863 !important; font-size: 13px !important; font-weight: 800 !important; }
+            .footer { margin-top: 4mm !important; padding-top: 3mm !important; border-top: 1px solid #dbe3ec !important; color: #64748b !important; font-size: 9.5px !important; display: flex !important; justify-content: space-between !important; gap: 6mm !important; page-break-inside: avoid !important; }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="sheet">
+          <div class="header">
+            <div class="header-top">
+              <div class="brand">
+                ${logoHtml}
+              </div>
+              <div class="offer-meta">
+                <div class="offer-meta-row">
+                  <div class="offer-meta-label">Datum</div>
+                  <div class="offer-meta-value">${formatDateBelgium(today)}</div>
+                </div>
+                <div class="offer-meta-row">
+                  <div class="offer-meta-label">Bon nr.</div>
+                  <div class="offer-meta-value offer-meta-line"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="content">
+            <div class="intro">
+              <h2>Kassabon</h2>
+              <p>Overzicht van de geselecteerde kleine producten.</p>
+            </div>
+
+            <div class="product-highlight">
+              <div>
+                <div class="product-highlight-label">Winkel</div>
+                <h3 class="product-highlight-title">${escapeHtml(COMPANY_NAME)}</h3>
+              </div>
+              <div class="product-highlight-price">
+                <small>Totaal kassabedrag</small>
+                <strong>${euro(total)}</strong>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Omschrijving</th>
+                    <th style="text-align:right">Prijs</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${rows}
+                </tbody>
+              </table>
+            </div>
+
+            <div class="summary">
+              <div class="summary-box">
+                <div class="summary-row">
+                  <span>Subtotaal</span>
+                  <strong>${euro(excl)}</strong>
+                </div>
+                <div class="summary-row">
+                  <span>21% BTW</span>
+                  <strong>${euro(btw)}</strong>
+                </div>
+                <div class="summary-row total">
+                  <span>Totaal</span>
+                  <strong>${euro(total)}</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="footer">
+              <div>${escapeHtml(COMPANY_PHONE)} · ${escapeHtml(COMPANY_EMAIL)} · ${escapeHtml(COMPANY_WEBSITE)}</div>
+              <div>Afgedrukt op ${formatDateBelgium(today)}</div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          window.onload = function () {
+            setTimeout(function () {
+              window.print();
+            }, 250);
+          };
+        <\/script>
+      </body>
+    </html>
   `);
   w.document.close();
 }
