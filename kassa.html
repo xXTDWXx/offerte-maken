@@ -79,34 +79,146 @@ function updateTotal(){let t=0;products.forEach(p=>{t+=(cart[p.id]||0)*p.price})
 function resetAll(){cart={};render();}
 
 function printBon(){
-let rows='';
-let total=0;
-products.forEach((p,i)=>{
-const q=cart[p.id]||0;
-if(q>0){const line=q*p.price;total+=line;rows+=`<tr><td>${i+1}</td><td>${p.title} x ${q}</td><td style="text-align:right">${euro(line)}</td></tr>`;}
-});
-const btw=total*0.21;
-const excl=total-btw;
+  const selected = products.filter(p => (cart[p.id] || 0) > 0);
+  if (!selected.length) {
+    alert('Selecteer eerst minstens 1 product.');
+    return;
+  }
 
-const w=window.open('');
-w.document.write(`
+  let totalIncl = 0;
+
+  const rows = selected.map((p, index) => {
+    const qty = cart[p.id] || 0;
+    const line = qty * Number(p.price || 0);
+    totalIncl += line;
+
+    return `
+      <tr>
+        <td class="col-num">${index + 1}</td>
+        <td class="col-desc">${p.title} <span style="font-weight:400;color:#64748b;">x ${qty}</span></td>
+        <td class="col-price">${euro(line)}</td>
+      </tr>
+    `;
+  }).join('');
+
+  const subtotal = totalIncl / 1.21;
+  const btw = totalIncl - subtotal;
+
+  const today = new Date();
+
+  const logoHtml = `<img src="logo.svg" class="offer-logo">`;
+
+  const win = window.open('', '_blank');
+
+  win.document.write(`
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bon</title>
+
 <style>
-body{font-family:Arial;padding:20px}
-table{width:100%;border-collapse:collapse}
-td,th{padding:8px;border-bottom:1px solid #ddd}
+${document.querySelector('style').innerHTML}
 </style>
-<h2>${COMPANY_NAME}</h2>
-<div>${COMPANY_PHONE} - ${COMPANY_EMAIL}</div>
-<h3>Bon</h3>
-<table>
-<tr><th>#</th><th>Omschrijving</th><th style="text-align:right">Prijs</th></tr>
-${rows}
-</table>
-<br>
-<div>Subtotaal: ${euro(excl)}</div>
-<div>BTW: ${euro(btw)}</div>
-<h2>Totaal: ${euro(total)}</h2>
-<script>window.print()<\/script>
+
+</head>
+<body>
+
+<div class="sheet">
+  <div class="header">
+    <div class="header-top">
+      <div class="brand">
+        ${logoHtml}
+      </div>
+      <div class="offer-meta">
+        <div class="offer-meta-row">
+          <div class="offer-meta-label">Datum</div>
+          <div class="offer-meta-value">${formatDateBelgium(today)}</div>
+        </div>
+        <div class="offer-meta-row">
+          <div class="offer-meta-label">Geldig tot</div>
+          <div class="offer-meta-value offer-meta-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="info-grid info-grid-single">
+      <div class="card customer-card">
+        <div class="card-title">Klantgegevens</div>
+
+        <div class="customer-inline-grid">
+          <div class="field-inline"><span class="label-inline">Naam</span><span class="line-inline"></span></div>
+          <div class="field-inline"><span class="label-inline">Telefoon</span><span class="line-inline"></span></div>
+          <div class="field-inline"><span class="label-inline">Adres</span><span class="line-inline"></span></div>
+          <div class="field-inline"><span class="label-inline">Telefoon 2</span><span class="line-inline"></span></div>
+          <div class="field-inline"><span class="label-inline">Plaats</span><span class="line-inline"></span></div>
+          <div class="field-inline"><span class="label-inline">Email</span><span class="line-inline"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Omschrijving</th>
+            <th style="text-align:right">Prijs</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="summary">
+      <div class="summary-left">
+        <div class="summary-line"><span>Voorschot</span><span class="line-fill"></span></div>
+        <div class="summary-line"><span>Leveringstermijn</span><span class="line-fill"></span></div>
+      </div>
+
+      <div class="summary-box">
+        <div class="summary-row"><span>Subtotaal excl. btw</span><strong>${euro(subtotal)}</strong></div>
+        <div class="summary-row"><span>21% btw</span><strong>${euro(btw)}</strong></div>
+        <div class="summary-row total"><span>Totaal</span><strong>${euro(totalIncl)}</strong></div>
+      </div>
+    </div>
+
+    <div class="signature-section">
+      <div class="signature-grid">
+        <div class="signature-box"><div class="signature-label">Naam koper</div><div class="signature-line"></div></div>
+        <div class="signature-box"><div class="signature-label">Handtekening koper</div><div class="signature-line"></div></div>
+        <div class="signature-box"><div class="signature-label">Naam verkoper</div><div class="signature-line"></div></div>
+        <div class="signature-box"><div class="signature-label">Handtekening verkoper</div><div class="signature-line"></div></div>
+      </div>
+    </div>
+
+    <div class="terms">
+      <h4 class="terms-title">Opmerkingen</h4>
+      <ul>
+        <li>Prijzen showroomproducten inclusief btw.</li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <div>Met vriendelijke groeten,<br><strong>Team Sunspa Brugge/Lievegem</strong></div>
+      <div>Wellnessmarkt BV | BE 0843 104 796 | BE75 3800 1777 8151<br>
+      Sunspa Benelux | 0483 39 99 67 | sunspabrugge@gmail.com/gentsunspa@gmail.com</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+window.onload = () => setTimeout(() => window.print(), 200);
+</script>
+
+</body>
+</html>
 `);
 }
 </script>
