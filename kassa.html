@@ -48,6 +48,13 @@ render();
 });
 
 function euro(n){return '€ '+n.toFixed(2).replace('.',',');}
+function formatDateBelgium(date){
+  return new Intl.DateTimeFormat('nl-BE', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  }).format(date);
+}
 
 function render(){
 const grid=document.getElementById('grid');
@@ -73,24 +80,7 @@ updateTotal();
 }
 
 function change(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<0)cart[id]=0;render();}
-
-function updateTotal(){let t=0;products.forEach(p=>{t+=(cart[p.id]||0)*p.price});document.getElementById('total').innerText=euro(t);} 
-
-function resetAll(){cart={};render();}
-
-function printBon(){
-  const selected = products.filter(p => (cart[p.id] || 0) > 0);
-  if (!selected.length) {
-    alert('Selecteer eerst minstens 1 product.');
-    return;
-  }
-
-  let totalIncl = 0;
-
-  const rows = selected.map((p, index) => {
-    const qty = cart[p.id] || 0;
-    const line = qty * Number(p.price || 0);
-    totalIncl += line;
+@@ -94,50 +101,51 @@ function printBon(){
 
     return `
       <tr>
@@ -116,6 +106,7 @@ function printBon(){
 <head>
 <meta charset="utf-8">
 <title>Bon</title>
+<link rel="stylesheet" href="styles.css" />
 
 <style>
 ${document.querySelector('style').innerHTML}
@@ -141,60 +132,7 @@ ${document.querySelector('style').innerHTML}
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="content">
-
-    <div class="info-grid info-grid-single">
-      <div class="card customer-card">
-        <div class="card-title">Klantgegevens</div>
-
-        <div class="customer-inline-grid">
-          <div class="field-inline"><span class="label-inline">Naam</span><span class="line-inline"></span></div>
-          <div class="field-inline"><span class="label-inline">Telefoon</span><span class="line-inline"></span></div>
-          <div class="field-inline"><span class="label-inline">Adres</span><span class="line-inline"></span></div>
-          <div class="field-inline"><span class="label-inline">Telefoon 2</span><span class="line-inline"></span></div>
-          <div class="field-inline"><span class="label-inline">Plaats</span><span class="line-inline"></span></div>
-          <div class="field-inline"><span class="label-inline">Email</span><span class="line-inline"></span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Omschrijving</th>
-            <th style="text-align:right">Prijs</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${rows}
-        </tbody>
-      </table>
-    </div>
-
-    <div class="summary">
-      <div class="summary-left">
-        <div class="summary-line"><span>Voorschot</span><span class="line-fill"></span></div>
-        <div class="summary-line"><span>Leveringstermijn</span><span class="line-fill"></span></div>
-      </div>
-
-      <div class="summary-box">
-        <div class="summary-row"><span>Subtotaal excl. btw</span><strong>${euro(subtotal)}</strong></div>
-        <div class="summary-row"><span>21% btw</span><strong>${euro(btw)}</strong></div>
-        <div class="summary-row total"><span>Totaal</span><strong>${euro(totalIncl)}</strong></div>
-      </div>
-    </div>
-
-    <div class="signature-section">
-      <div class="signature-grid">
-        <div class="signature-box"><div class="signature-label">Naam koper</div><div class="signature-line"></div></div>
-        <div class="signature-box"><div class="signature-label">Handtekening koper</div><div class="signature-line"></div></div>
-        <div class="signature-box"><div class="signature-label">Naam verkoper</div><div class="signature-line"></div></div>
-        <div class="signature-box"><div class="signature-label">Handtekening verkoper</div><div class="signature-line"></div></div>
-      </div>
+@@ -198,29 +206,30 @@ ${document.querySelector('style').innerHTML}
     </div>
 
     <div class="terms">
@@ -220,6 +158,7 @@ window.onload = () => setTimeout(() => window.print(), 200);
 </body>
 </html>
 `);
+  win.document.close();
 }
 </script>
 </body>
