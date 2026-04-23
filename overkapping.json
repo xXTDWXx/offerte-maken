@@ -1,0 +1,3292 @@
+{
+  "source": {
+    "name": "Alusense",
+    "website": "https://www.alusense.be",
+    "shop_url": "https://www.alusense.be/shop/",
+    "scraped_at": "2026-04-23T12:11:01.491Z",
+    "product_count": 33,
+    "price_note": "Alle prijsvelden zijn originele prijzen incl. btw. Wanneer de site een doorgestreepte prijs (<del>) en kortingsprijs (<ins>) toont, is uitsluitend de doorgestreepte originele prijs gebruikt. Kortingsprijzen zijn niet opgenomen.",
+    "pages_scraped": [
+      "https://www.alusense.be/shop/?opts=infinit_scrolling",
+      "https://www.alusense.be/shop/page/2/?opts=infinit_scrolling",
+      "https://www.alusense.be/shop/page/3/?opts=infinit_scrolling",
+      "https://www.alusense.be/shop/page/4/?opts=infinit_scrolling",
+      "https://www.alusense.be/shop/page/5/?opts=infinit_scrolling",
+      "https://www.alusense.be/shop/page/6/?opts=infinit_scrolling"
+    ]
+  },
+  "products": [
+    {
+      "id": "alusense-27843",
+      "source_id": "27843",
+      "source_page": "https://www.alusense.be/shop/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/wpc-wand-houtlook/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Afscheidingswand WPC",
+      "url": "https://www.alusense.be/product/wpc-wand-houtlook/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/11/WPC-Wand-Hout-1.png",
+      "categories": [
+        "Accessoires"
+      ],
+      "category": "Accessoires",
+      "sku": "CWXH*",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 899,
+      "price_min": 899,
+      "price_max": 1179,
+      "price_is_range": true,
+      "price_display": "€ 899,00 - € 1.179,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Kleur",
+          "value": "Hout"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "2 Jaar"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Bereik",
+          "value": "Afscheidingswand"
+        },
+        {
+          "label": "Breedte scherm",
+          "value": "3m , 3.6m , 4m , 5.3m"
+        },
+        {
+          "label": "Herkomst",
+          "value": "Belgisch bedrijf"
+        }
+      ],
+      "description": "Maak jouw Alusense overkapping compleet met een stijlvol zij- of windscherm. De Alusense screens bieden optimale privacy, bescherming tegen wind én een laaghangende zon, volledig geïntegreerd in de pergolaconstructie.\n\nGemaakt uit duurzaam gepoedercoat aluminium en UV-bestendig textileen, met een moderne antracietkleur (RAL 7024). Verkrijgbaar in 2,65m, 3 m, 3,6 m en 4 m.\n\nEenvoudig te monteren en verstelbaar naar wens, voor een comfortabele buitenruimte, het hele jaar door."
+    },
+    {
+      "id": "alusense-27650",
+      "source_id": "27650",
+      "source_page": "https://www.alusense.be/shop/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-lumen-36-x-4-antraciet-led-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Lumen - 3,6×4m - Antraciet - LED - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-lumen-36-x-4-antraciet-led-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Lumen-36-x-4-Antraciet-LED-Vrijstaande-overkapping-met-lamellen-1.png",
+      "categories": [
+        "Alu Lumen Overkapping"
+      ],
+      "category": "Alu Lumen Overkapping",
+      "sku": "ALVMXA360400",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4195,
+      "price_min": 4195,
+      "price_max": 4195,
+      "price_is_range": false,
+      "price_display": "€ 4.195,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Lumen Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3,6m × 4m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "360cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "400cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "14m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Lumen Overkapping (360 x 400 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 15 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27689",
+      "source_id": "27689",
+      "source_page": "https://www.alusense.be/shop/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-lumen-36-x-4-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Lumen - 3,6×4m - Zandgrijs - LED - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-lumen-36-x-4-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Lumen-36-x-4-Zandgrijs-LED-Vrijstaande-overkapping-met-lamellen-1-full-e1762364417983.png",
+      "categories": [
+        "Alu Lumen Overkapping"
+      ],
+      "category": "Alu Lumen Overkapping",
+      "sku": "ALVMXZ360400",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4195,
+      "price_min": 4195,
+      "price_max": 4195,
+      "price_is_range": false,
+      "price_display": "€ 4.195,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Lumen Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RGB: R:198,G:195,B:192 / CMYK: C:26,M:22,Y:22,K:0"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3,6m × 4m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "360cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "400cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "14m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Lumen Overkapping (360 x 400 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 15 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27659",
+      "source_id": "27659",
+      "source_page": "https://www.alusense.be/shop/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-lumen-vrijstaande-overkapping-met-lamellen-36-x-53-antraciet-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Lumen - 3,6×5,3m - Antraciet - LED - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-lumen-vrijstaande-overkapping-met-lamellen-36-x-53-antraciet-led/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Lumen-Vrijstaande-overkapping-met-lamellen-36-x-53-Antraciet-LED-1.png",
+      "categories": [
+        "Alu Lumen Overkapping"
+      ],
+      "category": "Alu Lumen Overkapping",
+      "sku": "ALVMXA360530",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4295,
+      "price_min": 4295,
+      "price_max": 4295,
+      "price_is_range": false,
+      "price_display": "€ 4.295,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Lumen Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3,6m × 5,3m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "360cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "530cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "19m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Lumen Overkapping (360 x 530 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 17 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27706",
+      "source_id": "27706",
+      "source_page": "https://www.alusense.be/shop/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-lumen-36-x-53-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Lumen - 3,6×5,3m - Zandgrijs - LED - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-lumen-36-x-53-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Lumen-36-x-53-Zandgrijs-LED-Vrijstaande-overkapping-met-lamellen-1-full.png",
+      "categories": [
+        "Alu Lumen Overkapping"
+      ],
+      "category": "Alu Lumen Overkapping",
+      "sku": "ALVMXZ360530",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4295,
+      "price_min": 4295,
+      "price_max": 4295,
+      "price_is_range": false,
+      "price_display": "€ 4.295,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Lumen Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RGB: R:198,G:195,B:192 / CMYK: C:26,M:22,Y:22,K:0"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3,6m × 5,3m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "360cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "530cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "19m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Lumen Overkapping (360 x 530 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 17 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27668",
+      "source_id": "27668",
+      "source_page": "https://www.alusense.be/shop/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-lumen-vrijstaande-overkapping-met-lamellen-3-6-x-7-2-antraciet-ledalu-lumen-vrijstaande-overkapping-met-lamellen-3-6-x-7-2-antraciet-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Lumen - 3.6×7.2m - Antraciet - LED - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-lumen-vrijstaande-overkapping-met-lamellen-3-6-x-7-2-antraciet-ledalu-lumen-vrijstaande-overkapping-met-lamellen-3-6-x-7-2-antraciet-led/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Lumen-Vrijstaande-overkapping-met-lamellen-3.6-x-7.2-Antraciet-LED-1.png",
+      "categories": [
+        "Alu Lumen Overkapping"
+      ],
+      "category": "Alu Lumen Overkapping",
+      "sku": "ALVMXA360720",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 6795,
+      "price_min": 6795,
+      "price_max": 6795,
+      "price_is_range": false,
+      "price_display": "€ 6.795,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Lumen Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3,6m × 7,2m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "360cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "720cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "26m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Lumen Overkapping (360 x 720 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 23 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27713",
+      "source_id": "27713",
+      "source_page": "https://www.alusense.be/shop/page/2/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-lumen-3-6-x-7-2-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Lumen - 3.6×7.2m - Zandgrijs - LED - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-lumen-3-6-x-7-2-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Lumen-3.6-x-7.2-Zandgrijs-LED-Vrijstaande-overkapping-met-lamellen-1-e1762779265981.png",
+      "categories": [
+        "Alu Lumen Overkapping"
+      ],
+      "category": "Alu Lumen Overkapping",
+      "sku": "ALVMXZ360720",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 6795,
+      "price_min": 6795,
+      "price_max": 6795,
+      "price_is_range": false,
+      "price_display": "€ 6.795,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Bereik",
+          "value": "Alu Lumen Overkapping"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RGB: R:198,G:195,B:192 / CMYK: C:26,M:22,Y:22,K:0"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3,6m × 7,2m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "360cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "720cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "26m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Lumen Overkapping (360 x 720 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 23 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27514",
+      "source_id": "27514",
+      "source_page": "https://www.alusense.be/shop/page/2/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-lumen-3-x-4-antraciet-led-vrijstaande-overkapping-met-lamellenalu-lumen-vrijstaande-overkapping-met-lamellen-4-x-4-antraciet/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Lumen - 3×4m - Antraciet - LED - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-lumen-3-x-4-antraciet-led-vrijstaande-overkapping-met-lamellenalu-lumen-vrijstaande-overkapping-met-lamellen-4-x-4-antraciet/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Lumen-Vrijstaande-overkapping-met-lamellen-3-x-4-Antraciet-LED-2.png",
+      "categories": [
+        "Alu Lumen Overkapping"
+      ],
+      "category": "Alu Lumen Overkapping",
+      "sku": "ALVMXA300400",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3950,
+      "price_min": 3950,
+      "price_max": 3950,
+      "price_is_range": false,
+      "price_display": "€ 3.950,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Lumen Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3m × 4m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "300cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "400cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "12m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Lumen Overkapping (300 x 400 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 12 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27680",
+      "source_id": "27680",
+      "source_page": "https://www.alusense.be/shop/page/2/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-lumen-3-x-4-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Lumen - 3×4m - Zandgrijs - LED - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-lumen-3-x-4-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Lumen-Vrijstaande-overkapping-met-lamellen-3-x-4-zandgrijs-LED-1-3-e1762362694426.png",
+      "categories": [
+        "Alu Lumen Overkapping"
+      ],
+      "category": "Alu Lumen Overkapping",
+      "sku": "ALVMXZ300400",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3950,
+      "price_min": 3950,
+      "price_max": 3950,
+      "price_is_range": false,
+      "price_display": "€ 3.950,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Lumen Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RGB: R:198,G:195,B:192 / CMYK: C:26,M:22,Y:22,K:0"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3m × 4m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "300cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "400cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "12m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Lumen Overkapping (300 x 400 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 12 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27640",
+      "source_id": "27640",
+      "source_page": "https://www.alusense.be/shop/page/2/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-lumen-3-x-6-antraciet-led-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Lumen - 3×6m - Antraciet - LED - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-lumen-3-x-6-antraciet-led-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Lumen-3-x-6-Antraciet-LED-Vrijstaande-overkapping-met-lamellen-1.png",
+      "categories": [
+        "Alu Lumen Overkapping"
+      ],
+      "category": "Alu Lumen Overkapping",
+      "sku": "ALVMXA300600",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4750,
+      "price_min": 4750,
+      "price_max": 4750,
+      "price_is_range": false,
+      "price_display": "€ 4.750,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Lumen Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3m × 6m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "300cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "600cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "18m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Lumen Overkapping (300 x 600 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 18 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27697",
+      "source_id": "27697",
+      "source_page": "https://www.alusense.be/shop/page/2/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-lumen-3-x-6-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Lumen - 3×6m - Zandgrijs - LED - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-lumen-3-x-6-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Lumen-3-x-6-Zandgrijs-LED-Vrijstaande-overkapping-met-lamellen-1-e1762363643843.png",
+      "categories": [
+        "Alu Lumen Overkapping"
+      ],
+      "category": "Alu Lumen Overkapping",
+      "sku": "ALVMXZ300600",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4750,
+      "price_min": 4750,
+      "price_max": 4750,
+      "price_is_range": false,
+      "price_display": "€ 4.750,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Lumen Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RGB: R:198,G:195,B:192 / CMYK: C:26,M:22,Y:22,K:0"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3m × 6m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "300cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "600cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "18m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Lumen Overkapping (300 x 600 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 18 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-28257",
+      "source_id": "28257",
+      "source_page": "https://www.alusense.be/shop/page/2/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-lumen-4x4m-antraciet-led-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Lumen - 4×4m - Antraciet - LED - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-lumen-4x4m-antraciet-led-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2026/01/Pergola-4x4-Antraciet.jpg",
+      "categories": [
+        "Alu Lumen Overkapping"
+      ],
+      "category": "Alu Lumen Overkapping",
+      "sku": "ALVMXA400400",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4695,
+      "price_min": 4695,
+      "price_max": 4695,
+      "price_is_range": false,
+      "price_display": "€ 4.695,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Lumen Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "4m × 4m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "400cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "400cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "16m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Lumen Overkapping (400 x 400 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 16 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-28282",
+      "source_id": "28282",
+      "source_page": "https://www.alusense.be/shop/page/3/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-lumen-4x4m-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Lumen - 4×4m - Zandgrijs - LED - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-lumen-4x4m-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2026/01/Pergola-4x4-zangrijs-LED.avif",
+      "categories": [
+        "Alu Lumen Overkapping"
+      ],
+      "category": "Alu Lumen Overkapping",
+      "sku": "ALVMXZ400400",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4695,
+      "price_min": 4695,
+      "price_max": 4695,
+      "price_is_range": false,
+      "price_display": "€ 4.695,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Lumen Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RGB: R:198,G:195,B:192 / CMYK: C:26,M:22,Y:22,K:0"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "4m × 4m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "400cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "400cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "16m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Lumen Overkapping (400 x 400 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 16 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-28270",
+      "source_id": "28270",
+      "source_page": "https://www.alusense.be/shop/page/3/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-lumen-4x6m-antraciet-led-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Lumen - 4×6m - Antraciet - LED - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-lumen-4x6m-antraciet-led-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2026/01/Pergola-4x6-antraciet-led.jpg",
+      "categories": [
+        "Alu Lumen Overkapping"
+      ],
+      "category": "Alu Lumen Overkapping",
+      "sku": "ALVMXA400600",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 6795,
+      "price_min": 6795,
+      "price_max": 6795,
+      "price_is_range": false,
+      "price_display": "€ 6.795,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Lumen Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "4m × 6m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "400cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "600cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "24m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Lumen Overkapping (400 x 600 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 24 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-28286",
+      "source_id": "28286",
+      "source_page": "https://www.alusense.be/shop/page/3/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-lumen-4x6m-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Lumen - 4×6m - Zandgrijs - LED - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-lumen-4x6m-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2026/01/Pergola-Zandgrijs-4x6-LED.avif",
+      "categories": [
+        "Alu Lumen Overkapping"
+      ],
+      "category": "Alu Lumen Overkapping",
+      "sku": "ALVMXZ400600",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 6795,
+      "price_min": 6795,
+      "price_max": 6795,
+      "price_is_range": false,
+      "price_display": "€ 6.795,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Lumen Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RGB: R:198,G:195,B:192 / CMYK: C:26,M:22,Y:22,K:0"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "4m × 6m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "400cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "600cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "24m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Lumen Overkapping (400 x 600 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 24 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27720",
+      "source_id": "27720",
+      "source_page": "https://www.alusense.be/shop/page/3/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-style-36-x-4-antraciet-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Style - 3,6×4m - Antraciet - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-style-36-x-4-antraciet-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Style-36-x-4-Antraciet-Vrijstaande-overkapping-met-lamellen-1.png",
+      "categories": [
+        "Alu Style Overkapping"
+      ],
+      "category": "Alu Style Overkapping",
+      "sku": "ASVMXA360400",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3495,
+      "price_min": 3495,
+      "price_max": 3495,
+      "price_is_range": false,
+      "price_display": "€ 3.495,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Style Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3,6m × 4m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "360cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "400cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "14m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 14 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-28211",
+      "source_id": "28211",
+      "source_page": "https://www.alusense.be/shop/page/3/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-style-36x4m-zandgrijs-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Style - 3,6×4m - Zandgrijs - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-style-36x4m-zandgrijs-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2026/01/Pergola-3-6-x-4-M-Zandgrijs.avif",
+      "categories": [
+        "Alu Style Overkapping"
+      ],
+      "category": "Alu Style Overkapping",
+      "sku": "ASVMXZ360400",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3495,
+      "price_min": 3495,
+      "price_max": 3495,
+      "price_is_range": false,
+      "price_display": "€ 3.495,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Style Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RGB: R:198,G:195,B:192 / CMYK: C:26,M:22,Y:22,K:0"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3,6m × 4m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "360cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "400cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "14m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 14 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27741",
+      "source_id": "27741",
+      "source_page": "https://www.alusense.be/shop/page/3/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-style-36-x-53-antraciet-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Style - 3,6×5,3m - Antraciet - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-style-36-x-53-antraciet-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Style-36-x-53-Antraciet-Vrijstaande-overkapping-met-lamellen-1.png",
+      "categories": [
+        "Alu Style Overkapping"
+      ],
+      "category": "Alu Style Overkapping",
+      "sku": "ASVMXA360530",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4495,
+      "price_min": 4495,
+      "price_max": 4495,
+      "price_is_range": false,
+      "price_display": "€ 4.495,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Style Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3,6m × 5,3m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "360cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "530cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "19m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 530 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 19 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-28228",
+      "source_id": "28228",
+      "source_page": "https://www.alusense.be/shop/page/4/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-style-36x53m-zandgrijs-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Style - 3,6×5,3m - Zandgrijs - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-style-36x53m-zandgrijs-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2026/01/pergola-3-6x5-3-meter-Zandgrijs.avif",
+      "categories": [
+        "Alu Style Overkapping"
+      ],
+      "category": "Alu Style Overkapping",
+      "sku": "ASVMXZ360530",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4495,
+      "price_min": 4495,
+      "price_max": 4495,
+      "price_is_range": false,
+      "price_display": "€ 4.495,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Style Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RGB: R:198,G:195,B:192 / CMYK: C:26,M:22,Y:22,K:0"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3,6m × 5,3m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "360cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "530cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "19m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 530 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 19 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27753",
+      "source_id": "27753",
+      "source_page": "https://www.alusense.be/shop/page/4/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-style-36-x-72-antraciet-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Style - 3,6×7,2m - Antraciet - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-style-36-x-72-antraciet-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Style-36-x-72-Antraciet-Vrijstaande-overkapping-met-lamellen-1.png",
+      "categories": [
+        "Alu Style Overkapping"
+      ],
+      "category": "Alu Style Overkapping",
+      "sku": "ASVMXA360720",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 5995,
+      "price_min": 5995,
+      "price_max": 5995,
+      "price_is_range": false,
+      "price_display": "€ 5.995,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Style Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3,6m × 7,2m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "360cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "720cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "26m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 720 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 26 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-28236",
+      "source_id": "28236",
+      "source_page": "https://www.alusense.be/shop/page/4/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-style-36x72m-zandgrijs-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Style - 3,6×7,2m - Zandgrijs - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-style-36x72m-zandgrijs-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2026/01/Pargola-3-6x7-2-meter-Zandgrijs.avif",
+      "categories": [
+        "Alu Style Overkapping"
+      ],
+      "category": "Alu Style Overkapping",
+      "sku": "ASVMXZ360720",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 5995,
+      "price_min": 5995,
+      "price_max": 5995,
+      "price_is_range": false,
+      "price_display": "€ 5.995,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Style Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RGB: R:198,G:195,B:192 / CMYK: C:26,M:22,Y:22,K:0"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3,6m × 7,2m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "360cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "720cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "26m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 720 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 26 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27159",
+      "source_id": "27159",
+      "source_page": "https://www.alusense.be/shop/page/4/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-style-3-x-4-antraciet-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Style - 3×4m - Antraciet - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-style-3-x-4-antraciet-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/08/Alu-Style-Vrijstaande-overkapping-met-lamellen-3-x-4-Antraciet-1-1.png",
+      "categories": [
+        "Alu Style Overkapping"
+      ],
+      "category": "Alu Style Overkapping",
+      "sku": "ASVMXA300400",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3295,
+      "price_min": 3295,
+      "price_max": 3295,
+      "price_is_range": false,
+      "price_display": "€ 3.295,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Style Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3m × 4m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "300cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "400cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "12m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (300 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 9 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27498",
+      "source_id": "27498",
+      "source_page": "https://www.alusense.be/shop/page/4/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-style-3-x-4-zandgrijs-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Style - 3×4m - Zandgrijs - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-style-3-x-4-zandgrijs-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Style-Vrijstaande-overkapping-met-lamellen-3-x-4-Zandgrijs-1-1.png",
+      "categories": [
+        "Alu Style Overkapping"
+      ],
+      "category": "Alu Style Overkapping",
+      "sku": "ASVMXZ300400",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3295,
+      "price_min": 3295,
+      "price_max": 3295,
+      "price_is_range": false,
+      "price_display": "€ 3.295,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Style Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RGB: R:198,G:195,B:192 / CMYK: C:26,M:22,Y:22,K:0"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3m × 4m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "300cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "400cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "12m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (300 x 400 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 12 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27729",
+      "source_id": "27729",
+      "source_page": "https://www.alusense.be/shop/page/4/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-style-3-x-6-antraciet-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Style - 3×6m - Antraciet - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-style-3-x-6-antraciet-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/3x6-Antraciet-pergola.jpg",
+      "categories": [
+        "Alu Style Overkapping"
+      ],
+      "category": "Alu Style Overkapping",
+      "sku": "ASVMXA300600",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3999,
+      "price_min": 3999,
+      "price_max": 3999,
+      "price_is_range": false,
+      "price_display": "€ 3.999,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Style Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3m × 6m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "300cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "600cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "18m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (300 x 600 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 18 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-28201",
+      "source_id": "28201",
+      "source_page": "https://www.alusense.be/shop/page/5/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-style-3x6m-zandgrijs-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Style - 3×6m - Zandgrijs - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-style-3x6m-zandgrijs-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2026/01/3x6.png",
+      "categories": [
+        "Alu Style Overkapping"
+      ],
+      "category": "Alu Style Overkapping",
+      "sku": "ASVMXZ300600",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3999,
+      "price_min": 3999,
+      "price_max": 3999,
+      "price_is_range": false,
+      "price_display": "€ 3.999,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Style Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RGB: R:198,G:195,B:192 / CMYK: C:26,M:22,Y:22,K:0"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3m × 6m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "300cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "600cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "116 × 116 mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "18m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "50 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (300 x 600 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 18 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27763",
+      "source_id": "27763",
+      "source_page": "https://www.alusense.be/shop/page/5/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-style-4-x-4-antraciet-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Style - 4×4m - Antraciet - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-style-4-x-4-antraciet-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Style-4-x-4-Antraciet-Vrijstaande-overkapping-met-lamellen-1.png",
+      "categories": [
+        "Alu Style Overkapping"
+      ],
+      "category": "Alu Style Overkapping",
+      "sku": "ASVMXA400400",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3995,
+      "price_min": 3995,
+      "price_max": 3995,
+      "price_is_range": false,
+      "price_display": "€ 3.995,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Style Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "4m × 4m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "400cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "400cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "136 × 136mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "16m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "70 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (400 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 16 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-28243",
+      "source_id": "28243",
+      "source_page": "https://www.alusense.be/shop/page/5/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-style-4x4m-zandgrijs-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Style - 4×4m - Zandgrijs - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-style-4x4m-zandgrijs-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2026/01/4x4-pergola-zandgrijs.avif",
+      "categories": [
+        "Alu Style Overkapping"
+      ],
+      "category": "Alu Style Overkapping",
+      "sku": "ASVMXZ400400",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3995,
+      "price_min": 3995,
+      "price_max": 3995,
+      "price_is_range": false,
+      "price_display": "€ 3.995,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Style Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RGB: R:198,G:195,B:192 / CMYK: C:26,M:22,Y:22,K:0"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "4m × 4m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "400cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "400cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "136 × 136mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "16m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "70 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (400 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 16 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27772",
+      "source_id": "27772",
+      "source_page": "https://www.alusense.be/shop/page/5/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-style-4-x-6-antraciet-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Style - 4×6m - Antraciet - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-style-4-x-6-antraciet-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Alu-Style-4-x-6-Antraciet-Vrijstaande-overkapping-met-lamellen-1.png",
+      "categories": [
+        "Alu Style Overkapping"
+      ],
+      "category": "Alu Style Overkapping",
+      "sku": "ASVMXA400600",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 5995,
+      "price_min": 5995,
+      "price_max": 5995,
+      "price_is_range": false,
+      "price_display": "€ 5.995,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Style Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "4m × 6m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "400cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "600cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "136 × 136mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "24m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "70 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (400 x 600 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 24 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-28250",
+      "source_id": "28250",
+      "source_page": "https://www.alusense.be/shop/page/5/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alu-style-4x6m-zandgrijs-vrijstaande-overkapping-met-lamellen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Style - 4×6m - Zandgrijs - Vrijstaande overkapping met lamellen",
+      "url": "https://www.alusense.be/product/alu-style-4x6m-zandgrijs-vrijstaande-overkapping-met-lamellen/",
+      "image": "https://www.alusense.be/wp-content/uploads/2026/01/4x6-pergola-aluminium-Zandgrijs.avif",
+      "categories": [
+        "Alu Style Overkapping"
+      ],
+      "category": "Alu Style Overkapping",
+      "sku": "ASVMXZ400600",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 5995,
+      "price_min": 5995,
+      "price_max": 5995,
+      "price_is_range": false,
+      "price_display": "€ 5.995,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Bereik",
+          "value": "Alu Style Overkapping"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RGB: R:198,G:195,B:192 / CMYK: C:26,M:22,Y:22,K:0"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "4m × 6m"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Breedte",
+          "value": "400cm"
+        },
+        {
+          "label": "Materiaal lamellen",
+          "value": "Aluminum"
+        },
+        {
+          "label": "Lengte",
+          "value": "600cm"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Afmetingen poot",
+          "value": "136 × 136mm"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "24m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "70 kg/m²"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        }
+      ],
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (400 x 600 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 24 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
+    },
+    {
+      "id": "alusense-27853",
+      "source_id": "27853",
+      "source_page": "https://www.alusense.be/shop/page/5/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alusense-carport-aluminium-3-x-5-3-antraciet/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alusense Carport - 3×5,3m - Aluminium - Antraciet",
+      "url": "https://www.alusense.be/product/alusense-carport-aluminium-3-x-5-3-antraciet/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/11/ACVA300530-5.jpg",
+      "categories": [
+        "Carports"
+      ],
+      "category": "Carports",
+      "sku": "ACVA300530",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3995,
+      "price_min": 3995,
+      "price_max": 3995,
+      "price_is_range": false,
+      "price_display": "€ 3.995,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Producttype",
+          "value": "Carport"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3m × 5,3m"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Breedte",
+          "value": "300cm"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Volaluminium structuur met verzinkte staalversteviging en PU-sandwichpanelen"
+        },
+        {
+          "label": "Lengte",
+          "value": "530cm"
+        },
+        {
+          "label": "Materiaal dak",
+          "value": "PU-gevulde sandwichpanelen: 30mm dik"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "16m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "80 kg/m²"
+        }
+      ],
+      "description": "De Alusense aluminium carport biedt duurzame bescherming voor je wagen, het hele jaar door.\n\nMet haar sterke volaluminium structuur, geïsoleerd dak en ingebouwd drainagesysteem combineert ze design, comfort en onderhoudsgemak.\n\nUit te breiden met zijpanelen of lamellenwanden voor extra privacy. Een stijlvolle, milieuvriendelijke oplossing voor elke buitenruimte."
+    },
+    {
+      "id": "alusense-27865",
+      "source_id": "27865",
+      "source_page": "https://www.alusense.be/shop/page/6/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/alusense-carport-aluminium-3-x-7-2-antraciet/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alusense Carport - 3×7,2m - Aluminium - Antraciet",
+      "url": "https://www.alusense.be/product/alusense-carport-aluminium-3-x-7-2-antraciet/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/11/aangepast-1.jpeg",
+      "categories": [
+        "Carports"
+      ],
+      "category": "Carports",
+      "sku": "ACVA300720",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 6995,
+      "price_min": 6995,
+      "price_max": 6995,
+      "price_is_range": false,
+      "price_display": "€ 6.995,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Producttype",
+          "value": "Carport"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Afmetingen overkapping",
+          "value": "3m × 5m"
+        },
+        {
+          "label": "Kleurcode (RAL)",
+          "value": "RAL7015"
+        },
+        {
+          "label": "Breedte",
+          "value": "300cm"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Volaluminium structuur met verzinkte staalversteviging en PU-sandwichpanelen"
+        },
+        {
+          "label": "Lengte",
+          "value": "720cm"
+        },
+        {
+          "label": "Materiaal dak",
+          "value": "PU-gevulde sandwichpanelen: 30mm dik"
+        },
+        {
+          "label": "Hoogte",
+          "value": "255cm"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        },
+        {
+          "label": "Doorloophoogte",
+          "value": "236cm"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "5 Jaar"
+        },
+        {
+          "label": "Oppervlakte",
+          "value": "22m²"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        },
+        {
+          "label": "Sneeuwbelasting",
+          "value": "80 kg/m²"
+        }
+      ],
+      "description": "De Alusense aluminium carport biedt duurzame bescherming voor je wagen, het hele jaar door.\n\nMet haar sterke volaluminium structuur, geïsoleerd dak en ingebouwd drainagesysteem combineert ze design, comfort en onderhoudsgemak.\n\nUit te breiden met zijpanelen of lamellenwanden voor extra privacy. Een stijlvolle, milieuvriendelijke oplossing voor elke buitenruimte."
+    },
+    {
+      "id": "alusense-27796",
+      "source_id": "27796",
+      "source_page": "https://www.alusense.be/shop/page/6/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/rotable-horizontal-screen-panel-antraciet/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Horizontale Lamellenwand",
+      "url": "https://www.alusense.be/product/rotable-horizontal-screen-panel-antraciet/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Louvrepanel-antra-1.png",
+      "categories": [
+        "Accessoires"
+      ],
+      "category": "Accessoires",
+      "sku": "HLMA*",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 549,
+      "price_min": 549,
+      "price_max": 649,
+      "price_is_range": true,
+      "price_display": "€ 549,00 - € 649,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Herkomst",
+          "value": "Belgisch bedrijf"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "2 Jaar"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Producttype",
+          "value": "Screens"
+        },
+        {
+          "label": "Bereik",
+          "value": "Horizontale Lamellenwand"
+        },
+        {
+          "label": "Breedte scherm",
+          "value": "3m , 3.6m , 4m"
+        }
+      ],
+      "description": "Het Alusense kantelbare Shutter paneel is een echte toevoeging voor jouw Alusense overkapping. Met dit paneel zorg je gemakkelijk voor meer privacy, zit je beschut tegen de wind en heb je geen last van een laaghangende zon.\r\nDaarnaast zijn de lamellen van dit shutter paneel handmatige te verstellen zodat u altijd in comfort kunt genieten van uw overkapping.\r\nDe vaste middenlat maakt het mogelijk de bovenste en onderste lamellen van de horizontale lamellenwand onafhankelijk van elkaar te bedienen. Hierdoor kan de lichtinval en schaduw naar wens worden ingesteld.\r\nVerkrijgbaar in 3 m, 3,6 m en 4 m, in antraciet (RAL 7024).\n\nModulair op elke zijde te plaatsen en eenvoudig te monteren — voor een duurzame, onderhoudsarme afwerking van jouw Alusense overkapping."
+    },
+    {
+      "id": "alusense-27825",
+      "source_id": "27825",
+      "source_page": "https://www.alusense.be/shop/page/6/?opts=infinit_scrolling",
+      "source_url": "https://www.alusense.be/product/manual-screen-antra-antraciet/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Screen Antraciet",
+      "url": "https://www.alusense.be/product/manual-screen-antra-antraciet/",
+      "image": "https://www.alusense.be/wp-content/uploads/2025/10/Manual-Screen-Antra-Antraciet-1.png",
+      "categories": [
+        "Accessoires"
+      ],
+      "category": "Accessoires",
+      "sku": "SMA*",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 699,
+      "price_min": 699,
+      "price_max": 799,
+      "price_is_range": true,
+      "price_display": "€ 699,00 - € 799,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "specs": [
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Herkomst",
+          "value": "Belgisch bedrijf"
+        },
+        {
+          "label": "Levering",
+          "value": "Gratis vanaf €1000"
+        },
+        {
+          "label": "Fabrieksgarantie",
+          "value": "2 Jaar"
+        },
+        {
+          "label": "Levertermijn",
+          "value": "Leverbaar tussen 5 à 9 werkdagen"
+        },
+        {
+          "label": "Producttype",
+          "value": "Screens"
+        },
+        {
+          "label": "Bereik",
+          "value": "Manueel Rolgordijn"
+        },
+        {
+          "label": "Breedte scherm",
+          "value": "2.65m , 3m , 3.6m , 4m"
+        }
+      ],
+      "description": "Maak jouw Alusense overkapping compleet met een stijlvol zij- of windscherm. De Alusense screens bieden optimale privacy, bescherming tegen wind én een laaghangende zon, volledig geïntegreerd in de pergolaconstructie.\n\nGemaakt uit duurzaam gepoedercoat aluminium en UV-bestendig textileen, met een moderne antracietkleur (RAL 7024). Verkrijgbaar in 2,65m, 3 m, 3,6 m en 4 m.\n\nEenvoudig te monteren en verstelbaar naar wens, voor een comfortabele buitenruimte, het hele jaar door."
+    }
+  ]
+}
