@@ -105,6 +105,13 @@ const OVERKAPPING_SCREEN_OPTIONS = [
   { id: 'lamellenwand-133', label: '133 cm', price: 649 }
 ];
 
+const OVERKAPPING_WPC_OPTIONS = [
+  { id: 'wpc-3m', label: '3m vaste wand', price: 899 },
+  { id: 'wpc-36m', label: '3.6m vaste wand', price: 999 },
+  { id: 'wpc-4m', label: '4m vaste wand', price: 1049 },
+  { id: 'wpc-53m', label: '5.3m vaste wand', price: 1179 }
+];
+
 function getProductVariants(product) {
   if (!Array.isArray(product?.variants)) return [];
   return product.variants.filter(variant => Number.isFinite(Number(variant?.price)));
@@ -415,14 +422,39 @@ function getOverkappingScreenOptions(product) {
   }));
 }
 
-function getOverkappingScreenQtyInput(index) {
-  return document.querySelector(`[data-overkapping-screen-qty="${index}"]`);
+function getOverkappingAccessoryGroups(product) {
+  if (!shouldShowOverkappingScreenOptions(product)) return [];
+
+  const groups = [
+    {
+      title: isQuantityVariantProduct(product) ? 'Afmetingen' : 'Horizontale Lamellenwand',
+      options: getOverkappingScreenOptions(product)
+    }
+  ];
+
+  if (isMainOverkappingProduct(product)) {
+    groups.push({
+      title: 'WPC Wand',
+      options: OVERKAPPING_WPC_OPTIONS.map(option => ({
+        id: option.id,
+        label: option.label,
+        price: Number(option.price || 0),
+        offerLabel: `WPC Wand ${option.label}`
+      }))
+    });
+  }
+
+  return groups;
+}
+
+function getOverkappingScreenQtyInput(optionId) {
+  return document.querySelector(`[data-overkapping-screen-qty="${CSS.escape(String(optionId))}"]`);
 }
 
 function getOverkappingScreenSelections() {
-  return currentOverkappingScreenOptions.map((option, index) => ({
+  return currentOverkappingScreenOptions.map(option => ({
     ...option,
-    qty: toPositiveInt(getOverkappingScreenQtyInput(index)?.value)
+    qty: toPositiveInt(getOverkappingScreenQtyInput(option.id)?.value)
   }));
 }
 
@@ -440,8 +472,8 @@ function getOverkappingScreenOfferLines() {
     }));
 }
 
-function setOverkappingScreenQty(index, value) {
-  const input = getOverkappingScreenQtyInput(index);
+function setOverkappingScreenQty(optionId, value) {
+  const input = getOverkappingScreenQtyInput(optionId);
   if (!input) return;
   setNumberInputValue(input, value);
   updateOptionUI();
@@ -461,7 +493,8 @@ function setupOverkappingScreenOptions(product) {
     return false;
   }
 
-  currentOverkappingScreenOptions = getOverkappingScreenOptions(product);
+  const accessoryGroups = getOverkappingAccessoryGroups(product);
+  currentOverkappingScreenOptions = accessoryGroups.flatMap(group => group.options);
 
   if (!currentOverkappingScreenOptions.length) {
     group.style.display = 'none';
@@ -469,54 +502,54 @@ function setupOverkappingScreenOptions(product) {
     return false;
   }
 
-  const title = isQuantityVariantProduct(product) ? 'Afmetingen' : 'Horizontale Lamellenwand';
-
-  group.innerHTML = `
-    <div class="option-group-title">${escapeHtml(title)}</div>
-    ${currentOverkappingScreenOptions.map((option, index) => {
-      const initialQty = isQuantityVariantProduct(product) && index === 0 ? 1 : 0;
-      return `
-        <label class="opt opt-inline overkapping-screen-row">
-          <div class="opt-text" style="width:100%;">
-            <div class="opt-title overkapping-screen-title">
-              <span class="overkapping-screen-name">
-                ${escapeHtml(option.label)}
-                <span class="overkapping-screen-price">${euro(option.price)}/stuk</span>
-              </span>
-              <div class="opt-counter">
-                <button type="button" class="opt-counter-btn" data-overkapping-screen-minus="${index}">-</button>
-                <input
-                  id="overkappingScreenQty${index}"
-                  type="number"
-                  min="0"
-                  step="1"
-                  value="${initialQty}"
-                  inputmode="numeric"
-                  class="opt-counter-input"
-                  data-overkapping-screen-qty="${index}"
-                />
-                <button type="button" class="opt-counter-btn" data-overkapping-screen-plus="${index}">+</button>
+  group.innerHTML = accessoryGroups.map(groupData => `
+    <div class="overkapping-accessory-group">
+      <div class="option-group-title">${escapeHtml(groupData.title)}</div>
+      ${groupData.options.map((option, index) => {
+        const initialQty = isQuantityVariantProduct(product) && index === 0 ? 1 : 0;
+        return `
+          <label class="opt opt-inline overkapping-screen-row">
+            <div class="opt-text" style="width:100%;">
+              <div class="opt-title overkapping-screen-title">
+                <span class="overkapping-screen-name">
+                  ${escapeHtml(option.label)}
+                  <span class="overkapping-screen-price">${euro(option.price)}/stuk</span>
+                </span>
+                <div class="opt-counter">
+                  <button type="button" class="opt-counter-btn" data-overkapping-screen-minus="${escapeHtml(option.id)}">-</button>
+                  <input
+                    id="overkappingScreenQty${escapeHtml(option.id)}"
+                    type="number"
+                    min="0"
+                    step="1"
+                    value="${initialQty}"
+                    inputmode="numeric"
+                    class="opt-counter-input"
+                    data-overkapping-screen-qty="${escapeHtml(option.id)}"
+                  />
+                  <button type="button" class="opt-counter-btn" data-overkapping-screen-plus="${escapeHtml(option.id)}">+</button>
+                </div>
               </div>
             </div>
-          </div>
-        </label>
-      `;
-    }).join('')}
-  `;
+          </label>
+        `;
+      }).join('')}
+    </div>
+  `).join('');
 
   group.querySelectorAll('[data-overkapping-screen-minus]').forEach(button => {
     button.addEventListener('click', () => {
-      const index = Number(button.getAttribute('data-overkapping-screen-minus'));
-      const input = getOverkappingScreenQtyInput(index);
-      setOverkappingScreenQty(index, toPositiveInt(input?.value) - 1);
+      const optionId = button.getAttribute('data-overkapping-screen-minus');
+      const input = getOverkappingScreenQtyInput(optionId);
+      setOverkappingScreenQty(optionId, toPositiveInt(input?.value) - 1);
     });
   });
 
   group.querySelectorAll('[data-overkapping-screen-plus]').forEach(button => {
     button.addEventListener('click', () => {
-      const index = Number(button.getAttribute('data-overkapping-screen-plus'));
-      const input = getOverkappingScreenQtyInput(index);
-      setOverkappingScreenQty(index, toPositiveInt(input?.value) + 1);
+      const optionId = button.getAttribute('data-overkapping-screen-plus');
+      const input = getOverkappingScreenQtyInput(optionId);
+      setOverkappingScreenQty(optionId, toPositiveInt(input?.value) + 1);
     });
   });
 
@@ -635,8 +668,8 @@ function updateOptionUI() {
     optWarmtepompQty.value = String(warmtepompQty);
   }
 
-  currentOverkappingScreenOptions.forEach((_, index) => {
-    const input = getOverkappingScreenQtyInput(index);
+  currentOverkappingScreenOptions.forEach(option => {
+    const input = getOverkappingScreenQtyInput(option.id);
     if (!input) return;
     setNumberInputValue(input, input.value);
   });
