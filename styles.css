@@ -622,6 +622,43 @@ select:focus {
   color: #334155;
 }
 
+.overkapping-screens .opt-counter {
+  gap: 6px;
+  padding: 4px 6px;
+  border-radius: 999px;
+  background: #f8fafc;
+  box-shadow: inset 0 0 0 1px #dbe3ec;
+}
+
+.overkapping-screens .opt-counter-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 800;
+  box-shadow: none;
+}
+
+.overkapping-screens .opt-counter-input {
+  width: 40px;
+  height: 28px;
+  min-height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 14px;
+  box-shadow: none;
+}
+
+.overkapping-screens .opt-counter-btn:hover {
+  box-shadow: none;
+}
+
+.overkapping-screens .opt-counter-input:focus {
+  box-shadow: 0 0 0 3px rgba(95, 127, 164, 0.12);
+}
+
 .opt,
 label.opt {
   align-items: center;
@@ -760,6 +797,21 @@ label.opt .opt-title {
   .opt-counter-input{
     width:64px;
     height:40px;
+  }
+
+  .overkapping-screens .opt-counter{
+    width:auto;
+    justify-content:center;
+  }
+
+  .overkapping-screens .opt-counter-btn{
+    width:28px;
+    height:28px;
+  }
+
+  .overkapping-screens .opt-counter-input{
+    width:40px;
+    height:28px;
   }
 }
 
