@@ -203,7 +203,11 @@ function printBon() {
           .col-num { width: 70px; font-weight: 800; color: #475569; }
           .col-desc { font-weight: 600; }
           .col-price { width: 190px; text-align: right; white-space: nowrap; font-weight: 800; }
-          .summary { margin-top: 18px; display: flex; justify-content: flex-end; }
+          .summary { margin-top: 18px; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; }
+          .summary-left { flex: 1; padding-top: 10px; }
+          .payment-line { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #0f172a; }
+          .payment-line span:first-child { min-width: 112px; font-weight: 700; }
+          .payment-fill { flex: 1; border-bottom: 1.5px solid #64748b; height: 16px; }
           .summary-box { width: 320px; border: 1px solid #d7e0e9; border-radius: 18px; overflow: hidden; background: #ffffff; }
           .summary-row { display: flex; justify-content: space-between; gap: 18px; padding: 14px 18px; border-bottom: 1px solid #e9eef4; font-size: 14px; color: #0f172a; }
           .summary-row:last-child { border-bottom: none; }
@@ -222,7 +226,7 @@ function printBon() {
             html, body { width: 210mm; height: 297mm; margin: 0 !important; padding: 0 !important; background: #ffffff !important; color: #1f2937 !important; }
             body { font-size: 11px !important; line-height: 1.28 !important; }
             .sheet { width: 194mm !important; max-width: 194mm !important; min-height: 281mm !important; margin: 0 auto !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; overflow: hidden !important; page-break-inside: avoid !important; }
-            .header { background: #ffffff !important; color: #274863 !important; border: 1px solid #cfd8e3 !important; border-radius: 10px !important; padding: 10mm 10mm 7mm 10mm !important; }
+            .header { background: #ffffff !important; color: #274863 !important; border: none !important; border-radius: 0 !important; padding: 10mm 10mm 7mm 10mm !important; }
             .header-top { display: flex !important; justify-content: space-between !important; align-items: flex-start !important; gap: 10mm !important; }
             .brand { display: flex !important; gap: 10px !important; align-items: flex-start !important; }
             .offer-logo {width: 280px;height: auto;display: block;background: #ffffff;border-radius: 14px;padding: 8px 10px;}
@@ -245,7 +249,11 @@ function printBon() {
             tbody td { padding: 3mm 4mm !important; border-bottom: 1px solid #edf2f7 !important; font-size: 11px !important; line-height: 1.25 !important; }
             .col-num { width: 10mm !important; }
             .col-price { width: 34mm !important; text-align: right !important; white-space: nowrap !important; }
-            .summary { margin-top: 4mm !important; display: flex !important; justify-content: flex-end !important; }
+            .summary { margin-top: 4mm !important; display: flex !important; justify-content: space-between !important; align-items: flex-start !important; gap: 8mm !important; }
+            .summary-left { flex: 1 1 auto !important; padding-top: 3mm !important; }
+            .payment-line { display: flex !important; align-items: center !important; gap: 10px !important; font-size: 11px !important; color: #0f172a !important; }
+            .payment-line span:first-child { min-width: 90px !important; font-weight: 700 !important; white-space: nowrap !important; }
+            .payment-fill { flex: 1 !important; border-bottom: 1px solid #64748b !important; height: 12px !important; }
             .summary-box { width: 52mm !important; border: 1px solid #dbe3ec !important; border-radius: 10px !important; overflow: hidden !important; background: #ffffff !important; page-break-inside: avoid !important; }
             .summary-row { gap: 4mm !important; padding: 3mm 4mm !important; border-bottom: 1px solid #edf2f7 !important; font-size: 11px !important; }
             .summary-row.total { background: #f4f7fa !important; color: #274863 !important; font-size: 13px !important; font-weight: 800 !important; }
@@ -301,6 +309,13 @@ function printBon() {
             </div>
 
             <div class="summary">
+              <div class="summary-left">
+                <div class="payment-line">
+                  <span>BETAALD MET</span>
+                  <span class="payment-fill"></span>
+                </div>
+              </div>
+
               <div class="summary-box">
                 <div class="summary-row">
                   <span>Subtotaal</span>
