@@ -588,7 +588,7 @@ function getTermsHtml(type, validUntil) {
 
   terms.push(`<li>Prijzen zijn exclusief kraankosten tenzij anders vermeld.<br>
   Levering & plaatsing volgens afgesproken voorwaarden (voldoende doorgang, geen obstakels & hulp)<br>
-  Betalingsvoorwaarden: 10% voorschot bij bestelling, restbedrag uiterlijk één week vóor levering.</li>`);
+  Betalingsvoorwaarden: 10% voorschot bij bestelling, restbedrag uiterlijk één week vóór levering.</li>`);
 
   if (isJacuzzi(type) || isSwimspa(type)) {
     terms.push(`
