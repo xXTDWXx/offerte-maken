@@ -253,6 +253,7 @@ const PRICES = {
   install_barrel_sauna: 995,
   install_infrared: 450,
   install_sauna: 695,
+  install_overkapping: 680,
 
   coverlift_unit: 189,
   maintenance_unit: 179,
@@ -267,8 +268,8 @@ const PRICES = {
   barrel_infrared_module_unit: 699
 };
 
-function installCost(type) {
-  if (isOverkapping(type)) return 0;
+function installCost(type, product = currentProduct) {
+  if (isOverkapping(type)) return isMainOverkappingProduct(product) ? PRICES.install_overkapping : 0;
   if (isSwimspa(type)) return PRICES.install_swimspa;
   if (isBarrelSauna(type)) return PRICES.install_barrel_sauna;
   if (isInfrared(type)) return PRICES.install_infrared;
