@@ -36,6 +36,8 @@ let currentOverkappingScreenOptions = [];
 let optionHandlersWired = false;
 let customerHandlersWired = false;
 
+const OVERKAPPING_HIDDEN_SPEC_LABELS = new Set(['levering', 'levertermijn']);
+
 function $(id) {
   return document.getElementById(id);
 }
@@ -304,7 +306,7 @@ function extraOptionsAllowed(type) {
 }
 
 function specTableHtml(p) {
-  const specs = Array.isArray(p.specs) ? p.specs : [];
+  const specs = getVisibleSpecs(p);
   if (!specs.length) return '<div class="small">Geen specificaties beschikbaar.</div>';
 
   return specs.map(s => `
@@ -313,6 +315,16 @@ function specTableHtml(p) {
       <span>${escapeHtml(s.value || '')}</span>
     </div>
   `).join('');
+}
+
+function getVisibleSpecs(product) {
+  const specs = Array.isArray(product?.specs) ? product.specs : [];
+  if (!isOverkapping(product?.type)) return specs;
+
+  return specs.filter(spec => {
+    const label = String(spec?.label || '').trim().toLowerCase();
+    return !OVERKAPPING_HIDDEN_SPEC_LABELS.has(label);
+  });
 }
 
 async function fetchProductItems(url, label = 'producten') {
@@ -905,7 +917,7 @@ function printProductFiche(p) {
   const win = window.open('', '_blank');
   if (!win) return;
 
-  const specs = (p.specs || []).map(s =>
+  const specs = getVisibleSpecs(p).map(s =>
     `<tr><td><strong>${escapeHtml(s.label)}</strong></td><td>${escapeHtml(s.value)}</td></tr>`
   ).join('');
 
