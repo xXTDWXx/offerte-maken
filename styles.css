@@ -614,11 +614,13 @@ select:focus {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   width: 100%;
 }
 
 .overkapping-screen-name {
+  flex: 1 1 auto;
+  min-width: 0;
   margin-left: 9px;
   margin-top: 5px;
 }
@@ -626,6 +628,7 @@ select:focus {
 .overkapping-screen-price {
   font-weight: 700;
   color: #334155;
+  white-space: nowrap;
 }
 
 .overkapping-screens .opt-counter {
@@ -858,6 +861,43 @@ label.opt .opt-price {
   width: 90%;
   height: auto;
   display: block;
+}
+
+.overkapping-accessory-images {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.overkapping-accessory-thumb {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.modal-media .overkapping-accessory-thumb img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: #f8fafc;
+}
+
+.overkapping-accessory-thumb span {
+  display: block;
+  padding: 6px 8px;
+  color: #0f172a;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.2;
 }
 
 .grid {

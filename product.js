@@ -106,10 +106,21 @@ const OVERKAPPING_SCREEN_OPTIONS = [
 ];
 
 const OVERKAPPING_WPC_OPTIONS = [
-  { id: 'wpc-3m', label: '3m vaste wand', price: 899 },
-  { id: 'wpc-36m', label: '3.6m vaste wand', price: 999 },
-  { id: 'wpc-4m', label: '4m vaste wand', price: 1049 },
-  { id: 'wpc-53m', label: '5.3m vaste wand', price: 1179 }
+  { id: 'wpc-3m', label: '3m WPC', offerLabel: 'WPC Wand 3m', price: 899 },
+  { id: 'wpc-36m', label: '3.6m WPC', offerLabel: 'WPC Wand 3.6m', price: 999 },
+  { id: 'wpc-4m', label: '4m WPC', offerLabel: 'WPC Wand 4m', price: 1049 },
+  { id: 'wpc-53m', label: '5.3m WPC', offerLabel: 'WPC Wand 5.3m', price: 1179 }
+];
+
+const OVERKAPPING_ACCESSORY_IMAGES = [
+  {
+    label: 'Lamellenwand',
+    image: 'images/overkappingen/alusense-27796-horizontale-lamellenwand.png'
+  },
+  {
+    label: 'WPC Wand',
+    image: 'images/overkappingen/alusense-27843-afscheidingswand-wpc.png'
+  }
 ];
 
 function getProductVariants(product) {
@@ -439,7 +450,7 @@ function getOverkappingAccessoryGroups(product) {
         id: option.id,
         label: option.label,
         price: Number(option.price || 0),
-        offerLabel: `WPC Wand ${option.label}`
+        offerLabel: option.offerLabel || `WPC Wand ${option.label}`
       }))
     });
   }
@@ -560,6 +571,25 @@ function setupOverkappingScreenOptions(product) {
 
   group.style.display = '';
   return true;
+}
+
+function setupOverkappingAccessoryImages(product) {
+  const wrap = $('overkappingAccessoryImages');
+  if (!wrap) return;
+
+  if (!isMainOverkappingProduct(product)) {
+    wrap.style.display = 'none';
+    wrap.innerHTML = '';
+    return;
+  }
+
+  wrap.innerHTML = OVERKAPPING_ACCESSORY_IMAGES.map(item => `
+    <div class="overkapping-accessory-thumb">
+      <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.label)}" loading="lazy">
+      <span>${escapeHtml(item.label)}</span>
+    </div>
+  `).join('');
+  wrap.style.display = '';
 }
 
 function updateOptionUI() {
@@ -2004,6 +2034,7 @@ function renderProduct(p) {
       productImg.style.display = 'none';
     };
   }
+  setupOverkappingAccessoryImages(p);
 
   if (productSpecs) {
     productSpecs.innerHTML = specTableHtml(p);
