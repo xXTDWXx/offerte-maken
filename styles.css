@@ -331,16 +331,19 @@ select:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 0;
 }
 
 .card-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  margin: 0;
+  object-fit: cover;
   object-position: center;
   display: block;
-  background: #ffffff;
 }
 
 /* Badges */
@@ -832,7 +835,7 @@ label.opt .opt-price {
 
   .card-imgwrap {
     aspect-ratio: 16 / 10;
-    padding: 10px;
+    padding: 0;
   }
 
   .card-specs {
@@ -1391,7 +1394,14 @@ body {
 
 .card-img {
   width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  margin: 0;
   aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
   display: block;
 }
 
