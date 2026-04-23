@@ -2,6 +2,7 @@
 // Klik op een product gaat naar product.html?id=PRODUCT_ID
 
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
+const OVERKAPPING_URL = new URL('overkapping.json', document.baseURI).toString();
 
 // --- Catalog refs
 const elGrid = document.getElementById('grid');
@@ -65,12 +66,12 @@ function getShowrooms(p) {
   return [];
 }
 
-async function loadProducts({ force = false } = {}) {
-  const url = force ? `${PRODUCTS_URL}?t=${Date.now()}` : PRODUCTS_URL;
-  const res = await fetch(url, { cache: force ? 'no-store' : 'default' });
+async function fetchProductItems(url, { force = false, label = 'producten' } = {}) {
+  const fetchUrl = force ? `${url}?t=${Date.now()}` : url;
+  const res = await fetch(fetchUrl, { cache: force ? 'no-store' : 'default' });
 
   if (!res.ok) {
-    throw new Error(`Kan products.json niet laden (${res.status})`);
+    throw new Error(`Kan ${label} niet laden (${res.status})`);
   }
 
   const json = await res.json();
@@ -78,6 +79,15 @@ async function loadProducts({ force = false } = {}) {
 
   if (!Array.isArray(items)) return [];
   return items;
+}
+
+async function loadProducts({ force = false } = {}) {
+  const [catalogProducts, overkappingProducts] = await Promise.all([
+    fetchProductItems(PRODUCTS_URL, { force, label: 'products.json' }),
+    fetchProductItems(OVERKAPPING_URL, { force, label: 'overkapping.json' })
+  ]);
+
+  return [...catalogProducts, ...overkappingProducts];
 }
 
 function getSpecValue(p, label) {
@@ -234,7 +244,19 @@ function productSearchBlob(p) {
 }
 
 function topSpecs(p) {
-  const want = ['Merk', 'Afmeting', 'Aantal personen', 'Zitplaatsen', 'Ligplaatsen', 'Aantal jets'];
+  const want = [
+    'Merk',
+    'Afmeting',
+    'Afmetingen overkapping',
+    'Producttype',
+    'Kleur',
+    'Breedte',
+    'Diepte',
+    'Aantal personen',
+    'Zitplaatsen',
+    'Ligplaatsen',
+    'Aantal jets'
+  ];
   const picked = [];
 
   for (const key of want) {
@@ -362,7 +384,7 @@ if (showroomBadge) {
 
     if (badge) badge.textContent = (p.type || '').toUpperCase();
     if (title) title.textContent = p.title || '';
-    if (price) price.textContent = euro(p.price || 0);
+    if (price) price.textContent = p.price_display || euro(p.price || 0);
     if (specs) specs.innerHTML = topSpecs(p);
 
     if (cardLink) {

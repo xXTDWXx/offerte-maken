@@ -40,6 +40,29 @@
       "price_display": "€ 899,00 - € 1.179,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
+      "variant_label": "Afmeting",
+      "variants": [
+        {
+          "id": "alusense-27848",
+          "label": "3m",
+          "price": 899
+        },
+        {
+          "id": "alusense-27845",
+          "label": "3.6m",
+          "price": 999
+        },
+        {
+          "id": "alusense-27844",
+          "label": "4m",
+          "price": 1049
+        },
+        {
+          "id": "alusense-27847",
+          "label": "5.3m",
+          "price": 1179
+        }
+      ],
       "specs": [
         {
           "label": "Kleur",
@@ -3192,6 +3215,24 @@
       "price_display": "€ 549,00 - € 649,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
+      "variant_label": "Afmeting",
+      "variants": [
+        {
+          "id": "alusense-27834",
+          "label": "3m",
+          "price": 549
+        },
+        {
+          "id": "alusense-27833",
+          "label": "3.6m",
+          "price": 599
+        },
+        {
+          "id": "alusense-27832",
+          "label": "4m",
+          "price": 649
+        }
+      ],
       "specs": [
         {
           "label": "Kleur",

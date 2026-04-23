@@ -1,4 +1,5 @@
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
+const OVERKAPPING_URL = new URL('overkapping.json', document.baseURI).toString();
 
 const elGrid = document.getElementById('grid');
 const tpl = document.getElementById('cardTpl');
@@ -92,6 +93,11 @@ function topSpecs(p) {
   const want = [
     'Merk',
     'Afmeting',
+    'Afmetingen overkapping',
+    'Producttype',
+    'Kleur',
+    'Breedte',
+    'Diepte',
     'Aantal personen',
     'Zitplaatsen',
     'Ligplaatsen',
@@ -127,16 +133,25 @@ function getProductUrl(p) {
   return `product.html?id=${id}`;
 }
 
-async function loadProducts() {
-  const res = await fetch(PRODUCTS_URL);
+async function fetchProductItems(url, label = 'producten') {
+  const res = await fetch(url);
 
   if (!res.ok) {
-    throw new Error(`Kan products.json niet laden (${res.status})`);
+    throw new Error(`Kan ${label} niet laden (${res.status})`);
   }
 
   const json = await res.json();
   const items = Array.isArray(json) ? json : (json.products || []);
   return Array.isArray(items) ? items : [];
+}
+
+async function loadProducts() {
+  const [catalogProducts, overkappingProducts] = await Promise.all([
+    fetchProductItems(PRODUCTS_URL, 'products.json'),
+    fetchProductItems(OVERKAPPING_URL, 'overkapping.json')
+  ]);
+
+  return [...catalogProducts, ...overkappingProducts];
 }
 
 function getParams() {
@@ -163,6 +178,21 @@ function isSpaCategory(type) {
   return normalize(type) === 'spa';
 }
 
+function isOverkappingCategory(type) {
+  const t = normalize(type);
+  return t === 'overkapping' || t === 'overkappingen';
+}
+
+function productMatchesType(product, type) {
+  if (!type) return true;
+
+  if (isOverkappingCategory(type)) {
+    return isOverkappingCategory(product?.type);
+  }
+
+  return normalize(product?.type) === normalize(type);
+}
+
 function getCategoryTitle(type) {
   const map = {
     Spa: 'SPA',
@@ -171,7 +201,9 @@ function getCategoryTitle(type) {
     Infrarood: 'INFRAROOD',
     'combi sauna': 'COMBI SAUNA',
     sauna: 'FINSE SAUNA',
-    'sauna pod': 'SAUNA POD'
+    'sauna pod': 'SAUNA POD',
+    overkapping: 'OVERKAPPINGEN',
+    overkappingen: 'OVERKAPPINGEN'
   };
 
   return map[type] || type || 'Categorie';
@@ -312,7 +344,7 @@ if (showroomBadge) {
 
     if (badge) badge.textContent = (p.type || '').toUpperCase();
     if (title) title.textContent = p.title || '';
-    if (price) price.textContent = euro(p.price || 0);
+    if (price) price.textContent = p.price_display || euro(p.price || 0);
     if (specs) specs.innerHTML = topSpecs(p);
 
     if (cardLink) {
@@ -379,8 +411,7 @@ function filterProducts() {
   const selectedShowroom = getShowroomFromUrl();
 
   filtered = products.filter(p => {
-    const matchType =
-      !currentType || normalize(p.type) === normalize(currentType);
+    const matchType = productMatchesType(p, currentType);
 
     const matchBrand =
       !selectedBrand || normalize(getMerk(p)) === normalize(selectedBrand);

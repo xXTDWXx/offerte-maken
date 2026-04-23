@@ -1,4 +1,5 @@
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
+const OVERKAPPING_URL = new URL('overkapping.json', document.baseURI).toString();
 
 /*
   Zet hier het pad naar jullie logo.
@@ -30,6 +31,7 @@ const customerCity = document.getElementById('customerCity');
 const customerPhone = document.getElementById('customerPhone');
 
 let currentProduct = null;
+let selectedVariant = null;
 let optionHandlersWired = false;
 let customerHandlersWired = false;
 
@@ -85,6 +87,37 @@ function euro(n) {
     }).format(x);
   } catch {
     return '€' + x.toFixed(2);
+  }
+}
+
+function displayPrice(product) {
+  return product?.price_display || euro(product?.price || 0);
+}
+
+function getProductVariants(product) {
+  if (!Array.isArray(product?.variants)) return [];
+  return product.variants.filter(variant => Number.isFinite(Number(variant?.price)));
+}
+
+function getVariantLabel(product) {
+  return product?.variant_label || 'Afmeting';
+}
+
+function getVariantKey(variant, index = 0) {
+  return String(variant?.id || `${variant?.label || 'variant'}-${index}`);
+}
+
+function getCurrentProductPriceValue() {
+  return Number(selectedVariant?.price ?? currentProduct?.price ?? 0);
+}
+
+function getCurrentProductPriceText() {
+  return selectedVariant ? euro(selectedVariant.price) : displayPrice(currentProduct);
+}
+
+function syncProductPriceDisplay() {
+  if (productPrice) {
+    productPrice.textContent = `Prijs: ${getCurrentProductPriceText()}`;
   }
 }
 
@@ -151,9 +184,13 @@ function isOutdoorSaunaWithRoofAndStove(type) {
   return isBarrelSauna(type) || isSaunaPod(type);
 }
 
+function isOverkapping(type) {
+  return typeNorm(type).includes('overkapping');
+}
+
 function isJacuzzi(type) {
   const t = typeNorm(type);
-  return !isSwimspa(t) && !isInfrared(t) && !isSauna(t);
+  return !isOverkapping(t) && !isSwimspa(t) && !isInfrared(t) && !isSauna(t);
 }
 
 function hasSpaColorOptions(type) {
@@ -194,6 +231,7 @@ const PRICES = {
 };
 
 function installCost(type) {
+  if (isOverkapping(type)) return 0;
   if (isSwimspa(type)) return PRICES.install_swimspa;
   if (isBarrelSauna(type)) return PRICES.install_barrel_sauna;
   if (isInfrared(type)) return PRICES.install_infrared;
@@ -217,13 +255,22 @@ function specTableHtml(p) {
   `).join('');
 }
 
-async function loadProducts() {
-  const res = await fetch(PRODUCTS_URL);
-  if (!res.ok) throw new Error(`Kan products.json niet laden (${res.status})`);
+async function fetchProductItems(url, label = 'producten') {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Kan ${label} niet laden (${res.status})`);
 
   const json = await res.json();
   const items = Array.isArray(json) ? json : (json.products || []);
   return Array.isArray(items) ? items : [];
+}
+
+async function loadProducts() {
+  const [catalogProducts, overkappingProducts] = await Promise.all([
+    fetchProductItems(PRODUCTS_URL, 'products.json'),
+    fetchProductItems(OVERKAPPING_URL, 'overkapping.json')
+  ]);
+
+  return [...catalogProducts, ...overkappingProducts];
 }
 
 function getProductIdFromUrl() {
@@ -256,12 +303,61 @@ function wireCustomerHandlers() {
   });
 }
 
+function setupVariantOptions(product) {
+  const variants = getProductVariants(product);
+  const variantOptions = $('variantOptions');
+  const variantSelect = $('productVariant');
+  const variantLabel = $('variantLabel');
+
+  selectedVariant = null;
+
+  if (!variantOptions || !variantSelect) {
+    return false;
+  }
+
+  if (!variants.length) {
+    variantOptions.style.display = 'none';
+    variantSelect.innerHTML = '';
+    return false;
+  }
+
+  if (variantLabel) {
+    variantLabel.textContent = getVariantLabel(product);
+  }
+
+  variantSelect.innerHTML = variants
+    .map((variant, index) => {
+      const key = getVariantKey(variant, index);
+      const label = variant.label || `Optie ${index + 1}`;
+      return `<option value="${escapeHtml(key)}">${escapeHtml(label)} - ${euro(variant.price)}</option>`;
+    })
+    .join('');
+
+  selectedVariant = variants[0];
+  variantSelect.value = getVariantKey(selectedVariant, 0);
+  variantOptions.style.display = '';
+
+  variantSelect.onchange = () => {
+    const selectedValue = variantSelect.value;
+    selectedVariant =
+      variants.find((variant, index) => getVariantKey(variant, index) === selectedValue) ||
+      variants[0] ||
+      null;
+
+    syncProductPriceDisplay();
+    updateOptionUI();
+  };
+
+  return true;
+}
+
 function updateOptionUI() {
   if (!currentProduct) return;
 
   const type = currentProduct.type || '';
 
   const optInstallPrice = $('optInstallPrice');
+  const optInstallRow = $('optInstallRow');
 
   const optCoverTrapRow = $('optCoverTrapRow');
 
@@ -313,6 +409,8 @@ function updateOptionUI() {
   const inst = installCost(type);
 
   if (optInstallPrice) optInstallPrice.textContent = euro(inst);
+  if (optInstallRow) optInstallRow.style.display = inst > 0 ? '' : 'none';
+  syncProductPriceDisplay();
 
   const allowExtraOptions = extraOptionsAllowed(type);
   const allowCoverlift = allowExtraOptions && !isRoundSpaWithoutCoverlift(currentProduct);
@@ -384,7 +482,7 @@ function updateOptionUI() {
   if (optBarrelRoofDesignTotal) optBarrelRoofDesignTotal.textContent = euro(barrelRoofDesignLine);
   if (optBarrelInfraredModuleTotal) optBarrelInfraredModuleTotal.textContent = euro(barrelInfraredModuleLine);
 
-  const productPriceValue = Number(currentProduct.price || 0);
+  const productPriceValue = getCurrentProductPriceValue();
   const optionsTotal =
     inst +
     coverliftLine +
@@ -463,25 +561,33 @@ function getSelectedOfferLines() {
   const cabinetColor = showSpaColors ? ($('spaCabinetColor')?.value || '') : '';
 
   let productLabel = currentProduct.title || 'Product';
-  const colorParts = [];
+  const detailParts = [];
 
-  if (innerColor) colorParts.push(`${innerColor}`);
-  if (cabinetColor) colorParts.push(`${cabinetColor}`);
+  if (selectedVariant?.label) {
+    detailParts.push(`${getVariantLabel(currentProduct)}: ${selectedVariant.label}`);
+  }
 
-  if (colorParts.length) {
-    productLabel += ` <span style="font-weight:400;color:#475569;">(${escapeHtml(colorParts.join(' • '))})</span>`;
+  if (innerColor) detailParts.push(`${innerColor}`);
+  if (cabinetColor) detailParts.push(`${cabinetColor}`);
+
+  if (detailParts.length) {
+    productLabel += ` <span style="font-weight:400;color:#475569;">(${escapeHtml(detailParts.join(' - '))})</span>`;
   }
 
   lines.push({
     label: productLabel,
-    price: Number(currentProduct.price || 0),
+    price: getCurrentProductPriceValue(),
     is_html: true
   });
 
-  lines.push({
-    label: 'Levering & installatie',
-    price: installCost(type)
-  });
+  const installation = installCost(type);
+
+  if (installation > 0) {
+    lines.push({
+      label: 'Levering & installatie',
+      price: installation
+    });
+  }
 
   if (extraOptionsAllowed(type)) {
     lines.push({
@@ -571,7 +677,7 @@ function printProductFiche(p) {
         <h1>${escapeHtml(p.title || '')}</h1>
         <div class="meta">
           Type: ${escapeHtml(p.type || '—')}<br>
-          Prijs: ${euro(p.price || 0)}
+          Prijs: ${displayPrice(p)}
         </div>
         ${img}
         <table>${specs}</table>
@@ -1630,6 +1736,7 @@ function renderProduct(p) {
   const type = p.type || '';
   const colorSelects = document.querySelector('.color-selects');
   const showSpaColors = hasSpaColorOptions(type);
+  const hasVariants = setupVariantOptions(p);
 
   if (colorSelects) {
     colorSelects.style.display = showSpaColors ? 'grid' : 'none';
@@ -1656,8 +1763,13 @@ function renderProduct(p) {
   toggleBullfrogUi(p);
 
   if (productTitle) productTitle.textContent = p.title || '—';
-  if (productPrice) productPrice.textContent = `Prijs: ${euro(p.price || 0)}`;
+  syncProductPriceDisplay();
   if (productType) productType.textContent = (p.type || '').toUpperCase();
+
+  const optionsWrap = document.querySelector('.options');
+  if (optionsWrap && !isBullfrogProduct(p)) {
+    optionsWrap.style.display = isOverkapping(type) && !hasVariants ? 'none' : '';
+  }
 
   if (productImg) {
     productImg.src = p.image || '';
