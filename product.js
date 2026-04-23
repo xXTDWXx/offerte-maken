@@ -1066,11 +1066,19 @@ function getElectricalSchemaMatch(product) {
     }
   ];
 
-  return matches.find(match => {
+  const exactMatch = matches.find(match => {
     if (match.swimspaOnly && !isSwimspa(product.type)) return false;
     if (!match.swimspaOnly && isSwimspa(product.type) && !normalizeSchemaText(match.sectionKey).includes('zwemspa')) return false;
     return productMatchesSchemaModel(product, match.models);
-  }) || null;
+  });
+
+  if (exactMatch) return exactMatch;
+
+  if (isJacuzzi(product.type)) {
+    return { sectionKey: 'overige spa', summaryKey: 'promotie' };
+  }
+
+  return null;
 }
 
 function findElectricalDetails(doc, match) {
