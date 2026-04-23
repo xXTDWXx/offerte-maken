@@ -591,6 +591,37 @@ select:focus {
   width: 56%;
 }
 
+.option-group-title {
+  margin: 4px 0 2px;
+  color: #0f172a;
+  font-weight: 900;
+}
+
+.overkapping-screens {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.overkapping-screen-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.overkapping-screen-name {
+  margin-left: 9px;
+  margin-top: 5px;
+}
+
+.overkapping-screen-price {
+  font-weight: 700;
+  color: #334155;
+}
+
 .opt,
 label.opt {
   align-items: center;

@@ -32,6 +32,7 @@ const customerPhone = document.getElementById('customerPhone');
 
 let currentProduct = null;
 let selectedVariant = null;
+let currentOverkappingScreenOptions = [];
 let optionHandlersWired = false;
 let customerHandlersWired = false;
 
@@ -94,6 +95,12 @@ function displayPrice(product) {
   return product?.price_display || euro(product?.price || 0);
 }
 
+const OVERKAPPING_SCREEN_OPTIONS = [
+  { id: 'lamellenwand-100', label: '100 cm', price: 549 },
+  { id: 'lamellenwand-120', label: '120 cm', price: 599 },
+  { id: 'lamellenwand-133', label: '133 cm', price: 649 }
+];
+
 function getProductVariants(product) {
   if (!Array.isArray(product?.variants)) return [];
   return product.variants.filter(variant => Number.isFinite(Number(variant?.price)));
@@ -108,10 +115,19 @@ function getVariantKey(variant, index = 0) {
 }
 
 function getCurrentProductPriceValue() {
+  if (isQuantityVariantProduct(currentProduct)) {
+    return getOverkappingScreenTotal();
+  }
+
   return Number(selectedVariant?.price ?? currentProduct?.price ?? 0);
 }
 
 function getCurrentProductPriceText() {
+  if (isQuantityVariantProduct(currentProduct)) {
+    const total = getOverkappingScreenTotal();
+    return total > 0 ? euro(total) : displayPrice(currentProduct);
+  }
+
   return selectedVariant ? euro(selectedVariant.price) : displayPrice(currentProduct);
 }
 
@@ -186,6 +202,27 @@ function isOutdoorSaunaWithRoofAndStove(type) {
 
 function isOverkapping(type) {
   return typeNorm(type).includes('overkapping');
+}
+
+function getProductCategoryText(product) {
+  const categories = Array.isArray(product?.categories) ? product.categories.join(' ') : '';
+  return `${product?.category || ''} ${categories}`.toLowerCase();
+}
+
+function isAccessoryProduct(product) {
+  return getProductCategoryText(product).includes('accessoires');
+}
+
+function isMainOverkappingProduct(product) {
+  return isOverkapping(product?.type) && !isAccessoryProduct(product);
+}
+
+function isLamellenwandProduct(product) {
+  return String(product?.id || '') === 'alusense-27796';
+}
+
+function isQuantityVariantProduct(product) {
+  return isLamellenwandProduct(product);
 }
 
 function isJacuzzi(type) {
@@ -315,6 +352,12 @@ function setupVariantOptions(product) {
     return false;
   }
 
+  if (isQuantityVariantProduct(product)) {
+    variantOptions.style.display = 'none';
+    variantSelect.innerHTML = '';
+    return false;
+  }
+
   if (!variants.length) {
     variantOptions.style.display = 'none';
     variantSelect.innerHTML = '';
@@ -348,6 +391,136 @@ function setupVariantOptions(product) {
     updateOptionUI();
   };
 
+  return true;
+}
+
+function shouldShowOverkappingScreenOptions(product) {
+  return isQuantityVariantProduct(product) || isMainOverkappingProduct(product);
+}
+
+function getOverkappingScreenOptions(product) {
+  const variants = isQuantityVariantProduct(product) ? getProductVariants(product) : [];
+  const sourceOptions = variants.length ? variants : OVERKAPPING_SCREEN_OPTIONS;
+
+  return sourceOptions.map(option => ({
+    id: option.id,
+    label: option.label,
+    price: Number(option.price || 0),
+    offerLabel: `Horizontale Lamellenwand ${option.label}`
+  }));
+}
+
+function getOverkappingScreenQtyInput(index) {
+  return document.querySelector(`[data-overkapping-screen-qty="${index}"]`);
+}
+
+function getOverkappingScreenSelections() {
+  return currentOverkappingScreenOptions.map((option, index) => ({
+    ...option,
+    qty: toPositiveInt(getOverkappingScreenQtyInput(index)?.value)
+  }));
+}
+
+function getOverkappingScreenTotal() {
+  return getOverkappingScreenSelections()
+    .reduce((sum, option) => sum + option.qty * Number(option.price || 0), 0);
+}
+
+function getOverkappingScreenOfferLines() {
+  return getOverkappingScreenSelections()
+    .filter(option => option.qty > 0)
+    .map(option => ({
+      label: `${option.offerLabel} x ${option.qty}`,
+      price: option.qty * Number(option.price || 0)
+    }));
+}
+
+function setOverkappingScreenQty(index, value) {
+  const input = getOverkappingScreenQtyInput(index);
+  if (!input) return;
+  setNumberInputValue(input, value);
+  updateOptionUI();
+}
+
+function setupOverkappingScreenOptions(product) {
+  const group = $('overkappingScreensGroup');
+  currentOverkappingScreenOptions = [];
+
+  if (!group) {
+    return false;
+  }
+
+  if (!shouldShowOverkappingScreenOptions(product)) {
+    group.style.display = 'none';
+    group.innerHTML = '';
+    return false;
+  }
+
+  currentOverkappingScreenOptions = getOverkappingScreenOptions(product);
+
+  if (!currentOverkappingScreenOptions.length) {
+    group.style.display = 'none';
+    group.innerHTML = '';
+    return false;
+  }
+
+  const title = isQuantityVariantProduct(product) ? 'Afmetingen' : 'Horizontale Lamellenwand';
+
+  group.innerHTML = `
+    <div class="option-group-title">${escapeHtml(title)}</div>
+    ${currentOverkappingScreenOptions.map((option, index) => {
+      const initialQty = isQuantityVariantProduct(product) && index === 0 ? 1 : 0;
+      return `
+        <label class="opt opt-inline overkapping-screen-row">
+          <div class="opt-text" style="width:100%;">
+            <div class="opt-title overkapping-screen-title">
+              <span class="overkapping-screen-name">
+                ${escapeHtml(option.label)}
+                <span class="overkapping-screen-price">${euro(option.price)}/stuk</span>
+              </span>
+              <div class="opt-counter">
+                <button type="button" class="opt-counter-btn" data-overkapping-screen-minus="${index}">-</button>
+                <input
+                  id="overkappingScreenQty${index}"
+                  type="number"
+                  min="0"
+                  step="1"
+                  value="${initialQty}"
+                  inputmode="numeric"
+                  class="opt-counter-input"
+                  data-overkapping-screen-qty="${index}"
+                />
+                <button type="button" class="opt-counter-btn" data-overkapping-screen-plus="${index}">+</button>
+              </div>
+            </div>
+          </div>
+        </label>
+      `;
+    }).join('')}
+  `;
+
+  group.querySelectorAll('[data-overkapping-screen-minus]').forEach(button => {
+    button.addEventListener('click', () => {
+      const index = Number(button.getAttribute('data-overkapping-screen-minus'));
+      const input = getOverkappingScreenQtyInput(index);
+      setOverkappingScreenQty(index, toPositiveInt(input?.value) - 1);
+    });
+  });
+
+  group.querySelectorAll('[data-overkapping-screen-plus]').forEach(button => {
+    button.addEventListener('click', () => {
+      const index = Number(button.getAttribute('data-overkapping-screen-plus'));
+      const input = getOverkappingScreenQtyInput(index);
+      setOverkappingScreenQty(index, toPositiveInt(input?.value) + 1);
+    });
+  });
+
+  group.querySelectorAll('[data-overkapping-screen-qty]').forEach(input => {
+    input.addEventListener('input', updateOptionUI);
+    input.addEventListener('change', updateOptionUI);
+  });
+
+  group.style.display = '';
   return true;
 }
 
@@ -457,11 +630,18 @@ function updateOptionUI() {
     optWarmtepompQty.value = String(warmtepompQty);
   }
 
+  currentOverkappingScreenOptions.forEach((_, index) => {
+    const input = getOverkappingScreenQtyInput(index);
+    if (!input) return;
+    setNumberInputValue(input, input.value);
+  });
+
   const coverliftLine = (allowCoverlift && optCoverlift?.checked) ? PRICES.coverlift_unit : 0;
   const coverlift2Line = (swim && optCoverlift2?.checked) ? PRICES.coverlift_unit : 0;
   const maintLine = (allowExtraOptions && optMaint?.checked) ? PRICES.maintenance_unit : 0;
   const swimFiltersetLine = (swim && optSwimFilterset?.checked) ? PRICES.swim_filterset_unit : 0;
   const warmtepompLine = warmtepompQty * PRICES.warmtepomp_unit;
+  const overkappingScreenLine = isQuantityVariantProduct(currentProduct) ? 0 : getOverkappingScreenTotal();
 
   const barrelWoodStoveLine = (showWoodStove && optBarrelWoodStove?.checked) ? PRICES.barrel_wood_stove_unit : 0;
   const barrelElectricHeaterLine = (showElectricHeater && optBarrelElectricHeater?.checked) ? PRICES.barrel_electric_heater_unit : 0;
@@ -490,6 +670,7 @@ function updateOptionUI() {
     maintLine +
     swimFiltersetLine +
     warmtepompLine +
+    overkappingScreenLine +
     barrelWoodStoveLine +
     barrelElectricHeaterLine +
     barrelRoofShinglesLine +
@@ -557,6 +738,7 @@ function getSelectedOfferLines() {
   const lines = [];
   const allowCoverlift = extraOptionsAllowed(type) && !isRoundSpaWithoutCoverlift(currentProduct);
   const showSpaColors = hasSpaColorOptions(type);
+  const quantityVariantProduct = isQuantityVariantProduct(currentProduct);
   const innerColor = showSpaColors ? ($('spaInnerColor')?.value || '') : '';
   const cabinetColor = showSpaColors ? ($('spaCabinetColor')?.value || '') : '';
 
@@ -574,11 +756,15 @@ function getSelectedOfferLines() {
     productLabel += ` <span style="font-weight:400;color:#475569;">(${escapeHtml(detailParts.join(' - '))})</span>`;
   }
 
-  lines.push({
-    label: productLabel,
-    price: getCurrentProductPriceValue(),
-    is_html: true
-  });
+  if (!quantityVariantProduct) {
+    lines.push({
+      label: productLabel,
+      price: getCurrentProductPriceValue(),
+      is_html: true
+    });
+  }
+
+  lines.push(...getOverkappingScreenOfferLines());
 
   const installation = installCost(type);
 
@@ -1737,6 +1923,7 @@ function renderProduct(p) {
   const colorSelects = document.querySelector('.color-selects');
   const showSpaColors = hasSpaColorOptions(type);
   const hasVariants = setupVariantOptions(p);
+  const hasOverkappingScreenOptions = setupOverkappingScreenOptions(p);
 
   if (colorSelects) {
     colorSelects.style.display = showSpaColors ? 'grid' : 'none';
@@ -1768,7 +1955,7 @@ function renderProduct(p) {
 
   const optionsWrap = document.querySelector('.options');
   if (optionsWrap && !isBullfrogProduct(p)) {
-    optionsWrap.style.display = isOverkapping(type) && !hasVariants ? 'none' : '';
+    optionsWrap.style.display = isOverkapping(type) && !hasVariants && !hasOverkappingScreenOptions ? 'none' : '';
   }
 
   if (productImg) {
