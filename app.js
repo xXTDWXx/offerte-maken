@@ -40,6 +40,10 @@ function normalize(s) {
   return (s ?? '').toString().toLowerCase().trim();
 }
 
+function isProductVisible(product) {
+  return product?.hidden !== true && product?.visible !== false;
+}
+
 function escapeHtml(s) {
   return (s ?? '').toString()
     .replaceAll('&', '&amp;')
@@ -87,7 +91,7 @@ async function loadProducts({ force = false } = {}) {
     fetchProductItems(OVERKAPPING_URL, { force, label: 'overkapping.json' })
   ]);
 
-  return [...catalogProducts, ...overkappingProducts];
+  return [...catalogProducts, ...overkappingProducts].filter(isProductVisible);
 }
 
 function getSpecValue(p, label) {

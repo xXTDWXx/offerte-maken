@@ -95,6 +95,10 @@ function displayPrice(product) {
   return product?.price_display || euro(product?.price || 0);
 }
 
+function isProductVisible(product) {
+  return product?.hidden !== true && product?.visible !== false;
+}
+
 const OVERKAPPING_SCREEN_OPTIONS = [
   { id: 'lamellenwand-100', label: '100 cm', price: 549 },
   { id: 'lamellenwand-120', label: '120 cm', price: 599 },
@@ -308,7 +312,7 @@ async function loadProducts() {
     fetchProductItems(OVERKAPPING_URL, 'overkapping.json')
   ]);
 
-  return [...catalogProducts, ...overkappingProducts];
+  return [...catalogProducts, ...overkappingProducts].filter(isProductVisible);
 }
 
 function getProductIdFromUrl() {
