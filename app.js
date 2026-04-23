@@ -40,6 +40,11 @@ function normalize(s) {
   return (s ?? '').toString().toLowerCase().trim();
 }
 
+function isOverkappingProduct(product) {
+  const type = normalize(product?.type);
+  return type === 'overkapping' || type === 'overkappingen';
+}
+
 function isProductVisible(product) {
   return product?.hidden !== true && product?.visible !== false;
 }
@@ -359,6 +364,7 @@ function renderGrid() {
   for (const p of filtered) {
     const node = tpl.content.cloneNode(true);
 
+    const card = node.querySelector('.card');
     const cardLink = node.querySelector('[data-open]');
     const img = node.querySelector('.card-img');
     const badge = node.querySelector('[data-badge]');
@@ -368,6 +374,10 @@ function renderGrid() {
     const specs = node.querySelector('[data-specs]');
 
     const showrooms = getShowrooms(p);
+
+    if (card) {
+      card.classList.toggle('card--overkapping', isOverkappingProduct(p));
+    }
 
 if (showroomBadge) {
   if (showrooms.length) {

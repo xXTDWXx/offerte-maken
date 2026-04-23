@@ -319,6 +319,7 @@ function renderGrid() {
   for (const p of filtered) {
     const node = tpl.content.cloneNode(true);
 
+    const card = node.querySelector('.card');
     const cardLink = node.querySelector('[data-open]');
     const img = node.querySelector('.card-img');
     const badge = node.querySelector('[data-badge]');
@@ -328,6 +329,10 @@ function renderGrid() {
     const specs = node.querySelector('[data-specs]');
 
     const showrooms = getShowrooms(p);
+
+    if (card) {
+      card.classList.toggle('card--overkapping', isOverkappingCategory(p?.type));
+    }
 
 if (showroomBadge) {
   if (showrooms.length) {
