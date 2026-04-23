@@ -1,5 +1,6 @@
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
 const OVERKAPPING_URL = new URL('overkapping.json', document.baseURI).toString();
+const ELECTRICAL_SCHEMA_URL = new URL('stroom.html', document.baseURI).toString();
 
 /*
   Zet hier het pad naar jullie logo.
@@ -991,8 +992,184 @@ function getTermsHtml(type, validUntil) {
   return terms.join('');
 }
 
-function printOfferte() {
+function normalizeSchemaText(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+function productMatchesSchemaModel(product, models) {
+  const haystack = normalizeSchemaText(`${product?.title || ''} ${product?.id || ''}`);
+  return models.some(model => haystack.includes(normalizeSchemaText(model)));
+}
+
+function getElectricalSchemaMatch(product) {
+  if (!product || (!isJacuzzi(product.type) && !isSwimspa(product.type))) return null;
+
+  const brand = normalizeSchemaText(getMerk(product));
+  const title = normalizeSchemaText(product.title);
+
+  if (brand.includes('vogue') || title.includes('vogue')) {
+    return { sectionKey: 'vogue spa', summaryKey: 'alle modellen' };
+  }
+
+  const matches = [
+    {
+      sectionKey: 'sunspa spa',
+      summaryKey: 'marbella marrakech milano monaco new york nice san marino',
+      models: ['Marbella', 'Marrakech', 'Milano', 'Monaco', 'New York', 'Nice', 'San Marino']
+    },
+    {
+      sectionKey: 'sunspa spa',
+      summaryKey: 'lima london napoli orlando palermo tenerife san diego vancouver',
+      models: ['Lima', 'London', 'Napoli', 'Orlando', 'Palermo', 'Tenerife', 'San Diego', 'Vancouver']
+    },
+    {
+      sectionKey: 'sunspa spa',
+      summaryKey: 'lyon palm springs roma',
+      models: ['Lyon', 'Palm Springs', 'Roma']
+    },
+    {
+      sectionKey: 'sunspa zwemspa',
+      summaryKey: 'silverline pluto mississippi goldline mars pacific calgary merkur everglade',
+      models: ['Silverline', 'Pluto', 'Mississippi', 'Goldline', 'Mars', 'Pacific', 'Calgary', 'Merkur', 'Everglade'],
+      swimspaOnly: true
+    },
+    {
+      sectionKey: 'sunspa zwemspa',
+      summaryKey: 'alicante catana standaard catana platinum jupiter saturn galaxy milkyway',
+      models: ['Alicante', 'Catana Standaard', 'Catana Platinum', 'Jupiter', 'Saturn', 'Galaxy', 'Milkyway'],
+      swimspaOnly: true
+    },
+    {
+      sectionKey: 'myspa spa',
+      summaryKey: 'nashville boston',
+      models: ['Nashville', 'Boston']
+    },
+    {
+      sectionKey: 'myspa spa',
+      summaryKey: 'colorado double dutch houston lake city quebec',
+      models: ['Colorado', 'Double Dutch', 'Houston', 'Lake City', 'Quebec']
+    },
+    {
+      sectionKey: 'myspa spa',
+      summaryKey: 'grand canyon seattle',
+      models: ['Grand Canyon', 'Seattle']
+    },
+    {
+      sectionKey: 'overige spa',
+      summaryKey: 'promotie',
+      models: ['Plug and Play', 'Plug and play', 'Promotie', 'DELight', 'Delight']
+    }
+  ];
+
+  return matches.find(match => {
+    if (match.swimspaOnly && !isSwimspa(product.type)) return false;
+    if (!match.swimspaOnly && isSwimspa(product.type) && !normalizeSchemaText(match.sectionKey).includes('zwemspa')) return false;
+    return productMatchesSchemaModel(product, match.models);
+  }) || null;
+}
+
+function findElectricalDetails(doc, match) {
+  const sectionTitle = Array.from(doc.querySelectorAll('.accordion_title'))
+    .find(title => normalizeSchemaText(title.textContent).includes(normalizeSchemaText(match.sectionKey)));
+
+  const accordion = sectionTitle?.nextElementSibling;
+  if (!accordion) return null;
+
+  const details = Array.from(accordion.querySelectorAll('details'));
+  return details.find(item => {
+    const summary = item.querySelector('summary');
+    return normalizeSchemaText(summary?.textContent).includes(normalizeSchemaText(match.summaryKey));
+  }) || null;
+}
+
+function cleanElectricalContentHtml(html) {
+  const template = document.createElement('template');
+  template.innerHTML = html;
+
+  template.content.querySelectorAll('script, style, iframe, object, embed, link').forEach(el => el.remove());
+  template.content.querySelectorAll('*').forEach(el => {
+    Array.from(el.attributes).forEach(attr => {
+      if (attr.name.toLowerCase().startsWith('on')) el.removeAttribute(attr.name);
+    });
+  });
+
+  return template.innerHTML;
+}
+
+async function getElectricalSchemaForProduct(product) {
+  const match = getElectricalSchemaMatch(product);
+  if (!match) return null;
+
+  try {
+    const res = await fetch(ELECTRICAL_SCHEMA_URL, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`Kan stroom.html niet laden (${res.status})`);
+
+    const html = await res.text();
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const details = findElectricalDetails(doc, match);
+    if (!details) return null;
+
+    const sectionTitle = details.closest('.accordion')?.previousElementSibling?.textContent?.trim() || 'Elektrische aansluiting';
+    const summary = details.querySelector('summary')?.textContent?.trim() || '';
+    const content = details.querySelector('.accordion-content');
+    if (!content) return null;
+
+    return {
+      sectionTitle,
+      summary,
+      contentHtml: cleanElectricalContentHtml(content.innerHTML)
+    };
+  } catch (err) {
+    console.warn('Stroomschema kon niet geladen worden voor de offerte.', err);
+    return null;
+  }
+}
+
+function getElectricalSchemaPageHtml(schema, product) {
+  if (!schema) return '';
+
+  const logo = COMPANY_LOGO_URL
+    ? `<img src="${escapeHtml(COMPANY_LOGO_URL)}" alt="${escapeHtml(COMPANY_NAME)}" class="offer-logo electrical-logo">`
+    : '';
+
+  return `
+    <section class="sheet electrical-sheet">
+      <div class="electrical-header">
+        <div class="brand">${logo}</div>
+        <div>
+          <div class="electrical-eyebrow">Technische info</div>
+          <h1>Elektrische aansluiting</h1>
+          <p>${escapeHtml(schema.sectionTitle)} &middot; ${escapeHtml(schema.summary)}</p>
+        </div>
+      </div>
+      <div class="electrical-content">
+        <div class="electrical-intro">
+          <strong>Stroomschema voor:</strong>
+          <span>${escapeHtml(product?.title || '')}</span>
+        </div>
+        <div class="electrical-card">
+          ${schema.contentHtml}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+async function printOfferte() {
   if (!currentProduct) return;
+
+  const productForOffer = currentProduct;
+  const win = window.open('', '_blank');
+  if (!win) return;
+
+  win.document.open();
+  win.document.write('<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>Offerte laden...</title></head><body>Offerte wordt voorbereid...</body></html>');
+  win.document.close();
 
   const customer = getCustomerData();
   const lines = getSelectedOfferLines();
@@ -1023,12 +1200,12 @@ function printOfferte() {
     COMPANY_WEBSITE
   ].filter(Boolean).map(v => `<div>${escapeHtml(v)}</div>`).join('');
 
-  const productTitleHtml = escapeHtml(currentProduct.title || '—');
-  const productType = currentProduct.type || '';
+  const productTitleHtml = escapeHtml(productForOffer.title || '—');
+  const productType = productForOffer.type || '';
   const termsHtml = getTermsHtml(productType, validUntil);
-
-  const win = window.open('', '_blank');
-  if (!win) return;
+  const electricalSchema = await getElectricalSchemaForProduct(productForOffer);
+  const electricalSchemaHtml = getElectricalSchemaPageHtml(electricalSchema, productForOffer);
+  const offerSheetClass = electricalSchema ? 'sheet offer-sheet has-next-page' : 'sheet offer-sheet';
 
   win.document.open();
   win.document.write(`
@@ -1454,6 +1631,85 @@ function printOfferte() {
     color: #0f172a;
   }
 
+  .electrical-sheet {
+    margin-top: 18px;
+  }
+
+  .electrical-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 28px 32px 22px;
+    background: #eef3f8;
+    border-bottom: 1px solid #d7e0e9;
+  }
+
+  .electrical-logo {
+    width: 180px;
+  }
+
+  .electrical-eyebrow {
+    margin-bottom: 6px;
+    color: #4f6f96;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .electrical-header h1 {
+    margin: 0 0 8px 0;
+    color: #0f172a;
+    font-size: 30px;
+    line-height: 1.08;
+  }
+
+  .electrical-header p {
+    margin: 0;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .electrical-content {
+    padding: 24px 32px 28px;
+  }
+
+  .electrical-intro {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    border: 1px solid #d7e0e9;
+    border-radius: 14px;
+    background: #f8fafc;
+    color: #0f172a;
+  }
+
+  .electrical-card {
+    padding: 18px 20px;
+    border: 1px solid #d7e0e9;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #0f172a;
+  }
+
+  .electrical-card p {
+    margin: 0 0 13px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .electrical-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .electrical-card span[style*="color"] {
+    color: #b91c1c !important;
+    font-weight: 800;
+  }
+
   @media screen and (max-width: 820px) {
     .header-top,
     .info-grid,
@@ -1478,7 +1734,8 @@ function printOfferte() {
   html,
   body {
     width: 210mm;
-    height: 297mm;
+    min-height: 297mm;
+    height: auto !important;
     margin: 0 !important;
     padding: 0 !important;
     background: #ffffff !important;
@@ -1834,11 +2091,109 @@ function printOfferte() {
   .footer strong {
     color: #0f172a !important;
   }
+
+  .electrical-sheet {
+    width: 194mm !important;
+    max-width: 194mm !important;
+    min-height: 281mm !important;
+    margin: 0 auto !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    page-break-before: always !important;
+    break-before: page !important;
+    display: block !important;
+  }
+
+  .electrical-header {
+    display: grid !important;
+    grid-template-columns: auto 1fr !important;
+    gap: 6mm !important;
+    align-items: center !important;
+    padding: 8mm 8mm 6mm !important;
+    background: #eef3f8 !important;
+    border-bottom: 1px solid #dbe3ec !important;
+  }
+
+  .electrical-logo {
+    width: 54mm !important;
+    max-width: 54mm !important;
+    padding: 2mm !important;
+  }
+
+  .electrical-eyebrow {
+    margin-bottom: 1.5mm !important;
+    color: #407298 !important;
+    font-size: 9px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+  }
+
+  .electrical-header h1 {
+    margin: 0 0 2mm !important;
+    color: #0f172a !important;
+    font-size: 23px !important;
+    line-height: 1.05 !important;
+  }
+
+  .electrical-header p {
+    margin: 0 !important;
+    color: #475569 !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+  }
+
+  .electrical-content {
+    padding: 7mm 8mm 8mm !important;
+  }
+
+  .electrical-intro {
+    display: flex !important;
+    gap: 3mm !important;
+    margin-bottom: 4mm !important;
+    padding: 3mm 4mm !important;
+    border: 1px solid #dbe3ec !important;
+    border-radius: 10px !important;
+    background: #f8fafc !important;
+    color: #0f172a !important;
+    font-size: 11px !important;
+  }
+
+  .electrical-card {
+    padding: 5mm !important;
+    border: 1px solid #dbe3ec !important;
+    border-radius: 10px !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  .electrical-card p {
+    margin: 0 0 3mm !important;
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+    color: #0f172a !important;
+    break-inside: avoid !important;
+  }
+
+  .electrical-card p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  .electrical-card strong {
+    color: #0f172a !important;
+  }
+
+  .electrical-card span[style*="color"] {
+    color: #b91c1c !important;
+    font-weight: 800 !important;
+  }
 }
 </style>
       </head>
       <body>
-        <div class="sheet">
+        <div class="${offerSheetClass}">
           <div class="header">
             <div class="header-top">
               <div class="brand">
@@ -1982,6 +2337,7 @@ function printOfferte() {
             </div>
           </div>
         </div>
+        ${electricalSchemaHtml}
 
         <script>
           window.onload = function () {
