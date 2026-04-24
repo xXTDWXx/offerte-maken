@@ -1714,7 +1714,7 @@ function printSixPercentForm() {
                 <li>De woning is minstens 10 jaar oud (eerste ingebruikname minstens 10 jaar geleden).</li>
                 <li>De woning wordt hoofdzakelijk als priv&eacute;woning gebruikt (minstens 50% priv&eacute;).</li>
                 <li>De werken zijn een verbetering, verfraaiing of renovatie van de bestaande woning.</li>
-                <li>De overkapping wordt geleverd &eacute;n geplaatst door AluSense.</li>
+                <li>De overkapping moet gemonteerd worden door de firma.</li>
                 <li>De constructie is duurzaam verbonden met de woning of het perceel, bijvoorbeeld tegen de gevel gemonteerd, op een vaste fundering geplaatst of bedoeld als vaste, niet-verplaatsbare structuur.</li>
                 <li>De gegevens die de klant doorgeeft zijn correct.</li>
               </ol>
