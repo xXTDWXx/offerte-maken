@@ -26,6 +26,7 @@ const productUrl = document.getElementById('productUrl');
 const productPrint = document.getElementById('productPrint');
 const offerPrint = document.getElementById('offerPrint');
 const sixPercentPrint = document.getElementById('sixPercentPrint');
+const backToOverview = document.querySelector('.header-row > a.btn');
 
 const customerName = document.getElementById('customerName');
 const customerStreet = document.getElementById('customerStreet');
@@ -229,6 +230,37 @@ function isOutdoorSaunaWithRoofAndStove(type) {
 
 function isOverkapping(type) {
   return typeNorm(type).includes('overkapping');
+}
+
+function getCategoryTypeForProduct(product) {
+  const type = typeNorm(product?.type);
+
+  if (isOverkapping(type)) return 'overkappingen';
+  if (isSwimspa(type)) return 'Zwemspa';
+  if (isBarrelSauna(type)) return 'Barrelsauna';
+  if (isInfrared(type)) return 'Infrarood';
+  if (isSaunaPod(type)) return 'sauna pod';
+  if (type === 'combi sauna') return 'combi sauna';
+  if (isSauna(type)) return 'sauna';
+  return 'Spa';
+}
+
+function getBackToOverviewHref(product) {
+  try {
+    const referrerUrl = document.referrer ? new URL(document.referrer) : null;
+    if (
+      referrerUrl &&
+      referrerUrl.origin === window.location.origin &&
+      referrerUrl.pathname.toLowerCase().endsWith('/category.html')
+    ) {
+      return referrerUrl.href;
+    }
+  } catch {
+    // Fall back to the derived category link below.
+  }
+
+  const categoryType = getCategoryTypeForProduct(product);
+  return `category.html?type=${encodeURIComponent(categoryType)}`;
 }
 
 function getProductCategoryText(product) {
@@ -2999,6 +3031,10 @@ function renderProduct(p) {
   if (productUrl) {
     productUrl.href = p.url || '#';
     productUrl.style.display = p.url ? '' : 'none';
+  }
+
+  if (backToOverview) {
+    backToOverview.href = getBackToOverviewHref(p);
   }
 
   if (sixPercentPrint) {
