@@ -39,6 +39,7 @@ let optionHandlersWired = false;
 let customerHandlersWired = false;
 
 const OVERKAPPING_HIDDEN_SPEC_LABELS = new Set(['levering', 'levertermijn']);
+const OVERKAPPING_HIGH_INSTALL_DIMENSIONS = new Set(['3x6', '3.6x5.3', '3.6x7.2', '4x6']);
 
 function $(id) {
   return document.getElementById(id);
@@ -247,8 +248,12 @@ function isLamellenwandProduct(product) {
   return String(product?.id || '') === 'alusense-27796';
 }
 
+function isWpcWandProduct(product) {
+  return String(product?.id || '') === 'alusense-27843';
+}
+
 function isQuantityVariantProduct(product) {
-  return isLamellenwandProduct(product);
+  return isLamellenwandProduct(product) || isWpcWandProduct(product);
 }
 
 function isJacuzzi(type) {
@@ -295,7 +300,12 @@ const PRICES = {
 };
 
 function installCost(type, product = currentProduct) {
-  if (isOverkapping(type)) return isMainOverkappingProduct(product) ? PRICES.install_overkapping : 0;
+  if (isOverkapping(type)) {
+    if (!isMainOverkappingProduct(product)) return 0;
+
+    const dimensionPairKey = getOverkappingDimensionPairKey(product);
+    return OVERKAPPING_HIGH_INSTALL_DIMENSIONS.has(dimensionPairKey) ? 1360 : PRICES.install_overkapping;
+  }
   if (isSwimspa(type)) return PRICES.install_swimspa;
   if (isBarrelSauna(type)) return PRICES.install_barrel_sauna;
   if (isInfrared(type)) return PRICES.install_infrared;
@@ -438,12 +448,21 @@ function shouldShowOverkappingScreenOptions(product) {
 function getOverkappingScreenOptions(product) {
   const variants = isQuantityVariantProduct(product) ? getProductVariants(product) : [];
   const sourceOptions = variants.length ? variants : OVERKAPPING_SCREEN_OPTIONS;
+  const useWpcLabels = isWpcWandProduct(product);
 
   return sourceOptions.map(option => ({
     id: option.id,
-    label: option.label,
+    label: useWpcLabels
+      ? String(option.label || '')
+          .replace(',', '.')
+          .replace(/(\d+(?:\.\d+)?)m$/i, '$1 m')
+      : option.label,
     price: Number(option.price || 0),
-    offerLabel: `Horizontale Lamellenwand ${option.label}`
+    offerLabel: useWpcLabels
+      ? `WPC Wand ${String(option.label || '')
+          .replace(',', '.')
+          .replace(/(\d+(?:\.\d+)?)m$/i, '$1 m')}`
+      : `Horizontale Lamellenwand ${option.label}`
   }));
 }
 
@@ -464,6 +483,18 @@ function getOverkappingDimensionKeys(product) {
       .map(normalizeOverkappingDimensionValue)
       .filter(Boolean)
   ));
+}
+
+function getOverkappingDimensionPairKey(product) {
+  const title = String(product?.title || '');
+  const match = title.match(/(\d+(?:[.,]\d+)?)\s*[x×]\s*(\d+(?:[.,]\d+)?)m/i);
+  if (!match) return '';
+
+  const first = normalizeOverkappingDimensionValue(match[1]);
+  const second = normalizeOverkappingDimensionValue(match[2]);
+  if (!first || !second) return '';
+
+  return `${first}x${second}`;
 }
 
 function getOverkappingWpcOptions(product) {
