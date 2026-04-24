@@ -1769,7 +1769,12 @@ async function printOfferte() {
   }
 
   .offer-sheet {
-    position: relative !important;
+    height: 281mm !important;
+  }
+
+  .offer-sheet.has-next-page {
+    page-break-after: always !important;
+    break-after: page !important;
   }
 
   .header {
@@ -1835,10 +1840,6 @@ async function printOfferte() {
     flex: 1 1 auto !important;
     display: flex !important;
     flex-direction: column !important;
-  }
-
-  .offer-sheet .content {
-    padding-bottom: 82mm !important;
   }
 
   .info-grid {
@@ -2037,12 +2038,8 @@ async function printOfferte() {
   }
 
   .offer-sheet .bottom-fixed {
-    position: absolute !important;
-    left: 6mm !important;
-    right: 6mm !important;
-    bottom: 4mm !important;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
+    position: static !important;
+    flex: 0 0 auto !important;
   }
 
   .signature-section {
@@ -2323,6 +2320,8 @@ async function printOfferte() {
   </div>
 </div>
 
+
+          </div>
 
 <div class="bottom-fixed">
             <div class="signature-section">
