@@ -97,7 +97,6 @@ function topSpecs(p) {
   const want = [
     'Merk',
     'Afmeting',
-    'Afmetingen overkapping',
     'Producttype',
     'Kleur',
     'Breedte',
