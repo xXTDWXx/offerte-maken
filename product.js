@@ -293,6 +293,14 @@ function isJacuzzi(type) {
   return !isOverkapping(t) && !isSwimspa(t) && !isInfrared(t) && !isSauna(t);
 }
 
+function syncProductTypeClasses(product) {
+  if (!document.body) return;
+
+  document.body.classList.toggle('product-type-overkapping', isOverkapping(product?.type));
+  document.body.classList.toggle('product-type-swimspa', isSwimspa(product?.type));
+  document.body.classList.toggle('product-type-jacuzzi', isJacuzzi(product?.type));
+}
+
 function hasSpaColorOptions(type) {
   return isJacuzzi(type) || isSwimspa(type);
 }
@@ -3004,6 +3012,7 @@ function renderProduct(p) {
   }
 
   toggleBullfrogUi(p);
+  syncProductTypeClasses(p);
 
   if (productTitle) productTitle.textContent = p.title || '—';
   syncProductPriceDisplay();

@@ -89,6 +89,100 @@
       flex-wrap:wrap;
     }
 
+    .img-options{
+      display:flex;
+      gap:20px;
+      align-items:flex-start;
+    }
+
+    .options{
+      flex:1 1 auto;
+      min-width:0;
+    }
+
+    .modal-media img{
+      margin:0;
+    }
+
+    .opt-inline .opt-title{
+      gap:12px;
+    }
+
+    .opt-title > img{
+      width:72px;
+      height:72px;
+      flex:0 0 72px;
+      object-fit:cover;
+      object-position:center;
+      border-radius:12px;
+      margin:0;
+    }
+
+    @media (min-width: 981px){
+      .modal-grid{
+        grid-template-columns:1fr;
+        gap:28px;
+      }
+
+      .img-options{
+        display:grid;
+        grid-template-columns:minmax(420px, 44%) minmax(480px, 1fr);
+        gap:48px;
+        align-items:start;
+      }
+
+      .modal-media{
+        width:100%;
+        align-self:start;
+      }
+
+      #productImg{
+        width:100%;
+        max-width:none;
+        aspect-ratio:1 / 1;
+        object-fit:contain;
+        margin:0;
+      }
+
+      body.product-type-jacuzzi .modal-media,
+      body.product-type-swimspa .modal-media{
+        padding:28px;
+        border:1px solid #e5e7eb;
+        border-radius:24px;
+        background:linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+      }
+
+      body.product-type-jacuzzi .modal-media img,
+      body.product-type-swimspa .modal-media img{
+        border:0;
+        background:transparent;
+        filter:drop-shadow(0 20px 30px rgba(15, 23, 42, 0.16));
+      }
+
+      body.product-type-jacuzzi #productImg,
+      body.product-type-swimspa #productImg{
+        width:112%;
+        max-width:none;
+        margin-left:-6%;
+        aspect-ratio:auto;
+      }
+
+      .overkappingAccessoryImages,
+      .overkapping-accessory-images{
+        width:100%;
+        max-width:none;
+      }
+
+      .options{
+        width:100% !important;
+        margin:0 !important;
+      }
+
+      .totals{
+        max-width:760px;
+      }
+    }
+
     @media (max-width: 980px){
       .modal-grid{
         grid-template-columns:1fr;
@@ -106,6 +200,31 @@
 
       .field select{
         max-width:100%;
+      }
+    }
+
+    @media (max-width: 767px){
+      .img-options{
+        display:flex !important;
+        flex-direction:column;
+        gap:16px;
+      }
+
+      .img-options > .modal-media{
+        width:100% !important;
+      }
+
+      .img-options > .options{
+        margin-left:0 !important;
+        width:100% !important;
+      }
+
+      .variant-options{
+        grid-template-columns:1fr;
+      }
+
+      .modal-actions .btn{
+        width:100%;
       }
     }
   </style>
@@ -134,13 +253,13 @@
 
       <div class="modal-grid">
         <div>
-          <div class="img-options" style="display:flex;">
+          <div class="img-options">
             <div class="modal-media">
               <img id="productImg" alt="Barrelsauna TR170 – Halfglas" loading="lazy" src="https://www.sunspabenelux.be/wp-content/uploads/2022/11/barrelsauna-tr170-half-glas-650x650.jpg">
               <div id="overkappingAccessoryImages" class="overkapping-accessory-images" style="display:none;"></div>
             </div>
 
-            <div class="options" style="margin-left:20px; flex:1;">
+            <div class="options">
               <div class="color-selects">
                 <div class="field">
                   <label for="spaInnerColor">Binnenkleur</label>

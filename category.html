@@ -14,6 +14,11 @@
         <img src="logo.svg" alt="Sunspa Benelux logo" class="logo" />
         <a href="kassa.html" class="category-link kassa" data-category-link="Spa">KASSA</a>
       </div>
+      <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-mobile-menu-toggle>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
@@ -39,6 +44,15 @@
       <a href="actie.html" class="category-link is-active">ONZE ACTIES</a>
     </div>
   </nav>
+
+  <div class="mobile-menu-overlay" data-mobile-menu-overlay></div>
+  <aside class="mobile-menu-drawer" data-mobile-menu-drawer aria-hidden="true">
+    <div class="mobile-menu-head">
+      <div class="mobile-menu-title">Menu</div>
+      <button class="mobile-menu-close" type="button" aria-label="Sluit menu" data-mobile-menu-close>&times;</button>
+    </div>
+    <div class="mobile-menu-content" data-mobile-menu-content></div>
+  </aside>
 
   <main class="container">
     <section class="panel">
@@ -122,6 +136,7 @@
     </article>
   </template>
 
+  <script src="mobile-menu.js"></script>
   <script src="category.js"></script>
 </body>
 </html>
