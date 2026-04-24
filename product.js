@@ -25,6 +25,7 @@ const productSpecs = document.getElementById('productSpecs');
 const productUrl = document.getElementById('productUrl');
 const productPrint = document.getElementById('productPrint');
 const offerPrint = document.getElementById('offerPrint');
+const sixPercentPrint = document.getElementById('sixPercentPrint');
 
 const customerName = document.getElementById('customerName');
 const customerStreet = document.getElementById('customerStreet');
@@ -109,10 +110,10 @@ const OVERKAPPING_SCREEN_OPTIONS = [
 ];
 
 const OVERKAPPING_WPC_OPTIONS = [
-  { id: 'wpc-3m', label: '3m WPC', offerLabel: 'WPC Wand 3m', price: 899 },
-  { id: 'wpc-36m', label: '3.6m WPC', offerLabel: 'WPC Wand 3.6m', price: 999 },
-  { id: 'wpc-4m', label: '4m WPC', offerLabel: 'WPC Wand 4m', price: 1049 },
-  { id: 'wpc-53m', label: '5.3m WPC', offerLabel: 'WPC Wand 5.3m', price: 1179 }
+  { id: 'wpc-3m', sizeKey: '3', label: '3 m', offerLabel: 'WPC Wand 3 m', price: 899 },
+  { id: 'wpc-36m', sizeKey: '3.6', label: '3.6 m', offerLabel: 'WPC Wand 3.6 m', price: 999 },
+  { id: 'wpc-4m', sizeKey: '4', label: '4 m', offerLabel: 'WPC Wand 4 m', price: 1049 },
+  { id: 'wpc-53m', sizeKey: '5.3', label: '5.3 m', offerLabel: 'WPC Wand 5.3 m', price: 1179 }
 ];
 
 const OVERKAPPING_ACCESSORY_IMAGES = [
@@ -446,6 +447,38 @@ function getOverkappingScreenOptions(product) {
   }));
 }
 
+function normalizeOverkappingDimensionValue(value) {
+  const normalizedValue = String(value || '').replace(',', '.').trim();
+  const numberValue = Number(normalizedValue);
+  return Number.isFinite(numberValue) ? String(numberValue) : '';
+}
+
+function getOverkappingDimensionKeys(product) {
+  const title = String(product?.title || '');
+  const match = title.match(/(\d+(?:[.,]\d+)?)\s*[x×]\s*(\d+(?:[.,]\d+)?)m/i);
+  if (!match) return [];
+
+  return Array.from(new Set(
+    match
+      .slice(1, 3)
+      .map(normalizeOverkappingDimensionValue)
+      .filter(Boolean)
+  ));
+}
+
+function getOverkappingWpcOptions(product) {
+  const dimensionKeys = new Set(getOverkappingDimensionKeys(product));
+  const filteredOptions = OVERKAPPING_WPC_OPTIONS.filter(option => dimensionKeys.has(option.sizeKey));
+  const sourceOptions = filteredOptions.length ? filteredOptions : OVERKAPPING_WPC_OPTIONS;
+
+  return sourceOptions.map(option => ({
+    id: option.id,
+    label: option.label,
+    price: Number(option.price || 0),
+    offerLabel: option.offerLabel || `WPC Wand ${option.label}`
+  }));
+}
+
 function getOverkappingAccessoryGroups(product) {
   if (!shouldShowOverkappingScreenOptions(product)) return [];
 
@@ -459,12 +492,7 @@ function getOverkappingAccessoryGroups(product) {
   if (isMainOverkappingProduct(product)) {
     groups.push({
       title: 'WPC Wand',
-      options: OVERKAPPING_WPC_OPTIONS.map(option => ({
-        id: option.id,
-        label: option.label,
-        price: Number(option.price || 0),
-        offerLabel: option.offerLabel || `WPC Wand ${option.label}`
-      }))
+      options: getOverkappingWpcOptions(product)
     });
   }
 
@@ -1166,6 +1194,511 @@ function getElectricalSchemaPageHtml(schema, product) {
       </div>
     </section>
   `;
+}
+
+function printSixPercentForm() {
+  if (!currentProduct || !isMainOverkappingProduct(currentProduct)) return;
+
+  const productForForm = currentProduct;
+  const win = window.open('', '_blank');
+  if (!win) return;
+
+  const today = new Date();
+  const logoHtml = COMPANY_LOGO_URL
+    ? `<img src="${escapeHtml(COMPANY_LOGO_URL)}" alt="${escapeHtml(COMPANY_NAME)}" class="offer-logo">`
+    : '';
+
+  const companyInfo = [
+    COMPANY_NAME,
+    COMPANY_PHONE,
+    COMPANY_EMAIL,
+    COMPANY_WEBSITE
+  ].filter(Boolean).map(value => `<div>${escapeHtml(value)}</div>`).join('');
+
+  const productTitleHtml = escapeHtml(productForForm.title || '-');
+
+  win.document.open();
+  win.document.write(`
+    <!doctype html>
+    <html lang="nl">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>6% formulier ${productTitleHtml}</title>
+        <style>
+          @page {
+            size: A4 portrait;
+            margin: 8mm;
+          }
+
+          * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+          }
+
+          html,
+          body {
+            margin: 0;
+            padding: 0;
+            background: #f2f4f7;
+            color: #1f2937;
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            line-height: 1.45;
+          }
+
+          body {
+            padding: 14px;
+          }
+
+          .sheet {
+            width: 100%;
+            max-width: 194mm;
+            min-height: 281mm;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+          }
+
+          .header {
+            background: #ffffff;
+            color: #274863;
+            padding: 16px 22px 10px;
+          }
+
+          .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+          }
+
+          .brand {
+            display: flex;
+            align-items: flex-start;
+            min-width: 0;
+            flex: 1 1 auto;
+          }
+
+          .offer-logo {
+            width: 272px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            background: #ffffff;
+            padding: 8px;
+          }
+
+          .meta-box {
+            flex: 0 0 280px;
+            width: 280px;
+            min-width: 280px;
+            background: #f6f9fc;
+            border: 1px solid #dbe3ec;
+            border-radius: 12px;
+            padding: 14px 16px;
+          }
+
+          .meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 4px 0;
+          }
+
+          .meta-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #4b6483;
+          }
+
+          .meta-value {
+            font-size: 12px;
+            font-weight: 700;
+            color: #0f172a;
+            text-align: right;
+          }
+
+          .content {
+            padding: 10px 22px 18px;
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: column;
+            gap: 14px;
+          }
+
+          .card {
+            border: 1px solid #dbe3ec;
+            border-radius: 12px;
+            padding: 16px 18px;
+            background: #ffffff;
+          }
+
+          .eyebrow {
+            margin: 0 0 6px;
+            color: #407298;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+          }
+
+          h1 {
+            margin: 0 0 8px;
+            font-size: 28px;
+            line-height: 1.08;
+            color: #0f172a;
+          }
+
+          .intro {
+            margin: 0;
+            font-size: 14px;
+            color: #334155;
+          }
+
+          .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 18px;
+          }
+
+          .field-block {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 0;
+          }
+
+          .field-block.full {
+            grid-column: 1 / -1;
+          }
+
+          .field-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #274863;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+          }
+
+          .field-value {
+            min-height: 24px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #64748b;
+            font-size: 14px;
+            font-weight: 600;
+            color: #0f172a;
+          }
+
+          .field-value-static {
+            min-height: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #0f172a;
+          }
+
+          .conditions {
+            margin: 0;
+            padding-left: 20px;
+            color: #334155;
+          }
+
+          .conditions li {
+            margin: 0 0 8px;
+          }
+
+          .warning-box {
+            background: #fff7ed;
+            border: 1px solid #fdba74;
+            border-radius: 12px;
+            padding: 14px 16px;
+          }
+
+          .warning-title {
+            margin: 0 0 8px;
+            color: #9a3412;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+          }
+
+          .warning-box p {
+            margin: 0 0 8px;
+            color: #7c2d12;
+            font-size: 13px;
+          }
+
+          .warning-box p:last-child {
+            margin-bottom: 0;
+          }
+
+          .bottom-fixed {
+            margin-top: auto;
+            padding-top: 6px;
+          }
+
+          .signature-section {
+            padding-top: 12px;
+            border-top: 1px solid #dbe3ec;
+          }
+
+          .signature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 24px;
+          }
+
+          .signature-label {
+            margin-bottom: 22px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #274863;
+          }
+
+          .signature-line {
+            border-bottom: 1px solid #64748b;
+            height: 18px;
+          }
+
+          .footer {
+            margin-top: 14px;
+            padding-top: 10px;
+            border-top: 1px solid #dbe3ec;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            color: #64748b;
+            font-size: 12px;
+          }
+
+          .footer strong {
+            color: #0f172a;
+          }
+
+          @media print {
+            html,
+            body {
+              width: 210mm;
+              min-height: 297mm;
+              height: auto !important;
+              margin: 0 !important;
+              padding: 0 !important;
+              background: #ffffff !important;
+            }
+
+            body {
+              padding: 0 !important;
+              font-size: 11px !important;
+              line-height: 1.34 !important;
+            }
+
+            .sheet {
+              width: 194mm !important;
+              max-width: 194mm !important;
+              min-height: 281mm !important;
+              margin: 0 auto !important;
+              border: none !important;
+              border-radius: 0 !important;
+              box-shadow: none !important;
+            }
+
+            .header {
+              padding: 4mm 6mm 2.5mm !important;
+            }
+
+            .header-top {
+              gap: 6mm !important;
+            }
+
+            .offer-logo {
+              width: 72mm !important;
+              padding: 2.5mm !important;
+            }
+
+            .meta-box {
+              width: 66mm !important;
+              min-width: 66mm !important;
+              flex-basis: 66mm !important;
+              border-radius: 10px !important;
+              padding: 4mm 5mm !important;
+            }
+
+            .meta-row {
+              padding: 1.2mm 0 !important;
+            }
+
+            .meta-label,
+            .meta-value {
+              font-size: 10px !important;
+            }
+
+            .content {
+              padding: 4mm 6mm 5mm !important;
+              gap: 3mm !important;
+            }
+
+            .card {
+              border-radius: 10px !important;
+              padding: 4mm !important;
+              page-break-inside: avoid !important;
+            }
+
+            h1 {
+              font-size: 23px !important;
+              margin-bottom: 2mm !important;
+            }
+
+            .eyebrow,
+            .field-label,
+            .warning-title {
+              font-size: 9px !important;
+            }
+
+            .intro,
+            .field-value,
+            .field-value-static,
+            .conditions li,
+            .warning-box p,
+            .footer {
+              font-size: 10px !important;
+            }
+
+            .info-grid,
+            .signature-grid {
+              gap: 4mm 5mm !important;
+            }
+
+            .field-value {
+              min-height: 7mm !important;
+              padding-bottom: 1.6mm !important;
+            }
+
+            .field-value-static {
+              min-height: auto !important;
+            }
+
+            .signature-label {
+              margin-bottom: 6mm !important;
+              font-size: 12px !important;
+            }
+
+            .signature-line {
+              height: 4mm !important;
+            }
+
+            .footer {
+              margin-top: 3mm !important;
+              padding-top: 2mm !important;
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <section class="sheet">
+          <div class="header">
+            <div class="header-top">
+              <div class="brand">
+                ${logoHtml}
+              </div>
+              <div class="meta-box">
+                <div class="meta-row">
+                  <div class="meta-label">Datum</div>
+                  <div class="meta-value">${formatDateBelgium(today)}</div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-label">Product</div>
+                  <div class="meta-value">${productTitleHtml}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="content">
+            <div class="card">
+              <div class="eyebrow">6% formulier</div>
+              <h1>Klantverklaring toepassing 6% btw</h1>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow">Projectgegevens</div>
+              <div class="info-grid">
+                <div class="field-block">
+                  <div class="field-label">Product</div>
+                  <div class="field-value-static">${productTitleHtml}</div>
+                </div>
+                <div class="field-block">
+                  <div class="field-label">Datum</div>
+                  <div class="field-value"></div>
+                </div>
+                <div class="field-block full">
+                  <div class="field-label">Adres van de woning</div>
+                  <div class="field-value"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="eyebrow">Verklaring klant</div>
+              <ol class="conditions">
+                <li>De werken hebben betrekking op een woning in Belgi&euml;.</li>
+                <li>De woning is minstens 10 jaar oud (eerste ingebruikname minstens 10 jaar geleden).</li>
+                <li>De woning wordt hoofdzakelijk als priv&eacute;woning gebruikt (minstens 50% priv&eacute;).</li>
+                <li>De werken zijn een verbetering, verfraaiing of renovatie van de bestaande woning.</li>
+                <li>De overkapping wordt geleverd &eacute;n geplaatst door AluSense.</li>
+                <li>De constructie is duurzaam verbonden met de woning of het perceel, bijvoorbeeld tegen de gevel gemonteerd, op een vaste fundering geplaatst of bedoeld als vaste, niet-verplaatsbare structuur.</li>
+                <li>De gegevens die de klant doorgeeft zijn correct.</li>
+              </ol>
+            </div>
+
+            <div class="warning-box">
+              <div class="warning-title">Belangrijke verantwoordelijkheid van de klant</div>
+              <p>
+                De klant blijft volledig verantwoordelijk dat deze voorwaarden kloppen in de eigen situatie thuis.
+                Indien bij controle blijkt dat dit niet zo is, blijft het resterende btw-bedrag verplicht nog te betalen.
+                Dit is altijd volledig ten laste van de klant.
+              </p>
+            </div>
+
+            <div class="bottom-fixed">
+              <div class="signature-section">
+                <div class="signature-grid">
+                  <div>
+                    <div class="signature-label">Naam koper</div>
+                    <div class="signature-line"></div>
+                  </div>
+                  <div>
+                    <div class="signature-label">Handtekening koper</div>
+                    <div class="signature-line"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="footer">
+                <div>Door ondertekening bevestigt de klant bovenstaande verklaring gelezen en begrepen te hebben.</div>
+                <div>${companyInfo}</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <script>
+          window.onload = function () {
+            setTimeout(function () {
+              window.print();
+            }, 250);
+          };
+        </script>
+      </body>
+    </html>
+  `);
+  win.document.close();
 }
 
 async function printOfferte() {
@@ -2435,6 +2968,16 @@ function renderProduct(p) {
   if (productUrl) {
     productUrl.href = p.url || '#';
     productUrl.style.display = p.url ? '' : 'none';
+  }
+
+  if (sixPercentPrint) {
+    const showSixPercentForm = isMainOverkappingProduct(p);
+    sixPercentPrint.style.display = showSixPercentForm ? '' : 'none';
+    sixPercentPrint.onclick = showSixPercentForm
+      ? () => {
+          printSixPercentForm();
+        }
+      : null;
   }
 
   if (productPrint) {
