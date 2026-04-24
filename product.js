@@ -1768,6 +1768,10 @@ async function printOfferte() {
     flex-direction: column !important;
   }
 
+  .offer-sheet {
+    position: relative !important;
+  }
+
   .header {
     background: #ffffff !important;
     color: #274863 !important;
@@ -1831,6 +1835,10 @@ async function printOfferte() {
     flex: 1 1 auto !important;
     display: flex !important;
     flex-direction: column !important;
+  }
+
+  .offer-sheet .content {
+    padding-bottom: 82mm !important;
   }
 
   .info-grid {
@@ -2026,6 +2034,15 @@ async function printOfferte() {
   .bottom-fixed {
     margin-top: auto !important;
     padding-top: 3mm !important;
+  }
+
+  .offer-sheet .bottom-fixed {
+    position: absolute !important;
+    left: 6mm !important;
+    right: 6mm !important;
+    bottom: 4mm !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
   .signature-section {
