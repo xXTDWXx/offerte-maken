@@ -2,26 +2,26 @@ const COMPANY_NAME = "Sunspa Brugge/Lievegem";
 const COMPANY_LOGO = "logo.svg";
 const HOTTUB_INSTALLATION_PRICE = 695;
 const TECHNICAL_IMAGES = [
-  { id: "1-YJ0b84SKIHbmNiWyyL1fp8LWnMHTJNu", title: "1. Acrylic 180cm integrated" },
-  { id: "1-en6Znvnxu52Zekqg7xMv_PAx0EE7xJU", title: "2. Acrylic 180cm horizon" },
-  { id: "1-pJJh1smgtv5u39oc6_yCzQsuIi84nW2", title: "3. Acrylic 180cm external" },
-  { id: "1-NOA4bKPdcTTCLts9vBJg75D2xdIQZUB", title: "4. Acrylic 200cm integrated" },
-  { id: "1-LhpyGi3vfMXEXxPOpU_etJD4zr0EytP", title: "5. Acrylic 200cm horizon" },
-  { id: "10CsxqSuv2SGabDpqjYGRxSigg5DfceCW", title: "6. Acrylic 200cm external" },
-  { id: "1-X_vABqnIlutXNEoKencNeUHTS67VH-7", title: "7. Acrylic 180x180cm integrated" },
-  { id: "1-mRTCZYjtoNvy6eahCifw6MNT0cXCCKC", title: "8. Acrylic 180x180cm horizon" },
-  { id: "10CaN9XPuaDxS7ayI9ahbqmWQdEFDWo8F", title: "9. Acrylic 180x180cm external" },
-  { id: "1-gdjTWe_Pvv6FKjdlrL7X8QSNYtKJqdf", title: "10. Acrylic Ofuro integrated" },
-  { id: "1-LO77As7nAFcBLchX7RsqPyoHzSKB8kn", title: "11. Acrylic Ofuro external" },
-  { id: "1-r7ucm0azFumTrFHrbKlO-IxNVKsk1Hr", title: "12. Fiberglass 180cm integrated" },
-  { id: "1-t07Wo7uxZNd73okEUuWMUHtZlJPFU2E", title: "13. Fiberglass 180cm horizon" },
-  { id: "1095Z0EDO17uiTsQvRZDv_GfKSAhtYKBW", title: "14. Fiberglass 180cm external" },
-  { id: "1029uS5fkXqezb9fNXJES4SJ4Udh5H1oI", title: "15. Fiberglass 200cm integrated" },
-  { id: "100MlxNyBWlID58R2EbKhPHgLCsngZ2_X", title: "16. Fiberglass 200cm horizon" },
-  { id: "1-kPKXpz_y3nj0seODqjshUzarenFKHyL", title: "17. Fiberglass 200cm external" },
-  { id: "1-uUmRexYEXnxnTQUM51AQb1kN_RPyNsV", title: "18. Fiberglass Ofuro integrated" },
-  { id: "1-rcXyMuqpdnbO_-T3gPJDoWsfbjnCBjn", title: "19. Fiberglass Ofuro external" },
-  { id: "1-t540cNzIBLL13jP2ScidnaxkvRwvMMy", title: "20. Acrylic Jacuzzi integrated" }
+  { src: "images/Hottub technical sheets/1. Acrylic 180cm integrated.jpg", title: "1. Acrylic 180cm integrated" },
+  { src: "images/Hottub technical sheets/2. Acrylic 180cm horizon.jpg", title: "2. Acrylic 180cm horizon" },
+  { src: "images/Hottub technical sheets/3. Acrylic 180cm external.jpg", title: "3. Acrylic 180cm external" },
+  { src: "images/Hottub technical sheets/4. Acrylic 200cm integrated.jpg", title: "4. Acrylic 200cm integrated" },
+  { src: "images/Hottub technical sheets/5. Acrylic 200cm horizon.jpg", title: "5. Acrylic 200cm horizon" },
+  { src: "images/Hottub technical sheets/6. Acrylic 200cm external.jpg", title: "6. Acrylic 200cm external" },
+  { src: "images/Hottub technical sheets/7. Acrylic 180x180cm integrated.jpg", title: "7. Acrylic 180x180cm integrated" },
+  { src: "images/Hottub technical sheets/8. Acrylic 180x180cm horizon.jpg", title: "8. Acrylic 180x180cm horizon" },
+  { src: "images/Hottub technical sheets/9. Acrylic 180x180cm external.jpg", title: "9. Acrylic 180x180cm external" },
+  { src: "images/Hottub technical sheets/10. Acrylic Ofuro integrated.jpg", title: "10. Acrylic Ofuro integrated" },
+  { src: "images/Hottub technical sheets/11. Acrylic Ofuro external.jpg", title: "11. Acrylic Ofuro external" },
+  { src: "images/Hottub technical sheets/12. Fiberglass 180cm integrated.jpg", title: "12. Fiberglass 180cm integrated" },
+  { src: "images/Hottub technical sheets/13. Fiberglass 180cm horizon.jpg", title: "13. Fiberglass 180cm horizon" },
+  { src: "images/Hottub technical sheets/14. Fiberglass 180cm external.jpg", title: "14. Fiberglass 180cm external" },
+  { src: "images/Hottub technical sheets/15. Fiberglass 200cm integrated.jpg", title: "15. Fiberglass 200cm integrated" },
+  { src: "images/Hottub technical sheets/16. Fiberglass 200cm horizon.jpg", title: "16. Fiberglass 200cm horizon" },
+  { src: "images/Hottub technical sheets/17. Fiberglass 200cm external.jpg", title: "17. Fiberglass 200cm external" },
+  { src: "images/Hottub technical sheets/18. Fiberglass Ofuro integrated.jpg", title: "18. Fiberglass Ofuro integrated" },
+  { src: "images/Hottub technical sheets/19. Fiberglass Ofuro external.jpg", title: "19. Fiberglass Ofuro external" },
+  { src: "images/Hottub technical sheets/20. Acrylic Jacuzzi integrated.jpg", title: "20. Acrylic Jacuzzi integrated" }
 ];
 
 const config = {
@@ -620,10 +620,14 @@ function printOffer() {
 }
 
 function printTechnicalData() {
-  const imageCards = TECHNICAL_IMAGES.map((image, index) => `
+  const technicalImages = TECHNICAL_IMAGES.map(image => ({
+    ...image,
+    src: new URL(image.src, window.location.href).href
+  }));
+  const imageCards = technicalImages.map((image, index) => `
     <article class="technical-card">
       <h2>${escapeHtml(image.title)}</h2>
-      <img src="https://drive.google.com/thumbnail?id=${encodeURIComponent(image.id)}&sz=w2400" alt="${escapeHtml(image.title)}">
+      <img src="${encodeURI(image.src)}" alt="${escapeHtml(image.title)}">
       <div class="technical-card-actions">
         <button class="technical-print-button" type="button" data-index="${index}">Print dit schema</button>
       </div>
@@ -763,10 +767,10 @@ function printTechnicalData() {
           ${imageCards}
         </main>
         <script>
-          var technicalImages = ${JSON.stringify(TECHNICAL_IMAGES)};
+          var technicalImages = ${JSON.stringify(technicalImages)};
 
           function getTechnicalImageUrl(image) {
-            return "https://drive.google.com/thumbnail?id=" + encodeURIComponent(image.id) + "&sz=w2400";
+            return image.src;
           }
 
           function printSingleTechnicalImage(image) {
