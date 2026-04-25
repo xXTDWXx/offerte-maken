@@ -581,8 +581,15 @@ select:focus {
   min-width: 0;
 }
 
+.opt-inline .opt-copy {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .opt-inline .opt-price {
-  margin-left: auto;
+  margin-left: 0;
   white-space: nowrap;
 }
 
@@ -1729,7 +1736,7 @@ body {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 760px) {
   .header-row {
     display: flex;
   }
@@ -1866,13 +1873,53 @@ body {
     gap: 8px;
   }
 
+  .opt-inline .opt-title {
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 8px;
+    width: 100%;
+  }
+
+  .opt-inline .opt-title > img {
+    grid-row: auto;
+    align-self: center;
+  }
+
+  .opt-inline .opt-title > input[type="checkbox"],
+  .opt-inline .opt-title > input[type="radio"] {
+    align-self: center;
+    margin-right: 0;
+  }
+
+  .opt-inline .opt-copy {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    align-items: center;
+    gap: 6px 10px;
+  }
+
+  #optMaintRow .opt-copy,
+  #optSwimFiltersetRow .opt-copy,
+  #optCoverTrapRow .opt-copy,
+  #optCoverliftRow .opt-copy,
+  #optCoverlift2Row .opt-copy {
+    align-self: center;
+  }
+
+  #optCoverTrapRow .opt-title {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
   .opt-price,
   label.opt .opt-price,
   .opt-inline .opt-price {
-    width: 100%;
+    width: auto;
     margin-left: 0;
     text-align: left;
-    white-space: normal;
+    white-space: nowrap;
   }
 
   .overkapping-screen-name,
@@ -1883,7 +1930,7 @@ body {
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 761px) {
   .card-link {
     width: 100%;
   }
@@ -1895,7 +1942,7 @@ body {
   display: none;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 760px) {
   .mobile-menu-toggle {
     display: inline-flex;
     flex-direction: column;
