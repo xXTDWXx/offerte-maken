@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= 761) {
+    if (window.innerWidth >= 431) {
       setOpen(false);
     }
   });
