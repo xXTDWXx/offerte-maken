@@ -1,6 +1,28 @@
 const COMPANY_NAME = "Sunspa Brugge/Lievegem";
 const COMPANY_LOGO = "logo.svg";
 const HOTTUB_INSTALLATION_PRICE = 695;
+const TECHNICAL_IMAGES = [
+  { id: "1-YJ0b84SKIHbmNiWyyL1fp8LWnMHTJNu", title: "1. Acrylic 180cm integrated" },
+  { id: "1-en6Znvnxu52Zekqg7xMv_PAx0EE7xJU", title: "2. Acrylic 180cm horizon" },
+  { id: "1-pJJh1smgtv5u39oc6_yCzQsuIi84nW2", title: "3. Acrylic 180cm external" },
+  { id: "1-NOA4bKPdcTTCLts9vBJg75D2xdIQZUB", title: "4. Acrylic 200cm integrated" },
+  { id: "1-LhpyGi3vfMXEXxPOpU_etJD4zr0EytP", title: "5. Acrylic 200cm horizon" },
+  { id: "10CsxqSuv2SGabDpqjYGRxSigg5DfceCW", title: "6. Acrylic 200cm external" },
+  { id: "1-X_vABqnIlutXNEoKencNeUHTS67VH-7", title: "7. Acrylic 180x180cm integrated" },
+  { id: "1-mRTCZYjtoNvy6eahCifw6MNT0cXCCKC", title: "8. Acrylic 180x180cm horizon" },
+  { id: "10CaN9XPuaDxS7ayI9ahbqmWQdEFDWo8F", title: "9. Acrylic 180x180cm external" },
+  { id: "1-gdjTWe_Pvv6FKjdlrL7X8QSNYtKJqdf", title: "10. Acrylic Ofuro integrated" },
+  { id: "1-LO77As7nAFcBLchX7RsqPyoHzSKB8kn", title: "11. Acrylic Ofuro external" },
+  { id: "1-r7ucm0azFumTrFHrbKlO-IxNVKsk1Hr", title: "12. Fiberglass 180cm integrated" },
+  { id: "1-t07Wo7uxZNd73okEUuWMUHtZlJPFU2E", title: "13. Fiberglass 180cm horizon" },
+  { id: "1095Z0EDO17uiTsQvRZDv_GfKSAhtYKBW", title: "14. Fiberglass 180cm external" },
+  { id: "1029uS5fkXqezb9fNXJES4SJ4Udh5H1oI", title: "15. Fiberglass 200cm integrated" },
+  { id: "100MlxNyBWlID58R2EbKhPHgLCsngZ2_X", title: "16. Fiberglass 200cm horizon" },
+  { id: "1-kPKXpz_y3nj0seODqjshUzarenFKHyL", title: "17. Fiberglass 200cm external" },
+  { id: "1-uUmRexYEXnxnTQUM51AQb1kN_RPyNsV", title: "18. Fiberglass Ofuro integrated" },
+  { id: "1-rcXyMuqpdnbO_-T3gPJDoWsfbjnCBjn", title: "19. Fiberglass Ofuro external" },
+  { id: "1-t540cNzIBLL13jP2ScidnaxkvRwvMMy", title: "20. Acrylic Jacuzzi integrated" }
+];
 
 const config = {
   rond: {
@@ -597,6 +619,205 @@ function printOffer() {
   win.document.close();
 }
 
+function printTechnicalData() {
+  const imageCards = TECHNICAL_IMAGES.map((image, index) => `
+    <article class="technical-card">
+      <h2>${escapeHtml(image.title)}</h2>
+      <img src="https://drive.google.com/thumbnail?id=${encodeURIComponent(image.id)}&sz=w2400" alt="${escapeHtml(image.title)}">
+      <div class="technical-card-actions">
+        <button class="technical-print-button" type="button" data-index="${index}">Print dit schema</button>
+      </div>
+    </article>
+  `).join("");
+
+  const win = window.open("", "_blank", "width=1100,height=900");
+  if (!win) {
+    alert("Pop-up geblokkeerd. Sta pop-ups toe om de technische gegevens te printen.");
+    return;
+  }
+
+  win.document.open();
+  win.document.write(`
+    <!doctype html>
+    <html lang="nl">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Technische gegevens hottubs</title>
+        <style>
+          @page { size: A4 portrait; margin: 8mm; }
+          * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+          body {
+            margin: 0;
+            padding: 22px;
+            background: #f5f7fa;
+            color: #1d2b36;
+            font-family: Arial, Helvetica, sans-serif;
+          }
+          .technical-header {
+            max-width: 1040px;
+            margin: 0 auto 20px;
+            padding: 22px 24px;
+            background: #ffffff;
+            border: 1px solid #dde5ec;
+            border-radius: 18px;
+          }
+          .technical-header h1 {
+            margin: 0 0 6px;
+            color: #163c5d;
+            font-size: 28px;
+          }
+          .technical-header p {
+            margin: 0;
+            color: #6a7885;
+            font-size: 14px;
+          }
+          .technical-grid {
+            max-width: 1040px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+          }
+          .technical-card {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            background: #ffffff;
+            border: 1px solid #dde5ec;
+            border-radius: 16px;
+            overflow: hidden;
+          }
+          .technical-card h2 {
+            margin: 0;
+            padding: 12px 14px;
+            color: #163c5d;
+            font-size: 16px;
+          }
+          .technical-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+          }
+          .technical-card-actions {
+            padding: 12px 14px 14px;
+          }
+          .technical-print-button {
+            appearance: none;
+            border: none;
+            border-radius: 999px;
+            background: #1f5f93;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 11px 16px;
+          }
+          @media print {
+            body {
+              padding: 0;
+              background: #ffffff;
+            }
+            .technical-header {
+              max-width: none;
+              margin: 0 0 6mm;
+              padding: 0 0 4mm;
+              border: none;
+              border-bottom: 1px solid #cfd8e3;
+              border-radius: 0;
+            }
+            .technical-header h1 {
+              font-size: 18px;
+            }
+            .technical-header p {
+              font-size: 10px;
+            }
+            .technical-grid {
+              max-width: none;
+              grid-template-columns: 1fr;
+              gap: 6mm;
+            }
+            .technical-card {
+              border: none;
+              border-radius: 0;
+            }
+            .technical-card h2 {
+              padding: 0 0 2mm;
+              font-size: 12px;
+            }
+            .technical-card img {
+              max-height: 246mm;
+              object-fit: contain;
+            }
+            .technical-card-actions {
+              display: none;
+            }
+          }
+        </style>
+      </head>
+      <body>
+        <header class="technical-header">
+          <h1>Technische gegevens hottubs</h1>
+          <p>${TECHNICAL_IMAGES.length} technische afbeeldingen voor hottubmodellen.</p>
+        </header>
+        <main class="technical-grid">
+          ${imageCards}
+        </main>
+        <script>
+          var technicalImages = ${JSON.stringify(TECHNICAL_IMAGES)};
+
+          function getTechnicalImageUrl(image) {
+            return "https://drive.google.com/thumbnail?id=" + encodeURIComponent(image.id) + "&sz=w2400";
+          }
+
+          function printSingleTechnicalImage(image) {
+            var imageUrl = getTechnicalImageUrl(image);
+            var printWindow = window.open("", "_blank", "width=900,height=900");
+            if (!printWindow) {
+              alert("Pop-up geblokkeerd. Sta pop-ups toe om dit schema te printen.");
+              return;
+            }
+
+            printWindow.document.open();
+            printWindow.document.write(
+              '<!doctype html>' +
+              '<html lang="nl">' +
+              '<head>' +
+              '<meta charset="utf-8">' +
+              '<meta name="viewport" content="width=device-width, initial-scale=1">' +
+              '<title>' + image.title + '</title>' +
+              '<style>' +
+              '@page { size: A4 portrait; margin: 8mm; }' +
+              '* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }' +
+              'body { margin: 0; padding: 0; color: #1d2b36; font-family: Arial, Helvetica, sans-serif; }' +
+              'h1 { margin: 0 0 4mm; color: #163c5d; font-size: 16px; }' +
+              'img { display: block; width: 100%; max-height: 266mm; object-fit: contain; }' +
+              '</style>' +
+              '</head>' +
+              '<body>' +
+              '<h1>' + image.title + '</h1>' +
+              '<img src="' + imageUrl + '" alt="' + image.title + '">' +
+              '<script>' +
+              'window.onload=function(){var img=document.images[0];var done=function(){setTimeout(function(){window.print();},250);};if(img.complete){done();}else{img.onload=done;img.onerror=done;}};' +
+              '<\\/script>' +
+              '</body>' +
+              '</html>'
+            );
+            printWindow.document.close();
+          }
+
+          document.querySelectorAll(".technical-print-button").forEach(function (button) {
+            button.addEventListener("click", function () {
+              var image = technicalImages[Number(button.dataset.index)];
+              if (image) printSingleTechnicalImage(image);
+            });
+          });
+        <\/script>
+      </body>
+    </html>
+  `);
+  win.document.close();
+}
+
 document.querySelectorAll('input[name="model"]').forEach(input => {
   input.addEventListener("change", () => {
     rebuildDynamicSections();
@@ -608,6 +829,7 @@ document.getElementById("resetBtn").addEventListener("click", () => {
 });
 
 document.getElementById("offerPrint").addEventListener("click", printOffer);
+document.getElementById("technicalPrint").addEventListener("click", printTechnicalData);
 
 bindStaticInputs();
 rebuildDynamicSections();
