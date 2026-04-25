@@ -963,7 +963,7 @@ label.opt .opt-price {
 }
 
 /* Mobile */
-@media (max-width: 768px) {
+@media (max-width: 760px) {
   .grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
