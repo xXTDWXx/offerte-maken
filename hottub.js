@@ -627,7 +627,7 @@ function printTechnicalData() {
   const imageCards = technicalImages.map((image, index) => `
     <article class="technical-card">
       <h2>${escapeHtml(image.title)}</h2>
-      <img src="${encodeURI(image.src)}" alt="${escapeHtml(image.title)}">
+      <img src="${image.src}" alt="${escapeHtml(image.title)}">
       <div class="technical-card-actions">
         <button class="technical-print-button" type="button" data-index="${index}">Print dit schema</button>
       </div>
