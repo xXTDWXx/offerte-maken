@@ -23,6 +23,7 @@ const activeChips = document.getElementById('activeChips');
 
 let products = [];
 let filtered = [];
+let searchFrame = 0;
 
 function euro(n) {
   const x = Number(n || 0);
@@ -97,6 +98,23 @@ async function loadProducts({ force = false } = {}) {
   ]);
 
   return [...catalogProducts, ...overkappingProducts].filter(isProductVisible);
+}
+
+function enrichProduct(product) {
+  product._merk = getMerk(product);
+  product._personen = getAantalPersonen(product);
+  product._searchBlob = productSearchBlob(product);
+  product._topSpecs = topSpecs(product);
+  product._showrooms = getShowrooms(product);
+  return product;
+}
+
+function scheduleApplyFilters() {
+  if (searchFrame) cancelAnimationFrame(searchFrame);
+  searchFrame = requestAnimationFrame(() => {
+    searchFrame = 0;
+    applyFilters();
+  });
 }
 
 function getSpecValue(p, label) {
@@ -327,16 +345,16 @@ function applyFilters() {
     if (type && p.type !== type) return false;
 
     if (merk) {
-      const productMerk = getMerk(p);
+      const productMerk = p._merk || getMerk(p);
       if (productMerk !== merk) return false;
     }
 
     if (personen) {
-      const productPersonen = getAantalPersonen(p);
+      const productPersonen = p._personen || getAantalPersonen(p);
       if (productPersonen !== personen) return false;
     }
 
-    if (q && !productSearchBlob(p).includes(q)) return false;
+    if (q && !(p._searchBlob || productSearchBlob(p)).includes(q)) return false;
 
     return true;
   });
@@ -372,7 +390,7 @@ function renderGrid() {
     const price = node.querySelector('[data-price]');
     const specs = node.querySelector('[data-specs]');
 
-    const showrooms = getShowrooms(p);
+    const showrooms = p._showrooms || getShowrooms(p);
 
     if (card) {
       card.classList.toggle('card--overkapping', isOverkappingProduct(p));
@@ -388,6 +406,7 @@ if (showroomBadge) {
 }
 
     if (img) {
+      img.decoding = 'async';
       img.src = p.image || '';
       img.alt = p.title || 'Product';
       img.onerror = () => {
@@ -398,7 +417,7 @@ if (showroomBadge) {
     if (badge) badge.textContent = (p.type || '').toUpperCase();
     if (title) title.textContent = p.title || '';
     if (price) price.textContent = p.price_display || euro(p.price || 0);
-    if (specs) specs.innerHTML = topSpecs(p);
+    if (specs) specs.innerHTML = p._topSpecs || topSpecs(p);
 
     if (cardLink) {
       cardLink.setAttribute('type', 'button');
@@ -420,14 +439,14 @@ function showError(msg) {
 }
 
 async function init() {
-  products = await loadProducts({ force: false });
+  products = (await loadProducts({ force: false })).map(enrichProduct);
   buildTypeFilter(products);
   buildMerkFilter(products);
   buildPersonenFilter(products);
   applyFilters();
 }
 
-if (elSearch) elSearch.addEventListener('input', applyFilters);
+if (elSearch) elSearch.addEventListener('input', scheduleApplyFilters);
 
 if (elType) {
   elType.addEventListener('change', () => {

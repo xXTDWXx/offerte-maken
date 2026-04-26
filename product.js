@@ -389,12 +389,15 @@ async function fetchProductItems(url, label = 'producten') {
 }
 
 async function loadProducts() {
-  const [catalogProducts, overkappingProducts] = await Promise.all([
-    fetchProductItems(PRODUCTS_URL, 'products.json'),
-    fetchProductItems(OVERKAPPING_URL, 'overkapping.json')
-  ]);
+  const catalogProducts = (await fetchProductItems(PRODUCTS_URL, 'products.json')).filter(isProductVisible);
+  const productId = getProductIdFromUrl();
 
-  return [...catalogProducts, ...overkappingProducts].filter(isProductVisible);
+  if (!productId || catalogProducts.some(product => String(product.id) === String(productId))) {
+    return catalogProducts;
+  }
+
+  const overkappingProducts = (await fetchProductItems(OVERKAPPING_URL, 'overkapping.json')).filter(isProductVisible);
+  return [...catalogProducts, ...overkappingProducts];
 }
 
 function getProductIdFromUrl() {

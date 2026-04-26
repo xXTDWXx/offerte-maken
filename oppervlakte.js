@@ -136,21 +136,35 @@ function parseNumbers(text) {
 }
 
 function getDimensions(product) {
+  if (product?._dimensions !== undefined) return product._dimensions;
   const raw = getSpecValue(product, 'Afmeting');
   const normalized = normalize(raw).replace('ø', ' x ').replaceAll('×', ' x ');
   const nums = parseNumbers(normalized);
-  if (nums.length < 2) return null;
-  return {
+  if (nums.length < 2) {
+    product._dimensions = null;
+    return product._dimensions;
+  }
+  product._dimensions = {
     longest: Math.max(nums[0], nums[1]),
     shortest: Math.min(nums[0], nums[1]),
     raw
   };
+  return product._dimensions;
 }
 
 function getLigplaatsen(product) {
+  if (product?._ligplaatsen !== undefined) return product._ligplaatsen;
   const value = getSpecValue(product, 'Ligplaatsen');
   const nums = parseNumbers(value);
-  return nums.length ? nums[0] : 0;
+  product._ligplaatsen = nums.length ? nums[0] : 0;
+  return product._ligplaatsen;
+}
+
+function enrichProduct(product) {
+  product._typeNorm = normalize(product.type);
+  getDimensions(product);
+  getLigplaatsen(product);
+  return product;
 }
 
 function optionCard(option, selectedValue, onClick, variant = 'default') {
@@ -335,7 +349,7 @@ function fitsExtra(product, type, extraKey) {
 function filterProducts() {
   const type = state.selections.type;
   state.filtered = state.products.filter(product => {
-    return normalize(product.type) === normalize(type)
+    return (product._typeNorm || normalize(product.type)) === normalize(type)
       && fitsSize(product, type, state.selections.size)
       && fitsExtra(product, type, state.selections.extra);
   }).sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
@@ -366,6 +380,7 @@ function renderResults() {
     const dims = getDimensions(product);
 
     link.href = `product.html?id=${encodeURIComponent(product.id || '')}`;
+    img.decoding = 'async';
     img.src = product.image || '';
     img.alt = product.title || '';
     title.textContent = product.title || '';
@@ -411,7 +426,7 @@ function showError(message) {
 }
 
 async function init() {
-  state.products = await loadProducts();
+  state.products = (await loadProducts()).map(enrichProduct);
   attachNavigation();
   renderTypeOptions();
   renderCurrentStep();

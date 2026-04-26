@@ -19,6 +19,7 @@ const activeChips = document.getElementById('activeChips');
 
 let products = [];
 let filtered = [];
+let searchFrame = 0;
 
 function getShowroomFromUrl() {
   const params = new URLSearchParams(window.location.search);
@@ -149,12 +150,41 @@ async function fetchProductItems(url, label = 'producten') {
 }
 
 async function loadProducts() {
+  const currentType = getTypeFromUrl();
+  const selectedShowroom = getShowroomFromUrl();
+
+  if (isOverkappingCategory(currentType)) {
+    return (await fetchProductItems(OVERKAPPING_URL, 'overkapping.json')).filter(isProductVisible);
+  }
+
+  if (currentType && !selectedShowroom) {
+    return (await fetchProductItems(PRODUCTS_URL, 'products.json')).filter(isProductVisible);
+  }
+
   const [catalogProducts, overkappingProducts] = await Promise.all([
     fetchProductItems(PRODUCTS_URL, 'products.json'),
     fetchProductItems(OVERKAPPING_URL, 'overkapping.json')
   ]);
 
   return [...catalogProducts, ...overkappingProducts].filter(isProductVisible);
+}
+
+function enrichProduct(product) {
+  product._merk = getMerk(product);
+  product._merkNorm = normalize(product._merk);
+  product._titleNorm = normalize(product.title);
+  product._topSpecs = topSpecs(product);
+  product._showrooms = getShowrooms(product);
+  product._showroomNorms = product._showrooms.map(s => normalize(s));
+  return product;
+}
+
+function scheduleFilterProducts() {
+  if (searchFrame) cancelAnimationFrame(searchFrame);
+  searchFrame = requestAnimationFrame(() => {
+    searchFrame = 0;
+    filterProducts();
+  });
 }
 
 function getParams() {
@@ -327,7 +357,7 @@ function renderGrid() {
     const price = node.querySelector('[data-price]');
     const specs = node.querySelector('[data-specs]');
 
-    const showrooms = getShowrooms(p);
+    const showrooms = p._showrooms || getShowrooms(p);
 
     if (card) {
       card.classList.toggle('card--overkapping', isOverkappingCategory(p?.type));
@@ -343,6 +373,7 @@ if (showroomBadge) {
 }
 
     if (img) {
+      img.decoding = 'async';
       img.src = p.image || '';
       img.alt = p.title || 'Product';
       img.onerror = () => {
@@ -353,7 +384,7 @@ if (showroomBadge) {
     if (badge) badge.textContent = (p.type || '').toUpperCase();
     if (title) title.textContent = p.title || '';
     if (price) price.textContent = p.price_display || euro(p.price || 0);
-    if (specs) specs.innerHTML = topSpecs(p);
+    if (specs) specs.innerHTML = p._topSpecs || topSpecs(p);
 
     if (cardLink) {
       cardLink.setAttribute('type', 'button');
@@ -422,20 +453,19 @@ function filterProducts() {
     const matchType = productMatchesType(p, currentType);
 
     const matchBrand =
-      !selectedBrand || normalize(getMerk(p)) === normalize(selectedBrand);
+      !selectedBrand || (p._merkNorm || normalize(getMerk(p))) === normalize(selectedBrand);
 
     const matchSearch =
-      !search || normalize(p.title).includes(normalize(search));
+      !search || (p._titleNorm || normalize(p.title)).includes(normalize(search));
 
-    const showrooms = getShowrooms(p);
+    const showrooms = p._showrooms || getShowrooms(p);
 
     let matchShowroom = true;
 
     if (selectedShowroom === 'all') {
       matchShowroom = showrooms.length > 0;
     } else if (selectedShowroom) {
-      matchShowroom = showrooms
-        .map(s => normalize(s))
+      matchShowroom = (p._showroomNorms || showrooms.map(s => normalize(s)))
         .includes(normalize(selectedShowroom));
     }
 
@@ -464,7 +494,7 @@ function clearFilters() {
 
 function bindFilters() {
   brandFilter?.addEventListener('change', filterProducts);
-  searchInput?.addEventListener('input', filterProducts);
+  searchInput?.addEventListener('input', scheduleFilterProducts);
   sortFilter?.addEventListener('change', filterProducts);
   btnClear?.addEventListener('click', clearFilters);
 }
@@ -485,7 +515,7 @@ async function init() {
   markActiveMenu(currentType);
   setupFilterVisibility();
 
-  products = await loadProducts();
+  products = (await loadProducts()).map(enrichProduct);
 
   loadFiltersFromUrl();
   bindFilters();
