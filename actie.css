@@ -40,7 +40,7 @@
       background:
         linear-gradient(90deg, rgba(17,37,57,0.92) 0%, rgba(17,37,57,0.88) 34%, rgba(17,37,57,0.46) 58%, rgba(17,37,57,0.15) 100%),
         linear-gradient(135deg, rgba(127,163,202,0.28), rgba(95,127,164,0.18)),
-        url('https://www.sunspabenelux.be/wp-content/uploads/2026/03/jacuzzi-tuinset.webp') center center / cover no-repeat;
+        url('images/vogue-classic-spa-intuin.jpg') center center / cover no-repeat;
     }
 
     .banner::before {
