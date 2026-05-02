@@ -150,6 +150,50 @@ function getCurrentProductPriceValue() {
   return Number(selectedVariant?.price ?? currentProduct?.price ?? 0);
 }
 
+function getPromotionTextSource(product) {
+  const specs = Array.isArray(product?.specs)
+    ? product.specs.map(spec => `${spec?.label || ''} ${spec?.value || ''}`).join(' ')
+    : '';
+
+  return `${product?.id || ''} ${product?.type || ''} ${product?.merk || ''} ${product?.brand || ''} ${product?.title || ''} ${specs}`.toLowerCase();
+}
+
+function getProductPromotion(product) {
+  const source = getPromotionTextSource(product);
+  const merk = getMerk(product).toLowerCase();
+
+  if (isBarrelSauna(product?.type)) {
+    return { id: 'barrel-sauna', label: '-10% op barrel sauna' };
+  }
+
+  if (merk.includes('vogue') || source.includes('vogue')) {
+    return { id: 'vogue', label: '-10% op de Vogue spa' };
+  }
+
+  if (merk.includes('myspa') || source.includes('myspa')) {
+    return { id: 'myspa', label: '-10% op Myspa' };
+  }
+
+  if (merk.includes('health company') || source.includes('health company')) {
+    return { id: 'health-company', label: '-10% op Health Company' };
+  }
+
+  if (merk.includes('infra4health') || source.includes('infra4health')) {
+    return { id: 'infra4health', label: '-10% op Infra4Health' };
+  }
+
+  return null;
+}
+
+function getPromotionDiscountAmount(product = currentProduct) {
+  const promotion = getProductPromotion(product);
+  const checked = $('optPromoDiscount')?.checked;
+
+  if (!promotion || !checked) return 0;
+
+  return Math.round(getCurrentProductPriceValue() * 0.10 * 100) / 100;
+}
+
 function getCurrentProductPriceText() {
   if (isQuantityVariantProduct(currentProduct)) {
     const total = getOverkappingScreenTotal();
@@ -714,6 +758,10 @@ function updateOptionUI() {
 
   const optInstallPrice = $('optInstallPrice');
   const optInstallRow = $('optInstallRow');
+  const optPromoDiscountRow = $('optPromoDiscountRow');
+  const optPromoDiscount = $('optPromoDiscount');
+  const optPromoDiscountLabel = $('optPromoDiscountLabel');
+  const optPromoDiscountPrice = $('optPromoDiscountPrice');
 
   const optCoverTrapRow = $('optCoverTrapRow');
 
@@ -763,9 +811,17 @@ function updateOptionUI() {
   const tGrand = $('optGrandTotal');
 
   const inst = installCost(type);
+  const promotion = getProductPromotion(currentProduct);
+  const productPriceValue = getCurrentProductPriceValue();
+  const promoDiscountLine = promotion && optPromoDiscount?.checked
+    ? Math.round(productPriceValue * 0.10 * 100) / 100
+    : 0;
 
   if (optInstallPrice) optInstallPrice.textContent = euro(inst);
   if (optInstallRow) optInstallRow.style.display = inst > 0 ? '' : 'none';
+  if (optPromoDiscountRow) optPromoDiscountRow.style.display = promotion ? '' : 'none';
+  if (optPromoDiscountLabel && promotion) optPromoDiscountLabel.textContent = promotion.label;
+  if (optPromoDiscountPrice) optPromoDiscountPrice.textContent = promoDiscountLine > 0 ? `-${euro(promoDiscountLine)}` : euro(0);
   syncProductPriceDisplay();
 
   const allowExtraOptions = extraOptionsAllowed(type);
@@ -845,9 +901,9 @@ function updateOptionUI() {
   if (optBarrelRoofDesignTotal) optBarrelRoofDesignTotal.textContent = euro(barrelRoofDesignLine);
   if (optBarrelInfraredModuleTotal) optBarrelInfraredModuleTotal.textContent = euro(barrelInfraredModuleLine);
 
-  const productPriceValue = getCurrentProductPriceValue();
   const optionsTotal =
     inst +
+    -promoDiscountLine +
     coverliftLine +
     coverlift2Line +
     maintLine +
@@ -874,6 +930,7 @@ function wireOptionHandlers() {
 
   const ids = [
     'optCoverlift',
+    'optPromoDiscount',
     'optCoverlift2',
     'optMaint',
     'optSwimFilterset',
@@ -944,6 +1001,16 @@ function getSelectedOfferLines() {
       label: productLabel,
       price: getCurrentProductPriceValue(),
       is_html: true
+    });
+  }
+
+  const promotion = getProductPromotion(currentProduct);
+  const promoDiscount = getPromotionDiscountAmount();
+
+  if (!quantityVariantProduct && promotion && promoDiscount > 0) {
+    lines.push({
+      label: promotion.label,
+      price: -promoDiscount
     });
   }
 
@@ -3072,6 +3139,7 @@ function renderProduct(p) {
   }
 
   if ($('optInstall')) $('optInstall').checked = true;
+  if ($('optPromoDiscount')) $('optPromoDiscount').checked = true;
   if ($('optCoverlift')) $('optCoverlift').checked = false;
   if ($('optCoverlift2')) $('optCoverlift2').checked = false;
   if ($('optMaint')) $('optMaint').checked = false;
