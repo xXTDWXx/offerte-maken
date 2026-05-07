@@ -238,6 +238,59 @@ function isSwimspa(type) {
   return t.includes('zwemspa') || t.includes('swim');
 }
 
+function isSpaProduct(product) {
+  const t = typeNorm(product?.type);
+  return !isSwimspa(t) && (t === 'spa' || t === "spa's");
+}
+
+function parseProductDimensionsCm(product) {
+  const raw = String(getSpecValue(product, 'Afmeting') || '').trim();
+  const values = Array.from(raw.replace(/,/g, '.').matchAll(/\d+(?:\.\d+)?/g))
+    .map(match => Number(match[0]))
+    .filter(Number.isFinite);
+
+  if (values.length >= 3) {
+    return {
+      raw,
+      length: values[0],
+      width: values[1],
+      height: values[2]
+    };
+  }
+
+  if (values.length === 2) {
+    return {
+      raw,
+      length: values[0],
+      width: values[0],
+      height: values[1]
+    };
+  }
+
+  return null;
+}
+
+function formatCm(value) {
+  const rounded = Math.round(Number(value) * 10) / 10;
+  if (!Number.isFinite(rounded)) return '-';
+  return `${String(rounded).replace('.', ',')} cm`;
+}
+
+function getSpaDeliveryAccess(product) {
+  if (!isSpaProduct(product)) return null;
+
+  const dimensions = parseProductDimensionsCm(product);
+  if (!dimensions) return null;
+
+  const shortestSide = Math.min(dimensions.length, dimensions.width);
+
+  return {
+    dimensions,
+    passageWidth: dimensions.height + 5,
+    passageHeight: shortestSide + 30
+  };
+}
+
 function isInfrared(type) {
   return typeNorm(type).includes('infrarood');
 }
@@ -1296,10 +1349,59 @@ async function getElectricalSchemaForProduct(product) {
 }
 
 function getElectricalSchemaPageHtml(schema, product) {
-  if (!schema) return '';
+  const deliveryAccess = getSpaDeliveryAccess(product);
+  if (!schema && !deliveryAccess) return '';
 
   const logo = COMPANY_LOGO_URL
     ? `<img src="${escapeHtml(COMPANY_LOGO_URL)}" alt="${escapeHtml(COMPANY_NAME)}" class="offer-logo electrical-logo">`
+    : '';
+  const electricalCardHtml = schema
+    ? `<div class="electrical-card">${schema.contentHtml}</div>`
+    : '';
+  const deliveryAccessHtml = deliveryAccess
+    ? `
+        <div class="delivery-card">
+          <h2>Doorgang en voorwaarden levering</h2>
+          <p class="delivery-card-intro">
+            Voor deze spa moet de volledige doorgang vrij en bereikbaar zijn volgens onderstaande minimale maten, zonder enige obstakels zoals trappen, hoogteverschillen, hellingen of andere belemmeringen.
+          </p>
+          <div class="delivery-grid">
+            <div>
+              <span>Afmeting spa</span>
+              <strong>${escapeHtml(deliveryAccess.dimensions.raw)}</strong>
+            </div>
+            <div>
+              <span>Vrije breedte doorgang</span>
+              <strong>${formatCm(deliveryAccess.passageWidth)}</strong>
+              <small>hoogte spa + 5 cm</small>
+            </div>
+            <div>
+              <span>Vrije hoogte doorgang</span>
+              <strong>${formatCm(deliveryAccess.passageHeight)}</strong>
+              <small>kortste zijde spa + 30 cm</small>
+            </div>
+          </div>
+          <ul class="delivery-terms">
+            <li>Klaarleggen van stroomkabel volgens hierboven vermeld schema, is de verantwoordelijkheid van de klant.</li>
+            <li>De klant voorziet bij levering twee extra mankrachten om de spa veilig te kunnen kantelen en begeleiden.</li>
+            <li>Indien de hierboven vermelde minimum afmetingen niet kunnen worden voorzien, wordt de spa enkel geleverd met een kraan. Kosten hiervan zijn ten laste van de klant.</li>
+            <li>Indien op de leveringsdag blijkt dat een of meerdere voorwaarden niet voldaan zijn, gaat de levering niet door waarbij alle hieruit voortvloeiende kosten integraal ten laste van de klant zijn.</li>
+          </ul>
+        </div>
+        <div class="delivery-acceptance">
+          <p>De klant verklaart deze leveringsvoorwaarden vooraf te hebben ontvangen, gelezen en aanvaard.</p>
+          <div class="delivery-signature-grid">
+            <div class="delivery-signature-box">
+              <div class="signature-label">Naam klant</div>
+              <div class="signature-line"></div>
+            </div>
+            <div class="delivery-signature-box">
+              <div class="signature-label">Handtekening</div>
+              <div class="signature-line"></div>
+            </div>
+          </div>
+        </div>
+      `
     : '';
 
   return `
@@ -1308,18 +1410,16 @@ function getElectricalSchemaPageHtml(schema, product) {
         <div class="brand">${logo}</div>
         <div>
           <div class="electrical-eyebrow">Technische info</div>
-          <h1>Elektrische aansluiting</h1>
-          <p>${escapeHtml(schema.sectionTitle)} &middot; ${escapeHtml(schema.summary)}</p>
+          <h1>LEVERINGSVOORWAARDEN</h1>
         </div>
       </div>
       <div class="electrical-content">
         <div class="electrical-intro">
-          <strong>Stroomschema voor:</strong>
+          <strong>Info voor:</strong>
           <span>${escapeHtml(product?.title || '')}</span>
         </div>
-        <div class="electrical-card">
-          ${schema.contentHtml}
-        </div>
+        ${electricalCardHtml}
+        ${deliveryAccessHtml}
       </div>
     </section>
   `;
@@ -1875,7 +1975,7 @@ async function printOfferte() {
   const termsHtml = getTermsHtml(productType, validUntil);
   const electricalSchema = await getElectricalSchemaForProduct(productForOffer);
   const electricalSchemaHtml = getElectricalSchemaPageHtml(electricalSchema, productForOffer);
-  const offerSheetClass = electricalSchema ? 'sheet offer-sheet has-next-page' : 'sheet offer-sheet';
+  const offerSheetClass = electricalSchemaHtml ? 'sheet offer-sheet has-next-page' : 'sheet offer-sheet';
 
   win.document.open();
   win.document.write(`
@@ -2344,6 +2444,8 @@ async function printOfferte() {
 
   .electrical-content {
     padding: 24px 32px 28px;
+    display: flex;
+    flex-direction: column;
   }
 
   .electrical-intro {
@@ -2380,6 +2482,110 @@ async function printOfferte() {
     font-weight: 800;
   }
 
+  .delivery-card {
+    margin-top: 18px;
+    padding: 18px 20px;
+    border: 1px solid #d7e0e9;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #0f172a;
+  }
+
+  .delivery-card h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    line-height: 1.15;
+    color: #0f172a;
+  }
+
+  .delivery-card-intro {
+    margin: 0 0 14px;
+    color: #475569;
+    font-size: 13px;
+  }
+
+  .delivery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .delivery-grid div {
+    padding: 12px;
+    border: 1px solid #dbe3ec;
+    border-radius: 12px;
+    background: #f8fafc;
+  }
+
+  .delivery-grid span,
+  .delivery-grid small {
+    display: block;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .delivery-grid strong {
+    display: block;
+    margin: 5px 0 3px;
+    color: #0f172a;
+    font-size: 18px;
+    line-height: 1.1;
+  }
+
+  .delivery-grid small {
+    color: #475569;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .delivery-terms {
+    margin: 0;
+    padding: 12px 14px;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    background: #fff1f2;
+    color: #991b1b;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .delivery-terms li {
+    margin: 0 0 8px;
+  }
+
+  .delivery-terms li:last-child {
+    margin-bottom: 0;
+  }
+
+  .delivery-acceptance {
+    margin-top: auto;
+    padding-top: 18px;
+    color: #0f172a;
+  }
+
+  .delivery-acceptance p {
+    margin: 0 0 18px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .delivery-signature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .delivery-signature-box {
+    min-width: 0;
+  }
+
   @media screen and (max-width: 820px) {
     .header-top,
     .info-grid,
@@ -2397,6 +2603,9 @@ async function printOfferte() {
       justify-content: stretch;
     }
 
+    .delivery-grid {
+      grid-template-columns: 1fr;
+    }
     
   }
 
@@ -2787,7 +2996,8 @@ async function printOfferte() {
     overflow: hidden !important;
     page-break-before: always !important;
     break-before: page !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   .electrical-header {
@@ -2831,6 +3041,9 @@ async function printOfferte() {
 
   .electrical-content {
     padding: 7mm 8mm 8mm !important;
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   .electrical-intro {
@@ -2872,6 +3085,116 @@ async function printOfferte() {
   .electrical-card span[style*="color"] {
     color: #b91c1c !important;
     font-weight: 800 !important;
+  }
+
+  .delivery-card {
+    margin-top: 4mm !important;
+    padding: 4mm !important;
+    border: 1px solid #dbe3ec !important;
+    border-radius: 10px !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    page-break-inside: avoid !important;
+  }
+
+  .delivery-card h2 {
+    margin: 0 0 2mm !important;
+    color: #0f172a !important;
+    font-size: 15px !important;
+    line-height: 1.15 !important;
+  }
+
+  .delivery-card-intro {
+    margin: 0 0 3mm !important;
+    color: #475569 !important;
+    font-size: 9.5px !important;
+    line-height: 1.25 !important;
+  }
+
+  .delivery-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 3mm !important;
+    margin-bottom: 3mm !important;
+  }
+
+  .delivery-grid div {
+    padding: 3mm !important;
+    border: 1px solid #dbe3ec !important;
+    border-radius: 8px !important;
+    background: #f8fafc !important;
+    min-width: 0 !important;
+  }
+
+  .delivery-grid span,
+  .delivery-grid small {
+    display: block !important;
+    color: #64748b !important;
+    font-size: 7.5px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.03em !important;
+  }
+
+  .delivery-grid strong {
+    display: block !important;
+    margin: 1mm 0 0.5mm !important;
+    color: #0f172a !important;
+    font-size: 14px !important;
+    line-height: 1.05 !important;
+  }
+
+  .delivery-grid small {
+    color: #475569 !important;
+    font-size: 7px !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+  }
+
+  .delivery-terms {
+    margin: 0 !important;
+    padding: 3mm !important;
+    border: 1px solid #fecaca !important;
+    border-radius: 8px !important;
+    background: #fff1f2 !important;
+    color: #991b1b !important;
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+  }
+
+  .delivery-terms li {
+    margin: 0 0 1.5mm !important;
+  }
+
+  .delivery-terms li:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  .delivery-acceptance {
+    margin-top: auto !important;
+    padding-top: 4mm !important;
+    color: #0f172a !important;
+    page-break-inside: avoid !important;
+  }
+
+  .delivery-acceptance p {
+    margin: 0 0 6mm !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    color: #0f172a !important;
+  }
+
+  .delivery-signature-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6mm !important;
+  }
+
+  .delivery-signature-box {
+    min-width: 0 !important;
   }
 }
 </style>
