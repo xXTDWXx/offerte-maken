@@ -41,6 +41,7 @@ let customerHandlersWired = false;
 
 const OVERKAPPING_HIDDEN_SPEC_LABELS = new Set(['levering', 'levertermijn']);
 const OVERKAPPING_HIGH_INSTALL_DIMENSIONS = new Set(['3x6', '3.6x5.3', '3.6x7.2', '4x6']);
+const SPA_CRANE_DELIVERY_LIMIT_CM = 236;
 
 function $(id) {
   return document.getElementById(id);
@@ -283,9 +284,13 @@ function getSpaDeliveryAccess(product) {
   if (!dimensions) return null;
 
   const shortestSide = Math.min(dimensions.length, dimensions.width);
+  const craneOnly =
+    dimensions.length > SPA_CRANE_DELIVERY_LIMIT_CM ||
+    dimensions.width > SPA_CRANE_DELIVERY_LIMIT_CM;
 
   return {
     dimensions,
+    craneOnly,
     passageWidth: dimensions.height + 5,
     passageHeight: shortestSide + 30
   };
@@ -1358,33 +1363,48 @@ function getElectricalSchemaPageHtml(schema, product) {
   const electricalCardHtml = schema
     ? `<div class="electrical-card">${schema.contentHtml}</div>`
     : '';
+  const deliveryMeasureHtml = deliveryAccess?.craneOnly
+    ? `
+        <p class="delivery-crane-message">
+          Deze spa kan door de afmeting enkel geleverd worden met een kraanfirma. Deze kosten zijn ten laste van de klant.
+        </p>
+      `
+    : `
+        <div class="delivery-grid">
+          <div>
+            <span>Afmeting spa</span>
+            <strong>${escapeHtml(deliveryAccess?.dimensions.raw || '')}</strong>
+          </div>
+          <div>
+            <span>Vrije breedte doorgang</span>
+            <strong>${formatCm(deliveryAccess?.passageWidth)}</strong>
+            <small>hoogte spa + 5 cm</small>
+          </div>
+          <div>
+            <span>Vrije hoogte doorgang</span>
+            <strong>${formatCm(deliveryAccess?.passageHeight)}</strong>
+            <small>kortste zijde spa + 30 cm</small>
+          </div>
+        </div>
+      `;
+  const deliveryCraneTermHtml = deliveryAccess?.craneOnly
+    ? ''
+    : '<li>Indien de hierboven vermelde minimum afmetingen niet kunnen worden voorzien, wordt de spa enkel geleverd met een kraan. Kosten hiervan zijn ten laste van de klant.</li>';
+  const deliveryIntroText = deliveryAccess?.craneOnly
+    ? 'Voor deze spa moet de volledige doorgang vrij en bereikbaar zijn, zonder enige obstakels zoals trappen, hoogteverschillen, hellingen of andere belemmeringen.'
+    : 'Voor deze spa moet de volledige doorgang vrij en bereikbaar zijn volgens onderstaande minimale maten, zonder enige obstakels zoals trappen, hoogteverschillen, hellingen of andere belemmeringen.';
   const deliveryAccessHtml = deliveryAccess
     ? `
         <div class="delivery-card">
           <h2>Doorgang en voorwaarden levering</h2>
           <p class="delivery-card-intro">
-            Voor deze spa moet de volledige doorgang vrij en bereikbaar zijn volgens onderstaande minimale maten, zonder enige obstakels zoals trappen, hoogteverschillen, hellingen of andere belemmeringen.
+            ${deliveryIntroText}
           </p>
-          <div class="delivery-grid">
-            <div>
-              <span>Afmeting spa</span>
-              <strong>${escapeHtml(deliveryAccess.dimensions.raw)}</strong>
-            </div>
-            <div>
-              <span>Vrije breedte doorgang</span>
-              <strong>${formatCm(deliveryAccess.passageWidth)}</strong>
-              <small>hoogte spa + 5 cm</small>
-            </div>
-            <div>
-              <span>Vrije hoogte doorgang</span>
-              <strong>${formatCm(deliveryAccess.passageHeight)}</strong>
-              <small>kortste zijde spa + 30 cm</small>
-            </div>
-          </div>
+          ${deliveryMeasureHtml}
           <ul class="delivery-terms">
             <li>Klaarleggen van stroomkabel volgens hierboven vermeld schema, is de verantwoordelijkheid van de klant.</li>
             <li>De klant voorziet bij levering twee extra mankrachten om de spa veilig te kunnen kantelen en begeleiden.</li>
-            <li>Indien de hierboven vermelde minimum afmetingen niet kunnen worden voorzien, wordt de spa enkel geleverd met een kraan. Kosten hiervan zijn ten laste van de klant.</li>
+            ${deliveryCraneTermHtml}
             <li>Indien op de leveringsdag blijkt dat een of meerdere voorwaarden niet voldaan zijn, gaat de levering niet door waarbij alle hieruit voortvloeiende kosten integraal ten laste van de klant zijn.</li>
           </ul>
         </div>
@@ -2544,6 +2564,18 @@ async function printOfferte() {
     letter-spacing: 0;
   }
 
+  .delivery-crane-message {
+    margin: 0 0 14px;
+    padding: 14px 16px;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    background: #fff1f2;
+    color: #991b1b;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.35;
+  }
+
   .delivery-terms {
     margin: 0;
     padding: 12px 14px;
@@ -3150,6 +3182,18 @@ async function printOfferte() {
     font-weight: 700 !important;
     text-transform: none !important;
     letter-spacing: 0 !important;
+  }
+
+  .delivery-crane-message {
+    margin: 0 0 3mm !important;
+    padding: 3mm !important;
+    border: 1px solid #fecaca !important;
+    border-radius: 8px !important;
+    background: #fff1f2 !important;
+    color: #991b1b !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
   }
 
   .delivery-terms {
