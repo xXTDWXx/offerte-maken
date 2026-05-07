@@ -294,8 +294,8 @@ function getSpaDeliveryAccess(product) {
   return {
     dimensions,
     craneOnly,
-    passageWidth: Math.max(shortestSide + SPA_PASSAGE_WIDTH_MARGIN_CM, SPA_MIN_PASSAGE_WIDTH_CM),
-    passageHeight: dimensions.height + SPA_PASSAGE_HEIGHT_MARGIN_CM
+    passageWidth: Math.max(dimensions.height + SPA_PASSAGE_WIDTH_MARGIN_CM, SPA_MIN_PASSAGE_WIDTH_CM),
+    passageHeight: shortestSide + SPA_PASSAGE_HEIGHT_MARGIN_CM
   };
 }
 
@@ -1381,12 +1381,12 @@ function getElectricalSchemaPageHtml(schema, product) {
           <div>
             <span>Vrije breedte doorgang</span>
             <strong>${formatCm(deliveryAccess?.passageWidth)}</strong>
-            <small>kortste zijde spa + ${SPA_PASSAGE_WIDTH_MARGIN_CM} cm, minimum ${SPA_MIN_PASSAGE_WIDTH_CM} cm</small>
+            <small>hoogte spa + ${SPA_PASSAGE_WIDTH_MARGIN_CM} cm, minimum ${SPA_MIN_PASSAGE_WIDTH_CM} cm</small>
           </div>
           <div>
             <span>Vrije hoogte doorgang</span>
             <strong>${formatCm(deliveryAccess?.passageHeight)}</strong>
-            <small>hoogte spa + ${SPA_PASSAGE_HEIGHT_MARGIN_CM} cm</small>
+            <small>kortste zijde spa + ${SPA_PASSAGE_HEIGHT_MARGIN_CM} cm</small>
           </div>
         </div>
       `;
