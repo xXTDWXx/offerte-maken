@@ -42,7 +42,8 @@ let customerHandlersWired = false;
 const OVERKAPPING_HIDDEN_SPEC_LABELS = new Set(['levering', 'levertermijn']);
 const OVERKAPPING_HIGH_INSTALL_DIMENSIONS = new Set(['3x6', '3.6x5.3', '3.6x7.2', '4x6']);
 const SPA_CRANE_DELIVERY_LIMIT_CM = 236;
-const SPA_DELIVERY_MARGIN_CM = 20;
+const SPA_PASSAGE_WIDTH_MARGIN_CM = 5;
+const SPA_PASSAGE_HEIGHT_MARGIN_CM = 20;
 const SPA_MIN_PASSAGE_WIDTH_CM = 88;
 
 function $(id) {
@@ -293,8 +294,8 @@ function getSpaDeliveryAccess(product) {
   return {
     dimensions,
     craneOnly,
-    passageWidth: Math.max(dimensions.height + SPA_DELIVERY_MARGIN_CM, SPA_MIN_PASSAGE_WIDTH_CM),
-    passageHeight: shortestSide + SPA_DELIVERY_MARGIN_CM
+    passageWidth: Math.max(shortestSide + SPA_PASSAGE_WIDTH_MARGIN_CM, SPA_MIN_PASSAGE_WIDTH_CM),
+    passageHeight: dimensions.height + SPA_PASSAGE_HEIGHT_MARGIN_CM
   };
 }
 
@@ -1380,12 +1381,12 @@ function getElectricalSchemaPageHtml(schema, product) {
           <div>
             <span>Vrije breedte doorgang</span>
             <strong>${formatCm(deliveryAccess?.passageWidth)}</strong>
-            <small>hoogte spa + ${SPA_DELIVERY_MARGIN_CM} cm, minimum ${SPA_MIN_PASSAGE_WIDTH_CM} cm</small>
+            <small>kortste zijde spa + ${SPA_PASSAGE_WIDTH_MARGIN_CM} cm, minimum ${SPA_MIN_PASSAGE_WIDTH_CM} cm</small>
           </div>
           <div>
             <span>Vrije hoogte doorgang</span>
             <strong>${formatCm(deliveryAccess?.passageHeight)}</strong>
-            <small>kortste zijde spa + ${SPA_DELIVERY_MARGIN_CM} cm</small>
+            <small>hoogte spa + ${SPA_PASSAGE_HEIGHT_MARGIN_CM} cm</small>
           </div>
         </div>
       `;
