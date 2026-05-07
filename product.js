@@ -43,6 +43,7 @@ const OVERKAPPING_HIDDEN_SPEC_LABELS = new Set(['levering', 'levertermijn']);
 const OVERKAPPING_HIGH_INSTALL_DIMENSIONS = new Set(['3x6', '3.6x5.3', '3.6x7.2', '4x6']);
 const SPA_CRANE_DELIVERY_LIMIT_CM = 236;
 const SPA_DELIVERY_MARGIN_CM = 20;
+const SPA_MIN_PASSAGE_WIDTH_CM = 88;
 
 function $(id) {
   return document.getElementById(id);
@@ -292,7 +293,7 @@ function getSpaDeliveryAccess(product) {
   return {
     dimensions,
     craneOnly,
-    passageWidth: dimensions.height + SPA_DELIVERY_MARGIN_CM,
+    passageWidth: Math.max(dimensions.height + SPA_DELIVERY_MARGIN_CM, SPA_MIN_PASSAGE_WIDTH_CM),
     passageHeight: shortestSide + SPA_DELIVERY_MARGIN_CM
   };
 }
@@ -1379,7 +1380,7 @@ function getElectricalSchemaPageHtml(schema, product) {
           <div>
             <span>Vrije breedte doorgang</span>
             <strong>${formatCm(deliveryAccess?.passageWidth)}</strong>
-            <small>hoogte spa + ${SPA_DELIVERY_MARGIN_CM} cm</small>
+            <small>hoogte spa + ${SPA_DELIVERY_MARGIN_CM} cm, minimum ${SPA_MIN_PASSAGE_WIDTH_CM} cm</small>
           </div>
           <div>
             <span>Vrije hoogte doorgang</span>
