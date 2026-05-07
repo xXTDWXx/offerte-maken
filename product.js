@@ -162,24 +162,12 @@ function getProductPromotion(product) {
   const source = getPromotionTextSource(product);
   const merk = getMerk(product).toLowerCase();
 
-  if (isBarrelSauna(product?.type)) {
-    return { id: 'barrel-sauna', label: '-10% op barrel sauna' };
-  }
-
   if (merk.includes('vogue') || source.includes('vogue')) {
     return { id: 'vogue', label: '-10% op de Vogue spa' };
   }
 
   if (merk.includes('myspa') || source.includes('myspa')) {
     return { id: 'myspa', label: '-10% op Myspa' };
-  }
-
-  if (merk.includes('health company') || source.includes('health company')) {
-    return { id: 'health-company', label: '-10% op Health Company' };
-  }
-
-  if (merk.includes('infra4health') || source.includes('infra4health')) {
-    return { id: 'infra4health', label: '-10% op Infra4Health' };
   }
 
   return null;
