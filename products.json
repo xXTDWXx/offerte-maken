@@ -9419,6 +9419,85 @@
       ]
     },
     {
+      "id": "sauna::barrelsauna-tr230-glazen-achterwand",
+      "type": "barrelsauna",
+      "title": "Barrelsauna TR230 - Glazen achterwand",
+      "url": "https://www.sunspabenelux.be/p/barrelsauna-tr230-glazen-achterwand/",
+      "image": "https://www.sunspabenelux.be/wp-content/uploads/2026/02/Barrelsauna-TR230-Glazen-achterwand.webp",
+      "price": 6995,
+      "bullets": [],
+      "specs": [
+        {
+          "label": "Aantal banken",
+          "value": "2"
+        },
+        {
+          "label": "Aantal personen",
+          "value": "4 personen"
+        },
+        {
+          "label": "Afmeting",
+          "value": "230 x 185 x 205 cm"
+        },
+        {
+          "label": "Afmeting zitplekken",
+          "value": "30 x 46 cm"
+        },
+        {
+          "label": "Deur",
+          "value": "6 mm gehard glas"
+        },
+        {
+          "label": "Exclusief",
+          "value": "Saunakachel"
+        },
+        {
+          "label": "Glas",
+          "value": "Gehard glas"
+        },
+        {
+          "label": "Merk",
+          "value": "Infra4Health"
+        },
+        {
+          "label": "Ventilatie",
+          "value": "Ja"
+        },
+        {
+          "label": "Verlichting",
+          "value": "Waterdichte binnenverlichting met houten afdekking"
+        },
+        {
+          "label": "Accessoires",
+          "value": "Sauna emmer & sauna lepel, Saunastenen, Thermometer & hygrometer, Zandloper"
+        },
+        {
+          "label": "Houtsoort",
+          "value": "Knotty Red Cedar"
+        },
+        {
+          "label": "Maximale temperatuur",
+          "value": "90-120 graden"
+        },
+        {
+          "label": "Vloer",
+          "value": "Vloerrooster"
+        },
+        {
+          "label": "Achterzijde Barrel",
+          "value": "Volledig glas"
+        },
+        {
+          "label": "Binnen/buiten gebruik",
+          "value": "Buiten gebruik"
+        },
+        {
+          "label": "Type sauna",
+          "value": "Barrelsauna"
+        }
+      ]
+    },
+    {
       "id": "sauna::sauna-pod-knotty-red-cedar",
       "type": "sauna pod",
       "title": "Sauna pod Knotty Red Cedar",
