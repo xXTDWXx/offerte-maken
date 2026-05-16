@@ -1328,6 +1328,19 @@ function cleanElectricalContentHtml(html) {
 }
 
 async function getElectricalSchemaForProduct(product) {
+  if (isBarrelSauna(product?.type)) {
+    return {
+      sectionTitle: 'Barrelsauna',
+      summary: 'Elektrische kachel 8-9 kW',
+      contentHtml: `
+        <p>
+          <strong>Stroomschema indien elektrische kachel 8-9 kW:</strong><br>
+          3 x 16 amp 230V/380V (driefase).
+        </p>
+      `
+    };
+  }
+
   const match = getElectricalSchemaMatch(product);
   if (!match) return null;
 
@@ -1358,7 +1371,8 @@ async function getElectricalSchemaForProduct(product) {
 
 function getElectricalSchemaPageHtml(schema, product) {
   const deliveryAccess = getSpaDeliveryAccess(product);
-  if (!schema && !deliveryAccess) return '';
+  const isBarrelProduct = isBarrelSauna(product?.type);
+  if (!schema && !deliveryAccess && !isBarrelProduct) return '';
 
   const logo = COMPANY_LOGO_URL
     ? `<img src="${escapeHtml(COMPANY_LOGO_URL)}" alt="${escapeHtml(COMPANY_NAME)}" class="offer-logo electrical-logo">`
@@ -1426,6 +1440,34 @@ function getElectricalSchemaPageHtml(schema, product) {
         </div>
       `
     : '';
+  const barrelRequirementsHtml = isBarrelProduct
+    ? `
+        <div class="delivery-card">
+          <h2>Ondergrond en voorwaarden plaatsing</h2>
+          <p class="delivery-card-intro">
+            Voor deze barrelsauna moet de plaats waar de sauna komt volledig bereikbaar, vlak en klaar zijn voor plaatsing.
+          </p>
+          <ul class="delivery-terms">
+            <li>Ondergrond moet stevig zijn, beton of stabilise.</li>
+            <li>Klaarleggen van stroomkabel volgens hierboven vermeld schema, is de verantwoordelijkheid van de klant.</li>
+            <li>Indien op de leveringsdag blijkt dat een of meerdere voorwaarden niet voldaan zijn, gaat de levering niet door waarbij alle hieruit voortvloeiende kosten integraal ten laste van de klant zijn.</li>
+          </ul>
+        </div>
+        <div class="delivery-acceptance">
+          <p>De klant verklaart deze leveringsvoorwaarden vooraf te hebben ontvangen, gelezen en aanvaard.</p>
+          <div class="delivery-signature-grid">
+            <div class="delivery-signature-box">
+              <div class="signature-label">Naam klant</div>
+              <div class="signature-line"></div>
+            </div>
+            <div class="delivery-signature-box">
+              <div class="signature-label">Handtekening</div>
+              <div class="signature-line"></div>
+            </div>
+          </div>
+        </div>
+      `
+    : '';
 
   return `
     <section class="sheet electrical-sheet">
@@ -1443,6 +1485,7 @@ function getElectricalSchemaPageHtml(schema, product) {
         </div>
         ${electricalCardHtml}
         ${deliveryAccessHtml}
+        ${barrelRequirementsHtml}
       </div>
     </section>
   `;
