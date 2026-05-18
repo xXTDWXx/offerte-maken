@@ -11,15 +11,15 @@
     <section class="hero">
       <h1>Stel je hottub samen</h1>
       <p>
-        Kies eerst het model, daarna de afwerking, het formaat en alle gewenste opties.
-        De totaalprijs wordt automatisch berekend op basis van je selectie.
+        Kies stap voor stap het model, de afwerking, het formaat en alle gewenste opties.
+        Na de laatste keuze krijg je een volledige samenvatting met totaalprijs.
       </p>
       <div class="hero-actions">
         <button id="technicalPrint" class="btn btn-secondary" type="button">Technische gegevens</button>
       </div>
     </section>
 
-    <div class="layout">
+    <div class="layout" id="configLayout">
       <main class="main">
 
         <section class="section">
@@ -27,7 +27,7 @@
           <p class="section-intro">Start met de vorm van je hottub.</p>
           <div class="grid-3">
             <label class="choice-card">
-              <input type="radio" name="model" value="rond" checked>
+              <input type="radio" name="model" value="rond">
               <img src="images/RONDE HOTTUB.jpg" alt="Ronde hottub" loading="lazy" decoding="async">
               <div class="choice-content">
                 <h3>Rond model</h3>
@@ -75,7 +75,7 @@
           <p class="section-intro">Geen prijsverschil tussen deze kleuren.</p>
           <div class="grid-3">
             <label class="choice-card">
-              <input type="radio" name="kleur" value="Pearl White" checked>
+              <input type="radio" name="kleur" value="Pearl White">
               <img src="images/White.jpg" alt="Pearl White" loading="lazy" decoding="async">
               <div class="choice-content">
               <h3>Pearl White</h3>
@@ -108,7 +108,7 @@
           <p class="section-intro">Extern, intern, elektrisch of hybride volgens de Sunspa configurator.</p>
           <div class="grid-2">
             <label class="choice-card">
-              <input type="radio" name="kachel" value="0" checked>
+              <input type="radio" name="kachel" value="0">
               <img src="images/KACHEL EXTERN.jpg" alt="Externe kachel" loading="lazy" decoding="async">
               <div class="choice-content">
                 <h3>Houtkachel extern</h3>
@@ -152,7 +152,7 @@
           <p class="section-intro">Kies het gewenste jetsysteem.</p>
           <div class="auto-grid">
             <label class="simple-card">
-              <input type="radio" name="massage" value="0" checked>
+              <input type="radio" name="massage" value="0">
               <span class="badge">Standaard</span>
               <h3>Geen massage</h3>
               <div class="meta">Zonder jets</div>
@@ -235,14 +235,6 @@
               </div>
             </label>
 
-            <label class="simple-card">
-              <input type="checkbox" name="verlichting" value="305" data-label="1 ledlijn onderkant">
-              <span class="badge">LED</span>
-              <h3>1 ledlijn onderkant</h3>
-              <div class="meta">Sfeerverlichting onderaan</div>
-              <div class="price">+ € 305</div>
-            </label>
-
             <label class="choice-card">
               <input type="checkbox" name="verlichting" value="305" data-label="10 mini leds">
               <img src="images/Miniled.jpg" alt="Mini leds" loading="lazy" decoding="async">
@@ -260,7 +252,7 @@
           <p class="section-intro">Voor helderder en proper water.</p>
           <div class="auto-grid">
             <label class="simple-card">
-              <input type="radio" name="filter" value="0" checked>
+              <input type="radio" name="filter" value="0">
               <span class="badge">Standaard</span>
               <h3>Geen filter</h3>
               <div class="meta">Zonder filtersysteem</div>
@@ -294,7 +286,7 @@
           <p class="section-intro">Kies de gewenste afdekking.</p>
           <div class="auto-grid">
             <label class="simple-card">
-              <input type="radio" name="cover" value="0" checked>
+              <input type="radio" name="cover" value="0">
               <span class="badge">Standaard</span>
               <h3>Geen cover</h3>
               <div class="meta">Zonder extra cover</div>
@@ -398,8 +390,11 @@
         </section>
       </main>
 
-      <aside class="summary">
+      <aside class="summary" id="finalSummary" aria-live="polite">
         <h2>Je samenstelling</h2>
+        <p class="section-intro">Controleer hieronder alle gekozen opties.</p>
+
+        <div class="final-summary-cards" id="finalSummaryCards"></div>
 
         <div class="total-box">
           <small>Totaalprijs</small>

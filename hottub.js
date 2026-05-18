@@ -1,6 +1,21 @@
 const COMPANY_NAME = "Sunspa Brugge/Lievegem";
 const COMPANY_LOGO = "logo.svg";
 const HOTTUB_INSTALLATION_PRICE = 695;
+const wizardStepNames = [
+  "model",
+  "wood",
+  "size",
+  "kleur",
+  "kachel",
+  "massage",
+  "verlichting",
+  "filter",
+  "cover",
+  "extra"
+];
+const multiSelectStepNames = new Set(["verlichting", "extra"]);
+let currentWizardStep = 0;
+let wizardCompleted = false;
 const TECHNICAL_IMAGES = [
   { src: "images/Hottub technical sheets/1. Acrylic 180cm integrated.jpg", title: "1. Acrylic 180cm integrated" },
   { src: "images/Hottub technical sheets/2. Acrylic 180cm horizon.jpg", title: "2. Acrylic 180cm horizon" },
@@ -131,7 +146,7 @@ function renderWoodOptions() {
 
   Object.entries(woods).forEach(([key, wood], index) => {
     const minPrice = Math.min(...Object.values(wood.prices));
-    const checked = currentWood ? currentWood === key : index === 0;
+    const checked = currentWood === key;
 
     container.insertAdjacentHTML("beforeend", `
       <label class="choice-card">
@@ -150,6 +165,7 @@ function renderWoodOptions() {
     input.addEventListener("change", () => {
       renderSizeOptions();
       updateSummary();
+      goToNextStep();
     });
   });
 }
@@ -167,7 +183,7 @@ function renderSizeOptions() {
   const hasCurrentSize = model.sizes.some(size => size.id === currentSize);
 
   model.sizes.forEach((size, index) => {
-    const checked = hasCurrentSize ? currentSize === size.id : index === 0;
+    const checked = hasCurrentSize && currentSize === size.id;
     const price = wood.prices[size.id];
 
     sizeWrap.insertAdjacentHTML("beforeend", `
@@ -182,7 +198,10 @@ function renderSizeOptions() {
   });
 
   document.querySelectorAll('input[name="size"]').forEach(input => {
-    input.addEventListener("change", updateSummary);
+    input.addEventListener("change", () => {
+      updateSummary();
+      goToNextStep();
+    });
   });
 }
 
@@ -235,6 +254,51 @@ function getLabelFromCheckbox(input) {
   return h3 ? h3.textContent.trim() : (input.dataset.label || input.value);
 }
 
+function getCardImage(input) {
+  const card = input?.closest("label");
+  const image = card ? card.querySelector("img") : null;
+  return image ? { src: image.getAttribute("src"), alt: image.getAttribute("alt") || getInputLabel(input) } : null;
+}
+
+function getInputLabel(input) {
+  if (!input) return "-";
+  const card = input.closest("label");
+  const h3 = card ? card.querySelector("h3") : null;
+  return h3 ? h3.textContent.trim() : (input.dataset.label || input.value);
+}
+
+function inputPrice(input) {
+  return input ? Number(input.value || 0) : 0;
+}
+
+function checkedInput(name) {
+  return document.querySelector(`input[name="${name}"]:checked`);
+}
+
+function selectedSummaryItem(name, title, price = null) {
+  const input = checkedInput(name);
+  return {
+    title,
+    label: getInputLabel(input),
+    price: price ?? inputPrice(input),
+    image: getCardImage(input)
+  };
+}
+
+function selectedCheckboxSummaryItems(name, title) {
+  const items = selectedCheckboxes(name);
+  if (!items.length) {
+    return [{ title, label: "Geen", price: 0, image: null }];
+  }
+
+  return items.map(input => ({
+    title,
+    label: getInputLabel(input),
+    price: inputPrice(input),
+    image: getCardImage(input)
+  }));
+}
+
 function getCurrentConfiguration() {
   const labels = getBaseLabels();
   const kachel = selectedRadioNumber("kachel");
@@ -277,6 +341,7 @@ function getCurrentConfiguration() {
 function updateSummary() {
   const current = getCurrentConfiguration();
   document.getElementById("totalPrice").textContent = euro(current.total);
+  renderFinalSummaryCards(current);
 
   const extraText = current.extraLabels.length ? current.extraLabels.join(", ") : "Geen";
 
@@ -302,11 +367,80 @@ function updateSummary() {
   `).join("");
 }
 
+function getFinalSummaryItems(current) {
+  const baseInput = checkedInput("model");
+  const woodInput = checkedInput("wood");
+  const sizeInput = checkedInput("size");
+  const colorInput = checkedInput("kleur");
+
+  return [
+    {
+      title: "Model",
+      label: current.model,
+      price: current.basePrice,
+      image: getCardImage(baseInput)
+    },
+    {
+      title: "Houtsoort",
+      label: current.wood,
+      price: 0,
+      image: getCardImage(woodInput)
+    },
+    {
+      title: "Formaat",
+      label: current.size,
+      price: 0,
+      image: getCardImage(sizeInput)
+    },
+    {
+      title: "Kuipkleur",
+      label: current.kleur,
+      price: 0,
+      image: getCardImage(colorInput)
+    },
+    selectedSummaryItem("kachel", "Kachel", current.kachel),
+    selectedSummaryItem("massage", "Massage", current.massage),
+    ...selectedCheckboxSummaryItems("verlichting", "Verlichting"),
+    selectedSummaryItem("filter", "Filter", current.filter),
+    selectedSummaryItem("cover", "Cover", current.cover),
+    ...selectedCheckboxSummaryItems("extra", "Extra's")
+  ];
+}
+
+function renderFinalSummaryCards(current) {
+  const container = document.getElementById("finalSummaryCards");
+  if (!container) return;
+
+  const items = getFinalSummaryItems(current).filter(item => item.label && item.label !== "-");
+  container.innerHTML = items.map(item => {
+    const media = item.image
+      ? `<img src="${escapeHtml(item.image.src)}" alt="${escapeHtml(item.image.alt)}">`
+      : `<div class="final-summary-thumb-fallback">${escapeHtml(item.title)}</div>`;
+    const price = item.price ? euro(item.price) : "+ € 0";
+
+    return `
+      <article class="final-summary-card">
+        ${media}
+        <div>
+          <small>${escapeHtml(item.title)}</small>
+          <strong>${escapeHtml(item.label)}</strong>
+        </div>
+        <div class="summary-card-price">${escapeHtml(price)}</div>
+      </article>
+    `;
+  }).join("");
+}
+
 function bindStaticInputs() {
   const names = ["kleur", "kachel", "massage", "verlichting", "filter", "cover", "extra"];
   names.forEach(name => {
     document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
-      input.addEventListener("change", updateSummary);
+      input.addEventListener("change", () => {
+        updateSummary();
+        if (!multiSelectStepNames.has(name)) {
+          goToNextStep();
+        }
+      });
     });
   });
 }
@@ -315,6 +449,112 @@ function rebuildDynamicSections() {
   renderWoodOptions();
   renderSizeOptions();
   updateSummary();
+}
+
+function getSections() {
+  return [...document.querySelectorAll(".main > .section")];
+}
+
+function getCurrentStepName() {
+  return wizardStepNames[currentWizardStep];
+}
+
+function getCurrentStepInputType() {
+  const stepName = getCurrentStepName();
+  return multiSelectStepNames.has(stepName) ? "checkbox" : "radio";
+}
+
+function getProgressLabel() {
+  return `Stap ${currentWizardStep + 1} van ${wizardStepNames.length}`;
+}
+
+function stepHasSelection(stepName) {
+  if (multiSelectStepNames.has(stepName)) return true;
+  return Boolean(document.querySelector(`input[name="${stepName}"]:checked`));
+}
+
+function goToStep(index) {
+  const sections = getSections();
+  currentWizardStep = Math.max(0, Math.min(index, sections.length - 1));
+  wizardCompleted = false;
+  renderWizard();
+}
+
+function goToNextStep() {
+  if (currentWizardStep >= wizardStepNames.length - 1) {
+    showFinalSummary();
+    return;
+  }
+
+  goToStep(currentWizardStep + 1);
+}
+
+function goToPreviousStep() {
+  if (wizardCompleted) {
+    wizardCompleted = false;
+    currentWizardStep = wizardStepNames.length - 1;
+    renderWizard();
+    return;
+  }
+
+  goToStep(currentWizardStep - 1);
+}
+
+function showFinalSummary() {
+  wizardCompleted = true;
+  updateSummary();
+  renderWizard();
+}
+
+function renderWizard() {
+  const sections = getSections();
+  const summary = document.getElementById("finalSummary");
+  const main = document.querySelector(".main");
+  const progressPercent = ((currentWizardStep + 1) / wizardStepNames.length) * 100;
+
+  sections.forEach((section, index) => {
+    section.classList.toggle("is-active", !wizardCompleted && index === currentWizardStep);
+
+    const existingProgress = section.querySelector(".wizard-progress");
+    if (existingProgress) existingProgress.remove();
+
+    const existingActions = section.querySelector(".wizard-actions");
+    if (existingActions) existingActions.remove();
+
+    if (!wizardCompleted && index === currentWizardStep) {
+      section.insertAdjacentHTML("afterbegin", `
+        <div class="wizard-progress" aria-label="${escapeHtml(getProgressLabel())}">
+          <span>${escapeHtml(getProgressLabel())}</span>
+          <div class="wizard-progress-bar"><span class="wizard-progress-fill" style="width:${progressPercent}%"></span></div>
+        </div>
+      `);
+
+      const stepName = getCurrentStepName();
+      const nextLabel = index === wizardStepNames.length - 1 ? "Samenvatting bekijken" : "Verder";
+      const nextDisabled = !stepHasSelection(stepName);
+
+      section.insertAdjacentHTML("beforeend", `
+        <div class="wizard-actions">
+          <button class="btn btn-secondary wizard-prev" type="button" ${index === 0 ? "disabled" : ""}>Vorige</button>
+          <button class="btn btn-primary wizard-next" type="button" ${nextDisabled ? "disabled" : ""}>${nextLabel}</button>
+        </div>
+      `);
+    }
+  });
+
+  if (main) main.classList.toggle("hidden", wizardCompleted);
+  if (summary) summary.classList.toggle("is-active", wizardCompleted);
+
+  document.querySelectorAll(".wizard-prev").forEach(button => {
+    button.addEventListener("click", goToPreviousStep);
+  });
+
+  document.querySelectorAll(".wizard-next").forEach(button => {
+    button.addEventListener("click", goToNextStep);
+  });
+
+  const activeSection = !wizardCompleted ? sections[currentWizardStep] : summary;
+  activeSection?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function getOfferRowsHtml() {
@@ -880,6 +1120,7 @@ function printTechnicalData() {
 document.querySelectorAll('input[name="model"]').forEach(input => {
   input.addEventListener("change", () => {
     rebuildDynamicSections();
+    goToNextStep();
   });
 });
 
@@ -892,3 +1133,4 @@ document.getElementById("technicalPrint").addEventListener("click", printTechnic
 
 bindStaticInputs();
 rebuildDynamicSections();
+renderWizard();

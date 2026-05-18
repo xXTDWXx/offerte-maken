@@ -63,10 +63,7 @@
     }
 
     .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 360px;
-      gap: 24px;
-      align-items: start;
+      display: block;
     }
 
     .main {
@@ -79,6 +76,38 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 24px;
+    }
+
+    .section:not(.is-active) {
+      display: none;
+    }
+
+    .wizard-progress {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .wizard-progress-bar {
+      flex: 1;
+      height: 8px;
+      border-radius: 999px;
+      background: #dfe8f0;
+      overflow: hidden;
+    }
+
+    .wizard-progress-fill {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: var(--brand);
+      transition: width 0.2s ease;
     }
 
     .section h2 {
@@ -245,12 +274,16 @@
     }
 
     .summary {
-      position: sticky;
-      top: 18px;
+      display: none;
+      position: static;
       background: var(--card);
       border-radius: 20px;
       box-shadow: var(--shadow);
       padding: 22px;
+    }
+
+    .summary.is-active {
+      display: block;
     }
 
     .summary h2 {
@@ -284,6 +317,64 @@
     .summary-list {
       display: grid;
       gap: 10px;
+    }
+
+    .final-summary-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .final-summary-card {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      min-height: 96px;
+    }
+
+    .final-summary-card img,
+    .final-summary-thumb-fallback {
+      width: 92px;
+      height: 72px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: #edf3f7;
+      display: grid;
+      place-items: center;
+      color: var(--brand);
+      font-weight: 800;
+      font-size: 13px;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .final-summary-card small {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .final-summary-card strong {
+      display: block;
+      color: #173c5a;
+      font-size: 17px;
+      line-height: 1.2;
+    }
+
+    .final-summary-card .summary-card-price {
+      color: #173c5a;
+      font-weight: 800;
+      white-space: nowrap;
+      text-align: right;
     }
 
     .summary-row {
@@ -320,6 +411,15 @@
       margin-top: 18px;
     }
 
+    .wizard-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
     .btn {
       appearance: none;
       border: none;
@@ -328,6 +428,11 @@
       font-weight: 700;
       cursor: pointer;
       font-size: 14px;
+    }
+
+    .btn[disabled] {
+      cursor: not-allowed;
+      opacity: 0.45;
     }
 
     .btn:hover {
@@ -348,13 +453,25 @@
       display: none !important;
     }
 
-    @media (max-width: 1100px) {
-      .layout {
-        grid-template-columns: 1fr;
+    @media (min-width: 900px) and (min-height: 1200px) {
+      .page {
+        max-width: 1080px;
+        padding: 30px 24px 56px;
       }
 
+      .section,
       .summary {
-        position: static;
+        padding: 30px;
+      }
+
+      .choice-card img {
+        height: 260px;
+      }
+
+      .btn {
+        min-height: 58px;
+        padding: 16px 26px;
+        font-size: 17px;
       }
     }
 
@@ -413,10 +530,6 @@
       }
 
       .summary {
-        order: -1;
-        position: sticky;
-        top: 0;
-        z-index: 20;
         padding: 14px;
         border-radius: 16px;
       }
@@ -436,7 +549,7 @@
       }
 
       .summary-list {
-        display: none;
+        gap: 8px;
       }
 
       .summary-row {
@@ -451,6 +564,25 @@
 
       .summary-note {
         display: none;
+      }
+
+      .final-summary-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .final-summary-card {
+        grid-template-columns: 78px minmax(0, 1fr);
+      }
+
+      .final-summary-card img,
+      .final-summary-thumb-fallback {
+        width: 78px;
+        height: 64px;
+      }
+
+      .final-summary-card .summary-card-price {
+        grid-column: 2;
+        text-align: left;
       }
 
       .section {
@@ -530,6 +662,11 @@
       .btn {
         width: 100%;
         min-height: 46px;
+      }
+
+      .wizard-actions {
+        display: grid;
+        grid-template-columns: 1fr;
       }
     }
 
