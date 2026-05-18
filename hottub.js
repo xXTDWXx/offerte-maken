@@ -32,11 +32,11 @@ const config = {
       { id: "220", label: "220 cm Ø", note: "6-7 personen · 1600 L" }
     ],
     woods: {
-      fichte: { label: "Fichte", image: "images/Fichte hout.jpg", prices: { "200": 3490, "220": 3950 } },
-      thermo: { label: "Thermo", image: "images/Thermo hout.jpg", prices: { "200": 3750, "220": 4190 } },
-      wpcbrown: { label: "WPC Brown", image: "images/WPC BROWN.jpg", prices: { "200": 3750, "220": 4190 } },
-      wpcblack: { label: "WPC Black", image: "images/WPC BLACK.png", prices: { "200": 3750, "220": 4190 } },
-      redcedar: { label: "Red Cedar", image: "images/RED CEDAR.jpg", prices: { "200": 4950, "220": 5490 } }
+      fichte: { label: "Fichte", image: "images/Fichte hout.jpg", prices: { "200": 3650, "220": 4150 } },
+      thermo: { label: "Thermo", image: "images/Thermo hout.jpg", prices: { "200": 3925, "220": 4405 } },
+      wpcbrown: { label: "WPC Brown", image: "images/WPC BROWN.jpg", prices: { "200": 3925, "220": 4405 } },
+      wpcblack: { label: "WPC Black", image: "images/WPC BLACK.png", prices: { "200": 3925, "220": 4405 } },
+      redcedar: { label: "Red Cedar", image: "images/RED CEDAR.jpg", prices: { "200": 5200, "220": 5765 } }
     }
   },
   ovaal: {
@@ -45,11 +45,11 @@ const config = {
       { id: "180x120", label: "180 × 120 × 89 cm", note: "2 personen · 700 L" }
     ],
     woods: {
-      fichte: { label: "Fichte", image: "images/Fichte hout.jpg", prices: { "180x120": 2590 } },
-      thermo: { label: "Thermo", image: "images/Thermo hout.jpg", prices: { "180x120": 2690 } },
-      wpcbrown: { label: "WPC Brown", image: "images/WPC BROWN.jpg", prices: { "180x120": 2690 } },
-      wpcblack: { label: "WPC Black", image: "images/WPC BLACK.png", prices: { "180x120": 2690 } },
-      redcedar: { label: "Red Cedar", image: "images/RED CEDAR.jpg", prices: { "180x120": 3590 } }
+      fichte: { label: "Fichte", image: "images/Fichte hout.jpg", prices: { "180x120": 2720 } },
+      thermo: { label: "Thermo", image: "images/Thermo hout.jpg", prices: { "180x120": 2825 } },
+      wpcbrown: { label: "WPC Brown", image: "images/WPC BROWN.jpg", prices: { "180x120": 2825 } },
+      wpcblack: { label: "WPC Black", image: "images/WPC BLACK.png", prices: { "180x120": 2825 } },
+      redcedar: { label: "Red Cedar", image: "images/RED CEDAR.jpg", prices: { "180x120": 3770 } }
     }
   },
   vierkant: {
@@ -58,11 +58,11 @@ const config = {
       { id: "200x200", label: "200 × 200 × 101 cm", note: "6-8 personen · 1600 L" }
     ],
     woods: {
-      fichte: { label: "Fichte", image: "images/Fichte hout.jpg", prices: { "200x200": 3950 } },
-      thermo: { label: "Thermo", image: "images/Thermo hout.jpg", prices: { "200x200": 4200 } },
-      wpcbrown: { label: "WPC Brown", image: "images/WPC BROWN.jpg", prices: { "200x200": 4190 } },
-      wpcblack: { label: "WPC Black", image: "images/WPC BLACK.png", prices: { "200x200": 4190 } },
-      redcedar: { label: "Red Cedar", image: "images/RED CEDAR.jpg", prices: { "200x200": 5690 } }
+      fichte: { label: "Fichte", image: "images/Fichte hout.jpg", prices: { "200x200": 4150 } },
+      thermo: { label: "Thermo", image: "images/Thermo hout.jpg", prices: { "200x200": 4405 } },
+      wpcbrown: { label: "WPC Brown", image: "images/WPC BROWN.jpg", prices: { "200x200": 4405 } },
+      wpcblack: { label: "WPC Black", image: "images/WPC BLACK.png", prices: { "200x200": 4405 } },
+      redcedar: { label: "Red Cedar", image: "images/RED CEDAR.jpg", prices: { "200x200": 5975 } }
     }
   }
 };
@@ -164,8 +164,10 @@ function renderSizeOptions() {
 
   sizeWrap.innerHTML = "";
 
+  const hasCurrentSize = model.sizes.some(size => size.id === currentSize);
+
   model.sizes.forEach((size, index) => {
-    const checked = currentSize ? currentSize === size.id : index === 0;
+    const checked = hasCurrentSize ? currentSize === size.id : index === 0;
     const price = wood.prices[size.id];
 
     sizeWrap.insertAdjacentHTML("beforeend", `
@@ -188,8 +190,15 @@ function getBasePrice() {
   const modelKey = getCurrentModelKey();
   const woodKey = getCurrentWoodKey();
   const sizeKey = getCurrentSizeKey();
-  if (!modelKey || !woodKey || !sizeKey) return 0;
-  return config[modelKey].woods[woodKey].prices[sizeKey] || 0;
+  const model = config[modelKey];
+  if (!model) return 0;
+
+  const wood = model.woods[woodKey] || model.woods[Object.keys(model.woods)[0]];
+  const resolvedSizeKey = model.sizes.some(size => size.id === sizeKey)
+    ? sizeKey
+    : model.sizes[0]?.id;
+
+  return wood?.prices?.[resolvedSizeKey] || 0;
 }
 
 function getBaseLabels() {
@@ -198,8 +207,8 @@ function getBaseLabels() {
   const sizeKey = getCurrentSizeKey();
 
   const model = config[modelKey];
-  const wood = model?.woods?.[woodKey];
-  const size = model?.sizes?.find(s => s.id === sizeKey);
+  const wood = model?.woods?.[woodKey] || model?.woods?.[Object.keys(model?.woods || {})[0]];
+  const size = model?.sizes?.find(s => s.id === sizeKey) || model?.sizes?.[0];
 
   return {
     model: model ? model.label : "-",
@@ -229,22 +238,18 @@ function getLabelFromCheckbox(input) {
 function getCurrentConfiguration() {
   const labels = getBaseLabels();
   const kachel = selectedRadioNumber("kachel");
-  const systeem = selectedRadioNumber("systeem");
   const massage = selectedRadioNumber("massage");
-  const verlichting = selectedRadioNumber("verlichting");
-
-  const filterItems = selectedCheckboxes("filter");
-  const filter = filterItems.reduce((sum, item) => sum + Number(item.value), 0);
-
-  const isolatieItems = selectedCheckboxes("isolatie");
+  const verlichtingItems = selectedCheckboxes("verlichting");
+  const verlichting = verlichtingItems.reduce((sum, item) => sum + Number(item.value), 0);
+  const filter = selectedRadioNumber("filter");
+  const cover = selectedRadioNumber("cover");
   const extraItems = selectedCheckboxes("extra");
 
-  const isolatieTotal = isolatieItems.reduce((sum, item) => sum + Number(item.value), 0);
   const extraTotal = extraItems.reduce((sum, item) => sum + Number(item.value), 0);
 
   const basePrice = getBasePrice();
   const installation = HOTTUB_INSTALLATION_PRICE;
-  const total = basePrice + installation + kachel + systeem + massage + verlichting + filter + isolatieTotal + extraTotal;
+  const total = basePrice + installation + kachel + massage + verlichting + filter + cover + extraTotal;
 
   return {
     model: labels.model,
@@ -252,20 +257,18 @@ function getCurrentConfiguration() {
     size: labels.size,
     kleur: selectedRadioValue("kleur") || "-",
     kachelLabel: getLabelFromSelected("kachel"),
-    systeemLabel: getLabelFromSelected("systeem"),
     massageLabel: getLabelFromSelected("massage"),
-    verlichtingLabel: getLabelFromSelected("verlichting"),
-    filterLabel: filterItems.length ? filterItems.map(input => input.dataset.label || getLabelFromCheckbox(input)).join(", ") : "Geen",
-    isolatieLabels: getCheckedLabels("isolatie"),
+    verlichtingLabel: verlichtingItems.length ? verlichtingItems.map(getLabelFromCheckbox).join(", ") : "Geen",
+    filterLabel: getLabelFromSelected("filter"),
+    coverLabel: getLabelFromSelected("cover"),
     extraLabels: getCheckedLabels("extra"),
     basePrice,
     installation,
     kachel,
-    systeem,
     massage,
     verlichting,
     filter,
-    isolatieTotal,
+    cover,
     extraTotal,
     total
   };
@@ -275,7 +278,6 @@ function updateSummary() {
   const current = getCurrentConfiguration();
   document.getElementById("totalPrice").textContent = euro(current.total);
 
-  const isolatieText = current.isolatieLabels.length ? current.isolatieLabels.join(", ") : "Geen";
   const extraText = current.extraLabels.length ? current.extraLabels.join(", ") : "Geen";
 
   const rows = [
@@ -284,11 +286,10 @@ function updateSummary() {
     ["Formaat", current.size],
     ["Kuipkleur", current.kleur],
     ["Kachel", current.kachelLabel],
-    ["Systeem", current.systeemLabel],
     ["Massage", current.massageLabel],
     ["Verlichting", current.verlichtingLabel],
     ["Filter", current.filterLabel],
-    ["Isolatie", isolatieText],
+    ["Cover", current.coverLabel],
     ["Extra's", extraText]
   ];
 
@@ -302,7 +303,7 @@ function updateSummary() {
 }
 
 function bindStaticInputs() {
-  const names = ["kleur", "kachel", "systeem", "massage", "verlichting", "filter", "isolatie", "extra"];
+  const names = ["kleur", "kachel", "massage", "verlichting", "filter", "cover", "extra"];
   names.forEach(name => {
     document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
       input.addEventListener("change", updateSummary);
@@ -323,18 +324,11 @@ function getOfferRowsHtml() {
     { label: "Levering & installatie", price: current.installation },
     { label: `Kuipkleur: ${current.kleur}`, price: 0 },
     { label: `Kachel: ${current.kachelLabel}`, price: current.kachel },
-    { label: `Systeem: ${current.systeemLabel}`, price: current.systeem },
     { label: `Massage: ${current.massageLabel}`, price: current.massage },
     { label: `Verlichting: ${current.verlichtingLabel}`, price: current.verlichting },
-    { label: `Filter: ${current.filterLabel}`, price: current.filter }
+    { label: `Filter: ${current.filterLabel}`, price: current.filter },
+    { label: `Cover: ${current.coverLabel}`, price: current.cover }
   ];
-
-  const isolatieItems = selectedCheckboxes("isolatie");
-  if (isolatieItems.length) {
-    const isolatieLabels = isolatieItems.map(input => input.dataset.label || getLabelFromCheckbox(input)).join(", ");
-    const isolatiePrice = isolatieItems.reduce((sum, input) => sum + Number(input.value), 0);
-    lines.push({ label: `Isolatie: ${isolatieLabels}`, price: isolatiePrice });
-  }
 
   const extraItems = selectedCheckboxes("extra");
   if (extraItems.length) {
