@@ -47,11 +47,11 @@ const config = {
       { id: "220", label: "220 cm Ø", note: "6-7 personen · 1600 L" }
     ],
     woods: {
-      fichte: { label: "Fichte", image: "images/Fichte hout.jpg", prices: { "200": 3650, "220": 4150 } },
-      thermo: { label: "Thermo", image: "images/Thermo hout.jpg", prices: { "200": 3925, "220": 4405 } },
-      wpcbrown: { label: "WPC Brown", image: "images/WPC BROWN.jpg", prices: { "200": 3925, "220": 4405 } },
-      wpcblack: { label: "WPC Black", image: "images/WPC BLACK.png", prices: { "200": 3925, "220": 4405 } },
-      redcedar: { label: "Red Cedar", image: "images/RED CEDAR.jpg", prices: { "200": 5200, "220": 5765 } }
+      fichte: { label: "Fichte", image: "images/hottub-fast/fichte-hout.jpg", prices: { "200": 3650, "220": 4150 } },
+      thermo: { label: "Thermo", image: "images/hottub-fast/thermo-hout.jpg", prices: { "200": 3925, "220": 4405 } },
+      wpcbrown: { label: "WPC Brown", image: "images/hottub-fast/wpc-brown.jpg", prices: { "200": 3925, "220": 4405 } },
+      wpcblack: { label: "WPC Black", image: "images/hottub-fast/wpc-black.jpg", prices: { "200": 3925, "220": 4405 } },
+      redcedar: { label: "Red Cedar", image: "images/hottub-fast/red-cedar.jpg", prices: { "200": 5200, "220": 5765 } }
     }
   },
   ovaal: {
@@ -60,11 +60,11 @@ const config = {
       { id: "180x120", label: "180 × 120 × 89 cm", note: "2 personen · 700 L" }
     ],
     woods: {
-      fichte: { label: "Fichte", image: "images/Fichte hout.jpg", prices: { "180x120": 2720 } },
-      thermo: { label: "Thermo", image: "images/Thermo hout.jpg", prices: { "180x120": 2825 } },
-      wpcbrown: { label: "WPC Brown", image: "images/WPC BROWN.jpg", prices: { "180x120": 2825 } },
-      wpcblack: { label: "WPC Black", image: "images/WPC BLACK.png", prices: { "180x120": 2825 } },
-      redcedar: { label: "Red Cedar", image: "images/RED CEDAR.jpg", prices: { "180x120": 3770 } }
+      fichte: { label: "Fichte", image: "images/hottub-fast/fichte-hout.jpg", prices: { "180x120": 2720 } },
+      thermo: { label: "Thermo", image: "images/hottub-fast/thermo-hout.jpg", prices: { "180x120": 2825 } },
+      wpcbrown: { label: "WPC Brown", image: "images/hottub-fast/wpc-brown.jpg", prices: { "180x120": 2825 } },
+      wpcblack: { label: "WPC Black", image: "images/hottub-fast/wpc-black.jpg", prices: { "180x120": 2825 } },
+      redcedar: { label: "Red Cedar", image: "images/hottub-fast/red-cedar.jpg", prices: { "180x120": 3770 } }
     }
   },
   vierkant: {
@@ -73,11 +73,11 @@ const config = {
       { id: "200x200", label: "200 × 200 × 101 cm", note: "6-8 personen · 1600 L" }
     ],
     woods: {
-      fichte: { label: "Fichte", image: "images/Fichte hout.jpg", prices: { "200x200": 4150 } },
-      thermo: { label: "Thermo", image: "images/Thermo hout.jpg", prices: { "200x200": 4405 } },
-      wpcbrown: { label: "WPC Brown", image: "images/WPC BROWN.jpg", prices: { "200x200": 4405 } },
-      wpcblack: { label: "WPC Black", image: "images/WPC BLACK.png", prices: { "200x200": 4405 } },
-      redcedar: { label: "Red Cedar", image: "images/RED CEDAR.jpg", prices: { "200x200": 5975 } }
+      fichte: { label: "Fichte", image: "images/hottub-fast/fichte-hout.jpg", prices: { "200x200": 4150 } },
+      thermo: { label: "Thermo", image: "images/hottub-fast/thermo-hout.jpg", prices: { "200x200": 4405 } },
+      wpcbrown: { label: "WPC Brown", image: "images/hottub-fast/wpc-brown.jpg", prices: { "200x200": 4405 } },
+      wpcblack: { label: "WPC Black", image: "images/hottub-fast/wpc-black.jpg", prices: { "200x200": 4405 } },
+      redcedar: { label: "Red Cedar", image: "images/hottub-fast/red-cedar.jpg", prices: { "200x200": 5975 } }
     }
   }
 };
