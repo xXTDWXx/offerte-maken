@@ -363,6 +363,8 @@ function getTermsHtml() {
 
 function printOffer() {
   const current = getCurrentConfiguration();
+  const subtotal = current.total / 1.21;
+  const btw = current.total - subtotal;
   const today = new Date();
   const productTitleHtml = escapeHtml(`${current.model} - ${current.wood} - ${current.size}`);
   const rows = getOfferRowsHtml();
@@ -424,12 +426,22 @@ function printOffer() {
           .col-num { width: 70px; font-weight: 800; color: #475569; }
           .col-desc { font-weight: 600; }
           .col-price { width: 190px; text-align: right; white-space: nowrap; font-weight: 800; }
-          .summary { margin-top: 18px; display: flex; justify-content: flex-end; }
+          .summary { margin-top: 18px; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; }
+          .summary-left { flex: 1; display: flex; flex-direction: column; gap: 16px; padding-top: 6px; }
+          .summary-line { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #0f172a; }
+          .summary-line span:first-child { min-width: 140px; font-weight: 600; }
+          .line-fill { flex: 1; border-bottom: 1.5px solid #64748b; height: 14px; }
           .summary-box { width: 320px; border: 1px solid #d7e0e9; border-radius: 18px; overflow: hidden; background: #ffffff; }
           .summary-row { display: flex; justify-content: space-between; gap: 18px; padding: 14px 18px; border-bottom: 1px solid #e9eef4; font-size: 14px; color: #0f172a; }
           .summary-row:last-child { border-bottom: none; }
           .summary-row strong { font-weight: 800; }
           .summary-row.total { background: #f3f7fb; color: #314f72; font-size: 17px; font-weight: 800; }
+          .bottom-fixed { margin-top: auto; }
+          .signature-section { margin-top: 26px; padding-top: 18px; border-top: 1px solid #d7e0e9; }
+          .signature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; }
+          .signature-box { min-width: 0; }
+          .signature-label { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 30px; }
+          .signature-line { border-bottom: 1.5px solid #64748b; height: 18px; }
           .terms { margin-top: 22px; padding-top: 18px; border-top: 1px solid #d7e0e9; }
           .terms-title { margin: 0 0 10px 0; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #314f72; }
           .terms ul { margin: 0; padding-left: 18px; color: #475569; }
@@ -447,7 +459,7 @@ function printOffer() {
           @media print {
             html, body { width: 210mm; height: 297mm; margin: 0 !important; padding: 0 !important; background: #ffffff !important; color: #1f2937 !important; }
             body { font-size: 11px !important; line-height: 1.28 !important; }
-            .sheet { width: 194mm !important; max-width: 194mm !important; min-height: 281mm !important; margin: 0 auto !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; overflow: hidden !important; page-break-inside: avoid !important; }
+            .sheet { width: 194mm !important; max-width: 194mm !important; min-height: 281mm !important; margin: 0 auto !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; overflow: hidden !important; page-break-inside: avoid !important; display: flex !important; flex-direction: column !important; }
             .header { background: #ffffff !important; color: #274863 !important; border: 1px solid #cfd8e3 !important; border-radius: 10px !important; padding: 10mm 10mm 7mm 10mm !important; }
             .header-top { display: flex !important; justify-content: space-between !important; align-items: flex-start !important; gap: 10mm !important; }
             .brand { display: flex !important; gap: 10px !important; align-items: flex-start !important; }
@@ -456,7 +468,7 @@ function printOffer() {
             .offer-meta-row { gap: 8mm !important; padding: 1.5mm 0 !important; }
             .offer-meta-label, .offer-meta-value { color: #274863 !important; font-size: 10.5px !important; }
             .offer-meta-line { width: 26mm !important; height: 10px !important; border-bottom: 1px solid #64748b !important; }
-            .content { padding: 7mm 8mm 6mm 8mm !important; }
+            .content { padding: 7mm 8mm 6mm 8mm !important; flex: 1 1 auto !important; display: flex !important; flex-direction: column !important; }
             .intro { margin-bottom: 5mm !important; }
             .intro h2 { font-size: 18px !important; margin: 0 0 2mm 0 !important; color: #0f172a !important; }
             .intro p { margin: 0 !important; font-size: 11px !important; color: #475569 !important; }
@@ -479,10 +491,20 @@ function printOffer() {
             tbody td { padding: 3mm 4mm !important; border-bottom: 1px solid #edf2f7 !important; font-size: 11px !important; line-height: 1.25 !important; }
             .col-num { width: 10mm !important; }
             .col-price { width: 34mm !important; text-align: right !important; white-space: nowrap !important; }
-            .summary { margin-top: 4mm !important; display: flex !important; justify-content: flex-end !important; }
+            .summary { margin-top: 4mm !important; display: flex !important; justify-content: space-between !important; align-items: flex-start !important; gap: 8mm !important; }
+            .summary-left { flex: 1 !important; display: flex !important; flex-direction: column !important; gap: 4mm !important; padding-top: 1mm !important; }
+            .summary-line { display: flex !important; align-items: center !important; gap: 3mm !important; font-size: 11px !important; color: #0f172a !important; }
+            .summary-line span:first-child { min-width: 34mm !important; font-weight: 600 !important; }
+            .line-fill { flex: 1 !important; border-bottom: 1px solid #64748b !important; height: 12px !important; }
             .summary-box { width: 52mm !important; border: 1px solid #dbe3ec !important; border-radius: 10px !important; overflow: hidden !important; background: #ffffff !important; page-break-inside: avoid !important; }
             .summary-row { gap: 4mm !important; padding: 3mm 4mm !important; border-bottom: 1px solid #edf2f7 !important; font-size: 11px !important; }
             .summary-row.total { background: #f4f7fa !important; color: #274863 !important; font-size: 13px !important; font-weight: 800 !important; }
+            .bottom-fixed { margin-top: auto !important; }
+            .signature-section { margin-top: 6mm !important; padding-top: 4mm !important; border-top: 1px solid #dbe3ec !important; page-break-inside: avoid !important; }
+            .signature-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 6mm !important; }
+            .signature-box { min-width: 0 !important; }
+            .signature-label { font-size: 11px !important; font-weight: 700 !important; color: #0f172a !important; margin-bottom: 10mm !important; }
+            .signature-line { border-bottom: 1px solid #64748b !important; height: 12px !important; }
             .terms { margin-top: 5mm !important; padding-top: 4mm !important; border-top: 1px solid #dbe3ec !important; page-break-inside: avoid !important; }
             .terms-title { margin: 0 0 2mm 0 !important; font-size: 10px !important; color: #274863 !important; }
             .terms ul { margin: 0 !important; padding-left: 5mm !important; }
@@ -576,14 +598,26 @@ function printOffer() {
             </div>
 
             <div class="summary">
+              <div class="summary-left">
+                <div class="summary-line">
+                  <span>Voorschot</span>
+                  <span class="line-fill"></span>
+                </div>
+
+                <div class="summary-line">
+                  <span>Leveringstermijn</span>
+                  <span class="line-fill"></span>
+                </div>
+              </div>
+
               <div class="summary-box">
                 <div class="summary-row">
-                  <span>Subtotaal</span>
-                  <strong>${euro(current.total)}</strong>
+                  <span>Subtotaal excl. btw</span>
+                  <strong>${euro(subtotal)}</strong>
                 </div>
                 <div class="summary-row">
-                  <span>21% BTW</span>
-                  <strong>Incl.</strong>
+                  <span>21% btw</span>
+                  <strong>${euro(btw)}</strong>
                 </div>
                 <div class="summary-row total">
                   <span>Totaal</span>
@@ -592,16 +626,43 @@ function printOffer() {
               </div>
             </div>
 
-            <div class="terms">
-              <h4 class="terms-title">Opmerkingen</h4>
-              <ul>
-                ${termsHtml}
-              </ul>
-            </div>
+            <div class="bottom-fixed">
+              <div class="signature-section">
+                <div class="signature-grid">
+                  <div class="signature-box">
+                    <div class="signature-label">Naam koper</div>
+                    <div class="signature-line"></div>
+                  </div>
 
-            <div class="footer">
-              <div>Met vriendelijke groeten,<br><strong>Team Sunspa Brugge/Lievegem</strong></div>
-              <div>Dit document werd automatisch opgesteld op ${formatDateBelgium(today)}.</div>
+                  <div class="signature-box">
+                    <div class="signature-label">Handtekening koper</div>
+                    <div class="signature-line"></div>
+                  </div>
+
+                  <div class="signature-box">
+                    <div class="signature-label">Naam verkoper</div>
+                    <div class="signature-line"></div>
+                  </div>
+
+                  <div class="signature-box">
+                    <div class="signature-label">Handtekening verkoper</div>
+                    <div class="signature-line"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="terms">
+                <h4 class="terms-title">Opmerkingen</h4>
+                <ul>
+                  ${termsHtml}
+                </ul>
+              </div>
+
+              <div class="footer">
+                <div>Met vriendelijke groeten,<br><strong>Team Sunspa Brugge/Lievegem</strong></div>
+                <div>Wellnessmarkt BV | BE 0843 104 796 | BE75 3800 1777 8151<br>
+                Sunspa Benelux | 0483 39 99 67 | sunspabrugge@gmail.com/gentsunspa@gmail.com</div>
+              </div>
             </div>
           </div>
         </div>
