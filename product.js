@@ -101,8 +101,56 @@ function euro(n) {
   }
 }
 
+const MYSPA_BTW_ACTION_FACTOR = 1.21;
+
+function roundCurrency(value) {
+  return Math.round((Number(value || 0) + Number.EPSILON) * 100) / 100;
+}
+
+function isMySpaBtwActionProduct(product) {
+  const type = String(product?.type || '').toLowerCase().trim();
+  const merk = getMerk(product).toLowerCase();
+  const title = String(product?.title || '').toLowerCase();
+
+  return (type === 'spa' || type === "spa's") && (merk.includes('myspa') || title.includes('myspa'));
+}
+
+function getMySpaBtwAction(product, price = Number(product?.price || 0)) {
+  const originalPrice = Number(price || 0);
+
+  if (!isMySpaBtwActionProduct(product) || originalPrice <= 0) {
+    return null;
+  }
+
+  const actionPrice = roundCurrency(originalPrice / MYSPA_BTW_ACTION_FACTOR);
+  const discount = roundCurrency(originalPrice - actionPrice);
+
+  return { originalPrice, actionPrice, discount };
+}
+
 function displayPrice(product) {
-  return product?.price_display || euro(product?.price || 0);
+  const action = getMySpaBtwAction(product);
+
+  if (!action) {
+    return product?.price_display || euro(product?.price || 0);
+  }
+
+  return `21% btw actie: ${euro(action.actionPrice)} (van ${euro(action.originalPrice)}, korting ${euro(action.discount)})`;
+}
+
+function productPriceHtml(product, price = Number(product?.price || 0)) {
+  const action = getMySpaBtwAction(product, price);
+
+  if (!action) {
+    return escapeHtml(product?.price_display || euro(price || 0));
+  }
+
+  return `
+    <span class="price-action-label">21% btw actie</span>
+    <span class="price-old">${escapeHtml(euro(action.originalPrice))}</span>
+    <span class="price-current">${escapeHtml(euro(action.actionPrice))}</span>
+    <span class="price-action-note">Korting ${escapeHtml(euro(action.discount))}</span>
+  `;
 }
 
 function isProductVisible(product) {
@@ -146,12 +194,17 @@ function getVariantKey(variant, index = 0) {
   return String(variant?.id || `${variant?.label || 'variant'}-${index}`);
 }
 
-function getCurrentProductPriceValue() {
+function getCurrentProductBasePriceValue() {
   if (isQuantityVariantProduct(currentProduct)) {
     return getOverkappingScreenTotal();
   }
 
   return Number(selectedVariant?.price ?? currentProduct?.price ?? 0);
+}
+
+function getCurrentProductPriceValue() {
+  const basePrice = getCurrentProductBasePriceValue();
+  return getMySpaBtwAction(currentProduct, basePrice)?.actionPrice ?? basePrice;
 }
 
 function getCurrentProductPriceText() {
@@ -160,12 +213,24 @@ function getCurrentProductPriceText() {
     return total > 0 ? euro(total) : displayPrice(currentProduct);
   }
 
-  return selectedVariant ? euro(selectedVariant.price) : displayPrice(currentProduct);
+  const basePrice = getCurrentProductBasePriceValue();
+  return getMySpaBtwAction(currentProduct, basePrice)?.actionPrice
+    ? displayPrice(currentProduct)
+    : (selectedVariant ? euro(selectedVariant.price) : displayPrice(currentProduct));
+}
+
+function getCurrentProductPriceHtml() {
+  if (isQuantityVariantProduct(currentProduct)) {
+    const total = getOverkappingScreenTotal();
+    return escapeHtml(total > 0 ? euro(total) : displayPrice(currentProduct));
+  }
+
+  return productPriceHtml(currentProduct, getCurrentProductBasePriceValue());
 }
 
 function syncProductPriceDisplay() {
   if (productPrice) {
-    productPrice.textContent = `Prijs: ${getCurrentProductPriceText()}`;
+    productPrice.innerHTML = `Prijs: ${getCurrentProductPriceHtml()}`;
   }
 }
 
@@ -1000,11 +1065,21 @@ function getSelectedOfferLines() {
   }
 
   if (!quantityVariantProduct) {
+    const baseProductPrice = getCurrentProductBasePriceValue();
+    const action = getMySpaBtwAction(currentProduct, baseProductPrice);
+
     lines.push({
       label: productLabel,
-      price: getCurrentProductPriceValue(),
+      price: baseProductPrice,
       is_html: true
     });
+
+    if (action) {
+      lines.push({
+        label: '21% btw actie',
+        price: -action.discount
+      });
+    }
   }
 
   lines.push(...getOverkappingScreenOfferLines());

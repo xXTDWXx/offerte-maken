@@ -37,6 +37,12 @@ function euro(n) {
   }
 }
 
+const MYSPA_BTW_ACTION_FACTOR = 1.21;
+
+function roundCurrency(value) {
+  return Math.round((Number(value || 0) + Number.EPSILON) * 100) / 100;
+}
+
 function normalize(s) {
   return (s ?? '').toString().toLowerCase().trim();
 }
@@ -144,6 +150,42 @@ function getMerk(p) {
     getSpecValue(p, 'Merk') ||
     ''
   );
+}
+
+function isMySpaBtwActionProduct(p) {
+  const type = normalize(p?.type);
+  const merk = normalize(getMerk(p));
+  const title = normalize(p?.title);
+
+  return (type === 'spa' || type === "spa's") && (merk.includes('myspa') || title.includes('myspa'));
+}
+
+function getMySpaBtwAction(p, price = Number(p?.price || 0)) {
+  const originalPrice = Number(price || 0);
+
+  if (!isMySpaBtwActionProduct(p) || originalPrice <= 0) {
+    return null;
+  }
+
+  const actionPrice = roundCurrency(originalPrice / MYSPA_BTW_ACTION_FACTOR);
+  const discount = roundCurrency(originalPrice - actionPrice);
+
+  return { originalPrice, actionPrice, discount };
+}
+
+function productPriceHtml(p) {
+  const action = getMySpaBtwAction(p);
+
+  if (!action) {
+    return escapeHtml(p.price_display || euro(p.price || 0));
+  }
+
+  return `
+    <span class="price-action-label">21% btw actie</span>
+    <span class="price-old">${escapeHtml(euro(action.originalPrice))}</span>
+    <span class="price-current">${escapeHtml(euro(action.actionPrice))}</span>
+    <span class="price-action-note">Korting ${escapeHtml(euro(action.discount))}</span>
+  `;
 }
 
 function getAantalPersonen(p) {
@@ -416,7 +458,7 @@ if (showroomBadge) {
 
     if (badge) badge.textContent = (p.type || '').toUpperCase();
     if (title) title.textContent = p.title || '';
-    if (price) price.textContent = p.price_display || euro(p.price || 0);
+    if (price) price.innerHTML = productPriceHtml(p);
     if (specs) specs.innerHTML = p._topSpecs || topSpecs(p);
 
     if (cardLink) {

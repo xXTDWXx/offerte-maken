@@ -387,8 +387,48 @@ select:focus {
 
 .card-price {
   font-weight: 900;
-  color: white;
+  color: #111827;
   font-size: 1.05rem;
+}
+
+.price-action-label,
+.price-old,
+.price-current,
+.price-action-note {
+  display: block;
+}
+
+.price-action-label {
+  width: fit-content;
+  margin-bottom: 4px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: #facc15;
+  color: #111827;
+  font-size: 0.72rem;
+  line-height: 1.1;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.price-old {
+  color: #64748b;
+  font-size: 0.9rem;
+  text-decoration: line-through;
+}
+
+.price-current {
+  color: #111827;
+  font-size: 1.12rem;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.price-action-note {
+  margin-top: 2px;
+  color: #0f172a;
+  font-size: 0.84rem;
+  font-weight: 800;
 }
 
 .card-specs {
@@ -484,6 +524,32 @@ select:focus {
   font-weight: 900;
   font-size: 1.1rem;
   color: black;
+}
+
+.modal-price .price-action-label {
+  display: inline-block;
+  margin: 0 8px 0 0;
+  vertical-align: middle;
+}
+
+.modal-price .price-old,
+.modal-price .price-current,
+.modal-price .price-action-note {
+  display: inline;
+}
+
+.modal-price .price-old {
+  color: #64748b;
+  margin-right: 8px;
+}
+
+.modal-price .price-current {
+  color: #111827;
+  margin-right: 8px;
+}
+
+.modal-price .price-action-note {
+  color: #407298;
 }
 
 .modal-grid {
