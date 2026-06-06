@@ -159,7 +159,7 @@ body {
 
 .grid-products {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
   margin: 20px;
   padding-bottom: 92px;
@@ -315,13 +315,13 @@ body {
   .grid-products { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 620px) {
   .grid-products { grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 14px; gap: 14px; }
   .showroom-options { grid-template-columns: 1fr; }
   .showroom-panel { padding: 24px; }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 420px) {
   .grid-products { grid-template-columns: 1fr; }
   .kassa-header, .total-bar { align-items: stretch; }
   .total-actions, .total-actions .btn { width: 100%; }
