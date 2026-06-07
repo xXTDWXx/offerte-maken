@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', init);
 async function init() {
   bindEvents();
   stockApi = createStockApi();
-  els.backendBadge.textContent = stockApi.label;
+  if (els.backendBadge) els.backendBadge.textContent = stockApi.label;
 
   const savedShowroom = localStorage.getItem(STORAGE_KEYS.showroom);
   if (savedShowroom && SHOWROOMS[savedShowroom]) {
