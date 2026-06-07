@@ -20,12 +20,19 @@ const STOCK_BACKEND = {
   supabaseAnonKey: 'sb_publishable_PmIaSJW8d8GgQZV_L10PgA_mf04r5da'
 };
 
+const ADMIN_LOGIN = {
+  username: 'Admin',
+  email: 'sunspabrugge+kassaadmin@gmail.com'
+};
+
 let products = [];
 let cart = {};
 let stockByProduct = {};
 let currentShowroom = null;
 let stockApi = null;
 let stockSubscription = null;
+let supabaseClient = null;
+let adminStockByProduct = {};
 
 const els = {
   gate: document.getElementById('showroomGate'),
@@ -38,7 +45,20 @@ const els = {
   changeShowroomBtn: document.getElementById('changeShowroomBtn'),
   refreshStockBtn: document.getElementById('refreshStockBtn'),
   resetBtn: document.getElementById('resetBtn'),
-  printBtn: document.getElementById('printBtn')
+  printBtn: document.getElementById('printBtn'),
+  stockAdmin: document.getElementById('stockAdmin'),
+  adminLoginPanel: document.getElementById('adminLoginPanel'),
+  adminManagerPanel: document.getElementById('adminManagerPanel'),
+  adminUsername: document.getElementById('adminUsername'),
+  adminPassword: document.getElementById('adminPassword'),
+  adminLoginBtn: document.getElementById('adminLoginBtn'),
+  adminLoginStatus: document.getElementById('adminLoginStatus'),
+  adminShowroom: document.getElementById('adminShowroom'),
+  adminSearch: document.getElementById('adminSearch'),
+  adminRefreshBtn: document.getElementById('adminRefreshBtn'),
+  adminLogoutBtn: document.getElementById('adminLogoutBtn'),
+  adminStatus: document.getElementById('adminStatus'),
+  adminStockList: document.getElementById('adminStockList')
 };
 
 document.addEventListener('DOMContentLoaded', init);
@@ -47,6 +67,11 @@ async function init() {
   bindEvents();
   stockApi = createStockApi();
   if (els.backendBadge) els.backendBadge.textContent = stockApi.label;
+
+  if (isAdminMode()) {
+    await initAdminMode();
+    return;
+  }
 
   const savedShowroom = localStorage.getItem(STORAGE_KEYS.showroom);
   if (savedShowroom && SHOWROOMS[savedShowroom]) {
@@ -71,6 +96,15 @@ function bindEvents() {
   els.refreshStockBtn.addEventListener('click', refreshStock);
   els.resetBtn.addEventListener('click', resetAll);
   els.printBtn.addEventListener('click', printBon);
+
+  els.adminLoginBtn?.addEventListener('click', adminLogin);
+  els.adminPassword?.addEventListener('keydown', event => {
+    if (event.key === 'Enter') adminLogin();
+  });
+  els.adminShowroom?.addEventListener('change', refreshAdminStock);
+  els.adminSearch?.addEventListener('input', renderAdminStockList);
+  els.adminRefreshBtn?.addEventListener('click', refreshAdminStock);
+  els.adminLogoutBtn?.addEventListener('click', adminLogout);
 }
 
 async function selectShowroom(showroom) {
@@ -140,11 +174,11 @@ function createStockApi() {
     && window.supabase?.createClient;
 
   if (configuredForSupabase) {
-    const client = window.supabase.createClient(
+    supabaseClient = window.supabase.createClient(
       STOCK_BACKEND.supabaseUrl,
       STOCK_BACKEND.supabaseAnonKey
     );
-    return createSupabaseStockApi(client);
+    return createSupabaseStockApi(supabaseClient);
   }
 
   return createLocalStockApi();
@@ -168,6 +202,14 @@ function createLocalStockApi() {
       store[showroom] = showroomStock;
       localStorage.setItem(STORAGE_KEYS.localStock, JSON.stringify(store));
       return normalizeStockMap(showroomStock, productList);
+    },
+    async setStock(showroom, product, quantity) {
+      const store = await getLocalStockStore(products);
+      const showroomStock = store[showroom] || {};
+      showroomStock[product.id] = Math.max(0, Number(quantity) || 0);
+      store[showroom] = showroomStock;
+      localStorage.setItem(STORAGE_KEYS.localStock, JSON.stringify(store));
+      return normalizeStockMap(showroomStock, products);
     },
     subscribe() {
       return null;
@@ -209,6 +251,17 @@ function createSupabaseStockApi(client) {
 
       if (error) throw new Error(error.message);
       return this.getStock(showroom, productList);
+    },
+    async setStock(showroom, product, quantity) {
+      const { error } = await client.rpc('set_showroom_stock', {
+        p_showroom: showroom,
+        p_product_id: product.id,
+        p_product_title: product.title,
+        p_quantity: Math.max(0, Number(quantity) || 0)
+      });
+
+      if (error) throw new Error(error.message);
+      return this.getStock(showroom, products);
     },
     subscribe(showroom, onChange) {
       const channel = client
@@ -289,9 +342,11 @@ function trimCartToStock() {
 }
 
 function getVisibleProducts() {
-  return products.filter(product => {
-    return !product.showrooms.length || product.showrooms.includes(currentShowroom);
-  });
+  return products.filter(product => isProductVisibleForShowroom(product, currentShowroom));
+}
+
+function isProductVisibleForShowroom(product, showroom) {
+  return !product.showrooms.length || product.showrooms.includes(showroom);
 }
 
 function render() {
@@ -618,4 +673,178 @@ function setControlsDisabled(disabled) {
   els.refreshStockBtn.disabled = disabled;
   els.resetBtn.disabled = disabled;
   els.printBtn.disabled = disabled;
+}
+
+function isAdminMode() {
+  return new URLSearchParams(window.location.search).has('beheer');
+}
+
+async function initAdminMode() {
+  stopStockSubscription();
+  els.gate.hidden = true;
+  els.app.hidden = true;
+  els.stockAdmin.hidden = false;
+
+  if (!supabaseClient) {
+    showAdminLoginStatus('Supabase is niet beschikbaar voor voorraadbeheer.', true);
+    return;
+  }
+
+  const { data } = await supabaseClient.auth.getSession();
+  if (data?.session) {
+    await showAdminManager();
+  } else {
+    showAdminLogin();
+  }
+}
+
+function showAdminLogin() {
+  els.adminLoginPanel.hidden = false;
+  els.adminManagerPanel.hidden = true;
+  els.adminUsername.value = '';
+  els.adminPassword.value = '';
+  showAdminLoginStatus('Aanmelden vereist.');
+}
+
+async function showAdminManager() {
+  els.adminLoginPanel.hidden = true;
+  els.adminManagerPanel.hidden = false;
+  await loadProducts();
+  await refreshAdminStock();
+}
+
+async function adminLogin() {
+  const username = els.adminUsername.value.trim();
+  const password = els.adminPassword.value;
+
+  if (username !== ADMIN_LOGIN.username || !password) {
+    showAdminLoginStatus('Ongeldige aanmelding.', true);
+    return;
+  }
+
+  els.adminLoginBtn.disabled = true;
+  showAdminLoginStatus('Aanmelden...');
+
+  try {
+    const { error } = await supabaseClient.auth.signInWithPassword({
+      email: ADMIN_LOGIN.email,
+      password
+    });
+
+    if (error) throw error;
+    await showAdminManager();
+  } catch (err) {
+    showAdminLoginStatus(err.message || 'Aanmelden mislukt.', true);
+  } finally {
+    els.adminLoginBtn.disabled = false;
+  }
+}
+
+async function adminLogout() {
+  await supabaseClient?.auth.signOut();
+  adminStockByProduct = {};
+  showAdminLogin();
+}
+
+async function refreshAdminStock() {
+  const showroom = els.adminShowroom.value;
+  showAdminStatus(`Voorraad ${SHOWROOMS[showroom]} laden...`);
+  setAdminControlsDisabled(true);
+
+  try {
+    adminStockByProduct = await stockApi.getStock(showroom, products);
+    renderAdminStockList();
+    showAdminStatus(`Voorraad ${SHOWROOMS[showroom]} geladen.`);
+  } catch (err) {
+    showAdminStatus(err.message || 'Voorraad kon niet geladen worden.', true);
+  } finally {
+    setAdminControlsDisabled(false);
+  }
+}
+
+function renderAdminStockList() {
+  const showroom = els.adminShowroom.value;
+  const query = els.adminSearch.value.trim().toLowerCase();
+  const visibleProducts = products
+    .filter(product => isProductVisibleForShowroom(product, showroom))
+    .filter(product => !query || product.title.toLowerCase().includes(query));
+
+  els.adminStockList.innerHTML = '';
+
+  visibleProducts.forEach(product => {
+    const stock = Number(adminStockByProduct[product.id] || 0);
+    const row = document.createElement('div');
+    row.className = 'admin-row';
+    row.innerHTML = `
+      <div>
+        <div class="admin-product-title">${escapeHtml(product.title)}</div>
+        <div class="admin-stock-now">Huidige voorraad: <strong>${stock}</strong></div>
+      </div>
+      <div class="admin-stock-now">Prijs<br><strong>${euro(product.price)}</strong></div>
+      <div class="admin-stepper">
+        <button type="button" data-admin-step="${product.id}" data-delta="-1">-</button>
+        <input type="number" min="0" step="1" value="${stock}" data-admin-input="${product.id}" />
+        <button type="button" data-admin-step="${product.id}" data-delta="1">+</button>
+      </div>
+      <button class="btn btn-primary" type="button" data-admin-save="${product.id}">Opslaan</button>
+    `;
+    els.adminStockList.appendChild(row);
+  });
+
+  els.adminStockList.querySelectorAll('[data-admin-step]').forEach(button => {
+    button.addEventListener('click', () => {
+      const input = els.adminStockList.querySelector(`[data-admin-input="${cssEscape(button.dataset.adminStep)}"]`);
+      const nextValue = Math.max(0, Number(input.value || 0) + Number(button.dataset.delta));
+      input.value = String(nextValue);
+    });
+  });
+
+  els.adminStockList.querySelectorAll('[data-admin-save]').forEach(button => {
+    button.addEventListener('click', () => saveAdminStock(button.dataset.adminSave));
+  });
+}
+
+async function saveAdminStock(productId) {
+  const showroom = els.adminShowroom.value;
+  const product = products.find(item => item.id === productId);
+  const input = els.adminStockList.querySelector(`[data-admin-input="${cssEscape(productId)}"]`);
+  const quantity = Math.max(0, Math.floor(Number(input.value || 0)));
+
+  if (!product || !isProductVisibleForShowroom(product, showroom)) return;
+
+  setAdminControlsDisabled(true);
+  showAdminStatus(`${product.title} opslaan...`);
+
+  try {
+    adminStockByProduct = await stockApi.setStock(showroom, product, quantity);
+    renderAdminStockList();
+    showAdminStatus(`${product.title} opgeslagen voor ${SHOWROOMS[showroom]}.`);
+  } catch (err) {
+    showAdminStatus(err.message || 'Voorraad kon niet opgeslagen worden.', true);
+  } finally {
+    setAdminControlsDisabled(false);
+  }
+}
+
+function showAdminLoginStatus(message, isError = false) {
+  els.adminLoginStatus.textContent = message;
+  els.adminLoginStatus.classList.toggle('error', isError);
+}
+
+function showAdminStatus(message, isError = false) {
+  els.adminStatus.textContent = message;
+  els.adminStatus.classList.toggle('error', isError);
+}
+
+function setAdminControlsDisabled(disabled) {
+  els.adminRefreshBtn.disabled = disabled;
+  els.adminLogoutBtn.disabled = disabled;
+  els.adminStockList.querySelectorAll('button, input').forEach(control => {
+    control.disabled = disabled;
+  });
+}
+
+function cssEscape(value) {
+  if (window.CSS?.escape) return CSS.escape(value);
+  return String(value).replace(/"/g, '\\"');
 }
