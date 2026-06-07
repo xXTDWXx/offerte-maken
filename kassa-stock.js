@@ -56,6 +56,7 @@ const els = {
   adminShowroom: document.getElementById('adminShowroom'),
   adminSearch: document.getElementById('adminSearch'),
   adminRefreshBtn: document.getElementById('adminRefreshBtn'),
+  adminSaveAllBtn: document.getElementById('adminSaveAllBtn'),
   adminLogoutBtn: document.getElementById('adminLogoutBtn'),
   adminStatus: document.getElementById('adminStatus'),
   adminStockList: document.getElementById('adminStockList')
@@ -104,6 +105,7 @@ function bindEvents() {
   els.adminShowroom?.addEventListener('change', refreshAdminStock);
   els.adminSearch?.addEventListener('input', renderAdminStockList);
   els.adminRefreshBtn?.addEventListener('click', refreshAdminStock);
+  els.adminSaveAllBtn?.addEventListener('click', saveAllAdminStock);
   els.adminLogoutBtn?.addEventListener('click', adminLogout);
 }
 
@@ -785,7 +787,6 @@ function renderAdminStockList() {
         <button type="button" data-admin-step="${product.id}" data-delta="-1">-</button>
         <input type="number" min="0" step="1" value="${stock}" data-admin-input="${product.id}" />
         <button type="button" data-admin-step="${product.id}" data-delta="1">+</button>
-        <button class="btn btn-primary" type="button" data-admin-save="${product.id}">Opslaan</button>
       </div>
     `;
     els.adminStockList.appendChild(row);
@@ -799,26 +800,31 @@ function renderAdminStockList() {
     });
   });
 
-  els.adminStockList.querySelectorAll('[data-admin-save]').forEach(button => {
-    button.addEventListener('click', () => saveAdminStock(button.dataset.adminSave));
-  });
 }
 
-async function saveAdminStock(productId) {
+async function saveAllAdminStock() {
   const showroom = els.adminShowroom.value;
-  const product = products.find(item => item.id === productId);
-  const input = els.adminStockList.querySelector(`[data-admin-input="${cssEscape(productId)}"]`);
-  const quantity = Math.max(0, Math.floor(Number(input.value || 0)));
+  const rows = Array.from(els.adminStockList.querySelectorAll('[data-admin-input]'))
+    .map(input => {
+      const product = products.find(item => item.id === input.dataset.adminInput);
+      return {
+        product,
+        quantity: Math.max(0, Math.floor(Number(input.value || 0)))
+      };
+    })
+    .filter(row => row.product && isProductVisibleForShowroom(row.product, showroom));
 
-  if (!product || !isProductVisibleForShowroom(product, showroom)) return;
+  if (!rows.length) return;
 
   setAdminControlsDisabled(true);
-  showAdminStatus(`${product.title} opslaan...`);
+  showAdminStatus(`Voorraad ${SHOWROOMS[showroom]} opslaan...`);
 
   try {
-    adminStockByProduct = await stockApi.setStock(showroom, product, quantity);
+    for (const row of rows) {
+      adminStockByProduct = await stockApi.setStock(showroom, row.product, row.quantity);
+    }
     renderAdminStockList();
-    showAdminStatus(`${product.title} opgeslagen voor ${SHOWROOMS[showroom]}.`);
+    showAdminStatus(`Alle voorraad is opgeslagen voor ${SHOWROOMS[showroom]}.`);
   } catch (err) {
     showAdminStatus(err.message || 'Voorraad kon niet opgeslagen worden.', true);
   } finally {
@@ -838,6 +844,7 @@ function showAdminStatus(message, isError = false) {
 
 function setAdminControlsDisabled(disabled) {
   els.adminRefreshBtn.disabled = disabled;
+  els.adminSaveAllBtn.disabled = disabled;
   els.adminLogoutBtn.disabled = disabled;
   els.adminStockList.querySelectorAll('button, input').forEach(control => {
     control.disabled = disabled;

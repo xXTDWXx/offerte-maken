@@ -364,7 +364,7 @@ body {
 
 .admin-toolbar {
   display: grid;
-  grid-template-columns: 180px 1fr auto auto;
+  grid-template-columns: 180px 1fr auto auto auto;
   gap: 10px;
   align-items: end;
   margin-bottom: 16px;
@@ -404,30 +404,24 @@ body {
 
 .admin-stepper {
   display: grid;
-  grid-template-columns: 42px minmax(76px, 1fr) 42px 116px;
+  grid-template-columns: 42px minmax(76px, 1fr) 42px;
   gap: 6px;
   align-items: center;
   min-width: 0;
 }
 
-.admin-stepper button,
-.admin-stepper .btn {
+.admin-stepper button {
   min-height: 40px;
   border: 1px solid var(--kassa-line);
   border-radius: 8px;
   font-weight: 900;
   cursor: pointer;
-  white-space: nowrap;
 }
 
 .admin-stepper input {
   min-width: 0;
   text-align: center;
   font-weight: 800;
-}
-
-.admin-stepper .btn {
-  width: 100%;
 }
 
 @media (max-width: 1100px) {
@@ -441,7 +435,6 @@ body {
   .admin-toolbar,
   .admin-row { grid-template-columns: 1fr; }
   .admin-stepper { grid-template-columns: 42px minmax(70px, 1fr) 42px; }
-  .admin-stepper .btn { grid-column: 1 / -1; }
 }
 
 @media (max-width: 420px) {
@@ -523,6 +516,7 @@ body {
           <input id="adminSearch" type="search" placeholder="Product zoeken" />
         </div>
         <button class="btn" type="button" id="adminRefreshBtn">Vernieuwen</button>
+        <button class="btn btn-primary" type="button" id="adminSaveAllBtn">Alles opslaan</button>
         <button class="btn btn-danger" type="button" id="adminLogoutBtn">Afmelden</button>
       </div>
       <div class="status-line" id="adminStatus">Voorraad laden...</div>
