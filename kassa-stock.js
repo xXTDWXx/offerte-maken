@@ -785,8 +785,8 @@ function renderAdminStockList() {
         <button type="button" data-admin-step="${product.id}" data-delta="-1">-</button>
         <input type="number" min="0" step="1" value="${stock}" data-admin-input="${product.id}" />
         <button type="button" data-admin-step="${product.id}" data-delta="1">+</button>
+        <button class="btn btn-primary" type="button" data-admin-save="${product.id}">Opslaan</button>
       </div>
-      <button class="btn btn-primary" type="button" data-admin-save="${product.id}">Opslaan</button>
     `;
     els.adminStockList.appendChild(row);
   });
