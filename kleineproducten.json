@@ -60,6 +60,6 @@
   {"id":"spa-vac-waterstofzuiger","title":"Spa Vac Waterstofzuiger","price":69.00,"image":"images/kassa/spa-vac.webp"},
   {"id":"korte-lamp-300w","title":"Korte lamp 300w","price":85.00,"image":"images/kassa/full-spectrum-straler.webp"},
   {"id":"lange-lamp","title":"Lange Lamp I4H","price":95.00,"image":"images/kassa/full-spectrum-straler.webp"},
-  {"id":"drijvende-bartafel","title":"Drijvende bartafel","price":0.00,"image":""},
-  {"id":"coverlift-beugel","title":"Coverlift beugel","price":0.00,"image":"images/Coverlift.jpg"}
+  {"id":"drijvende-bartafel","title":"Drijvende bartafel","price":69.00,"image":""},
+  {"id":"coverlift-beugel","title":"Coverlift beugel","price":189.00,"image":"images/Coverlift.jpg"}
 ]
