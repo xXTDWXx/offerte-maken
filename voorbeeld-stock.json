@@ -93,7 +93,6 @@
     "spa-line-ph-minus": 0,
     "spa-line-ph-plus": 9,
     "chloordrijver": 9,
-    "insparation-wellness-geurtjes": 0,
     "spa-line-clear-water": 0,
     "nieuwe-zwemspa-filter": 2,
     "easy-water-chloortablet": 2,
@@ -126,7 +125,7 @@
     "spa-vac-waterstofzuiger": 0,
     "korte-lamp-300w": 0,
     "lange-lamp": 0,
-    "drijvende-bartafel": 0,
+    "drijvende-bartafel": 2,
     "coverlift-beugel": 0
   }
 }

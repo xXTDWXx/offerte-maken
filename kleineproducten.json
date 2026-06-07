@@ -27,7 +27,7 @@
   {"id":"spa-line-ph-minus","title":"Spa Line Spa pH Minus","price":13.95,"image":"images/spa-line-spa-ph-minus.webp"},
   {"id":"spa-line-ph-plus","title":"Spa Line Spa pH Plus","price":13.95,"image":"images/spa-line-spa-ph-plus.webp"},
   {"id":"chloordrijver","title":"Chloordrijver","price":11.95,"image":"images/chloordrijver.webp"},
-  {"id":"insparation-wellness-geurtjes","title":"Wellness - Eucalyptus","price":20.00,"image":"images/insparation-wellness-eucalyptus.webp"},
+  {"id":"insparation-wellness-geurtjes","title":"Wellness - Eucalyptus","price":20.00,"image":"images/insparation-wellness-eucalyptus.webp","showrooms":["gent"]},
   {"id":"spa-line-clear-water","title":"Spa Line Spa Clear Water","price":19.95,"image":"images/spa-line-spa-line-spa-clear-water.webp"},
   {"id":"nieuwe-zwemspa-filter","title":"Nieuwe zwemspa filter","price":79.95,"image":"images/kassa/nieuwe-zwemspa-filter.jpg"},
   {"id":"easy-water-chloortablet","title":"Easy Water chloortablet","price":17.50,"image":"images/kassa/easy-water-chloortablet.png"},

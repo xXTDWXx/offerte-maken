@@ -33,7 +33,9 @@ as $$
 declare
   v_sale_id uuid;
   v_item jsonb;
-  v_available integer;
+  v_product_id text;
+  v_product_title text;
+  v_quantity integer;
 begin
   if p_showroom not in ('gent', 'brugge') then
     raise exception 'Ongeldige showroom: %', p_showroom;
@@ -45,22 +47,15 @@ begin
 
   for v_item in select value from jsonb_array_elements(p_items)
   loop
-    select quantity
-      into v_available
-      from public.showroom_stock
-      where showroom = p_showroom
-        and product_id = v_item->>'product_id'
-      for update;
+    v_product_id := nullif(v_item->>'product_id', '');
+    v_quantity := (v_item->>'quantity')::integer;
 
-    if v_available is null then
-      raise exception 'Product % bestaat niet in voorraad %.', v_item->>'product_id', p_showroom;
+    if v_product_id is null then
+      raise exception 'Product zonder product_id kan niet verkocht worden.';
     end if;
 
-    if v_available < (v_item->>'quantity')::integer then
-      raise exception 'Te weinig voorraad voor %: beschikbaar %, gevraagd %.',
-        v_item->>'title',
-        v_available,
-        (v_item->>'quantity')::integer;
+    if v_quantity <= 0 then
+      raise exception 'Aantal moet groter zijn dan 0 voor %.', v_product_id;
     end if;
   end loop;
 
@@ -70,12 +65,34 @@ begin
 
   for v_item in select value from jsonb_array_elements(p_items)
   loop
+    v_product_id := v_item->>'product_id';
+    v_product_title := coalesce(nullif(v_item->>'title', ''), v_product_id);
+    v_quantity := (v_item->>'quantity')::integer;
+
     update public.showroom_stock
-      set quantity = quantity - (v_item->>'quantity')::integer,
-          product_title = coalesce(nullif(v_item->>'title', ''), product_title),
+      set quantity = greatest(0, quantity - v_quantity),
+          product_title = v_product_title,
           updated_at = now()
       where showroom = p_showroom
-        and product_id = v_item->>'product_id';
+        and product_id = v_product_id;
+
+    if not found then
+      insert into public.showroom_stock (
+        showroom,
+        product_id,
+        product_title,
+        quantity
+      ) values (
+        p_showroom,
+        v_product_id,
+        v_product_title,
+        0
+      )
+      on conflict (showroom, product_id) do update set
+        product_title = excluded.product_title,
+        quantity = greatest(0, public.showroom_stock.quantity),
+        updated_at = now();
+    end if;
 
     insert into public.showroom_stock_sale_items (
       sale_id,
@@ -85,9 +102,9 @@ begin
       unit_price
     ) values (
       v_sale_id,
-      v_item->>'product_id',
-      coalesce(nullif(v_item->>'title', ''), v_item->>'product_id'),
-      (v_item->>'quantity')::integer,
+      v_product_id,
+      v_product_title,
+      v_quantity,
       coalesce((v_item->>'unit_price')::numeric, 0)
     );
   end loop;
@@ -222,7 +239,6 @@ insert into public.showroom_stock (showroom, product_id, product_title, quantity
   ('brugge', 'spa-line-ph-minus', 'Spa Line Spa pH Minus', 0),
   ('brugge', 'spa-line-ph-plus', 'Spa Line Spa pH Plus', 9),
   ('brugge', 'chloordrijver', 'Chloordrijver', 9),
-  ('brugge', 'insparation-wellness-geurtjes', 'Wellness - Eucalyptus', 0),
   ('brugge', 'spa-line-clear-water', 'Spa Line Spa Clear Water', 0),
   ('brugge', 'nieuwe-zwemspa-filter', 'Nieuwe zwemspa filter', 2),
   ('brugge', 'easy-water-chloortablet', 'Easy Water chloortablet', 2),
@@ -255,7 +271,7 @@ insert into public.showroom_stock (showroom, product_id, product_title, quantity
   ('brugge', 'spa-vac-waterstofzuiger', 'Spa Vac Waterstofzuiger', 0),
   ('brugge', 'korte-lamp-300w', 'Korte lamp 300w', 0),
   ('brugge', 'lange-lamp', 'Lange Lamp I4H', 0),
-  ('brugge', 'drijvende-bartafel', 'Drijvende bartafel', 0),
+  ('brugge', 'drijvende-bartafel', 'Drijvende bartafel', 2),
   ('brugge', 'coverlift-beugel', 'Coverlift beugel', 0)
 on conflict (showroom, product_id) do update set
   product_title = excluded.product_title,

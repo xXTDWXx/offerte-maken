@@ -107,7 +107,10 @@ async function loadProducts() {
     id: p.id ?? `product-${index}`,
     title: p.title ?? 'Onbekend product',
     price: Number(p.price) || 0,
-    image: p.image ?? ''
+    image: p.image ?? '',
+    showrooms: Array.isArray(p.showrooms)
+      ? p.showrooms.filter(showroom => SHOWROOMS[showroom])
+      : []
   }));
 }
 
@@ -157,10 +160,9 @@ function createLocalStockApi() {
     async sell(showroom, items, productList) {
       const store = await getLocalStockStore(productList);
       const showroomStock = store[showroom] || {};
-      ensureEnoughStock(showroomStock, items);
 
       items.forEach(item => {
-        showroomStock[item.id] = Number(showroomStock[item.id] || 0) - item.qty;
+        showroomStock[item.id] = Math.max(0, Number(showroomStock[item.id] || 0) - item.qty);
       });
 
       store[showroom] = showroomStock;
@@ -275,28 +277,29 @@ function normalizeStockMap(stock, productList) {
   }, {});
 }
 
-function ensureEnoughStock(stock, items) {
-  const shortage = items.find(item => Number(stock[item.id] || 0) < item.qty);
-  if (shortage) {
-    const available = Number(stock[shortage.id] || 0);
-    throw new Error(`${shortage.title}: slechts ${available} op voorraad in ${SHOWROOMS[currentShowroom]}.`);
-  }
+function trimCartToStock() {
+  const visibleProductIds = new Set(getVisibleProducts().map(product => product.id));
+  Object.keys(cart).forEach(productId => {
+    if (!visibleProductIds.has(productId)) {
+      delete cart[productId];
+      return;
+    }
+    if (cart[productId] <= 0) delete cart[productId];
+  });
 }
 
-function trimCartToStock() {
-  Object.keys(cart).forEach(productId => {
-    cart[productId] = Math.min(cart[productId], Number(stockByProduct[productId] || 0));
-    if (cart[productId] <= 0) delete cart[productId];
+function getVisibleProducts() {
+  return products.filter(product => {
+    return !product.showrooms.length || product.showrooms.includes(currentShowroom);
   });
 }
 
 function render() {
   els.grid.innerHTML = '';
 
-  products.forEach(product => {
+  getVisibleProducts().forEach(product => {
     const qty = cart[product.id] || 0;
     const stock = Number(stockByProduct[product.id] || 0);
-    const canAdd = qty < stock;
     const stockClass = stock <= 0 ? 'empty' : stock <= 2 ? 'low' : '';
     const card = document.createElement('div');
 
@@ -314,7 +317,7 @@ function render() {
       <div class="counter">
         <button type="button" data-change="${product.id}" data-delta="-1" ${qty <= 0 ? 'disabled' : ''}>-</button>
         <span>${qty}</span>
-        <button type="button" data-change="${product.id}" data-delta="1" ${canAdd ? '' : 'disabled'}>+</button>
+        <button type="button" data-change="${product.id}" data-delta="1">+</button>
       </div>`;
 
     els.grid.appendChild(card);
@@ -331,8 +334,7 @@ function render() {
 
 function change(id, delta) {
   const currentQty = cart[id] || 0;
-  const maxQty = Number(stockByProduct[id] || 0);
-  const nextQty = Math.max(0, Math.min(maxQty, currentQty + delta));
+  const nextQty = Math.max(0, currentQty + delta);
 
   if (nextQty === 0) {
     delete cart[id];
@@ -344,7 +346,7 @@ function change(id, delta) {
 }
 
 function getCartItems() {
-  return products
+  return getVisibleProducts()
     .map(product => ({
       ...product,
       qty: cart[product.id] || 0,
@@ -367,13 +369,6 @@ async function printBon() {
   const items = getCartItems();
   if (!items.length) {
     alert('Er staan nog geen producten in de bon.');
-    return;
-  }
-
-  try {
-    ensureEnoughStock(stockByProduct, items);
-  } catch (err) {
-    alert(err.message);
     return;
   }
 
