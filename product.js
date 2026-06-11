@@ -1388,10 +1388,26 @@ async function getElectricalSchemaForProduct(product) {
   }
 }
 
+function needsInfraredFloorDeliveryNote(product) {
+  if (!product || !isInfrared(product.type)) return false;
+  const productKey = normalizeSchemaText(`${product.id || ''} ${product.title || ''}`);
+  return productKey.includes('130 infrarood sauna') || productKey.includes('160 infrarood sauna');
+}
+
 function getElectricalSchemaPageHtml(schema, product) {
   const deliveryAccess = getSpaDeliveryAccess(product);
   const isBarrelProduct = isBarrelSauna(product?.type);
-  if (!schema && !deliveryAccess && !isBarrelProduct) return '';
+  const floorDeliveryHtml = needsInfraredFloorDeliveryNote(product)
+    ? `
+        <div class="delivery-card">
+          <h2>VERDIEP</h2>
+          <p class="delivery-card-intro">
+            De cabine wordt voordien afgezet. Klant doet deze op eigen verantwoordelijkheid naar beneden/boven.
+            Nadien op afgesproken datum montage.
+          </p>
+        </div>
+      `
+    : '';
 
   const logo = COMPANY_LOGO_URL
     ? `<img src="${escapeHtml(COMPANY_LOGO_URL)}" alt="${escapeHtml(COMPANY_NAME)}" class="offer-logo electrical-logo">`
@@ -1502,6 +1518,13 @@ function getElectricalSchemaPageHtml(schema, product) {
           <strong>Info voor:</strong>
           <span>${escapeHtml(product?.title || '')}</span>
         </div>
+        <div class="delivery-card">
+          <h2>PARKING</h2>
+          <p class="delivery-card-intro">
+            Voldoende parking voor de installateur aangezien dit grote stukken zijn. Camionet + aanhanger = 15m.
+          </p>
+        </div>
+        ${floorDeliveryHtml}
         ${electricalCardHtml}
         ${deliveryAccessHtml}
         ${barrelRequirementsHtml}
