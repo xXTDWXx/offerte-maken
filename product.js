@@ -1394,6 +1394,11 @@ function needsInfraredFloorDeliveryNote(product) {
   return productKey.includes('130 infrarood sauna') || productKey.includes('160 infrarood sauna');
 }
 
+function needsPackagingMaterialNote(product) {
+  const type = product?.type;
+  return isBarrelSauna(type) || isInfrared(type) || isSauna(type);
+}
+
 function getElectricalSchemaPageHtml(schema, product) {
   const deliveryAccess = getSpaDeliveryAccess(product);
   const isBarrelProduct = isBarrelSauna(product?.type);
@@ -1404,6 +1409,16 @@ function getElectricalSchemaPageHtml(schema, product) {
           <p class="delivery-card-intro">
             De cabine wordt voordien afgezet. Klant doet deze op eigen verantwoordelijkheid naar beneden/boven.
             Nadien op afgesproken datum montage.
+          </p>
+        </div>
+      `
+    : '';
+  const packagingMaterialHtml = needsPackagingMaterialNote(product)
+    ? `
+        <div class="delivery-card">
+          <h2>INPAKMATERIAAL</h2>
+          <p class="delivery-card-intro">
+            Door logistieke reden, kan het inpakmateriaal niet terug meegenomen worden.
           </p>
         </div>
       `
@@ -1525,6 +1540,7 @@ function getElectricalSchemaPageHtml(schema, product) {
           </p>
         </div>
         ${floorDeliveryHtml}
+        ${packagingMaterialHtml}
         ${electricalCardHtml}
         ${deliveryAccessHtml}
         ${barrelRequirementsHtml}
