@@ -341,6 +341,12 @@ function isBarrelSauna(type) {
   return t.includes('barrel') && t.includes('sauna');
 }
 
+function isTr170Barrel(product) {
+  if (!product || !isBarrelSauna(product.type)) return false;
+  const productKey = normalizeSchemaText(`${product.id || ''} ${product.title || ''}`);
+  return productKey.includes('barrelsauna tr170');
+}
+
 function isSaunaPod(type) {
   const t = typeNorm(type);
   return t.includes('sauna pod') || t.includes('pod sauna') || t.includes('saunapod');
@@ -902,7 +908,7 @@ function updateOptionUI() {
   const sauna = isSauna(type);
   const showStoveGroup = outdoorSauna || sauna;
   const showElectricHeater = sauna;
-  const showWoodStove = outdoorSauna;
+  const showWoodStove = outdoorSauna && !isTr170Barrel(currentProduct);
   const showRoofGroup = outdoorSauna;
   const showInfraredModule = barrelSauna;
 
@@ -1124,7 +1130,7 @@ function getSelectedOfferLines() {
     });
   }
 
-  if ($('optBarrelWoodStove')?.checked && isOutdoorSaunaWithRoofAndStove(type)) {
+  if ($('optBarrelWoodStove')?.checked && isOutdoorSaunaWithRoofAndStove(type) && !isTr170Barrel(currentProduct)) {
     lines.push({ label: 'Houtkachel + rookafvoer', price: PRICES.barrel_wood_stove_unit });
   }
 
