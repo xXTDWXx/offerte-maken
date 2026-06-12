@@ -363,7 +363,7 @@
       box-shadow:0 14px 34px rgba(15, 23, 42, 0.08);
     }
 
-    @media (min-width: 901px){
+    @media (min-width: 641px){
       .product-configurator .options{
         height:var(--product-options-height, max(420px, calc(100vh - 190px)));
         max-height:var(--product-options-height, max(420px, calc(100vh - 190px)));
@@ -747,7 +747,23 @@
       }
     }
 
-    @media (max-width: 900px){
+    @media (min-width: 641px) and (max-width: 900px){
+      .product-configurator{
+        padding:18px;
+      }
+
+      .product-workspace{
+        grid-template-columns:minmax(260px, 40%) minmax(0, 1fr);
+        gap:14px;
+      }
+
+      .product-configurator .modal-media,
+      .product-configurator .options{
+        padding:14px;
+      }
+    }
+
+    @media (max-width: 640px){
       .product-configurator{
         padding:18px;
       }
@@ -769,7 +785,7 @@
       }
     }
 
-    @media (min-width: 901px) and (max-height: 900px){
+    @media (min-width: 641px) and (max-height: 900px){
       .product-configurator{
         padding:22px 28px;
       }
@@ -780,10 +796,6 @@
 
       .product-workspace{
         margin-top:18px;
-      }
-
-      .product-showcase{
-        position:static;
       }
 
       .totals{
@@ -1083,7 +1095,7 @@
                   <div class="opt-text">
                     <div class="opt-title">
                       <input id="optBarrelHarviaCilinder" name="barrelStove" type="radio" value="harvia-cilinder" />
-                      <img src="images/elektrische kachel.jpg" alt="Harvia Cilinder 9 kW" />
+                      <img src="images/Harvia-Kachel.jpg" alt="Harvia Cilinder 9 kW" />
                       <span class="opt-copy">
                         <span>
                           <span class="opt-label">Harvia Cilinder 9 kW</span>

@@ -117,7 +117,7 @@ function syncProductConfiguratorHeight() {
   const showcase = document.querySelector('.product-showcase');
   if (!options || !showcase) return;
 
-  if (window.matchMedia('(max-width: 900px)').matches) {
+  if (window.matchMedia('(max-width: 640px)').matches) {
     options.style.removeProperty('--product-options-height');
     return;
   }
