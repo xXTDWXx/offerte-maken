@@ -114,17 +114,17 @@ function roundCurrency(value) {
 
 function syncProductConfiguratorHeight() {
   const options = document.querySelector('.product-configurator .options');
-  const showcase = document.querySelector('.product-showcase');
-  if (!options || !showcase) return;
+  const media = document.querySelector('.product-showcase .modal-media');
+  if (!options || !media) return;
 
   if (window.matchMedia('(max-width: 640px)').matches) {
     options.style.removeProperty('--product-options-height');
     return;
   }
 
-  const showcaseHeight = Math.round(showcase.getBoundingClientRect().height);
-  if (showcaseHeight > 0) {
-    options.style.setProperty('--product-options-height', `${showcaseHeight}px`);
+  const mediaHeight = Math.round(media.getBoundingClientRect().height);
+  if (mediaHeight > 0) {
+    options.style.setProperty('--product-options-height', `${mediaHeight}px`);
   }
 }
 
