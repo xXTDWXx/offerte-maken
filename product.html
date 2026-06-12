@@ -480,7 +480,8 @@
 
     .product-configurator .opt:has(input:checked),
     .product-configurator label.opt:has(input:checked),
-    .product-configurator .opt-disabled:has(input:checked){
+    .product-configurator .opt-disabled:has(input:checked),
+    .product-configurator .opt.is-active{
       border-color:#2f6f9f;
       background:#f0f8fc;
       box-shadow:0 0 0 3px rgba(47, 111, 159, 0.12);
@@ -611,6 +612,40 @@
 
     #optBarrelRoofGroup .opt-title .opt-price{
       margin-left:0;
+    }
+
+    #optBarrelInfraredModuleRow .opt-title{
+      display:grid !important;
+      grid-template-columns:70px minmax(0, 1fr);
+      align-items:center;
+      gap:10px 12px;
+    }
+
+    #optBarrelInfraredModuleRow{
+      min-height:132px;
+      align-items:stretch;
+    }
+
+    #optBarrelInfraredModuleRow .opt-text{
+      align-items:center;
+    }
+
+    #optBarrelInfraredModuleRow .opt-title > img{
+      grid-column:1;
+      grid-row:1 / span 2;
+    }
+
+    #optBarrelInfraredModuleRow .opt-copy{
+      grid-column:2;
+      grid-row:1;
+      align-self:end;
+    }
+
+    #optBarrelInfraredModuleRow .opt-counter{
+      grid-column:2;
+      grid-row:2;
+      justify-self:end;
+      align-self:start;
     }
 
     .totals{
@@ -1159,18 +1194,31 @@
                 </div>
               </div>
 
-              <label class="opt opt-inline" id="optBarrelInfraredModuleRow" style="display:none">
-                <div class="opt-text">
-                  <div class="opt-title">
-                    <input id="optBarrelInfraredModule" type="checkbox" />
+              <div class="opt opt-inline" id="optBarrelInfraredModuleRow" style="display:none">
+                <div class="opt-text" style="width:100%;">
+                  <div class="opt-title" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
                     <img src="images/Infrarood-Backrest-Heater-Set-voor-Barrelsauna.jpg" alt="Infrarood module" />
                     <span class="opt-copy">
                       <span class="opt-label">Infrarood module</span>
                       <span class="opt-price">€ 699</span>
                     </span>
+                    <div class="opt-counter">
+                      <button id="optBarrelInfraredModuleMinus" type="button" class="opt-counter-btn">−</button>
+                      <input
+                        id="optBarrelInfraredModuleQty"
+                        type="number"
+                        min="0"
+                        step="1"
+                        value="0"
+                        inputmode="numeric"
+                        class="opt-counter-input"
+                        aria-label="Aantal infrarood modules"
+                      />
+                      <button id="optBarrelInfraredModulePlus" type="button" class="opt-counter-btn">+</button>
+                    </div>
                   </div>
                 </div>
-              </label>
+              </div>
         </section>
       </div>
 

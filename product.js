@@ -1013,7 +1013,7 @@ function updateOptionUI() {
   const optBarrelRoofDesignTotal = $('optBarrelRoofDesignTotal');
 
   const optBarrelInfraredModuleRow = $('optBarrelInfraredModuleRow');
-  const optBarrelInfraredModule = $('optBarrelInfraredModule');
+  const optBarrelInfraredModuleQty = $('optBarrelInfraredModuleQty');
   const optBarrelInfraredModuleTotal = $('optBarrelInfraredModuleTotal');
 
   const tProduct = $('optProductTotal');
@@ -1071,11 +1071,19 @@ function updateOptionUI() {
   if (!showRoofGroup && optBarrelRoofShingles) optBarrelRoofShingles.checked = false;
   if (!showRoofGroup && optBarrelRoofHeather) optBarrelRoofHeather.checked = false;
   if (!showRoofGroup && optBarrelRoofDesign) optBarrelRoofDesign.checked = false;
-  if (!showInfraredModule && optBarrelInfraredModule) optBarrelInfraredModule.checked = false;
+  if (!showInfraredModule && optBarrelInfraredModuleQty) optBarrelInfraredModuleQty.value = '0';
 
   const warmtepompQty = swim ? toPositiveInt(optWarmtepompQty?.value) : 0;
   if (optWarmtepompQty && String(warmtepompQty) !== String(optWarmtepompQty.value)) {
     optWarmtepompQty.value = String(warmtepompQty);
+  }
+
+  const barrelInfraredModuleQty = showInfraredModule ? toPositiveInt(optBarrelInfraredModuleQty?.value) : 0;
+  if (optBarrelInfraredModuleQty && String(barrelInfraredModuleQty) !== String(optBarrelInfraredModuleQty.value)) {
+    optBarrelInfraredModuleQty.value = String(barrelInfraredModuleQty);
+  }
+  if (optBarrelInfraredModuleRow) {
+    optBarrelInfraredModuleRow.classList.toggle('is-active', barrelInfraredModuleQty > 0);
   }
 
   currentOverkappingScreenOptions.forEach(option => {
@@ -1098,7 +1106,7 @@ function updateOptionUI() {
   const barrelRoofShinglesLine = (showRoofGroup && optBarrelRoofShingles?.checked) ? PRICES.barrel_roof_shingles_unit : 0;
   const barrelRoofHeatherLine = (showRoofGroup && optBarrelRoofHeather?.checked) ? PRICES.barrel_roof_heather_unit : 0;
   const barrelRoofDesignLine = (showRoofGroup && optBarrelRoofDesign?.checked) ? PRICES.barrel_roof_design_unit : 0;
-  const barrelInfraredModuleLine = (showInfraredModule && optBarrelInfraredModule?.checked) ? PRICES.barrel_infrared_module_unit : 0;
+  const barrelInfraredModuleLine = barrelInfraredModuleQty * PRICES.barrel_infrared_module_unit;
 
   if (optCoverliftTotal) optCoverliftTotal.textContent = euro(coverliftLine);
   if (optCoverlift2Total) optCoverlift2Total.textContent = euro(coverlift2Line);
@@ -1155,7 +1163,7 @@ function wireOptionHandlers() {
     'optBarrelRoofShingles',
     'optBarrelRoofHeather',
     'optBarrelRoofDesign',
-    'optBarrelInfraredModule'
+    'optBarrelInfraredModuleQty'
   ];
 
   ids.forEach(id => {
@@ -1168,6 +1176,9 @@ function wireOptionHandlers() {
   const optWarmtepompMinus = $('optWarmtepompMinus');
   const optWarmtepompPlus = $('optWarmtepompPlus');
   const optWarmtepompQty = $('optWarmtepompQty');
+  const optBarrelInfraredModuleMinus = $('optBarrelInfraredModuleMinus');
+  const optBarrelInfraredModulePlus = $('optBarrelInfraredModulePlus');
+  const optBarrelInfraredModuleQty = $('optBarrelInfraredModuleQty');
 
   if (optWarmtepompMinus && optWarmtepompQty) {
     optWarmtepompMinus.addEventListener('click', () => {
@@ -1181,6 +1192,22 @@ function wireOptionHandlers() {
     optWarmtepompPlus.addEventListener('click', () => {
       const current = toPositiveInt(optWarmtepompQty.value);
       setNumberInputValue(optWarmtepompQty, current + 1);
+      updateOptionUI();
+    });
+  }
+
+  if (optBarrelInfraredModuleMinus && optBarrelInfraredModuleQty) {
+    optBarrelInfraredModuleMinus.addEventListener('click', () => {
+      const current = toPositiveInt(optBarrelInfraredModuleQty.value);
+      setNumberInputValue(optBarrelInfraredModuleQty, current - 1);
+      updateOptionUI();
+    });
+  }
+
+  if (optBarrelInfraredModulePlus && optBarrelInfraredModuleQty) {
+    optBarrelInfraredModulePlus.addEventListener('click', () => {
+      const current = toPositiveInt(optBarrelInfraredModuleQty.value);
+      setNumberInputValue(optBarrelInfraredModuleQty, current + 1);
       updateOptionUI();
     });
   }
@@ -1311,8 +1338,12 @@ function getSelectedOfferLines() {
     lines.push({ label: 'Design dak', price: PRICES.barrel_roof_design_unit });
   }
 
-  if ($('optBarrelInfraredModule')?.checked && isBarrelSauna(type)) {
-    lines.push({ label: 'Infrarood module', price: PRICES.barrel_infrared_module_unit });
+  const barrelInfraredModuleQty = isBarrelSauna(type) ? toPositiveInt($('optBarrelInfraredModuleQty')?.value) : 0;
+  if (barrelInfraredModuleQty > 0) {
+    lines.push({
+      label: `Infrarood module x ${barrelInfraredModuleQty}`,
+      price: barrelInfraredModuleQty * PRICES.barrel_infrared_module_unit
+    });
   }
 
   return lines;
@@ -3771,7 +3802,7 @@ function renderProduct(p) {
   if ($('optBarrelRoofShingles')) $('optBarrelRoofShingles').checked = false;
   if ($('optBarrelRoofHeather')) $('optBarrelRoofHeather').checked = false;
   if ($('optBarrelRoofDesign')) $('optBarrelRoofDesign').checked = false;
-  if ($('optBarrelInfraredModule')) $('optBarrelInfraredModule').checked = false;
+  if ($('optBarrelInfraredModuleQty')) $('optBarrelInfraredModuleQty').value = '0';
 
   wireCustomerHandlers();
   wireOptionHandlers();
