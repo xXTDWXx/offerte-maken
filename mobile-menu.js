@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const sections = [];
   const quickLinks = [];
-  const kassaLink = document.querySelector('.brand .kassa');
+  const kassaLink = document.querySelector('.brand .kassa, .showroom-top-kassa');
 
   if (kassaLink) {
     quickLinks.push(kassaLink);

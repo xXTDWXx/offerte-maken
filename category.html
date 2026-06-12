@@ -5,45 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sunspa Categorie</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="showroom-menu.css" />
 </head>
 
-<body>
-  <header class="header">
-    <div class="container header-row">
+<body class="showroom-menu-proposal">
+  <section class="container showroom-menu-shell">
+    <div class="showroom-logo-row">
       <div class="brand">
         <img src="logo.svg" alt="Sunspa Benelux logo" class="logo" />
-        <a href="kassa.html" class="category-link kassa" data-category-link="Spa">KASSA</a>
       </div>
+      <a href="kassa.html" class="category-link kassa showroom-top-kassa">Kassa</a>
       <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-mobile-menu-toggle>
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
-  </header>
 
-  <nav class="category-menu">
-    <div class="container category-menu-row">
-      <a href="category.html?type=Spa" class="category-link" data-category-link="Spa">SPA</a>
-      <a href="category.html?type=Zwemspa" class="category-link" data-category-link="Zwemspa">ZWEMSPA</a>
-      <a href="category.html?type=Barrelsauna" class="category-link" data-category-link="Barrelsauna">BARRELSAUNA</a>
-      <a href="category.html?type=Infrarood" class="category-link" data-category-link="Infrarood">INFRAROOD</a>
-      <a href="category.html?type=combi sauna" class="category-link" data-category-link="combi sauna">COMBI SAUNA</a>
-      <a href="category.html?type=sauna" class="category-link" data-category-link="sauna">FINSE SAUNA</a>
-      <a href="category.html?type=sauna pod" class="category-link" data-category-link="sauna pod">SAUNA POD</a>
-      <a href="hottub.html" class="category-link">HOTTUB</a>
-      <a href="category.html?type=overkappingen" class="category-link" data-category-link="overkappingen">OVERKAPPINGEN</a>
+    <div class="showroom-menu-panel">
+      <div class="showroom-menu-content">
+        <nav class="category-menu showroom-primary-menu">
+          <div class="category-menu-row">
+            <a href="oppervlakte.html" class="category-link menu-keuzehulp">Keuzehulp</a>
+            <a href="category.html?type=Spa" class="category-link" data-category-link="Spa">Spa</a>
+            <a href="category.html?type=Zwemspa" class="category-link" data-category-link="Zwemspa">Zwemspa</a>
+            <a href="category.html?type=Barrelsauna" class="category-link" data-category-link="Barrelsauna">Barrelsauna</a>
+            <a href="category.html?type=Infrarood" class="category-link" data-category-link="Infrarood">Infrarood</a>
+            <a href="category.html?type=combi sauna" class="category-link" data-category-link="combi sauna">Combi sauna</a>
+            <a href="category.html?type=sauna" class="category-link" data-category-link="sauna">Finse sauna</a>
+            <a href="category.html?type=sauna pod" class="category-link" data-category-link="sauna pod">Sauna pod</a>
+            <a href="hottub.html" class="category-link">Hottub</a>
+            <a href="category.html?type=overkappingen" class="category-link" data-category-link="overkappingen">Overkappingen</a>
+            <a href="category.html?showroom=all" class="category-link">In de showroom</a>
+            <a href="actie.html" class="category-link">Onze acties</a>
+          </div>
+        </nav>
+      </div>
     </div>
-  </nav>
-
-  <nav class="category-menu">
-    <div class="container category-menu-row">
-      <a href="oppervlakte.html" class="category-link is-active">KEUZEHULP</a>
-      <a href="category.html?showroom=all" class="category-link is-active">IN DE SHOWROOM</a>
-      <a href="stroom.html" class="category-link is-active">STROOMVEREISTEN</a>
-      <a href="actie.html" class="category-link is-active">ONZE ACTIES</a>
-    </div>
-  </nav>
+  </section>
 
   <div class="mobile-menu-overlay" data-mobile-menu-overlay></div>
   <aside class="mobile-menu-drawer" data-mobile-menu-drawer aria-hidden="true">
