@@ -465,6 +465,7 @@ const PRICES = {
 
   barrel_wood_stove_unit: 1245,
   barrel_electric_heater_unit: 495,
+  barrel_huum_drop_unit: 1595,
   barrel_roof_shingles_unit: 399,
   barrel_roof_heather_unit: 849,
   barrel_roof_design_unit: 899,
@@ -877,6 +878,10 @@ function updateOptionUI() {
   const optBarrelElectricHeater = $('optBarrelElectricHeater');
   const optBarrelElectricHeaterTotal = $('optBarrelElectricHeaterTotal');
 
+  const optBarrelHuumDropRow = $('optBarrelHuumDropRow');
+  const optBarrelHuumDrop = $('optBarrelHuumDrop');
+  const optBarrelHuumDropTotal = $('optBarrelHuumDropTotal');
+
   const optBarrelRoofGroup = $('optBarrelRoofGroup');
   const optBarrelRoofShingles = $('optBarrelRoofShingles');
   const optBarrelRoofShinglesTotal = $('optBarrelRoofShinglesTotal');
@@ -909,6 +914,7 @@ function updateOptionUI() {
   const showStoveGroup = outdoorSauna || sauna;
   const showElectricHeater = sauna;
   const showWoodStove = outdoorSauna && !isTr170Barrel(currentProduct);
+  const showHuumDrop = barrelSauna;
   const showRoofGroup = outdoorSauna;
   const showInfraredModule = barrelSauna;
 
@@ -929,12 +935,14 @@ function updateOptionUI() {
   if (optBarrelStoveGroup) optBarrelStoveGroup.style.display = showStoveGroup ? '' : 'none';
   if (optBarrelWoodStoveRow) optBarrelWoodStoveRow.style.display = showWoodStove ? '' : 'none';
   if (optBarrelElectricHeaterRow) optBarrelElectricHeaterRow.style.display = showElectricHeater ? '' : 'none';
+  if (optBarrelHuumDropRow) optBarrelHuumDropRow.style.display = showHuumDrop ? '' : 'none';
 
   if (optBarrelRoofGroup) optBarrelRoofGroup.style.display = showRoofGroup ? '' : 'none';
   if (optBarrelInfraredModuleRow) optBarrelInfraredModuleRow.style.display = showInfraredModule ? '' : 'none';
 
   if (!showWoodStove && optBarrelWoodStove) optBarrelWoodStove.checked = false;
   if (!showElectricHeater && optBarrelElectricHeater) optBarrelElectricHeater.checked = false;
+  if (!showHuumDrop && optBarrelHuumDrop) optBarrelHuumDrop.checked = false;
   if (!showRoofGroup && optBarrelRoofShingles) optBarrelRoofShingles.checked = false;
   if (!showRoofGroup && optBarrelRoofHeather) optBarrelRoofHeather.checked = false;
   if (!showRoofGroup && optBarrelRoofDesign) optBarrelRoofDesign.checked = false;
@@ -960,6 +968,7 @@ function updateOptionUI() {
 
   const barrelWoodStoveLine = (showWoodStove && optBarrelWoodStove?.checked) ? PRICES.barrel_wood_stove_unit : 0;
   const barrelElectricHeaterLine = (showElectricHeater && optBarrelElectricHeater?.checked) ? PRICES.barrel_electric_heater_unit : 0;
+  const barrelHuumDropLine = (showHuumDrop && optBarrelHuumDrop?.checked) ? PRICES.barrel_huum_drop_unit : 0;
   const barrelRoofShinglesLine = (showRoofGroup && optBarrelRoofShingles?.checked) ? PRICES.barrel_roof_shingles_unit : 0;
   const barrelRoofHeatherLine = (showRoofGroup && optBarrelRoofHeather?.checked) ? PRICES.barrel_roof_heather_unit : 0;
   const barrelRoofDesignLine = (showRoofGroup && optBarrelRoofDesign?.checked) ? PRICES.barrel_roof_design_unit : 0;
@@ -972,6 +981,7 @@ function updateOptionUI() {
   if (optWarmtepompTotal) optWarmtepompTotal.textContent = euro(warmtepompLine);
   if (optBarrelWoodStoveTotal) optBarrelWoodStoveTotal.textContent = euro(barrelWoodStoveLine);
   if (optBarrelElectricHeaterTotal) optBarrelElectricHeaterTotal.textContent = euro(barrelElectricHeaterLine);
+  if (optBarrelHuumDropTotal) optBarrelHuumDropTotal.textContent = euro(barrelHuumDropLine);
   if (optBarrelRoofShinglesTotal) optBarrelRoofShinglesTotal.textContent = euro(barrelRoofShinglesLine);
   if (optBarrelRoofHeatherTotal) optBarrelRoofHeatherTotal.textContent = euro(barrelRoofHeatherLine);
   if (optBarrelRoofDesignTotal) optBarrelRoofDesignTotal.textContent = euro(barrelRoofDesignLine);
@@ -987,6 +997,7 @@ function updateOptionUI() {
     overkappingScreenLine +
     barrelWoodStoveLine +
     barrelElectricHeaterLine +
+    barrelHuumDropLine +
     barrelRoofShinglesLine +
     barrelRoofHeatherLine +
     barrelRoofDesignLine +
@@ -1011,6 +1022,7 @@ function wireOptionHandlers() {
     'optWarmtepompQty',
     'optBarrelWoodStove',
     'optBarrelElectricHeater',
+    'optBarrelHuumDrop',
     'optBarrelRoofShingles',
     'optBarrelRoofHeather',
     'optBarrelRoofDesign',
@@ -1136,6 +1148,14 @@ function getSelectedOfferLines() {
 
   if ($('optBarrelElectricHeater')?.checked && isSauna(type)) {
     lines.push({ label: 'Elektrische kachel 8 kW', price: PRICES.barrel_electric_heater_unit });
+  }
+
+  if ($('optBarrelHuumDrop')?.checked && isBarrelSauna(type)) {
+    lines.push({
+      label: '<strong>HUUM Drop 9 kW</strong><br><span style="font-size:12px;color:#475569;">Incl. WiFi module en bediening + stenen &amp; safety rail.</span>',
+      price: PRICES.barrel_huum_drop_unit,
+      is_html: true
+    });
   }
 
   if ($('optBarrelRoofShingles')?.checked && isOutdoorSaunaWithRoofAndStove(type)) {
@@ -3611,6 +3631,7 @@ function renderProduct(p) {
   if ($('optWarmtepompQty')) $('optWarmtepompQty').value = '0';
   if ($('optBarrelWoodStove')) $('optBarrelWoodStove').checked = false;
   if ($('optBarrelElectricHeater')) $('optBarrelElectricHeater').checked = false;
+  if ($('optBarrelHuumDrop')) $('optBarrelHuumDrop').checked = false;
   if ($('optBarrelRoofShingles')) $('optBarrelRoofShingles').checked = false;
   if ($('optBarrelRoofHeather')) $('optBarrelRoofHeather').checked = false;
   if ($('optBarrelRoofDesign')) $('optBarrelRoofDesign').checked = false;
