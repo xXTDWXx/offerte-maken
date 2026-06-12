@@ -18,6 +18,9 @@ const errorText = document.getElementById('errorText');
 const productPage = document.getElementById('productPage');
 
 const productImg = document.getElementById('productImg');
+const productImagePrev = document.getElementById('productImagePrev');
+const productImageNext = document.getElementById('productImageNext');
+const productImageThumbs = document.getElementById('productImageThumbs');
 const productTitle = document.getElementById('productTitle');
 const productPrice = document.getElementById('productPrice');
 const productType = document.getElementById('productType');
@@ -38,6 +41,10 @@ let selectedVariant = null;
 let currentOverkappingScreenOptions = [];
 let optionHandlersWired = false;
 let customerHandlersWired = false;
+let productLayoutResizeWired = false;
+let productImageCarouselWired = false;
+let productImages = [];
+let activeProductImageIndex = 0;
 
 const OVERKAPPING_HIDDEN_SPEC_LABELS = new Set(['levering', 'levertermijn']);
 const OVERKAPPING_HIGH_INSTALL_DIMENSIONS = new Set(['3x6', '3.6x5.3', '3.6x7.2', '4x6']);
@@ -105,6 +112,32 @@ const MYSPA_BTW_ACTION_FACTOR = 1.21;
 
 function roundCurrency(value) {
   return Math.round((Number(value || 0) + Number.EPSILON) * 100) / 100;
+}
+
+function syncProductConfiguratorHeight() {
+  const options = document.querySelector('.product-configurator .options');
+  const showcase = document.querySelector('.product-showcase');
+  if (!options || !showcase) return;
+
+  if (window.matchMedia('(max-width: 900px)').matches) {
+    options.style.removeProperty('--product-options-height');
+    return;
+  }
+
+  const showcaseHeight = Math.round(showcase.getBoundingClientRect().height);
+  if (showcaseHeight > 0) {
+    options.style.setProperty('--product-options-height', `${showcaseHeight}px`);
+  }
+}
+
+function scheduleProductConfiguratorHeightSync() {
+  window.requestAnimationFrame(syncProductConfiguratorHeight);
+}
+
+function wireProductLayoutResize() {
+  if (productLayoutResizeWired) return;
+  productLayoutResizeWired = true;
+  window.addEventListener('resize', scheduleProductConfiguratorHeightSync);
 }
 
 function isMySpaBtwActionProduct(product) {
@@ -241,6 +274,102 @@ function escapeHtml(s) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
+}
+
+function getProductImageList(product) {
+  const images = [
+    { src: product?.image, label: 'Foto 1' },
+    { src: product?.secondary_image, label: 'Foto 2' },
+  ];
+  const seen = new Set();
+
+  return images.filter(item => {
+    const src = String(item.src || '').trim();
+    if (!src || seen.has(src)) return false;
+    seen.add(src);
+    item.src = src;
+    return true;
+  });
+}
+
+function syncProductImageCarouselControls() {
+  const hasMultipleImages = productImages.length > 1;
+
+  if (productImagePrev) productImagePrev.hidden = !hasMultipleImages;
+  if (productImageNext) productImageNext.hidden = !hasMultipleImages;
+  if (productImageThumbs) productImageThumbs.hidden = !hasMultipleImages;
+
+  if (!productImageThumbs) return;
+
+  productImageThumbs.querySelectorAll('.product-thumb').forEach((thumb, index) => {
+    const isActive = index === activeProductImageIndex;
+    thumb.classList.toggle('is-active', isActive);
+    thumb.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  });
+}
+
+function setActiveProductImage(index) {
+  if (!productImg || !productImages.length) return;
+
+  activeProductImageIndex = (index + productImages.length) % productImages.length;
+  const image = productImages[activeProductImageIndex];
+
+  productImg.onload = scheduleProductConfiguratorHeightSync;
+  productImg.onerror = () => {
+    productImg.style.display = 'none';
+    scheduleProductConfiguratorHeightSync();
+  };
+  productImg.src = image.src;
+  productImg.alt = currentProduct?.title || image.label || 'Product';
+  productImg.style.display = '';
+
+  syncProductImageCarouselControls();
+  scheduleProductConfiguratorHeightSync();
+}
+
+function renderProductImageCarousel(product) {
+  productImages = getProductImageList(product);
+  activeProductImageIndex = 0;
+
+  if (productImageThumbs) {
+    productImageThumbs.innerHTML = productImages.map((image, index) => `
+      <button class="product-thumb" type="button" data-product-image-index="${index}" aria-label="${escapeHtml(image.label)}" aria-pressed="false">
+        <img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.label)}" loading="lazy">
+      </button>
+    `).join('');
+  }
+
+  if (!productImages.length) {
+    if (productImg) {
+      productImg.src = '';
+      productImg.alt = '';
+      productImg.style.display = 'none';
+    }
+    syncProductImageCarouselControls();
+    scheduleProductConfiguratorHeightSync();
+    return;
+  }
+
+  setActiveProductImage(0);
+}
+
+function wireProductImageCarousel() {
+  if (productImageCarouselWired) return;
+  productImageCarouselWired = true;
+
+  productImagePrev?.addEventListener('click', () => {
+    setActiveProductImage(activeProductImageIndex - 1);
+  });
+
+  productImageNext?.addEventListener('click', () => {
+    setActiveProductImage(activeProductImageIndex + 1);
+  });
+
+  productImageThumbs?.addEventListener('click', event => {
+    const thumb = event.target.closest('[data-product-image-index]');
+    if (!thumb) return;
+    setActiveProductImage(Number(thumb.getAttribute('data-product-image-index')));
+  });
 }
 
 function formatDateBelgium(date) {
@@ -3582,14 +3711,8 @@ function renderProduct(p) {
     optionsWrap.style.display = isOverkapping(type) && !hasVariants && !hasOverkappingScreenOptions ? 'none' : '';
   }
 
-  if (productImg) {
-    productImg.src = p.image || '';
-    productImg.alt = p.title || 'Product';
-    productImg.style.display = p.image ? '' : 'none';
-    productImg.onerror = () => {
-      productImg.style.display = 'none';
-    };
-  }
+  wireProductImageCarousel();
+  renderProductImageCarousel(p);
   setupOverkappingAccessoryImages(p);
 
   if (productSpecs) {
@@ -3643,9 +3766,11 @@ function renderProduct(p) {
 
   wireCustomerHandlers();
   wireOptionHandlers();
+  wireProductLayoutResize();
   updateOptionUI();
 
   if (productPage) productPage.style.display = '';
+  scheduleProductConfiguratorHeightSync();
 }
 
 async function init() {
