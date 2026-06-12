@@ -14,6 +14,10 @@
       <div class="brand">
         <img src="logo.svg" alt="Sunspa Benelux logo" class="logo" />
       </div>
+      <div class="showroom-top-search">
+        <label for="search">Zoeken</label>
+        <input id="search" type="search" placeholder="Zoek product..." />
+      </div>
       <a href="kassa.html" class="category-link kassa showroom-top-kassa">Kassa</a>
       <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-mobile-menu-toggle>
         <span></span>
@@ -54,22 +58,17 @@
   </aside>
 
   <main class="container">
-    <section class="panel">
-      <div class="panel-row" style="justify-content:space-between; align-items:center;">
-        <div>
+    <section class="panel category-filter-card">
+      <div class="category-filter-head">
+        <div class="category-filter-title-wrap">
+          <a href="index.html" class="btn category-back-btn">← Terug naar overzicht</a>
           <div class="panel-title" id="pageTitle">Categorie</div>
           <div class="small" id="resultMetaTop">—</div>
         </div>
-        <a href="index.html" class="btn">← Terug naar overzicht</a>
       </div>
 
-      <div class="panel-row" id="filtersPanel" style="gap:16px; flex-wrap:wrap; align-items:end;">
-        <div class="field">
-          <label for="search">Zoeken</label>
-          <input id="search" type="search" placeholder="Zoek op titel, type, specificaties…" />
-        </div>
-
-        <div class="field">
+      <div class="category-filter-grid" id="filtersPanel">
+        <div class="field category-select-field">
           <label for="brandFilter">Reeks</label>
           <select id="brandFilter">
             <option value="">Alle reeksen</option>
@@ -83,7 +82,7 @@
           </select>
         </div>
 
-        <div class="field">
+        <div class="field category-select-field">
           <label for="sort">Sorteren</label>
           <select id="sort">
             <option value="relevance">Relevantie</option>
@@ -93,13 +92,13 @@
           </select>
         </div>
 
-        <div class="field">
+        <div class="field category-clear-field">
           <label>&nbsp;</label>
-          <button id="btnClear" class="btn" type="button">Wissen</button>
+          <button id="btnClear" class="btn category-clear-btn" type="button">Wissen</button>
         </div>
       </div>
 
-      <div class="panel-row panel-row-2">
+      <div class="panel-row panel-row-2 category-filter-meta">
         <div class="chips" id="activeChips"></div>
         <div class="small" id="resultMetaBottom">—</div>
       </div>

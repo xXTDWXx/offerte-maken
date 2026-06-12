@@ -456,10 +456,6 @@ function updateChips() {
 
   const chips = [];
 
-  if (currentType) {
-    chips.push(`<span class="chip">Categorie: ${escapeHtml(getCategoryTitle(currentType))}</span>`);
-  }
-
   const brand = showBrandFilter ? (brandFilter?.value || '') : '';
   const search = searchInput?.value || '';
   const sort = sortFilter?.value || 'relevance';

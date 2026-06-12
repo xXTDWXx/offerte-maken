@@ -1654,8 +1654,8 @@ body {
   gap: 2px;
   padding: 7px 12px;
   border-radius: 999px;
-  background: #edf8f1;
-  color: #00664c;
+  background: #eaf4f8;
+  color: #2b779a;
   font-size: 1rem;
   font-weight: 950;
   line-height: 1.1;
@@ -1663,7 +1663,7 @@ body {
 
 .card-price .price-current,
 .card-price .price-action-note {
-  color: #00664c;
+  color: #2b779a;
 }
 
 .card-price .price-old {
