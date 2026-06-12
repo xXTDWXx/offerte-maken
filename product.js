@@ -3767,8 +3767,11 @@ function renderProduct(p) {
   if (cabinetSelect && showSpaColors) {
     let colors = [];
     const merk = getMerk(p).toLowerCase();
+    const title = titleNorm(p?.title);
 
-    if (merk.includes('vogue')) {
+    if (isSwimspa(type) || title.includes('aquavera') || title.includes('goldline') || title.includes('gold line')) {
+      colors = ['graphite', 'grey'];
+    } else if (merk.includes('vogue')) {
       colors = ['taupe', 'black', 'grey'];
     } else if (merk.includes('elite')) {
       colors = ['palm black', 'ancient grey'];
