@@ -23,7 +23,6 @@ const productTitle = document.getElementById('productTitle');
 const productPrice = document.getElementById('productPrice');
 const productType = document.getElementById('productType');
 const productSpecs = document.getElementById('productSpecs');
-const productUrl = document.getElementById('productUrl');
 const productPrint = document.getElementById('productPrint');
 const offerPrint = document.getElementById('offerPrint');
 const sixPercentPrint = document.getElementById('sixPercentPrint');
@@ -41,6 +40,7 @@ let optionHandlersWired = false;
 let customerHandlersWired = false;
 let productLayoutResizeWired = false;
 let productImageCarouselWired = false;
+let spaColorSwatchesWired = false;
 let productImages = [];
 let activeProductImageIndex = 0;
 
@@ -272,6 +272,48 @@ function escapeHtml(s) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
+}
+
+function getSpaColorSwatchBackground(value) {
+  const key = String(value || '').trim().toLowerCase();
+  const backgrounds = {
+    'silver marble': 'linear-gradient(135deg, #d8dee7 0%, #f8fafc 48%, #aeb8c6 100%)',
+    'black marble': 'linear-gradient(135deg, #05070a 0%, #263241 52%, #05070a 100%)',
+    'pure white': 'linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%)',
+    graphite: 'linear-gradient(135deg, #1f2933 0%, #4b5563 100%)',
+    grey: 'linear-gradient(135deg, #9ca3af 0%, #d1d5db 100%)',
+    chocolate: 'linear-gradient(135deg, #3b2416 0%, #6f4e37 100%)',
+    taupe: 'linear-gradient(135deg, #8b7c70 0%, #c2b5a8 100%)',
+    black: 'linear-gradient(135deg, #020617 0%, #1f2937 100%)',
+    'palm black': 'linear-gradient(135deg, #111827 0%, #374151 100%)',
+    'ancient grey': 'linear-gradient(135deg, #6b7280 0%, #d1d5db 100%)'
+  };
+
+  return backgrounds[key] || 'linear-gradient(135deg, #e5e7eb 0%, #f8fafc 100%)';
+}
+
+function updateSpaColorSwatches() {
+  [
+    ['spaInnerColor', 'spaInnerColorSwatch'],
+    ['spaCabinetColor', 'spaCabinetColorSwatch']
+  ].forEach(([selectId, swatchId]) => {
+    const select = $(selectId);
+    const swatch = $(swatchId);
+    if (!select || !swatch) return;
+    swatch.style.background = getSpaColorSwatchBackground(select.value);
+    swatch.title = select.value || '';
+  });
+}
+
+function wireSpaColorSwatches() {
+  if (spaColorSwatchesWired) return;
+  spaColorSwatchesWired = true;
+
+  ['spaInnerColor', 'spaCabinetColor'].forEach(id => {
+    const select = $(id);
+    if (!select) return;
+    select.addEventListener('change', updateSpaColorSwatches);
+  });
 }
 
 function getProductImageList(product) {
@@ -3719,6 +3761,7 @@ function renderProduct(p) {
   if (colorSelects) {
     colorSelects.style.display = showSpaColors ? 'grid' : 'none';
   }
+  wireSpaColorSwatches();
 
   const cabinetSelect = $('spaCabinetColor');
   if (cabinetSelect && showSpaColors) {
@@ -3737,6 +3780,7 @@ function renderProduct(p) {
       .map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`)
       .join('');
   }
+  updateSpaColorSwatches();
 
   toggleBullfrogUi(p);
   syncProductTypeClasses(p);
@@ -3756,11 +3800,6 @@ function renderProduct(p) {
 
   if (productSpecs) {
     productSpecs.innerHTML = specTableHtml(p);
-  }
-
-  if (productUrl) {
-    productUrl.href = p.url || '#';
-    productUrl.style.display = p.url ? '' : 'none';
   }
 
   if (backToOverview) {
