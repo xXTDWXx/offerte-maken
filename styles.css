@@ -1645,9 +1645,29 @@ body {
 }
 
 .card-price {
+  align-self: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #edf8f1;
+  color: #00664c;
   font-size: 1rem;
-  font-weight: 800;
-  color: var(--finder-text);
+  font-weight: 950;
+  line-height: 1.1;
+}
+
+.card-price .price-current,
+.card-price .price-action-note {
+  color: #00664c;
+}
+
+.card-price .price-old {
+  color: #64748b;
 }
 
 .card-specs {
