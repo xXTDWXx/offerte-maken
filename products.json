@@ -4860,6 +4860,111 @@
       ]
     },
     {
+      "id": "spa::vogue-prime",
+      "type": "spa",
+      "showroom": ["Brugge", "Lievegem"],
+      "merk": "Vogue",
+      "title": "Vogue Prime",
+      "url": "https://www.sunspabenelux.be/p/vogue-prime/",
+      "image": "https://www.sunspabenelux.be/wp-content/uploads/2026/06/Vogue-Classic.jpg",
+      "price": 8750,
+      "bullets": [],
+      "specs": [
+        {
+          "label": "Zitplaatsen",
+          "value": "5 zitplaatsen"
+        },
+        {
+          "label": "Ligplaatsen",
+          "value": "1 ligplaats"
+        },
+        {
+          "label": "Aantal jets",
+          "value": "54 jets"
+        },
+        {
+          "label": "Afmeting",
+          "value": "212 x 212 x 84 cm"
+        },
+        {
+          "label": "Inhoud",
+          "value": "1050 liter"
+        },
+        {
+          "label": "Mini-LED verlichting",
+          "value": "12 stuks"
+        },
+        {
+          "label": "Circulatiepomp",
+          "value": "250W"
+        },
+        {
+          "label": "Pomp 1",
+          "value": "3pk"
+        },
+        {
+          "label": "Pomp 2",
+          "value": "3pk"
+        },
+        {
+          "label": "Heater",
+          "value": "3 kW"
+        },
+        {
+          "label": "Frame",
+          "value": "Geperst chemisch behandeld hout"
+        },
+        {
+          "label": "Leeg gewicht",
+          "value": "330 kg"
+        },
+        {
+          "label": "Gevuld gewicht",
+          "value": "1380 kg"
+        },
+        {
+          "label": "Filter",
+          "value": "Dual port skim filter"
+        },
+        {
+          "label": "Stroom",
+          "value": "220-240 V, 50Hz 16/32Amp"
+        },
+        {
+          "label": "Aantal waterregelaars",
+          "value": "1"
+        },
+        {
+          "label": "Aantal personen",
+          "value": "6 personen"
+        },
+        {
+          "label": "Aantal luchtregelaars",
+          "value": "3"
+        },
+        {
+          "label": "Aantal kussens",
+          "value": "3"
+        },
+        {
+          "label": "Lengte",
+          "value": "200 - 225 cm"
+        },
+        {
+          "label": "Vorm",
+          "value": "Vierkant"
+        },
+        {
+          "label": "Prijs categorie",
+          "value": "€ 6000 - 10.000"
+        },
+        {
+          "label": "Ozonator",
+          "value": "Ozonator / UV-filter"
+        }
+      ]
+    },
+    {
       "id": "spa::sunspa-palm-springs",
       "merk": "Sunspa",
       "type": "spa",
