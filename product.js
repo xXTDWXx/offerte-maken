@@ -26,7 +26,7 @@ const productSpecs = document.getElementById('productSpecs');
 const productPrint = document.getElementById('productPrint');
 const offerPrint = document.getElementById('offerPrint');
 const sixPercentPrint = document.getElementById('sixPercentPrint');
-const backToOverview = document.querySelector('.header-row > a.btn');
+const backToOverview = document.getElementById('backToOverview');
 
 const customerName = document.getElementById('customerName');
 const customerStreet = document.getElementById('customerStreet');

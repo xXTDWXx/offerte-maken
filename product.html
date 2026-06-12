@@ -253,11 +253,28 @@
 
     .product-configurator .modal-head{
       align-items:center;
+      gap:14px;
       padding:0 0 22px;
       border-bottom:1px solid #dce3ea;
     }
 
+    .product-configurator .product-back{
+      flex:0 0 auto;
+      min-height:44px;
+      padding:10px 14px;
+      border-color:#dce3ea;
+      border-radius:14px;
+      background:#fff;
+      color:#0f172a;
+      font-size:16px;
+      font-weight:850;
+      box-shadow:0 8px 20px rgba(15, 23, 42, 0.06);
+      white-space:nowrap;
+    }
+
     .product-configurator .modal-title{
+      flex:1 1 auto;
+      min-width:0;
       max-width:760px;
       font-size:clamp(28px, 2.4vw, 44px);
       line-height:1.05;
@@ -862,6 +879,20 @@
 
       .product-configurator .modal-head{
         align-items:flex-start;
+        flex-wrap:wrap;
+      }
+
+      .product-configurator .product-back{
+        order:1;
+      }
+
+      .product-configurator .modal-title{
+        order:2;
+        flex:1 1 calc(100% - 170px);
+      }
+
+      .product-configurator .modal-price{
+        order:3;
       }
 
       .product-workspace{
@@ -946,15 +977,6 @@
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container header-row">
-      <div class="brand">
-        <div class="brand-title">Sunspa Catalogus</div>
-      </div>
-      <a class="btn" href="index.html">← Terug naar overzicht</a>
-    </div>
-  </header>
-
   <main class="container">
     <section class="panel" id="errorBox" style="display:none">
       <div class="panel-title">Fout</div>
@@ -963,6 +985,7 @@
 
     <section class="panel product-configurator" id="productPage" style="display:none">
       <div class="modal-head" style="margin-bottom:20px">
+        <a id="backToOverview" class="btn product-back" href="index.html">&larr; Terug naar overzicht</a>
         <h1 id="productTitle" class="modal-title">—</h1>
         <div id="productPrice" class="modal-price">Prijs: —</div>
       </div>
