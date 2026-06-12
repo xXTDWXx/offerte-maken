@@ -1359,7 +1359,7 @@ function getSelectedOfferLines() {
 
   if ($('optBarrelElectricHeater')?.checked && isSauna(type)) {
     lines.push({
-      label: '<strong>Harvia 8 kW</strong><br><span style="font-size:12px;color:#475569;">Incl. stenen &amp; montage</span>',
+      label: 'Harvia 8 kW<br><span style="font-size:12px;color:#475569;">Incl. stenen &amp; montage</span>',
       price: PRICES.barrel_electric_heater_unit,
       is_html: true
     });
@@ -1367,7 +1367,7 @@ function getSelectedOfferLines() {
 
   if ($('optBarrelHuumDrop')?.checked && isBarrelSauna(type)) {
     lines.push({
-      label: '<strong>HUUM Drop 9 kW</strong><br><span style="font-size:12px;color:#475569;">Incl. WiFi module en bediening + stenen &amp; safety rail.</span>',
+      label: 'HUUM Drop 9 kW<br><span style="font-size:12px;color:#475569;">Incl. WiFi module en bediening + stenen &amp; safety rail.</span>',
       price: PRICES.barrel_huum_drop_unit,
       is_html: true
     });
@@ -1375,7 +1375,7 @@ function getSelectedOfferLines() {
 
   if ($('optBarrelHarviaCilinder')?.checked && isBarrelSauna(type)) {
     lines.push({
-      label: '<strong>Harvia Cilinder 9 kW</strong><br><span style="font-size:12px;color:#475569;">Incl. stenen &amp; montage</span>',
+      label: 'Harvia Cilinder 9 kW<br><span style="font-size:12px;color:#475569;">Incl. stenen &amp; montage</span>',
       price: PRICES.barrel_harvia_cilinder_unit,
       is_html: true
     });
