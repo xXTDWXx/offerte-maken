@@ -18,8 +18,6 @@ const errorText = document.getElementById('errorText');
 const productPage = document.getElementById('productPage');
 
 const productImg = document.getElementById('productImg');
-const productImagePrev = document.getElementById('productImagePrev');
-const productImageNext = document.getElementById('productImageNext');
 const productImageThumbs = document.getElementById('productImageThumbs');
 const productTitle = document.getElementById('productTitle');
 const productPrice = document.getElementById('productPrice');
@@ -295,8 +293,6 @@ function getProductImageList(product) {
 function syncProductImageCarouselControls() {
   const hasMultipleImages = productImages.length > 1;
 
-  if (productImagePrev) productImagePrev.hidden = !hasMultipleImages;
-  if (productImageNext) productImageNext.hidden = !hasMultipleImages;
   if (productImageThumbs) productImageThumbs.hidden = !hasMultipleImages;
 
   if (!productImageThumbs) return;
@@ -356,14 +352,6 @@ function renderProductImageCarousel(product) {
 function wireProductImageCarousel() {
   if (productImageCarouselWired) return;
   productImageCarouselWired = true;
-
-  productImagePrev?.addEventListener('click', () => {
-    setActiveProductImage(activeProductImageIndex - 1);
-  });
-
-  productImageNext?.addEventListener('click', () => {
-    setActiveProductImage(activeProductImageIndex + 1);
-  });
 
   productImageThumbs?.addEventListener('click', event => {
     const thumb = event.target.closest('[data-product-image-index]');
@@ -595,6 +583,7 @@ const PRICES = {
   barrel_wood_stove_unit: 1245,
   barrel_electric_heater_unit: 495,
   barrel_huum_drop_unit: 1595,
+  barrel_harvia_cilinder_unit: 599,
   barrel_roof_shingles_unit: 399,
   barrel_roof_heather_unit: 849,
   barrel_roof_design_unit: 899,
@@ -1011,6 +1000,10 @@ function updateOptionUI() {
   const optBarrelHuumDrop = $('optBarrelHuumDrop');
   const optBarrelHuumDropTotal = $('optBarrelHuumDropTotal');
 
+  const optBarrelHarviaCilinderRow = $('optBarrelHarviaCilinderRow');
+  const optBarrelHarviaCilinder = $('optBarrelHarviaCilinder');
+  const optBarrelHarviaCilinderTotal = $('optBarrelHarviaCilinderTotal');
+
   const optBarrelRoofGroup = $('optBarrelRoofGroup');
   const optBarrelRoofShingles = $('optBarrelRoofShingles');
   const optBarrelRoofShinglesTotal = $('optBarrelRoofShinglesTotal');
@@ -1044,6 +1037,7 @@ function updateOptionUI() {
   const showElectricHeater = sauna;
   const showWoodStove = outdoorSauna && !isTr170Barrel(currentProduct);
   const showHuumDrop = barrelSauna;
+  const showHarviaCilinder = barrelSauna;
   const showRoofGroup = outdoorSauna;
   const showInfraredModule = barrelSauna;
 
@@ -1065,6 +1059,7 @@ function updateOptionUI() {
   if (optBarrelWoodStoveRow) optBarrelWoodStoveRow.style.display = showWoodStove ? '' : 'none';
   if (optBarrelElectricHeaterRow) optBarrelElectricHeaterRow.style.display = showElectricHeater ? '' : 'none';
   if (optBarrelHuumDropRow) optBarrelHuumDropRow.style.display = showHuumDrop ? '' : 'none';
+  if (optBarrelHarviaCilinderRow) optBarrelHarviaCilinderRow.style.display = showHarviaCilinder ? '' : 'none';
 
   if (optBarrelRoofGroup) optBarrelRoofGroup.style.display = showRoofGroup ? '' : 'none';
   if (optBarrelInfraredModuleRow) optBarrelInfraredModuleRow.style.display = showInfraredModule ? '' : 'none';
@@ -1072,6 +1067,7 @@ function updateOptionUI() {
   if (!showWoodStove && optBarrelWoodStove) optBarrelWoodStove.checked = false;
   if (!showElectricHeater && optBarrelElectricHeater) optBarrelElectricHeater.checked = false;
   if (!showHuumDrop && optBarrelHuumDrop) optBarrelHuumDrop.checked = false;
+  if (!showHarviaCilinder && optBarrelHarviaCilinder) optBarrelHarviaCilinder.checked = false;
   if (!showRoofGroup && optBarrelRoofShingles) optBarrelRoofShingles.checked = false;
   if (!showRoofGroup && optBarrelRoofHeather) optBarrelRoofHeather.checked = false;
   if (!showRoofGroup && optBarrelRoofDesign) optBarrelRoofDesign.checked = false;
@@ -1098,6 +1094,7 @@ function updateOptionUI() {
   const barrelWoodStoveLine = (showWoodStove && optBarrelWoodStove?.checked) ? PRICES.barrel_wood_stove_unit : 0;
   const barrelElectricHeaterLine = (showElectricHeater && optBarrelElectricHeater?.checked) ? PRICES.barrel_electric_heater_unit : 0;
   const barrelHuumDropLine = (showHuumDrop && optBarrelHuumDrop?.checked) ? PRICES.barrel_huum_drop_unit : 0;
+  const barrelHarviaCilinderLine = (showHarviaCilinder && optBarrelHarviaCilinder?.checked) ? PRICES.barrel_harvia_cilinder_unit : 0;
   const barrelRoofShinglesLine = (showRoofGroup && optBarrelRoofShingles?.checked) ? PRICES.barrel_roof_shingles_unit : 0;
   const barrelRoofHeatherLine = (showRoofGroup && optBarrelRoofHeather?.checked) ? PRICES.barrel_roof_heather_unit : 0;
   const barrelRoofDesignLine = (showRoofGroup && optBarrelRoofDesign?.checked) ? PRICES.barrel_roof_design_unit : 0;
@@ -1111,6 +1108,7 @@ function updateOptionUI() {
   if (optBarrelWoodStoveTotal) optBarrelWoodStoveTotal.textContent = euro(barrelWoodStoveLine);
   if (optBarrelElectricHeaterTotal) optBarrelElectricHeaterTotal.textContent = euro(barrelElectricHeaterLine);
   if (optBarrelHuumDropTotal) optBarrelHuumDropTotal.textContent = euro(barrelHuumDropLine);
+  if (optBarrelHarviaCilinderTotal) optBarrelHarviaCilinderTotal.textContent = euro(barrelHarviaCilinderLine);
   if (optBarrelRoofShinglesTotal) optBarrelRoofShinglesTotal.textContent = euro(barrelRoofShinglesLine);
   if (optBarrelRoofHeatherTotal) optBarrelRoofHeatherTotal.textContent = euro(barrelRoofHeatherLine);
   if (optBarrelRoofDesignTotal) optBarrelRoofDesignTotal.textContent = euro(barrelRoofDesignLine);
@@ -1127,6 +1125,7 @@ function updateOptionUI() {
     barrelWoodStoveLine +
     barrelElectricHeaterLine +
     barrelHuumDropLine +
+    barrelHarviaCilinderLine +
     barrelRoofShinglesLine +
     barrelRoofHeatherLine +
     barrelRoofDesignLine +
@@ -1152,6 +1151,7 @@ function wireOptionHandlers() {
     'optBarrelWoodStove',
     'optBarrelElectricHeater',
     'optBarrelHuumDrop',
+    'optBarrelHarviaCilinder',
     'optBarrelRoofShingles',
     'optBarrelRoofHeather',
     'optBarrelRoofDesign',
@@ -1287,6 +1287,14 @@ function getSelectedOfferLines() {
     lines.push({
       label: '<strong>HUUM Drop 9 kW</strong><br><span style="font-size:12px;color:#475569;">Incl. WiFi module en bediening + stenen &amp; safety rail.</span>',
       price: PRICES.barrel_huum_drop_unit,
+      is_html: true
+    });
+  }
+
+  if ($('optBarrelHarviaCilinder')?.checked && isBarrelSauna(type)) {
+    lines.push({
+      label: '<strong>Harvia Cilinder 9 kW</strong><br><span style="font-size:12px;color:#475569;">Incl. stenen &amp; montage</span>',
+      price: PRICES.barrel_harvia_cilinder_unit,
       is_html: true
     });
   }
@@ -3759,6 +3767,7 @@ function renderProduct(p) {
   if ($('optBarrelWoodStove')) $('optBarrelWoodStove').checked = false;
   if ($('optBarrelElectricHeater')) $('optBarrelElectricHeater').checked = false;
   if ($('optBarrelHuumDrop')) $('optBarrelHuumDrop').checked = false;
+  if ($('optBarrelHarviaCilinder')) $('optBarrelHarviaCilinder').checked = false;
   if ($('optBarrelRoofShingles')) $('optBarrelRoofShingles').checked = false;
   if ($('optBarrelRoofHeather')) $('optBarrelRoofHeather').checked = false;
   if ($('optBarrelRoofDesign')) $('optBarrelRoofDesign').checked = false;

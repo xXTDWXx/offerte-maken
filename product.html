@@ -315,45 +315,8 @@
       margin:0;
     }
 
-    .product-image-arrow{
-      position:absolute;
-      top:50%;
-      z-index:2;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      width:54px;
-      height:54px;
-      border:1px solid rgba(15, 23, 42, 0.12);
-      border-radius:50%;
-      background:rgba(255, 255, 255, 0.92);
-      color:#102030;
-      font-size:34px;
-      line-height:1;
-      cursor:pointer;
-      transform:translateY(-50%);
-      box-shadow:0 12px 28px rgba(15, 23, 42, 0.16);
-      touch-action:manipulation;
-    }
-
-    .product-image-arrow:hover,
-    .product-image-arrow:focus-visible{
-      background:#102030;
-      color:#fff;
-      outline:none;
-    }
-
-    .product-image-arrow[hidden],
     .product-image-thumbs[hidden]{
       display:none !important;
-    }
-
-    .product-image-prev{
-      left:14px;
-    }
-
-    .product-image-next{
-      right:14px;
     }
 
     .product-image-thumbs{
@@ -557,10 +520,15 @@
     }
 
     .product-configurator .opt-label{
+      display:block;
       min-width:0;
       color:#0f172a;
       font-size:17px;
       font-weight:900;
+    }
+
+    .product-configurator .opt-copy > span:first-child{
+      min-width:0;
     }
 
     .product-configurator .opt-price{
@@ -903,9 +871,7 @@
         <aside class="product-showcase">
             <div class="modal-media">
               <div class="product-image-frame">
-                <button id="productImagePrev" class="product-image-arrow product-image-prev" type="button" aria-label="Vorige foto" hidden>&lsaquo;</button>
                 <img id="productImg" alt="Barrelsauna TR170 – Halfglas" loading="lazy" src="https://www.sunspabenelux.be/wp-content/uploads/2022/11/barrelsauna-tr170-half-glas-650x650.jpg">
-                <button id="productImageNext" class="product-image-arrow product-image-next" type="button" aria-label="Volgende foto" hidden>&rsaquo;</button>
               </div>
               <div id="productImageThumbs" class="product-image-thumbs" hidden></div>
               <div id="overkappingAccessoryImages" class="overkapping-accessory-images" style="display:none;"></div>
@@ -1086,9 +1052,12 @@
                     <div class="opt-title">
                       <input id="optBarrelElectricHeater" name="barrelStove" type="radio" value="electric" />
                       <img src="images/elektrische kachel.jpg" alt="shingles" />
-                      <span class="opt-copy-stacked">
-                        <span>Harvia 8 kW € 495</span>
-                        <small>Incl. stenen &amp; montage</small>
+                      <span class="opt-copy">
+                        <span>
+                          <span class="opt-label">Harvia 8 kW</span>
+                          <span class="opt-note">Incl. stenen &amp; montage</span>
+                        </span>
+                        <span class="opt-price">€ 495</span>
                       </span>
                     </div>
                   </div>
@@ -1099,9 +1068,28 @@
                     <div class="opt-title">
                       <input id="optBarrelHuumDrop" name="barrelStove" type="radio" value="huum-drop" />
                       <img src="images/huum-drop-barrel.jpg" alt="HUUM Drop 9 kW" />
-                      <span class="opt-copy-stacked">
-                        <span>HUUM Drop 9 kW € 1.595</span>
-                        <small>Incl. WiFi module en bediening + stenen &amp; safety rail.</small>
+                      <span class="opt-copy">
+                        <span>
+                          <span class="opt-label">HUUM Drop 9 kW</span>
+                          <span class="opt-note">Incl. WiFi module en bediening + stenen &amp; safety rail.</span>
+                        </span>
+                        <span class="opt-price">€ 1.595</span>
+                      </span>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="opt opt-inline" id="optBarrelHarviaCilinderRow">
+                  <div class="opt-text">
+                    <div class="opt-title">
+                      <input id="optBarrelHarviaCilinder" name="barrelStove" type="radio" value="harvia-cilinder" />
+                      <img src="images/elektrische kachel.jpg" alt="Harvia Cilinder 9 kW" />
+                      <span class="opt-copy">
+                        <span>
+                          <span class="opt-label">Harvia Cilinder 9 kW</span>
+                          <span class="opt-note">Incl. stenen &amp; montage</span>
+                        </span>
+                        <span class="opt-price">€ 599</span>
                       </span>
                     </div>
                   </div>
