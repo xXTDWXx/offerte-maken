@@ -1147,7 +1147,11 @@ function getSelectedOfferLines() {
   }
 
   if ($('optBarrelElectricHeater')?.checked && isSauna(type)) {
-    lines.push({ label: 'Elektrische kachel 8 kW', price: PRICES.barrel_electric_heater_unit });
+    lines.push({
+      label: '<strong>Harvia 8 kW</strong><br><span style="font-size:12px;color:#475569;">Incl. stenen &amp; montage</span>',
+      price: PRICES.barrel_electric_heater_unit,
+      is_html: true
+    });
   }
 
   if ($('optBarrelHuumDrop')?.checked && isBarrelSauna(type)) {
