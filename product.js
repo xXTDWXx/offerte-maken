@@ -261,7 +261,7 @@ function getCurrentProductPriceHtml() {
 
 function syncProductPriceDisplay() {
   if (productPrice) {
-    productPrice.innerHTML = `Prijs: ${getCurrentProductPriceHtml()}`;
+    productPrice.innerHTML = `<span class="price-prefix">Prijs:</span> ${getCurrentProductPriceHtml()}`;
   }
 }
 

@@ -308,6 +308,57 @@
       white-space:nowrap;
     }
 
+    .product-configurator .modal-price .price-prefix{
+      white-space:nowrap;
+    }
+
+    .product-configurator .modal-price:has(.price-action-label){
+      display:grid;
+      grid-template-columns:auto auto;
+      align-items:center;
+      justify-content:end;
+      gap:4px 10px;
+      width:max-content;
+      max-width:360px;
+      padding:10px 14px;
+    }
+
+    .product-configurator .modal-price:has(.price-action-label) .price-prefix{
+      grid-column:1;
+      grid-row:1;
+      justify-self:end;
+      font-size:16px;
+    }
+
+    .product-configurator .modal-price:has(.price-action-label) .price-action-label{
+      grid-column:2;
+      grid-row:1;
+      justify-self:start;
+    }
+
+    .product-configurator .modal-price:has(.price-action-label) .price-current{
+      grid-column:1 / -1;
+      grid-row:2;
+      justify-self:end;
+      font-size:22px;
+      line-height:1.05;
+    }
+
+    .product-configurator .modal-price:has(.price-action-label) .price-old{
+      grid-column:1;
+      grid-row:3;
+      justify-self:start;
+      font-size:13px;
+    }
+
+    .product-configurator .modal-price:has(.price-action-label) .price-action-note{
+      grid-column:2;
+      grid-row:3;
+      justify-self:end;
+      color:#407298;
+      font-size:13px;
+    }
+
     .product-workspace{
       display:grid;
       grid-template-columns:minmax(360px, 42%) minmax(480px, 1fr);
