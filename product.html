@@ -625,6 +625,36 @@
       line-height:1.25;
     }
 
+    #optInstallRow .opt-copy,
+    #optCoverliftRow .opt-copy,
+    #optCoverlift2Row .opt-copy,
+    #optMaintRow .opt-copy,
+    #optSwimFiltersetRow .opt-copy{
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) auto;
+      align-items:center;
+      width:100%;
+      gap:6px 12px;
+    }
+
+    #optInstallRow .opt-label,
+    #optCoverliftRow .opt-label,
+    #optCoverlift2Row .opt-label,
+    #optMaintRow .opt-label,
+    #optSwimFiltersetRow .opt-label{
+      line-height:1.15;
+      overflow-wrap:anywhere;
+    }
+
+    #optInstallRow .opt-price,
+    #optCoverliftRow .opt-price,
+    #optCoverlift2Row .opt-price,
+    #optMaintRow .opt-price,
+    #optSwimFiltersetRow .opt-price{
+      justify-self:end;
+      margin-left:0;
+    }
+
     #optBarrelStoveGroup,
     #optBarrelRoofGroup{
       display:flex;
