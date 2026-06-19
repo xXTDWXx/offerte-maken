@@ -701,7 +701,8 @@
     #optCoverliftRow .opt-copy,
     #optCoverlift2Row .opt-copy,
     #optMaintRow .opt-copy,
-    #optSwimFiltersetRow .opt-copy{
+    #optSwimFiltersetRow .opt-copy,
+    #optWarmtepompRow .opt-copy{
       display:grid;
       grid-template-columns:minmax(0, 1fr) auto;
       align-items:center;
@@ -713,7 +714,8 @@
     #optCoverliftRow .opt-label,
     #optCoverlift2Row .opt-label,
     #optMaintRow .opt-label,
-    #optSwimFiltersetRow .opt-label{
+    #optSwimFiltersetRow .opt-label,
+    #optWarmtepompRow .opt-label{
       line-height:1.15;
       overflow-wrap:normal;
     }
@@ -722,9 +724,41 @@
     #optCoverliftRow .opt-price,
     #optCoverlift2Row .opt-price,
     #optMaintRow .opt-price,
-    #optSwimFiltersetRow .opt-price{
+    #optSwimFiltersetRow .opt-price,
+    #optWarmtepompRow .opt-price{
       justify-self:end;
       margin-left:0;
+    }
+
+    #optWarmtepompRow .opt-title{
+      display:grid !important;
+      grid-template-columns:70px minmax(0, 1fr);
+      grid-template-rows:auto auto;
+      align-items:center;
+      gap:10px 12px;
+    }
+
+    #optWarmtepompRow{
+      min-height:132px;
+      align-items:stretch;
+    }
+
+    #optWarmtepompRow .opt-title > img{
+      grid-column:1;
+      grid-row:1 / span 2;
+    }
+
+    #optWarmtepompRow .opt-copy{
+      grid-column:2;
+      grid-row:1;
+      align-self:end;
+    }
+
+    #optWarmtepompRow .opt-counter{
+      grid-column:2;
+      grid-row:2;
+      justify-self:end;
+      align-self:start;
     }
 
     #optBarrelStoveGroup,
@@ -1255,12 +1289,16 @@
               </label>
 
               <label class="opt opt-inline" id="optWarmtepompRow" style="display:none">
-                <div class="opt-text" style="width:100%;">
-                  <div class="opt-title" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-                    <span style="margin-left: 9px;margin-top: 5px;">Warmtepomp incl. afstelling* € 2795</span>
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <img src="images/warmtepomp.jpg" alt="Warmtepomp"/>
+                    <span class="opt-copy">
+                      <span class="opt-label">Warmtepomp incl. afstelling*</span>
+                      <span class="opt-price">€ 2795</span>
+                    </span>
+
 
                     <div class="opt-counter">
-                      <img src="images/warmtepomp.jpg" alt="Warmtepomp"/>
                       <button id="optWarmtepompMinus" type="button" class="opt-counter-btn">−</button>
                       <input
                         id="optWarmtepompQty"
@@ -1402,8 +1440,8 @@
               </div>
 
               <div class="opt opt-inline" id="optBarrelInfraredModuleRow" style="display:none">
-                <div class="opt-text" style="width:100%;">
-                  <div class="opt-title" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+                <div class="opt-text">
+                  <div class="opt-title">
                     <img src="images/Infrarood-Backrest-Heater-Set-voor-Barrelsauna.jpg" alt="Infrarood module" />
                     <span class="opt-copy">
                       <span class="opt-label">Infrarood module</span>
