@@ -434,6 +434,11 @@ function isCedarOutdoorSauna(product) {
     titleNorm(product?.title) === 'sauna cabine cedar outdoor';
 }
 
+function isCanopyInfraredBarrel(product) {
+  return product?.id === 'sauna::Infrarood-barrelsauna-canopy' ||
+    titleNorm(product?.title) === 'infrarood barrelsauna canopy';
+}
+
 function isSwimspa(type) {
   const t = typeNorm(type);
   return t.includes('zwemspa') || t.includes('swim');
@@ -1083,15 +1088,16 @@ function updateOptionUI() {
   const outdoorSauna = isOutdoorSaunaWithRoofAndStove(type);
   const barrelSauna = isBarrelSauna(type);
   const sauna = isSauna(type);
-  const showStoveGroup = outdoorSauna || sauna;
-  const showElectricHeater = sauna;
-  const showWoodStove = outdoorSauna && !isTr170Barrel(currentProduct);
-  const showHuumDrop = barrelSauna;
-  const showHarviaCilinder = barrelSauna;
+  const canopyInfraredBarrel = isCanopyInfraredBarrel(currentProduct);
+  const showStoveGroup = (outdoorSauna || sauna) && !canopyInfraredBarrel;
+  const showElectricHeater = sauna && !canopyInfraredBarrel;
+  const showWoodStove = outdoorSauna && !isTr170Barrel(currentProduct) && !canopyInfraredBarrel;
+  const showHuumDrop = barrelSauna && !canopyInfraredBarrel;
+  const showHarviaCilinder = barrelSauna && !canopyInfraredBarrel;
   const showRoofGroup = outdoorSauna;
   const shinglesOnlyRoof = showRoofGroup && isCedarOutdoorSauna(currentProduct);
   const showAllRoofOptions = showRoofGroup && !shinglesOnlyRoof;
-  const showInfraredModule = barrelSauna;
+  const showInfraredModule = barrelSauna && !canopyInfraredBarrel;
 
   if (optCoverTrapRow) optCoverTrapRow.style.display = allowExtraOptions ? '' : 'none';
   if (optCoverliftRow) optCoverliftRow.style.display = allowCoverlift ? '' : 'none';
@@ -1353,11 +1359,13 @@ function getSelectedOfferLines() {
     });
   }
 
-  if ($('optBarrelWoodStove')?.checked && isOutdoorSaunaWithRoofAndStove(type) && !isTr170Barrel(currentProduct)) {
+  const canopyInfraredBarrel = isCanopyInfraredBarrel(currentProduct);
+
+  if ($('optBarrelWoodStove')?.checked && isOutdoorSaunaWithRoofAndStove(type) && !isTr170Barrel(currentProduct) && !canopyInfraredBarrel) {
     lines.push({ label: 'Houtkachel + rookafvoer', price: PRICES.barrel_wood_stove_unit });
   }
 
-  if ($('optBarrelElectricHeater')?.checked && isSauna(type)) {
+  if ($('optBarrelElectricHeater')?.checked && isSauna(type) && !canopyInfraredBarrel) {
     lines.push({
       label: 'Harvia 8 kW<br><span style="font-size:12px;color:#475569;">Incl. stenen &amp; montage</span>',
       price: PRICES.barrel_electric_heater_unit,
@@ -1365,7 +1373,7 @@ function getSelectedOfferLines() {
     });
   }
 
-  if ($('optBarrelHuumDrop')?.checked && isBarrelSauna(type)) {
+  if ($('optBarrelHuumDrop')?.checked && isBarrelSauna(type) && !canopyInfraredBarrel) {
     lines.push({
       label: 'HUUM Drop 9 kW<br><span style="font-size:12px;color:#475569;">Incl. WiFi module en bediening + stenen &amp; safety rail.</span>',
       price: PRICES.barrel_huum_drop_unit,
@@ -1373,7 +1381,7 @@ function getSelectedOfferLines() {
     });
   }
 
-  if ($('optBarrelHarviaCilinder')?.checked && isBarrelSauna(type)) {
+  if ($('optBarrelHarviaCilinder')?.checked && isBarrelSauna(type) && !canopyInfraredBarrel) {
     lines.push({
       label: 'Harvia Cilinder 9 kW<br><span style="font-size:12px;color:#475569;">Incl. stenen &amp; montage</span>',
       price: PRICES.barrel_harvia_cilinder_unit,
@@ -1396,7 +1404,7 @@ function getSelectedOfferLines() {
     lines.push({ label: 'Design dak', price: PRICES.barrel_roof_design_unit });
   }
 
-  const barrelInfraredModuleQty = isBarrelSauna(type) ? toPositiveInt($('optBarrelInfraredModuleQty')?.value) : 0;
+  const barrelInfraredModuleQty = (isBarrelSauna(type) && !canopyInfraredBarrel) ? toPositiveInt($('optBarrelInfraredModuleQty')?.value) : 0;
   if (barrelInfraredModuleQty > 0) {
     lines.push({
       label: `Infrarood module x ${barrelInfraredModuleQty}`,
