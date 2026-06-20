@@ -192,17 +192,6 @@ async function fetchProductItems(url, label = 'producten') {
 }
 
 async function loadProducts() {
-  const currentType = getTypeFromUrl();
-  const selectedShowroom = getShowroomFromUrl();
-
-  if (isOverkappingCategory(currentType)) {
-    return (await fetchProductItems(OVERKAPPING_URL, 'overkapping.json')).filter(isProductVisible);
-  }
-
-  if (currentType && !selectedShowroom) {
-    return (await fetchProductItems(PRODUCTS_URL, 'products.json')).filter(isProductVisible);
-  }
-
   const [catalogProducts, overkappingProducts] = await Promise.all([
     fetchProductItems(PRODUCTS_URL, 'products.json'),
     fetchProductItems(OVERKAPPING_URL, 'overkapping.json')
@@ -215,6 +204,7 @@ function enrichProduct(product) {
   product._merk = getMerk(product);
   product._merkNorm = normalize(product._merk);
   product._titleNorm = normalize(product.title);
+  product._searchBlob = productSearchBlob(product);
   product._topSpecs = topSpecs(product);
   product._showrooms = getShowrooms(product);
   product._showroomNorms = product._showrooms.map(s => normalize(s));
@@ -266,6 +256,28 @@ function productMatchesType(product, type) {
   }
 
   return normalize(product?.type) === normalize(type);
+}
+
+function productSearchBlob(p) {
+  const bullets = Array.isArray(p?.bullets) ? p.bullets.join(' | ') : '';
+
+  let specText = '';
+
+  if (Array.isArray(p?.specs)) {
+    specText = p.specs.map(s => `${s.label}: ${s.value}`).join(' | ');
+  } else if (p?.specs && typeof p.specs === 'object') {
+    specText = Object.entries(p.specs)
+      .map(([key, value]) => `${key}: ${value}`)
+      .join(' | ');
+  }
+
+  return normalize([
+    p?.title,
+    p?.type,
+    getMerk(p),
+    bullets,
+    specText
+  ].join(' '));
 }
 
 function getCategoryTitle(type) {
@@ -334,16 +346,14 @@ function updateUrlFromFilters() {
   const currentType = getTypeFromUrl();
   const showBrandFilter = isSpaCategory(currentType);
 
-  if (currentType) {
-    params.set('type', currentType);
-  }
-
   const brand = showBrandFilter ? (brandFilter?.value || '') : '';
   const search = searchInput?.value || '';
   const sort = sortFilter?.value || 'relevance';
 
-  if (brand) params.set('merk', brand);
+  if (currentType) params.set('type', currentType);
+  if (brand && !search) params.set('merk', brand);
   if (search) params.set('zoek', search);
+
   if (sort && sort !== 'relevance') params.set('sort', sort);
 
   const query = params.toString();
@@ -460,7 +470,7 @@ function updateChips() {
   const search = searchInput?.value || '';
   const sort = sortFilter?.value || 'relevance';
 
-  if (brand) {
+  if (brand && !search) {
     chips.push(`<span class="chip">Merk: ${escapeHtml(brand)}</span>`);
   }
 
@@ -485,22 +495,26 @@ function filterProducts() {
   const currentType = getTypeFromUrl();
   const selectedBrand = brandFilter?.value || '';
   const search = searchInput?.value || '';
+  const searchNorm = normalize(search);
   const selectedShowroom = getShowroomFromUrl();
+  const isGlobalSearch = Boolean(searchNorm);
 
   filtered = products.filter(p => {
-    const matchType = productMatchesType(p, currentType);
+    const matchType = isGlobalSearch || productMatchesType(p, currentType);
 
     const matchBrand =
-      !selectedBrand || (p._merkNorm || normalize(getMerk(p))) === normalize(selectedBrand);
+      isGlobalSearch || !selectedBrand || (p._merkNorm || normalize(getMerk(p))) === normalize(selectedBrand);
 
     const matchSearch =
-      !search || (p._titleNorm || normalize(p.title)).includes(normalize(search));
+      !searchNorm || (p._searchBlob || productSearchBlob(p)).includes(searchNorm);
 
     const showrooms = p._showrooms || getShowrooms(p);
 
     let matchShowroom = true;
 
-    if (selectedShowroom === 'all') {
+    if (isGlobalSearch) {
+      matchShowroom = true;
+    } else if (selectedShowroom === 'all') {
       matchShowroom = showrooms.length > 0;
     } else if (selectedShowroom) {
       matchShowroom = (p._showroomNorms || showrooms.map(s => normalize(s)))
@@ -512,6 +526,11 @@ function filterProducts() {
 
   filtered = sortProducts([...filtered]);
 
+  if (pageTitle) {
+    pageTitle.textContent = isGlobalSearch ? 'Zoeken' : getCategoryTitle(currentType);
+  }
+
+  updateUrlFromFilters();
   updateChips();
   updateMeta();
   renderGrid();
@@ -547,7 +566,7 @@ async function init() {
   const currentType = getTypeFromUrl();
 
   if (pageTitle) {
-    pageTitle.textContent = getCategoryTitle(currentType);
+    pageTitle.textContent = getSearchFromUrl() ? 'Zoeken' : getCategoryTitle(currentType);
   }
 
   markActiveMenu(currentType);
