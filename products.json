@@ -123,7 +123,7 @@
           "value": "Rechthoekig"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator of UV-filter"
         }
       ]
@@ -224,7 +224,7 @@
           "value": "€ 0 – 6000, € 6000 – 10.000"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -324,7 +324,7 @@
           "value": "€ 0 – 6000, € 6000 – 10.000"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator of UV-filter"
         }
       ]
@@ -433,7 +433,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -526,7 +526,7 @@
           "value": "900 W"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Mazzi injector, of UV Filter ( optie )"
         },
         {
@@ -686,7 +686,7 @@
           "value": "Rechthoekig"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filters"
         }
       ]
@@ -818,7 +818,7 @@
           "value": "Rechthoekig"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -950,7 +950,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / Uv-filter"
         }
       ]
@@ -1082,7 +1082,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -1150,7 +1150,7 @@
           "value": "3"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Mazzi injector, of UV Filter ( optie )"
         },
         {
@@ -1266,7 +1266,7 @@
           "value": "12V / 12W"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Mazzi injector, of UV Filter ( optie )"
         },
         {
@@ -1450,7 +1450,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -1582,7 +1582,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -1702,7 +1702,7 @@
           "value": "800 liter"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -1838,7 +1838,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -1939,7 +1939,7 @@
           "value": "€ 6000 – 10.000"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -1999,7 +1999,7 @@
           "value": "Ja"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Mazzi injector, of UV Filter ( optie )"
         },
         {
@@ -2171,7 +2171,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -2299,7 +2299,7 @@
           "value": "Rechthoekig"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -2427,7 +2427,7 @@
           "value": "Rechthoekig"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -2559,7 +2559,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -2691,7 +2691,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator of UV-filter"
         }
       ]
@@ -2823,7 +2823,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -2955,7 +2955,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -3056,7 +3056,7 @@
           "value": "€ 6000 – 10.000"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -3188,7 +3188,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -3320,7 +3320,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -3709,7 +3709,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -3834,7 +3834,7 @@
           "value": "3 kW"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Mazzi injector, of UV Filter ( optie )"
         },
         {
@@ -3979,7 +3979,7 @@
           "value": "Diamond"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -4111,7 +4111,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -4239,7 +4239,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -4344,7 +4344,7 @@
           "value": "€ 6000 – 10.000"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -4432,7 +4432,7 @@
           "value": "ABS vacuüm bodem"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Mazzi injector, of UV Filter ( optie )"
         },
         {
@@ -4600,7 +4600,7 @@
           "value": "12V / 12W"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Mazzi injector, of UV Filter ( optie )"
         },
         {
@@ -4693,7 +4693,7 @@
           "value": "ABS vacuüm bodem"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Mazzi injector, of UV Filter ( optie )"
         },
         {
@@ -4854,7 +4854,7 @@
           "value": "€ 6000 – 10.000"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -4959,7 +4959,7 @@
           "value": "€ 6000 - 10.000"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -5095,7 +5095,7 @@
           "value": "Rechthoekig"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -5231,7 +5231,7 @@
           "value": "Rechthoekig"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -5355,7 +5355,7 @@
           "value": "Rechthoekig"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -5491,7 +5491,7 @@
           "value": "Rechthoekig"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -5627,7 +5627,7 @@
           "value": "Vierkant"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Ozonator / UV-filter"
         }
       ]
@@ -5743,7 +5743,7 @@
           "value": "Ja"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Mazzi injector, of UV Filter ( optie )"
         },
         {
@@ -5839,7 +5839,7 @@
           "value": "HD schuim"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Mazzi injector, of UV Filter ( optie )"
         },
         {
@@ -5983,7 +5983,7 @@
           "value": "Ja"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Mazzi injector, of UV Filter ( optie )"
         },
         {
@@ -6132,7 +6132,7 @@
           "value": "4 stuks"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Mazzi injector, of UV Filter ( optie )"
         },
         {
@@ -6340,7 +6340,7 @@
           "value": "Ja"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Mazzi injector, of UV Filter ( optie )"
         },
         {
@@ -6444,7 +6444,7 @@
           "value": "3 kW"
         },
         {
-          "label": "Ozonator",
+          "label": "UV",
           "value": "Mazzi injector, of UV Filter ( optie )"
         },
         {
@@ -10511,8 +10511,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Therapievormen",
@@ -10630,8 +10630,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Materiaal kuip",
@@ -10765,8 +10765,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Therapievormen",
@@ -10888,8 +10888,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Materiaal kuip",
@@ -11023,8 +11023,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Therapievormen",
@@ -11167,8 +11167,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Heater",
@@ -11294,8 +11294,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Circulatiepomp",
@@ -11469,8 +11469,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Therapievormen",
@@ -11620,8 +11620,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Therapievormen",
@@ -11759,8 +11759,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Heater",
@@ -11930,8 +11930,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Therapievormen",
@@ -12097,8 +12097,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Therapievormen",
@@ -12240,8 +12240,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Heater",
@@ -12375,8 +12375,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Materiaal kuip",
@@ -12522,8 +12522,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Therapievormen",
@@ -12673,8 +12673,8 @@
           "value": "Drievoudige isolatie"
         },
         {
-          "label": "Ozonator",
-          "value": "Balboa ozonator"
+          "label": "UV",
+          "value": "UV lamp"
         },
         {
           "label": "Therapievormen",
