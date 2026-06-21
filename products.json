@@ -4352,6 +4352,7 @@
     {
       "id": "spa::legend-spa-hera",
       "type": "spa",
+      "hidden": true,
       "merk": "Legend",
       "title": "Legend Spa Hera",
       "url": "https://www.sunspabenelux.be/p/legend-spa-hera/",
