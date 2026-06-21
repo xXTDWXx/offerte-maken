@@ -132,7 +132,6 @@
     {
       "id": "spa::sunspa-aquavera",
       "type": "spa",
-      "hidden": true,
       "merk": "Sunspa",
       "showroom": ["Brugge", "Lievegem"],
       "title": "Sunspa Aquavera",
@@ -335,7 +334,6 @@
     {
       "id": "spa::goldline-spa",
       "type": "spa",
-      "hidden": true,
       "merk": "Sunspa",
       "showroom": ["Brugge", "Lievegem"],
       "title": "Goldline Spa",
