@@ -121,6 +121,14 @@ function getMySpaBtwAction(p, price = Number(p?.price || 0)) {
   return { originalPrice, actionPrice, discount };
 }
 
+function mySpaBtwActionLabel() {
+  return window.SunspaI18n?.isFrench?.() ? 'Promotion TVA 21 %' : '21% btw actie';
+}
+
+function discountLabel() {
+  return window.SunspaI18n?.isFrench?.() ? 'Réduction' : 'Korting';
+}
+
 function productPriceHtml(p) {
   const action = getMySpaBtwAction(p);
 
@@ -129,10 +137,10 @@ function productPriceHtml(p) {
   }
 
   return `
-    <span class="price-action-label">21% btw actie</span>
+    <span class="price-action-label">${escapeHtml(mySpaBtwActionLabel())}</span>
     <span class="price-old">${escapeHtml(euro(action.originalPrice))}</span>
     <span class="price-current">${escapeHtml(euro(action.actionPrice))}</span>
-    <span class="price-action-note">Korting ${escapeHtml(euro(action.discount))}</span>
+    <span class="price-action-note">${escapeHtml(discountLabel())} ${escapeHtml(euro(action.discount))}</span>
   `;
 }
 
@@ -176,7 +184,8 @@ function topSpecs(p) {
 
 function getProductUrl(p) {
   const id = encodeURIComponent(p?.id || '');
-  return `product.html?id=${id}`;
+  const url = `product.html?id=${id}`;
+  return window.SunspaI18n?.localizeUrl(url) || url;
 }
 
 async function fetchProductItems(url, label = 'producten') {
@@ -349,6 +358,10 @@ function updateUrlFromFilters() {
   const brand = showBrandFilter ? (brandFilter?.value || '') : '';
   const search = searchInput?.value || '';
   const sort = sortFilter?.value || 'relevance';
+
+  if (window.SunspaI18n?.lang) {
+    params.set('lang', window.SunspaI18n.lang);
+  }
 
   if (currentType) params.set('type', currentType);
   if (brand && !search) params.set('merk', brand);

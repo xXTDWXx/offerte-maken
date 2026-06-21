@@ -379,7 +379,8 @@ function renderResults() {
     const specs = node.querySelector('.result-spec-list');
     const dims = getDimensions(product);
 
-    link.href = `product.html?id=${encodeURIComponent(product.id || '')}`;
+    const productUrl = `product.html?id=${encodeURIComponent(product.id || '')}`;
+    link.href = window.SunspaI18n?.localizeUrl(productUrl) || productUrl;
     img.decoding = 'async';
     img.src = product.image || '';
     img.alt = product.title || '';

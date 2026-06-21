@@ -106,6 +106,10 @@ function formatDateBelgium(date) {
   }).format(date);
 }
 
+function translatePrintWindow(win) {
+  window.SunspaI18n?.translatePrintWindow(win);
+}
+
 function selectedRadio(name) {
   return document.querySelector(`input[name="${name}"]:checked`);
 }
@@ -935,6 +939,7 @@ function printOffer() {
     </html>
   `);
   win.document.close();
+  translatePrintWindow(win);
 }
 
 function printTechnicalData() {
@@ -1138,6 +1143,7 @@ function printTechnicalData() {
     </html>
   `);
   win.document.close();
+  translatePrintWindow(win);
 }
 
 document.querySelectorAll('input[name="model"]').forEach(input => {

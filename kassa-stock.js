@@ -640,6 +640,7 @@ function writeReceipt(w, items) {
     </html>
   `);
   w.document.close();
+  translatePrintWindow(w);
 }
 
 function euro(value) {
@@ -664,6 +665,10 @@ function formatDateBelgium(date) {
     month: '2-digit',
     year: 'numeric'
   }).format(date);
+}
+
+function translatePrintWindow(win) {
+  window.SunspaI18n?.translatePrintWindow(win);
 }
 
 function setStatus(message, isError = false) {

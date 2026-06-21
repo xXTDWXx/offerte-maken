@@ -24,6 +24,7 @@ const productPrice = document.getElementById('productPrice');
 const productType = document.getElementById('productType');
 const productSpecs = document.getElementById('productSpecs');
 const productPrint = document.getElementById('productPrint');
+const offerPreview = document.getElementById('offerPreview');
 const offerPrint = document.getElementById('offerPrint');
 const sixPercentPrint = document.getElementById('sixPercentPrint');
 const backToOverview = document.getElementById('backToOverview');
@@ -159,6 +160,14 @@ function getMySpaBtwAction(product, price = Number(product?.price || 0)) {
   return { originalPrice, actionPrice, discount };
 }
 
+function mySpaBtwActionLabel() {
+  return window.SunspaI18n?.isFrench?.() ? 'Promotion TVA 21 %' : '21% btw actie';
+}
+
+function discountLabel() {
+  return window.SunspaI18n?.isFrench?.() ? 'Réduction' : 'korting';
+}
+
 function displayPrice(product) {
   const action = getMySpaBtwAction(product);
 
@@ -166,7 +175,8 @@ function displayPrice(product) {
     return product?.price_display || euro(product?.price || 0);
   }
 
-  return `21% btw actie: ${euro(action.actionPrice)} (van ${euro(action.originalPrice)}, korting ${euro(action.discount)})`;
+  const fromLabel = window.SunspaI18n?.isFrench?.() ? 'au lieu de' : 'van';
+  return `${mySpaBtwActionLabel()}: ${euro(action.actionPrice)} (${fromLabel} ${euro(action.originalPrice)}, ${discountLabel()} ${euro(action.discount)})`;
 }
 
 function productPriceHtml(product, price = Number(product?.price || 0)) {
@@ -177,10 +187,10 @@ function productPriceHtml(product, price = Number(product?.price || 0)) {
   }
 
   return `
-    <span class="price-action-label">21% btw actie</span>
+    <span class="price-action-label">${escapeHtml(mySpaBtwActionLabel())}</span>
     <span class="price-old">${escapeHtml(euro(action.originalPrice))}</span>
     <span class="price-current">${escapeHtml(euro(action.actionPrice))}</span>
-    <span class="price-action-note">Korting ${escapeHtml(euro(action.discount))}</span>
+    <span class="price-action-note">${escapeHtml(discountLabel())} ${escapeHtml(euro(action.discount))}</span>
   `;
 }
 
@@ -410,6 +420,70 @@ function formatDateBelgium(date) {
   }).format(date);
 }
 
+function translatePrintWindow(win) {
+  window.SunspaI18n?.translatePrintWindow(win);
+}
+
+function showOfferPreview(html) {
+  document.getElementById('offerPreviewOverlay')?.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'offerPreviewOverlay';
+  overlay.style.cssText = [
+    'position:fixed',
+    'inset:0',
+    'z-index:10000',
+    'background:rgba(15,23,42,.72)',
+    'display:grid',
+    'grid-template-rows:auto 1fr',
+    'gap:10px',
+    'padding:18px',
+    'box-sizing:border-box'
+  ].join(';');
+
+  const toolbar = document.createElement('div');
+  toolbar.style.cssText = [
+    'display:flex',
+    'justify-content:flex-end',
+    'gap:10px',
+    'align-items:center'
+  ].join(';');
+
+  const printButton = document.createElement('button');
+  printButton.type = 'button';
+  printButton.className = 'btn btn-primary';
+  printButton.textContent = window.SunspaI18n?.isFrench?.() ? "Imprimer l'offre" : 'Print offerte';
+
+  const closeButton = document.createElement('button');
+  closeButton.type = 'button';
+  closeButton.className = 'btn btn-secondary';
+  closeButton.textContent = window.SunspaI18n?.isFrench?.() ? 'Fermer' : 'Sluiten';
+
+  const frame = document.createElement('iframe');
+  frame.title = window.SunspaI18n?.isFrench?.() ? "Aperçu de l'offre" : 'Voorbeeld offerte';
+  frame.style.cssText = [
+    'width:100%',
+    'height:100%',
+    'border:0',
+    'border-radius:8px',
+    'background:#fff',
+    'box-shadow:0 24px 70px rgba(0,0,0,.28)'
+  ].join(';');
+
+  closeButton.addEventListener('click', () => overlay.remove());
+  printButton.addEventListener('click', () => frame.contentWindow?.print());
+  frame.addEventListener('load', () => {
+    if (frame.contentDocument) {
+      window.SunspaI18n?.translateDocument(frame.contentDocument);
+    }
+  });
+
+  toolbar.append(printButton, closeButton);
+  overlay.append(toolbar, frame);
+  document.body.appendChild(overlay);
+  frame.srcdoc = html;
+}
+
 function addDays(date, days) {
   const d = new Date(date);
   d.setDate(d.getDate() + days);
@@ -561,7 +635,8 @@ function getBackToOverviewHref(product) {
   }
 
   const categoryType = getCategoryTypeForProduct(product);
-  return `category.html?type=${encodeURIComponent(categoryType)}`;
+  const url = `category.html?type=${encodeURIComponent(categoryType)}`;
+  return window.SunspaI18n?.localizeUrl(url) || url;
 }
 
 function getProductCategoryText(product) {
@@ -1311,7 +1386,7 @@ function getSelectedOfferLines() {
 
     if (action) {
       lines.push({
-        label: '21% btw actie',
+        label: mySpaBtwActionLabel(),
         price: -action.discount
       });
     }
@@ -1344,7 +1419,7 @@ function getSelectedOfferLines() {
   }
 
   if ($('optMaint')?.checked && extraOptionsAllowed(type)) {
-    lines.push({ label: 'Onderhoudspakket', price: PRICES.maintenance_unit });
+    lines.push({ label: window.SunspaI18n?.isFrench?.() ? "Kit d'entretien" : 'Onderhoudspakket', price: PRICES.maintenance_unit });
   }
 
   if ($('optSwimFilterset')?.checked && isSwimspa(type)) {
@@ -1455,17 +1530,29 @@ function printProductFiche(p) {
   `);
 
   win.document.close();
+  translatePrintWindow(win);
 }
 
 function getTermsHtml(type, validUntil) {
   const terms = [];
+  const french = window.SunspaI18n?.isFrench?.();
 
-  terms.push(`<li>Prijzen zijn exclusief kraankosten tenzij anders vermeld.<br>
+  terms.push(french
+    ? `<li>Les prix s'entendent hors frais de grue, sauf mention contraire.<br>
+  Livraison et installation selon les conditions convenues (passage suffisant, absence d'obstacles et aide sur place).<br>
+  Conditions de paiement : acompte de 10 % à la commande, solde au plus tard une semaine avant la livraison.</li>`
+    : `<li>Prijzen zijn exclusief kraankosten tenzij anders vermeld.<br>
   Levering & plaatsing volgens afgesproken voorwaarden (voldoende doorgang, geen obstakels & hulp)<br>
   Betalingsvoorwaarden: 10% voorschot bij bestelling, restbedrag uiterlijk één week vóór levering.</li>`);
 
   if (isJacuzzi(type) || isSwimspa(type)) {
-    terms.push(`
+    terms.push(french ? `
+      <li>
+        Sunspa Benelux accorde une garantie de 5 ans sur la cuve,
+        de 2 ans sur les pièces techniques et électroniques
+        et de 1 an sur l'UV à compter de la date de livraison.
+      </li>
+    ` : `
       <li>
         Sunspa Benelux verleent een garantie van 5 jaar op de kuip,
         2 jaar op de technische en elektronische onderdelen
@@ -1473,7 +1560,14 @@ function getTermsHtml(type, validUntil) {
       </li>
     `);
   } else if (isInfrared(type)) {
-    terms.push(`
+    terms.push(french ? `
+      <li>
+        Sunspa Benelux accorde une garantie de 20 ans sur les émetteurs full spectrum
+        et de 2 ans sur les pièces techniques et électroniques à compter du jour de la livraison.
+        Les émetteurs doivent toujours être remplacés par le client lui-même,
+        y compris pendant la période de garantie.
+      </li>
+    ` : `
       <li>
         Sunspa Benelux verleent een garantie van 20 jaar op de full spectrum stralers
         en 2 jaar op de technische en elektronische onderdelen vanaf de dag van levering.
@@ -1482,7 +1576,12 @@ function getTermsHtml(type, validUntil) {
       </li>
     `);
   } else if (isSauna(type) || isBarrelSauna(type)) {
-    terms.push(`
+    terms.push(french ? `
+      <li>
+        Sunspa Benelux accorde une garantie de 2 ans sur les pièces techniques et électroniques
+        à compter de la date de livraison. Pour des raisons logistiques, les matériaux d'emballage ne peuvent pas être repris.
+      </li>
+    ` : `
       <li>
         Sunspa Benelux verleent een garantie van 2 jaar op de technische en elektronische onderdelen
         vanaf de datum van levering. Door logistieke reden kan het inpakmateriaal niet terug meegenomen worden.
@@ -1610,17 +1709,39 @@ function cleanElectricalContentHtml(html) {
   return template.innerHTML;
 }
 
+function translateElectricalContentHtml(html) {
+  if (!window.SunspaI18n?.isFrench?.()) return html;
+
+  return String(html || '')
+    .replace(/Stroomschema indien elektrische kachel 8-9 kW:/g, 'Schéma électrique avec poêle électrique 8-9 kW :')
+    .replace(/Voor het spa gedeelte:/g, 'Pour la partie spa :')
+    .replace(/Voor het zwemgedeelte:/g, 'Pour la partie nage :')
+    .replace(/\bOF\b/g, 'OU')
+    .replace(/krachtstroom/g, 'courant triphasé')
+    .replace(/Krachtstroom/g, 'Courant triphasé')
+    .replace(/karakteristiek/g, 'courbe')
+    .replace(/nul en aarde/g, 'neutre et terre')
+    .replace(/1x fase/g, '1x phase')
+    .replace(/2x fase/g, '2x phase')
+    .replace(/3x fase/g, '3x phase')
+    .replace(/\bfase/g, 'phase')
+    .replace(/amp\./g, 'A')
+    .replace(/(\d+)\s*A C courbe/g, '$1 A courbe C')
+    .replace(/3 x 16 amp/g, '3 x 16 A')
+    .replace(/driefase/g, 'triphasé');
+}
+
 async function getElectricalSchemaForProduct(product) {
   if (isBarrelSauna(product?.type)) {
     return {
       sectionTitle: 'Barrelsauna',
-      summary: 'Elektrische kachel 8-9 kW',
-      contentHtml: `
+      summary: window.SunspaI18n?.isFrench?.() ? 'Poêle électrique 8-9 kW' : 'Elektrische kachel 8-9 kW',
+      contentHtml: translateElectricalContentHtml(`
         <p>
           <strong>Stroomschema indien elektrische kachel 8-9 kW:</strong><br>
           3 x 16 amp 230V/380V (driefase).
         </p>
-      `
+      `)
     };
   }
 
@@ -1644,7 +1765,7 @@ async function getElectricalSchemaForProduct(product) {
     return {
       sectionTitle,
       summary,
-      contentHtml: cleanElectricalContentHtml(content.innerHTML)
+      contentHtml: translateElectricalContentHtml(cleanElectricalContentHtml(content.innerHTML))
     };
   } catch (err) {
     console.warn('Stroomschema kon niet geladen worden voor de offerte.', err);
@@ -1664,15 +1785,17 @@ function needsPackagingMaterialNote(product) {
 }
 
 function getElectricalSchemaPageHtml(schema, product) {
+  const french = window.SunspaI18n?.isFrench?.();
   const deliveryAccess = getSpaDeliveryAccess(product);
   const isBarrelProduct = isBarrelSauna(product?.type);
   const floorDeliveryHtml = needsInfraredFloorDeliveryNote(product)
     ? `
         <div class="delivery-card">
-          <h2>VERDIEP</h2>
+          <h2>${french ? 'ÉTAGE' : 'VERDIEP'}</h2>
           <p class="delivery-card-intro">
-            De cabine wordt voordien afgezet. Klant doet deze op eigen verantwoordelijkheid naar beneden/boven.
-            Nadien op afgesproken datum montage.
+            ${french
+              ? "La cabine est déposée au préalable. Le client la descend ou la monte sous sa propre responsabilité. Le montage a ensuite lieu à la date convenue."
+              : 'De cabine wordt voordien afgezet. Klant doet deze op eigen verantwoordelijkheid naar beneden/boven. Nadien op afgesproken datum montage.'}
           </p>
         </div>
       `
@@ -1680,9 +1803,11 @@ function getElectricalSchemaPageHtml(schema, product) {
   const packagingMaterialHtml = needsPackagingMaterialNote(product)
     ? `
         <div class="delivery-card">
-          <h2>INPAKMATERIAAL</h2>
+          <h2>${french ? "MATÉRIAUX D'EMBALLAGE" : 'INPAKMATERIAAL'}</h2>
           <p class="delivery-card-intro">
-            Door logistieke reden, kan het inpakmateriaal niet terug meegenomen worden.
+            ${french
+              ? "Pour des raisons logistiques, les matériaux d'emballage ne peuvent pas être repris."
+              : 'Door logistieke reden, kan het inpakmateriaal niet terug meegenomen worden.'}
           </p>
         </div>
       `
@@ -1697,57 +1822,65 @@ function getElectricalSchemaPageHtml(schema, product) {
   const deliveryMeasureHtml = deliveryAccess?.craneOnly
     ? `
         <p class="delivery-crane-message">
-          Deze spa kan door de afmeting enkel geleverd worden met een kraanfirma. Deze kosten zijn ten laste van de klant.
+          ${french
+            ? 'En raison de ses dimensions, ce spa ne peut être livré qu’avec une entreprise de grutage. Ces frais sont à la charge du client.'
+            : 'Deze spa kan door de afmeting enkel geleverd worden met een kraanfirma. Deze kosten zijn ten laste van de klant.'}
         </p>
       `
     : `
         <div class="delivery-grid">
           <div>
-            <span>Afmeting spa</span>
+            <span>${french ? 'Dimensions du spa' : 'Afmeting spa'}</span>
             <strong>${escapeHtml(deliveryAccess?.dimensions.raw || '')}</strong>
           </div>
           <div>
-            <span>Vrije breedte doorgang</span>
+            <span>${french ? 'Largeur libre du passage' : 'Vrije breedte doorgang'}</span>
             <strong>${formatCm(deliveryAccess?.passageWidth)}</strong>
-            <small>hoogte spa + ${SPA_PASSAGE_WIDTH_MARGIN_CM} cm, minimum ${SPA_MIN_PASSAGE_WIDTH_CM} cm</small>
+            <small>${french ? `hauteur du spa + ${SPA_PASSAGE_WIDTH_MARGIN_CM} cm, minimum ${SPA_MIN_PASSAGE_WIDTH_CM} cm` : `hoogte spa + ${SPA_PASSAGE_WIDTH_MARGIN_CM} cm, minimum ${SPA_MIN_PASSAGE_WIDTH_CM} cm`}</small>
           </div>
           <div>
-            <span>Vrije hoogte doorgang</span>
+            <span>${french ? 'Hauteur libre du passage' : 'Vrije hoogte doorgang'}</span>
             <strong>${formatCm(deliveryAccess?.passageHeight)}</strong>
-            <small>kortste zijde spa + ${SPA_PASSAGE_HEIGHT_MARGIN_CM} cm</small>
+            <small>${french ? `côté le plus court du spa + ${SPA_PASSAGE_HEIGHT_MARGIN_CM} cm` : `kortste zijde spa + ${SPA_PASSAGE_HEIGHT_MARGIN_CM} cm`}</small>
           </div>
         </div>
       `;
   const deliveryCraneTermHtml = deliveryAccess?.craneOnly
     ? ''
-    : '<li>Indien de hierboven vermelde minimum afmetingen niet kunnen worden voorzien, wordt de spa enkel geleverd met een kraan. Kosten hiervan zijn ten laste van de klant.</li>';
+    : `<li>${french
+      ? 'Si les dimensions minimales mentionnées ci-dessus ne peuvent pas être garanties, le spa sera livré uniquement avec une grue. Les frais sont à la charge du client.'
+      : 'Indien de hierboven vermelde minimum afmetingen niet kunnen worden voorzien, wordt de spa enkel geleverd met een kraan. Kosten hiervan zijn ten laste van de klant.'}</li>`;
   const deliveryIntroText = deliveryAccess?.craneOnly
-    ? 'Voor deze spa moet de volledige doorgang vrij en bereikbaar zijn, zonder enige obstakels zoals trappen, hoogteverschillen, hellingen of andere belemmeringen.'
-    : 'Voor deze spa moet de volledige doorgang vrij en bereikbaar zijn volgens onderstaande minimale maten, zonder enige obstakels zoals trappen, hoogteverschillen, hellingen of andere belemmeringen.';
+    ? (french
+      ? 'Pour ce spa, tout le passage doit être libre et accessible, sans aucun obstacle comme des escaliers, différences de niveau, pentes ou autres entraves.'
+      : 'Voor deze spa moet de volledige doorgang vrij en bereikbaar zijn, zonder enige obstakels zoals trappen, hoogteverschillen, hellingen of andere belemmeringen.')
+    : (french
+      ? 'Pour ce spa, tout le passage doit être libre et accessible selon les dimensions minimales ci-dessous, sans aucun obstacle comme des escaliers, différences de niveau, pentes ou autres entraves.'
+      : 'Voor deze spa moet de volledige doorgang vrij en bereikbaar zijn volgens onderstaande minimale maten, zonder enige obstakels zoals trappen, hoogteverschillen, hellingen of andere belemmeringen.');
   const deliveryAccessHtml = deliveryAccess
     ? `
         <div class="delivery-card">
-          <h2>Doorgang en voorwaarden levering</h2>
+          <h2>${french ? 'Passage et conditions de livraison' : 'Doorgang en voorwaarden levering'}</h2>
           <p class="delivery-card-intro">
             ${deliveryIntroText}
           </p>
           ${deliveryMeasureHtml}
           <ul class="delivery-terms">
-            <li>Klaarleggen van stroomkabel volgens hierboven vermeld schema, is de verantwoordelijkheid van de klant.</li>
-            <li>De klant voorziet bij levering twee extra mankrachten om de spa veilig te kunnen kantelen en begeleiden.</li>
+            <li>${french ? 'La préparation du câble électrique selon le schéma ci-dessus relève de la responsabilité du client.' : 'Klaarleggen van stroomkabel volgens hierboven vermeld schema, is de verantwoordelijkheid van de klant.'}</li>
+            <li>${french ? 'Le client prévoit deux personnes supplémentaires lors de la livraison afin de pouvoir incliner et guider le spa en toute sécurité.' : 'De klant voorziet bij levering twee extra mankrachten om de spa veilig te kunnen kantelen en begeleiden.'}</li>
             ${deliveryCraneTermHtml}
-            <li>Indien op de leveringsdag blijkt dat een of meerdere voorwaarden niet voldaan zijn, gaat de levering niet door waarbij alle hieruit voortvloeiende kosten integraal ten laste van de klant zijn.</li>
+            <li>${french ? 'Si, le jour de la livraison, une ou plusieurs conditions ne sont pas remplies, la livraison n’aura pas lieu et tous les frais qui en découlent seront entièrement à la charge du client.' : 'Indien op de leveringsdag blijkt dat een of meerdere voorwaarden niet voldaan zijn, gaat de levering niet door waarbij alle hieruit voortvloeiende kosten integraal ten laste van de klant zijn.'}</li>
           </ul>
         </div>
         <div class="delivery-acceptance">
-          <p>De klant verklaart deze leveringsvoorwaarden vooraf te hebben ontvangen, gelezen en aanvaard.</p>
+          <p>${french ? 'Le client déclare avoir reçu, lu et accepté ces conditions de livraison au préalable.' : 'De klant verklaart deze leveringsvoorwaarden vooraf te hebben ontvangen, gelezen en aanvaard.'}</p>
           <div class="delivery-signature-grid">
             <div class="delivery-signature-box">
-              <div class="signature-label">Naam klant</div>
+              <div class="signature-label">${french ? 'Nom du client' : 'Naam klant'}</div>
               <div class="signature-line"></div>
             </div>
             <div class="delivery-signature-box">
-              <div class="signature-label">Handtekening</div>
+              <div class="signature-label">${french ? 'Signature' : 'Handtekening'}</div>
               <div class="signature-line"></div>
             </div>
           </div>
@@ -1757,25 +1890,27 @@ function getElectricalSchemaPageHtml(schema, product) {
   const barrelRequirementsHtml = isBarrelProduct
     ? `
         <div class="delivery-card">
-          <h2>Ondergrond en voorwaarden plaatsing</h2>
+          <h2>${french ? "Support et conditions d'installation" : 'Ondergrond en voorwaarden plaatsing'}</h2>
           <p class="delivery-card-intro">
-            Voor deze barrelsauna moet de plaats waar de sauna komt volledig bereikbaar, vlak en klaar zijn voor plaatsing.
+            ${french
+              ? "Pour ce sauna baril, l'emplacement prévu doit être entièrement accessible, plat et prêt pour l'installation."
+              : 'Voor deze barrelsauna moet de plaats waar de sauna komt volledig bereikbaar, vlak en klaar zijn voor plaatsing.'}
           </p>
           <ul class="delivery-terms">
-            <li>Ondergrond moet stevig zijn, beton of stabilise.</li>
-            <li>Klaarleggen van stroomkabel volgens hierboven vermeld schema, is de verantwoordelijkheid van de klant.</li>
-            <li>Indien op de leveringsdag blijkt dat een of meerdere voorwaarden niet voldaan zijn, gaat de levering niet door waarbij alle hieruit voortvloeiende kosten integraal ten laste van de klant zijn.</li>
+            <li>${french ? 'Le support doit être solide, en béton ou en stabilisé.' : 'Ondergrond moet stevig zijn, beton of stabilise.'}</li>
+            <li>${french ? 'La préparation du câble électrique selon le schéma ci-dessus relève de la responsabilité du client.' : 'Klaarleggen van stroomkabel volgens hierboven vermeld schema, is de verantwoordelijkheid van de klant.'}</li>
+            <li>${french ? 'Si, le jour de la livraison, une ou plusieurs conditions ne sont pas remplies, la livraison n’aura pas lieu et tous les frais qui en découlent seront entièrement à la charge du client.' : 'Indien op de leveringsdag blijkt dat een of meerdere voorwaarden niet voldaan zijn, gaat de levering niet door waarbij alle hieruit voortvloeiende kosten integraal ten laste van de klant zijn.'}</li>
           </ul>
         </div>
         <div class="delivery-acceptance">
-          <p>De klant verklaart deze leveringsvoorwaarden vooraf te hebben ontvangen, gelezen en aanvaard.</p>
+          <p>${french ? 'Le client déclare avoir reçu, lu et accepté ces conditions de livraison au préalable.' : 'De klant verklaart deze leveringsvoorwaarden vooraf te hebben ontvangen, gelezen en aanvaard.'}</p>
           <div class="delivery-signature-grid">
             <div class="delivery-signature-box">
-              <div class="signature-label">Naam klant</div>
+              <div class="signature-label">${french ? 'Nom du client' : 'Naam klant'}</div>
               <div class="signature-line"></div>
             </div>
             <div class="delivery-signature-box">
-              <div class="signature-label">Handtekening</div>
+              <div class="signature-label">${french ? 'Signature' : 'Handtekening'}</div>
               <div class="signature-line"></div>
             </div>
           </div>
@@ -1788,19 +1923,21 @@ function getElectricalSchemaPageHtml(schema, product) {
       <div class="electrical-header">
         <div class="brand">${logo}</div>
         <div>
-          <div class="electrical-eyebrow">Technische info</div>
-          <h1>LEVERINGSVOORWAARDEN</h1>
+          <div class="electrical-eyebrow">${french ? 'Informations techniques' : 'Technische info'}</div>
+          <h1>${french ? 'CONDITIONS DE LIVRAISON' : 'LEVERINGSVOORWAARDEN'}</h1>
         </div>
       </div>
       <div class="electrical-content">
         <div class="electrical-intro">
-          <strong>Info voor:</strong>
+          <strong>${french ? 'Info pour :' : 'Info voor:'}</strong>
           <span>${escapeHtml(product?.title || '')}</span>
         </div>
         <div class="delivery-card">
           <h2>PARKING</h2>
           <p class="delivery-card-intro">
-            Voldoende parking voor de installateur aangezien dit grote stukken zijn. Camionet + aanhanger = 15m.
+            ${french
+              ? "Prévoir suffisamment de parking pour l'installateur, car il s'agit de grands éléments. Camionnette + remorque = 15 m."
+              : 'Voldoende parking voor de installateur aangezien dit grote stukken zijn. Camionet + aanhanger = 15m.'}
           </p>
         </div>
         ${floorDeliveryHtml}
@@ -2316,18 +2453,22 @@ function printSixPercentForm() {
     </html>
   `);
   win.document.close();
+  translatePrintWindow(win);
 }
 
-async function printOfferte() {
+async function printOfferte({ autoPrint = true } = {}) {
   if (!currentProduct) return;
 
   const productForOffer = currentProduct;
-  const win = window.open('', '_blank');
-  if (!win) return;
+  const win = autoPrint ? window.open('', '_blank') : null;
+  if (autoPrint && !win) return;
 
-  win.document.open();
-  win.document.write('<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>Offerte laden...</title></head><body>Offerte wordt voorbereid...</body></html>');
-  win.document.close();
+  if (win) {
+    win.document.open();
+    win.document.write('<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>Offerte laden...</title></head><body>Offerte wordt voorbereid...</body></html>');
+    win.document.close();
+    translatePrintWindow(win);
+  }
 
   const customer = getCustomerData();
   const lines = getSelectedOfferLines();
@@ -2364,9 +2505,19 @@ async function printOfferte() {
   const electricalSchema = await getElectricalSchemaForProduct(productForOffer);
   const electricalSchemaHtml = getElectricalSchemaPageHtml(electricalSchema, productForOffer);
   const offerSheetClass = electricalSchemaHtml ? 'sheet offer-sheet has-next-page' : 'sheet offer-sheet';
+  const autoPrintScript = autoPrint
+    ? `
+        <script>
+          window.onload = function () {
+            setTimeout(function () {
+              window.print();
+            }, 250);
+          };
+        <\/script>
+      `
+    : '';
 
-  win.document.open();
-  win.document.write(`
+  const offerHtml = `
     <!doctype html>
     <html lang="nl">
       <head>
@@ -3760,17 +3911,20 @@ async function printOfferte() {
         </div>
         ${electricalSchemaHtml}
 
-        <script>
-          window.onload = function () {
-            setTimeout(function () {
-              window.print();
-            }, 250);
-          };
-        </script>
+        ${autoPrintScript}
       </body>
     </html>
-  `);
+  `;
+
+  if (!autoPrint) {
+    showOfferPreview(offerHtml);
+    return;
+  }
+
+  win.document.open();
+  win.document.write(offerHtml);
   win.document.close();
+  translatePrintWindow(win);
 }
 
 function renderProduct(p) {
@@ -3851,7 +4005,13 @@ function renderProduct(p) {
 
   if (offerPrint) {
     offerPrint.addEventListener('click', function () {
-      printOfferte();
+      printOfferte({ autoPrint: true });
+    });
+  }
+
+  if (offerPreview) {
+    offerPreview.addEventListener('click', function () {
+      printOfferte({ autoPrint: false });
     });
   }
 
@@ -3870,12 +4030,18 @@ function renderProduct(p) {
   if ($('optBarrelRoofDesign')) $('optBarrelRoofDesign').checked = false;
   if ($('optBarrelInfraredModuleQty')) $('optBarrelInfraredModuleQty').value = '0';
 
+  if (window.SunspaI18n?.isFrench?.()) {
+    const maintLabel = document.querySelector('#optMaintRow .opt-label');
+    if (maintLabel) maintLabel.textContent = "Kit d'entretien";
+  }
+
   wireCustomerHandlers();
   wireOptionHandlers();
   wireProductLayoutResize();
   updateOptionUI();
 
   if (productPage) productPage.style.display = '';
+  window.SunspaI18n?.translateDocument(document);
   scheduleProductConfiguratorHeightSync();
 }
 
