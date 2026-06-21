@@ -3,6 +3,7 @@
     {
       "id": "spa::sunspa-new-york",
       "type": "spa",
+      "hidden": true,
       "merk": "Sunspa",
       "title": "Sunspa New York",
       "url": "https://www.sunspabenelux.be/p/sunspa-new-york/",
@@ -131,6 +132,7 @@
     {
       "id": "spa::sunspa-aquavera",
       "type": "spa",
+      "hidden": true,
       "merk": "Sunspa",
       "showroom": ["Brugge", "Lievegem"],
       "title": "Sunspa Aquavera",
@@ -232,6 +234,7 @@
     {
       "id": "spa::sunspa-serenza",
       "type": "spa",
+      "hidden": true,
       "merk": "Sunspa",
       "title": "Sunspa Serenza",
       "url": "https://www.sunspabenelux.be/p/sunspa-serenza/",
@@ -332,6 +335,7 @@
     {
       "id": "spa::goldline-spa",
       "type": "spa",
+      "hidden": true,
       "merk": "Sunspa",
       "showroom": ["Brugge", "Lievegem"],
       "title": "Goldline Spa",
@@ -826,6 +830,7 @@
     {
       "id": "spa::sunspa-marbella",
       "type": "spa",
+      "hidden": true,
       "merk": "Sunspa",
       "title": "Sunspa Marbella",
       "url": "https://www.sunspabenelux.be/p/sunspa-marbella/",
@@ -958,6 +963,7 @@
     {
       "id": "spa::sunspa-monaco",
       "type": "spa",
+      "hidden": true,
       "merk": "Sunspa",
       "title": "Sunspa Monaco",
       "url": "https://www.sunspabenelux.be/p/sunspa-monaco/",
@@ -1326,6 +1332,7 @@
     {
       "id": "spa::sunspa-nice",
       "type": "spa",
+      "hidden": true,
       "merk": "Sunspa",
       "title": "Sunspa Nice",
       "url": "https://www.sunspabenelux.be/p/sunspa-nice/",
@@ -1458,6 +1465,7 @@
     {
       "id": "spa::sunspa-milano",
       "type": "spa",
+      "hidden": true,
       "merk": "Sunspa",
       "title": "Sunspa Milano",
       "url": "https://www.sunspabenelux.be/p/sunspa-milano/",
@@ -1710,6 +1718,7 @@
     {
       "id": "spa::sunspa-london",
       "type": "spa",
+      "hidden": true,
       "merk": "Sunspa",
       "title": "Sunspa London",
       "url": "https://www.sunspabenelux.be/p/sunspa-london/",
@@ -2043,6 +2052,7 @@
     {
       "id": "spa::sunspa-palermo",
       "type": "spa",
+      "hidden": true,
       "merk": "Sunspa",
       "title": "Sunspa Palermo",
       "url": "https://www.sunspabenelux.be/p/sunspa-palermo/",
@@ -3328,6 +3338,7 @@
     {
       "id": "spa::sunspa-san-diego",
       "type": "spa",
+      "hidden": true,
       "merk": "Sunspa",
       "title": "Sunspa San Diego",
       "url": "https://www.sunspabenelux.be/p/sunspa-san-diego/",
@@ -5104,6 +5115,7 @@
     {
       "id": "spa::sunspa-roma",
       "type": "spa",
+      "hidden": true,
       "merk": "Sunspa",
       "title": "Sunspa Roma",
       "url": "https://www.sunspabenelux.be/p/sunspa-roma/",
