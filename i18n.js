@@ -722,6 +722,21 @@
         background:#0f172a;
         color:#fff;
       }
+      body.showroom-menu-proposal .showroom-logo-row{
+        padding-right:112px;
+      }
+      body.showroom-menu-proposal .showroom-top-kassa{
+        flex:0 0 auto;
+      }
+      @media (max-width:700px){
+        .language-switcher{
+          top:8px;
+          right:8px;
+        }
+        body.showroom-menu-proposal .showroom-logo-row{
+          padding-right:98px;
+        }
+      }
       @media print{
         .language-switcher{display:none!important;}
       }
