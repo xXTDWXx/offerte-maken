@@ -211,6 +211,13 @@ const OVERKAPPING_WPC_OPTIONS = [
   { id: 'wpc-53m', sizeKey: '5.3', label: '5.3 m', offerLabel: 'WPC Wand 5.3 m', price: 1179 }
 ];
 
+const OVERKAPPING_MANUAL_SCREEN_OPTIONS = [
+  { id: 'manual-screen-265m', sizeKey: '2.65', label: '2,65 m', offerLabel: 'Screen Antraciet 2,65 m', price: 595 },
+  { id: 'manual-screen-3m', sizeKey: '3', label: '3 m', offerLabel: 'Screen Antraciet 3 m', price: 645 },
+  { id: 'manual-screen-36m', sizeKey: '3.6', label: '3,6 m', offerLabel: 'Screen Antraciet 3,6 m', price: 695 },
+  { id: 'manual-screen-4m', sizeKey: '4', label: '4 m', offerLabel: 'Screen Antraciet 4 m', price: 745 }
+];
+
 const OVERKAPPING_ACCESSORY_IMAGES = [
   {
     label: 'Lamellenwand',
@@ -219,6 +226,10 @@ const OVERKAPPING_ACCESSORY_IMAGES = [
   {
     label: 'WPC Wand',
     image: 'images/overkappingen/alusense-27843-afscheidingswand-wpc.png'
+  },
+  {
+    label: 'Screen Antraciet',
+    image: 'images/overkappingen/alusense-27825-screen-antraciet.png'
   }
 ];
 
@@ -931,6 +942,19 @@ function getOverkappingWpcOptions(product) {
   }));
 }
 
+function getOverkappingManualScreenOptions(product) {
+  const dimensionKeys = new Set(getOverkappingDimensionKeys(product));
+
+  return OVERKAPPING_MANUAL_SCREEN_OPTIONS
+    .filter(option => dimensionKeys.has(option.sizeKey))
+    .map(option => ({
+      id: option.id,
+      label: option.label,
+      price: Number(option.price || 0),
+      offerLabel: option.offerLabel || `Screen Antraciet ${option.label}`
+    }));
+}
+
 function getOverkappingAccessoryGroups(product) {
   if (!shouldShowOverkappingScreenOptions(product)) return [];
 
@@ -946,9 +970,13 @@ function getOverkappingAccessoryGroups(product) {
       title: 'WPC Wand',
       options: getOverkappingWpcOptions(product)
     });
+    groups.push({
+      title: 'Screen Antraciet',
+      options: getOverkappingManualScreenOptions(product)
+    });
   }
 
-  return groups;
+  return groups.filter(group => group.options.length);
 }
 
 function getOverkappingScreenQtyInput(optionId) {
