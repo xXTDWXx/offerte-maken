@@ -1,6 +1,7 @@
 param(
   [string]$CurrentStockUrl = 'https://avlemmix-my.sharepoint.com/:x:/p/angelo/IQBho8ccoP7iTLW5lf8ESyxXAaPNn2tHRpmmSEhee_sVJeE?e=caKQnF&download=1',
   [string]$IncomingStockUrl = 'https://avlemmix-my.sharepoint.com/:x:/p/angelo/EVXDPHIAsa1IjPgA3aHlVAQBPaLBDEWYcoaZkm82kF57Bg?e=H2xx8C&download=1',
+  [string]$SaunaStockUrl = 'https://avlemmix-my.sharepoint.com/:x:/p/angelo/Ee8O1yUpFeNHvQQ-FlI45PcBFuDZZxfo6hFU8lEIZ8bS6A?e=MC090c&download=1',
   [string]$ArrivalsUrl = 'https://www.sunspa-dealer.nl/stock/conatiner-arrivals/',
   [string]$ArrivalsPassword = $env:SUNSPA_DEALER_PASSWORD
 )
@@ -111,6 +112,24 @@ function Get-CellValue {
   return $null
 }
 
+function Get-SheetSharedStrings {
+  param($Zip)
+  [xml]$sharedXml = Get-ZipText $Zip 'xl/sharedStrings.xml'
+  $sharedStrings = @()
+  if ($sharedXml) {
+    foreach ($si in $sharedXml.GetElementsByTagName('si')) {
+      $sharedStrings += $si.InnerText
+    }
+  }
+  return $sharedStrings
+}
+
+function Get-ExcelDateText {
+  param($Value)
+  if ($null -eq $Value -or "$Value" -notmatch '^\d+$') { return $null }
+  return ([datetime]'1899-12-30').AddDays([int]$Value).ToString('yyyy-MM-dd')
+}
+
 function Read-XlsxRows {
   param(
     [string]$Url,
@@ -201,6 +220,112 @@ function Read-XlsxRows {
       rows = @($rows)
       availableRows = $stockRows
       soldOrColoredRows = $soldRows
+    }
+  } finally {
+    if ($zip) { $zip.Dispose() }
+  }
+}
+
+function Read-SaunaStock {
+  param([string]$Url)
+
+  $tempFile = Join-Path $env:TEMP ("sunspa-sauna-stock-{0}.xlsx" -f ([guid]::NewGuid().ToString('N')))
+  $tempFiles.Add($tempFile) | Out-Null
+  Invoke-WebRequest -Uri (Get-DownloadUrl $Url) -OutFile $tempFile -UseBasicParsing -MaximumRedirection 10 -TimeoutSec 60 | Out-Null
+
+  Add-Type -AssemblyName System.IO.Compression.FileSystem
+  $zip = [IO.Compression.ZipFile]::OpenRead($tempFile)
+
+  try {
+    $sharedStrings = Get-SheetSharedStrings $zip
+    [xml]$currentSheet = Get-ZipText $zip 'xl/worksheets/sheet2.xml'
+    [xml]$incomingSheet = Get-ZipText $zip 'xl/worksheets/sheet3.xml'
+    $items = @{}
+    $currentRows = 0
+    $incomingRows = 0
+
+    foreach ($row in $currentSheet.GetElementsByTagName('row')) {
+      $rowNumber = [int]$row.GetAttribute('r')
+      if ($rowNumber -eq 1) { continue }
+
+      $values = @{}
+      foreach ($cell in $row.GetElementsByTagName('c')) {
+        $values[(Get-CellColumn $cell.GetAttribute('r'))] = Get-CellValue $cell $sharedStrings
+      }
+
+      $code = ([string]$values['B']).Trim()
+      $name = ([string]$values['C']).Trim()
+      if ([string]::IsNullOrWhiteSpace($code) -or [string]::IsNullOrWhiteSpace($name)) { continue }
+      if ($name -match '(?i)profit|besturing|control panel|backrest|heater set|dak|handvat|led strip|garantie|accessoir') { continue }
+
+      $qty = 0
+      if ($values['G'] -match '^-?\d+$') { $qty = [Math]::Max(0, [int]$values['G']) }
+      $key = Normalize-Text "$code $name"
+
+      if (-not $items.ContainsKey($key)) {
+        $items[$key] = @{
+          key = $key
+          code = $code
+          name = $name
+          currentTotal = 0
+          incomingTotal = 0
+          incoming = @()
+        }
+      }
+
+      $items[$key].currentTotal += $qty
+      $currentRows++
+    }
+
+    foreach ($row in $incomingSheet.GetElementsByTagName('row')) {
+      $rowNumber = [int]$row.GetAttribute('r')
+      if ($rowNumber -eq 1) { continue }
+
+      $values = @{}
+      foreach ($cell in $row.GetElementsByTagName('c')) {
+        $values[(Get-CellColumn $cell.GetAttribute('r'))] = Get-CellValue $cell $sharedStrings
+      }
+
+      $code = ([string]$values['B']).Trim()
+      $name = ([string]$values['E']).Trim()
+      if ([string]::IsNullOrWhiteSpace($code) -or [string]::IsNullOrWhiteSpace($name)) { continue }
+      if ($name -match '(?i)besturing|control panel|bank|led strip|garantie|accessoir') { continue }
+
+      $qty = 0
+      if ($values['J'] -match '^-?\d+$') { $qty = [Math]::Max(0, [int]$values['J']) }
+      if ($qty -le 0) { continue }
+
+      $key = Normalize-Text "$code $name"
+      if (-not $items.ContainsKey($key)) {
+        $items[$key] = @{
+          key = $key
+          code = $code
+          name = $name
+          currentTotal = 0
+          incomingTotal = 0
+          incoming = @()
+        }
+      }
+
+      $items[$key].incomingTotal += $qty
+      $items[$key].incoming += @{
+        date = Get-ExcelDateText $values['G']
+        count = $qty
+      }
+      $incomingRows++
+    }
+
+    return @{
+      source = @{
+        type = 'sharepoint-xlsx'
+        live = $true
+        url = $Url
+      }
+      counts = @{
+        currentRows = $currentRows
+        incomingRows = $incomingRows
+      }
+      items = @($items.Values | Sort-Object name)
     }
   } finally {
     if ($zip) { $zip.Dispose() }
@@ -324,6 +449,7 @@ try {
     -ContainerColumn 'C'
 
   $arrivals = Get-ContainerArrivals $ArrivalsUrl $ArrivalsPassword
+  $saunaStock = Read-SaunaStock $SaunaStockUrl
   $models = @{}
 
   foreach ($row in $current.rows) {
@@ -430,6 +556,7 @@ try {
       arrivals = $arrivals.Count
     }
     models = @($modelList | Sort-Object name)
+    saunas = $saunaStock
   } | ConvertTo-Json -Depth 14
 } finally {
   foreach ($tempFile in $tempFiles) {
