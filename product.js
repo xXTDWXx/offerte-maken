@@ -1,6 +1,8 @@
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
 const OVERKAPPING_URL = new URL('overkapping.json', document.baseURI).toString();
 const ELECTRICAL_SCHEMA_URL = new URL('stroom.html', document.baseURI).toString();
+const SPA_STOCK_URL = new URL('api/spa-stock', document.baseURI).toString();
+const SPA_STOCK_STATIC_URL = new URL('spa-stock.json', document.baseURI).toString();
 
 /*
   Zet hier het pad naar jullie logo.
@@ -42,6 +44,7 @@ let customerHandlersWired = false;
 let productLayoutResizeWired = false;
 let productImageCarouselWired = false;
 let spaColorSwatchesWired = false;
+let spaStockDataPromise = null;
 let productImages = [];
 let activeProductImageIndex = 0;
 
@@ -333,7 +336,10 @@ function wireSpaColorSwatches() {
   ['spaInnerColor', 'spaCabinetColor'].forEach(id => {
     const select = $(id);
     if (!select) return;
-    select.addEventListener('change', updateSpaColorSwatches);
+    select.addEventListener('change', () => {
+      updateSpaColorSwatches();
+      updateSpaStockDelivery();
+    });
   });
 }
 
@@ -507,6 +513,193 @@ function typeNorm(type) {
 
 function titleNorm(title) {
   return String(title || '').trim().toLowerCase();
+}
+
+function normalizeStockText(value) {
+  return String(value || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/&/g, ' en ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .replace(/\s+/g, ' ');
+}
+
+function normalizeStockColor(value) {
+  const clean = normalizeStockText(value)
+    .replace(/\balp\b/g, '')
+    .replace(/\bwide\b/g, '')
+    .replace(/\bsh\b/g, '')
+    .replace(/\bts\b/g, '')
+    .trim();
+
+  if (clean.includes('palm') && clean.includes('black')) return 'palm black';
+  if (clean.includes('ancient') && (clean.includes('grey') || clean.includes('gray'))) return 'ancient grey';
+  if (clean.includes('graphite')) return 'graphite';
+  if (clean.includes('chocolate')) return 'chocolate';
+  if (clean.includes('taupe')) return 'taupe';
+  if (clean.includes('black')) return 'black';
+  if (clean.includes('grey') || clean.includes('gray')) return 'grey';
+  return clean;
+}
+
+function getSpaStockModelCandidates(product) {
+  const rawTitle = String(product?.title || '');
+  const normalizedTitle = normalizeStockText(rawTitle);
+  const withoutKnownPrefixes = normalizeStockText(
+    rawTitle.replace(/\b(sunspa|myspa|fox|elite|vogue|gold\s*line|goldline)\b/gi, ' ')
+  );
+  const words = withoutKnownPrefixes.split(' ').filter(Boolean);
+
+  return Array.from(new Set([
+    normalizedTitle,
+    withoutKnownPrefixes,
+    words.length ? words[words.length - 1] : ''
+  ].filter(Boolean)));
+}
+
+function getSpaStockData() {
+  if (!spaStockDataPromise) {
+    spaStockDataPromise = fetch(SPA_STOCK_URL, { cache: 'no-store' })
+      .then(response => {
+        if (!response.ok) throw new Error(`Stock API ${response.status}`);
+        return response.json();
+      })
+      .catch(() => fetch(`${SPA_STOCK_STATIC_URL}?v=${Date.now()}`, { cache: 'no-store' })
+        .then(response => {
+          if (!response.ok) throw new Error(`Stock JSON ${response.status}`);
+          return response.json();
+        }))
+      .catch(error => {
+        console.warn('Live spa stock niet beschikbaar', error);
+        return null;
+      });
+  }
+
+  return spaStockDataPromise;
+}
+
+function findSpaStockModel(product, stockData) {
+  const models = Array.isArray(stockData?.models) ? stockData.models : [];
+  if (!models.length) return null;
+
+  const candidates = getSpaStockModelCandidates(product);
+  const exact = models.find(model => candidates.includes(normalizeStockText(model?.key || model?.name)));
+  if (exact) return exact;
+
+  return models.find(model => {
+    const modelKey = normalizeStockText(model?.key || model?.name);
+    return candidates.some(candidate => candidate.includes(modelKey) || modelKey.includes(candidate));
+  }) || null;
+}
+
+function getSpaStockStatus(cabinet) {
+  const currentCount = Number(cabinet?.currentTotal ?? cabinet?.total ?? 0);
+  if (currentCount > 0) {
+    return {
+      key: 'available',
+      label: 'Op voorraad',
+      term: '+/- 4 weken onder voorbehoud'
+    };
+  }
+
+  const incoming = Array.isArray(cabinet?.sources?.incomingStock)
+    ? cabinet.sources.incomingStock.filter(item => Number(item?.count || 0) > 0)
+    : [];
+  const listedIncoming = incoming
+    .filter(item => Number(item?.weeks || 0) > 0)
+    .sort((a, b) => Number(a.weeks || 999) - Number(b.weeks || 999));
+
+  if (listedIncoming.length) {
+    const first = listedIncoming[0];
+    return {
+      key: 'incoming',
+      label: 'Onderweg',
+      term: `Onderweg ${first.container ? `container ${first.container} - ` : ''}+/- ${first.weeks} weken onder voorbehoud`
+    };
+  }
+
+  if (incoming.length) {
+    return {
+      key: 'incoming',
+      label: 'Onderweg',
+      term: 'Onderweg - 15-20 weken onder voorbehoud'
+    };
+  }
+
+  return {
+    key: 'order',
+    label: 'Op bestelling',
+    term: '+/- 12 weken onder voorbehoud'
+  };
+}
+
+function renderSpaStockDelivery(product, stockData) {
+  const wrap = $('spaStockDelivery');
+  const cabinetSelect = $('spaCabinetColor');
+  if (!wrap || !cabinetSelect || !hasSpaColorOptions(product?.type)) return;
+
+  const model = findSpaStockModel(product, stockData);
+  const colors = Array.from(cabinetSelect.options || []).map(option => ({
+    key: normalizeStockColor(option.value),
+    label: option.textContent || option.value
+  }));
+
+  if (!model || !colors.length) {
+    wrap.hidden = true;
+    wrap.innerHTML = '';
+    return;
+  }
+
+  const cabinets = Array.isArray(model.cabinets) ? model.cabinets : [];
+  const selectedColor = normalizeStockColor(cabinetSelect.value);
+  const selectedCabinet = cabinets.find(cabinet => normalizeStockColor(cabinet.key || cabinet.color) === selectedColor);
+  const selectedStatus = getSpaStockStatus(selectedCabinet);
+
+  wrap.innerHTML = `
+    <div class="spa-stock-head">
+      <span>Leveringstermijn per omkasting</span>
+      <span class="spa-stock-state">${escapeHtml(selectedStatus.label)}</span>
+    </div>
+    <div class="spa-stock-colors">
+      ${colors.map(color => {
+        const cabinet = cabinets.find(item => normalizeStockColor(item.key || item.color) === color.key);
+        const status = getSpaStockStatus(cabinet);
+        const selected = color.key === selectedColor;
+        return `
+          <div class="spa-stock-color is-${status.key} ${selected ? 'is-selected' : ''}">
+            <span class="spa-stock-color-name">${escapeHtml(color.label)}</span>
+            <span class="spa-stock-color-term">${escapeHtml(status.term)}</span>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+  wrap.hidden = false;
+}
+
+function updateSpaStockDelivery() {
+  const wrap = $('spaStockDelivery');
+  if (!currentProduct || !wrap || !hasSpaColorOptions(currentProduct.type)) {
+    if (wrap) {
+      wrap.hidden = true;
+      wrap.innerHTML = '';
+    }
+    return;
+  }
+
+  wrap.hidden = false;
+  wrap.innerHTML = `
+    <div class="spa-stock-head">
+      <span>Leveringstermijn per omkasting</span>
+      <span class="spa-stock-state">Live stock laden...</span>
+    </div>
+  `;
+
+  getSpaStockData().then(stockData => {
+    if (currentProduct) renderSpaStockDelivery(currentProduct, stockData);
+  });
 }
 
 function isRoundSpaWithoutCoverlift(product) {
@@ -3990,6 +4183,7 @@ function renderProduct(p) {
       .join('');
   }
   updateSpaColorSwatches();
+  updateSpaStockDelivery();
 
   toggleBullfrogUi(p);
   syncProductTypeClasses(p);

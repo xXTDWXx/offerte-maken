@@ -600,6 +600,84 @@
       box-shadow:0 0 0 3px rgba(47, 111, 159, 0.12);
     }
 
+    .product-configurator .spa-stock-delivery{
+      display:grid;
+      gap:8px;
+      margin-top:-4px;
+      padding:10px 12px;
+      border:1px solid #dbe3ec;
+      border-radius:14px;
+      background:#f8fbfd;
+    }
+
+    .product-configurator .spa-stock-delivery[hidden]{
+      display:none;
+    }
+
+    .product-configurator .spa-stock-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      color:#5f7185;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+
+    .product-configurator .spa-stock-state{
+      color:#2b779a;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:0;
+      text-transform:none;
+      white-space:nowrap;
+    }
+
+    .product-configurator .spa-stock-colors{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+      gap:8px;
+    }
+
+    .product-configurator .spa-stock-color{
+      display:grid;
+      gap:3px;
+      padding:9px 10px;
+      border:1px solid #dbe3ec;
+      border-radius:12px;
+      background:#fff;
+    }
+
+    .product-configurator .spa-stock-color.is-selected{
+      border-color:#2b779a;
+      background:#eef8fc;
+      box-shadow:0 0 0 2px rgba(43, 119, 154, 0.12);
+    }
+
+    .product-configurator .spa-stock-color-name{
+      color:#0f172a;
+      font-size:13px;
+      font-weight:850;
+      text-transform:capitalize;
+    }
+
+    .product-configurator .spa-stock-color-term{
+      color:#475569;
+      font-size:12px;
+      font-weight:650;
+      line-height:1.25;
+    }
+
+    .product-configurator .spa-stock-color.is-available .spa-stock-color-term{
+      color:#1f6d45;
+    }
+
+    .product-configurator .spa-stock-color.is-incoming .spa-stock-color-term{
+      color:#2b779a;
+    }
+
     .product-configurator .opt,
     .product-configurator label.opt,
     .product-configurator .opt-disabled{
@@ -1254,6 +1332,8 @@
                   </div>
                 </div>
               </div>
+
+              <div id="spaStockDelivery" class="spa-stock-delivery" hidden></div>
 
               <div id="variantOptions" class="variant-options" style="display:none;">
                 <div class="field">

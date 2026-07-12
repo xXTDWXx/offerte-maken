@@ -1,0 +1,2463 @@
+﻿{
+    "models":  [
+                   {
+                       "name":  "Prisma",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  2,
+                                            "color":  "Graphite",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-14",
+                                                                                      "container":  "45",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-11",
+                                                                                      "count":  2,
+                                                                                      "weeks":  5
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Grey",
+                                            "currentTotal":  2,
+                                            "total":  2,
+                                            "sources":  {
+                                                            "currentStock":  2,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  2,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  2,
+                       "total":  2,
+                       "key":  "prisma",
+                       "incomingTotal":  2
+                   },
+                   {
+                       "name":  "Granada",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  1,
+                                            "color":  "Palm black",
+                                            "currentTotal":  9,
+                                            "total":  9,
+                                            "sources":  {
+                                                            "currentStock":  9,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-21",
+                                                                                      "container":  "46",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-18",
+                                                                                      "count":  1,
+                                                                                      "weeks":  6
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "palm black",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  9,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  9,
+                       "total":  9,
+                       "key":  "granada",
+                       "incomingTotal":  1
+                   },
+                   {
+                       "name":  "Majesty+",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  14,
+                                            "color":  "Black",
+                                            "currentTotal":  7,
+                                            "total":  7,
+                                            "sources":  {
+                                                            "currentStock":  7,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-07",
+                                                                                      "container":  "S4",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-04",
+                                                                                      "count":  1,
+                                                                                      "weeks":  4
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "68",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  2,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "38",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  2,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S13",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  1,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "64",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  8,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "black",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  7,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  14,
+                                            "color":  "Grey",
+                                            "currentTotal":  3,
+                                            "total":  3,
+                                            "sources":  {
+                                                            "currentStock":  3,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-08-16",
+                                                                                      "container":  "S10",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-09-13",
+                                                                                      "count":  2,
+                                                                                      "weeks":  9
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "62",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  3,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "68",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  1,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S13",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  2,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "66",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  6,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  3,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  17,
+                                            "color":  "Taupe",
+                                            "currentTotal":  12,
+                                            "total":  12,
+                                            "sources":  {
+                                                            "currentStock":  12,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-07",
+                                                                                      "container":  "S4",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-04",
+                                                                                      "count":  4,
+                                                                                      "weeks":  4
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-14",
+                                                                                      "container":  "43",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-11",
+                                                                                      "count":  2,
+                                                                                      "weeks":  5
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-26",
+                                                                                      "container":  "51",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-23",
+                                                                                      "count":  2,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-21",
+                                                                                      "container":  "47",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-18",
+                                                                                      "count":  1,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S11",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  4,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S13",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  2,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "38",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  2,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "taupe",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  12,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  22,
+                       "total":  22,
+                       "key":  "majesty",
+                       "incomingTotal":  45
+                   },
+                   {
+                       "name":  "Formentera",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  1,
+                                            "color":  "Palm black",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-21",
+                                                                                      "container":  "46",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-18",
+                                                                                      "count":  1,
+                                                                                      "weeks":  6
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "palm black",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  0,
+                       "total":  0,
+                       "key":  "formentera",
+                       "incomingTotal":  1
+                   },
+                   {
+                       "name":  "Serenity",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  13,
+                                            "total":  13,
+                                            "sources":  {
+                                                            "currentStock":  13,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  13,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  13,
+                       "total":  13,
+                       "key":  "serenity",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Aquatique",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  13,
+                                            "total":  13,
+                                            "sources":  {
+                                                            "currentStock":  13,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  13,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  13,
+                       "total":  13,
+                       "key":  "aquatique",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Riviera",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  20,
+                                            "color":  "Graphite",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-21",
+                                                                                      "container":  "48",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-18",
+                                                                                      "count":  4,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-26",
+                                                                                      "container":  "50",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-23",
+                                                                                      "count":  4,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "57",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  4,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "62",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  4,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "53",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  4,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  0,
+                       "total":  0,
+                       "key":  "riviera",
+                       "incomingTotal":  20
+                   },
+                   {
+                       "name":  "Olympus",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  8,
+                                            "total":  8,
+                                            "sources":  {
+                                                            "currentStock":  8,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  8,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  8,
+                       "total":  8,
+                       "key":  "olympus",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Palma",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Ancient grey",
+                                            "currentTotal":  1,
+                                            "total":  1,
+                                            "sources":  {
+                                                            "currentStock":  1,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "ancient grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  1,
+                       "total":  1,
+                       "key":  "palma",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Boston",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  2,
+                                            "total":  2,
+                                            "sources":  {
+                                                            "currentStock":  2,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  2,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  2,
+                       "total":  2,
+                       "key":  "boston",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Atlantica",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  20,
+                                            "color":  "Graphite",
+                                            "currentTotal":  2,
+                                            "total":  2,
+                                            "sources":  {
+                                                            "currentStock":  2,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-21",
+                                                                                      "container":  "47",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-18",
+                                                                                      "count":  4,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-26",
+                                                                                      "container":  "51",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-23",
+                                                                                      "count":  4,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "57",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  4,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "65",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  4,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "56",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  4,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  2,
+                                                                    "color":  "Gypsum"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  2,
+                       "total":  2,
+                       "key":  "atlantica",
+                       "incomingTotal":  20
+                   },
+                   {
+                       "name":  "Mystic",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Grey",
+                                            "currentTotal":  5,
+                                            "total":  5,
+                                            "sources":  {
+                                                            "currentStock":  5,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  5,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  9,
+                                            "total":  9,
+                                            "sources":  {
+                                                            "currentStock":  9,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  9,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  14,
+                       "total":  14,
+                       "key":  "mystic",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Elite",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Chocolate",
+                                            "currentTotal":  1,
+                                            "total":  1,
+                                            "sources":  {
+                                                            "currentStock":  1,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "chocolate",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  1,
+                       "total":  1,
+                       "key":  "elite",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "ELT2700-2CL",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  4,
+                                            "color":  "Palm black",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-21",
+                                                                                      "container":  "46",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-18",
+                                                                                      "count":  4,
+                                                                                      "weeks":  6
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "palm black",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  0,
+                       "total":  0,
+                       "key":  "elt2700 2cl",
+                       "incomingTotal":  4
+                   },
+                   {
+                       "name":  "Grand Atlantic Prem+",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  1,
+                                            "color":  "Graphite",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-14",
+                                                                                      "container":  "44",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-11",
+                                                                                      "count":  1,
+                                                                                      "weeks":  5
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  3,
+                                            "color":  "Grey",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-14",
+                                                                                      "container":  "44",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-11",
+                                                                                      "count":  3,
+                                                                                      "weeks":  5
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  0,
+                       "total":  0,
+                       "key":  "grand atlantic prem",
+                       "incomingTotal":  4
+                   },
+                   {
+                       "name":  "Phantom",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  36,
+                                            "color":  "Graphite",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-08",
+                                                                                      "container":  "S2",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-05",
+                                                                                      "count":  1,
+                                                                                      "weeks":  4
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-21",
+                                                                                      "container":  "48",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-18",
+                                                                                      "count":  4,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-21",
+                                                                                      "container":  "46",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-18",
+                                                                                      "count":  2,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-26",
+                                                                                      "container":  "49",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-23",
+                                                                                      "count":  2,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-26",
+                                                                                      "container":  "S7",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-23",
+                                                                                      "count":  1,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-21",
+                                                                                      "container":  "S6",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-18",
+                                                                                      "count":  6,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-08-03",
+                                                                                      "container":  "S8",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-31",
+                                                                                      "count":  3,
+                                                                                      "weeks":  8
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-08-16",
+                                                                                      "container":  "59",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-09-13",
+                                                                                      "count":  2,
+                                                                                      "weeks":  9
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-08-16",
+                                                                                      "container":  "60",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-09-13",
+                                                                                      "count":  2,
+                                                                                      "weeks":  9
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "67",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  6,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "57",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  4,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "68",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  3,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  0,
+                       "total":  0,
+                       "key":  "phantom",
+                       "incomingTotal":  36
+                   },
+                   {
+                       "name":  "Python",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  23,
+                                            "color":  "Red Cedar",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-26",
+                                                                                      "container":  "51",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-23",
+                                                                                      "count":  3,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-26",
+                                                                                      "container":  "S7",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-23",
+                                                                                      "count":  4,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-08-03",
+                                                                                      "container":  "55",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-31",
+                                                                                      "count":  7,
+                                                                                      "weeks":  8
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-08-16",
+                                                                                      "container":  "58",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-09-13",
+                                                                                      "count":  9,
+                                                                                      "weeks":  9
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "red cedar",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  0,
+                       "total":  0,
+                       "key":  "python",
+                       "incomingTotal":  23
+                   },
+                   {
+                       "name":  "Barcelona",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Palm black",
+                                            "currentTotal":  1,
+                                            "total":  1,
+                                            "sources":  {
+                                                            "currentStock":  1,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "palm black",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Ancient grey",
+                                            "currentTotal":  1,
+                                            "total":  1,
+                                            "sources":  {
+                                                            "currentStock":  1,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "ancient grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  2,
+                       "total":  2,
+                       "key":  "barcelona",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Silverline Compact",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Grey",
+                                            "currentTotal":  6,
+                                            "total":  6,
+                                            "sources":  {
+                                                            "currentStock":  6,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  6,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  3,
+                                            "color":  "Graphite",
+                                            "currentTotal":  11,
+                                            "total":  11,
+                                            "sources":  {
+                                                            "currentStock":  11,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-14",
+                                                                                      "container":  "45",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-11",
+                                                                                      "count":  3,
+                                                                                      "weeks":  5
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  11,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  17,
+                       "total":  17,
+                       "key":  "silverline compact",
+                       "incomingTotal":  3
+                   },
+                   {
+                       "name":  "Sevilla",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Ancient grey",
+                                            "currentTotal":  1,
+                                            "total":  1,
+                                            "sources":  {
+                                                            "currentStock":  1,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "ancient grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  1,
+                       "total":  1,
+                       "key":  "sevilla",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Yakon",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  3,
+                                            "total":  3,
+                                            "sources":  {
+                                                            "currentStock":  3,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  3,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  3,
+                       "total":  3,
+                       "key":  "yakon",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Goldline",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  7,
+                                            "color":  "Graphite",
+                                            "currentTotal":  25,
+                                            "total":  25,
+                                            "sources":  {
+                                                            "currentStock":  25,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-08",
+                                                                                      "container":  "39",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-05",
+                                                                                      "count":  2,
+                                                                                      "weeks":  4
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-26",
+                                                                                      "container":  "51",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-23",
+                                                                                      "count":  2,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "38",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  3,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  25,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  25,
+                       "total":  25,
+                       "key":  "goldline",
+                       "incomingTotal":  7
+                   },
+                   {
+                       "name":  "PureSpa",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  1,
+                                            "total":  1,
+                                            "sources":  {
+                                                            "currentStock":  1,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  1,
+                       "total":  1,
+                       "key":  "purespa",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Essence",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  1,
+                                            "color":  "Grey",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-14",
+                                                                                      "container":  "45",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-11",
+                                                                                      "count":  1,
+                                                                                      "weeks":  5
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  1,
+                                            "total":  1,
+                                            "sources":  {
+                                                            "currentStock":  1,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Pure White"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  1,
+                       "total":  1,
+                       "key":  "essence",
+                       "incomingTotal":  1
+                   },
+                   {
+                       "name":  "Dynasty+",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  4,
+                                            "color":  "Taupe",
+                                            "currentTotal":  2,
+                                            "total":  2,
+                                            "sources":  {
+                                                            "currentStock":  2,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S12",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  1,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S13",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  3,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "taupe",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  2,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  1,
+                                            "color":  "Grey",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S12",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  1,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  2,
+                       "total":  2,
+                       "key":  "dynasty",
+                       "incomingTotal":  5
+                   },
+                   {
+                       "name":  "Divine",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Oak Stone",
+                                            "currentTotal":  1,
+                                            "total":  1,
+                                            "sources":  {
+                                                            "currentStock":  1,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "oak stone",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  1,
+                       "total":  1,
+                       "key":  "divine",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Purea",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Grey",
+                                            "currentTotal":  1,
+                                            "total":  1,
+                                            "sources":  {
+                                                            "currentStock":  1,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  1,
+                       "total":  1,
+                       "key":  "purea",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Yoyago",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  10,
+                                            "color":  "Grey",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "65",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  10,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  0,
+                       "total":  0,
+                       "key":  "yoyago",
+                       "incomingTotal":  10
+                   },
+                   {
+                       "name":  "Alps",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Grey",
+                                            "currentTotal":  1,
+                                            "total":  1,
+                                            "sources":  {
+                                                            "currentStock":  1,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  1,
+                                            "total":  1,
+                                            "sources":  {
+                                                            "currentStock":  1,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  2,
+                       "total":  2,
+                       "key":  "alps",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "BUK2100-1CL",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  1,
+                                            "color":  "Black",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S9",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  1,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "black",
+                                            "innerColors":  [
+
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  1,
+                                            "color":  "Grey",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S9",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  1,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  7,
+                                            "color":  "Taupe",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-14",
+                                                                                      "container":  "S5",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-11",
+                                                                                      "count":  2,
+                                                                                      "weeks":  5
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-08-03",
+                                                                                      "container":  "54",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-31",
+                                                                                      "count":  2,
+                                                                                      "weeks":  8
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S11",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  2,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "40",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  1,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "taupe",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  0,
+                       "total":  0,
+                       "key":  "buk2100 1cl",
+                       "incomingTotal":  9
+                   },
+                   {
+                       "name":  "Houston",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Grey",
+                                            "currentTotal":  2,
+                                            "total":  2,
+                                            "sources":  {
+                                                            "currentStock":  2,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  2,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  2,
+                                            "color":  "Graphite",
+                                            "currentTotal":  5,
+                                            "total":  5,
+                                            "sources":  {
+                                                            "currentStock":  5,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-14",
+                                                                                      "container":  "45",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-11",
+                                                                                      "count":  2,
+                                                                                      "weeks":  5
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  5,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  7,
+                       "total":  7,
+                       "key":  "houston",
+                       "incomingTotal":  2
+                   },
+                   {
+                       "name":  "Moraira",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  1,
+                                            "color":  "Palm black",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-21",
+                                                                                      "container":  "46",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-18",
+                                                                                      "count":  1,
+                                                                                      "weeks":  6
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "palm black",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  0,
+                       "total":  0,
+                       "key":  "moraira",
+                       "incomingTotal":  1
+                   },
+                   {
+                       "name":  "Nashville",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  12,
+                                            "total":  12,
+                                            "sources":  {
+                                                            "currentStock":  12,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  12,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Grey",
+                                            "currentTotal":  4,
+                                            "total":  4,
+                                            "sources":  {
+                                                            "currentStock":  4,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  4,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  16,
+                       "total":  16,
+                       "key":  "nashville",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Qubec",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Grey",
+                                            "currentTotal":  10,
+                                            "total":  10,
+                                            "sources":  {
+                                                            "currentStock":  10,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  10,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  3,
+                                            "total":  3,
+                                            "sources":  {
+                                                            "currentStock":  3,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  3,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  13,
+                       "total":  13,
+                       "key":  "qubec",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Vancouver",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Grey",
+                                            "currentTotal":  4,
+                                            "total":  4,
+                                            "sources":  {
+                                                            "currentStock":  4,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  4,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  3,
+                                            "total":  3,
+                                            "sources":  {
+                                                            "currentStock":  3,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  3,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  7,
+                       "total":  7,
+                       "key":  "vancouver",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Apollo",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  18,
+                                            "total":  18,
+                                            "sources":  {
+                                                            "currentStock":  18,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  18,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  18,
+                       "total":  18,
+                       "key":  "apollo",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Majorca",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  4,
+                                            "color":  "Palm black",
+                                            "currentTotal":  3,
+                                            "total":  3,
+                                            "sources":  {
+                                                            "currentStock":  3,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-21",
+                                                                                      "container":  "46",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-18",
+                                                                                      "count":  4,
+                                                                                      "weeks":  6
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "palm black",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  3,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  3,
+                       "total":  3,
+                       "key":  "majorca",
+                       "incomingTotal":  4
+                   },
+                   {
+                       "name":  "Angora+",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  18,
+                                            "color":  "Taupe",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-26",
+                                                                                      "container":  "51",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-23",
+                                                                                      "count":  1,
+                                                                                      "weeks":  6
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-08-03",
+                                                                                      "container":  "S8",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-31",
+                                                                                      "count":  2,
+                                                                                      "weeks":  8
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-08-16",
+                                                                                      "container":  "S10",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-09-13",
+                                                                                      "count":  2,
+                                                                                      "weeks":  9
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S12",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  1,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S11",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  2,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S13",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  4,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "62",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  6,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "taupe",
+                                            "innerColors":  [
+
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  11,
+                                            "color":  "Black",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "62",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  1,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "61",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  9,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S12",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  1,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "black",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  0,
+                       "total":  0,
+                       "key":  "angora",
+                       "incomingTotal":  29
+                   },
+                   {
+                       "name":  "ICE TUB – All-In-One",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  3,
+                                            "total":  3,
+                                            "sources":  {
+                                                            "currentStock":  3,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Silver Marble"
+                                                                },
+                                                                {
+                                                                    "count":  2,
+                                                                    "color":  "Midnight Opal"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  3,
+                       "total":  3,
+                       "key":  "ice tub all in one",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Classic+",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  8,
+                                            "color":  "Taupe",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-14",
+                                                                                      "container":  "S5",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-11",
+                                                                                      "count":  1,
+                                                                                      "weeks":  5
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S13",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  2,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S12",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  2,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S11",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  3,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "taupe",
+                                            "innerColors":  [
+
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  2,
+                                            "color":  "Grey",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S12",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  2,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  0,
+                       "total":  0,
+                       "key":  "classic",
+                       "incomingTotal":  10
+                   },
+                   {
+                       "name":  "Double Dutch",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Grey",
+                                            "currentTotal":  19,
+                                            "total":  19,
+                                            "sources":  {
+                                                            "currentStock":  19,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  19,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  9,
+                                            "total":  9,
+                                            "sources":  {
+                                                            "currentStock":  9,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Oceanwave"
+                                                                },
+                                                                {
+                                                                    "count":  8,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  28,
+                       "total":  28,
+                       "key":  "double dutch",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Atlantic Prem+",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  2,
+                                            "color":  "Grey",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-14",
+                                                                                      "container":  "45",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-11",
+                                                                                      "count":  2,
+                                                                                      "weeks":  5
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  3,
+                                            "color":  "Graphite",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-07-14",
+                                                                                      "container":  "45",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-11",
+                                                                                      "count":  3,
+                                                                                      "weeks":  5
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  0,
+                       "total":  0,
+                       "key":  "atlantic prem",
+                       "incomingTotal":  5
+                   },
+                   {
+                       "name":  "Paradiso",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Grey",
+                                            "currentTotal":  1,
+                                            "total":  1,
+                                            "sources":  {
+                                                            "currentStock":  1,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  5,
+                                            "total":  5,
+                                            "sources":  {
+                                                            "currentStock":  5,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  5,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  6,
+                       "total":  6,
+                       "key":  "paradiso",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Explore",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Grey",
+                                            "currentTotal":  2,
+                                            "total":  2,
+                                            "sources":  {
+                                                            "currentStock":  2,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  2,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  1,
+                                            "color":  "Graphite",
+                                            "currentTotal":  2,
+                                            "total":  2,
+                                            "sources":  {
+                                                            "currentStock":  2,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "56",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  1,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  2,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  4,
+                       "total":  4,
+                       "key":  "explore",
+                       "incomingTotal":  1
+                   },
+                   {
+                       "name":  "Maxicuzzi",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  1,
+                                            "total":  1,
+                                            "sources":  {
+                                                            "currentStock":  1,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  1,
+                       "total":  1,
+                       "key":  "maxicuzzi",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "BUK2600-1CL",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  3,
+                                            "color":  "Taupe",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-08-03",
+                                                                                      "container":  "54",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-31",
+                                                                                      "count":  1,
+                                                                                      "weeks":  8
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "S11",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  2,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "taupe",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  0,
+                       "total":  0,
+                       "key":  "buk2600 1cl",
+                       "incomingTotal":  3
+                   },
+                   {
+                       "name":  "Denia",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Palm black",
+                                            "currentTotal":  5,
+                                            "total":  5,
+                                            "sources":  {
+                                                            "currentStock":  5,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "palm black",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  5,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  5,
+                       "total":  5,
+                       "key":  "denia",
+                       "incomingTotal":  0
+                   },
+                   {
+                       "name":  "Napoli",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  13,
+                                            "color":  "Graphite",
+                                            "currentTotal":  0,
+                                            "total":  0,
+                                            "sources":  {
+                                                            "currentStock":  0,
+                                                            "incomingStock":  [
+                                                                                  {
+                                                                                      "arrivalDate":  "2026-08-03",
+                                                                                      "container":  "55",
+                                                                                      "listed":  true,
+                                                                                      "readyDate":  "2026-08-31",
+                                                                                      "count":  3,
+                                                                                      "weeks":  8
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "63",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  6,
+                                                                                      "weeks":  null
+                                                                                  },
+                                                                                  {
+                                                                                      "arrivalDate":  null,
+                                                                                      "container":  "64",
+                                                                                      "listed":  false,
+                                                                                      "readyDate":  null,
+                                                                                      "count":  4,
+                                                                                      "weeks":  null
+                                                                                  }
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  0,
+                       "total":  0,
+                       "key":  "napoli",
+                       "incomingTotal":  13
+                   },
+                   {
+                       "name":  "San Marino 2",
+                       "cabinets":  [
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Grey",
+                                            "currentTotal":  1,
+                                            "total":  1,
+                                            "sources":  {
+                                                            "currentStock":  1,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "grey",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  1,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        },
+                                        {
+                                            "incomingTotal":  0,
+                                            "color":  "Graphite",
+                                            "currentTotal":  4,
+                                            "total":  4,
+                                            "sources":  {
+                                                            "currentStock":  4,
+                                                            "incomingStock":  [
+
+                                                                              ]
+                                                        },
+                                            "key":  "graphite",
+                                            "innerColors":  [
+                                                                {
+                                                                    "count":  4,
+                                                                    "color":  "Silver Marble"
+                                                                }
+                                                            ]
+                                        }
+                                    ],
+                       "currentTotal":  5,
+                       "total":  5,
+                       "key":  "san marino 2",
+                       "incomingTotal":  0
+                   }
+               ],
+    "counts":  {
+                   "incomingAvailableRows":  259,
+                   "currentSoldOrColoredRows":  25,
+                   "incomingSoldOrColoredRows":  22,
+                   "arrivals":  28,
+                   "currentAvailableRows":  259
+               },
+    "generatedAt":  "2026-07-12T12:25:06.6000021Z",
+    "source":  {
+                   "currentStock":  {
+                                        "live":  true,
+                                        "url":  "https://avlemmix-my.sharepoint.com/:x:/p/angelo/IQBho8ccoP7iTLW5lf8ESyxXAaPNn2tHRpmmSEhee_sVJeE?e=caKQnF\u0026download=1",
+                                        "type":  "sharepoint-xlsx"
+                                    },
+                   "incomingStock":  {
+                                         "live":  true,
+                                         "url":  "https://avlemmix-my.sharepoint.com/:x:/p/angelo/EVXDPHIAsa1IjPgA3aHlVAQBPaLBDEWYcoaZkm82kF57Bg?e=H2xx8C\u0026download=1",
+                                         "type":  "sharepoint-xlsx"
+                                     },
+                   "containerArrivals":  {
+                                             "live":  true,
+                                             "url":  "https://www.sunspa-dealer.nl/stock/conatiner-arrivals/",
+                                             "type":  "password-protected-html"
+                                         }
+               }
+}
