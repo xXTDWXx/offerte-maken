@@ -551,8 +551,14 @@ function getSpaStockModelCandidates(product) {
     rawTitle.replace(/\b(sunspa|myspa|fox|elite|vogue|gold\s*line|goldline)\b/gi, ' ')
   );
   const words = withoutKnownPrefixes.split(' ').filter(Boolean);
+  const aliases = [];
+
+  if (normalizedTitle.includes('aquavera')) {
+    aliases.push('aquatique');
+  }
 
   return Array.from(new Set([
+    ...aliases,
     normalizedTitle,
     withoutKnownPrefixes,
     words.length ? words[words.length - 1] : ''
