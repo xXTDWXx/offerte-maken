@@ -726,9 +726,22 @@ function getSpaStockStatus(cabinet) {
   };
 }
 
-function getSwimspaDeliveryStatus(product, colorKey) {
+function isSelectedInnerColorFastDelivery() {
+  const innerSelect = $('spaInnerColor');
+  return normalizeStockColor(innerSelect?.value || 'silver marble') === 'silver marble';
+}
+
+function getForcedInnerColorDeliveryStatus() {
+  return {
+    key: 'order',
+    label: 'Op bestelling',
+    term: '+/- 12 weken onder voorbehoud'
+  };
+}
+
+function getSwimspaDeliveryStatus(product, colorKey, fastInnerColor = true) {
   const title = normalizeStockText(product?.title);
-  const fastGraphite = colorKey === 'graphite' && (title.includes('alicante') || title.includes('pacific'));
+  const fastGraphite = fastInnerColor && colorKey === 'graphite' && (title.includes('alicante') || title.includes('pacific'));
 
   return {
     key: fastGraphite ? 'available' : 'order',
@@ -755,7 +768,8 @@ function renderSpaStockDelivery(product, stockData) {
 
   if (isSwimspa(product?.type)) {
     const selectedColor = normalizeStockColor(cabinetSelect.value);
-    const selectedStatus = getSwimspaDeliveryStatus(product, selectedColor);
+    const fastInnerColor = isSelectedInnerColorFastDelivery();
+    const selectedStatus = getSwimspaDeliveryStatus(product, selectedColor, fastInnerColor);
 
     wrap.innerHTML = `
       <div class="spa-stock-head">
@@ -764,7 +778,7 @@ function renderSpaStockDelivery(product, stockData) {
       </div>
       <div class="spa-stock-colors">
         ${colors.map(color => {
-          const status = getSwimspaDeliveryStatus(product, color.key);
+          const status = getSwimspaDeliveryStatus(product, color.key, fastInnerColor);
           const selected = color.key === selectedColor;
           return `
             <div class="spa-stock-color is-${status.key} ${selected ? 'is-selected' : ''}">
@@ -783,7 +797,8 @@ function renderSpaStockDelivery(product, stockData) {
   const cabinets = Array.isArray(model?.cabinets) ? model.cabinets : [];
   const selectedColor = normalizeStockColor(cabinetSelect.value);
   const selectedCabinet = cabinets.find(cabinet => normalizeStockColor(cabinet.key || cabinet.color) === selectedColor);
-  const selectedStatus = getSpaStockStatus(selectedCabinet);
+  const forceOrderByInnerColor = !isSelectedInnerColorFastDelivery();
+  const selectedStatus = forceOrderByInnerColor ? getForcedInnerColorDeliveryStatus() : getSpaStockStatus(selectedCabinet);
 
   wrap.innerHTML = `
     <div class="spa-stock-head">
@@ -793,7 +808,7 @@ function renderSpaStockDelivery(product, stockData) {
     <div class="spa-stock-colors">
       ${colors.map(color => {
         const cabinet = cabinets.find(item => normalizeStockColor(item.key || item.color) === color.key);
-        const status = getSpaStockStatus(cabinet);
+        const status = forceOrderByInnerColor ? getForcedInnerColorDeliveryStatus() : getSpaStockStatus(cabinet);
         const selected = color.key === selectedColor;
         return `
           <div class="spa-stock-color is-${status.key} ${selected ? 'is-selected' : ''}">
@@ -830,6 +845,37 @@ function renderSaunaStockDelivery(product, stockData) {
     </div>
   `;
   wrap.hidden = false;
+}
+
+async function getCurrentOfferDeliveryTerm(product) {
+  if (!product) return '';
+
+  const stockData = await getSpaStockData();
+
+  if (hasSpaColorOptions(product.type)) {
+    const selectedColor = normalizeStockColor($('spaCabinetColor')?.value || '');
+
+    if (isSwimspa(product.type)) {
+      return getSwimspaDeliveryStatus(product, selectedColor, isSelectedInnerColorFastDelivery()).term;
+    }
+
+    if (!isSelectedInnerColorFastDelivery()) {
+      return getForcedInnerColorDeliveryStatus().term;
+    }
+
+    const model = findSpaStockModel(product, stockData);
+    const cabinets = Array.isArray(model?.cabinets) ? model.cabinets : [];
+    const selectedCabinet = cabinets.find(cabinet => normalizeStockColor(cabinet.key || cabinet.color) === selectedColor);
+    return getSpaStockStatus(selectedCabinet).term;
+  }
+
+  if (isSaunaStockProduct(product)) {
+    const matches = findSaunaStockMatches(product, stockData);
+    const currentTotal = matches.reduce((sum, item) => sum + Number(item?.currentTotal || 0), 0);
+    return currentTotal > 0 ? '+/- 6 weken onder voorbehoud' : 'Op aanvraag';
+  }
+
+  return '';
 }
 
 function updateSpaStockDelivery() {
@@ -2884,6 +2930,7 @@ async function printOfferte({ autoPrint = true } = {}) {
   const productType = productForOffer.type || '';
   const termsHtml = getTermsHtml(productType, validUntil);
   const electricalSchema = await getElectricalSchemaForProduct(productForOffer);
+  const deliveryTermText = await getCurrentOfferDeliveryTerm(productForOffer);
   const electricalSchemaHtml = getElectricalSchemaPageHtml(electricalSchema, productForOffer);
   const offerSheetClass = electricalSchemaHtml ? 'sheet offer-sheet has-next-page' : 'sheet offer-sheet';
   const autoPrintScript = autoPrint
@@ -3218,6 +3265,14 @@ async function printOfferte({ autoPrint = true } = {}) {
   flex: 1;
   border-bottom: 1.5px solid #64748b;
   height: 14px;
+}
+
+.line-fill.line-value {
+  height: auto;
+  min-height: 18px;
+  border-bottom: 0;
+  color: #0f172a;
+  font-weight: 800;
 }
 
   .summary-box {
@@ -3803,6 +3858,14 @@ async function printOfferte({ autoPrint = true } = {}) {
     height: 10px !important;
   }
 
+  .line-fill.line-value {
+    height: auto !important;
+    min-height: 10px !important;
+    border-bottom: 0 !important;
+    color: #0f172a !important;
+    font-weight: 800 !important;
+  }
+
   .summary-box {
     width: 320px !important;
     min-width: 54mm !important;
@@ -4229,7 +4292,7 @@ async function printOfferte({ autoPrint = true } = {}) {
 
     <div class="summary-line">
       <span>Leveringstermijn</span>
-      <span class="line-fill"></span>
+      <span class="${deliveryTermText ? 'line-fill line-value' : 'line-fill'}">${escapeHtml(deliveryTermText)}</span>
     </div>
   </div>
   
