@@ -586,6 +586,13 @@ function getSaunaStockCandidates(product) {
   if (title.includes('i170') && !title.includes('barrelsauna')) add('infra4health sh4 i170 ongelakt');
   if (title.includes('i160c') || title.includes('hoeksauna')) add('infra4health shc i160 ongelakt');
   if (title.includes('icombi')) add('combi sauna 95b h i220');
+  if (title.includes('health company 1')) add('h08 r5');
+  if (title.includes('health company 2')) add('h01 k6');
+  if (title.includes('health company 3')) add('h02 k6');
+  if (title.includes('health company 4')) add('h04 k6');
+  if (title.includes('health company 5')) add('h03 k62');
+  if (title.includes('health company 6')) add('h03 k61');
+  if (title.includes('dreammaker')) add('dreammaker h32s l8', 'h32s l8 dreammaker');
   if (title.includes('130 infrarood')) add('royal 130');
   if (title.includes('160 infrarood')) add('royal 160');
   if (title === 'traditionele sauna') add('hy560 traditional sauna');
@@ -719,12 +726,22 @@ function getSpaStockStatus(cabinet) {
   };
 }
 
+function getSwimspaDeliveryStatus(product, colorKey) {
+  const title = normalizeStockText(product?.title);
+  const fastGraphite = colorKey === 'graphite' && (title.includes('alicante') || title.includes('pacific'));
+
+  return {
+    key: fastGraphite ? 'available' : 'order',
+    label: 'Levering',
+    term: fastGraphite ? '+/- 6 weken onder voorbehoud' : '+/- 12 weken onder voorbehoud'
+  };
+}
+
 function renderSpaStockDelivery(product, stockData) {
   const wrap = $('spaStockDelivery');
   const cabinetSelect = $('spaCabinetColor');
   if (!wrap || !cabinetSelect || !hasSpaColorOptions(product?.type)) return;
 
-  const model = findSpaStockModel(product, stockData);
   const colors = Array.from(cabinetSelect.options || []).map(option => ({
     key: normalizeStockColor(option.value),
     label: option.textContent || option.value
@@ -736,6 +753,33 @@ function renderSpaStockDelivery(product, stockData) {
     return;
   }
 
+  if (isSwimspa(product?.type)) {
+    const selectedColor = normalizeStockColor(cabinetSelect.value);
+    const selectedStatus = getSwimspaDeliveryStatus(product, selectedColor);
+
+    wrap.innerHTML = `
+      <div class="spa-stock-head">
+        <span>Leveringstermijn per omkasting</span>
+        <span class="spa-stock-state">${escapeHtml(selectedStatus.label)}</span>
+      </div>
+      <div class="spa-stock-colors">
+        ${colors.map(color => {
+          const status = getSwimspaDeliveryStatus(product, color.key);
+          const selected = color.key === selectedColor;
+          return `
+            <div class="spa-stock-color is-${status.key} ${selected ? 'is-selected' : ''}">
+              <span class="spa-stock-color-name">${escapeHtml(color.label)}</span>
+              <span class="spa-stock-color-term">${escapeHtml(status.term)}</span>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+    wrap.hidden = false;
+    return;
+  }
+
+  const model = findSpaStockModel(product, stockData);
   const cabinets = Array.isArray(model?.cabinets) ? model.cabinets : [];
   const selectedColor = normalizeStockColor(cabinetSelect.value);
   const selectedCabinet = cabinets.find(cabinet => normalizeStockColor(cabinet.key || cabinet.color) === selectedColor);
