@@ -652,13 +652,13 @@ function renderSpaStockDelivery(product, stockData) {
     label: option.textContent || option.value
   }));
 
-  if (!model || !colors.length) {
+  if (!colors.length) {
     wrap.hidden = true;
     wrap.innerHTML = '';
     return;
   }
 
-  const cabinets = Array.isArray(model.cabinets) ? model.cabinets : [];
+  const cabinets = Array.isArray(model?.cabinets) ? model.cabinets : [];
   const selectedColor = normalizeStockColor(cabinetSelect.value);
   const selectedCabinet = cabinets.find(cabinet => normalizeStockColor(cabinet.key || cabinet.color) === selectedColor);
   const selectedStatus = getSpaStockStatus(selectedCabinet);
