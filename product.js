@@ -110,7 +110,7 @@ function euro(n) {
   }
 }
 
-const MYSPA_BTW_ACTION_FACTOR = 1.21;
+const MYSPA_ACTION_DISCOUNT = 1000;
 
 function roundCurrency(value) {
   return Math.round((Number(value || 0) + Number.EPSILON) * 100) / 100;
@@ -157,14 +157,14 @@ function getMySpaBtwAction(product, price = Number(product?.price || 0)) {
     return null;
   }
 
-  const actionPrice = roundCurrency(originalPrice / MYSPA_BTW_ACTION_FACTOR);
-  const discount = roundCurrency(originalPrice - actionPrice);
+  const discount = Math.min(MYSPA_ACTION_DISCOUNT, originalPrice);
+  const actionPrice = roundCurrency(originalPrice - discount);
 
   return { originalPrice, actionPrice, discount };
 }
 
 function mySpaBtwActionLabel() {
-  return window.SunspaI18n?.isFrench?.() ? 'Promotion TVA 21 %' : '21% btw actie';
+  return window.SunspaI18n?.isFrench?.() ? 'Promotion MySpa' : 'MySpa actie';
 }
 
 function discountLabel() {
