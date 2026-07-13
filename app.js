@@ -38,6 +38,7 @@ function euro(n) {
 }
 
 const MYSPA_ACTION_DISCOUNT = 1000;
+const VOGUE_ACTION_DISCOUNT_RATE = 0.11;
 
 function roundCurrency(value) {
   return Math.round((Number(value || 0) + Number.EPSILON) * 100) / 100;
@@ -160,20 +161,41 @@ function isMySpaBtwActionProduct(p) {
   return (type === 'spa' || type === "spa's") && (merk.includes('myspa') || title.includes('myspa'));
 }
 
+function isVogueActionProduct(p) {
+  const type = normalize(p?.type);
+  const merk = normalize(getMerk(p));
+  const title = normalize(p?.title);
+
+  return (type === 'spa' || type === "spa's") && (merk.includes('vogue') || title.includes('vogue'));
+}
+
 function getMySpaBtwAction(p, price = Number(p?.price || 0)) {
   const originalPrice = Number(price || 0);
 
-  if (!isMySpaBtwActionProduct(p) || originalPrice <= 0) {
+  if (originalPrice <= 0) {
     return null;
   }
 
-  const discount = Math.min(MYSPA_ACTION_DISCOUNT, originalPrice);
+  let discount = 0;
+
+  if (isMySpaBtwActionProduct(p)) {
+    discount = Math.min(MYSPA_ACTION_DISCOUNT, originalPrice);
+  } else if (isVogueActionProduct(p)) {
+    discount = roundCurrency(originalPrice * VOGUE_ACTION_DISCOUNT_RATE);
+  } else {
+    return null;
+  }
+
   const actionPrice = roundCurrency(originalPrice - discount);
 
   return { originalPrice, actionPrice, discount };
 }
 
-function mySpaBtwActionLabel() {
+function mySpaBtwActionLabel(p) {
+  if (isVogueActionProduct(p)) {
+    return window.SunspaI18n?.isFrench?.() ? 'Promotion Vogue -11 %' : 'Vogue actie -11%';
+  }
+
   return window.SunspaI18n?.isFrench?.() ? 'Promotion MySpa' : 'MySpa actie';
 }
 
@@ -189,7 +211,7 @@ function productPriceHtml(p) {
   }
 
   return `
-    <span class="price-action-label">${escapeHtml(mySpaBtwActionLabel())}</span>
+    <span class="price-action-label">${escapeHtml(mySpaBtwActionLabel(p))}</span>
     <span class="price-old">${escapeHtml(euro(action.originalPrice))}</span>
     <span class="price-current">${escapeHtml(euro(action.actionPrice))}</span>
     <span class="price-action-note">${escapeHtml(discountLabel())} ${escapeHtml(euro(action.discount))}</span>
