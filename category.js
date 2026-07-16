@@ -117,6 +117,15 @@ function isVogueActionProduct(p) {
   return (type === 'spa' || type === "spa's") && (merk.includes('vogue') || title.includes('vogue'));
 }
 
+function isBullfrogActionProduct(p) {
+  return normalize(getMerk(p)).includes('bullfrog') || normalize(p?.title).includes('bullfrog');
+}
+
+function getProductSalePrice(p) {
+  const salePrice = Number(p?.sale_price || 0);
+  return Number.isFinite(salePrice) && salePrice > 0 ? roundCurrency(salePrice) : 0;
+}
+
 function getMySpaBtwAction(p, price = Number(p?.price || 0)) {
   const originalPrice = Number(price || 0);
 
@@ -125,8 +134,11 @@ function getMySpaBtwAction(p, price = Number(p?.price || 0)) {
   }
 
   let discount = 0;
+  const salePrice = getProductSalePrice(p);
 
-  if (isMySpaBtwActionProduct(p)) {
+  if (salePrice > 0 && salePrice < originalPrice) {
+    discount = roundCurrency(originalPrice - salePrice);
+  } else if (isMySpaBtwActionProduct(p)) {
     discount = Math.min(MYSPA_ACTION_DISCOUNT, originalPrice);
   } else if (isVogueActionProduct(p)) {
     discount = roundCurrency(originalPrice * VOGUE_ACTION_DISCOUNT_RATE);
@@ -134,12 +146,18 @@ function getMySpaBtwAction(p, price = Number(p?.price || 0)) {
     return null;
   }
 
-  const actionPrice = roundCurrency(originalPrice - discount);
+  const actionPrice = salePrice > 0 && salePrice < originalPrice
+    ? salePrice
+    : roundCurrency(originalPrice - discount);
 
   return { originalPrice, actionPrice, discount };
 }
 
 function mySpaBtwActionLabel(p) {
+  if (getProductSalePrice(p) > 0 && isBullfrogActionProduct(p)) {
+    return window.SunspaI18n?.isFrench?.() ? 'Promotion Bullfrog' : 'Bullfrog actie';
+  }
+
   if (isVogueActionProduct(p)) {
     return window.SunspaI18n?.isFrench?.() ? 'Promotion Vogue -11 %' : 'Vogue actie -11%';
   }

@@ -14514,6 +14514,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a6l-bullfrog-spa-a6l-choice/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a6l-select-582x582.webp",
     "price": 17695,
+    "sale_price": 15669.5,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "6 zitplaatsen" },
@@ -14548,6 +14549,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a5l-luxury/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a5l-luxury-582x582.webp",
     "price": 18195,
+    "sale_price": 15660,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "3 zitplaatsen" },
@@ -14582,6 +14584,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a6l-luxury/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a6l-select-582x582.webp",
     "price": 19995,
+    "sale_price": 17415,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "6 zitplaatsen" },
@@ -14616,6 +14619,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a5l-select/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A5L_Top-Down-582x582.jpg",
     "price": 20095,
+    "sale_price": 18089,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "3 zitplaatsen" },
@@ -14647,6 +14651,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a6l-select/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A6L_2-Pump_Top-Down-582x582.jpg",
     "price": 21495,
+    "sale_price": 19541,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "6 zitplaatsen" },
@@ -14683,6 +14688,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7l-choice/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7l-choice-582x582.webp",
     "price": 21795,
+    "sale_price": 19783,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "7 zitplaatsen" },
@@ -14718,6 +14724,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7d-choice/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7d-select-582x582.webp",
     "price": 21795,
+    "sale_price": 19783,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "7 zitplaatsen" },
@@ -14753,6 +14760,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7l-luxury/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7l-choice-582x582.webp",
     "price": 24095,
+    "sale_price": 21529,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "7 zitplaatsen" },
@@ -14788,6 +14796,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7d-luxury/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7d-select-582x582.webp",
     "price": 24095,
+    "sale_price": 21529,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "7 zitplaatsen" },
@@ -14822,6 +14831,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a8l-choice/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a8l-choice-582x582.webp",
     "price": 24795,
+    "sale_price": 19783,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "8 zitplaatsen" },
@@ -14857,6 +14867,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7d-select/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A7D_Top-Down-582x582.jpg",
     "price": 25995,
+    "sale_price": 23958,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "7 zitplaatsen" },
@@ -14891,6 +14902,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7l-select/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A7L_Top-Down-scaled-582x582.png",
     "price": 25995,
+    "sale_price": 23958,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "7 zitplaatsen" },
@@ -14925,6 +14937,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a8l-luxury/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a8l-choice-582x582.webp",
     "price": 27095,
+    "sale_price": 21529,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "8 zitplaatsen" },
@@ -14959,6 +14972,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a8l-select/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A8L_Top-Down-scaled-582x582.png",
     "price": 29495,
+    "sale_price": 23958,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "8 zitplaatsen" },
@@ -14993,6 +15007,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a9l/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A9L_Top-Down-scaled-582x582.png",
     "price": 32495,
+    "sale_price": 30492,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "8 zitplaatsen" },
@@ -15029,6 +15044,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-m6/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/Bullfrog-m6-kuipwit-582x656.webp",
     "price": 28195,
+    "sale_price": 26499,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "7 zitplaatsen" },
@@ -15064,6 +15080,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-m7/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/M7-Bullfrog-582x582.webp",
     "price": 28895,
+    "sale_price": 27225,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "9 zitplaatsen" },
@@ -15098,6 +15115,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-m8/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/bullfrog-m8-kuip-582x656.webp",
     "price": 30995,
+    "sale_price": 29282,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "7 zitplaatsen" },
@@ -15133,6 +15151,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-m9/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/bullfrog-M9-kuip-582x656.webp",
     "price": 33295,
+    "sale_price": 31642,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "7 zitplaatsen" },
@@ -15169,6 +15188,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-stil5/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/STIL5-Bullfrog-scaled-582x582.webp",
     "price": 17595,
+    "sale_price": 17242.5,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "4 zitplaatsen" },
@@ -15200,6 +15220,7 @@
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-stil7/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/STIL7-top--582x582.webp",
     "price": 20295,
+    "sale_price": 19965,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "6 zitplaatsen" },
