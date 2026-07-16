@@ -350,7 +350,9 @@ function getSpaColorSwatchBackground(value) {
     taupe: 'linear-gradient(135deg, #8b7c70 0%, #c2b5a8 100%)',
     black: 'linear-gradient(135deg, #020617 0%, #1f2937 100%)',
     'palm black': 'linear-gradient(135deg, #111827 0%, #374151 100%)',
-    'ancient grey': 'linear-gradient(135deg, #6b7280 0%, #d1d5db 100%)'
+    'ancient grey': 'linear-gradient(135deg, #6b7280 0%, #d1d5db 100%)',
+    ebony: 'linear-gradient(135deg, #1c1b18 0%, #3a342c 48%, #78644e 52%, #2a2823 100%)',
+    timber: 'linear-gradient(135deg, #6f675b 0%, #a99d8c 48%, #d3c8b8 52%, #807464 100%)'
   };
 
   return backgrounds[key] || 'linear-gradient(135deg, #e5e7eb 0%, #f8fafc 100%)';
@@ -576,6 +578,8 @@ function normalizeStockColor(value) {
 
   if (clean.includes('palm') && clean.includes('black')) return 'palm black';
   if (clean.includes('ancient') && (clean.includes('grey') || clean.includes('gray'))) return 'ancient grey';
+  if (clean.includes('ebony')) return 'ebony';
+  if (clean.includes('timber')) return 'timber';
   if (clean.includes('graphite')) return 'graphite';
   if (clean.includes('chocolate')) return 'chocolate';
   if (clean.includes('taupe')) return 'taupe';
@@ -4505,7 +4509,9 @@ function renderProduct(p) {
     const merk = getMerk(p).toLowerCase();
     const title = titleNorm(p?.title);
 
-    if (isSwimspa(type) || title.includes('aquavera') || title.includes('goldline') || title.includes('gold line')) {
+    if (isBullfrogProduct(p)) {
+      colors = ['ebony', 'timber'];
+    } else if (isSwimspa(type) || title.includes('aquavera') || title.includes('goldline') || title.includes('gold line')) {
       colors = ['graphite', 'grey'];
     } else if (merk.includes('vogue')) {
       colors = ['taupe', 'black', 'grey'];
