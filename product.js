@@ -1564,7 +1564,9 @@ function updateOptionUI() {
 
   const optInstallPrice = $('optInstallPrice');
   const optInstallRow = $('optInstallRow');
+  const optInstall = $('optInstall');
   const optCoverTrapRow = $('optCoverTrapRow');
+  const optCoverTrap = $('optCoverTrap');
   const optCoverTrapPrice = $('optCoverTrapPrice');
   const optCoverTrapLabel = document.querySelector('#optCoverTrapRow .opt-label');
 
@@ -1657,7 +1659,12 @@ function updateOptionUI() {
   const showAllRoofOptions = showRoofGroup && !shinglesOnlyRoof;
   const showInfraredModule = barrelSauna && !canopyInfraredBarrel;
 
+  if (optInstall) optInstall.disabled = !bullfrog;
+  if (optInstallRow) optInstallRow.classList.toggle('opt-disabled', !bullfrog);
+
   if (optCoverTrapRow) optCoverTrapRow.style.display = (allowExtraOptions || bullfrog) ? '' : 'none';
+  if (optCoverTrap) optCoverTrap.disabled = !bullfrog;
+  if (optCoverTrapRow) optCoverTrapRow.classList.toggle('opt-disabled', !bullfrog);
   if (optCoverTrapLabel) optCoverTrapLabel.textContent = bullfrog ? 'Cover & trap Bullfrog' : 'Cover & trap inclusief';
   if (optCoverTrapPrice) optCoverTrapPrice.textContent = bullfrog ? euro(PRICES.bullfrog_cover_trap_unit) : '';
   if (optCoverliftRow) optCoverliftRow.style.display = allowCoverlift ? '' : 'none';
@@ -1719,8 +1726,9 @@ function updateOptionUI() {
     setNumberInputValue(input, input.value);
   });
 
+  const installLine = (inst > 0 && (!bullfrog || optInstall?.checked)) ? inst : 0;
   const coverliftLine = (allowCoverlift && optCoverlift?.checked) ? PRICES.coverlift_unit : 0;
-  const bullfrogCoverTrapLine = bullfrog ? PRICES.bullfrog_cover_trap_unit : 0;
+  const bullfrogCoverTrapLine = (bullfrog && optCoverTrap?.checked) ? PRICES.bullfrog_cover_trap_unit : 0;
   const coverlift2Line = (swim && optCoverlift2?.checked) ? PRICES.coverlift_unit : 0;
   const maintLine = ((allowExtraOptions || bullfrog) && optMaint?.checked) ? PRICES.maintenance_unit : 0;
   const spaBalancerLine = (bullfrog && optSpaBalancer?.checked) ? PRICES.bullfrog_spa_balancer_unit : 0;
@@ -1753,7 +1761,7 @@ function updateOptionUI() {
   if (optBarrelInfraredModuleTotal) optBarrelInfraredModuleTotal.textContent = euro(barrelInfraredModuleLine);
 
   const optionsTotal =
-    inst +
+    installLine +
     bullfrogCoverTrapLine +
     coverliftLine +
     coverlift2Line +
@@ -1784,6 +1792,8 @@ function wireOptionHandlers() {
   optionHandlersWired = true;
 
   const ids = [
+    'optInstall',
+    'optCoverTrap',
     'optCoverlift',
     'optCoverlift2',
     'optMaint',
@@ -1896,7 +1906,7 @@ function getSelectedOfferLines() {
 
   const installation = installCost(type);
 
-  if (installation > 0) {
+  if (installation > 0 && (!bullfrog || $('optInstall')?.checked)) {
     lines.push({
       label: 'Levering & installatie',
       price: installation
@@ -1910,7 +1920,7 @@ function getSelectedOfferLines() {
     });
   }
 
-  if (bullfrog) {
+  if (bullfrog && $('optCoverTrap')?.checked) {
     lines.push({
       label: 'Cover & trap Bullfrog',
       price: PRICES.bullfrog_cover_trap_unit
@@ -4552,6 +4562,7 @@ function renderProduct(p) {
   }
 
   if ($('optInstall')) $('optInstall').checked = true;
+  if ($('optCoverTrap')) $('optCoverTrap').checked = true;
   if ($('optCoverlift')) $('optCoverlift').checked = false;
   if ($('optCoverlift2')) $('optCoverlift2').checked = false;
   if ($('optMaint')) $('optMaint').checked = false;
