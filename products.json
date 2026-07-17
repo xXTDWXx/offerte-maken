@@ -1859,6 +1859,7 @@
       "url": "https://www.sunspabenelux.be/p/vogue-majesty/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/Majesty-Vogue-.webp",
       "price": 6995,
+      "sale_price": 6225.55,
       "bullets": [],
       "specs": [
         {
@@ -1958,7 +1959,8 @@
       "title": "Maxicuzzi Divine",
       "url": "https://www.sunspabenelux.be/p/maxicuzzi-divine/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-divine.jpg",
-      "price": 6995,
+      "price": 7995,
+      "sale_price": 6995,
       "bullets": [],
       "specs": [
         {
@@ -2320,6 +2322,7 @@
       "url": "https://www.sunspabenelux.be/p/myspa-nashville/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-nashville-1.png",
       "price": 7250,
+      "sale_price": 6455,
       "bullets": [],
       "specs": [
         {
@@ -2844,6 +2847,7 @@
       "url": "https://www.sunspabenelux.be/p/myspa-quebec/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-quebec-jacuzzi-1.jpg",
       "price": 7750,
+      "sale_price": 6975,
       "bullets": [],
       "specs": [
         {
@@ -3471,6 +3475,7 @@
       "url": "https://www.sunspabenelux.be/p/myspa-double-dutch/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/myspa-double-dutch-jacuzzi-1.jpg",
       "price": 8695,
+      "sale_price": 7826,
       "bullets": [],
       "specs": [
         {
@@ -4133,6 +4138,7 @@
       "url": "https://www.sunspabenelux.be/p/myspa-houston/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/myspa-houston-jacuzzi-1.jpg",
       "price": 9295,
+      "sale_price": 8280,
       "bullets": [],
       "specs": [
         {
@@ -4878,6 +4884,7 @@
       "url": "https://www.sunspabenelux.be/p/vogue-prime/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2026/06/Vogue-Classic.jpg",
       "price": 8750,
+      "sale_price": 7790,
       "bullets": [],
       "specs": [
         {
@@ -5515,6 +5522,7 @@
       "url": "https://www.sunspabenelux.be/p/myspa-seattle/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/myspa-seattle-jacuzzi.png",
       "price": 10950,
+      "sale_price": 9855,
       "bullets": [],
       "specs": [
         {
@@ -13221,6 +13229,7 @@
       "url": "https://www.sunspabenelux.nl/p/fox-elite-sevilla/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Sevilla-top-582x578.jpg",
       "price": 10750,
+      "sale_price": 9570,
       "bullets": [],
       "specs": [
         {
@@ -13349,6 +13358,7 @@
       "url": "https://www.sunspabenelux.nl/p/fox-elite-granada/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Granada.jpg",
       "price": 9450,
+      "sale_price": 8410,
       "bullets": [],
       "specs": [
         {
@@ -13602,7 +13612,8 @@
       "title": "Fox Elite Barcelona",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-barcelona/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Barcelona.webp",
-      "price": 9250,
+      "price": 8950,
+      "sale_price": 7965,
       "bullets": [],
       "specs": [
         {
@@ -14118,6 +14129,7 @@
       "url": "https://www.sunspabenelux.nl/p/fox-elite-majorca/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Majorca-582x558.jpg",
       "price": 12950,
+      "sale_price": 11525,
       "bullets": [],
       "specs": [
         {
@@ -14382,6 +14394,7 @@
       "url": "https://www.sunspabenelux.nl/p/fox-elite-altea/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/ELT2700-2CL-Top-view-582x571.jpg",
       "price": 15950,
+      "sale_price": 14195,
       "bullets": [],
       "specs": [
         {
@@ -14830,7 +14843,7 @@
     "title": "Bullfrog Spa A8L Choice",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a8l-choice/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a8l-choice-582x582.webp",
-    "price": 24795,
+    "price": 22808.5,
     "sale_price": 19783,
     "bullets": [],
     "specs": [
@@ -14936,7 +14949,7 @@
     "title": "Bullfrog Spa A8L Luxury",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a8l-luxury/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a8l-choice-582x582.webp",
-    "price": 27095,
+    "price": 24554,
     "sale_price": 21529,
     "bullets": [],
     "specs": [
@@ -14971,7 +14984,7 @@
     "title": "Bullfrog Spa A8L Select",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a8l-select/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A8L_Top-Down-scaled-582x582.png",
-    "price": 29495,
+    "price": 27467,
     "sale_price": 23958,
     "bullets": [],
     "specs": [

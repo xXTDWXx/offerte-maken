@@ -38,9 +38,6 @@ function euro(n) {
   }
 }
 
-const MYSPA_ACTION_DISCOUNT = 1000;
-const VOGUE_ACTION_DISCOUNT_RATE = 0.11;
-
 function roundCurrency(value) {
   return Math.round((Number(value || 0) + Number.EPSILON) * 100) / 100;
 }
@@ -128,41 +125,33 @@ function getProductSalePrice(p) {
 
 function getMySpaBtwAction(p, price = Number(p?.price || 0)) {
   const originalPrice = Number(price || 0);
-
-  if (originalPrice <= 0) {
-    return null;
-  }
-
-  let discount = 0;
   const salePrice = getProductSalePrice(p);
 
-  if (salePrice > 0 && salePrice < originalPrice) {
-    discount = roundCurrency(originalPrice - salePrice);
-  } else if (isMySpaBtwActionProduct(p)) {
-    discount = Math.min(MYSPA_ACTION_DISCOUNT, originalPrice);
-  } else if (isVogueActionProduct(p)) {
-    discount = roundCurrency(originalPrice * VOGUE_ACTION_DISCOUNT_RATE);
-  } else {
+  if (originalPrice <= 0 || salePrice <= 0 || salePrice >= originalPrice) {
     return null;
   }
 
-  const actionPrice = salePrice > 0 && salePrice < originalPrice
-    ? salePrice
-    : roundCurrency(originalPrice - discount);
-
-  return { originalPrice, actionPrice, discount };
+  return {
+    originalPrice,
+    actionPrice: salePrice,
+    discount: roundCurrency(originalPrice - salePrice)
+  };
 }
 
 function mySpaBtwActionLabel(p) {
-  if (getProductSalePrice(p) > 0 && isBullfrogActionProduct(p)) {
-    return window.SunspaI18n?.isFrench?.() ? 'Promotion Bullfrog' : 'Bullfrog actie';
+  if (getProductSalePrice(p) > 0) {
+    if (isBullfrogActionProduct(p)) {
+      return window.SunspaI18n?.isFrench?.() ? 'Promotion Bullfrog' : 'Bullfrog actie';
+    }
+
+    if (isVogueActionProduct(p)) {
+      return window.SunspaI18n?.isFrench?.() ? 'Promotion Vogue' : 'Vogue actie';
+    }
+
+    return window.SunspaI18n?.isFrench?.() ? 'Promotion stock' : 'Voorraadactie';
   }
 
-  if (isVogueActionProduct(p)) {
-    return window.SunspaI18n?.isFrench?.() ? 'Promotion Vogue -11 %' : 'Vogue actie -11%';
-  }
-
-  return window.SunspaI18n?.isFrench?.() ? 'Promotion MySpa' : 'MySpa actie';
+  return window.SunspaI18n?.isFrench?.() ? 'Promotion' : 'Actie';
 }
 
 function discountLabel() {
