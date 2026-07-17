@@ -1149,9 +1149,9 @@ const PRICES = {
   coverlift_unit: 189,
   bullfrog_cover_trap_unit: 699,
   maintenance_unit: 179,
-  bullfrog_spa_balancer_unit: 99,
-  bullfrog_ultrashock_unit: 49.95,
-  bullfrog_digital_tester_unit: 399,
+  spa_balancer_unit: 99,
+  ultrashock_unit: 49.95,
+  digital_tester_unit: 399,
   swim_filterset_unit: 250,
   warmtepomp_unit: 2795,
 
@@ -1642,6 +1642,7 @@ function updateOptionUI() {
   const bullfrog = isBullfrogProduct(currentProduct);
   const allowCoverlift = (allowExtraOptions || bullfrog) && !isRoundSpaWithoutCoverlift(currentProduct);
   const swim = isSwimspa(type);
+  const spaOrSwimspa = allowExtraOptions;
   const outdoorSauna = isOutdoorSaunaWithRoofAndStove(type);
   const barrelSauna = isBarrelSauna(type);
   const sauna = isSauna(type);
@@ -1668,22 +1669,22 @@ function updateOptionUI() {
   if (optCoverliftLabel) optCoverliftLabel.textContent = bullfrog ? 'Coverlift beugel' : 'Coverlift';
   if (optMaintRow) optMaintRow.style.display = (allowExtraOptions || bullfrog) ? '' : 'none';
   if (optMaintLabel) optMaintLabel.innerHTML = bullfrog ? 'Onderhoudspakket + filter' : 'Onderhouds<br>pakket';
-  if (optSpaBalancerRow) optSpaBalancerRow.style.display = bullfrog ? '' : 'none';
-  if (optUltrashockRow) optUltrashockRow.style.display = bullfrog ? '' : 'none';
-  if (optDigitalTesterRow) optDigitalTesterRow.style.display = bullfrog ? '' : 'none';
+  if (optSpaBalancerRow) optSpaBalancerRow.style.display = spaOrSwimspa ? '' : 'none';
+  if (optUltrashockRow) optUltrashockRow.style.display = spaOrSwimspa ? '' : 'none';
+  if (optDigitalTesterRow) optDigitalTesterRow.style.display = spaOrSwimspa ? '' : 'none';
 
   if (optCoverlift2Row) optCoverlift2Row.style.display = swim ? '' : 'none';
   if (optSwimFiltersetRow) optSwimFiltersetRow.style.display = swim ? '' : 'none';
-  if (optWarmtepompRow) optWarmtepompRow.style.display = swim ? '' : 'none';
+  if (optWarmtepompRow) optWarmtepompRow.style.display = spaOrSwimspa ? '' : 'none';
 
   if (!allowCoverlift && optCoverlift) optCoverlift.checked = false;
   if (!allowExtraOptions && !bullfrog && optMaint) optMaint.checked = false;
-  if (!bullfrog && optSpaBalancer) optSpaBalancer.checked = false;
-  if (!bullfrog && optUltrashock) optUltrashock.checked = false;
-  if (!bullfrog && optDigitalTester) optDigitalTester.checked = false;
+  if (!spaOrSwimspa && optSpaBalancer) optSpaBalancer.checked = false;
+  if (!spaOrSwimspa && optUltrashock) optUltrashock.checked = false;
+  if (!spaOrSwimspa && optDigitalTester) optDigitalTester.checked = false;
   if (!swim && optCoverlift2) optCoverlift2.checked = false;
   if (!swim && optSwimFilterset) optSwimFilterset.checked = false;
-  if (!swim && optWarmtepompQty) optWarmtepompQty.value = '0';
+  if (!spaOrSwimspa && optWarmtepompQty) optWarmtepompQty.value = '0';
 
   if (optBarrelStoveGroup) optBarrelStoveGroup.style.display = showStoveGroup ? '' : 'none';
   if (optBarrelWoodStoveRow) optBarrelWoodStoveRow.style.display = showWoodStove ? '' : 'none';
@@ -1706,7 +1707,7 @@ function updateOptionUI() {
   if (!showAllRoofOptions && optBarrelRoofDesign) optBarrelRoofDesign.checked = false;
   if (!showInfraredModule && optBarrelInfraredModuleQty) optBarrelInfraredModuleQty.value = '0';
 
-  const warmtepompQty = swim ? toPositiveInt(optWarmtepompQty?.value) : 0;
+  const warmtepompQty = spaOrSwimspa ? toPositiveInt(optWarmtepompQty?.value) : 0;
   if (optWarmtepompQty && String(warmtepompQty) !== String(optWarmtepompQty.value)) {
     optWarmtepompQty.value = String(warmtepompQty);
   }
@@ -1730,9 +1731,9 @@ function updateOptionUI() {
   const bullfrogCoverTrapLine = (bullfrog && optCoverTrap?.checked) ? PRICES.bullfrog_cover_trap_unit : 0;
   const coverlift2Line = (swim && optCoverlift2?.checked) ? PRICES.coverlift_unit : 0;
   const maintLine = ((allowExtraOptions || bullfrog) && optMaint?.checked) ? PRICES.maintenance_unit : 0;
-  const spaBalancerLine = (bullfrog && optSpaBalancer?.checked) ? PRICES.bullfrog_spa_balancer_unit : 0;
-  const ultrashockLine = (bullfrog && optUltrashock?.checked) ? PRICES.bullfrog_ultrashock_unit : 0;
-  const digitalTesterLine = (bullfrog && optDigitalTester?.checked) ? PRICES.bullfrog_digital_tester_unit : 0;
+  const spaBalancerLine = (spaOrSwimspa && optSpaBalancer?.checked) ? PRICES.spa_balancer_unit : 0;
+  const ultrashockLine = (spaOrSwimspa && optUltrashock?.checked) ? PRICES.ultrashock_unit : 0;
+  const digitalTesterLine = (spaOrSwimspa && optDigitalTester?.checked) ? PRICES.digital_tester_unit : 0;
   const swimFiltersetLine = (swim && optSwimFilterset?.checked) ? PRICES.swim_filterset_unit : 0;
   const warmtepompLine = warmtepompQty * PRICES.warmtepomp_unit;
   const overkappingScreenLine = isQuantityVariantProduct(currentProduct) ? 0 : getOverkappingScreenTotal();
@@ -1867,6 +1868,7 @@ function getSelectedOfferLines() {
   const lines = [];
   const bullfrog = isBullfrogProduct(currentProduct);
   const allowCoverlift = (extraOptionsAllowed(type) || bullfrog) && !isRoundSpaWithoutCoverlift(currentProduct);
+  const spaOrSwimspa = extraOptionsAllowed(type);
   const showSpaColors = hasSpaColorOptions(type);
   const quantityVariantProduct = isQuantityVariantProduct(currentProduct);
   const innerColor = showSpaColors ? ($('spaInnerColor')?.value || '') : '';
@@ -1944,23 +1946,23 @@ function getSelectedOfferLines() {
     lines.push({ label: maintenanceLabel, price: PRICES.maintenance_unit });
   }
 
-  if ($('optSpaBalancer')?.checked && bullfrog) {
-    lines.push({ label: 'Spa Balancer 750 ml', price: PRICES.bullfrog_spa_balancer_unit });
+  if ($('optSpaBalancer')?.checked && spaOrSwimspa) {
+    lines.push({ label: 'Spa Balancer 750 ml', price: PRICES.spa_balancer_unit });
   }
 
-  if ($('optUltrashock')?.checked && bullfrog) {
-    lines.push({ label: 'Ultrashock', price: PRICES.bullfrog_ultrashock_unit });
+  if ($('optUltrashock')?.checked && spaOrSwimspa) {
+    lines.push({ label: 'Ultrashock', price: PRICES.ultrashock_unit });
   }
 
-  if ($('optDigitalTester')?.checked && bullfrog) {
-    lines.push({ label: 'Digitale tester', price: PRICES.bullfrog_digital_tester_unit });
+  if ($('optDigitalTester')?.checked && spaOrSwimspa) {
+    lines.push({ label: 'Digitale meter', price: PRICES.digital_tester_unit });
   }
 
   if ($('optSwimFilterset')?.checked && isSwimspa(type)) {
     lines.push({ label: 'Filterset (zwemspa)', price: PRICES.swim_filterset_unit });
   }
 
-  const warmtepompQty = isSwimspa(type) ? toPositiveInt($('optWarmtepompQty')?.value) : 0;
+  const warmtepompQty = spaOrSwimspa ? toPositiveInt($('optWarmtepompQty')?.value) : 0;
   if (warmtepompQty > 0) {
     lines.push({
       label: `Warmtepomp incl. afstelling x ${warmtepompQty}`,
