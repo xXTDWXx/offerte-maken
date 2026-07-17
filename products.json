@@ -11383,6 +11383,170 @@
       ]
     },
     {
+      "id": "zwemspa::zwemspa-ultimate",
+      "type": "zwemspa",
+      "title": "Zwemspa Ultimate",
+      "url": "https://www.sunspabenelux.nl/p/zwemspa-ultimate/",
+      "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/03/Zwemspa-Ultimate-2.jpg",
+      "price": 19795,
+      "sale_price": 17617.55,
+      "bullets": [],
+      "specs": [
+        {
+          "label": "Aantal jets",
+          "value": "61 jets"
+        },
+        {
+          "label": "Blower",
+          "value": "Inbegrepen"
+        },
+        {
+          "label": "Zitplaatsen",
+          "value": "3 zitplaatsen"
+        },
+        {
+          "label": "Ligplaatsen",
+          "value": "2 ligplaatsen"
+        },
+        {
+          "label": "Massage pomp 1",
+          "value": "3 HP / 2200 W"
+        },
+        {
+          "label": "Massage pomp 2",
+          "value": "3 HP / 2200 W"
+        },
+        {
+          "label": "Massage pomp 3",
+          "value": "3 HP / 2200 W"
+        },
+        {
+          "label": "Massage pomp 4",
+          "value": "3 HP / 2200 W"
+        },
+        {
+          "label": "Pomp 5",
+          "value": "2.5 HP"
+        },
+        {
+          "label": "Pomp 6",
+          "value": "2.5 HP"
+        },
+        {
+          "label": "Inhoud",
+          "value": "6965 liter"
+        },
+        {
+          "label": "Mini-LED verlichting",
+          "value": "32 stuks"
+        },
+        {
+          "label": "Circulatiepomp",
+          "value": "Inbegrepen"
+        },
+        {
+          "label": "Aantal kussens",
+          "value": "2"
+        },
+        {
+          "label": "Afmeting",
+          "value": "537 x 227 x 136 cm"
+        },
+        {
+          "label": "Leeg gewicht",
+          "value": "1420 kg"
+        },
+        {
+          "label": "Gevuld gewicht",
+          "value": "6965 kg"
+        },
+        {
+          "label": "Aansluiting",
+          "value": "230 V"
+        },
+        {
+          "label": "Besturingssysteem",
+          "value": "Gecko"
+        },
+        {
+          "label": "WiFi",
+          "value": "Nee"
+        },
+        {
+          "label": "muziekinstallatie",
+          "value": "Bluetooth"
+        },
+        {
+          "label": "Subwoofer",
+          "value": "Inbegrepen"
+        },
+        {
+          "label": "Aantal speakers",
+          "value": "2"
+        },
+        {
+          "label": "Waterval",
+          "value": "Inbegrepen"
+        },
+        {
+          "label": "Fontein",
+          "value": "Inbegrepen"
+        },
+        {
+          "label": "Filter",
+          "value": "Dubbel filtersysteem"
+        },
+        {
+          "label": "Isolatie",
+          "value": "HD schuim"
+        },
+        {
+          "label": "UV",
+          "value": "UV filter"
+        },
+        {
+          "label": "Heater",
+          "value": "3 kW"
+        },
+        {
+          "label": "Materiaal kuip",
+          "value": "Aristech"
+        },
+        {
+          "label": "Frame",
+          "value": "Gegalvaniseerd staal"
+        },
+        {
+          "label": "Cover",
+          "value": "Inbegrepen"
+        },
+        {
+          "label": "Trap",
+          "value": "Inbegrepen"
+        },
+        {
+          "label": "Prijs categorie",
+          "value": "EUR 20.000 - 22.000"
+        },
+        {
+          "label": "Aantal personen",
+          "value": "5 - 10 Personen"
+        },
+        {
+          "label": "Met of zonder spa",
+          "value": "Met Spa"
+        },
+        {
+          "label": "Lengte",
+          "value": "500 - 600 cm"
+        },
+        {
+          "label": "Breedte",
+          "value": "225 - 240 cm"
+        }
+      ]
+    },
+    {
       "id": "zwemspa::zwemspa-alicante",
       "type": "zwemspa",
       "title": "Zwemspa Alicante",
