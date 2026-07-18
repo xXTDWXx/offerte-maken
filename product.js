@@ -1817,7 +1817,14 @@ function wireOptionHandlers() {
 
   [optSpaBalancer, optUltrashock].forEach(input => {
     input?.addEventListener('change', () => {
-      if (input.checked && optMaint) optMaint.checked = false;
+      if (input.checked) {
+        if (optMaint) optMaint.checked = false;
+        if (optSpaBalancer) optSpaBalancer.checked = true;
+        if (optUltrashock) optUltrashock.checked = true;
+      } else {
+        if (optSpaBalancer) optSpaBalancer.checked = false;
+        if (optUltrashock) optUltrashock.checked = false;
+      }
     }, true);
   });
 
