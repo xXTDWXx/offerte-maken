@@ -341,7 +341,9 @@ function getSpaColorSwatchBackground(value) {
     'palm black': 'linear-gradient(135deg, #111827 0%, #374151 100%)',
     'ancient grey': 'linear-gradient(135deg, #6b7280 0%, #d1d5db 100%)',
     ebony: 'linear-gradient(135deg, #1c1b18 0%, #3a342c 48%, #78644e 52%, #2a2823 100%)',
-    timber: 'linear-gradient(135deg, #6f675b 0%, #a99d8c 48%, #d3c8b8 52%, #807464 100%)'
+    timber: 'linear-gradient(135deg, #6f675b 0%, #a99d8c 48%, #d3c8b8 52%, #807464 100%)',
+    cedar: 'linear-gradient(135deg, #7a3f1f 0%, #b66d35 34%, #d39a54 50%, #8f4a25 68%, #5f2f18 100%)',
+    'red cedar': 'linear-gradient(135deg, #7a3f1f 0%, #b66d35 34%, #d39a54 50%, #8f4a25 68%, #5f2f18 100%)'
   };
 
   return backgrounds[key] || 'linear-gradient(135deg, #e5e7eb 0%, #f8fafc 100%)';
@@ -569,6 +571,7 @@ function normalizeStockColor(value) {
   if (clean.includes('ancient') && (clean.includes('grey') || clean.includes('gray'))) return 'ancient grey';
   if (clean.includes('ebony')) return 'ebony';
   if (clean.includes('timber')) return 'timber';
+  if (clean.includes('cedar')) return 'red cedar';
   if (clean.includes('graphite')) return 'graphite';
   if (clean.includes('chocolate')) return 'chocolate';
   if (clean.includes('taupe')) return 'taupe';
@@ -588,6 +591,10 @@ function getSpaStockModelCandidates(product) {
 
   if (normalizedTitle.includes('aquavera')) {
     aliases.push('aquatique');
+  }
+
+  if (normalizedTitle.includes('python')) {
+    aliases.push('python');
   }
 
   return Array.from(new Set([
@@ -944,6 +951,11 @@ function updateSpaStockDelivery() {
 function isRoundSpaWithoutCoverlift(product) {
   const title = titleNorm(product?.title);
   return title.includes('marrakech') || title.includes('python');
+}
+
+function isPythonSpaProduct(product) {
+  const title = titleNorm(product?.title);
+  return String(product?.id || '').toLowerCase() === 'spa::python-hottub-spa' || title.includes('python');
 }
 
 function isCedarOutdoorSauna(product) {
@@ -4516,7 +4528,9 @@ function renderProduct(p) {
     const merk = getMerk(p).toLowerCase();
     const title = titleNorm(p?.title);
 
-    if (isBullfrogProduct(p)) {
+    if (isPythonSpaProduct(p)) {
+      colors = ['Cedar'];
+    } else if (isBullfrogProduct(p)) {
       colors = ['ebony', 'timber'];
     } else if (isSwimspa(type) || title.includes('aquavera') || title.includes('goldline') || title.includes('gold line')) {
       colors = ['graphite', 'grey'];
