@@ -780,6 +780,9 @@
     #optCoverlift2Row .opt-copy,
     #optMaintRow .opt-copy,
     #optSwimFiltersetRow .opt-copy,
+    #optSpaBalancerRow .opt-copy,
+    #optUltrashockRow .opt-copy,
+    #optDigitalTesterRow .opt-copy,
     #optWarmtepompRow .opt-copy{
       display:grid;
       grid-template-columns:minmax(0, 1fr) auto;
@@ -793,6 +796,9 @@
     #optCoverlift2Row .opt-label,
     #optMaintRow .opt-label,
     #optSwimFiltersetRow .opt-label,
+    #optSpaBalancerRow .opt-label,
+    #optUltrashockRow .opt-label,
+    #optDigitalTesterRow .opt-label,
     #optWarmtepompRow .opt-label{
       line-height:1.15;
       overflow-wrap:normal;
@@ -803,6 +809,9 @@
     #optCoverlift2Row .opt-price,
     #optMaintRow .opt-price,
     #optSwimFiltersetRow .opt-price,
+    #optSpaBalancerRow .opt-price,
+    #optUltrashockRow .opt-price,
+    #optDigitalTesterRow .opt-price,
     #optWarmtepompRow .opt-price{
       justify-self:end;
       margin-left:0;
@@ -811,7 +820,10 @@
     #optCoverliftRow .opt-title,
     #optCoverlift2Row .opt-title,
     #optMaintRow .opt-title,
-    #optSwimFiltersetRow .opt-title{
+    #optSwimFiltersetRow .opt-title,
+    #optSpaBalancerRow .opt-title,
+    #optUltrashockRow .opt-title,
+    #optDigitalTesterRow .opt-title{
       display:grid;
       grid-template-columns:76px 24px minmax(0, 1fr);
       align-items:center;
@@ -821,7 +833,10 @@
     #optCoverliftRow .opt-title > img,
     #optCoverlift2Row .opt-title > img,
     #optMaintRow .opt-title > img,
-    #optSwimFiltersetRow .opt-title > img{
+    #optSwimFiltersetRow .opt-title > img,
+    #optSpaBalancerRow .opt-title > img,
+    #optUltrashockRow .opt-title > img,
+    #optDigitalTesterRow .opt-title > img{
       grid-column:1;
       width:76px;
       height:calc(100% + 20px);
@@ -833,6 +848,13 @@
       border-radius:15px 0 0 15px;
       background:#fff;
       object-fit:cover;
+    }
+
+    #optSpaBalancerRow .opt-title > img,
+    #optUltrashockRow .opt-title > img,
+    #optDigitalTesterRow .opt-title > img{
+      padding:5px;
+      object-fit:contain;
     }
 
     #optWarmtepompRow .opt-title{
@@ -955,9 +977,9 @@
 
     #optBarrelInfraredModuleRow .opt-title{
       display:grid !important;
-      grid-template-columns:70px minmax(0, 1fr);
+      grid-template-columns:76px minmax(0, 1fr);
       align-items:center;
-      gap:10px 12px;
+      gap:0 12px;
     }
 
     #optBarrelInfraredModuleRow{
@@ -972,6 +994,16 @@
     #optBarrelInfraredModuleRow .opt-title > img{
       grid-column:1;
       grid-row:1 / span 2;
+      width:76px;
+      height:calc(100% + 20px);
+      min-height:0;
+      margin:-10px 0 -10px -10px;
+      align-self:stretch;
+      border:0;
+      border-right:1px solid #e5eaf0;
+      border-radius:15px 0 0 15px;
+      background:#fff;
+      object-fit:cover;
     }
 
     #optBarrelInfraredModuleRow .opt-copy{

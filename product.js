@@ -1793,6 +1793,22 @@ function wireOptionHandlers() {
   if (optionHandlersWired) return;
   optionHandlersWired = true;
 
+  const optMaint = $('optMaint');
+  const optSpaBalancer = $('optSpaBalancer');
+  const optUltrashock = $('optUltrashock');
+
+  optMaint?.addEventListener('change', () => {
+    if (!optMaint.checked) return;
+    if (optSpaBalancer) optSpaBalancer.checked = false;
+    if (optUltrashock) optUltrashock.checked = false;
+  }, true);
+
+  [optSpaBalancer, optUltrashock].forEach(input => {
+    input?.addEventListener('change', () => {
+      if (input.checked && optMaint) optMaint.checked = false;
+    }, true);
+  });
+
   const ids = [
     'optInstall',
     'optCoverTrap',
