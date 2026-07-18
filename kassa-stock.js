@@ -243,7 +243,8 @@ function createSupabaseStockApi(client) {
         product_id: item.id,
         quantity: item.qty,
         title: item.title,
-        unit_price: item.price
+        unit_price: item.price,
+        line_total: item.lineTotal
       }));
 
       const { error } = await client.rpc('register_showroom_sale', {

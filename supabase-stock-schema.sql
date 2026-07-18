@@ -10,7 +10,8 @@
 create table if not exists public.showroom_stock_sales (
   id uuid primary key default gen_random_uuid(),
   showroom text not null check (showroom in ('gent', 'brugge')),
-  sold_at timestamptz not null default now()
+  sold_at timestamptz not null default now(),
+  total_amount numeric(10, 2) not null default 0
 );
 
 create table if not exists public.showroom_stock_sale_items (
@@ -19,7 +20,8 @@ create table if not exists public.showroom_stock_sale_items (
   product_id text not null,
   product_title text not null,
   quantity integer not null check (quantity > 0),
-  unit_price numeric(10, 2) not null default 0
+  unit_price numeric(10, 2) not null default 0,
+  line_total numeric(10, 2) not null default 0
 );
 
 create table if not exists public.kassa_admins (
@@ -41,6 +43,9 @@ declare
   v_product_id text;
   v_product_title text;
   v_quantity integer;
+  v_unit_price numeric(10, 2);
+  v_line_total numeric(10, 2);
+  v_total_amount numeric(10, 2) := 0;
 begin
   if p_showroom not in ('gent', 'brugge') then
     raise exception 'Ongeldige showroom: %', p_showroom;
@@ -64,8 +69,8 @@ begin
     end if;
   end loop;
 
-  insert into public.showroom_stock_sales (showroom)
-  values (p_showroom)
+  insert into public.showroom_stock_sales (showroom, total_amount)
+  values (p_showroom, 0)
   returning id into v_sale_id;
 
   for v_item in select value from jsonb_array_elements(p_items)
@@ -73,6 +78,9 @@ begin
     v_product_id := v_item->>'product_id';
     v_product_title := coalesce(nullif(v_item->>'title', ''), v_product_id);
     v_quantity := (v_item->>'quantity')::integer;
+    v_unit_price := coalesce((v_item->>'unit_price')::numeric, 0);
+    v_line_total := round((v_quantity * v_unit_price)::numeric, 2);
+    v_total_amount := v_total_amount + v_line_total;
 
     update public.showroom_stock
       set quantity = greatest(0, quantity - v_quantity),
@@ -104,15 +112,21 @@ begin
       product_id,
       product_title,
       quantity,
-      unit_price
+      unit_price,
+      line_total
     ) values (
       v_sale_id,
       v_product_id,
       v_product_title,
       v_quantity,
-      coalesce((v_item->>'unit_price')::numeric, 0)
+      v_unit_price,
+      v_line_total
     );
   end loop;
+
+  update public.showroom_stock_sales
+  set total_amount = round(v_total_amount::numeric, 2)
+  where id = v_sale_id;
 
   return v_sale_id;
 end;
@@ -167,6 +181,69 @@ begin
 end;
 $$;
 
+create or replace function public.clear_showroom_sales_month(
+  p_showroom text,
+  p_month date
+) returns integer
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_deleted integer;
+  v_month_start timestamptz;
+  v_month_end timestamptz;
+begin
+  if auth.uid() is null or not exists (
+    select 1
+      from public.kassa_admins
+      where user_id = auth.uid()
+  ) then
+    raise exception 'Geen toegang tot maandverkoop wissen.';
+  end if;
+
+  if p_showroom not in ('gent', 'brugge') then
+    raise exception 'Ongeldige showroom: %', p_showroom;
+  end if;
+
+  if p_month is null then
+    raise exception 'Maand ontbreekt.';
+  end if;
+
+  v_month_start := date_trunc('month', p_month)::timestamptz;
+  v_month_end := v_month_start + interval '1 month';
+
+  delete from public.showroom_stock_sales
+  where showroom = p_showroom
+    and sold_at >= v_month_start
+    and sold_at < v_month_end;
+
+  get diagnostics v_deleted = row_count;
+  return v_deleted;
+end;
+$$;
+
+create or replace view public.showroom_sales_export as
+select
+  sales.id as sale_id,
+  sales.showroom,
+  sales.sold_at,
+  items.product_id,
+  items.product_title,
+  items.quantity,
+  items.unit_price,
+  coalesce(items.line_total, round((items.quantity * items.unit_price)::numeric, 2)) as line_total,
+  coalesce(sales.total_amount, totals.total_amount, 0) as total_amount
+from public.showroom_stock_sales sales
+join public.showroom_stock_sale_items items on items.sale_id = sales.id
+left join (
+  select
+    sale_id,
+    round(sum(coalesce(line_total, round((quantity * unit_price)::numeric, 2)))::numeric, 2) as total_amount
+  from public.showroom_stock_sale_items
+  group by sale_id
+) totals on totals.sale_id = sales.id;
+
 alter table public.showroom_stock enable row level security;
 alter table public.showroom_stock_sales enable row level security;
 alter table public.showroom_stock_sale_items enable row level security;
@@ -190,9 +267,13 @@ create policy "showroom_sale_items_read"
 grant select on public.showroom_stock to anon;
 grant select on public.showroom_stock_sales to anon;
 grant select on public.showroom_stock_sale_items to anon;
+grant select on public.showroom_sales_export to anon;
+grant select on public.showroom_sales_export to authenticated;
 grant execute on function public.register_showroom_sale(text, jsonb) to anon;
 grant execute on function public.set_showroom_stock(text, text, text, integer) to authenticated;
+grant execute on function public.clear_showroom_sales_month(text, date) to authenticated;
 revoke execute on function public.set_showroom_stock(text, text, text, integer) from anon;
+revoke execute on function public.clear_showroom_sales_month(text, date) from anon;
 
 do $$
 begin
