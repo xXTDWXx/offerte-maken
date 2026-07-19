@@ -744,10 +744,11 @@ function getSpaStockStatus(cabinet) {
 
   if (listedIncoming.length) {
     const first = listedIncoming[0];
+    const weeks = Math.min(Number(first.weeks || 12), 12);
     return {
       key: 'incoming',
       label: 'Onderweg',
-      term: `Onderweg ${first.container ? `container ${first.container} - ` : ''}+/- ${first.weeks} weken onder voorbehoud`
+      term: `Onderweg ${first.container ? `container ${first.container} - ` : ''}+/- ${weeks} weken onder voorbehoud`
     };
   }
 
@@ -755,7 +756,7 @@ function getSpaStockStatus(cabinet) {
     return {
       key: 'incoming',
       label: 'Onderweg',
-      term: 'Onderweg - 15-20 weken onder voorbehoud'
+      term: 'Onderweg - +/- 12 weken onder voorbehoud'
     };
   }
 
