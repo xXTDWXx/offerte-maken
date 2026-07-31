@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="hottub.css" />
+  <link rel="stylesheet" href="hottub.css?v=fr-20260731-2" />
   <title>Stel je hottub samen</title>
 </head>
 <body>
@@ -104,106 +104,63 @@
         </section>
 
         <section class="section">
-          <h2>5. Kies je kachel</h2>
-          <p class="section-intro">Extern, intern, elektrisch of hybride volgens de Sunspa configurator.</p>
+          <h2>5. Kies je opwarming</h2>
+          <p class="section-intro">Kies eerst de gewenste manier van opwarmen. De exacte uitvoering kies je in de volgende stap.</p>
           <div class="grid-2">
             <label class="choice-card">
-              <input type="radio" name="kachel" value="0">
-              <img src="images/hottub-fast/kachel-extern.jpg" alt="Externe kachel" loading="eager" decoding="async">
+              <input type="radio" name="opwarming" value="extern" data-label="Externe houtkachel">
+              <img src="images/opwarming-extern.jpg" alt="Externe kachel" loading="eager" decoding="async">
               <div class="choice-content">
-                <h3>Houtkachel extern</h3>
-                <p>Extra ruimte in hottub · 304 standaard RVS kachel</p>
-                <p class="choice-price">+ € 0</p>
+                <h3>Extern</h3>
+                <p>Houtkachel buiten de hottub voor extra ruimte binnenin.</p>
               </div>
             </label>
 
             <label class="choice-card">
-              <input type="radio" name="kachel" value="265">
-              <img src="images/hottub-fast/kachel-intern.jpg" alt="Interne kachel" loading="eager" decoding="async">
+              <input type="radio" name="opwarming" value="intern" data-label="Interne houtkachel">
+              <div class="opwarming-intern-visual">
+                <img class="opwarming-intern-photo" src="images/opwarming-intern.jpg" alt="Interne kachel" loading="eager" decoding="async">
+              </div>
               <div class="choice-content">
-                <h3>Houtkachel intern</h3>
-                <p>Verhoogde zitplek · geïntegreerde houtkachel</p>
-                <p class="choice-price">+ € 265</p>
+                <h3>Intern</h3>
+                <p>Geïntegreerde houtkachel met verhoogde zitplek.</p>
               </div>
             </label>
 
             <label class="choice-card">
-              <input type="radio" name="kachel" value="370">
+              <input type="radio" name="opwarming" value="elektrisch" data-label="Elektrische opwarming">
               <img src="images/hottub-fast/gecko.jpg" alt="Elektrische Gecko" loading="eager" decoding="async">
               <div class="choice-content">
-                <h3>Elektrische Gecko</h3>
+                <h3>Elektrisch</h3>
                 <p>Volledig elektrisch</p>
-                <p class="choice-price">+ € 370</p>
               </div>
             </label>
 
-            <label class="simple-card">
-              <input type="radio" name="kachel" value="1045">
+            <label class="choice-card">
+              <input type="radio" name="opwarming" value="hybride" data-label="Hybride opwarming">
+              <div class="hybrid-heating-visual" aria-label="Geïntegreerde houtkachel plus elektrische Gecko-bediening">
+                <img src="images/integrated-kachel.jpg" alt="Geïntegreerde houtkachel" loading="eager" decoding="async">
+                <span class="hybrid-plus" aria-hidden="true">+</span>
+                <img src="images/hottub-fast/gecko.jpg" alt="Elektrische Gecko-bediening" loading="eager" decoding="async">
+              </div>
               <span class="badge">Combinatie</span>
-              <h3>Hybride systeem</h3>
-              <div class="meta">Houtkachel + elektrische Gecko</div>
-              <div class="price">+ € 1.045</div>
-            </label>
-          </div>
-        </section>
-
-        <section class="section">
-          <h2>6. Kies je massage</h2>
-          <p class="section-intro">Kies het gewenste jetsysteem.</p>
-          <div class="auto-grid">
-            <label class="simple-card">
-              <input type="radio" name="massage" value="0">
-              <span class="badge">Standaard</span>
-              <h3>Geen massage</h3>
-              <div class="meta">Zonder jets</div>
-              <div class="price">+ € 0</div>
-            </label>
-
-            <label class="choice-card">
-              <input type="radio" name="massage" value="725">
-              <img src="images/hottub-fast/massage.jpg" alt="Massage opties" loading="eager" decoding="async">
               <div class="choice-content">
-                <h3>12 Airjets</h3>
-                <p>Luchtmassage</p>
-                <p class="choice-price">+ € 725</p>
-              </div>
-            </label>
-
-            <label class="choice-card">
-              <input type="radio" name="massage" value="725">
-              <img src="images/hottub-fast/8massagejets.jpg" alt="Massage opties" loading="eager" decoding="async">
-              <div class="choice-content">
-                <h3>8 Waterjets</h3>
-                <p>Watermassage</p>
-                <p class="choice-price">+ € 725</p>
-              </div>
-            </label>
-
-            <label class="choice-card">
-              <input type="radio" name="massage" value="1145">
-              <img src="images/hottub-fast/massage.jpg" alt="Massage opties" loading="eager" decoding="async">
-              <div class="choice-content">
-                <h3>14 Waterjets</h3>
-                <p>Extra uitgebreide watermassage</p>
-                <p class="choice-price">+ € 1.145</p>
-              </div>
-            </label>
-
-            <label class="choice-card">
-              <input type="radio" name="massage" value="995">
-              <img src="images/hottub-fast/12combijets.jpg" alt="Massage opties" loading="eager" decoding="async">
-              <div class="choice-content">
-                <h3>12 Combi-jets</h3>
-                <p>Combinatie van lucht en water</p>
-                <p class="choice-price">+ € 995</p>
+                <h3>Hybride</h3>
+                <p>Houtkachel gecombineerd met een elektrische Gecko-verwarmer.</p>
               </div>
             </label>
           </div>
         </section>
 
         <section class="section">
-          <h2>7. Kies je verlichting</h2>
-          <p class="section-intro">Sfeerverlichting in de hottub. Meerdere keuzes mogelijk.</p>
+          <h2>6. Kies je kachel</h2>
+          <p class="section-intro" id="heaterIntro">Kies de uitvoering van je opwarming.</p>
+          <div class="auto-grid" id="heaterOptions"></div>
+        </section>
+
+        <section class="section" id="massageSection">
+          <h2>7. Kies je massage</h2>
+          <p class="section-intro">Kies het gewenste jetsysteem. Prijzen worden later toegevoegd.</p>
           <div class="auto-grid">
             <label class="choice-card">
               <input type="checkbox" name="verlichting" value="199" data-label="1 hoofdled">
@@ -247,16 +204,25 @@
           </div>
         </section>
 
+        <section class="section" id="lightingSection">
+          <h2>8. Kies je verlichting</h2>
+          <p class="section-intro">Kies maximaal één hoofdledoptie. Je kunt 10 mini leds altijd bijkiezen.</p>
+          <div class="auto-grid" id="lightingOptions"></div>
+        </section>
+
         <section class="section">
-          <h2>8. Kies je filter</h2>
+          <h2>9. Kies je filtering</h2>
           <p class="section-intro">Voor helderder en proper water.</p>
           <div class="auto-grid">
-            <label class="simple-card">
+            <label class="choice-card">
               <input type="radio" name="filter" value="0">
-              <span class="badge">Standaard</span>
-              <h3>Geen filter</h3>
-              <div class="meta">Zonder filtersysteem</div>
-              <div class="price">+ € 0</div>
+              <img src="images/geen-filtering.png" alt="Geen filtering" loading="eager" decoding="async">
+              <div class="choice-content">
+                <span class="badge">Standaard</span>
+                <h3>Geen filtering</h3>
+                <p>Zonder filtersysteem</p>
+                <p class="choice-price">+ € 0</p>
+              </div>
             </label>
 
             <label class="choice-card">
@@ -282,12 +248,11 @@
         </section>
 
         <section class="section">
-          <h2>9. Kies je cover</h2>
+          <h2>10. Kies je cover</h2>
           <p class="section-intro">Kies de gewenste afdekking.</p>
           <div class="auto-grid">
             <label class="simple-card">
               <input type="radio" name="cover" value="0">
-              <span class="badge">Standaard</span>
               <h3>Geen cover</h3>
               <div class="meta">Zonder extra cover</div>
               <div class="price">+ € 0</div>
@@ -295,7 +260,7 @@
 
             <label class="choice-card">
               <input type="radio" name="cover" value="620">
-              <img src="images/hottub-fast/thermocover.jpg" alt="Thermocover" loading="eager" decoding="async">
+              <img src="images/thermocover.jpg" alt="Thermocover" loading="eager" decoding="async">
               <div class="choice-content">
                 <h3>Thermo Cover</h3>
                 <p>Isolerende cover</p>
@@ -303,18 +268,11 @@
               </div>
             </label>
 
-            <label class="simple-card">
-              <input type="radio" name="cover" value="365">
-              <span class="badge">Cover</span>
-              <h3>Houten Cover</h3>
-              <div class="meta">Massieve houten afdekking</div>
-              <div class="price">+ € 365</div>
-            </label>
           </div>
         </section>
 
         <section class="section">
-          <h2>10. Kies je extra accessoires</h2>
+          <h2>11. Kies je extra accessoires</h2>
           <p class="section-intro">Werk je hottub verder af met extra opties.</p>
           <div class="auto-grid">
             <label class="choice-card">
@@ -358,6 +316,7 @@
 
             <label class="choice-card">
               <input type="checkbox" name="extra" value="80" data-label="+1m rookkanaal">
+              <img src="images/rookkanaal-1m.png" alt="1 meter rookkanaal" loading="eager" decoding="async">
               <div class="choice-content">
               <h3>+1 m rookkanaal</h3>
               <div class="meta">Extra lengte</div>
@@ -365,21 +324,21 @@
               </div>
             </label>
 
-            <label class="simple-card">
-              <input type="checkbox" name="extra" value="305" data-label="Coverlift">
-              <span class="badge">Cover</span>
-              <h3>Coverlift</h3>
-              <div class="meta">Handige lift voor de cover</div>
-              <div class="price">+ € 305</div>
-            </label>
-
-            <label class="choice-card">
+            <label class="choice-card" id="wifiAccessory">
               <input type="checkbox" name="extra" value="255" data-label="Gecko Wifi systeem">
               <img src="images/Gecko wifi.webp" alt="Gecko wifi systeem" loading="eager" decoding="async">
               <div class="choice-content">
                 <h3>Gecko Wifi systeem</h3>
                 <p>Bediening via smartphone</p>
                 <p class="choice-price">+ € 255</p>
+              </div>
+            </label>
+            <label class="choice-card">
+              <input type="checkbox" name="extra" value="149" data-label="Instapbeugel">
+              <img src="images/instapbeugel.png" alt="Instapbeugel" loading="eager" decoding="async">
+              <div class="choice-content">
+                <h3>Instapbeugel</h3>
+                <p class="choice-price">+ € 149</p>
               </div>
             </label>
           </div>
@@ -413,6 +372,6 @@
   </div>
 
   <script src="i18n.js?v=fr-20260621c"></script>
-  <script src="hottub.js?v=fr-20260621"></script>
+  <script src="hottub.js?v=fr-20260731-2"></script>
 </body>
 </html>

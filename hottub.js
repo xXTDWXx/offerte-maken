@@ -6,6 +6,7 @@ const wizardStepNames = [
   "wood",
   "size",
   "kleur",
+  "opwarming",
   "kachel",
   "massage",
   "verlichting",
@@ -82,10 +83,50 @@ const config = {
   }
 };
 
+const HEATER_OPTIONS = {
+  extern: [
+    ["External - 20kW, 304", "images/externe-kachel.jpg", 0],
+    ["External - 26kW, 304", "images/externe-kachel.jpg", 236],
+    ["External - 30kW, 304", "images/externe-kachel.jpg", 378],
+    ["External - 20kW, 316", "images/externe-kachel.jpg", 315],
+    ["External - 26kW, 316", "images/externe-kachel.jpg", 503],
+    ["External - 30kW, 316", "images/externe-kachel.jpg", 708]
+  ],
+  intern: [
+    ["Integrated - 35kW, 304 (standaard)", "images/integrated-kachel.jpg", 110],
+    ["Integrated - 35kW, 316", "images/integrated-kachel.jpg", 315],
+    ["Verta - 35kW, 304", "images/verta-kachel.jpg", 865],
+    ["Verta - 35kW, 316", "images/verta-kachel.jpg", 1070],
+    ["Horizon - 25kW, 304", "images/horizon-kachel.png", 362],
+    ["Horizon - 25kW, 316", "images/horizon-kachel.png", 582]
+  ]
+};
+
+const MASSAGE_OPTIONS = [
+  ["Geen massage", "Zonder jets", "images/geen-massage.jpg", 0, "geen"],
+  ["Air 12 jets", "Luchtmassage", "images/air-jets.jpg", 440, "air"],
+  ["Air 20 jets", "Uitgebreide luchtmassage", "images/air-jets.jpg", 708, "air"],
+  ["Water 8 jets", "Watermassage", "images/water-8-jets.jpg", 440, "water"],
+  ["Water 14 jets", "Uitgebreide watermassage", "images/hottub-fast/8massagejets.jpg", 708, "water"],
+  ["Gecombineerd 8 waterjets + 4 airjets", "Combinatie van water- en luchtmassage", "images/hottub-fast/12combijets.jpg", 692, "gecombineerd"],
+  ["LED water 8 jets", "Watermassage met LED-verlichting", "images/led-jets.jpeg", 676, "water"],
+  ["LED water 14 jets", "Uitgebreide watermassage met LED-verlichting", "images/led-jets.jpeg", 975, "water"]
+];
+
+const STANDARD_ITEMS = [
+  { label: "2 meter rookkanaal" },
+  { label: "Trapje", image: "images/trapje.png" },
+  { label: "Mini bar" },
+  { label: "Water uitlaat", image: "images/waterafvoer.jpeg" },
+  { label: "Temperatuur meter" },
+  { label: "Kuip isolatie" }
+];
+
 function euro(value) {
-  return "€ " + Number(value).toLocaleString("nl-BE", {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
+  const numericValue = Number(value);
+  return "€ " + numericValue.toLocaleString("nl-BE", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
   });
 }
 
@@ -232,6 +273,108 @@ function renderSizeOptions() {
   });
 }
 
+function renderHeaterOptions() {
+  const type = selectedRadioValue("opwarming");
+  const container = document.getElementById("heaterOptions");
+  const intro = document.getElementById("heaterIntro");
+  if (!container) return;
+  const selected = document.querySelector('input[name="kachel"]:checked')?.dataset.label;
+  const heaterCard = (label, image, price = 0, note = "") => `
+    <label class="choice-card">
+      <input type="radio" name="kachel" value="${price}" data-label="${escapeHtml(label)}" ${selected === label ? "checked" : ""}>
+      <img src="${escapeHtml(image)}" alt="${escapeHtml(label)}" loading="eager" decoding="async">
+      <div class="choice-content"><h3>${escapeHtml(label)}</h3>${note ? `<p>${escapeHtml(note)}</p>` : ""}<p class="choice-price">+ ${euro(price)}</p></div>
+    </label>`;
+
+  let content = "";
+  if (type === "extern" || type === "intern") {
+    intro.textContent = `Kies je ${type === "extern" ? "externe" : "interne"} kachel.`;
+    content = HEATER_OPTIONS[type].map(([label, image, price]) => heaterCard(label, image, price, price === 0 ? "Inbegrepen in basisprijs" : "")).join("");
+  } else if (type === "elektrisch") {
+    intro.textContent = "Kies je elektrische kachel en eventueel de touchscreen-upgrade.";
+    content = heaterCard("Elektrische 3 kW heater met display (Gecko)", "images/hottub-fast/gecko.jpg", 990, "Elektrische opwarming") + `
+      <label class="simple-card heater-upgrade-card">
+        <input type="checkbox" name="heaterUpgrade" value="299" data-label="Upgrade touchscreen Gecko" ${selected ? "" : "disabled"}>
+        <img src="images/touchscreen-upgrade.png" alt="Touchscreen Gecko"><span class="badge">Optioneel</span><h3>Upgrade touchscreen Gecko</h3><div class="meta">Beschikbaar na selectie van de heater met display</div><div class="price">+ € 299</div>
+      </label>`;
+  } else if (type === "hybride") {
+    intro.textContent = "De elektrische 3 kW heater met display (Gecko) wordt automatisch toegevoegd voor € 990,00. Kies hieronder de houtkachel waarmee je die combineert.";
+    const hybridOptions = [
+      ...HEATER_OPTIONS.extern.map(([label, image, price]) => [`Extern – ${label}`, image, price]),
+      ...HEATER_OPTIONS.intern.map(([label, image, price]) => [`Intern – ${label}`, image, price])
+    ];
+    content = hybridOptions.map(([label, image, price]) => heaterCard(label, image, price, price === 0 ? "Inbegrepen in basisprijs" : "")).join("");
+  } else {
+    intro.textContent = "Kies eerst een opwarming in stap 5.";
+    content = '<p class="section-intro">Nog geen opwarming gekozen.</p>';
+  }
+  container.innerHTML = content;
+  container.querySelectorAll('input[name="kachel"], input[name="heaterUpgrade"]').forEach(input => input.addEventListener("change", () => {
+    const isElectric = selectedRadioValue("opwarming") === "elektrisch";
+    if (input.name === "kachel") renderHeaterOptions();
+    updateSummary();
+    if (input.name === "kachel" && !isElectric) {
+      goToNextStep();
+      return;
+    }
+    // Bij elektrische opwarming blijft deze stap zichtbaar zodat de klant
+    // de touchscreen-upgrade bewust kan kiezen of overslaan.
+    renderWizard();
+  }));
+}
+
+function renderMassageOptions() {
+  const container = document.querySelector("#massageSection .auto-grid");
+  if (!container) return;
+  const selectedLabels = new Set(selectedCheckboxes("massage").map(input => input.dataset.label));
+  container.innerHTML = MASSAGE_OPTIONS.map(([label, note, image, price, group]) => `
+    <label class="choice-card">
+      <input type="checkbox" name="massage" value="${price}" data-label="${escapeHtml(label)}" data-group="${group}" ${selectedLabels.has(label) ? "checked" : ""}>
+      <img src="${escapeHtml(image)}" alt="${escapeHtml(label)}" loading="eager" decoding="async">
+      <div class="choice-content"><h3>${escapeHtml(label)}</h3><p>${escapeHtml(note)}</p><p class="choice-price">+ ${euro(price)}</p></div>
+    </label>`).join("");
+  const inputs = [...container.querySelectorAll('input[name="massage"]')];
+  inputs.forEach(input => input.addEventListener("change", () => {
+    if (input.checked) {
+      const group = input.dataset.group;
+      inputs.forEach(other => {
+        if (other === input) return;
+        const otherGroup = other.dataset.group;
+        const isExclusive = group === "geen" || group === "gecombineerd";
+        const conflictsWithSelection = otherGroup === group || otherGroup === "geen" || otherGroup === "gecombineerd";
+        if (isExclusive || conflictsWithSelection) other.checked = false;
+      });
+    }
+    updateSummary();
+  }));
+}
+
+function renderLightingOptions() {
+  const container = document.getElementById("lightingOptions");
+  if (!container) return;
+  const mainLed = selectedRadioValue("hoofdled");
+  const miniLed = selectedCheckboxes("verlichting").some(input => input.value === "305");
+  const choices = [["1 hoofdled", 199], ["2 hoofdleds", 265], ["3 hoofdleds", 285]];
+  container.innerHTML = choices.map(([label, price]) => `
+    <label class="choice-card"><input type="radio" name="hoofdled" value="${price}" data-label="${label}" ${mainLed === String(price) ? "checked" : ""}>
+      <img src="images/hoofdled.jpg" alt="${label}" loading="eager" decoding="async"><div class="choice-content"><h3>${label}</h3><p>${label} in hottub</p><p class="choice-price">+ ${euro(price)}</p></div></label>`).join("") + `
+    <label class="choice-card"><input type="checkbox" name="verlichting" value="305" data-label="10 mini leds" ${miniLed ? "checked" : ""}>
+      <img src="images/mini-leds.jpeg" alt="10 mini leds" loading="eager" decoding="async"><div class="choice-content"><h3>10 mini leds</h3><p>Fijne sfeerverlichting</p><p class="choice-price">+ € 305</p></div></label>`;
+  container.querySelectorAll('input[name="hoofdled"], input[name="verlichting"]').forEach(input => input.addEventListener("change", updateSummary));
+}
+
+function syncWifiAccessory() {
+  const wifiCard = document.getElementById("wifiAccessory");
+  if (!wifiCard) return;
+  const isAvailable = ["elektrisch", "hybride"].includes(selectedRadioValue("opwarming"));
+  const wifiInput = wifiCard.querySelector('input[name="extra"]');
+  wifiCard.hidden = !isAvailable;
+  if (wifiInput) {
+    wifiInput.disabled = !isAvailable;
+    if (!isAvailable) wifiInput.checked = false;
+  }
+}
+
 function getBasePrice() {
   const modelKey = getCurrentModelKey();
   const woodKey = getCurrentWoodKey();
@@ -328,10 +471,16 @@ function selectedCheckboxSummaryItems(name, title) {
 
 function getCurrentConfiguration() {
   const labels = getBaseLabels();
+  const opwarming = selectedRadioValue("opwarming");
   const kachel = selectedRadioNumber("kachel");
-  const massage = selectedRadioNumber("massage");
+  const hybridGecko = opwarming === "hybride" ? 990 : 0;
+  const heaterUpgradeItems = selectedCheckboxes("heaterUpgrade");
+  const heaterUpgrade = heaterUpgradeItems.reduce((sum, item) => sum + Number(item.value), 0);
+  const massageItems = selectedCheckboxes("massage");
+  const massage = massageItems.reduce((sum, item) => sum + Number(item.value), 0);
   const verlichtingItems = selectedCheckboxes("verlichting");
-  const verlichting = verlichtingItems.reduce((sum, item) => sum + Number(item.value), 0);
+  const hoofdled = selectedRadioNumber("hoofdled");
+  const verlichting = hoofdled + verlichtingItems.reduce((sum, item) => sum + Number(item.value), 0);
   const filter = selectedRadioNumber("filter");
   const cover = selectedRadioNumber("cover");
   const extraItems = selectedCheckboxes("extra");
@@ -340,22 +489,26 @@ function getCurrentConfiguration() {
 
   const basePrice = getBasePrice();
   const installation = HOTTUB_INSTALLATION_PRICE;
-  const total = basePrice + installation + kachel + massage + verlichting + filter + cover + extraTotal;
+  const total = basePrice + installation + kachel + hybridGecko + heaterUpgrade + massage + verlichting + filter + cover + extraTotal;
 
   return {
     model: labels.model,
     wood: labels.wood,
     size: labels.size,
     kleur: selectedRadioValue("kleur") || "-",
+    opwarmingLabel: opwarming ? getLabelFromSelected("opwarming") : "-",
     kachelLabel: getLabelFromSelected("kachel"),
-    massageLabel: getLabelFromSelected("massage"),
-    verlichtingLabel: verlichtingItems.length ? verlichtingItems.map(getLabelFromCheckbox).join(", ") : "Geen",
+    heaterUpgradeLabel: heaterUpgradeItems.length ? heaterUpgradeItems.map(getLabelFromCheckbox).join(", ") : "Geen",
+    massageLabel: massageItems.length ? massageItems.map(getLabelFromCheckbox).join(", ") : "Geen",
+    verlichtingLabel: [getLabelFromSelected("hoofdled"), ...verlichtingItems.map(getLabelFromCheckbox)].filter(label => label && label !== "-").join(", ") || "Geen",
     filterLabel: getLabelFromSelected("filter"),
     coverLabel: getLabelFromSelected("cover"),
     extraLabels: getCheckedLabels("extra"),
     basePrice,
     installation,
     kachel,
+    hybridGecko,
+    heaterUpgrade,
     massage,
     verlichting,
     filter,
@@ -377,7 +530,10 @@ function updateSummary() {
     ["Houtsoort", current.wood],
     ["Formaat", current.size],
     ["Kuipkleur", current.kleur],
+    ["Opwarming", current.opwarmingLabel],
     ["Kachel", current.kachelLabel],
+    ...(current.hybridGecko ? [["Elektrische 3 kW heater met display (Gecko)", euro(current.hybridGecko)]] : []),
+    ...(current.heaterUpgrade ? [["Touchscreen-upgrade", current.heaterUpgradeLabel]] : []),
     ["Massage", current.massageLabel],
     ["Verlichting", current.verlichtingLabel],
     ["Filter", current.filterLabel],
@@ -401,6 +557,12 @@ function getFinalSummaryItems(current) {
   const colorInput = checkedInput("kleur");
 
   return [
+    ...STANDARD_ITEMS.map(item => ({
+      title: "Standaard in je hottub",
+      label: item.label,
+      price: 0,
+      image: item.image ? { src: item.image, alt: item.label } : null
+    })),
     {
       title: "Model",
       label: current.model,
@@ -425,8 +587,17 @@ function getFinalSummaryItems(current) {
       price: 0,
       image: getCardImage(colorInput)
     },
+    selectedSummaryItem("opwarming", "Opwarming", 0),
     selectedSummaryItem("kachel", "Kachel", current.kachel),
-    selectedSummaryItem("massage", "Massage", current.massage),
+    ...(current.hybridGecko ? [{
+      title: "Elektrische opwarming",
+      label: "Elektrische 3 kW heater met display (Gecko)",
+      price: current.hybridGecko,
+      image: { src: "images/hottub-fast/gecko.jpg", alt: "Elektrische Gecko" }
+    }] : []),
+    ...(selectedCheckboxes("heaterUpgrade").length ? selectedCheckboxSummaryItems("heaterUpgrade", "Kachelupgrade") : []),
+    selectedSummaryItem("hoofdled", "Verlichting", selectedRadioNumber("hoofdled")),
+    ...selectedCheckboxSummaryItems("massage", "Massage"),
     ...selectedCheckboxSummaryItems("verlichting", "Verlichting"),
     selectedSummaryItem("filter", "Filter", current.filter),
     selectedSummaryItem("cover", "Cover", current.cover),
@@ -459,10 +630,17 @@ function renderFinalSummaryCards(current) {
 }
 
 function bindStaticInputs() {
-  const names = ["kleur", "kachel", "massage", "verlichting", "filter", "cover", "extra"];
+  const names = ["kleur", "opwarming", "filter", "cover", "extra"];
   names.forEach(name => {
     document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
       input.addEventListener("change", () => {
+        if (name === "opwarming") {
+          document.querySelectorAll('input[name="kachel"], input[name="heaterUpgrade"]').forEach(option => {
+            option.checked = false;
+          });
+          renderHeaterOptions();
+          syncWifiAccessory();
+        }
         updateSummary();
         if (!multiSelectStepNames.has(name)) {
           goToNextStep();
@@ -475,6 +653,10 @@ function bindStaticInputs() {
 function rebuildDynamicSections() {
   renderWoodOptions();
   renderSizeOptions();
+  renderHeaterOptions();
+  renderMassageOptions();
+  renderLightingOptions();
+  syncWifiAccessory();
   updateSummary();
 }
 
@@ -496,6 +678,7 @@ function getProgressLabel() {
 }
 
 function stepHasSelection(stepName) {
+  if (stepName === "massage") return true;
   if (multiSelectStepNames.has(stepName)) return true;
   return Boolean(document.querySelector(`input[name="${stepName}"]:checked`));
 }
@@ -590,7 +773,10 @@ function getOfferRowsHtml() {
     { label: `${current.model} / ${current.wood} / ${current.size}`, price: current.basePrice },
     { label: "Levering & installatie", price: current.installation },
     { label: `Kuipkleur: ${current.kleur}`, price: 0 },
+    { label: `Opwarming: ${current.opwarmingLabel}`, price: 0 },
     { label: `Kachel: ${current.kachelLabel}`, price: current.kachel },
+    ...(current.hybridGecko ? [{ label: "Elektrische 3 kW heater met display (Gecko)", price: current.hybridGecko }] : []),
+    ...(current.heaterUpgrade ? [{ label: `Kachelupgrade: ${current.heaterUpgradeLabel}`, price: current.heaterUpgrade }] : []),
     { label: `Massage: ${current.massageLabel}`, price: current.massage },
     { label: `Verlichting: ${current.verlichtingLabel}`, price: current.verlichting },
     { label: `Filter: ${current.filterLabel}`, price: current.filter },

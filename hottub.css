@@ -159,6 +159,10 @@
       transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
     }
 
+    #wifiAccessory[hidden] {
+      display: none !important;
+    }
+
     .choice-card:hover,
     .simple-card:hover,
     .swatch-card:hover {
@@ -189,6 +193,93 @@
       object-fit: cover;
       display: block;
       background: #edf3f7;
+    }
+
+    .opwarming-intern-visual {
+      height: 210px;
+      overflow: hidden;
+      background: #edf3f7;
+    }
+
+    .choice-card .opwarming-intern-visual .opwarming-intern-photo {
+      width: 100%;
+      height: 210px;
+      min-height: 0;
+      transform: scale(1.38);
+      transform-origin: 64% 66%;
+    }
+
+    .hybrid-heating-visual {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 46px minmax(0, 1fr);
+      align-items: stretch;
+      height: 210px;
+      overflow: hidden;
+      background: #edf3f7;
+    }
+
+    .choice-card .hybrid-heating-visual img {
+      width: 100%;
+      height: 210px;
+      min-height: 0;
+      object-fit: cover;
+    }
+
+    .choice-card .hybrid-heating-visual img:last-child {
+      object-fit: cover;
+      background: #ffffff;
+      padding: 0;
+    }
+
+    .hybrid-plus {
+      display: grid;
+      place-items: center;
+      align-self: stretch;
+      color: #ffffff;
+      background: #173c5a;
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .air-jets-photo {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 210px;
+      overflow: hidden;
+      background: #e5e7eb;
+    }
+
+    .choice-card .air-jets-photo img {
+      width: auto;
+      max-width: 100%;
+      height: 100%;
+      min-height: 0;
+      object-fit: contain;
+    }
+
+    .air-jet-marker {
+      position: absolute;
+      width: 27px;
+      height: 27px;
+      border: 5px solid #ef1c1c;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      box-sizing: border-box;
+    }
+
+    /* Posities op de ongewijzigde, staande bronfoto. */
+    .air-jet-marker-left {
+      left: calc(50% - 24.5px);
+      top: 83.3%;
+    }
+
+    .air-jet-marker-right {
+      left: calc(50% + 54.5px);
+      top: 59.7%;
     }
 
     .choice-content {
@@ -235,6 +326,16 @@
       font-weight: 700;
       color: #173c5a;
       font-size: 18px;
+    }
+
+    .heater-upgrade-card > img {
+      display: block;
+      width: 100%;
+      height: 180px;
+      margin: 0 0 12px;
+      object-fit: contain;
+      background: #ffffff;
+      border-radius: 8px;
     }
 
     .badge {
@@ -622,6 +723,18 @@
         height: 100%;
         min-height: 116px;
         object-fit: cover;
+      }
+
+      .opwarming-intern-visual {
+        width: 112px;
+        height: 100%;
+        min-height: 116px;
+      }
+
+      .choice-card .opwarming-intern-visual .opwarming-intern-photo {
+        width: 112px;
+        height: 100%;
+        min-height: 116px;
       }
 
       .choice-content {
