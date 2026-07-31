@@ -85,39 +85,39 @@ const config = {
 
 const HEATER_OPTIONS = {
   extern: [
-    ["External - 20kW, 304", "images/externe-kachel.jpg", 0],
-    ["External - 26kW, 304", "images/externe-kachel.jpg", 236],
-    ["External - 30kW, 304", "images/externe-kachel.jpg", 378],
-    ["External - 20kW, 316", "images/externe-kachel.jpg", 315],
-    ["External - 26kW, 316", "images/externe-kachel.jpg", 503],
-    ["External - 30kW, 316", "images/externe-kachel.jpg", 708]
+    ["External - 20kW, 304", "images/configurator/externe-kachel.webp", 0],
+    ["External - 26kW, 304", "images/configurator/externe-kachel.webp", 236],
+    ["External - 30kW, 304", "images/configurator/externe-kachel.webp", 378],
+    ["External - 20kW, 316", "images/configurator/externe-kachel.webp", 315],
+    ["External - 26kW, 316", "images/configurator/externe-kachel.webp", 503],
+    ["External - 30kW, 316", "images/configurator/externe-kachel.webp", 708]
   ],
   intern: [
-    ["Integrated - 35kW, 304 (standaard)", "images/integrated-kachel.jpg", 110],
-    ["Integrated - 35kW, 316", "images/integrated-kachel.jpg", 315],
-    ["Verta - 35kW, 304", "images/verta-kachel.jpg", 865],
-    ["Verta - 35kW, 316", "images/verta-kachel.jpg", 1070],
-    ["Horizon - 25kW, 304", "images/horizon-kachel.png", 362],
-    ["Horizon - 25kW, 316", "images/horizon-kachel.png", 582]
+    ["Integrated - 35kW, 304 (standaard)", "images/configurator/integrated-kachel.webp", 110],
+    ["Integrated - 35kW, 316", "images/configurator/integrated-kachel.webp", 315],
+    ["Verta - 35kW, 304", "images/configurator/verta-kachel.webp", 865],
+    ["Verta - 35kW, 316", "images/configurator/verta-kachel.webp", 1070],
+    ["Horizon - 25kW, 304", "images/configurator/horizon-kachel.webp", 362],
+    ["Horizon - 25kW, 316", "images/configurator/horizon-kachel.webp", 582]
   ]
 };
 
 const MASSAGE_OPTIONS = [
-  ["Geen massage", "Zonder jets", "images/geen-massage.jpg", 0, "geen"],
-  ["Air 12 jets", "Luchtmassage", "images/air-jets.jpg", 440, "air"],
-  ["Air 20 jets", "Uitgebreide luchtmassage", "images/air-jets.jpg", 708, "air"],
-  ["Water 8 jets", "Watermassage", "images/water-8-jets.jpg", 440, "water"],
+  ["Geen massage", "Zonder jets", "images/configurator/geen-massage.webp", 0, "geen"],
+  ["Air 12 jets", "Luchtmassage", "images/configurator/air-jets.webp", 440, "air"],
+  ["Air 20 jets", "Uitgebreide luchtmassage", "images/configurator/air-jets.webp", 708, "air"],
+  ["Water 8 jets", "Watermassage", "images/configurator/water-8-jets.webp", 440, "water"],
   ["Water 14 jets", "Uitgebreide watermassage", "images/hottub-fast/8massagejets.jpg", 708, "water"],
   ["Gecombineerd 8 waterjets + 4 airjets", "Combinatie van water- en luchtmassage", "images/hottub-fast/12combijets.jpg", 692, "gecombineerd"],
-  ["LED water 8 jets", "Watermassage met LED-verlichting", "images/led-jets.jpeg", 676, "water"],
-  ["LED water 14 jets", "Uitgebreide watermassage met LED-verlichting", "images/led-jets.jpeg", 975, "water"]
+  ["LED water 8 jets", "Watermassage met LED-verlichting", "images/configurator/led-jets.webp", 676, "water"],
+  ["LED water 14 jets", "Uitgebreide watermassage met LED-verlichting", "images/configurator/led-jets.webp", 975, "water"]
 ];
 
 const STANDARD_ITEMS = [
-  { label: "2 meter rookkanaal", image: "images/standaard-rookkanaal-2m.jpg" },
-  { label: "Trapje", image: "images/trapje.png" },
-  { label: "Mini bar", image: "images/mini-bar.jpg" },
-  { label: "Water uitlaat", image: "images/waterafvoer.jpeg" },
+  { label: "2 meter rookkanaal", image: "images/configurator/standaard-rookkanaal-2m.webp" },
+  { label: "Trapje", image: "images/configurator/trapje.webp" },
+  { label: "Mini bar", image: "images/configurator/mini-bar.webp" },
+  { label: "Water uitlaat", image: "images/configurator/waterafvoer.webp" },
   { label: "Temperatuur meter" },
   { label: "Kuip isolatie" }
 ];
@@ -295,7 +295,7 @@ function renderHeaterOptions() {
     content = heaterCard("Elektrische 3 kW heater met display (Gecko)", "images/hottub-fast/gecko.jpg", 990, "Elektrische opwarming") + `
       <label class="simple-card heater-upgrade-card">
         <input type="checkbox" name="heaterUpgrade" value="299" data-label="Upgrade touchscreen Gecko" ${selected ? "" : "disabled"}>
-        <img src="images/touchscreen-upgrade.png" alt="Touchscreen Gecko"><span class="badge">Optioneel</span><h3>Upgrade touchscreen Gecko</h3><div class="meta">Beschikbaar na selectie van de heater met display</div><div class="price">+ € 299</div>
+      <img src="images/configurator/touchscreen-upgrade.webp" alt="Touchscreen Gecko" loading="lazy" decoding="async"><span class="badge">Optioneel</span><h3>Upgrade touchscreen Gecko</h3><div class="meta">Beschikbaar na selectie van de heater met display</div><div class="price">+ € 299</div>
       </label>`;
   } else if (type === "hybride") {
     intro.textContent = "De elektrische 3 kW heater met display (Gecko) wordt automatisch toegevoegd voor € 990,00. Kies hieronder de houtkachel waarmee je die combineert.";
@@ -357,9 +357,9 @@ function renderLightingOptions() {
   const choices = [["1 hoofdled", 199], ["2 hoofdleds", 265], ["3 hoofdleds", 285]];
   container.innerHTML = choices.map(([label, price]) => `
     <label class="choice-card"><input type="radio" name="hoofdled" value="${price}" data-label="${label}" ${mainLed === String(price) ? "checked" : ""}>
-      <img src="images/Hoofdled.JPG" alt="${label}" loading="eager" decoding="async"><div class="choice-content"><h3>${label}</h3><p>${label} in hottub</p><p class="choice-price">+ ${euro(price)}</p></div></label>`).join("") + `
+      <img src="images/configurator/hoofdled.webp" alt="${label}" loading="lazy" decoding="async"><div class="choice-content"><h3>${label}</h3><p>${label} in hottub</p><p class="choice-price">+ ${euro(price)}</p></div></label>`).join("") + `
     <label class="choice-card"><input type="checkbox" name="verlichting" value="305" data-label="10 mini leds" ${miniLed ? "checked" : ""}>
-      <img src="images/mini-leds.jpeg" alt="10 mini leds" loading="eager" decoding="async"><div class="choice-content"><h3>10 mini leds</h3><p>Fijne sfeerverlichting</p><p class="choice-price">+ € 305</p></div></label>`;
+      <img src="images/configurator/mini-leds.webp" alt="10 mini leds" loading="lazy" decoding="async"><div class="choice-content"><h3>10 mini leds</h3><p>Fijne sfeerverlichting</p><p class="choice-price">+ € 305</p></div></label>`;
   container.querySelectorAll('input[name="hoofdled"], input[name="verlichting"]').forEach(input => input.addEventListener("change", updateSummary));
 }
 
