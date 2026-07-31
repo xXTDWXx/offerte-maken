@@ -114,9 +114,9 @@ const MASSAGE_OPTIONS = [
 ];
 
 const STANDARD_ITEMS = [
-  { label: "2 meter rookkanaal" },
+  { label: "2 meter rookkanaal", image: "images/standaard-rookkanaal-2m.jpg" },
   { label: "Trapje", image: "images/trapje.png" },
-  { label: "Mini bar" },
+  { label: "Mini bar", image: "images/mini-bar.jpg" },
   { label: "Water uitlaat", image: "images/waterafvoer.jpeg" },
   { label: "Temperatuur meter" },
   { label: "Kuip isolatie" }
