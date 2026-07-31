@@ -357,7 +357,7 @@ function renderLightingOptions() {
   const choices = [["1 hoofdled", 199], ["2 hoofdleds", 265], ["3 hoofdleds", 285]];
   container.innerHTML = choices.map(([label, price]) => `
     <label class="choice-card"><input type="radio" name="hoofdled" value="${price}" data-label="${label}" ${mainLed === String(price) ? "checked" : ""}>
-      <img src="images/hoofdled.jpg" alt="${label}" loading="eager" decoding="async"><div class="choice-content"><h3>${label}</h3><p>${label} in hottub</p><p class="choice-price">+ ${euro(price)}</p></div></label>`).join("") + `
+      <img src="images/Hoofdled.JPG" alt="${label}" loading="eager" decoding="async"><div class="choice-content"><h3>${label}</h3><p>${label} in hottub</p><p class="choice-price">+ ${euro(price)}</p></div></label>`).join("") + `
     <label class="choice-card"><input type="checkbox" name="verlichting" value="305" data-label="10 mini leds" ${miniLed ? "checked" : ""}>
       <img src="images/mini-leds.jpeg" alt="10 mini leds" loading="eager" decoding="async"><div class="choice-content"><h3>10 mini leds</h3><p>Fijne sfeerverlichting</p><p class="choice-price">+ € 305</p></div></label>`;
   container.querySelectorAll('input[name="hoofdled"], input[name="verlichting"]').forEach(input => input.addEventListener("change", updateSummary));
