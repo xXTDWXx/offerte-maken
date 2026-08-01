@@ -1179,18 +1179,18 @@ const PRICES = {
 };
 
 const SAUNA_HEATER_OPTIONS = Object.freeze({
-  wood: { label: 'Houtkachel + rookafvoer', price: PRICES.barrel_wood_stove_unit },
+  wood: { label: 'Houtkachel + rookafvoer', price: PRICES.barrel_wood_stove_unit, note: 'Incl. stenen & montage' },
   electric: { label: 'Harvia 8 kW', price: PRICES.barrel_electric_heater_unit, note: 'Incl. stenen & montage' },
-  'vega-35': { label: 'Harvia Vega 3,5 kW', price: 299 },
-  'vega-45': { label: 'Harvia Vega 4,5 kW', price: 339 },
-  'vega-60': { label: 'Harvia Vega 6 kW', price: 349 },
-  'sawo-tower': { label: 'Sawo Tower Heater 8 kW', price: 395 },
-  'huum-drop': { label: 'HUUM Drop 9 kW', price: PRICES.barrel_huum_drop_unit, note: 'Incl. WiFi module en bediening + stenen & safety rail.' },
+  'vega-35': { label: 'Harvia Vega 3,5 kW', price: 299, note: 'Incl. stenen & montage' },
+  'vega-45': { label: 'Harvia Vega 4,5 kW', price: 339, note: 'Incl. stenen & montage' },
+  'vega-60': { label: 'Harvia Vega 6 kW', price: 349, note: 'Incl. stenen & montage' },
+  'sawo-tower': { label: 'Sawo Tower Heater 8 kW', price: 395, note: 'Incl. stenen & montage' },
+  'huum-drop': { label: 'HUUM Drop 9 kW', price: PRICES.barrel_huum_drop_unit, note: 'Incl. WiFi-module, bediening, stenen, safety rail & montage' },
   'harvia-cilinder': { label: 'Harvia Cilinder 9 kW', price: PRICES.barrel_harvia_cilinder_unit, note: 'Incl. stenen & montage' },
-  'harvia-cilinder-70': { label: 'Harvia Cilindro PC 70', price: 549 },
-  'harvia-linear-16': { label: 'Harvia Linear 16 houtkachel + rookafvoer', price: 1195 },
-  'kip-45': { label: 'Kip 4,5 kW', price: 310 },
-  'delta-36': { label: 'Delta 3,6 kW', price: 325 }
+  'harvia-cilinder-70': { label: 'Harvia Cilindro PC 70', price: 549, note: 'Incl. stenen & montage' },
+  'harvia-linear-16': { label: 'Harvia Linear 16 houtkachel + rookafvoer', price: 1195, note: 'Incl. stenen & montage' },
+  'kip-45': { label: 'Kip 4,5 kW', price: 310, note: 'Incl. stenen & montage' },
+  'delta-36': { label: 'Delta 3,6 kW', price: 325, note: 'Incl. stenen & montage' }
 });
 
 const SAUNA_HEATERS_BY_PRODUCT = Object.freeze({
