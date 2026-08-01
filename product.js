@@ -1187,19 +1187,52 @@ const SAUNA_HEATER_OPTIONS = Object.freeze({
   'sawo-tower': { label: 'Sawo Tower Heater 8 kW', price: 395 },
   'huum-drop': { label: 'HUUM Drop 9 kW', price: PRICES.barrel_huum_drop_unit, note: 'Incl. WiFi module en bediening + stenen & safety rail.' },
   'harvia-cilinder': { label: 'Harvia Cilinder 9 kW', price: PRICES.barrel_harvia_cilinder_unit, note: 'Incl. stenen & montage' },
+  'harvia-cilinder-70': { label: 'Harvia Cilindro PC 70', price: 549 },
   'harvia-m3': { label: 'Harvia M3 houtkachel', price: 547.5 },
-  'harvia-linear-16': { label: 'Harvia Linear 16 houtkachel', price: 547.5 }
+  'harvia-linear-16': { label: 'Harvia Linear 16 houtkachel', price: 547.5 },
+  'kip-45': { label: 'Kip 4,5 kW', price: 310 },
+  'delta-36': { label: 'Delta 3,6 kW', price: 325 }
 });
 
-function getSelectedSaunaHeater() {
+const SAUNA_HEATERS_BY_PRODUCT = Object.freeze({
+  'sauna::barrelsauna-tr170': ['harvia-linear-16', 'vega-35', 'vega-45', 'vega-60'],
+  'sauna::barrelsauna-tr170-–-halfglas': ['harvia-linear-16', 'vega-35', 'vega-45', 'vega-60'],
+  'sauna::barrelsauna-tr210': ['harvia-linear-16', 'vega-60', 'electric', 'harvia-cilinder-70'],
+  'sauna::barrelsauna-tr210-–-halfglas': ['harvia-linear-16', 'vega-60', 'electric', 'harvia-cilinder-70'],
+  'sauna::barrelsauna-tr230': ['harvia-linear-16', 'electric', 'harvia-cilinder-70', 'harvia-cilinder'],
+  'sauna::barrelsauna-tr230-–-halfglas': ['harvia-linear-16', 'electric', 'harvia-cilinder-70', 'harvia-cilinder'],
+  'sauna::barrelsauna-tr230-x-–-panorama': ['electric', 'harvia-cilinder-70', 'harvia-cilinder'],
+  'sauna::barrelsauna-tr270': ['harvia-linear-16', 'electric', 'harvia-cilinder'],
+  'sauna::barrelsauna-tr270-–-halfglas': ['harvia-linear-16', 'electric', 'harvia-cilinder'],
+  'sauna::barrelsauna-tr300': ['harvia-linear-16', 'electric', 'harvia-cilinder'],
+  'sauna::barrelsauna-tr300-–-halfglas': ['harvia-linear-16', 'electric', 'harvia-cilinder'],
+  'sauna::barrelsauna-tr400': ['harvia-linear-16', 'electric', 'harvia-cilinder'],
+  'sauna::barrelsauna-tr400-–-half-glas': ['harvia-linear-16', 'electric', 'harvia-cilinder'],
+  'sauna::traditionele-combi-sauna': ['electric', 'harvia-cilinder'],
+  'sauna::traditionele-sauna': ['electric', 'harvia-cilinder'],
+  'sauna::traditionele-sauna-blue-lagoon': ['electric', 'harvia-cilinder'],
+  'sauna::icombi-Infraroodsauna': ['electric', 'harvia-cilinder'],
+  'sauna::sauna-cabine-cedar-outdoor': ['electric', 'harvia-cilinder'],
+  'sauna::horizon-outdoor-sauna': ['electric', 'harvia-cilinder'],
+  'sauna::discovery-sauna': ['electric', 'harvia-cilinder'],
+  'sauna::kerava-outdoor-sauna': ['electric', 'harvia-cilinder'],
+  'sauna::sunset-outdoor-sauna': ['electric', 'harvia-cilinder'],
+  'sauna::lucca-finse-sauna-cabine': ['vega-35', 'kip-45', 'delta-36']
+});
+
+function getAvailableSaunaHeaterIds(product = currentProduct) {
+  return SAUNA_HEATERS_BY_PRODUCT[product?.id] || [];
+}
+
+function getSelectedSaunaHeater(product = currentProduct) {
   const selected = document.querySelector('input[name="barrelStove"]:checked');
-  return selected ? SAUNA_HEATER_OPTIONS[selected.value] || null : null;
+  if (!selected || !getAvailableSaunaHeaterIds(product).includes(selected.value)) return null;
+  return SAUNA_HEATER_OPTIONS[selected.value] || null;
 }
 
 function saunaHeaterOptionsAllowed(product = currentProduct) {
-  return isSauna(product?.type) &&
-    product?.sauna_heating_options !== false &&
-    !isCanopyInfraredBarrel(product);
+  return product?.sauna_heating_options !== false &&
+    getAvailableSaunaHeaterIds(product).length > 0;
 }
 
 function installCost(type, product = currentProduct) {
@@ -1684,11 +1717,12 @@ function updateOptionUI() {
   const barrelSauna = isBarrelSauna(type);
   const sauna = isSauna(type);
   const canopyInfraredBarrel = isCanopyInfraredBarrel(currentProduct);
+  const availableSaunaHeaterIds = getAvailableSaunaHeaterIds(currentProduct);
   const showStoveGroup = saunaHeaterOptionsAllowed(currentProduct);
-  const showElectricHeater = showStoveGroup;
-  const showWoodStove = showStoveGroup && outdoorSauna && !isTr170Barrel(currentProduct);
-  const showHuumDrop = showStoveGroup;
-  const showHarviaCilinder = showStoveGroup;
+  const showElectricHeater = availableSaunaHeaterIds.includes('electric');
+  const showWoodStove = availableSaunaHeaterIds.includes('wood');
+  const showHuumDrop = availableSaunaHeaterIds.includes('huum-drop');
+  const showHarviaCilinder = availableSaunaHeaterIds.includes('harvia-cilinder');
   const showRoofGroup = outdoorSauna;
   const shinglesOnlyRoof = showRoofGroup && isCedarOutdoorSauna(currentProduct);
   const showAllRoofOptions = showRoofGroup && !shinglesOnlyRoof;
@@ -1729,8 +1763,7 @@ function updateOptionUI() {
   if (optBarrelHuumDropRow) optBarrelHuumDropRow.style.display = showHuumDrop ? '' : 'none';
   if (optBarrelHarviaCilinderRow) optBarrelHarviaCilinderRow.style.display = showHarviaCilinder ? '' : 'none';
   document.querySelectorAll('[data-barrel-stove]').forEach(row => {
-    const isWoodHeater = row.dataset.heaterKind === 'wood';
-    row.style.display = showStoveGroup && (!isWoodHeater || showWoodStove) ? '' : 'none';
+    row.style.display = showStoveGroup && availableSaunaHeaterIds.includes(row.dataset.heaterId) ? '' : 'none';
   });
 
   if (optBarrelRoofGroup) optBarrelRoofGroup.style.display = showRoofGroup ? '' : 'none';
@@ -1739,12 +1772,9 @@ function updateOptionUI() {
   if (optBarrelRoofDesignRow) optBarrelRoofDesignRow.style.display = showAllRoofOptions ? '' : 'none';
   if (optBarrelInfraredModuleRow) optBarrelInfraredModuleRow.style.display = showInfraredModule ? '' : 'none';
 
-  if (!showStoveGroup) document.querySelectorAll('input[name="barrelStove"]').forEach(input => { input.checked = false; });
-  if (!showWoodStove) {
-    document.querySelectorAll('[data-barrel-stove][data-heater-kind="wood"] input[name="barrelStove"]').forEach(input => {
-      input.checked = false;
-    });
-  }
+  document.querySelectorAll('input[name="barrelStove"]').forEach(input => {
+    if (!availableSaunaHeaterIds.includes(input.value)) input.checked = false;
+  });
   if (!showRoofGroup && optBarrelRoofShingles) optBarrelRoofShingles.checked = false;
   if (!showAllRoofOptions && optBarrelRoofHeather) optBarrelRoofHeather.checked = false;
   if (!showAllRoofOptions && optBarrelRoofDesign) optBarrelRoofDesign.checked = false;
@@ -1869,10 +1899,13 @@ function wireOptionHandlers() {
     'optBarrelElectricHeater',
     'optBarrelVega35',
     'optBarrelVega45',
+    'optBarrelKip45',
+    'optBarrelDelta36',
     'optBarrelVega60',
     'optBarrelSawoTower',
     'optBarrelHuumDrop',
     'optBarrelHarviaCilinder',
+    'optBarrelHarviaCilinder70',
     'optBarrelHarviaM3',
     'optBarrelHarviaLinear16',
     'optBarrelRoofShingles',

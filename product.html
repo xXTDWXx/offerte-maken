@@ -1542,7 +1542,7 @@
                 </div>
 
                 <div class="barrel-option-grid">
-                <label class="opt opt-inline" id="optBarrelWoodStoveRow" data-barrel-stove data-heater-kind="wood">
+                <label class="opt opt-inline" id="optBarrelWoodStoveRow" data-barrel-stove data-heater-id="wood">
                   <div class="opt-text">
                     <div class="opt-title">
                       <input id="optBarrelWoodStove" name="barrelStove" type="radio" value="wood" />
@@ -1555,7 +1555,7 @@
                   </div>
                 </label>
 
-                <label class="opt opt-inline" id="optBarrelElectricHeaterRow" data-barrel-stove data-heater-kind="electric">
+                <label class="opt opt-inline" id="optBarrelElectricHeaterRow" data-barrel-stove data-heater-id="electric">
                   <div class="opt-text">
                     <div class="opt-title">
                       <input id="optBarrelElectricHeater" name="barrelStove" type="radio" value="electric" />
@@ -1571,7 +1571,7 @@
                   </div>
                 </label>
 
-                <label class="opt opt-inline" id="optBarrelVega35Row" data-barrel-stove data-heater-kind="electric">
+                <label class="opt opt-inline" id="optBarrelVega35Row" data-barrel-stove data-heater-id="vega-35">
                   <div class="opt-text">
                     <div class="opt-title">
                       <input id="optBarrelVega35" name="barrelStove" type="radio" value="vega-35" />
@@ -1584,7 +1584,7 @@
                   </div>
                 </label>
 
-                <label class="opt opt-inline" id="optBarrelVega45Row" data-barrel-stove data-heater-kind="electric">
+                <label class="opt opt-inline" id="optBarrelVega45Row" data-barrel-stove data-heater-id="vega-45">
                   <div class="opt-text">
                     <div class="opt-title">
                       <input id="optBarrelVega45" name="barrelStove" type="radio" value="vega-45" />
@@ -1597,7 +1597,33 @@
                   </div>
                 </label>
 
-                <label class="opt opt-inline" id="optBarrelVega60Row" data-barrel-stove data-heater-kind="electric">
+                <label class="opt opt-inline" id="optBarrelKip45Row" data-barrel-stove data-heater-id="kip-45">
+                  <div class="opt-text">
+                    <div class="opt-title">
+                      <input id="optBarrelKip45" name="barrelStove" type="radio" value="kip-45" />
+                      <img src="https://www.sunspabenelux.be/wp-content/uploads/2026/07/Harvia-Kip-intern.jpg" alt="Kip 4,5 kW" />
+                      <span class="opt-copy">
+                        <span class="opt-label">Kip 4,5 kW</span>
+                        <span class="opt-price">€ 310</span>
+                      </span>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="opt opt-inline" id="optBarrelDelta36Row" data-barrel-stove data-heater-id="delta-36">
+                  <div class="opt-text">
+                    <div class="opt-title">
+                      <input id="optBarrelDelta36" name="barrelStove" type="radio" value="delta-36" />
+                      <img src="https://www.sunspabenelux.be/wp-content/uploads/2026/07/delta-3.6.webp" alt="Delta 3,6 kW" />
+                      <span class="opt-copy">
+                        <span class="opt-label">Delta 3,6 kW</span>
+                        <span class="opt-price">€ 325</span>
+                      </span>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="opt opt-inline" id="optBarrelVega60Row" data-barrel-stove data-heater-id="vega-60">
                   <div class="opt-text">
                     <div class="opt-title">
                       <input id="optBarrelVega60" name="barrelStove" type="radio" value="vega-60" />
@@ -1610,7 +1636,7 @@
                   </div>
                 </label>
 
-                <label class="opt opt-inline" id="optBarrelSawoTowerRow" data-barrel-stove data-heater-kind="electric">
+                <label class="opt opt-inline" id="optBarrelSawoTowerRow" data-barrel-stove data-heater-id="sawo-tower">
                   <div class="opt-text">
                     <div class="opt-title">
                       <input id="optBarrelSawoTower" name="barrelStove" type="radio" value="sawo-tower" />
@@ -1623,7 +1649,7 @@
                   </div>
                 </label>
 
-                <label class="opt opt-inline" id="optBarrelHuumDropRow" data-barrel-stove data-heater-kind="electric">
+                <label class="opt opt-inline" id="optBarrelHuumDropRow" data-barrel-stove data-heater-id="huum-drop">
                   <div class="opt-text">
                     <div class="opt-title">
                       <input id="optBarrelHuumDrop" name="barrelStove" type="radio" value="huum-drop" />
@@ -1639,7 +1665,7 @@
                   </div>
                 </label>
 
-                <label class="opt opt-inline" id="optBarrelHarviaCilinderRow" data-barrel-stove data-heater-kind="electric">
+                <label class="opt opt-inline" id="optBarrelHarviaCilinderRow" data-barrel-stove data-heater-id="harvia-cilinder">
                   <div class="opt-text">
                     <div class="opt-title">
                       <input id="optBarrelHarviaCilinder" name="barrelStove" type="radio" value="harvia-cilinder" />
@@ -1655,7 +1681,20 @@
                   </div>
                 </label>
 
-                <label class="opt opt-inline" id="optBarrelHarviaM3Row" data-barrel-stove data-heater-kind="wood">
+                <label class="opt opt-inline" id="optBarrelHarviaCilinder70Row" data-barrel-stove data-heater-id="harvia-cilinder-70">
+                  <div class="opt-text">
+                    <div class="opt-title">
+                      <input id="optBarrelHarviaCilinder70" name="barrelStove" type="radio" value="harvia-cilinder-70" />
+                      <img src="https://www.sunspa.fr/wp-content/uploads/2023/01/Harvia-Kachel-300x300.jpg" alt="Harvia Cilindro PC 70" />
+                      <span class="opt-copy">
+                        <span class="opt-label">Harvia Cilindro PC 70</span>
+                        <span class="opt-price">€ 549</span>
+                      </span>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="opt opt-inline" id="optBarrelHarviaM3Row" data-barrel-stove data-heater-id="harvia-m3">
                   <div class="opt-text">
                     <div class="opt-title">
                       <input id="optBarrelHarviaM3" name="barrelStove" type="radio" value="harvia-m3" />
@@ -1668,7 +1707,7 @@
                   </div>
                 </label>
 
-                <label class="opt opt-inline" id="optBarrelHarviaLinear16Row" data-barrel-stove data-heater-kind="wood">
+                <label class="opt opt-inline" id="optBarrelHarviaLinear16Row" data-barrel-stove data-heater-id="harvia-linear-16">
                   <div class="opt-text">
                     <div class="opt-title">
                       <input id="optBarrelHarviaLinear16" name="barrelStove" type="radio" value="harvia-linear-16" />
