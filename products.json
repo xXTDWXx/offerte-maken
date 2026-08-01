@@ -15421,6 +15421,48 @@
       { "label": "Premium JetPak® Seats", "value": "3" },
       { "label": "Bullfrog Serie", "value": "STIL-serie" }
     ]
+  },
+  {
+    "id": "sauna::niva-infrarood-cabine",
+    "type": "sauna",
+    "merk": "Sunspa Sauna",
+    "title": "Niva Infrarood Cabine",
+    "url": "https://www.sunspabenelux.be/p/niva-infrarood-cabine/",
+    "image": "https://www.sunspabenelux.be/wp-content/uploads/2026/05/Niva-zeikant.jpg",
+    "price": 5995,
+    "sauna_heating_options": false,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal personen", "value": "2 personen" },
+      { "label": "Afmeting", "value": "148 x 153 x 204 cm" },
+      { "label": "Houtsoort", "value": "White Cedar" },
+      { "label": "Verwarming", "value": "Full-spectrum infraroodstralers, 3,02 kW" },
+      { "label": "Besturingssysteem", "value": "WiFi-bedieningspaneel" },
+      { "label": "Verlichting", "value": "Chromotherapie, 2 mini-LEDs" },
+      { "label": "Deur", "value": "8 mm gehard glas" },
+      { "label": "Binnen/buiten gebruik", "value": "Buiten gebruik" },
+      { "label": "Type sauna", "value": "Infraroodcabine" }
+    ]
+  },
+  {
+    "id": "sauna::lucca-finse-sauna-cabine",
+    "type": "sauna",
+    "merk": "Sunspa Sauna",
+    "title": "Lucca Finse Sauna Cabine",
+    "url": "https://www.sunspabenelux.be/p/lucca-finse-sauna-cabine/",
+    "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/05/Lucca-Finse-Sauna-Cabine.jpg",
+    "price": 4995,
+    "bullets": [],
+    "specs": [
+      { "label": "Aantal personen", "value": "2 personen" },
+      { "label": "Afmeting", "value": "148 x 153 x 204 cm" },
+      { "label": "Houtsoort", "value": "White Cedar" },
+      { "label": "Aantal banken", "value": "1" },
+      { "label": "Deur", "value": "8 mm gehard glas" },
+      { "label": "Verlichting", "value": "2 mini-LEDs" },
+      { "label": "Binnen/buiten gebruik", "value": "Buiten gebruik" },
+      { "label": "Type sauna", "value": "Finse sauna" }
+    ]
   }
 ]
 }

@@ -1178,6 +1178,30 @@ const PRICES = {
   barrel_infrared_module_unit: 699
 };
 
+const SAUNA_HEATER_OPTIONS = Object.freeze({
+  wood: { label: 'Houtkachel + rookafvoer', price: PRICES.barrel_wood_stove_unit },
+  electric: { label: 'Harvia 8 kW', price: PRICES.barrel_electric_heater_unit, note: 'Incl. stenen & montage' },
+  'vega-35': { label: 'Harvia Vega 3,5 kW', price: 299 },
+  'vega-45': { label: 'Harvia Vega 4,5 kW', price: 339 },
+  'vega-60': { label: 'Harvia Vega 6 kW', price: 349 },
+  'sawo-tower': { label: 'Sawo Tower Heater 8 kW', price: 395 },
+  'huum-drop': { label: 'HUUM Drop 9 kW', price: PRICES.barrel_huum_drop_unit, note: 'Incl. WiFi module en bediening + stenen & safety rail.' },
+  'harvia-cilinder': { label: 'Harvia Cilinder 9 kW', price: PRICES.barrel_harvia_cilinder_unit, note: 'Incl. stenen & montage' },
+  'harvia-m3': { label: 'Harvia M3 houtkachel', price: 547.5 },
+  'harvia-linear-16': { label: 'Harvia Linear 16 houtkachel', price: 547.5 }
+});
+
+function getSelectedSaunaHeater() {
+  const selected = document.querySelector('input[name="barrelStove"]:checked');
+  return selected ? SAUNA_HEATER_OPTIONS[selected.value] || null : null;
+}
+
+function saunaHeaterOptionsAllowed(product = currentProduct) {
+  return isSauna(product?.type) &&
+    product?.sauna_heating_options !== false &&
+    !isCanopyInfraredBarrel(product);
+}
+
 function installCost(type, product = currentProduct) {
   if (isOverkapping(type)) {
     if (!isMainOverkappingProduct(product)) return 0;
@@ -1660,11 +1684,11 @@ function updateOptionUI() {
   const barrelSauna = isBarrelSauna(type);
   const sauna = isSauna(type);
   const canopyInfraredBarrel = isCanopyInfraredBarrel(currentProduct);
-  const showStoveGroup = (outdoorSauna || sauna) && !canopyInfraredBarrel;
-  const showElectricHeater = sauna && !canopyInfraredBarrel;
-  const showWoodStove = outdoorSauna && !isTr170Barrel(currentProduct) && !canopyInfraredBarrel;
-  const showHuumDrop = barrelSauna && !canopyInfraredBarrel;
-  const showHarviaCilinder = barrelSauna && !canopyInfraredBarrel;
+  const showStoveGroup = saunaHeaterOptionsAllowed(currentProduct);
+  const showElectricHeater = showStoveGroup;
+  const showWoodStove = showStoveGroup && outdoorSauna && !isTr170Barrel(currentProduct);
+  const showHuumDrop = showStoveGroup;
+  const showHarviaCilinder = showStoveGroup;
   const showRoofGroup = outdoorSauna;
   const shinglesOnlyRoof = showRoofGroup && isCedarOutdoorSauna(currentProduct);
   const showAllRoofOptions = showRoofGroup && !shinglesOnlyRoof;
@@ -1704,6 +1728,10 @@ function updateOptionUI() {
   if (optBarrelElectricHeaterRow) optBarrelElectricHeaterRow.style.display = showElectricHeater ? '' : 'none';
   if (optBarrelHuumDropRow) optBarrelHuumDropRow.style.display = showHuumDrop ? '' : 'none';
   if (optBarrelHarviaCilinderRow) optBarrelHarviaCilinderRow.style.display = showHarviaCilinder ? '' : 'none';
+  document.querySelectorAll('[data-barrel-stove]').forEach(row => {
+    const isWoodHeater = row.dataset.heaterKind === 'wood';
+    row.style.display = showStoveGroup && (!isWoodHeater || showWoodStove) ? '' : 'none';
+  });
 
   if (optBarrelRoofGroup) optBarrelRoofGroup.style.display = showRoofGroup ? '' : 'none';
   if (optBarrelRoofShinglesRow) optBarrelRoofShinglesRow.style.display = showRoofGroup ? '' : 'none';
@@ -1711,10 +1739,12 @@ function updateOptionUI() {
   if (optBarrelRoofDesignRow) optBarrelRoofDesignRow.style.display = showAllRoofOptions ? '' : 'none';
   if (optBarrelInfraredModuleRow) optBarrelInfraredModuleRow.style.display = showInfraredModule ? '' : 'none';
 
-  if (!showWoodStove && optBarrelWoodStove) optBarrelWoodStove.checked = false;
-  if (!showElectricHeater && optBarrelElectricHeater) optBarrelElectricHeater.checked = false;
-  if (!showHuumDrop && optBarrelHuumDrop) optBarrelHuumDrop.checked = false;
-  if (!showHarviaCilinder && optBarrelHarviaCilinder) optBarrelHarviaCilinder.checked = false;
+  if (!showStoveGroup) document.querySelectorAll('input[name="barrelStove"]').forEach(input => { input.checked = false; });
+  if (!showWoodStove) {
+    document.querySelectorAll('[data-barrel-stove][data-heater-kind="wood"] input[name="barrelStove"]').forEach(input => {
+      input.checked = false;
+    });
+  }
   if (!showRoofGroup && optBarrelRoofShingles) optBarrelRoofShingles.checked = false;
   if (!showAllRoofOptions && optBarrelRoofHeather) optBarrelRoofHeather.checked = false;
   if (!showAllRoofOptions && optBarrelRoofDesign) optBarrelRoofDesign.checked = false;
@@ -1751,10 +1781,8 @@ function updateOptionUI() {
   const warmtepompLine = warmtepompQty * PRICES.warmtepomp_unit;
   const overkappingScreenLine = isQuantityVariantProduct(currentProduct) ? 0 : getOverkappingScreenTotal();
 
-  const barrelWoodStoveLine = (showWoodStove && optBarrelWoodStove?.checked) ? PRICES.barrel_wood_stove_unit : 0;
-  const barrelElectricHeaterLine = (showElectricHeater && optBarrelElectricHeater?.checked) ? PRICES.barrel_electric_heater_unit : 0;
-  const barrelHuumDropLine = (showHuumDrop && optBarrelHuumDrop?.checked) ? PRICES.barrel_huum_drop_unit : 0;
-  const barrelHarviaCilinderLine = (showHarviaCilinder && optBarrelHarviaCilinder?.checked) ? PRICES.barrel_harvia_cilinder_unit : 0;
+  const selectedSaunaHeater = showStoveGroup ? getSelectedSaunaHeater() : null;
+  const saunaHeaterLine = selectedSaunaHeater?.price || 0;
   const barrelRoofShinglesLine = (showRoofGroup && optBarrelRoofShingles?.checked) ? PRICES.barrel_roof_shingles_unit : 0;
   const barrelRoofHeatherLine = (showAllRoofOptions && optBarrelRoofHeather?.checked) ? PRICES.barrel_roof_heather_unit : 0;
   const barrelRoofDesignLine = (showAllRoofOptions && optBarrelRoofDesign?.checked) ? PRICES.barrel_roof_design_unit : 0;
@@ -1765,10 +1793,10 @@ function updateOptionUI() {
   if (optMaintTotal) optMaintTotal.textContent = euro(maintLine);
   if (optSwimFiltersetTotal) optSwimFiltersetTotal.textContent = euro(swimFiltersetLine);
   if (optWarmtepompTotal) optWarmtepompTotal.textContent = euro(warmtepompLine);
-  if (optBarrelWoodStoveTotal) optBarrelWoodStoveTotal.textContent = euro(barrelWoodStoveLine);
-  if (optBarrelElectricHeaterTotal) optBarrelElectricHeaterTotal.textContent = euro(barrelElectricHeaterLine);
-  if (optBarrelHuumDropTotal) optBarrelHuumDropTotal.textContent = euro(barrelHuumDropLine);
-  if (optBarrelHarviaCilinderTotal) optBarrelHarviaCilinderTotal.textContent = euro(barrelHarviaCilinderLine);
+  if (optBarrelWoodStoveTotal) optBarrelWoodStoveTotal.textContent = euro(saunaHeaterLine);
+  if (optBarrelElectricHeaterTotal) optBarrelElectricHeaterTotal.textContent = euro(saunaHeaterLine);
+  if (optBarrelHuumDropTotal) optBarrelHuumDropTotal.textContent = euro(saunaHeaterLine);
+  if (optBarrelHarviaCilinderTotal) optBarrelHarviaCilinderTotal.textContent = euro(saunaHeaterLine);
   if (optBarrelRoofShinglesTotal) optBarrelRoofShinglesTotal.textContent = euro(barrelRoofShinglesLine);
   if (optBarrelRoofHeatherTotal) optBarrelRoofHeatherTotal.textContent = euro(barrelRoofHeatherLine);
   if (optBarrelRoofDesignTotal) optBarrelRoofDesignTotal.textContent = euro(barrelRoofDesignLine);
@@ -1786,10 +1814,7 @@ function updateOptionUI() {
     swimFiltersetLine +
     warmtepompLine +
     overkappingScreenLine +
-    barrelWoodStoveLine +
-    barrelElectricHeaterLine +
-    barrelHuumDropLine +
-    barrelHarviaCilinderLine +
+    saunaHeaterLine +
     barrelRoofShinglesLine +
     barrelRoofHeatherLine +
     barrelRoofDesignLine +
@@ -1842,8 +1867,14 @@ function wireOptionHandlers() {
     'optWarmtepompQty',
     'optBarrelWoodStove',
     'optBarrelElectricHeater',
+    'optBarrelVega35',
+    'optBarrelVega45',
+    'optBarrelVega60',
+    'optBarrelSawoTower',
     'optBarrelHuumDrop',
     'optBarrelHarviaCilinder',
+    'optBarrelHarviaM3',
+    'optBarrelHarviaLinear16',
     'optBarrelRoofShingles',
     'optBarrelRoofHeather',
     'optBarrelRoofDesign',
@@ -2006,33 +2037,14 @@ function getSelectedOfferLines() {
     });
   }
 
-  const canopyInfraredBarrel = isCanopyInfraredBarrel(currentProduct);
-
-  if ($('optBarrelWoodStove')?.checked && isOutdoorSaunaWithRoofAndStove(type) && !isTr170Barrel(currentProduct) && !canopyInfraredBarrel) {
-    lines.push({ label: 'Houtkachel + rookafvoer', price: PRICES.barrel_wood_stove_unit });
-  }
-
-  if ($('optBarrelElectricHeater')?.checked && isSauna(type) && !canopyInfraredBarrel) {
+  const selectedSaunaHeater = saunaHeaterOptionsAllowed(currentProduct) ? getSelectedSaunaHeater() : null;
+  if (selectedSaunaHeater) {
     lines.push({
-      label: 'Harvia 8 kW<br><span style="font-size:12px;color:#475569;">Incl. stenen &amp; montage</span>',
-      price: PRICES.barrel_electric_heater_unit,
-      is_html: true
-    });
-  }
-
-  if ($('optBarrelHuumDrop')?.checked && isBarrelSauna(type) && !canopyInfraredBarrel) {
-    lines.push({
-      label: 'HUUM Drop 9 kW<br><span style="font-size:12px;color:#475569;">Incl. WiFi module en bediening + stenen &amp; safety rail.</span>',
-      price: PRICES.barrel_huum_drop_unit,
-      is_html: true
-    });
-  }
-
-  if ($('optBarrelHarviaCilinder')?.checked && isBarrelSauna(type) && !canopyInfraredBarrel) {
-    lines.push({
-      label: 'Harvia Cilinder 9 kW<br><span style="font-size:12px;color:#475569;">Incl. stenen &amp; montage</span>',
-      price: PRICES.barrel_harvia_cilinder_unit,
-      is_html: true
+      label: selectedSaunaHeater.note
+        ? `${selectedSaunaHeater.label}<br><span style="font-size:12px;color:#475569;">${selectedSaunaHeater.note}</span>`
+        : selectedSaunaHeater.label,
+      price: selectedSaunaHeater.price,
+      is_html: Boolean(selectedSaunaHeater.note)
     });
   }
 
@@ -4619,10 +4631,7 @@ function renderProduct(p) {
   if ($('optDigitalTester')) $('optDigitalTester').checked = false;
   if ($('optSwimFilterset')) $('optSwimFilterset').checked = false;
   if ($('optWarmtepompQty')) $('optWarmtepompQty').value = '0';
-  if ($('optBarrelWoodStove')) $('optBarrelWoodStove').checked = false;
-  if ($('optBarrelElectricHeater')) $('optBarrelElectricHeater').checked = false;
-  if ($('optBarrelHuumDrop')) $('optBarrelHuumDrop').checked = false;
-  if ($('optBarrelHarviaCilinder')) $('optBarrelHarviaCilinder').checked = false;
+  document.querySelectorAll('input[name="barrelStove"]').forEach(input => { input.checked = false; });
   if ($('optBarrelRoofShingles')) $('optBarrelRoofShingles').checked = false;
   if ($('optBarrelRoofHeather')) $('optBarrelRoofHeather').checked = false;
   if ($('optBarrelRoofDesign')) $('optBarrelRoofDesign').checked = false;
