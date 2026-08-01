@@ -85,20 +85,13 @@ const config = {
 
 const HEATER_OPTIONS = {
   extern: [
-    ["External - 20kW, 304", "images/configurator/externe-kachel.webp", 0],
-    ["External - 26kW, 304", "images/configurator/externe-kachel.webp", 236],
-    ["External - 30kW, 304", "images/configurator/externe-kachel.webp", 378],
     ["External - 20kW, 316", "images/configurator/externe-kachel.webp", 315],
     ["External - 26kW, 316", "images/configurator/externe-kachel.webp", 503],
     ["External - 30kW, 316", "images/configurator/externe-kachel.webp", 708]
   ],
   intern: [
-    ["Integrated - 35kW, 304 (standaard)", "images/configurator/integrated-kachel.webp", 110],
     ["Integrated - 35kW, 316", "images/configurator/integrated-kachel.webp", 315],
-    ["Verta - 35kW, 304", "images/configurator/verta-kachel.webp", 865],
-    ["Verta - 35kW, 316", "images/configurator/verta-kachel.webp", 1070],
-    ["Horizon - 25kW, 304", "images/configurator/horizon-kachel.webp", 362],
-    ["Horizon - 25kW, 316", "images/configurator/horizon-kachel.webp", 582]
+    ["Verta - 35kW, 316", "images/configurator/verta-kachel.webp", 1070]
   ]
 };
 
