@@ -1209,6 +1209,7 @@ const SAUNA_HEATERS_BY_PRODUCT = Object.freeze({
   'sauna::barrelsauna-tr400': ['harvia-linear-16', 'electric', 'harvia-cilinder'],
   'sauna::barrelsauna-tr400-–-half-glas': ['harvia-linear-16', 'electric', 'harvia-cilinder'],
   'sauna::traditionele-combi-sauna': ['electric', 'harvia-cilinder'],
+  'sauna::traditionele-combi-sauna-chaleur': ['electric', 'harvia-cilinder'],
   'sauna::traditionele-sauna': ['electric', 'harvia-cilinder'],
   'sauna::traditionele-sauna-blue-lagoon': ['electric', 'harvia-cilinder'],
   'sauna::icombi-Infraroodsauna': ['electric', 'harvia-cilinder'],

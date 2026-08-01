@@ -68,19 +68,15 @@ function escapeHtml(s) {
 
 function getShowrooms(p) {
   const value = p?.showroom || p?.showrooms || getSpecValue(p, 'Showroom') || '';
+  const extra = p?.showroom_extra || [];
+  const primary = Array.isArray(value)
+    ? value.filter(Boolean)
+    : (typeof value === 'string' ? value.split(',').map(s => s.trim()).filter(Boolean) : []);
+  const additions = Array.isArray(extra)
+    ? extra.filter(Boolean)
+    : (typeof extra === 'string' ? extra.split(',').map(s => s.trim()).filter(Boolean) : []);
 
-  if (Array.isArray(value)) {
-    return value.filter(Boolean);
-  }
-
-  if (typeof value === 'string') {
-    return value
-      .split(',')
-      .map(s => s.trim())
-      .filter(Boolean);
-  }
-
-  return [];
+  return [...new Set([...primary, ...additions])];
 }
 
 async function fetchProductItems(url, { force = false, label = 'producten' } = {}) {

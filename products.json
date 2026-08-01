@@ -131,6 +131,7 @@
     },
     {
       "id": "spa::sunspa-aquavera",
+      "showroom_extra": ["Kortrijk"],
       "type": "spa",
       "merk": "Sunspa",
       "showroom": ["Brugge", "Lievegem"],
@@ -333,6 +334,7 @@
     },
     {
       "id": "spa::goldline-spa",
+      "showroom_extra": ["Kortrijk"],
       "type": "spa",
       "merk": "Sunspa",
       "showroom": ["Brugge", "Lievegem"],
@@ -1852,6 +1854,7 @@
     },
     {
       "id": "spa::vogue-majesty",
+      "showroom_extra": ["Kortrijk"],
       "type": "spa",
       "merk": "Vogue",
       "showroom": ["Brugge", "Lievegem"],
@@ -2974,6 +2977,7 @@
     },
     {
       "id": "spa::vogue-angora",
+      "showroom_extra": ["Kortrijk"],
       "type": "spa",
       "showroom": ["Brugge", "Lievegem"],
       "merk": "Vogue",
@@ -3875,6 +3879,7 @@
     },
     {
       "id": "spa::python-hottub-spa",
+      "showroom_extra": ["Kortrijk"],
       "type": "spa",
       "merk": "Sunspa",
       "showroom": "Lievegem",
@@ -4261,6 +4266,7 @@
     },
     {
       "id": "spa::vogue-classic",
+      "showroom_extra": ["Kortrijk"],
       "type": "spa",
       "showroom": ["Brugge", "Lievegem"],
       "merk": "Vogue",
@@ -4772,6 +4778,7 @@
     },
     {
       "id": "spa::vogue-dynasty",
+      "showroom_extra": ["Kortrijk"],
       "type": "spa",
       "showroom": ["Brugge", "Lievegem"],
       "merk": "Vogue",
@@ -6613,6 +6620,7 @@
     },
     {
       "id": "sauna::sauna-full-spectrum-black-front-9101c",
+      "showroom_extra": ["Kortrijk"],
       "type": "Infrarood",
       "title": "Sauna Full Spectrum Black Front 9101C",
       "showroom": ["Brugge", "Lievegem"],
@@ -6673,6 +6681,7 @@
     },
     {
       "id": "sauna::health-company-1",
+      "showroom_extra": ["Kortrijk"],
       "type": "Infrarood",
       "merk": "Health Company",
       "showroom": ["Brugge", "Lievegem"],
@@ -6865,6 +6874,7 @@
     },
     {
       "id": "sauna::health-company-2",
+      "showroom_extra": ["Kortrijk"],
       "type": "Infrarood",
       "merk": "Health Company",
       "title": "Health Company 2",
@@ -7252,6 +7262,7 @@
     },
     {
       "id": "sauna::health-company-4",
+      "showroom_extra": ["Kortrijk"],
       "type": "Infrarood",
       "merk": "Health Company",
       "showroom": "Lievegem",
@@ -7488,6 +7499,7 @@
     },
     {
       "id": "sauna::i100-infrarood-sauna",
+      "showroom_extra": ["Kortrijk"],
       "type": "Infrarood",
       "showroom": ["Brugge", "Lievegem"],
       "title": "i100 Infrarood sauna",
@@ -7664,6 +7676,7 @@
     },
     {
       "id": "sauna::i120-infrarood-sauna",
+      "showroom_extra": ["Kortrijk"],
       "type": "Infrarood",
       "showroom": ["Brugge", "Lievegem"],
       "title": "i120 Infrarood sauna",
@@ -7852,6 +7865,7 @@
     },
     {
       "id": "sauna::130-infrarood-sauna",
+      "showroom_extra": ["Kortrijk"],
       "type": "Infrarood",
       "showroom": ["Brugge", "Lievegem"],
       "title": "130 Infrarood sauna",
@@ -8087,6 +8101,7 @@
     },
     {
       "id": "sauna::i150-infrarood-sauna",
+      "showroom_extra": ["Kortrijk"],
       "type": "Infrarood",
       "showroom": ["Brugge", "Lievegem"],
       "title": "i150 Infrarood sauna",
@@ -8386,6 +8401,7 @@
     },
     {
       "id": "sauna::160-infrarood-sauna",
+      "showroom_extra": ["Kortrijk"],
       "type": "Infrarood",
       "showroom": ["Brugge", "Lievegem"],
       "title": "160 Infrarood sauna",
@@ -8872,6 +8888,7 @@
     },
     {
       "id": "sauna::i160c-infrarood-sauna",
+      "showroom_extra": ["Kortrijk"],
       "type": "Infrarood",
       "title": "i160C Infrarood sauna",
       "showroom": "Lievegem",
@@ -9945,6 +9962,7 @@
     },
     {
       "id": "sauna::icombi-Infraroodsauna",
+      "showroom_extra": ["Kortrijk"],
       "type": "combi sauna",
       "title": "iCombi Infraroodsauna",
       "showroom": "Lievegem",
@@ -10214,6 +10232,7 @@
     },
     {
       "id": "sauna::discovery-sauna",
+      "showroom_extra": ["Kortrijk"],
       "type": "sauna",
       "title": "Discovery Sauna",
       "url": "https://www.sunspabenelux.be/p/discovery-sauna/",
@@ -13260,6 +13279,7 @@
     },
     {
       "id": "spa::fox-elite-moraira",
+      "showroom_extra": ["Kortrijk"],
       "type": "spa",
       "merk": "Elite",
       "title": "Fox Elite Moraira",
@@ -13516,6 +13536,7 @@
     },
     {
       "id": "spa::fox-elite-granada",
+      "showroom_extra": ["Kortrijk"],
       "type": "spa",
       "merk": "Elite",
       "title": "Fox Elite Granada",
@@ -14027,6 +14048,7 @@
     },
     {
       "id": "spa::fox-elite-formentera",
+      "showroom_extra": ["Kortrijk"],
       "type": "spa",
       "merk": "Elite",
       "title": "Fox Elite Formentera",
@@ -14155,6 +14177,7 @@
     },
     {
       "id": "spa::fox-elite-denia",
+      "showroom_extra": ["Kortrijk"],
       "type": "spa",
       "merk": "Elite",
       "title": "Fox Elite Denia",
@@ -14287,6 +14310,7 @@
     },
     {
       "id": "spa::fox-elite-majorca",
+      "showroom_extra": ["Kortrijk"],
       "type": "spa",
       "merk": "Elite",
       "title": "Fox Elite Majorca",
