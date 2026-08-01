@@ -161,6 +161,32 @@ body {
   padding-bottom: 92px;
 }
 
+.kassa-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 14px 6px;
+}
+
+.kassa-filter-btn {
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  background: #fff;
+  color: #334155;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.kassa-filter-btn.is-active {
+  border-color: #407298;
+  background: #e8f3fb;
+  color: #18364f;
+}
+
 .product-card {
   background: #fff;
   border: 1px solid #e5e7eb;
@@ -278,6 +304,58 @@ body {
   background: #fff7f6;
   color: var(--kassa-red);
 }
+
+.checkout-modal[hidden] { display: none; }
+
+.checkout-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, .48);
+}
+
+.checkout-dialog {
+  width: min(760px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, .24);
+}
+
+.checkout-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px 24px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.checkout-head h2 { margin: 0; color: #18364f; }
+.checkout-head p { margin: 6px 0 0; color: var(--kassa-muted); }
+.checkout-close { min-width: 38px; min-height: 38px; font-size: 22px; line-height: 1; }
+.checkout-body { padding: 20px 24px 24px; }
+
+.checkout-table-wrap { overflow: auto; border: 1px solid #e5e7eb; border-radius: 10px; }
+.checkout-table { width: 100%; border-collapse: collapse; }
+.checkout-table th, .checkout-table td { padding: 11px 12px; border-bottom: 1px solid #edf2f7; text-align: left; }
+.checkout-table th { background: #f8fafc; font-size: 12px; color: #475569; text-transform: uppercase; letter-spacing: .04em; }
+.checkout-table td.number, .checkout-table th.number { text-align: right; white-space: nowrap; }
+.checkout-table tbody tr:last-child td { border-bottom: 0; }
+.checkout-total { display: flex; justify-content: space-between; align-items: center; margin: 16px 0 22px; font-size: 18px; }
+.checkout-total strong { color: #18364f; font-size: 22px; }
+
+.payment-title { margin: 0 0 10px; color: #18364f; font-size: 16px; }
+.payment-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.payment-option { display: flex; align-items: center; gap: 10px; min-height: 64px; padding: 14px; border: 1px solid #cbd5e1; border-radius: 10px; cursor: pointer; font-weight: 800; color: #18364f; }
+.payment-option:has(input:checked) { border-color: #407298; background: #edf6fc; box-shadow: inset 0 0 0 1px #407298; }
+.payment-option input { width: 18px; height: 18px; accent-color: #407298; }
+
+.checkout-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; }
 
 .total-bar {
   position: fixed;
@@ -464,10 +542,16 @@ body {
 
 @media (max-width: 620px) {
   .grid-products { grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 12px; gap: 10px; }
+  .kassa-filters { margin: 0 12px 6px; }
   .showroom-options { grid-template-columns: 1fr; }
   .showroom-panel { padding: 24px; }
   .admin-row { grid-template-columns: 1fr; }
   .admin-stepper { grid-template-columns: 42px minmax(70px, 1fr) 42px; }
+  .checkout-modal { padding: 12px; }
+  .checkout-head, .checkout-body { padding-left: 16px; padding-right: 16px; }
+  .payment-options { grid-template-columns: 1fr; }
+  .checkout-actions { flex-direction: column-reverse; }
+  .checkout-actions .btn { width: 100%; }
 }
 
 @media (max-width: 420px) {
@@ -504,6 +588,14 @@ body {
   </header>
 
   <div class="status-line" id="statusLine">Voorraad laden...</div>
+  <div class="kassa-filters" role="toolbar" aria-label="Productfilters">
+    <button class="kassa-filter-btn is-active" type="button" data-product-filter="all">Alles</button>
+    <button class="kassa-filter-btn" type="button" data-product-filter="filters">Filters</button>
+    <button class="kassa-filter-btn" type="button" data-product-filter="onderhoud">Onderhoud</button>
+    <button class="kassa-filter-btn" type="button" data-product-filter="kussens">Kussens</button>
+    <button class="kassa-filter-btn" type="button" data-product-filter="aroma">Aroma</button>
+    <button class="kassa-filter-btn" type="button" data-product-filter="spa-line">Spa Line</button>
+  </div>
   <div class="grid-products" id="grid"></div>
 
   <div class="total-bar">
@@ -511,10 +603,40 @@ body {
     <div class="total-actions">
       <button class="btn" type="button" id="refreshStockBtn">Voorraad vernieuwen</button>
       <button class="btn btn-danger" type="button" id="resetBtn">Reset</button>
-      <button class="btn btn-primary" type="button" id="printBtn">Bon printen</button>
+      <button class="btn btn-primary" type="button" id="printBtn">Afrekenen</button>
     </div>
   </div>
 </main>
+
+<section class="checkout-modal" id="checkoutModal" hidden aria-modal="true" role="dialog" aria-labelledby="checkoutTitle">
+  <div class="checkout-dialog">
+    <div class="checkout-head">
+      <div>
+        <h2 id="checkoutTitle">Overzicht afrekening</h2>
+        <p>Controleer de producten en kies vervolgens de betaalwijze.</p>
+      </div>
+      <button class="btn checkout-close" type="button" id="checkoutCloseBtn" aria-label="Sluiten">×</button>
+    </div>
+    <div class="checkout-body">
+      <div id="checkoutSummary"></div>
+      <h3 class="payment-title">Betaalwijze</h3>
+      <div class="payment-options" role="radiogroup" aria-label="Betaalwijze">
+        <label class="payment-option">
+          <input type="radio" name="checkoutPayment" value="Bancontact" />
+          <span>Betalen via Bancontact</span>
+        </label>
+        <label class="payment-option">
+          <input type="radio" name="checkoutPayment" value="Overschrijving" />
+          <span>Betalen via overschrijving</span>
+        </label>
+      </div>
+      <div class="checkout-actions">
+        <button class="btn" type="button" id="checkoutBackBtn">Annuleren</button>
+        <button class="btn btn-primary" type="button" id="checkoutPrintBtn" disabled>Bon afdrukken &amp; registreren</button>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="stock-admin" id="stockAdmin" hidden>
   <div class="admin-shell">

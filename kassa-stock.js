@@ -33,6 +33,9 @@ let stockApi = null;
 let stockSubscription = null;
 let supabaseClient = null;
 let adminStockByProduct = {};
+let checkoutPaymentMethod = '';
+let checkoutProcessing = false;
+let activeProductFilter = 'all';
 
 const els = {
   gate: document.getElementById('showroomGate'),
@@ -46,6 +49,11 @@ const els = {
   refreshStockBtn: document.getElementById('refreshStockBtn'),
   resetBtn: document.getElementById('resetBtn'),
   printBtn: document.getElementById('printBtn'),
+  checkoutModal: document.getElementById('checkoutModal'),
+  checkoutSummary: document.getElementById('checkoutSummary'),
+  checkoutCloseBtn: document.getElementById('checkoutCloseBtn'),
+  checkoutBackBtn: document.getElementById('checkoutBackBtn'),
+  checkoutPrintBtn: document.getElementById('checkoutPrintBtn'),
   stockAdmin: document.getElementById('stockAdmin'),
   adminLoginPanel: document.getElementById('adminLoginPanel'),
   adminManagerPanel: document.getElementById('adminManagerPanel'),
@@ -96,7 +104,19 @@ function bindEvents() {
 
   els.refreshStockBtn.addEventListener('click', refreshStock);
   els.resetBtn.addEventListener('click', resetAll);
-  els.printBtn.addEventListener('click', printBon);
+  els.printBtn.addEventListener('click', openCheckout);
+  els.checkoutCloseBtn?.addEventListener('click', closeCheckout);
+  els.checkoutBackBtn?.addEventListener('click', closeCheckout);
+  els.checkoutPrintBtn?.addEventListener('click', completeSaleAndPrint);
+  document.querySelectorAll('input[name="checkoutPayment"]').forEach(input => {
+    input.addEventListener('change', () => {
+      checkoutPaymentMethod = input.checked ? input.value : '';
+      updateCheckoutPrintButton();
+    });
+  });
+  document.querySelectorAll('[data-product-filter]').forEach(button => {
+    button.addEventListener('click', () => setProductFilter(button.dataset.productFilter));
+  });
 
   els.adminLoginBtn?.addEventListener('click', adminLogin);
   els.adminPassword?.addEventListener('keydown', event => {
@@ -334,7 +354,7 @@ function normalizeStockMap(stock, productList) {
 }
 
 function trimCartToStock() {
-  const visibleProductIds = new Set(getVisibleProducts().map(product => product.id));
+  const visibleProductIds = new Set(getShowroomProducts().map(product => product.id));
   Object.keys(cart).forEach(productId => {
     if (!visibleProductIds.has(productId)) {
       delete cart[productId];
@@ -344,12 +364,54 @@ function trimCartToStock() {
   });
 }
 
-function getVisibleProducts() {
+function getShowroomProducts() {
   return products.filter(product => isProductVisibleForShowroom(product, currentShowroom));
+}
+
+function getVisibleProducts() {
+  return getShowroomProducts().filter(product => matchesProductFilter(product, activeProductFilter));
 }
 
 function isProductVisibleForShowroom(product, showroom) {
   return !product.showrooms.length || product.showrooms.includes(showroom);
+}
+
+function setProductFilter(filter) {
+  activeProductFilter = filter || 'all';
+  document.querySelectorAll('[data-product-filter]').forEach(button => {
+    button.classList.toggle('is-active', button.dataset.productFilter === activeProductFilter);
+  });
+  render();
+}
+
+function matchesProductFilter(product, filter) {
+  if (!filter || filter === 'all') return true;
+
+  const text = `${product.id} ${product.title}`.toLowerCase();
+  const isSpaLine = text.includes('spa-line');
+
+  if (filter === 'filters') {
+    return text.includes('filter') && !text.includes('filter-clean');
+  }
+  if (filter === 'kussens') {
+    return text.includes('kussen') || text.includes('rugsteun') || text.includes('hoofdsteun');
+  }
+  if (filter === 'aroma') {
+    return text.includes('aroma') || text.includes('wellness') || text.includes('inspiration') || text.includes('opgietmiddel') || text.includes('fragrance');
+  }
+  if (filter === 'spa-line') {
+    return isSpaLine;
+  }
+  if (filter === 'onderhoud') {
+    return !isSpaLine && (
+      text.includes('melpool') || text.includes('aqua') || text.includes('spa-balancer') ||
+      text.includes('chloor') || text.includes('ph ') || text.includes('ph-') || text.includes('ph+') ||
+      text.includes('alkaliteit') || text.includes('calcium') || text.includes('renew') ||
+      text.includes('easy-water') || text.includes('filter-clean') || text.includes('defender') ||
+      text.includes('clear-water') || text.includes('spa vac') || text.includes('chloordrijver')
+    );
+  }
+  return true;
 }
 
 function render() {
@@ -404,7 +466,7 @@ function change(id, delta) {
 }
 
 function getCartItems() {
-  return getVisibleProducts()
+  return getShowroomProducts()
     .map(product => ({
       ...product,
       qty: cart[product.id] || 0,
@@ -423,10 +485,76 @@ function resetAll() {
   render();
 }
 
-async function printBon() {
+function openCheckout() {
   const items = getCartItems();
   if (!items.length) {
     alert('Er staan nog geen producten in de bon.');
+    return;
+  }
+
+  checkoutPaymentMethod = '';
+  checkoutProcessing = false;
+  document.querySelectorAll('input[name="checkoutPayment"]').forEach(input => {
+    input.checked = false;
+  });
+  renderCheckoutSummary(items);
+  updateCheckoutPrintButton();
+  els.checkoutModal.hidden = false;
+}
+
+function closeCheckout() {
+  if (checkoutProcessing) return;
+  els.checkoutModal.hidden = true;
+  checkoutPaymentMethod = '';
+}
+
+function renderCheckoutSummary(items) {
+  const total = items.reduce((sum, item) => sum + item.lineTotal, 0);
+  const rows = items.map(item => `
+    <tr>
+      <td>${escapeHtml(item.title)}</td>
+      <td class="number">${item.qty}</td>
+      <td class="number">${euro(item.price)}</td>
+      <td class="number">${euro(item.lineTotal)}</td>
+    </tr>
+  `).join('');
+
+  els.checkoutSummary.innerHTML = `
+    <div class="checkout-table-wrap">
+      <table class="checkout-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th class="number">Aantal</th>
+            <th class="number">Prijs/stuk</th>
+            <th class="number">Totaal</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+    <div class="checkout-total">
+      <span>Totaal af te rekenen</span>
+      <strong>${euro(total)}</strong>
+    </div>
+  `;
+}
+
+function updateCheckoutPrintButton() {
+  if (!els.checkoutPrintBtn) return;
+  els.checkoutPrintBtn.disabled = checkoutProcessing || !checkoutPaymentMethod;
+}
+
+async function completeSaleAndPrint() {
+  const items = getCartItems();
+  if (!items.length) {
+    closeCheckout();
+    alert('De selectie is leeg. Kies eerst producten.');
+    return;
+  }
+
+  if (!checkoutPaymentMethod) {
+    alert('Kies eerst Bancontact of overschrijving.');
     return;
   }
 
@@ -436,13 +564,17 @@ async function printBon() {
     return;
   }
 
+  checkoutProcessing = true;
+  updateCheckoutPrintButton();
   setControlsDisabled(true);
-  setStatus('Bon maken en voorraad aftrekken...');
+  setStatus('Betaling registreren en voorraad bijwerken...');
 
   try {
     stockByProduct = await stockApi.sell(currentShowroom, items, products);
-    writeReceipt(receiptWindow, items);
+    writeReceipt(receiptWindow, items, checkoutPaymentMethod);
     cart = {};
+    checkoutProcessing = false;
+    closeCheckout();
     render();
     setStatus(`Bon gemaakt. Voorraad ${SHOWROOMS[currentShowroom]} is bijgewerkt.`);
   } catch (err) {
@@ -451,11 +583,13 @@ async function printBon() {
     await refreshStock();
     alert(err.message || 'Voorraad kon niet bijgewerkt worden.');
   } finally {
+    checkoutProcessing = false;
+    updateCheckoutPrintButton();
     setControlsDisabled(false);
   }
 }
 
-function writeReceipt(w, items) {
+function writeReceipt(w, items, paymentMethod) {
   const total = items.reduce((sum, item) => sum + item.lineTotal, 0);
   const btw = total * 0.21;
   const excl = total - btw;
@@ -463,7 +597,9 @@ function writeReceipt(w, items) {
   const rows = items.map((item, index) => `
     <tr>
       <td class="col-num">${index + 1}</td>
-      <td class="col-desc">${escapeHtml(item.title)} x ${item.qty}</td>
+      <td class="col-desc">${escapeHtml(item.title)}</td>
+      <td class="col-qty">${item.qty}</td>
+      <td class="col-unit-price">${euro(item.price)}</td>
       <td class="col-price">${euro(item.lineTotal)}</td>
     </tr>
   `).join('');
@@ -508,7 +644,9 @@ function writeReceipt(w, items) {
           tbody tr:last-child td { border-bottom: none; }
           .col-num { width: 70px; font-weight: 800; color: #475569; }
           .col-desc { font-weight: 600; }
-          .col-price { width: 190px; text-align: right; white-space: nowrap; font-weight: 800; }
+          .col-qty { width: 90px; text-align: right; white-space: nowrap; }
+          .col-unit-price { width: 150px; text-align: right; white-space: nowrap; }
+          .col-price { width: 150px; text-align: right; white-space: nowrap; font-weight: 800; }
           .summary { margin-top: 18px; display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; }
           .summary-left { flex: 1; padding-top: 10px; }
           .payment-line { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #0f172a; }
@@ -540,7 +678,8 @@ function writeReceipt(w, items) {
             thead th { font-size: 10px !important; padding: 3.2mm 4mm !important; }
             tbody td { padding: 3mm 4mm !important; font-size: 11px !important; line-height: 1.25 !important; }
             .col-num { width: 10mm !important; }
-            .col-price { width: 34mm !important; }
+            .col-qty { width: 16mm !important; }
+            .col-unit-price, .col-price { width: 28mm !important; }
             .summary { margin-top: 4mm !important; gap: 8mm !important; }
             .payment-line { font-size: 11px !important; }
             .summary-box { width: 52mm !important; border-radius: 10px !important; }
@@ -563,6 +702,10 @@ function writeReceipt(w, items) {
                 <div class="offer-meta-row">
                   <div class="offer-meta-label">Showroom</div>
                   <div class="offer-meta-value">${escapeHtml(SHOWROOMS[currentShowroom])}</div>
+                </div>
+                <div class="offer-meta-row">
+                  <div class="offer-meta-label">Betaald via</div>
+                  <div class="offer-meta-value">${escapeHtml(paymentMethod)}</div>
                 </div>
               </div>
             </div>
@@ -591,7 +734,9 @@ function writeReceipt(w, items) {
                   <tr>
                     <th>#</th>
                     <th>Omschrijving</th>
-                    <th style="text-align:right">Prijs</th>
+                    <th style="text-align:right">Aantal</th>
+                    <th style="text-align:right">Prijs/stuk</th>
+                    <th style="text-align:right">Totaal</th>
                   </tr>
                 </thead>
                 <tbody>${rows}</tbody>
@@ -601,8 +746,8 @@ function writeReceipt(w, items) {
             <div class="summary">
               <div class="summary-left">
                 <div class="payment-line">
-                  <span>BETAALD MET</span>
-                  <span class="payment-fill"></span>
+                  <span>BETAALD VIA</span>
+                  <strong>${escapeHtml(paymentMethod)}</strong>
                 </div>
               </div>
 
