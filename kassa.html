@@ -354,6 +354,8 @@ body {
 .payment-option { display: flex; align-items: center; gap: 10px; min-height: 64px; padding: 14px; border: 1px solid #cbd5e1; border-radius: 10px; cursor: pointer; font-weight: 800; color: #18364f; }
 .payment-option:has(input:checked) { border-color: #407298; background: #edf6fc; box-shadow: inset 0 0 0 1px #407298; }
 .payment-option input { width: 18px; height: 18px; accent-color: #407298; }
+.payment-option-copy { display: grid; gap: 3px; }
+.payment-option-note { color: var(--kassa-muted); font-size: 12px; font-weight: 600; }
 
 .checkout-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; }
 
@@ -627,7 +629,10 @@ body {
         </label>
         <label class="payment-option">
           <input type="radio" name="checkoutPayment" value="Overschrijving" />
-          <span>Betalen via overschrijving</span>
+          <span class="payment-option-copy">
+            <span>Betalen via overschrijving</span>
+            <span class="payment-option-note">BE 75 3800 1777 8151 / Wellnessmarkt BV</span>
+          </span>
         </label>
       </div>
       <div class="checkout-actions">
