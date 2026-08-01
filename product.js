@@ -1168,7 +1168,7 @@ const PRICES = {
   swim_filterset_unit: 250,
   warmtepomp_unit: 2795,
 
-  barrel_wood_stove_unit: 1245,
+  barrel_wood_stove_unit: 1195,
   barrel_electric_heater_unit: 495,
   barrel_huum_drop_unit: 1595,
   barrel_harvia_cilinder_unit: 599,
@@ -1188,8 +1188,8 @@ const SAUNA_HEATER_OPTIONS = Object.freeze({
   'huum-drop': { label: 'HUUM Drop 9 kW', price: PRICES.barrel_huum_drop_unit, note: 'Incl. WiFi module en bediening + stenen & safety rail.' },
   'harvia-cilinder': { label: 'Harvia Cilinder 9 kW', price: PRICES.barrel_harvia_cilinder_unit, note: 'Incl. stenen & montage' },
   'harvia-cilinder-70': { label: 'Harvia Cilindro PC 70', price: 549 },
-  'harvia-m3': { label: 'Harvia M3 houtkachel', price: 547.5 },
-  'harvia-linear-16': { label: 'Harvia Linear 16 houtkachel', price: 547.5 },
+  'harvia-m3': { label: 'Harvia M3 houtkachel + rookafvoer', price: 1195 },
+  'harvia-linear-16': { label: 'Harvia Linear 16 houtkachel + rookafvoer', price: 1195 },
   'kip-45': { label: 'Kip 4,5 kW', price: 310 },
   'delta-36': { label: 'Delta 3,6 kW', price: 325 }
 });
