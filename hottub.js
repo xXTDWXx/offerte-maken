@@ -85,7 +85,6 @@ const config = {
 
 const HEATER_OPTIONS = {
   extern: [
-    ["External - 20kW, 316", "images/configurator/externe-kachel.webp", 315],
     ["External - 26kW, 316", "images/configurator/externe-kachel.webp", 503],
     ["External - 30kW, 316", "images/configurator/externe-kachel.webp", 708]
   ],
