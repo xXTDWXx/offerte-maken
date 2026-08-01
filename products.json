@@ -10368,6 +10368,7 @@
     {
       "id": "sauna::design-barrelsauna-nicksen-royal",
       "type": "barrelsauna",
+      "hidden": true,
       "title": "Design Barrelsauna Nicksen Royal",
       "url": "https://www.sunspabenelux.be/p/design-barrelsauna-nicksen-royal/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2024/09/niksen-designbarrel-afbeelding-Cedar_Foto_web.png",
