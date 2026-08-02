@@ -1970,6 +1970,7 @@ function getSelectedOfferLines() {
   const bullfrog = isBullfrogProduct(currentProduct);
   const allowCoverlift = (extraOptionsAllowed(type) || bullfrog) && !isRoundSpaWithoutCoverlift(currentProduct);
   const spaOrSwimspa = extraOptionsAllowed(type);
+  const canopyInfraredBarrel = isCanopyInfraredBarrel(currentProduct);
   const showSpaColors = hasSpaColorOptions(type);
   const quantityVariantProduct = isQuantityVariantProduct(currentProduct);
   const innerColor = showSpaColors ? ($('spaInnerColor')?.value || '') : '';
