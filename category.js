@@ -121,9 +121,24 @@ function getProductSalePrice(p) {
 
 function getMySpaBtwAction(p, price = Number(p?.price || 0)) {
   const originalPrice = Number(price || 0);
+
+  if (!Number.isFinite(originalPrice) || originalPrice <= 0) {
+    return null;
+  }
+
+  if (isMySpaBtwActionProduct(p)) {
+    const actionPrice = roundCurrency(originalPrice / 1.21);
+
+    return {
+      originalPrice,
+      actionPrice,
+      discount: roundCurrency(originalPrice - actionPrice)
+    };
+  }
+
   const salePrice = getProductSalePrice(p);
 
-  if (originalPrice <= 0 || salePrice <= 0 || salePrice >= originalPrice) {
+  if (salePrice <= 0 || salePrice >= originalPrice) {
     return null;
   }
 
@@ -135,16 +150,28 @@ function getMySpaBtwAction(p, price = Number(p?.price || 0)) {
 }
 
 function mySpaBtwActionLabel(p) {
+  if (isMySpaBtwActionProduct(p)) {
+    return window.SunspaI18n?.isFrench?.()
+      ? 'Action TVA 21 %'
+      : '21% btw-actie';
+  }
+
   if (getProductSalePrice(p) > 0) {
     if (isBullfrogActionProduct(p)) {
-      return window.SunspaI18n?.isFrench?.() ? 'Promotion Bullfrog' : 'Bullfrog actie';
+      return window.SunspaI18n?.isFrench?.()
+        ? 'Promotion Bullfrog'
+        : 'Bullfrog actie';
     }
 
     if (isVogueActionProduct(p)) {
-      return window.SunspaI18n?.isFrench?.() ? 'Promotion Vogue' : 'Vogue actie';
+      return window.SunspaI18n?.isFrench?.()
+        ? 'Promotion Vogue'
+        : 'Vogue actie';
     }
 
-    return window.SunspaI18n?.isFrench?.() ? 'Promotion stock' : 'Voorraadactie';
+    return window.SunspaI18n?.isFrench?.()
+      ? 'Promotion stock'
+      : 'Voorraadactie';
   }
 
   return window.SunspaI18n?.isFrench?.() ? 'Promotion' : 'Actie';
