@@ -52,7 +52,7 @@
   {"id":"renew","title":"Renew","price":19.95,"image":"images/kassa/renew.jpg"},
   {"id":"estelle-filter-cleaner","title":"Estelle filter cleaner","price":129.95,"image":"images/kassa/estelle-filter-cleaner.webp"},
   {"id":"spa-line-citrus-clean","title":"Spa Line Citrus Clean","price":15.95,"image":"images/kassa/spa-line-citrus-clean.webp"},
-  {"id":"spa-line-pre-filter","title":"Spa Line Pre Filter","price":9.95,"image":""},
+  {"id":"spa-line-pre-filter","title":"Spa Line Pre Filter","price":9.95,"image":"images/kassa/spa-line-pre-filter.png"},
   {"id":"leisure-time-filter-clean","title":"Leisure Time Filter Clean","price":15.95,"image":""},
   {"id":"leisure-time-defender","title":"Leisure Time Defender","price":24.95,"image":"images/kassa/leisure-time-defender.jpg","showrooms":["brugge"]},
   {"id":"spa-line-fragrance-eucalyptus","title":"Spa Line Fragrance Eucalyptus","price":11.95,"image":"images/kassa/spa-line-fragrance-eucalyptus.webp","showrooms":["brugge"]},
