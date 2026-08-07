@@ -21,7 +21,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Pomp 1",
@@ -138,6 +138,7 @@
       "title": "Sunspa Aquavera",
       "url": "https://www.sunspabenelux.be/p/sunspa-aquavera/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/06/Aquatique-spa-BJ2000-2MD-Side_768px-1536x1536.png",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Aquatique-spa-BJ2000-2MD-Side_768px.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Aquatique-spa-BJ2000-2MD-Side_768px-650x650.png","label":"Zijaanzicht Aquatique spa"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Aquatique-spa-BJ2000-2MD-Top_800px.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Aquatique-spa-BJ2000-2MD-Top_800px-650x650.png","label":"Bovenkant Aquatique spa"}],
       "price": 5395,
       "bullets": [],
       "specs": [
@@ -223,7 +224,7 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 0 – 6000, € 6000 – 10.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 6000, ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 6000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10.000"
         },
         {
           "label": "UV",
@@ -239,6 +240,7 @@
       "title": "Sunspa Serenza",
       "url": "https://www.sunspabenelux.be/p/sunspa-serenza/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-Side_768px-1536x1536.png",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-Side_768px.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-Side_768px-650x650.png","label":"Serenity spa Zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-TOP_800px.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-TOP_800px-650x650.png","label":"Serenity spa SPA2000-1MD \u0026#8211; TOP_800px"}],
       "price": 5395,
       "bullets": [],
       "specs": [
@@ -324,7 +326,7 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 0 – 6000, € 6000 – 10.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 6000, ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 6000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10.000"
         },
         {
           "label": "UV",
@@ -341,6 +343,7 @@
       "title": "Goldline Spa",
       "url": "https://www.sunspabenelux.be/p/goldline-spa/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/06/Goldline-Spa-1-650x650.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/Goldline-Spa-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/Goldline-Spa-1-650x650.webp","label":"Goldline Spa"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/Goldline-Spa-jacuzzi-1-scaled.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/Goldline-Spa-jacuzzi-1-scaled-650x650.webp","label":"Goldline Spa jacuzzi"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/goldline-spa-referentie.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/goldline-spa-referentie-650x650.webp","label":"een goldline spa"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/goldline-jacuzzi-referentie.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/goldline-jacuzzi-referentie-650x650.webp","label":"een goldline jacuzzi met trapje"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/goldline-spa-referentie2-1030x1030-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/goldline-spa-referentie2-1030x1030-1-650x650.webp","label":"een goldline jacuzzi in een hut"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/Goldine-spa-jacuzzi.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/Goldine-spa-jacuzzi-650x650.jpg","label":"Goldine spa jacuzzi"}],
       "price": 5495,
       "bullets": [],
       "specs": [
@@ -394,7 +397,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Aantal speakers",
@@ -422,15 +425,15 @@
         },
         {
           "label": "Breedte",
-          "value": "150 – 200 cm, 200 – 225 cm"
+          "value": "150 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 200 cm, 200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm"
         },
         {
           "label": "Lengte",
-          "value": "0 – 200 cm, 200 – 225 cm"
+          "value": "0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 200 cm, 200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm"
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 0 – 6000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 6000"
         },
         {
           "label": "Vorm",
@@ -450,6 +453,7 @@
       "title": "Maxicuzzi Explore",
       "url": "https://www.sunspabenelux.be/p/maxicuzzi-explore/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-explore.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-explore.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-explore.jpg","label":"maxicuzzi-explore"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-explore-zij.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-explore-zij-650x650.jpg","label":"maxicuzzi-explore-zij"}],
       "price": 5495,
       "bullets": [],
       "specs": [
@@ -523,7 +527,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Blower",
@@ -543,11 +547,11 @@
         },
         {
           "label": "Breedte",
-          "value": "0 – 150 cm, 150 – 200 cm"
+          "value": "0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 150 cm, 150 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 200 cm"
         },
         {
           "label": "Lengte",
-          "value": "0 – 200 cm, 200 – 225 cm"
+          "value": "0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 200 cm, 200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm"
         },
         {
           "label": "Vorm",
@@ -555,7 +559,7 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 0 – 6000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 6000"
         },
         {
           "label": "Materiaal kuip",
@@ -570,6 +574,7 @@
       "title": "Sunspa San Marino 1",
       "url": "https://www.sunspabenelux.be/p/sunspa-san-marino-1/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/sanmarino1.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/sanmarino1.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/sanmarino1-768x768.jpg","label":"sanmarino1"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/SanMarino-1-klein.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/SanMarino-1-klein-768x768.webp.jpg","label":"jacuzzi san marino vanaf de zijkant"}],
       "price": 5495,
       "bullets": [],
       "specs": [
@@ -655,7 +660,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Leeg gewicht",
@@ -747,7 +752,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Aantal luchtregelaars",
@@ -844,7 +849,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Heater",
@@ -1053,7 +1058,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Aantal waterregelaars",
@@ -1100,6 +1105,7 @@
       "title": "Maxicuzzi Relax",
       "url": "https://www.sunspabenelux.be/p/maxicuzzi-relax/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-relax.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-relax.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-relax.jpg","label":"maxicuzzi-relax"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/relax-side.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/relax-side-650x650.jpg","label":""}],
       "price": 5995,
       "bullets": [],
       "specs": [
@@ -1173,7 +1179,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Blower",
@@ -1197,15 +1203,15 @@
         },
         {
           "label": "Breedte",
-          "value": "150 – 200 cm"
+          "value": "150 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 200 cm"
         },
         {
           "label": "Lengte",
-          "value": "0 – 200 cm"
+          "value": "0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 200 cm"
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 0 – 6000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 6000"
         },
         {
           "label": "Vorm",
@@ -1220,6 +1226,7 @@
       "title": "Maxicuzzi Duo",
       "url": "https://www.sunspabenelux.be/p/maxicuzzi-duo/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-duo.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-duo.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-duo.jpg","label":"maxicuzzi-duo"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/duo-side.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/duo-side-650x650.jpg","label":""}],
       "price": 6250,
       "bullets": [],
       "specs": [
@@ -1289,7 +1296,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Blower",
@@ -1309,7 +1316,7 @@
         },
         {
           "label": "Breedte",
-          "value": "150 – 200 cm"
+          "value": "150 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 200 cm"
         },
         {
           "label": "Inhoud",
@@ -1317,11 +1324,11 @@
         },
         {
           "label": "Lengte",
-          "value": "0 – 200 cm"
+          "value": "0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 200 cm"
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 0 – 6000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 6000"
         },
         {
           "label": "Vorm",
@@ -1422,7 +1429,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Filter",
@@ -1547,7 +1554,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Waterval",
@@ -1602,16 +1609,17 @@
       "title": "Sunspa Marrakech",
       "url": "https://www.sunspabenelux.be/p/sunspa-marrakech/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/marrakech.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/marrakech.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/marrakech-768x768.jpg","label":"marrakech"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/Spa-Marrakech.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/Spa-Marrakech-768x768.webp.jpg","label":"ronde jacuzzi marrakech van de zijkant"}],
       "price": 6695,
       "bullets": [],
       "specs": [
         {
           "label": "Afmeting",
-          "value": "203ø x 90 cm"
+          "value": "203ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ x 90 cm"
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Frame",
@@ -1723,6 +1731,7 @@
       "title": "Sunspa London",
       "url": "https://www.sunspabenelux.be/p/sunspa-london/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/london.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/london.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/london-768x768.jpg","label":"london"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/london-klein.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/london-klein-768x768.webp.jpg","label":"jacuzzi london vanaf de zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/jacuzzi-verlichting-1-1.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/jacuzzi-verlichting-1-1.jpg","label":"Jacuzzi"}],
       "price": 6950,
       "bullets": [],
       "specs": [
@@ -1796,7 +1805,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Waterval",
@@ -1861,6 +1870,7 @@
       "title": "Vogue Majesty",
       "url": "https://www.sunspabenelux.be/p/vogue-majesty/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/Majesty-Vogue-.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Majesty-Vogue-.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Majesty-Vogue-.webp","label":"Majesty Vogue"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/vogue-majesty-sideview-Gecko-side.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/vogue-majesty-sideview-Gecko-side-650x650.jpg","label":"Majesty Vogue zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Majesty.jpeg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Majesty-650x650.jpeg","label":"Vogue Majesty"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Majesty-Spa-Jacuzzi.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Majesty-Spa-Jacuzzi-650x650.webp","label":"Vogue Majesty Spa Jacuzzi"}],
       "price": 6995,
       "sale_price": 6225.55,
       "bullets": [],
@@ -1895,7 +1905,7 @@
         },
         {
           "label": "Lengte",
-          "value": "0 – 200 cm, 200 – 225 cm"
+          "value": "0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 200 cm, 200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm"
         },
         {
           "label": "Pomp 1",
@@ -1947,7 +1957,7 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 6000 – 10.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 6000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10.000"
         },
         {
           "label": "UV",
@@ -1962,6 +1972,7 @@
       "title": "Maxicuzzi Divine",
       "url": "https://www.sunspabenelux.be/p/maxicuzzi-divine/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-divine.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-divine.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/maxicuzzi-divine.jpg","label":"maxicuzzi-divine"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/divine-side.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/divine-side-650x650.jpg","label":""}],
       "price": 7995,
       "sale_price": 6995,
       "bullets": [],
@@ -2036,7 +2047,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -2073,7 +2084,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Aantal waterregelaars",
@@ -2249,7 +2260,7 @@
         },
         {
           "label": "Frame",
-          "value": "Geïmpregneerd hout"
+          "value": "GeÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯mpregneerd hout"
         },
         {
           "label": "Gevuld gewicht",
@@ -2281,7 +2292,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Aantal luchtregelaars",
@@ -2324,6 +2335,7 @@
       "title": "MySpa Nashville",
       "url": "https://www.sunspabenelux.be/p/myspa-nashville/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-nashville-1.png",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-nashville-1.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-nashville-1.png","label":"myspa-nashville-1"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/kleine-jacuzzi.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/kleine-jacuzzi-650x650.webp","label":"jacuzzi in tuin met coverhoes"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/MSP1600-b.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/MSP1600-b-650x650.webp","label":"Myspa nashville vanaf de zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/MSP1600-c.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/MSP1600-c-650x650.webp","label":"Myspa nashville vanaf de zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/MSP1600-d.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/MSP1600-d-650x650.webp","label":"Myspa nashville vanaf de zijkant"}],
       "price": 7250,
       "sale_price": 6455,
       "bullets": [],
@@ -2366,7 +2378,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Leeg gewicht",
@@ -2378,7 +2390,7 @@
         },
         {
           "label": "Frame",
-          "value": "Geïmpregneerd hout"
+          "value": "GeÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯mpregneerd hout"
         },
         {
           "label": "Hoek verlichting",
@@ -2453,6 +2465,7 @@
       "title": "Sunspa Napoli",
       "url": "https://www.sunspabenelux.be/p/sunspa-napoli/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/napoli.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/napoli.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/napoli-768x768.jpg","label":"napoli"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/Spa-Napoli-2.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/Spa-Napoli-2-768x768.webp.jpg","label":"jacuzzi napoli vanaf de zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/jacuzzi-Napoli-scaled.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/06/jacuzzi-Napoli-scaled-650x650.jpg","label":"jacuzzi napoli"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2023/12/napoli-2.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2023/12/napoli-2-650x650.jpg","label":"Sunspa Napoli"}],
       "price": 7450,
       "bullets": [],
       "specs": [
@@ -2538,7 +2551,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Frame",
@@ -2585,6 +2598,7 @@
       "title": "Sunspa Tenerife",
       "url": "https://www.sunspabenelux.be/p/sunspa-tenerife/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/tenerife.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/tenerife.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/tenerife-768x768.jpg","label":"tenerife"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/spa-tenerife-2.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/spa-tenerife-2-768x768.webp.jpg","label":"jacuzzi tenerife vanaf de zijkant"}],
       "price": 7495,
       "bullets": [],
       "specs": [
@@ -2658,7 +2672,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Aantal luchtregelaars",
@@ -2798,7 +2812,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Aantal speakers",
@@ -2849,6 +2863,7 @@
       "title": "MySpa Quebec",
       "url": "https://www.sunspabenelux.be/p/myspa-quebec/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-quebec-jacuzzi-1.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-quebec-jacuzzi-1.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-quebec-jacuzzi-1-768x768.jpg","label":"myspa-quebec-jacuzzi"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2023/09/whatsapp_image_2022-02-14_at_15.01.56_1.jpeg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2023/09/whatsapp_image_2022-02-14_at_15.01.56_1-650x650.jpeg","label":"MySpa Quebec"}],
       "price": 7750,
       "sale_price": 6975,
       "bullets": [],
@@ -2923,7 +2938,7 @@
         },
         {
           "label": "Frame",
-          "value": "Geïmpregneerd hout"
+          "value": "GeÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯mpregneerd hout"
         },
         {
           "label": "Verlichting",
@@ -2935,7 +2950,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Stroom",
@@ -2984,6 +2999,7 @@
       "title": "Vogue Angora",
       "url": "https://www.sunspabenelux.be/p/vogue-angora/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Angora-1.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Angora-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Angora-1-650x650.webp","label":"Vogue Angora"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/BUK2000-2CL-Side-view-scaled.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/BUK2000-2CL-Side-view-scaled-650x650.jpg","label":"default"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Angora-2.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Angora-2-650x650.webp","label":"Vogue Angora"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Angora-jacuzzi-2.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Angora-jacuzzi-2-650x650.jpg","label":"Vogue Angora jacuzzi"}],
       "price": 7950,
       "bullets": [],
       "specs": [
@@ -3061,7 +3077,7 @@
         },
         {
           "label": "Lengte",
-          "value": "200 – 225 cm"
+          "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm"
         },
         {
           "label": "Vorm",
@@ -3069,7 +3085,7 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 6000 – 10.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 6000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10.000"
         },
         {
           "label": "UV",
@@ -3084,6 +3100,7 @@
       "title": "Sunspa Vancouver",
       "url": "https://www.sunspabenelux.be/p/sunspa-vancouver/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/vancouver.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/vancouver.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/vancouver-768x768.jpg","label":"vancouver"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/Spa-Vancouver-2.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/Spa-Vancouver-2-768x768.webp.jpg","label":"jacuzzi vancouver vanaf de zijkant"}],
       "price": 7950,
       "bullets": [],
       "specs": [
@@ -3161,7 +3178,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Aantal kussens",
@@ -3216,6 +3233,7 @@
       "title": "Sunspa Lima",
       "url": "https://www.sunspabenelux.be/p/sunspa-lima/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/lima.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/lima.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/lima-768x768.jpg","label":"lima"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/Spa-Lima-2-Klein.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/Spa-Lima-2-Klein-768x768.webp.jpg","label":"jacuzzi lima 2 klein vanaf de zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2024/01/sunspa-lima-referentie.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2024/01/sunspa-lima-referentie-650x650.jpg","label":"Sunspa Lima"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2023/12/san-diego-lima.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2023/12/san-diego-lima-650x650.jpg","label":"Sunspa San Diego"}],
       "price": 7950,
       "bullets": [],
       "specs": [
@@ -3289,7 +3307,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Aantal waterregelaars",
@@ -3414,7 +3432,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Circulatiepomp",
@@ -3478,6 +3496,7 @@
       "title": "MySpa Double Dutch",
       "url": "https://www.sunspabenelux.be/p/myspa-double-dutch/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/myspa-double-dutch-jacuzzi-1.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/myspa-double-dutch-jacuzzi-1.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/myspa-double-dutch-jacuzzi-1.jpg","label":"myspa-double-dutch-jacuzzi"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/DoubleDutch-MSP-X2100-1MD-Side1.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/DoubleDutch-MSP-X2100-1MD-Side1-650x650.jpg","label":"DoubleDutch-MSP-X2100-1MD Side1"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/Myspa-Double-Dutch.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/Myspa-Double-Dutch-650x650.webp","label":"Myspa Double Dutch"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/WhatsApp-Image-2021-11-19-at-13.13.46.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/WhatsApp-Image-2021-11-19-at-13.13.46-650x540.webp","label":"wellness tuin met jacuzzi en barrelsauna van sunspa benelux"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/03/20220419_102838-scaled.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/03/20220419_102838-scaled-650x650.jpg","label":"Myspa jacuzzi bruin"}],
       "price": 8695,
       "sale_price": 7826,
       "bullets": [],
@@ -3536,7 +3555,7 @@
         },
         {
           "label": "Frame",
-          "value": "Geïmpregneerd hout"
+          "value": "GeÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯mpregneerd hout"
         },
         {
           "label": "Leeg gewicht",
@@ -3568,7 +3587,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Waterval",
@@ -3607,6 +3626,7 @@
       "title": "MySpa Colorado",
       "url": "https://www.sunspabenelux.be/p/myspa-colorado/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-colorado-jacuzzi-1.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-colorado-jacuzzi-1.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/myspa-colorado-jacuzzi-1-768x768.jpg","label":"myspa-colorado-jacuzzi"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/jacuzzi-beste-deal.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/jacuzzi-beste-deal-650x600.webp","label":"zwarte jacuzzi met opstapje en coverhoes"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/MSP2100-c.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/MSP2100-c-650x650.webp","label":"Myspa Colorado vanaf de zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/MSP2100-d.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/MSP2100-d-650x650.webp","label":"Myspa Colorado vanaf de zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/MSP2100-e.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/04/MSP2100-e-650x650.webp","label":"Myspa Colorado vanaf de zijkant"}],
       "price": 8695,
       "bullets": [],
       "specs": [
@@ -3672,7 +3692,7 @@
         },
         {
           "label": "Frame",
-          "value": "Geïmpregneerd hout"
+          "value": "GeÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯mpregneerd hout"
         },
         {
           "label": "Leeg gewicht",
@@ -3700,7 +3720,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Aantal kussens",
@@ -3801,7 +3821,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Isolatie",
@@ -3886,6 +3906,7 @@
       "title": "Python hottub spa",
       "url": "https://www.sunspabenelux.be/p/python-hottub-spa/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2022/05/python-vrijstaand.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/python-vrijstaand.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/python-vrijstaand-650x650.jpg","label":"jacuzzi python"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2024/02/258869411_2216289248513566_8179084253345146075_n.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2024/02/258869411_2216289248513566_8179084253345146075_n-650x650.jpg","label":"Sunspa Python"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/jacuzzi-kopen-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/jacuzzi-kopen-1-650x650.webp","label":"ronde jacuzzi in de tuin"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/04/Jacuzzi-met-tuinset.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/04/Jacuzzi-met-tuinset-650x650.webp","label":"Jacuzzi met tuinset"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/148289516_1993404114135415_5142062040485189345_n-1030x1018-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/148289516_1993404114135415_5142062040485189345_n-1030x1018-1-650x650.webp","label":"ronde jacuzzi pyhton in de sneeuw"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/7e20024a-da39-4493-9024-390226fdee93-1030x773-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/7e20024a-da39-4493-9024-390226fdee93-1030x773-1-650x650.webp","label":"jacuzzi python in showroom met opstapje"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/8b5e7edb-d067-4206-8b7c-2c9315ab0813-1030x773-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/8b5e7edb-d067-4206-8b7c-2c9315ab0813-1030x773-1-650x650.webp","label":"jacuzzi python in showroom"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/773de9ae-5ef9-4ecb-948c-7ec03e315616-1030x773-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/773de9ae-5ef9-4ecb-948c-7ec03e315616-1030x773-1-650x650.webp","label":"jacuzzi python in showroom"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/8574133e-702a-474b-b8ff-586641e48b24.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/8574133e-702a-474b-b8ff-586641e48b24-650x650.webp","label":"jacuzzi python ingebouwd in tuin"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/117768959_1836300279845800_9036770445028067184_n.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/117768959_1836300279845800_9036770445028067184_n-650x650.webp","label":"jacuzzi python in tuin"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/120437388_675329256448440_688658042936720295_n-1030x1030-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/120437388_675329256448440_688658042936720295_n-1030x1030-1-650x650.webp","label":"jacuzzi python in tuin"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/165308559_2027830284026131_7738838872530502688_n.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/165308559_2027830284026131_7738838872530502688_n-650x650.webp","label":"jacuzzi python in tuin met opstapje"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/167950830_2033159546826538_5462430671278774569_n.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/167950830_2033159546826538_5462430671278774569_n-650x650.webp","label":"jacuzzi python in tuin"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/168025073_2033159476826545_5382195642375998558_n.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/168025073_2033159476826545_5382195642375998558_n-650x650.webp","label":"jacuzzi python in tuin"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/189805459_2070681133074379_7341320995311340792_n.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/189805459_2070681133074379_7341320995311340792_n-650x650.webp","label":"jacuzzi python in tuin"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/e377ab53-a7d5-43a2-acbc-8fb5ab8222ee-1030x773-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/e377ab53-a7d5-43a2-acbc-8fb5ab8222ee-1030x773-1-650x650.webp","label":"jacuzzi python in showroom"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/f6fefef5-bd87-4ea6-b6d0-8c65242447a4-1030x773-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/f6fefef5-bd87-4ea6-b6d0-8c65242447a4-1030x773-1-650x650.webp","label":"ronde jacuzzi in een showroom"}],
       "price": 8450,
       "bullets": [],
       "specs": [
@@ -3919,7 +3940,7 @@
         },
         {
           "label": "Afmeting",
-          "value": "203ø x 90 cm"
+          "value": "203ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¸ x 90 cm"
         },
         {
           "label": "Inhoud",
@@ -3979,7 +4000,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -4075,11 +4096,11 @@
         },
         {
           "label": "Frame",
-          "value": "Geïmpregneerd hout"
+          "value": "GeÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯mpregneerd hout"
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Stroom",
@@ -4142,6 +4163,7 @@
       "title": "MySpa Houston",
       "url": "https://www.sunspabenelux.be/p/myspa-houston/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/myspa-houston-jacuzzi-1.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/myspa-houston-jacuzzi-1.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/myspa-houston-jacuzzi-1-768x768.jpg","label":"myspa-houston-jacuzzi"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/MSP2500-b.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/MSP2500-b-650x650.webp","label":"MySpa Houston vanaf de zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/MSP2500-c.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/MSP2500-c-650x650.webp","label":"MySpa Houston vanaf de zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/MSP2500-d.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/MSP2500-d-650x650.webp","label":"MySpa Houston vanaf de zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/MSP2500-e.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/MSP2500-e-650x650.webp","label":"MySpa Houston vanaf de zijkant"}],
       "price": 9295,
       "sale_price": 8280,
       "bullets": [],
@@ -4228,7 +4250,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Leeg gewicht",
@@ -4244,7 +4266,7 @@
         },
         {
           "label": "Frame",
-          "value": "Geïmpregneerd hout"
+          "value": "GeÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯mpregneerd hout"
         },
         {
           "label": "Stroom",
@@ -4273,6 +4295,7 @@
       "title": "Vogue Classic",
       "url": "https://www.sunspabenelux.be/p/vogue-classic/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Classic-1.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Classic-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Classic-1.webp","label":"Vogue Classic"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/vogue-Classic-sideview-Gecko-side.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/vogue-Classic-sideview-Gecko-side-650x650.jpg","label":"Classic Vogue met Gecko touch display van de zijkant."},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Classic-2.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Classic-2-650x650.webp","label":"Vogue Classic"}],
       "price": 8995,
       "bullets": [],
       "specs": [
@@ -4354,7 +4377,7 @@
         },
         {
           "label": "Lengte",
-          "value": "200 – 225 cm"
+          "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm"
         },
         {
           "label": "Vorm",
@@ -4362,7 +4385,7 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 6000 – 10.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 6000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10.000"
         },
         {
           "label": "UV",
@@ -4451,7 +4474,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "UV",
@@ -4571,7 +4594,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Aantal luchtregelaars",
@@ -4712,7 +4735,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "UV",
@@ -4785,6 +4808,7 @@
       "title": "Vogue Dynasty",
       "url": "https://www.sunspabenelux.be/p/vogue-dynasty/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Dynasty-1.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Dynasty-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Dynasty-1.webp","label":"Vogue Dynasty"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/vogue-dynasty-sideview-Gecko-side.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/vogue-dynasty-sideview-Gecko-side-650x650.jpg","label":"Zijkant van de Vogue Dynasty."},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Dynasty-Jacuzzi.jpeg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Dynasty-Jacuzzi-650x650.jpeg","label":"Warmtepompen voor jacuzzi"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Dynasty-Spa.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Dynasty-Spa-650x650.webp","label":"Vogue Dynasty Spa"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Dynasty-2.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/Vogue-Dynasty-2-650x650.webp","label":"Vogue Dynasty"}],
       "price": 9495,
       "bullets": [],
       "specs": [
@@ -4802,7 +4826,7 @@
         },
         {
           "label": "Afmeting",
-          "value": "228 × 228 × 88 cm"
+          "value": "228 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â 228 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â 88 cm"
         },
         {
           "label": "Inhoud",
@@ -4866,7 +4890,7 @@
         },
         {
           "label": "Lengte",
-          "value": "225 – 250 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 250 cm"
         },
         {
           "label": "Vorm",
@@ -4874,7 +4898,7 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 6000 – 10.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 6000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10.000"
         },
         {
           "label": "UV",
@@ -4890,6 +4914,7 @@
       "title": "Vogue Prime",
       "url": "https://www.sunspabenelux.be/p/vogue-prime/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2026/06/Vogue-Classic.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/06/Vogue-Classic.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/06/Vogue-Classic-650x650.jpg","label":"Vogue Classic"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/06/vogue-prime-side-scaled.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/06/vogue-prime-side-650x650.jpg","label":"vogue prime side"}],
       "price": 8750,
       "sale_price": 7790,
       "bullets": [],
@@ -4980,7 +5005,7 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 6000 - 10.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 6000 - 10.000"
         },
         {
           "label": "UV",
@@ -4995,6 +5020,7 @@
       "title": "Sunspa Palm Springs",
       "url": "https://www.sunspabenelux.be/p/sunspa-palm-springs/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/palmsprings.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/palmsprings.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/palmsprings-768x768.jpg","label":"palmsprings"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/palmsprings-2.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/palmsprings-2-768x768.webp.jpg","label":"jacuzzi palmsprings vanaf de zijkant"}],
       "price": 9950,
       "bullets": [],
       "specs": [
@@ -5064,7 +5090,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Gevuld gewicht",
@@ -5201,7 +5227,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Aantal waterregelaars",
@@ -5329,7 +5355,7 @@
         },
         {
           "label": "Frame",
-          "value": "Geïmpregneerd hout"
+          "value": "GeÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯mpregneerd hout"
         },
         {
           "label": "Filter",
@@ -5337,7 +5363,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Aantal kussens",
@@ -5392,6 +5418,7 @@
       "title": "Sunspa Lyon",
       "url": "https://www.sunspabenelux.be/p/sunspa-lyon/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/lyon.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/lyon.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/lyon-768x768.jpg","label":"lyon"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/Spa-Lyon-2.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/Spa-Lyon-2-768x768.webp.jpg","label":"jacuzzi lyon vanaf de zijkant"}],
       "price": 10750,
       "bullets": [],
       "specs": [
@@ -5441,7 +5468,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Filter",
@@ -5614,7 +5641,7 @@
         },
         {
           "label": "Frame",
-          "value": "Geïmpregneerd hout"
+          "value": "GeÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯mpregneerd hout"
         },
         {
           "label": "Aantal kussens",
@@ -5638,7 +5665,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Materiaal kuip",
@@ -5730,7 +5757,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Waterval",
@@ -5870,7 +5897,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -6050,7 +6077,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Gevuld gewicht",
@@ -6147,7 +6174,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "WiFi",
@@ -6323,7 +6350,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Filter",
@@ -6527,7 +6554,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Aantal speakers",
@@ -6796,7 +6823,7 @@
         },
         {
           "label": "Houtsoort",
-          "value": "Okoumé"
+          "value": "OkoumÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©"
         },
         {
           "label": "muziekinstallatie",
@@ -7779,7 +7806,7 @@
         },
         {
           "label": "Afmeting",
-          "value": "170 x 185 Ø"
+          "value": "170 x 185 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â¹Ãƒâ€¦Ã¢â‚¬Å“"
         },
         {
           "label": "Merk",
@@ -8485,9 +8512,9 @@
       ]
     },
     {
-      "id": "sauna::barrelsauna-tr170-–-halfglas",
+      "id": "sauna::barrelsauna-tr170-ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“-halfglas",
       "type": "barrelsauna",
-      "title": "Barrelsauna TR170 – Halfglas",
+      "title": "Barrelsauna TR170 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ Halfglas",
       "url": "https://www.sunspabenelux.be/p/barrelsauna-tr170-halfglas/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/11/barrelsauna-tr170-half-glas-650x650.jpg",
       "secondary_image": "images/barrels/Barrelsauna-170-cm-half-glas.webp",
@@ -8500,7 +8527,7 @@
         },
         {
           "label": "Afmeting",
-          "value": "170 x 185 Ø"
+          "value": "170 x 185 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â¹Ãƒâ€¦Ã¢â‚¬Å“"
         },
         {
           "label": "Ventilatie",
@@ -8991,7 +9018,7 @@
         },
         {
           "label": "Afmeting",
-          "value": "210 x 185 Ø"
+          "value": "210 x 185 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â¹Ãƒâ€¦Ã¢â‚¬Å“"
         },
         {
           "label": "Aantal banken",
@@ -9060,9 +9087,9 @@
       ]
     },
     {
-      "id": "sauna::barrelsauna-tr210-–-halfglas",
+      "id": "sauna::barrelsauna-tr210-ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“-halfglas",
       "type": "barrelsauna",
-      "title": "Barrelsauna TR210 – Halfglas",
+      "title": "Barrelsauna TR210 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ Halfglas",
       "url": "https://www.sunspabenelux.be/p/barrelsauna-tr210-halfglas/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/11/barrelsauna-tr210-half-glas.jpg",
       "secondary_image": "images/barrels/Barrelsauna-210-cm-half-glas.webp",
@@ -9075,7 +9102,7 @@
         },
         {
           "label": "Afmeting",
-          "value": "210 x 185 Ø"
+          "value": "210 x 185 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â¹Ãƒâ€¦Ã¢â‚¬Å“"
         },
         {
           "label": "Aantal personen",
@@ -9159,7 +9186,7 @@
         },
         {
           "label": "Afmeting",
-          "value": "230 x 185 Ø"
+          "value": "230 x 185 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â¹Ãƒâ€¦Ã¢â‚¬Å“"
         },
         {
           "label": "Aantal personen",
@@ -9327,7 +9354,7 @@
         },
         {
           "label": "Afmeting",
-          "value": "270 x 214 Ø"
+          "value": "270 x 214 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â¹Ãƒâ€¦Ã¢â‚¬Å“"
         },
         {
           "label": "Aantal personen",
@@ -9489,9 +9516,9 @@
       ]
     },
     {
-      "id": "sauna::barrelsauna-tr230-–-halfglas",
+      "id": "sauna::barrelsauna-tr230-ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“-halfglas",
       "type": "barrelsauna",
-      "title": "Barrelsauna TR230 – Halfglas",
+      "title": "Barrelsauna TR230 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ Halfglas",
       "url": "https://www.sunspabenelux.be/p/barrelsauna-tr230-halfglas/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/11/barrelsauna-tr230-half-glas.jpg",
       "secondary_image": "images/barrels/Barrelsauna-230-cm-half-glas.webp",
@@ -9703,9 +9730,9 @@
       ]
     },
     {
-      "id": "sauna::barrelsauna-tr270-–-halfglas",
+      "id": "sauna::barrelsauna-tr270-ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“-halfglas",
       "type": "barrelsauna",
-      "title": "Barrelsauna TR270 – Halfglas",
+      "title": "Barrelsauna TR270 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ Halfglas",
       "url": "https://www.sunspabenelux.be/p/barrelsauna-tr270-halfglas/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2023/02/barrelsauna-tr270-half-glas-650x650.jpg",
       "secondary_image": "images/barrels/Barrelsauna-270-cm-half-glas.webp",
@@ -9718,7 +9745,7 @@
         },
         {
           "label": "Afmeting",
-          "value": "270 x 214 Ø"
+          "value": "270 x 214 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â¹Ãƒâ€¦Ã¢â‚¬Å“"
         },
         {
           "label": "Accessoires",
@@ -9791,10 +9818,10 @@
       ]
     },
     {
-      "id": "sauna::barrelsauna-tr230-x-–-panorama",
+      "id": "sauna::barrelsauna-tr230-x-ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“-panorama",
       "type": "barrelsauna",
       "showroom": "Lievegem",
-      "title": "Barrelsauna TR230-X – Panorama",
+      "title": "Barrelsauna TR230-X ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ Panorama",
       "url": "https://www.sunspabenelux.be/p/barrelsauna-tr230-x-panorama/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/07/barrelsauna-tr230-panorama-650x650.jpg",
       "secondary_image": "images/barrels/Barrelsauna-Panorama.webp",
@@ -9872,10 +9899,10 @@
       ]
     },
     {
-      "id": "sauna::barrelsauna-tr300-–-halfglas",
+      "id": "sauna::barrelsauna-tr300-ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“-halfglas",
       "type": "barrelsauna",
       "showroom": "Lievegem",
-      "title": "Barrelsauna TR300 – Halfglas",
+      "title": "Barrelsauna TR300 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ Halfglas",
       "url": "https://www.sunspabenelux.be/p/barrelsauna-tr300-halfglas/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/11/barrelsauna-tr300-half-glas-1024x1024.jpg",
       "secondary_image": "images/barrels/Barrelsauna-300-cm-half-glas.webp",
@@ -9888,7 +9915,7 @@
         },
         {
           "label": "Afmeting",
-          "value": "286 x 214 Ø"
+          "value": "286 x 214 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â¹Ãƒâ€¦Ã¢â‚¬Å“"
         },
         {
           "label": "Accessoires",
@@ -10250,7 +10277,7 @@
         },
         {
           "label": "Houtsoort",
-          "value": "Red Cedar, Okoumé"
+          "value": "Red Cedar, OkoumÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â©"
         },
         {
           "label": "Glas",
@@ -10306,9 +10333,9 @@
       ]
     },
     {
-      "id": "sauna::barrelsauna-tr400-–-half-glas",
+      "id": "sauna::barrelsauna-tr400-ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“-half-glas",
       "type": "barrelsauna",
-      "title": "Barrelsauna TR400 – Half glas",
+      "title": "Barrelsauna TR400 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ Half glas",
       "url": "https://www.sunspabenelux.be/p/barrelsauna-tr400-half-glas/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2023/09/barrelsauna-tr400.jpg",
       "secondary_image": "images/barrels/Barrelsauna-400-cm-half-glas.webp",
@@ -10575,15 +10602,15 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 12.000 – 14.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 12.000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 14.000"
         },
         {
           "label": "Lengte",
-          "value": "300 – 400 cm"
+          "value": "300 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 400 cm"
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         },
         {
           "label": "Met of zonder spa",
@@ -10591,7 +10618,7 @@
         },
         {
           "label": "Aantal personen",
-          "value": "5 – 10 Personen"
+          "value": "5 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10 Personen"
         }
       ]
     },
@@ -10601,6 +10628,7 @@
       "title": "Zwemspa Silverline",
       "url": "https://www.sunspabenelux.be/p/zwemspa-silverline/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/zwemspa-silverline-650x650.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/zwemspa-silverline.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/zwemspa-silverline-650x650.jpg","label":"Zwemspa Silverline"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/SPA4500CL-Side-view1-scaled.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/SPA4500CL-Side-view1-scaled-650x650.jpg","label":"SPA4500CL Side view1"}],
       "price": 12995,
       "bullets": [],
       "specs": [
@@ -10690,7 +10718,7 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 12.000 – 14.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 12.000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 14.000"
         },
         {
           "label": "Met of zonder spa",
@@ -10698,15 +10726,15 @@
         },
         {
           "label": "Lengte",
-          "value": "400 – 500 cm"
+          "value": "400 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 500 cm"
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         },
         {
           "label": "Aantal personen",
-          "value": "5 – 10 Personen"
+          "value": "5 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10 Personen"
         }
       ]
     },
@@ -10716,6 +10744,7 @@
       "title": "Zwemspa Mississippi",
       "url": "https://www.sunspabenelux.be/p/zwemspa-mississippi/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-mississippi-650x650.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-mississippi.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-mississippi-650x650.jpg","label":"Zwemspa Mississippi"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-mississippi-2.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-mississippi-2-768x768.webp.jpg","label":"zwemspa mississippi vanaf de zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-mississippi-2-1-1030x616-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-mississippi-2-1-1030x616-1-650x616.webp","label":"zwemspa mississippi vanaf de zijkant in een tuin met ledverlichting aan"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-mississippi-3-1030x687-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-mississippi-3-1030x687-1-650x650.webp","label":"zwemspa mississippi die aan staat"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-mississippi-4-1030x687-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-mississippi-4-1030x687-1-650x650.webp","label":"zwemspa mississippie met ledverlichting"}],
       "price": 13995,
       "bullets": [],
       "specs": [
@@ -10829,7 +10858,7 @@
         },
         {
           "label": "Aantal personen",
-          "value": "5 – 10 Personen"
+          "value": "5 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10 Personen"
         },
         {
           "label": "Met of zonder spa",
@@ -10837,15 +10866,15 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 12.000 – 14.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 12.000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 14.000"
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         },
         {
           "label": "Lengte",
-          "value": "300 – 400 cm"
+          "value": "300 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 400 cm"
         }
       ]
     },
@@ -10855,6 +10884,7 @@
       "title": "Zwemspa Goldline",
       "url": "https://www.sunspabenelux.be/p/zwemspa-goldline/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/10/zwemspa-goldline-650x650.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/zwemspa-goldline.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/zwemspa-goldline-650x650.jpg","label":"Zwemspa Goldline"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/SPA4500CL-Goldline-Side-view1.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/10/SPA4500CL-Goldline-Side-view1-650x650.png","label":"SPA4500CL Goldline \u0026#8211; Side view1"}],
       "price": 14950,
       "bullets": [],
       "specs": [
@@ -10948,7 +10978,7 @@
         },
         {
           "label": "Aantal personen",
-          "value": "5 – 10 Personen"
+          "value": "5 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10 Personen"
         },
         {
           "label": "Met of zonder spa",
@@ -10956,15 +10986,15 @@
         },
         {
           "label": "Lengte",
-          "value": "400 – 500 cm"
+          "value": "400 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 500 cm"
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 14.000 – 16.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 14.000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 16.000"
         }
       ]
     },
@@ -11087,11 +11117,11 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 14.000 – 16.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 14.000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 16.000"
         },
         {
           "label": "Aantal personen",
-          "value": "5 – 10 Personen"
+          "value": "5 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10 Personen"
         },
         {
           "label": "Met of zonder spa",
@@ -11099,11 +11129,11 @@
         },
         {
           "label": "Lengte",
-          "value": "400 – 500 cm"
+          "value": "400 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 500 cm"
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         }
       ]
     },
@@ -11114,6 +11144,7 @@
       "showroom": ["Brugge", "Lievegem"],
       "url": "https://www.sunspabenelux.be/p/zwemspa-pacific/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-pacific.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-pacific.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-pacific-650x650.jpg","label":"Zwemspa Pacific"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-pacific-2.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-pacific-2-768x768.webp.jpg","label":"zwemspa pacific van zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa1-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa1-1-650x650.webp","label":"zwemspa onder overkapping"}],
       "price": 16495,
       "bullets": [],
       "specs": [
@@ -11235,11 +11266,11 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 16.000 – 18.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 16.000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 18.000"
         },
         {
           "label": "Aantal personen",
-          "value": "5 – 10 Personen"
+          "value": "5 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10 Personen"
         },
         {
           "label": "Met of zonder spa",
@@ -11247,11 +11278,11 @@
         },
         {
           "label": "Lengte",
-          "value": "400 – 500 cm"
+          "value": "400 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 500 cm"
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         }
       ]
     },
@@ -11261,6 +11292,7 @@
       "title": "Zwemspa Calgary",
       "url": "https://www.sunspabenelux.be/p/zwemspa-calgary/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-calgary.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-calgary.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-calgary-650x650.jpg","label":"Zwemspa Calgary"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-calgary-2-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-calgary-2-1-768x768.webp.jpg","label":"zwemspa calgary vanaf zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/calgary-zwemspa.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/calgary-zwemspa-650x650.webp","label":"zwemspa calgary die aan staat"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/calgary-zwemspa2-1030x549-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/calgary-zwemspa2-1030x549-1-650x549.webp","label":"actiefoto zwemmer in zwemspa calgary"}],
       "price": 16995,
       "bullets": [],
       "specs": [
@@ -11382,11 +11414,11 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 16.000 – 18.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 16.000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 18.000"
         },
         {
           "label": "Aantal personen",
-          "value": "5 – 10 Personen, 10 – 20 Personen"
+          "value": "5 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10 Personen, 10 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 20 Personen"
         },
         {
           "label": "Met of zonder spa",
@@ -11394,11 +11426,11 @@
         },
         {
           "label": "Lengte",
-          "value": "400 – 500 cm, 500 – 600 cm"
+          "value": "400 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 500 cm, 500 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 600 cm"
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         }
       ]
     },
@@ -11572,6 +11604,7 @@
       "title": "Zwemspa Alicante",
       "url": "https://www.sunspabenelux.be/p/zwemspa-alicante/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-alicante.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-alicante.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-alicante-650x650.jpg","label":"Zwemspa Alicante"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-alicante-2.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-alicante-2-650x603.jpg","label":"zwemspa-alicante-2"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/180372236_2054427614699731_4219879935124551890_n.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/180372236_2054427614699731_4219879935124551890_n-650x650.webp","label":"sfeerfoto zwemspa alicante in tuin"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/206456420_2096658883809937_1944097579693261108_n-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/206456420_2096658883809937_1944097579693261108_n-1-650x650.webp","label":"referentiefoto zwemspa alicante in tuin"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspas.jpeg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspas-650x600.jpeg","label":"sfeerfoto zwemspa alicante in ruime tuin"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/IMG_8439.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/IMG_8439.webp","label":"Zwemspa Alicante"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/165294449_2029197397222753_8823728048707040113_n-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/165294449_2029197397222753_8823728048707040113_n-1-650x650.webp","label":"zwemspa alicantie in een huis/schuur"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/165321760_2029197353889424_5909543377989873586_n.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/165321760_2029197353889424_5909543377989873586_n-650x650.webp","label":"zwemspa alicantie in een huis/schuur"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/172840018_2042195312589628_5042854606841842387_n.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/172840018_2042195312589628_5042854606841842387_n-650x650.webp","label":"zwemspa alicante met achtergrond van een weide"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/177029953_1751897351658875_9222594354389828745_n.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/177029953_1751897351658875_9222594354389828745_n-650x465.webp","label":"half ingegraven zwemspa alicantie in tuin"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/240476728_181602667373964_7844688253606991570_n-1030x1030-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/240476728_181602667373964_7844688253606991570_n-1030x1030-1-650x650.webp","label":"zwemspa die aanstaat in de tuin"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/e990964f-b9b0-4596-ba6c-8d14f5ccb9c5.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/e990964f-b9b0-4596-ba6c-8d14f5ccb9c5-650x650.webp","label":"half ingegraven zwemspa met cover"}],
       "price": 19995,
       "bullets": [],
       "specs": [
@@ -11697,11 +11730,11 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 18.000 – 20.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 18.000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 20.000"
         },
         {
           "label": "Aantal personen",
-          "value": "5 – 10 Personen, 10 – 20 Personen"
+          "value": "5 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10 Personen, 10 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 20 Personen"
         },
         {
           "label": "Met of zonder spa",
@@ -11709,11 +11742,11 @@
         },
         {
           "label": "Lengte",
-          "value": "500 – 600 cm"
+          "value": "500 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 600 cm"
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         }
       ]
     },
@@ -11723,6 +11756,7 @@
       "title": "Zwemspa Catana Standaard",
       "url": "https://www.sunspabenelux.be/p/zwemspa-catana-standaard/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2023/01/zwemspa-catana-standaard.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2023/03/zwemspa-catana-standaard.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2023/03/zwemspa-catana-standaard-650x412.png","label":"zwemspa-catana-standaard"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2024/01/244188090_2174565186019306_4256456388011997481_n.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2024/01/244188090_2174565186019306_4256456388011997481_n-650x650.jpg","label":"Zwemspa Catana"}],
       "price": 20995,
       "bullets": [],
       "specs": [
@@ -11848,11 +11882,11 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 20.000 – 22.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 20.000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 22.000"
         },
         {
           "label": "Aantal personen",
-          "value": "10 – 20 Personen"
+          "value": "10 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 20 Personen"
         },
         {
           "label": "Met of zonder spa",
@@ -11860,11 +11894,11 @@
         },
         {
           "label": "Lengte",
-          "value": "500 – 600 cm"
+          "value": "500 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 600 cm"
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         }
       ]
     },
@@ -11987,15 +12021,15 @@
         },
         {
           "label": "Aantal personen",
-          "value": "5 – 10 Personen"
+          "value": "5 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 10 Personen"
         },
         {
           "label": "Lengte",
-          "value": "500 – 600 cm"
+          "value": "500 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 600 cm"
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         },
         {
           "label": "Met of zonder spa",
@@ -12003,7 +12037,7 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 20.000 – 22.000"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 20.000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 22.000"
         }
       ]
     },
@@ -12013,6 +12047,7 @@
       "title": "Zwemspa Catana Platinum",
       "url": "https://www.sunspabenelux.be/p/zwemspa-catana-platinum/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-catana-platinum.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-catana-platinum.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-catana-platinum-650x650.jpg","label":"Zwemspa Catana platinum"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-catana-detail1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-catana-detail1-768x768.webp.jpg","label":"zwemspa catana vanaf de bovenkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-catana-detail2.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-catana-detail2-768x768.webp.jpg","label":"zwemspa catana vanaf achterkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-catana-detail3.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-catana-detail3-768x768.webp.jpg","label":"zwemspa catana vanaf zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-catana-detail4.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-catana-detail4-768x768.webp.jpg","label":"Zwemspa Catana van Sunspa Benelux"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2024/01/244188090_2174565186019306_4256456388011997481_n.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2024/01/244188090_2174565186019306_4256456388011997481_n-650x650.jpg","label":"Zwemspa Catana"}],
       "price": 22995,
       "bullets": [],
       "specs": [
@@ -12158,7 +12193,7 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 22.000+"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 22.000+"
         },
         {
           "label": "Met of zonder spa",
@@ -12166,15 +12201,15 @@
         },
         {
           "label": "Aantal personen",
-          "value": "10 – 20 Personen"
+          "value": "10 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 20 Personen"
         },
         {
           "label": "Lengte",
-          "value": "500 – 600 cm"
+          "value": "500 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 600 cm"
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         }
       ]
     },
@@ -12325,15 +12360,15 @@
         },
         {
           "label": "Aantal personen",
-          "value": "10 – 20 Personen"
+          "value": "10 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 20 Personen"
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 22.000+"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 22.000+"
         },
         {
           "label": "Met of zonder spa",
@@ -12472,19 +12507,19 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 22.000+"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 22.000+"
         },
         {
           "label": "Lengte",
-          "value": "500 – 600 cm"
+          "value": "500 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 600 cm"
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         },
         {
           "label": "Aantal personen",
-          "value": "10 – 20 Personen"
+          "value": "10 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 20 Personen"
         },
         {
           "label": "Met of zonder spa",
@@ -12498,6 +12533,7 @@
       "title": "Zwemspa Everglade",
       "url": "https://www.sunspabenelux.be/p/zwemspa-everglade/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-650x650.jpg","label":"Zwemspa Everglade"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail-768x768.webp.jpg","label":"bovenkant zwemspa everglade"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail1-768x768.webp.jpg","label":"bovenkant van zwemspa everglade"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail2.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail2-768x768.webp.jpg","label":"zijkant van zwemspa everglade"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail3.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail3-768x768.webp.jpg","label":"zijkant van zwemspa everglade"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail4.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail4-768x768.webp.jpg","label":"zijkant van zwemspa everglade"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail5.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail5-768x768.webp.jpg","label":"bovenzijde van de voorkant van zwemspa everglade"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail7.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail7-768x768.webp.jpg","label":"zijkant van zwemspa everglade"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail6.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/05/zwemspa-everglade-detail6-768x768.webp.jpg","label":"voorkant van zwemspa everglade"}],
       "price": 24995,
       "bullets": [],
       "specs": [
@@ -12599,11 +12635,11 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 22.000+"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 22.000+"
         },
         {
           "label": "Aantal personen",
-          "value": "10 – 20 Personen"
+          "value": "10 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 20 Personen"
         },
         {
           "label": "Met of zonder spa",
@@ -12611,11 +12647,11 @@
         },
         {
           "label": "Lengte",
-          "value": "500 – 600 cm"
+          "value": "500 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 600 cm"
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         }
       ]
     },
@@ -12746,11 +12782,11 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 22.000+"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 22.000+"
         },
         {
           "label": "Aantal personen",
-          "value": "10 – 20 Personen"
+          "value": "10 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 20 Personen"
         },
         {
           "label": "Met of zonder spa",
@@ -12762,7 +12798,7 @@
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         }
       ]
     },
@@ -12772,6 +12808,7 @@
       "title": "Zwemspa Milkyway",
       "url": "https://www.sunspabenelux.be/p/zwemspa-milkyway/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2023/01/zwemspa-milkyway.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2023/01/zwemspa-milkyway.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2023/01/zwemspa-milkyway-650x650.jpg","label":"Zwemspa Milkyway"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2023/01/zwemspa-milkyway-zij.png.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2023/01/zwemspa-milkyway-zij.png-650x541.jpg","label":"zwemspa-milkyway-zij.png"}],
       "price": 32500,
       "bullets": [],
       "specs": [
@@ -12901,7 +12938,7 @@
         },
         {
           "label": "Prijs categorie",
-          "value": "€ 22.000+"
+          "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 22.000+"
         },
         {
           "label": "Lengte",
@@ -12909,11 +12946,11 @@
         },
         {
           "label": "Breedte",
-          "value": "225 – 240 cm"
+          "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm"
         },
         {
           "label": "Aantal personen",
-          "value": "10 – 20 Personen"
+          "value": "10 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 20 Personen"
         },
         {
           "label": "Met of zonder spa",
@@ -12927,6 +12964,7 @@
       "title": "Plug and play Spa Phantom",
       "url": "https://www.sunspabenelux.nl/p/sunspa-phantom/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/Sunspa-Phantom-582x582.png",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Sunspa-Phantom-scaled.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Sunspa-Phantom-650x650.png","label":"Plug and play Spa Phantom"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Sunspa-Phantom-Sideview-scaled.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Sunspa-Phantom-Sideview-650x650.jpg","label":"Sunspa Phantom Sideview"}],
       "price": 4950,
       "bullets": [],
       "specs": [
@@ -13012,7 +13050,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -13042,6 +13080,7 @@
       "title": "Plug and Play Spa Atlantica",
       "url": "https://www.sunspabenelux.nl/p/sunspa-atlantica/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/Sunspa-Atlantica-1-582x574.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Sunspa-Atlantica-1-scaled.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Sunspa-Atlantica-1-650x650.webp","label":"Plug and Play Spa Atlantica"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Sunspa-Atlantica-Zijkant-scaled.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Sunspa-Atlantica-Zijkant-650x650.jpg","label":"Sunspa Atlantica Zijkant"}],
       "price": 4995,
       "bullets": [],
       "specs": [
@@ -13135,7 +13174,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -13165,6 +13204,7 @@
       "title": "Plug and Play Spa Riviera",
       "url": "https://www.sunspabenelux.nl/p/sunspa-riviera/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/Sunspa-Riviera-582x578.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Sunspa-Riviera-scaled.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Sunspa-Riviera-650x650.webp","label":"Plug and Play Spa Riviera"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Sunspa-Riviera-Zijaanzicht-kopie-scaled.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Sunspa-Riviera-Zijaanzicht-kopie-650x650.jpg","label":"Sunspa Riviera Zijaanzicht kopie"}],
       "price": 5450,
       "bullets": [],
       "specs": [
@@ -13254,7 +13294,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -13286,6 +13326,7 @@
       "title": "Fox Elite Moraira",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-moraira/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/Fox-Elite-Moraira-582x582.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-Elite-Moraira-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-Elite-Moraira-1-650x650.webp","label":"Fox Elite Moraira"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-Elite-Moraira-sideview-scaled.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-Elite-Moraira-sideview-650x650.jpg","label":"Fox Elite Moraira sideview"}],
       "price": 8450,
       "bullets": [],
       "specs": [
@@ -13387,7 +13428,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -13413,6 +13454,7 @@
       "title": "Fox Elite Sevilla",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-sevilla/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Sevilla-top-582x578.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Sevilla.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Sevilla-650x650.webp","label":"Fox Elite Sevilla"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Sevilla-Sideview.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Sevilla-Sideview-650x650.jpg","label":"Fox Elite Sevilla Sideview"}],
       "price": 10750,
       "sale_price": 9570,
       "bullets": [],
@@ -13515,7 +13557,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -13543,6 +13585,7 @@
       "title": "Fox Elite Granada",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-granada/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Granada.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Granada.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Granada-650x650.webp","label":"Fox Elite Granada"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Granada-sideview.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Granada-sideview-650x650.jpg","label":"Fox Elite Granada sideview"}],
       "price": 9450,
       "sale_price": 8410,
       "bullets": [],
@@ -13645,7 +13688,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -13671,6 +13714,7 @@
       "title": "Fox Elite Javea",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-javea/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Javea.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Javea.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Javea-650x650.webp","label":"Fox Elite Javea"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Javea-Sideview.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Javea-Sideview-650x650.jpg","label":"Javea Sideview"}],
       "price": 9250,
       "bullets": [],
       "specs": [
@@ -13772,7 +13816,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -13798,6 +13842,7 @@
       "title": "Fox Elite Barcelona",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-barcelona/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Barcelona.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Barcelona-1.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Barcelona-1-650x650.webp","label":"Fox Elite Barcelona"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Barcelona-Sideview-scaled.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Barcelona-Sideview-650x650.webp","label":"Fox Elite Barcelona Sideview"}],
       "price": 8950,
       "sale_price": 7965,
       "bullets": [],
@@ -13900,7 +13945,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -13926,6 +13971,7 @@
       "title": "Fox Elite Valencia",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-valencia/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Sevilla-582x582.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Valencia.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Valencia-650x650.webp","label":"Fox Elite Valencia"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Sevilla-Sideview.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Sevilla-Sideview-650x650.jpg","label":"Fox Elite Sevilla Sideview"}],
       "price": 10950,
       "bullets": [],
       "specs": [
@@ -14027,7 +14073,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -14055,6 +14101,7 @@
       "title": "Fox Elite Formentera",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-formentera/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/Fox-Elite-Formentera-582x582.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-Elite-Formentera.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-Elite-Formentera-650x650.webp","label":"Fox Elite Formentera"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-Elite-Formentera-zijaanzicht.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-Elite-Formentera-zijaanzicht-650x650.jpg","label":"Fox Elite Formentera zijaanzicht"}],
       "price": 10950,
       "bullets": [],
       "specs": [
@@ -14152,7 +14199,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -14184,6 +14231,7 @@
       "title": "Fox Elite Denia",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-denia/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/Fox-Elite-Denia-582x582.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-Elite-Denia.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-Elite-Denia-650x650.webp","label":"Fox Elite Denia"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-Elite-Denia-Zijaanzicht.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-Elite-Denia-Zijaanzicht-650x650.jpg","label":"Fox Elite Denia Zijaanzicht"}],
       "price": 12450,
       "bullets": [],
       "specs": [
@@ -14285,7 +14333,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -14317,6 +14365,7 @@
       "title": "Fox Elite Majorca",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-majorca/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Majorca-582x558.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Majorca.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Majorca-650x650.webp","label":"Fox Elite Majorca"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Majorca-sideview.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Majorca-sideview-650x650.webp","label":"Fox Elite Majorca sideview"}],
       "price": 12950,
       "sale_price": 11525,
       "bullets": [],
@@ -14423,7 +14472,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -14450,6 +14499,7 @@
       "title": "Fox Elite Palma",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-palma/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/02/Fox-Elite-Palma-582x565.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Palma.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Palma-650x650.webp","label":"Fox Elite Palma"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Palma-Sideview.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/02/Fox-Elite-Palma-Sideview-650x650.webp","label":"Fox Elite Palma Sideview"}],
       "price": 12995,
       "bullets": [],
       "specs": [
@@ -14555,7 +14605,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -14582,6 +14632,7 @@
       "title": "Fox Elite Altea",
       "url": "https://www.sunspabenelux.nl/p/fox-elite-altea/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2026/01/ELT2700-2CL-Top-view-582x571.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-Elite-Altea.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-Elite-Altea-650x650.webp","label":"Fox Elite Altea"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-elite-altea-sideview.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2026/01/Fox-elite-altea-sideview-650x650.jpg","label":"Fox elite altea sideview"}],
       "price": 15950,
       "sale_price": 14195,
       "bullets": [],
@@ -14684,7 +14735,7 @@
         },
         {
           "label": "Bodem",
-          "value": "ABS vacuüm bodem"
+          "value": "ABS vacuÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¼m bodem"
         },
         {
           "label": "Besturingssysteem",
@@ -14715,6 +14766,7 @@
     "title": "Bullfrog Spa A6L Choice",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a6l-bullfrog-spa-a6l-choice/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a6l-select-582x582.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a6l-select.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a6l-select-650x650.webp","label":"a6l select"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/A6L-Choice_3pt-Snow_Coastal.png.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/A6L-Choice_3pt-Snow_Coastal.png-650x423.jpg","label":"A6L-Choice_3pt-Snow_Coastal.png"}],
     "price": 17695,
     "sale_price": 15669.5,
     "bullets": [],
@@ -14729,16 +14781,16 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "364 kg" },
       { "label": "Gevuld gewicht", "value": "1955 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "6 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Breedte", "value": "200 – 225 cm" },
-      { "label": "Lengte", "value": "225 – 250 cm" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Breedte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
+      { "label": "Lengte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 250 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Choice" }
     ]
@@ -14750,6 +14802,7 @@
     "title": "Bullfrog Spa A5L Luxury",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a5l-luxury/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a5l-luxury-582x582.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a5l-luxury.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a5l-luxury-650x650.webp","label":"a5l luxury"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a5l-select.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a5l-select-650x650.jpg","label":"a5l-select"}],
     "price": 18195,
     "sale_price": 15660,
     "bullets": [],
@@ -14763,17 +14816,17 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "290 kg" },
       { "label": "Gevuld gewicht", "value": "1377 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "3 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Prijs categorie", "value": "€ 18.000 – 20.000" },
-      { "label": "Lengte", "value": "0 – 200 cm" },
-      { "label": "Breedte", "value": "200 – 225 cm" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Prijs categorie", "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 18.000 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 20.000" },
+      { "label": "Lengte", "value": "0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 200 cm" },
+      { "label": "Breedte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Luxury" }
     ]
@@ -14785,6 +14838,7 @@
     "title": "Bullfrog Spa A6L Luxury",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a6l-luxury/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a6l-select-582x582.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a6l-select.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a6l-select-650x650.webp","label":"a6l select"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/A6L-Choice_3pt-Snow_Coastal.png.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/A6L-Choice_3pt-Snow_Coastal.png-650x423.jpg","label":"A6L-Choice_3pt-Snow_Coastal.png"}],
     "price": 19995,
     "sale_price": 17415,
     "bullets": [],
@@ -14799,16 +14853,16 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "364 kg" },
       { "label": "Gevuld gewicht", "value": "1955 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "6 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Breedte", "value": "200 – 225 cm" },
-      { "label": "Lengte", "value": "225 – 250 cm" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Breedte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
+      { "label": "Lengte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 250 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Luxury" }
     ]
@@ -14820,6 +14874,7 @@
     "title": "Bullfrog Spa A5L Select",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a5l-select/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A5L_Top-Down-582x582.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A5L_Top-Down.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A5L_Top-Down-650x650.jpg","label":"A5L TOP DOWN"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a5l-select.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a5l-select-650x650.jpg","label":"a5l-select"}],
     "price": 20095,
     "sale_price": 18089,
     "bullets": [],
@@ -14833,14 +14888,14 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "290 kg" },
       { "label": "Gevuld gewicht", "value": "1377 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "3 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Select" }
     ]
@@ -14852,6 +14907,7 @@
     "title": "Bullfrog Spa A6L Select",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a6l-select/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A6L_2-Pump_Top-Down-582x582.jpg",
+    "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A6L_2-Pump_Top-Down.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A6L_2-Pump_Top-Down-650x650.jpg","label":"A6L-TOP-VIEW"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A6L-Select_3pt-Mist_Timber-1536x864.png.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A6L-Select_3pt-Mist_Timber-1536x864.png-650x650.jpg","label":"A6L-Select_3pt-Mist_Timber-1536\u0026#215;864.png"}],
     "price": 21495,
     "sale_price": 19541,
     "bullets": [],
@@ -14866,17 +14922,17 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "364 kg" },
       { "label": "Gevuld gewicht", "value": "1955 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "WiFi", "value": "Ja" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "6 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Breedte", "value": "200 – 225 cm" },
-      { "label": "Lengte", "value": "225 – 250 cm" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Breedte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
+      { "label": "Lengte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 250 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Select" }
     ]
@@ -14889,6 +14945,7 @@
     "title": "Bullfrog Spa A7L Choice",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7l-choice/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7l-choice-582x582.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a7l-choice.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a7l-choice-650x650.webp","label":"a7l choice"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/A7L-Choice_3pt-Snow_Coastal-2048x1152.png.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/A7L-Choice_3pt-Snow_Coastal-2048x1152.png-650x650.jpg","label":"A7L-Choice_3pt-Snow_Coastal-2048\u0026#215;1152.png"}],
     "price": 21795,
     "sale_price": 19783,
     "bullets": [],
@@ -14903,17 +14960,17 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "397 kg" },
       { "label": "Gevuld gewicht", "value": "2321 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "WiFi", "value": "Ja" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "7 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Breedte", "value": "200 – 225 cm" },
-      { "label": "Lengte", "value": "200 – 225 cm" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Breedte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
+      { "label": "Lengte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Choice" }
     ]
@@ -14925,6 +14982,7 @@
     "title": "Bullfrog Spa A7D Choice",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7d-choice/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7d-select-582x582.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a7d-select.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a7d-select-650x650.webp","label":"a7d select"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/A7L-Choice_3pt-Snow_Coastal-2048x1152.png.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/A7L-Choice_3pt-Snow_Coastal-2048x1152.png-650x650.jpg","label":"A7L-Choice_3pt-Snow_Coastal-2048\u0026#215;1152.png"}],
     "price": 21795,
     "sale_price": 19783,
     "bullets": [],
@@ -14939,17 +14997,17 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "408 kg" },
       { "label": "Gevuld gewicht", "value": "2253 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "WiFi", "value": "Ja" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "7 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Lengte", "value": "200 – 225 cm" },
-      { "label": "Breedte", "value": "200 – 225 cm" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Lengte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
+      { "label": "Breedte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Choice" }
     ]
@@ -14961,6 +15019,7 @@
     "title": "Bullfrog Spa A7L Luxury",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7l-luxury/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7l-choice-582x582.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a7l-choice.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a7l-choice-650x650.webp","label":"a7l choice"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/A7L-Choice_3pt-Snow_Coastal-2048x1152.png.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/A7L-Choice_3pt-Snow_Coastal-2048x1152.png-650x650.jpg","label":"A7L-Choice_3pt-Snow_Coastal-2048\u0026#215;1152.png"}],
     "price": 24095,
     "sale_price": 21529,
     "bullets": [],
@@ -14975,17 +15034,17 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "397 kg" },
       { "label": "Gevuld gewicht", "value": "2321 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "WiFi", "value": "Ja" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "7 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Breedte", "value": "200 – 225 cm" },
-      { "label": "Lengte", "value": "200 – 225 cm" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Breedte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
+      { "label": "Lengte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Luxury" }
     ]
@@ -14997,6 +15056,7 @@
     "title": "Bullfrog Spa A7D Luxury",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7d-luxury/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a7d-select-582x582.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a7d-select.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a7d-select-650x650.webp","label":"a7d select"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/A7L-Choice_3pt-Snow_Coastal-2048x1152.png.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/A7L-Choice_3pt-Snow_Coastal-2048x1152.png-650x650.jpg","label":"A7L-Choice_3pt-Snow_Coastal-2048\u0026#215;1152.png"}],
     "price": 24095,
     "sale_price": 21529,
     "bullets": [],
@@ -15011,16 +15071,16 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "408 kg" },
       { "label": "Gevuld gewicht", "value": "2253 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "7 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Lengte", "value": "200 – 225 cm" },
-      { "label": "Breedte", "value": "200 – 225 cm" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Lengte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
+      { "label": "Breedte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Luxury" }
     ]
@@ -15032,12 +15092,13 @@
     "title": "Bullfrog Spa A8L Choice",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a8l-choice/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a8l-choice-582x582.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a8l-choice.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a8l-choice-650x650.webp","label":"a8l choice"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A8L_Choice_3pt-Almond_Coastal-scaled-1536x1024-1.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A8L_Choice_3pt-Almond_Coastal-scaled-1536x1024-1-650x650.jpg","label":"A8L_Choice_3pt-Almond_Coastal-scaled-1536\u0026#215;1024"}],
     "price": 22808.5,
     "sale_price": 19783,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "8 zitplaatsen" },
-      { "label": "Ligplaatsen", "value": "0 – enkel zitplaatsen" },
+      { "label": "Ligplaatsen", "value": "0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ enkel zitplaatsen" },
       { "label": "Afmeting", "value": "239 x 239 x 97 cm" },
       { "label": "Inhoud", "value": "1730 L" },
       { "label": "Aantal kussens", "value": "6" },
@@ -15046,16 +15107,16 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "447 kg" },
       { "label": "Gevuld gewicht", "value": "2796 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "8 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Lengte", "value": "225 – 250 cm" },
-      { "label": "Breedte", "value": "225 – 240 cm" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Lengte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 250 cm" },
+      { "label": "Breedte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Choice" }
     ]
@@ -15068,6 +15129,7 @@
     "title": "Bullfrog Spa A7D select",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7d-select/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A7D_Top-Down-582x582.jpg",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A7D_Top-Down.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A7D_Top-Down-650x650.jpg","label":"Bullfrog Spa A7D"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A7D-Select_3pt-Mist_Timber-1536x864.png.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A7D-Select_3pt-Mist_Timber-1536x864.png-650x650.jpg","label":"A7D-Select_3pt-Mist_Timber-1536\u0026#215;864.png"}],
     "price": 25995,
     "sale_price": 23958,
     "bullets": [],
@@ -15082,16 +15144,16 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "408 kg" },
       { "label": "Gevuld gewicht", "value": "2253 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "7 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Lengte", "value": "200 – 225 cm" },
-      { "label": "Breedte", "value": "200 – 225 cm" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Lengte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
+      { "label": "Breedte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Select" }
     ]
@@ -15103,6 +15165,7 @@
     "title": "Bullfrog Spa A7L Select",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a7l-select/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A7L_Top-Down-scaled-582x582.png",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A7L_Top-Down-scaled.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A7L_Top-Down-scaled-650x650.png","label":"A7L-TOP-DOWN"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A7L-Select_3pt-Mist_Timber-650x650-1.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A7L-Select_3pt-Mist_Timber-650x650-1.jpg","label":"A7L-Select_3pt-Mist_Timber-650\u0026#215;650"}],
     "price": 25995,
     "sale_price": 23958,
     "bullets": [],
@@ -15117,16 +15180,16 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "397 kg" },
       { "label": "Gevuld gewicht", "value": "2321 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "7 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Breedte", "value": "200 – 225 cm" },
-      { "label": "Lengte", "value": "200 – 225 cm" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Breedte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
+      { "label": "Lengte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Select" }
     ]
@@ -15138,12 +15201,13 @@
     "title": "Bullfrog Spa A8L Luxury",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a8l-luxury/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/07/a8l-choice-582x582.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a8l-choice.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/07/a8l-choice-650x650.webp","label":"a8l choice"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A8L_Choice_3pt-Almond_Coastal-scaled-1536x1024-1.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A8L_Choice_3pt-Almond_Coastal-scaled-1536x1024-1-650x650.jpg","label":"A8L_Choice_3pt-Almond_Coastal-scaled-1536\u0026#215;1024"}],
     "price": 24554,
     "sale_price": 21529,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "8 zitplaatsen" },
-      { "label": "Ligplaatsen", "value": "0 – enkel zitplaatsen" },
+      { "label": "Ligplaatsen", "value": "0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ enkel zitplaatsen" },
       { "label": "Afmeting", "value": "239 x 239 x 97 cm" },
       { "label": "Inhoud", "value": "1730 L" },
       { "label": "Aantal kussens", "value": "6" },
@@ -15152,16 +15216,16 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "447 kg" },
       { "label": "Gevuld gewicht", "value": "2796 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "8 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Lengte", "value": "225 – 250 cm" },
-      { "label": "Breedte", "value": "225 – 240 cm" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Lengte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 250 cm" },
+      { "label": "Breedte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Luxury" }
     ]
@@ -15173,12 +15237,13 @@
     "title": "Bullfrog Spa A8L Select",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a8l-select/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A8L_Top-Down-scaled-582x582.png",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A8L_Top-Down-scaled.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A8L_Top-Down-scaled-650x650.png","label":"A8L-TOP DOWN"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A8L-Select_3pt-Mist_Timber-650x650-1.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A8L-Select_3pt-Mist_Timber-650x650-1.jpg","label":"A8L-Select_3pt-Mist_Timber-650\u0026#215;650"}],
     "price": 27467,
     "sale_price": 23958,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "8 zitplaatsen" },
-      { "label": "Ligplaatsen", "value": "0 – enkel zitplaatsen" },
+      { "label": "Ligplaatsen", "value": "0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ enkel zitplaatsen" },
       { "label": "Afmeting", "value": "239 x 239 x 97 cm" },
       { "label": "Inhoud", "value": "1730 L" },
       { "label": "Aantal kussens", "value": "6" },
@@ -15187,16 +15252,16 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "447 kg" },
       { "label": "Gevuld gewicht", "value": "2796 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "8 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Lengte", "value": "225 – 250 cm" },
-      { "label": "Breedte", "value": "225 – 240 cm" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Lengte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 250 cm" },
+      { "label": "Breedte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Select" }
     ]
@@ -15208,6 +15273,7 @@
     "title": "Bullfrog Spa A9L Select",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-a9l/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/A9L_Top-Down-scaled-582x582.png",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A9L_Top-Down-scaled.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A9L_Top-Down-scaled-650x650.png","label":"A9L Top-Down"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A9L-Select_3pt-Mist_Timber-e1750670851415.png.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/A9L-Select_3pt-Mist_Timber-e1750670851415.png-650x650.jpg","label":"A9L-Select_3pt-Mist_Timber-e1750670851415.png"}],
     "price": 32495,
     "sale_price": 30492,
     "bullets": [],
@@ -15223,17 +15289,17 @@
       { "label": "Mini-LED verlichting", "value": "A Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "488 kg" },
       { "label": "Gevuld gewicht", "value": "3283 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "9 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Lengte", "value": "250 – 300 cm" },
-      { "label": "Prijs categorie", "value": "€ 22.000+" },
-      { "label": "Breedte", "value": "200 – 225 cm" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Lengte", "value": "250 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 300 cm" },
+      { "label": "Prijs categorie", "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 22.000+" },
+      { "label": "Breedte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
       { "label": "Bullfrog Serie", "value": "A-serie" },
       { "label": "Uitvoering (Bullfrog)", "value": "Select" }
     ]
@@ -15245,12 +15311,13 @@
     "title": "Bullfrog Spa M6",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-m6/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/Bullfrog-m6-kuipwit-582x656.webp",
+    "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/Bullfrog-m6-kuipwit.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/Bullfrog-m6-kuipwit-650x650.webp","label":"Bullfrog m6 kuipwit"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/M9_Ebony-Oxydium.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/M9_Ebony-Oxydium-650x650.jpg","label":"M9_Ebony-Oxydium"}],
     "price": 28195,
     "sale_price": 26499,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "7 zitplaatsen" },
-      { "label": "Ligplaatsen", "value": "0 – enkel zitplaatsen" },
+      { "label": "Ligplaatsen", "value": "0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ enkel zitplaatsen" },
       { "label": "Afmeting", "value": "231 x 203 x 86 cm" },
       { "label": "Inhoud", "value": "1464 Liter" },
       { "label": "Aantal kussens", "value": "4" },
@@ -15259,17 +15326,17 @@
       { "label": "Mini-LED verlichting", "value": "M Series Premium Exterior Lighting, M Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "363 kg" },
       { "label": "Gevuld gewicht", "value": "2292 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "7 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Lengte", "value": "225 – 250 cm" },
-      { "label": "Breedte", "value": "200 – 225 cm" },
-      { "label": "Prijs categorie", "value": "€ 22.000+" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Lengte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 250 cm" },
+      { "label": "Breedte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
+      { "label": "Prijs categorie", "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 22.000+" },
       { "label": "Bullfrog Serie", "value": "M-serie" }
     ]
   },
@@ -15281,12 +15348,13 @@
     "title": "Bullfrog Spa M7",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-m7/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/M7-Bullfrog-582x582.webp",
+    "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/M7-Bullfrog.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/M7-Bullfrog-650x650.webp","label":"M7 Bullfrog"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/Image_Consumer_M7_3PT_Shoreline-Solitude-scaled-650x650-1.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/Image_Consumer_M7_3PT_Shoreline-Solitude-scaled-650x650-1.jpg","label":"Image_Consumer_M7_3PT_Shoreline-Solitude-scaled-650\u0026#215;650"}],
     "price": 28895,
     "sale_price": 27225,
     "bullets": [],
     "specs": [
       { "label": "Zitplaatsen", "value": "9 zitplaatsen" },
-      { "label": "Ligplaatsen", "value": "0 – enkel zitplaatsen" },
+      { "label": "Ligplaatsen", "value": "0 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ enkel zitplaatsen" },
       { "label": "Afmeting", "value": "231 x 231 x 94 cm" },
       { "label": "Inhoud", "value": "1716 L" },
       { "label": "Aantal kussens", "value": "6" },
@@ -15295,17 +15363,17 @@
       { "label": "Mini-LED verlichting", "value": "M Series Premium Exterior Lighting, M Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "408 kg" },
       { "label": "Gevuld gewicht", "value": "2689 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "9 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Lengte", "value": "225 – 250 cm" },
-      { "label": "Breedte", "value": "225 – 240 cm" },
-      { "label": "Prijs categorie", "value": "€ 22.000+" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Lengte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 250 cm" },
+      { "label": "Breedte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm" },
+      { "label": "Prijs categorie", "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 22.000+" },
       { "label": "Bullfrog Serie", "value": "M-serie" }
     ]
   },
@@ -15316,6 +15384,7 @@
     "title": "Bullfrog Spa M8",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-m8/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/bullfrog-m8-kuip-582x656.webp",
+    "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/bullfrog-m8-kuip.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/bullfrog-m8-kuip-650x650.webp","label":"Bullfrog Spa A7L"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/M8_Whitewash-Ash.png.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/M8_Whitewash-Ash.png-650x650.jpg","label":"M8_Whitewash-Ash.png"}],
     "price": 30995,
     "sale_price": 29282,
     "bullets": [],
@@ -15331,17 +15400,17 @@
       { "label": "Mini-LED verlichting", "value": "M Series Premium Exterior Lighting, M Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "464 kg" },
       { "label": "Gevuld gewicht", "value": "2834 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "9 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Lengte", "value": "225 – 250 cm" },
-      { "label": "Breedte", "value": "200 – 225 cm" },
-      { "label": "Prijs categorie", "value": "€ 22.000+" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Lengte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 250 cm" },
+      { "label": "Breedte", "value": "200 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 225 cm" },
+      { "label": "Prijs categorie", "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 22.000+" },
       { "label": "Bullfrog Serie", "value": "M-serie" }
     ]
   },
@@ -15352,6 +15421,7 @@
     "title": "Bullfrog Spa M9",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-m9/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/bullfrog-M9-kuip-582x656.webp",
+    "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/bullfrog-M9-kuip.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/bullfrog-M9-kuip-650x650.webp","label":"bullfrog M9 kuip"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/Image_Consumer_M9_3PT_Timber-Solitude-1536x1121.png.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/Image_Consumer_M9_3PT_Timber-Solitude-1536x1121.png-650x650.jpg","label":"Image_Consumer_M9_3PT_Timber-Solitude-1536\u0026#215;1121.png"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/20241008_BF_KWP_DAY01_SHOT06_2743-scaled.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/20241008_BF_KWP_DAY01_SHOT06_2743-scaled-650x650.jpg","label":"Bullfrog Jetpaks"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/20241008_BF_KWP_DAY01_SHOT07_2943-scaled.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/20241008_BF_KWP_DAY01_SHOT07_2943-scaled-650x650.jpg","label":"20241008_BF_KWP_DAY01_SHOT07_2943"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/M-Series-step_Shoreline-scaled.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/M-Series-step_Shoreline-scaled-650x650.jpg","label":"M-Series-step_Shoreline"}],
     "price": 33295,
     "sale_price": 31642,
     "bullets": [],
@@ -15367,18 +15437,18 @@
       { "label": "Mini-LED verlichting", "value": "M Series Premium Exterior Lighting, M Series Premium Interior LED Lighting" },
       { "label": "Leeg gewicht", "value": "548 kg" },
       { "label": "Gevuld gewicht", "value": "3476 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
-      { "label": "Waterval", "value": "Premium geïntegreerde watervallen" },
+      { "label": "Waterval", "value": "Premium geÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ntegreerde watervallen" },
       { "label": "WiFi", "value": "Ja" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "10 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Lengte", "value": "225 – 250 cm" },
-      { "label": "Breedte", "value": "225 – 240 cm" },
-      { "label": "Prijs categorie", "value": "€ 22.000+" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Lengte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 250 cm" },
+      { "label": "Breedte", "value": "225 ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ 240 cm" },
+      { "label": "Prijs categorie", "value": "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ 22.000+" },
       { "label": "Bullfrog Serie", "value": "M-serie" }
     ]
   },
@@ -15389,6 +15459,7 @@
     "title": "Bullfrog Spa STIL5",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-stil5/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/STIL5-Bullfrog-scaled-582x582.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/STIL5-Bullfrog-scaled.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/STIL5-Bullfrog-scaled-650x650.webp","label":"STIL5 Bullfrog"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/STIL5-3pt.png.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/STIL5-3pt.png.jpg","label":"STIL5-3pt.png"}],
     "price": 17595,
     "sale_price": 17242.5,
     "bullets": [],
@@ -15402,15 +15473,15 @@
       { "label": "Mini-LED verlichting", "value": "Premium interieurverlichting" },
       { "label": "Leeg gewicht", "value": "295 kg" },
       { "label": "Gevuld gewicht", "value": "1075 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
       { "label": "Waterval", "value": "Ja" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "4 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Premium JetPak® Seats", "value": "3" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Premium JetPakÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â® Seats", "value": "3" },
       { "label": "Bullfrog Serie", "value": "STIL-serie" }
     ]
   },
@@ -15421,6 +15492,7 @@
     "title": "Bullfrog Spa STIL7",
     "url": "https://www.sunspabenelux.nl/p/bullfrog-spa-stil7/",
     "image": "https://www.sunspabenelux.nl/wp-content/uploads/2025/06/STIL7-top--582x582.webp",
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/STIL7-top-.webp","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/STIL7-top--650x650.webp","label":"STIL7-top"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/STIL7-sideview.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2025/06/STIL7-sideview-650x650.jpg","label":"STIL7-sideview"}],
     "price": 20295,
     "sale_price": 19965,
     "bullets": [],
@@ -15435,15 +15507,15 @@
       { "label": "Mini-LED verlichting", "value": "Premium interieurverlichting" },
       { "label": "Leeg gewicht", "value": "375 kg" },
       { "label": "Gevuld gewicht", "value": "1555 kg" },
-      { "label": "Frame", "value": "EnduraFrame™" },
-      { "label": "Filter", "value": "Simplicity™ Filtration System" },
+      { "label": "Frame", "value": "EnduraFrameÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Filter", "value": "SimplicityÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Filtration System" },
       { "label": "muziekinstallatie", "value": "Hidden in-wall speaker system" },
       { "label": "Stroom", "value": "220V / 50Amp" },
       { "label": "Waterval", "value": "Ja" },
       { "label": "Besturingssysteem", "value": "Digitaal besturingssysteem" },
       { "label": "Aantal personen", "value": "6 personen" },
-      { "label": "Jet type", "value": "Kies uw eigen Jetpaks™" },
-      { "label": "Premium JetPak® Seats", "value": "3" },
+      { "label": "Jet type", "value": "Kies uw eigen JetpaksÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢" },
+      { "label": "Premium JetPakÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â® Seats", "value": "3" },
       { "label": "Bullfrog Serie", "value": "STIL-serie" }
     ]
   },

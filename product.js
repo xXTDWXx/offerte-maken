@@ -407,19 +407,36 @@ function wireSpaColorSwatches() {
 }
 
 function getProductImageList(product) {
-  const images = [
-    { src: product?.image, label: 'Foto 1' },
-    { src: product?.secondary_image, label: 'Foto 2' },
-  ];
+  const images = [];
   const seen = new Set();
 
-  return images.filter(item => {
-    const src = String(item.src || '').trim();
-    if (!src || seen.has(src)) return false;
+  function addImage(image, index) {
+    const isObject = image && typeof image === 'object';
+    const src = String(isObject ? image.src : image || '').trim().replace(/^src=/i, '');
+    const thumbnail = String(isObject ? image.thumbnail || src : src).trim().replace(/^src=/i, '');
+    if (!src || seen.has(src)) return;
     seen.add(src);
-    item.src = src;
-    return true;
-  });
+    images.push({
+      src,
+      thumbnail: thumbnail || src,
+      label: String(isObject ? image.label || image.alt || `Foto ${index + 1}` : `Foto ${index + 1}`)
+    });
+  }
+
+  const galleryImages = Array.isArray(product?.gallery_images) ? product.gallery_images : [];
+
+  // Bij nieuwe galerijen is de eerste bronfoto de hoofdfoto. Oudere producten
+  // behouden hun bestaande hoofdfoto en eventuele oude images-veld.
+  if (galleryImages.length) {
+    galleryImages.forEach(addImage);
+  } else {
+    addImage(product?.image, 0);
+  }
+
+  (Array.isArray(product?.images) ? product.images : []).forEach(addImage);
+  addImage(product?.secondary_image, images.length);
+
+  return images;
 }
 
 function syncProductImageCarouselControls() {
@@ -462,7 +479,7 @@ function renderProductImageCarousel(product) {
   if (productImageThumbs) {
     productImageThumbs.innerHTML = productImages.map((image, index) => `
       <button class="product-thumb" type="button" data-product-image-index="${index}" aria-label="${escapeHtml(image.label)}" aria-pressed="false">
-        <img src="${escapeHtml(image.src)}" alt="${escapeHtml(image.label)}" loading="lazy">
+        <img src="${escapeHtml(image.thumbnail || image.src)}" alt="${escapeHtml(image.label)}" loading="lazy">
       </button>
     `).join('');
   }
