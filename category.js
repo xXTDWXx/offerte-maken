@@ -102,79 +102,21 @@ function isMySpaBtwActionProduct(p) {
   return (type === 'spa' || type === "spa's") && (merk.includes('myspa') || title.includes('myspa'));
 }
 
-function isVogueActionProduct(p) {
-  const type = normalize(p?.type);
-  const merk = normalize(getMerk(p));
-  const title = normalize(p?.title);
-
-  return (type === 'spa' || type === "spa's") && (merk.includes('vogue') || title.includes('vogue'));
-}
-
-function isBullfrogActionProduct(p) {
-  return normalize(getMerk(p)).includes('bullfrog') || normalize(p?.title).includes('bullfrog');
-}
-
-function getProductSalePrice(p) {
-  const salePrice = Number(p?.sale_price || 0);
-  return Number.isFinite(salePrice) && salePrice > 0 ? roundCurrency(salePrice) : 0;
-}
-
 function getMySpaBtwAction(p, price = Number(p?.price || 0)) {
   const originalPrice = Number(price || 0);
 
-  if (!Number.isFinite(originalPrice) || originalPrice <= 0) {
+  if (!Number.isFinite(originalPrice) || originalPrice <= 0 || !isMySpaBtwActionProduct(p)) {
     return null;
   }
 
-  if (isMySpaBtwActionProduct(p)) {
-    const actionPrice = roundCurrency(originalPrice / 1.21);
-
-    return {
-      originalPrice,
-      actionPrice,
-      discount: roundCurrency(originalPrice - actionPrice)
-    };
-  }
-
-  const salePrice = getProductSalePrice(p);
-
-  if (salePrice <= 0 || salePrice >= originalPrice) {
-    return null;
-  }
-
-  return {
-    originalPrice,
-    actionPrice: salePrice,
-    discount: roundCurrency(originalPrice - salePrice)
-  };
+  const actionPrice = roundCurrency(originalPrice / 1.21);
+  return { originalPrice, actionPrice, discount: roundCurrency(originalPrice - actionPrice) };
 }
 
 function mySpaBtwActionLabel(p) {
-  if (isMySpaBtwActionProduct(p)) {
-    return window.SunspaI18n?.isFrench?.()
-      ? 'Action TVA 21 %'
-      : '21% btw-actie';
-  }
-
-  if (getProductSalePrice(p) > 0) {
-    if (isBullfrogActionProduct(p)) {
-      return window.SunspaI18n?.isFrench?.()
-        ? 'Promotion Bullfrog'
-        : 'Bullfrog actie';
-    }
-
-    if (isVogueActionProduct(p)) {
-      return window.SunspaI18n?.isFrench?.()
-        ? 'Promotion Vogue'
-        : 'Vogue actie';
-    }
-
-    return window.SunspaI18n?.isFrench?.()
-      ? 'Promotion stock'
-      : 'Voorraadactie';
-  }
-
-  return window.SunspaI18n?.isFrench?.() ? 'Promotion' : 'Actie';
+  return window.SunspaI18n?.isFrench?.()
+    ? 'Action TVA 21 %'
+    : '21% btw-actie';
 }
 
 function discountLabel() {

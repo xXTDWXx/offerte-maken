@@ -146,84 +146,21 @@ function isMySpaBtwActionProduct(product) {
   return (type === 'spa' || type === "spa's") && (merk.includes('myspa') || title.includes('myspa'));
 }
 
-function isVogueActionProduct(product) {
-  const type = String(product?.type || '').toLowerCase().trim();
-  const merk = getMerk(product).toLowerCase();
-  const title = String(product?.title || '').toLowerCase();
-
-  return (type === 'spa' || type === "spa's") && (merk.includes('vogue') || title.includes('vogue'));
-}
-
-function isBullfrogActionProduct(product) {
-  const merk = getMerk(product).toLowerCase();
-  const title = String(product?.title || '').toLowerCase();
-  return merk.includes('bullfrog') || title.includes('bullfrog');
-}
-
-function getProductSalePrice(product) {
-  const salePrice = Number(product?.sale_price || 0);
-  return Number.isFinite(salePrice) && salePrice > 0 ? roundCurrency(salePrice) : 0;
-}
-
 function getMySpaBtwAction(product, price = Number(product?.price || 0)) {
   const originalPrice = Number(price || 0);
 
-  if (!Number.isFinite(originalPrice) || originalPrice <= 0) {
+  if (!Number.isFinite(originalPrice) || originalPrice <= 0 || !isMySpaBtwActionProduct(product)) {
     return null;
   }
 
-  // De 21%-btw-actie geldt uitsluitend voor MySpa.
-  // De originele prijs wordt gedeeld door 1,21.
-  if (isMySpaBtwActionProduct(product)) {
-    const actionPrice = roundCurrency(originalPrice / 1.21);
-
-    return {
-      originalPrice,
-      actionPrice,
-      discount: roundCurrency(originalPrice - actionPrice)
-    };
-  }
-
-  // Bestaande sale_price-acties voor andere producten behouden.
-  const salePrice = getProductSalePrice(product);
-
-  if (salePrice <= 0 || salePrice >= originalPrice) {
-    return null;
-  }
-
-  return {
-    originalPrice,
-    actionPrice: salePrice,
-    discount: roundCurrency(originalPrice - salePrice)
-  };
+  const actionPrice = roundCurrency(originalPrice / 1.21);
+  return { originalPrice, actionPrice, discount: roundCurrency(originalPrice - actionPrice) };
 }
 
 function mySpaBtwActionLabel(product) {
-  if (isMySpaBtwActionProduct(product)) {
-    return window.SunspaI18n?.isFrench?.()
-      ? 'Action TVA 21 %'
-      : '21% btw-actie';
-  }
-
-  if (getProductSalePrice(product) > 0) {
-    if (isBullfrogActionProduct(product)) {
-      return window.SunspaI18n?.isFrench?.()
-        ? 'Promotion Bullfrog'
-        : 'Bullfrog actie';
-    }
-
-    if (isVogueActionProduct(product)) {
-      return window.SunspaI18n?.isFrench?.()
-        ? 'Promotion Vogue'
-        : 'Vogue actie';
-    }
-
-    return window.SunspaI18n?.isFrench?.()
-      ? 'Promotion stock'
-      : 'Voorraadactie';
-  }
-
-  return window.SunspaI18n?.isFrench?.() ? 'Promotion' : 'Actie';
+  return window.SunspaI18n?.isFrench?.()
+    ? 'Action TVA 21 %'
+    : '21% btw-actie';
 }
 
 function discountLabel() {

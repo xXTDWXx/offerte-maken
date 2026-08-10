@@ -164,6 +164,10 @@
     "BETAALD MET": "PAYÉ AVEC",
 
     "Actie": "Promotion",
+    "ACTIE OP MYSPA": "PROMOTION MYSPA",
+    "Alleen op de MySpa-reeks geldt momenteel een actieprijs. De korting is direct verwerkt in de catalogus en op de offerte.": "Seule la gamme MySpa bénéficie actuellement d'un prix promotionnel. La réduction est directement intégrée au catalogue et à l'offre.",
+    "21% btw-actie": "Action TVA 21 %",
+    "De actieprijs wordt uitsluitend toegepast op de MySpa-reeks.": "Le prix promotionnel s'applique uniquement à la gamme MySpa.",
     "10% KORTING OP ALLE VOGUE & MYSPA MODELLEN": "10 % DE RÉDUCTION SUR TOUS LES MODÈLES VOGUE ET MYSPA",
     "Profiteer tijdelijk van extra voordeel op onze Vogue en MySpa modellen.": "Profitez temporairement d'un avantage supplémentaire sur nos modèles Vogue et MySpa.",
     "Tijdelijk voordeel": "Avantage temporaire",
