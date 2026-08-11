@@ -1,2133 +1,2156 @@
 {
+  "generatedAt": "2026-08-11T11:21:29.2103707Z",
+  "source": {
+    "currentStock": {
+      "type": "sharepoint-xlsx",
+      "url": "https://avlemmix-my.sharepoint.com/:x:/p/angelo/IQBho8ccoP7iTLW5lf8ESyxXAaPNn2tHRpmmSEhee_sVJeE?e=caKQnF&download=1",
+      "live": true
+    },
+    "incomingStock": {
+      "type": "sharepoint-xlsx",
+      "url": "https://avlemmix-my.sharepoint.com/:x:/p/angelo/EVXDPHIAsa1IjPgA3aHlVAQBPaLBDEWYcoaZkm82kF57Bg?e=H2xx8C&download=1",
+      "live": true
+    },
+    "containerArrivals": {
+      "type": "password-protected-html",
+      "url": "https://www.sunspa-dealer.nl/stock/conatiner-arrivals/",
+      "live": true
+    }
+  },
   "models": [
     {
-      "cabinets": [
-        {
-          "color": "Graphite",
-          "innerColors": [
-            {
-              "count": 1,
-              "color": "Silver Marble"
-            }
-          ],
-          "sources": {
-            "currentStock": 1,
-            "incomingStock": []
-          },
-          "currentTotal": 1,
-          "total": 1,
-          "incomingTotal": 0,
-          "key": "graphite"
-        },
-        {
-          "color": "Grey",
-          "innerColors": [
-            {
-              "count": 1,
-              "color": "Silver Marble"
-            }
-          ],
-          "sources": {
-            "currentStock": 1,
-            "incomingStock": []
-          },
-          "currentTotal": 1,
-          "total": 1,
-          "incomingTotal": 0,
-          "key": "grey"
-        }
-      ],
-      "total": 2,
       "currentTotal": 2,
       "name": "Alps",
+      "total": 2,
       "incomingTotal": 0,
-      "key": "alps"
-    },
-    {
+      "key": "alps",
       "cabinets": [
         {
-          "color": "Black",
+          "innerColors": [
+            {
+              "color": "Silver Marble",
+              "count": 1
+            }
+          ],
+          "currentTotal": 1,
+          "sources": {
+            "currentStock": 1,
+            "incomingStock": []
+          },
+          "incomingTotal": 0,
+          "total": 1,
+          "key": "graphite",
+          "color": "Graphite"
+        },
+        {
+          "innerColors": [
+            {
+              "color": "Silver Marble",
+              "count": 1
+            }
+          ],
+          "currentTotal": 1,
+          "sources": {
+            "currentStock": 1,
+            "incomingStock": []
+          },
+          "incomingTotal": 0,
+          "total": 1,
+          "key": "grey",
+          "color": "Grey"
+        }
+      ]
+    },
+    {
+      "currentTotal": 0,
+      "name": "Angora+",
+      "total": 0,
+      "incomingTotal": 28,
+      "key": "angora",
+      "cabinets": [
+        {
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
+                "container": "61",
+                "readyDate": "2026-09-22",
+                "listed": true,
                 "weeks": 6,
                 "count": 7,
-                "readyDate": "2026-09-22",
-                "listed": true,
-                "container": "61",
                 "arrivalDate": "2026-08-25"
               },
               {
+                "container": "62",
+                "readyDate": "2026-09-22",
+                "listed": true,
                 "weeks": 6,
                 "count": 1,
-                "readyDate": "2026-09-22",
-                "listed": true,
-                "container": "62",
                 "arrivalDate": "2026-08-25"
               },
               {
+                "container": "79",
+                "readyDate": null,
+                "listed": false,
                 "weeks": null,
                 "count": 3,
-                "readyDate": null,
-                "listed": false,
-                "container": "79",
                 "arrivalDate": null
               },
               {
-                "weeks": null,
-                "count": 2,
+                "container": "80",
                 "readyDate": null,
                 "listed": false,
-                "container": "80",
+                "weeks": null,
+                "count": 2,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 13,
-          "key": "black"
+          "total": 0,
+          "key": "black",
+          "color": "Black"
         },
         {
-          "color": "Grey",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
-                "weeks": null,
-                "count": 2,
+                "container": "80",
                 "readyDate": null,
                 "listed": false,
-                "container": "80",
+                "weeks": null,
+                "count": 2,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 2,
-          "key": "grey"
+          "total": 0,
+          "key": "grey",
+          "color": "Grey"
         },
         {
-          "color": "Taupe",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
-                "weeks": 6,
-                "count": 2,
+                "container": "62",
                 "readyDate": "2026-09-22",
                 "listed": true,
-                "container": "62",
+                "weeks": 6,
+                "count": 2,
                 "arrivalDate": "2026-08-25"
               },
               {
-                "weeks": 7,
-                "count": 4,
+                "container": "S13",
                 "readyDate": "2026-09-27",
                 "listed": true,
-                "container": "S13",
+                "weeks": 7,
+                "count": 4,
                 "arrivalDate": "2026-08-30"
               },
               {
-                "weeks": 8,
-                "count": 1,
+                "container": "74",
                 "readyDate": "2026-10-01",
                 "listed": true,
-                "container": "74",
+                "weeks": 8,
+                "count": 1,
                 "arrivalDate": "2026-09-03"
               },
               {
-                "weeks": 8,
-                "count": 2,
+                "container": "S11",
                 "readyDate": "2026-09-30",
                 "listed": true,
-                "container": "S11",
+                "weeks": 8,
+                "count": 2,
                 "arrivalDate": "2026-09-02"
               },
               {
-                "weeks": null,
-                "count": 2,
+                "container": "79",
                 "readyDate": null,
                 "listed": false,
-                "container": "79",
+                "weeks": null,
+                "count": 2,
                 "arrivalDate": null
               },
               {
-                "weeks": null,
-                "count": 2,
+                "container": "80",
                 "readyDate": null,
                 "listed": false,
-                "container": "80",
+                "weeks": null,
+                "count": 2,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 13,
-          "key": "taupe"
+          "total": 0,
+          "key": "taupe",
+          "color": "Taupe"
         }
-      ],
-      "total": 0,
-      "currentTotal": 0,
-      "name": "Angora+",
-      "incomingTotal": 28,
-      "key": "angora"
+      ]
     },
     {
+      "currentTotal": 12,
+      "name": "Apollo",
+      "total": 12,
+      "incomingTotal": 0,
+      "key": "apollo",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 12,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 12
             }
           ],
+          "currentTotal": 12,
           "sources": {
             "currentStock": 12,
             "incomingStock": []
           },
-          "currentTotal": 12,
-          "total": 12,
           "incomingTotal": 0,
-          "key": "graphite"
+          "total": 12,
+          "key": "graphite",
+          "color": "Graphite"
         }
-      ],
-      "total": 12,
-      "currentTotal": 12,
-      "name": "Apollo",
-      "incomingTotal": 0,
-      "key": "apollo"
+      ]
     },
     {
+      "currentTotal": 9,
+      "name": "Aquatique",
+      "total": 9,
+      "incomingTotal": 0,
+      "key": "aquatique",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 9,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 9
             }
           ],
+          "currentTotal": 9,
           "sources": {
             "currentStock": 9,
             "incomingStock": []
           },
-          "currentTotal": 9,
-          "total": 9,
           "incomingTotal": 0,
-          "key": "graphite"
+          "total": 9,
+          "key": "graphite",
+          "color": "Graphite"
         }
-      ],
-      "total": 9,
-      "currentTotal": 9,
-      "name": "Aquatique",
-      "incomingTotal": 0,
-      "key": "aquatique"
+      ]
     },
     {
+      "currentTotal": 4,
+      "name": "Atlantica",
+      "total": 4,
+      "incomingTotal": 23,
+      "key": "atlantica",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 2,
-              "color": "Gypsum"
+              "color": "Gypsum",
+              "count": 2
             },
             {
-              "count": 2,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 2
             }
           ],
+          "currentTotal": 4,
           "sources": {
             "currentStock": 4,
             "incomingStock": [
               {
-                "weeks": 7,
-                "count": 4,
+                "container": "65",
                 "readyDate": "2026-09-24",
                 "listed": true,
-                "container": "65",
+                "weeks": 7,
+                "count": 4,
                 "arrivalDate": "2026-08-27"
               },
               {
-                "weeks": 7,
-                "count": 4,
+                "container": "69",
                 "readyDate": "2026-09-25",
                 "listed": true,
-                "container": "69",
+                "weeks": 7,
+                "count": 4,
                 "arrivalDate": "2026-08-28"
               },
               {
-                "weeks": 8,
-                "count": 2,
+                "container": "75",
                 "readyDate": "2026-10-01",
                 "listed": true,
-                "container": "75",
+                "weeks": 8,
+                "count": 2,
                 "arrivalDate": "2026-09-03"
               },
               {
-                "weeks": null,
-                "count": 4,
-                "readyDate": null,
-                "listed": false,
                 "container": "56",
-                "arrivalDate": null
-              },
-              {
-                "weeks": null,
-                "count": 4,
                 "readyDate": null,
                 "listed": false,
-                "container": "57",
+                "weeks": null,
+                "count": 4,
                 "arrivalDate": null
               },
               {
+                "container": "57",
+                "readyDate": null,
+                "listed": false,
+                "weeks": null,
+                "count": 4,
+                "arrivalDate": null
+              },
+              {
+                "container": "76",
+                "readyDate": null,
+                "listed": false,
                 "weeks": null,
                 "count": 3,
-                "readyDate": null,
-                "listed": false,
-                "container": "76",
                 "arrivalDate": null
               },
               {
-                "weeks": null,
-                "count": 2,
+                "container": "81",
                 "readyDate": null,
                 "listed": false,
-                "container": "81",
+                "weeks": null,
+                "count": 2,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 4,
-          "total": 4,
           "incomingTotal": 23,
-          "key": "graphite"
+          "total": 4,
+          "key": "graphite",
+          "color": "Graphite"
         }
-      ],
-      "total": 4,
-      "currentTotal": 4,
-      "name": "Atlantica",
-      "incomingTotal": 23,
-      "key": "atlantica"
+      ]
     },
     {
-      "cabinets": [
-        {
-          "color": "Ancient grey",
-          "innerColors": [
-            {
-              "count": 1,
-              "color": "Silver Marble"
-            }
-          ],
-          "sources": {
-            "currentStock": 1,
-            "incomingStock": []
-          },
-          "currentTotal": 1,
-          "total": 1,
-          "incomingTotal": 0,
-          "key": "ancient grey"
-        },
-        {
-          "color": "Palm black",
-          "innerColors": [
-            {
-              "count": 1,
-              "color": "Silver Marble"
-            }
-          ],
-          "sources": {
-            "currentStock": 1,
-            "incomingStock": []
-          },
-          "currentTotal": 1,
-          "total": 1,
-          "incomingTotal": 0,
-          "key": "palm black"
-        }
-      ],
-      "total": 2,
       "currentTotal": 2,
       "name": "Barcelona",
+      "total": 2,
       "incomingTotal": 0,
-      "key": "barcelona"
-    },
-    {
+      "key": "barcelona",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 2,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 1
             }
           ],
+          "currentTotal": 1,
+          "sources": {
+            "currentStock": 1,
+            "incomingStock": []
+          },
+          "incomingTotal": 0,
+          "total": 1,
+          "key": "ancient grey",
+          "color": "Ancient grey"
+        },
+        {
+          "innerColors": [
+            {
+              "color": "Silver Marble",
+              "count": 1
+            }
+          ],
+          "currentTotal": 1,
+          "sources": {
+            "currentStock": 1,
+            "incomingStock": []
+          },
+          "incomingTotal": 0,
+          "total": 1,
+          "key": "palm black",
+          "color": "Palm black"
+        }
+      ]
+    },
+    {
+      "currentTotal": 2,
+      "name": "Boston",
+      "total": 2,
+      "incomingTotal": 0,
+      "key": "boston",
+      "cabinets": [
+        {
+          "innerColors": [
+            {
+              "color": "Silver Marble",
+              "count": 2
+            }
+          ],
+          "currentTotal": 2,
           "sources": {
             "currentStock": 2,
             "incomingStock": []
           },
-          "currentTotal": 2,
-          "total": 2,
           "incomingTotal": 0,
-          "key": "graphite"
+          "total": 2,
+          "key": "graphite",
+          "color": "Graphite"
         }
-      ],
-      "total": 2,
-      "currentTotal": 2,
-      "name": "Boston",
-      "incomingTotal": 0,
-      "key": "boston"
+      ]
     },
     {
-      "cabinets": [
-        {
-          "color": "Taupe",
-          "innerColors": [],
-          "sources": {
-            "currentStock": 0,
-            "incomingStock": [
-              {
-                "weeks": 8,
-                "count": 2,
-                "readyDate": "2026-09-30",
-                "listed": true,
-                "container": "S11",
-                "arrivalDate": "2026-09-02"
-              }
-            ]
-          },
-          "currentTotal": 0,
-          "total": 0,
-          "incomingTotal": 2,
-          "key": "taupe"
-        }
-      ],
-      "total": 0,
       "currentTotal": 0,
       "name": "BUK2100-1CL",
+      "total": 0,
       "incomingTotal": 2,
-      "key": "buk2100 1cl"
-    },
-    {
+      "key": "buk2100 1cl",
       "cabinets": [
         {
-          "color": "Taupe",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
-                "weeks": 8,
-                "count": 2,
+                "container": "S11",
                 "readyDate": "2026-09-30",
                 "listed": true,
-                "container": "S11",
+                "weeks": 8,
+                "count": 2,
                 "arrivalDate": "2026-09-02"
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 2,
-          "key": "taupe"
+          "total": 0,
+          "key": "taupe",
+          "color": "Taupe"
         }
-      ],
-      "total": 0,
-      "currentTotal": 0,
-      "name": "BUK2600-1CL",
-      "incomingTotal": 2,
-      "key": "buk2600 1cl"
+      ]
     },
     {
+      "currentTotal": 0,
+      "name": "BUK2600-1CL",
+      "total": 0,
+      "incomingTotal": 2,
+      "key": "buk2600 1cl",
       "cabinets": [
         {
-          "color": "Grey",
+          "innerColors": [],
+          "currentTotal": 0,
+          "sources": {
+            "currentStock": 0,
+            "incomingStock": [
+              {
+                "container": "S11",
+                "readyDate": "2026-09-30",
+                "listed": true,
+                "weeks": 8,
+                "count": 2,
+                "arrivalDate": "2026-09-02"
+              }
+            ]
+          },
+          "incomingTotal": 2,
+          "total": 0,
+          "key": "taupe",
+          "color": "Taupe"
+        }
+      ]
+    },
+    {
+      "currentTotal": 1,
+      "name": "Classic+",
+      "total": 1,
+      "incomingTotal": 6,
+      "key": "classic",
+      "cabinets": [
+        {
           "innerColors": [
             {
-              "count": 1,
-              "color": "Oddysey"
+              "color": "Oddysey",
+              "count": 1
             }
           ],
+          "currentTotal": 1,
           "sources": {
             "currentStock": 1,
             "incomingStock": [
               {
-                "weeks": 7,
-                "count": 1,
+                "container": "S12",
                 "readyDate": "2026-09-27",
                 "listed": true,
-                "container": "S12",
+                "weeks": 7,
+                "count": 1,
                 "arrivalDate": "2026-08-30"
               }
             ]
           },
-          "currentTotal": 1,
-          "total": 1,
           "incomingTotal": 1,
-          "key": "grey"
+          "total": 1,
+          "key": "grey",
+          "color": "Grey"
         },
         {
-          "color": "Taupe",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
-                "weeks": 7,
-                "count": 2,
+                "container": "S12",
                 "readyDate": "2026-09-27",
                 "listed": true,
-                "container": "S12",
+                "weeks": 7,
+                "count": 2,
                 "arrivalDate": "2026-08-30"
               },
               {
+                "container": "S13",
+                "readyDate": "2026-09-27",
+                "listed": true,
                 "weeks": 7,
                 "count": 1,
-                "readyDate": "2026-09-27",
-                "listed": true,
-                "container": "S13",
                 "arrivalDate": "2026-08-30"
               },
               {
-                "weeks": 8,
-                "count": 2,
+                "container": "S11",
                 "readyDate": "2026-09-30",
                 "listed": true,
-                "container": "S11",
+                "weeks": 8,
+                "count": 2,
                 "arrivalDate": "2026-09-02"
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 5,
-          "key": "taupe"
+          "total": 0,
+          "key": "taupe",
+          "color": "Taupe"
         }
-      ],
-      "total": 1,
-      "currentTotal": 1,
-      "name": "Classic+",
-      "incomingTotal": 6,
-      "key": "classic"
+      ]
     },
     {
+      "currentTotal": 5,
+      "name": "Denia",
+      "total": 5,
+      "incomingTotal": 0,
+      "key": "denia",
       "cabinets": [
         {
-          "color": "Palm black",
           "innerColors": [
             {
-              "count": 5,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 5
             }
           ],
+          "currentTotal": 5,
           "sources": {
             "currentStock": 5,
             "incomingStock": []
           },
-          "currentTotal": 5,
-          "total": 5,
           "incomingTotal": 0,
-          "key": "palm black"
+          "total": 5,
+          "key": "palm black",
+          "color": "Palm black"
         }
-      ],
-      "total": 5,
-      "currentTotal": 5,
-      "name": "Denia",
-      "incomingTotal": 0,
-      "key": "denia"
+      ]
     },
     {
+      "currentTotal": 25,
+      "name": "Double Dutch",
+      "total": 25,
+      "incomingTotal": 0,
+      "key": "double dutch",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 7,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 7
             }
           ],
+          "currentTotal": 7,
           "sources": {
             "currentStock": 7,
             "incomingStock": []
           },
-          "currentTotal": 7,
-          "total": 7,
           "incomingTotal": 0,
-          "key": "graphite"
+          "total": 7,
+          "key": "graphite",
+          "color": "Graphite"
         },
         {
-          "color": "Grey",
           "innerColors": [
             {
-              "count": 18,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 18
             }
           ],
+          "currentTotal": 18,
           "sources": {
             "currentStock": 18,
             "incomingStock": []
           },
-          "currentTotal": 18,
-          "total": 18,
           "incomingTotal": 0,
-          "key": "grey"
+          "total": 18,
+          "key": "grey",
+          "color": "Grey"
         }
-      ],
-      "total": 25,
-      "currentTotal": 25,
-      "name": "Double Dutch",
-      "incomingTotal": 0,
-      "key": "double dutch"
+      ]
     },
     {
+      "currentTotal": 0,
+      "name": "Dynasty+",
+      "total": 0,
+      "incomingTotal": 10,
+      "key": "dynasty",
       "cabinets": [
         {
-          "color": "Black",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
-                "weeks": null,
-                "count": 1,
+                "container": "79",
                 "readyDate": null,
                 "listed": false,
-                "container": "79",
+                "weeks": null,
+                "count": 1,
                 "arrivalDate": null
               },
               {
-                "weeks": null,
-                "count": 4,
+                "container": "80",
                 "readyDate": null,
                 "listed": false,
-                "container": "80",
+                "weeks": null,
+                "count": 4,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 5,
-          "key": "black"
+          "total": 0,
+          "key": "black",
+          "color": "Black"
         },
         {
-          "color": "Taupe",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
-                "weeks": 7,
-                "count": 5,
+                "container": "71",
                 "readyDate": "2026-09-25",
                 "listed": true,
-                "container": "71",
+                "weeks": 7,
+                "count": 5,
                 "arrivalDate": "2026-08-28"
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 5,
-          "key": "taupe"
+          "total": 0,
+          "key": "taupe",
+          "color": "Taupe"
         }
-      ],
-      "total": 0,
-      "currentTotal": 0,
-      "name": "Dynasty+",
-      "incomingTotal": 10,
-      "key": "dynasty"
+      ]
     },
     {
+      "currentTotal": 1,
+      "name": "Elite",
+      "total": 1,
+      "incomingTotal": 0,
+      "key": "elite",
       "cabinets": [
         {
-          "color": "Chocolate",
           "innerColors": [
             {
-              "count": 1,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 1
             }
           ],
+          "currentTotal": 1,
           "sources": {
             "currentStock": 1,
             "incomingStock": []
           },
-          "currentTotal": 1,
-          "total": 1,
           "incomingTotal": 0,
-          "key": "chocolate"
+          "total": 1,
+          "key": "chocolate",
+          "color": "Chocolate"
         }
-      ],
-      "total": 1,
-      "currentTotal": 1,
-      "name": "Elite",
-      "incomingTotal": 0,
-      "key": "elite"
+      ]
     },
     {
+      "currentTotal": 0,
+      "name": "ELT2700-2CL",
+      "total": 0,
+      "incomingTotal": 4,
+      "key": "elt2700 2cl",
       "cabinets": [
         {
-          "color": "Palm black",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
-                "weeks": null,
-                "count": 4,
+                "container": "46",
                 "readyDate": null,
                 "listed": false,
-                "container": "46",
+                "weeks": null,
+                "count": 4,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 4,
-          "key": "palm black"
+          "total": 0,
+          "key": "palm black",
+          "color": "Palm black"
         }
-      ],
-      "total": 0,
-      "currentTotal": 0,
-      "name": "ELT2700-2CL",
-      "incomingTotal": 4,
-      "key": "elt2700 2cl"
+      ]
     },
     {
+      "currentTotal": 4,
+      "name": "Explore",
+      "total": 4,
+      "incomingTotal": 1,
+      "key": "explore",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 2,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 2
             }
           ],
+          "currentTotal": 2,
           "sources": {
             "currentStock": 2,
             "incomingStock": [
               {
-                "weeks": null,
-                "count": 1,
+                "container": "56",
                 "readyDate": null,
                 "listed": false,
-                "container": "56",
+                "weeks": null,
+                "count": 1,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 2,
-          "total": 2,
           "incomingTotal": 1,
-          "key": "graphite"
+          "total": 2,
+          "key": "graphite",
+          "color": "Graphite"
         },
         {
-          "color": "Grey",
           "innerColors": [
             {
-              "count": 2,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 2
             }
           ],
+          "currentTotal": 2,
           "sources": {
             "currentStock": 2,
             "incomingStock": []
           },
-          "currentTotal": 2,
-          "total": 2,
           "incomingTotal": 0,
-          "key": "grey"
+          "total": 2,
+          "key": "grey",
+          "color": "Grey"
         }
-      ],
-      "total": 4,
-      "currentTotal": 4,
-      "name": "Explore",
-      "incomingTotal": 1,
-      "key": "explore"
+      ]
     },
     {
+      "currentTotal": 1,
+      "name": "Goldline",
+      "total": 1,
+      "incomingTotal": 0,
+      "key": "goldline",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 1,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 1
             }
           ],
+          "currentTotal": 1,
           "sources": {
             "currentStock": 1,
             "incomingStock": []
           },
-          "currentTotal": 1,
-          "total": 1,
           "incomingTotal": 0,
-          "key": "graphite"
+          "total": 1,
+          "key": "graphite",
+          "color": "Graphite"
         }
-      ],
-      "total": 1,
-      "currentTotal": 1,
-      "name": "Goldline",
-      "incomingTotal": 0,
-      "key": "goldline"
+      ]
     },
     {
+      "currentTotal": 6,
+      "name": "Granada",
+      "total": 6,
+      "incomingTotal": 1,
+      "key": "granada",
       "cabinets": [
         {
-          "color": "Palm black",
           "innerColors": [
             {
-              "count": 6,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 6
             }
           ],
+          "currentTotal": 6,
           "sources": {
             "currentStock": 6,
             "incomingStock": [
               {
-                "weeks": null,
-                "count": 1,
+                "container": "46",
                 "readyDate": null,
                 "listed": false,
-                "container": "46",
+                "weeks": null,
+                "count": 1,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 6,
-          "total": 6,
           "incomingTotal": 1,
-          "key": "palm black"
+          "total": 6,
+          "key": "palm black",
+          "color": "Palm black"
         }
-      ],
-      "total": 6,
-      "currentTotal": 6,
-      "name": "Granada",
-      "incomingTotal": 1,
-      "key": "granada"
+      ]
     },
     {
+      "currentTotal": 1,
+      "name": "Grand Atlantic Prem+",
+      "total": 1,
+      "incomingTotal": 0,
+      "key": "grand atlantic prem",
       "cabinets": [
         {
-          "color": "Grey",
           "innerColors": [
             {
-              "count": 1,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 1
             }
           ],
+          "currentTotal": 1,
           "sources": {
             "currentStock": 1,
             "incomingStock": []
           },
-          "currentTotal": 1,
-          "total": 1,
           "incomingTotal": 0,
-          "key": "grey"
+          "total": 1,
+          "key": "grey",
+          "color": "Grey"
         }
-      ],
-      "total": 1,
-      "currentTotal": 1,
-      "name": "Grand Atlantic Prem+",
-      "incomingTotal": 0,
-      "key": "grand atlantic prem"
+      ]
     },
     {
+      "currentTotal": 4,
+      "name": "Houston",
+      "total": 4,
+      "incomingTotal": 2,
+      "key": "houston",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 2,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 2
             }
           ],
+          "currentTotal": 2,
           "sources": {
             "currentStock": 2,
             "incomingStock": [
               {
-                "weeks": null,
-                "count": 2,
+                "container": "45",
                 "readyDate": null,
                 "listed": false,
-                "container": "45",
+                "weeks": null,
+                "count": 2,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 2,
-          "total": 2,
           "incomingTotal": 2,
-          "key": "graphite"
+          "total": 2,
+          "key": "graphite",
+          "color": "Graphite"
         },
         {
-          "color": "Grey",
           "innerColors": [
             {
-              "count": 2,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 2
             }
           ],
+          "currentTotal": 2,
           "sources": {
             "currentStock": 2,
             "incomingStock": []
           },
-          "currentTotal": 2,
-          "total": 2,
           "incomingTotal": 0,
-          "key": "grey"
+          "total": 2,
+          "key": "grey",
+          "color": "Grey"
         }
-      ],
-      "total": 4,
-      "currentTotal": 4,
-      "name": "Houston",
-      "incomingTotal": 2,
-      "key": "houston"
+      ]
     },
     {
+      "currentTotal": 3,
+      "name": "ICE TUB – All-In-One",
+      "total": 3,
+      "incomingTotal": 0,
+      "key": "ice tub all in one",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 2,
-              "color": "Midnight Opal"
+              "color": "Midnight Opal",
+              "count": 2
             },
             {
-              "count": 1,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 1
             }
           ],
+          "currentTotal": 3,
           "sources": {
             "currentStock": 3,
             "incomingStock": []
           },
-          "currentTotal": 3,
-          "total": 3,
           "incomingTotal": 0,
-          "key": "graphite"
+          "total": 3,
+          "key": "graphite",
+          "color": "Graphite"
         }
-      ],
-      "total": 3,
-      "currentTotal": 3,
-      "name": "ICE TUB – All-In-One",
-      "incomingTotal": 0,
-      "key": "ice tub all in one"
+      ]
     },
     {
+      "currentTotal": 14,
+      "name": "Majesty+",
+      "total": 14,
+      "incomingTotal": 49,
+      "key": "majesty",
       "cabinets": [
         {
-          "color": "Black",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
-                "weeks": 6,
-                "count": 8,
+                "container": "64",
                 "readyDate": "2026-09-22",
                 "listed": true,
-                "container": "64",
+                "weeks": 6,
+                "count": 8,
                 "arrivalDate": "2026-08-25"
               },
               {
-                "weeks": 7,
-                "count": 1,
+                "container": "S13",
                 "readyDate": "2026-09-27",
                 "listed": true,
-                "container": "S13",
+                "weeks": 7,
+                "count": 1,
                 "arrivalDate": "2026-08-30"
               },
               {
-                "weeks": 8,
-                "count": 2,
+                "container": "68",
                 "readyDate": "2026-09-30",
                 "listed": true,
-                "container": "68",
+                "weeks": 8,
+                "count": 2,
                 "arrivalDate": "2026-09-02"
               },
               {
-                "weeks": null,
-                "count": 2,
+                "container": "79",
                 "readyDate": null,
                 "listed": false,
-                "container": "79",
+                "weeks": null,
+                "count": 2,
                 "arrivalDate": null
               },
               {
-                "weeks": null,
-                "count": 2,
+                "container": "82",
                 "readyDate": null,
                 "listed": false,
-                "container": "82",
+                "weeks": null,
+                "count": 2,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 15,
-          "key": "black"
+          "total": 0,
+          "key": "black",
+          "color": "Black"
         },
         {
-          "color": "Grey",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
-                "weeks": 5,
-                "count": 2,
+                "container": "S10",
                 "readyDate": "2026-09-13",
                 "listed": true,
-                "container": "S10",
+                "weeks": 5,
+                "count": 2,
                 "arrivalDate": "2026-08-16"
               },
               {
-                "weeks": 6,
-                "count": 3,
+                "container": "62",
                 "readyDate": "2026-09-22",
                 "listed": true,
-                "container": "62",
+                "weeks": 6,
+                "count": 3,
                 "arrivalDate": "2026-08-25"
               },
               {
-                "weeks": 7,
-                "count": 6,
+                "container": "66",
                 "readyDate": "2026-09-24",
                 "listed": true,
-                "container": "66",
+                "weeks": 7,
+                "count": 6,
                 "arrivalDate": "2026-08-27"
               },
               {
-                "weeks": 7,
-                "count": 2,
+                "container": "S13",
                 "readyDate": "2026-09-27",
                 "listed": true,
-                "container": "S13",
+                "weeks": 7,
+                "count": 2,
                 "arrivalDate": "2026-08-30"
               },
               {
-                "weeks": 8,
-                "count": 1,
+                "container": "68",
                 "readyDate": "2026-09-30",
                 "listed": true,
-                "container": "68",
+                "weeks": 8,
+                "count": 1,
                 "arrivalDate": "2026-09-02"
               },
               {
-                "weeks": null,
-                "count": 3,
+                "container": "80",
                 "readyDate": null,
                 "listed": false,
-                "container": "80",
+                "weeks": null,
+                "count": 3,
                 "arrivalDate": null
               },
               {
-                "weeks": null,
-                "count": 1,
+                "container": "83",
                 "readyDate": null,
                 "listed": false,
-                "container": "83",
+                "weeks": null,
+                "count": 1,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 18,
-          "key": "grey"
+          "total": 0,
+          "key": "grey",
+          "color": "Grey"
         },
         {
-          "color": "Taupe",
           "innerColors": [
             {
-              "count": 14,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 14
             }
           ],
+          "currentTotal": 14,
           "sources": {
             "currentStock": 14,
             "incomingStock": [
               {
-                "weeks": 7,
-                "count": 6,
+                "container": "71",
                 "readyDate": "2026-09-25",
                 "listed": true,
-                "container": "71",
+                "weeks": 7,
+                "count": 6,
                 "arrivalDate": "2026-08-28"
               },
               {
-                "weeks": 7,
-                "count": 2,
+                "container": "S13",
                 "readyDate": "2026-09-27",
                 "listed": true,
-                "container": "S13",
+                "weeks": 7,
+                "count": 2,
                 "arrivalDate": "2026-08-30"
               },
               {
-                "weeks": 8,
-                "count": 4,
+                "container": "S11",
                 "readyDate": "2026-09-30",
                 "listed": true,
-                "container": "S11",
+                "weeks": 8,
+                "count": 4,
                 "arrivalDate": "2026-09-02"
               },
               {
-                "weeks": null,
-                "count": 2,
+                "container": "79",
                 "readyDate": null,
                 "listed": false,
-                "container": "79",
+                "weeks": null,
+                "count": 2,
                 "arrivalDate": null
               },
               {
+                "container": "82",
+                "readyDate": null,
+                "listed": false,
                 "weeks": null,
                 "count": 2,
-                "readyDate": null,
-                "listed": false,
-                "container": "82",
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 14,
-          "total": 14,
           "incomingTotal": 16,
-          "key": "taupe"
+          "total": 14,
+          "key": "taupe",
+          "color": "Taupe"
         }
-      ],
-      "total": 14,
-      "currentTotal": 14,
-      "name": "Majesty+",
-      "incomingTotal": 49,
-      "key": "majesty"
+      ]
     },
     {
-      "cabinets": [
-        {
-          "color": "Palm black",
-          "innerColors": [],
-          "sources": {
-            "currentStock": 0,
-            "incomingStock": [
-              {
-                "weeks": null,
-                "count": 4,
-                "readyDate": null,
-                "listed": false,
-                "container": "46",
-                "arrivalDate": null
-              }
-            ]
-          },
-          "currentTotal": 0,
-          "total": 0,
-          "incomingTotal": 4,
-          "key": "palm black"
-        }
-      ],
-      "total": 0,
       "currentTotal": 0,
       "name": "Majorca",
+      "total": 0,
       "incomingTotal": 4,
-      "key": "majorca"
-    },
-    {
+      "key": "majorca",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
+                "container": "46",
+                "readyDate": null,
+                "listed": false,
                 "weeks": null,
                 "count": 4,
-                "readyDate": null,
-                "listed": false,
-                "container": "83",
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 4,
-          "key": "graphite"
-        },
-        {
-          "color": "Grey",
-          "innerColors": [],
-          "sources": {
-            "currentStock": 0,
-            "incomingStock": [
-              {
-                "weeks": null,
-                "count": 2,
-                "readyDate": null,
-                "listed": false,
-                "container": "83",
-                "arrivalDate": null
-              }
-            ]
-          },
-          "currentTotal": 0,
           "total": 0,
-          "incomingTotal": 2,
-          "key": "grey"
+          "key": "palm black",
+          "color": "Palm black"
         }
-      ],
-      "total": 0,
+      ]
+    },
+    {
       "currentTotal": 0,
       "name": "Manhattan Prem+",
+      "total": 0,
       "incomingTotal": 6,
-      "key": "manhattan prem"
-    },
-    {
+      "key": "manhattan prem",
       "cabinets": [
         {
-          "color": "Graphite",
-          "innerColors": [
-            {
-              "count": 1,
-              "color": "Silver Marble"
-            }
-          ],
-          "sources": {
-            "currentStock": 1,
-            "incomingStock": []
-          },
-          "currentTotal": 1,
-          "total": 1,
-          "incomingTotal": 0,
-          "key": "graphite"
-        }
-      ],
-      "total": 1,
-      "currentTotal": 1,
-      "name": "Maxicuzzi",
-      "incomingTotal": 0,
-      "key": "maxicuzzi"
-    },
-    {
-      "cabinets": [
-        {
-          "color": "Grey",
-          "innerColors": [
-            {
-              "count": 1,
-              "color": "Silver Marble"
-            }
-          ],
-          "sources": {
-            "currentStock": 1,
-            "incomingStock": []
-          },
-          "currentTotal": 1,
-          "total": 1,
-          "incomingTotal": 0,
-          "key": "grey"
-        }
-      ],
-      "total": 1,
-      "currentTotal": 1,
-      "name": "Milano",
-      "incomingTotal": 0,
-      "key": "milano"
-    },
-    {
-      "cabinets": [
-        {
-          "color": "Ancient grey",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
-                "weeks": 8,
-                "count": 9,
+                "container": "83",
+                "readyDate": null,
+                "listed": false,
+                "weeks": null,
+                "count": 4,
+                "arrivalDate": null
+              }
+            ]
+          },
+          "incomingTotal": 4,
+          "total": 0,
+          "key": "graphite",
+          "color": "Graphite"
+        },
+        {
+          "innerColors": [],
+          "currentTotal": 0,
+          "sources": {
+            "currentStock": 0,
+            "incomingStock": [
+              {
+                "container": "83",
+                "readyDate": null,
+                "listed": false,
+                "weeks": null,
+                "count": 2,
+                "arrivalDate": null
+              }
+            ]
+          },
+          "incomingTotal": 2,
+          "total": 0,
+          "key": "grey",
+          "color": "Grey"
+        }
+      ]
+    },
+    {
+      "currentTotal": 1,
+      "name": "Maxicuzzi",
+      "total": 1,
+      "incomingTotal": 0,
+      "key": "maxicuzzi",
+      "cabinets": [
+        {
+          "innerColors": [
+            {
+              "color": "Silver Marble",
+              "count": 1
+            }
+          ],
+          "currentTotal": 1,
+          "sources": {
+            "currentStock": 1,
+            "incomingStock": []
+          },
+          "incomingTotal": 0,
+          "total": 1,
+          "key": "graphite",
+          "color": "Graphite"
+        }
+      ]
+    },
+    {
+      "currentTotal": 1,
+      "name": "Milano",
+      "total": 1,
+      "incomingTotal": 0,
+      "key": "milano",
+      "cabinets": [
+        {
+          "innerColors": [
+            {
+              "color": "Silver Marble",
+              "count": 1
+            }
+          ],
+          "currentTotal": 1,
+          "sources": {
+            "currentStock": 1,
+            "incomingStock": []
+          },
+          "incomingTotal": 0,
+          "total": 1,
+          "key": "grey",
+          "color": "Grey"
+        }
+      ]
+    },
+    {
+      "currentTotal": 0,
+      "name": "Moraira",
+      "total": 0,
+      "incomingTotal": 20,
+      "key": "moraira",
+      "cabinets": [
+        {
+          "innerColors": [],
+          "currentTotal": 0,
+          "sources": {
+            "currentStock": 0,
+            "incomingStock": [
+              {
+                "container": "73",
                 "readyDate": "2026-10-01",
                 "listed": true,
-                "container": "73",
+                "weeks": 8,
+                "count": 9,
                 "arrivalDate": "2026-09-03"
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 9,
-          "key": "ancient grey"
+          "total": 0,
+          "key": "ancient grey",
+          "color": "Ancient grey"
         },
         {
-          "color": "Palm black",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
-                "weeks": 8,
-                "count": 10,
+                "container": "74",
                 "readyDate": "2026-10-01",
                 "listed": true,
-                "container": "74",
+                "weeks": 8,
+                "count": 10,
                 "arrivalDate": "2026-09-03"
               },
               {
-                "weeks": null,
-                "count": 1,
+                "container": "46",
                 "readyDate": null,
                 "listed": false,
-                "container": "46",
+                "weeks": null,
+                "count": 1,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 11,
-          "key": "palm black"
+          "total": 0,
+          "key": "palm black",
+          "color": "Palm black"
         }
-      ],
-      "total": 0,
-      "currentTotal": 0,
-      "name": "Moraira",
-      "incomingTotal": 20,
-      "key": "moraira"
+      ]
     },
     {
+      "currentTotal": 7,
+      "name": "Mystic",
+      "total": 7,
+      "incomingTotal": 0,
+      "key": "mystic",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 4,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 4
             }
           ],
+          "currentTotal": 4,
           "sources": {
             "currentStock": 4,
             "incomingStock": []
           },
-          "currentTotal": 4,
-          "total": 4,
           "incomingTotal": 0,
-          "key": "graphite"
+          "total": 4,
+          "key": "graphite",
+          "color": "Graphite"
         },
         {
-          "color": "Grey",
           "innerColors": [
             {
-              "count": 3,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 3
             }
           ],
+          "currentTotal": 3,
           "sources": {
             "currentStock": 3,
             "incomingStock": []
           },
-          "currentTotal": 3,
-          "total": 3,
           "incomingTotal": 0,
-          "key": "grey"
+          "total": 3,
+          "key": "grey",
+          "color": "Grey"
         }
-      ],
-      "total": 7,
-      "currentTotal": 7,
-      "name": "Mystic",
-      "incomingTotal": 0,
-      "key": "mystic"
+      ]
     },
     {
+      "currentTotal": 4,
+      "name": "Napoli",
+      "total": 4,
+      "incomingTotal": 9,
+      "key": "napoli",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 4,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 4
             }
           ],
+          "currentTotal": 4,
           "sources": {
             "currentStock": 4,
             "incomingStock": [
               {
-                "weeks": 6,
-                "count": 5,
+                "container": "63",
                 "readyDate": "2026-09-22",
                 "listed": true,
-                "container": "63",
+                "weeks": 6,
+                "count": 5,
                 "arrivalDate": "2026-08-25"
               },
               {
-                "weeks": 6,
-                "count": 4,
+                "container": "64",
                 "readyDate": "2026-09-22",
                 "listed": true,
-                "container": "64",
+                "weeks": 6,
+                "count": 4,
                 "arrivalDate": "2026-08-25"
               }
             ]
           },
-          "currentTotal": 4,
-          "total": 4,
           "incomingTotal": 9,
-          "key": "graphite"
+          "total": 4,
+          "key": "graphite",
+          "color": "Graphite"
         }
-      ],
-      "total": 4,
-      "currentTotal": 4,
-      "name": "Napoli",
-      "incomingTotal": 9,
-      "key": "napoli"
+      ]
     },
     {
+      "currentTotal": 10,
+      "name": "Nashville",
+      "total": 10,
+      "incomingTotal": 0,
+      "key": "nashville",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 7,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 7
             }
           ],
+          "currentTotal": 7,
           "sources": {
             "currentStock": 7,
             "incomingStock": []
           },
-          "currentTotal": 7,
-          "total": 7,
           "incomingTotal": 0,
-          "key": "graphite"
+          "total": 7,
+          "key": "graphite",
+          "color": "Graphite"
         },
         {
-          "color": "Grey",
           "innerColors": [
             {
-              "count": 3,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 3
             }
           ],
+          "currentTotal": 3,
           "sources": {
             "currentStock": 3,
             "incomingStock": []
           },
-          "currentTotal": 3,
-          "total": 3,
           "incomingTotal": 0,
-          "key": "grey"
+          "total": 3,
+          "key": "grey",
+          "color": "Grey"
         }
-      ],
-      "total": 10,
-      "currentTotal": 10,
-      "name": "Nashville",
-      "incomingTotal": 0,
-      "key": "nashville"
+      ]
     },
     {
+      "currentTotal": 8,
+      "name": "Olympus",
+      "total": 8,
+      "incomingTotal": 0,
+      "key": "olympus",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 8,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 8
             }
           ],
+          "currentTotal": 8,
           "sources": {
             "currentStock": 8,
             "incomingStock": []
           },
-          "currentTotal": 8,
-          "total": 8,
           "incomingTotal": 0,
-          "key": "graphite"
+          "total": 8,
+          "key": "graphite",
+          "color": "Graphite"
         }
-      ],
-      "total": 8,
-      "currentTotal": 8,
-      "name": "Olympus",
-      "incomingTotal": 0,
-      "key": "olympus"
+      ]
     },
     {
+      "currentTotal": 1,
+      "name": "Palma",
+      "total": 1,
+      "incomingTotal": 0,
+      "key": "palma",
       "cabinets": [
         {
-          "color": "Ancient grey",
           "innerColors": [
             {
-              "count": 1,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 1
             }
           ],
+          "currentTotal": 1,
           "sources": {
             "currentStock": 1,
             "incomingStock": []
           },
-          "currentTotal": 1,
-          "total": 1,
           "incomingTotal": 0,
-          "key": "ancient grey"
+          "total": 1,
+          "key": "ancient grey",
+          "color": "Ancient grey"
         }
-      ],
-      "total": 1,
-      "currentTotal": 1,
-      "name": "Palma",
-      "incomingTotal": 0,
-      "key": "palma"
+      ]
     },
     {
+      "currentTotal": 4,
+      "name": "Paradiso",
+      "total": 4,
+      "incomingTotal": 0,
+      "key": "paradiso",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 3,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 3
             }
           ],
+          "currentTotal": 3,
           "sources": {
             "currentStock": 3,
             "incomingStock": []
           },
-          "currentTotal": 3,
-          "total": 3,
           "incomingTotal": 0,
-          "key": "graphite"
+          "total": 3,
+          "key": "graphite",
+          "color": "Graphite"
         },
         {
-          "color": "Grey",
           "innerColors": [
             {
-              "count": 1,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 1
             }
           ],
+          "currentTotal": 1,
           "sources": {
             "currentStock": 1,
             "incomingStock": []
           },
-          "currentTotal": 1,
-          "total": 1,
           "incomingTotal": 0,
-          "key": "grey"
+          "total": 1,
+          "key": "grey",
+          "color": "Grey"
         }
-      ],
-      "total": 4,
-      "currentTotal": 4,
-      "name": "Paradiso",
-      "incomingTotal": 0,
-      "key": "paradiso"
+      ]
     },
     {
+      "currentTotal": 6,
+      "name": "Phantom",
+      "total": 6,
+      "incomingTotal": 39,
+      "key": "phantom",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 6,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 6
             }
           ],
+          "currentTotal": 6,
           "sources": {
             "currentStock": 6,
             "incomingStock": [
               {
-                "weeks": 5,
-                "count": 2,
-                "readyDate": "2026-09-13",
-                "listed": true,
                 "container": "59",
-                "arrivalDate": "2026-08-16"
-              },
-              {
-                "weeks": 5,
-                "count": 2,
                 "readyDate": "2026-09-13",
                 "listed": true,
-                "container": "60",
+                "weeks": 5,
+                "count": 2,
                 "arrivalDate": "2026-08-16"
               },
               {
-                "weeks": 7,
-                "count": 2,
-                "readyDate": "2026-09-25",
+                "container": "60",
+                "readyDate": "2026-09-13",
                 "listed": true,
+                "weeks": 5,
+                "count": 2,
+                "arrivalDate": "2026-08-16"
+              },
+              {
                 "container": "69",
-                "arrivalDate": "2026-08-28"
-              },
-              {
-                "weeks": 7,
-                "count": 2,
                 "readyDate": "2026-09-25",
                 "listed": true,
-                "container": "70",
+                "weeks": 7,
+                "count": 2,
                 "arrivalDate": "2026-08-28"
               },
               {
+                "container": "70",
+                "readyDate": "2026-09-25",
+                "listed": true,
+                "weeks": 7,
+                "count": 2,
+                "arrivalDate": "2026-08-28"
+              },
+              {
+                "container": "72",
+                "readyDate": "2026-09-25",
+                "listed": true,
                 "weeks": 7,
                 "count": 5,
-                "readyDate": "2026-09-25",
-                "listed": true,
-                "container": "72",
                 "arrivalDate": "2026-08-28"
               },
               {
+                "container": "67",
+                "readyDate": "2026-09-30",
+                "listed": true,
                 "weeks": 8,
                 "count": 6,
-                "readyDate": "2026-09-30",
-                "listed": true,
-                "container": "67",
                 "arrivalDate": "2026-09-02"
               },
               {
+                "container": "68",
+                "readyDate": "2026-09-30",
+                "listed": true,
                 "weeks": 8,
                 "count": 2,
-                "readyDate": "2026-09-30",
-                "listed": true,
-                "container": "68",
                 "arrivalDate": "2026-09-02"
               },
               {
-                "weeks": 8,
-                "count": 4,
+                "container": "75",
                 "readyDate": "2026-10-01",
                 "listed": true,
-                "container": "75",
+                "weeks": 8,
+                "count": 4,
                 "arrivalDate": "2026-09-03"
               },
               {
+                "container": "57",
+                "readyDate": null,
+                "listed": false,
                 "weeks": null,
                 "count": 4,
-                "readyDate": null,
-                "listed": false,
-                "container": "57",
                 "arrivalDate": null
               },
               {
-                "weeks": null,
-                "count": 5,
-                "readyDate": null,
-                "listed": false,
                 "container": "78",
+                "readyDate": null,
+                "listed": false,
+                "weeks": null,
+                "count": 5,
                 "arrivalDate": null
               },
               {
-                "weeks": null,
-                "count": 5,
+                "container": "81",
                 "readyDate": null,
                 "listed": false,
-                "container": "81",
+                "weeks": null,
+                "count": 5,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 6,
-          "total": 6,
           "incomingTotal": 39,
-          "key": "graphite"
+          "total": 6,
+          "key": "graphite",
+          "color": "Graphite"
         }
-      ],
-      "total": 6,
-      "currentTotal": 6,
-      "name": "Phantom",
-      "incomingTotal": 39,
-      "key": "phantom"
+      ]
     },
     {
-      "cabinets": [
-        {
-          "color": "Grey",
-          "innerColors": [
-            {
-              "count": 1,
-              "color": "Silver Marble"
-            }
-          ],
-          "sources": {
-            "currentStock": 1,
-            "incomingStock": []
-          },
-          "currentTotal": 1,
-          "total": 1,
-          "incomingTotal": 0,
-          "key": "grey"
-        }
-      ],
-      "total": 1,
       "currentTotal": 1,
       "name": "Prisma",
+      "total": 1,
       "incomingTotal": 0,
-      "key": "prisma"
-    },
-    {
+      "key": "prisma",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 1,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 1
             }
           ],
+          "currentTotal": 1,
           "sources": {
             "currentStock": 1,
             "incomingStock": []
           },
-          "currentTotal": 1,
-          "total": 1,
           "incomingTotal": 0,
-          "key": "graphite"
+          "total": 1,
+          "key": "grey",
+          "color": "Grey"
         }
-      ],
-      "total": 1,
-      "currentTotal": 1,
-      "name": "PureSpa",
-      "incomingTotal": 0,
-      "key": "purespa"
+      ]
     },
     {
+      "currentTotal": 1,
+      "name": "PureSpa",
+      "total": 1,
+      "incomingTotal": 0,
+      "key": "purespa",
       "cabinets": [
         {
-          "color": "Red Cedar",
           "innerColors": [
             {
-              "count": 11,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 1
             }
           ],
+          "currentTotal": 1,
+          "sources": {
+            "currentStock": 1,
+            "incomingStock": []
+          },
+          "incomingTotal": 0,
+          "total": 1,
+          "key": "graphite",
+          "color": "Graphite"
+        }
+      ]
+    },
+    {
+      "currentTotal": 11,
+      "name": "Python",
+      "total": 11,
+      "incomingTotal": 9,
+      "key": "python",
+      "cabinets": [
+        {
+          "innerColors": [
+            {
+              "color": "Silver Marble",
+              "count": 11
+            }
+          ],
+          "currentTotal": 11,
           "sources": {
             "currentStock": 11,
             "incomingStock": [
               {
-                "weeks": 5,
-                "count": 9,
+                "container": "58",
                 "readyDate": "2026-09-13",
                 "listed": true,
-                "container": "58",
+                "weeks": 5,
+                "count": 9,
                 "arrivalDate": "2026-08-16"
               }
             ]
           },
-          "currentTotal": 11,
-          "total": 11,
           "incomingTotal": 9,
-          "key": "red cedar"
+          "total": 11,
+          "key": "red cedar",
+          "color": "Red Cedar"
         }
-      ],
-      "total": 11,
-      "currentTotal": 11,
-      "name": "Python",
-      "incomingTotal": 9,
-      "key": "python"
+      ]
     },
     {
+      "currentTotal": 7,
+      "name": "Qubec",
+      "total": 7,
+      "incomingTotal": 0,
+      "key": "qubec",
       "cabinets": [
         {
-          "color": "Grey",
           "innerColors": [
             {
-              "count": 7,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 7
             }
           ],
+          "currentTotal": 7,
           "sources": {
             "currentStock": 7,
             "incomingStock": []
           },
-          "currentTotal": 7,
-          "total": 7,
           "incomingTotal": 0,
-          "key": "grey"
+          "total": 7,
+          "key": "grey",
+          "color": "Grey"
         }
-      ],
-      "total": 7,
-      "currentTotal": 7,
-      "name": "Qubec",
-      "incomingTotal": 0,
-      "key": "qubec"
+      ]
     },
     {
+      "currentTotal": 5,
+      "name": "Riviera",
+      "total": 5,
+      "incomingTotal": 24,
+      "key": "riviera",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 5,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 5
             }
           ],
+          "currentTotal": 5,
           "sources": {
             "currentStock": 5,
             "incomingStock": [
               {
-                "weeks": 6,
-                "count": 4,
+                "container": "62",
                 "readyDate": "2026-09-22",
                 "listed": true,
-                "container": "62",
+                "weeks": 6,
+                "count": 4,
                 "arrivalDate": "2026-08-25"
               },
               {
+                "container": "69",
+                "readyDate": "2026-09-25",
+                "listed": true,
                 "weeks": 7,
                 "count": 4,
-                "readyDate": "2026-09-25",
-                "listed": true,
-                "container": "69",
                 "arrivalDate": "2026-08-28"
               },
               {
+                "container": "72",
+                "readyDate": "2026-09-25",
+                "listed": true,
                 "weeks": 7,
                 "count": 2,
-                "readyDate": "2026-09-25",
-                "listed": true,
-                "container": "72",
                 "arrivalDate": "2026-08-28"
               },
               {
-                "weeks": 8,
-                "count": 2,
+                "container": "74",
                 "readyDate": "2026-10-01",
                 "listed": true,
-                "container": "74",
+                "weeks": 8,
+                "count": 2,
                 "arrivalDate": "2026-09-03"
               },
               {
-                "weeks": null,
-                "count": 4,
-                "readyDate": null,
-                "listed": false,
                 "container": "53",
-                "arrivalDate": null
-              },
-              {
+                "readyDate": null,
+                "listed": false,
                 "weeks": null,
                 "count": 4,
-                "readyDate": null,
-                "listed": false,
+                "arrivalDate": null
+              },
+              {
                 "container": "57",
+                "readyDate": null,
+                "listed": false,
+                "weeks": null,
+                "count": 4,
                 "arrivalDate": null
               },
               {
-                "weeks": null,
-                "count": 2,
-                "readyDate": null,
-                "listed": false,
                 "container": "76",
+                "readyDate": null,
+                "listed": false,
+                "weeks": null,
+                "count": 2,
                 "arrivalDate": null
               },
               {
-                "weeks": null,
-                "count": 2,
+                "container": "83",
                 "readyDate": null,
                 "listed": false,
-                "container": "83",
+                "weeks": null,
+                "count": 2,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 5,
-          "total": 5,
           "incomingTotal": 24,
-          "key": "graphite"
+          "total": 5,
+          "key": "graphite",
+          "color": "Graphite"
         }
-      ],
-      "total": 5,
-      "currentTotal": 5,
-      "name": "Riviera",
-      "incomingTotal": 24,
-      "key": "riviera"
+      ]
     },
     {
+      "currentTotal": 0,
+      "name": "San Marino 1",
+      "total": 0,
+      "incomingTotal": 10,
+      "key": "san marino 1",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
-                "weeks": 7,
-                "count": 9,
+                "container": "70",
                 "readyDate": "2026-09-25",
                 "listed": true,
-                "container": "70",
+                "weeks": 7,
+                "count": 9,
                 "arrivalDate": "2026-08-28"
               },
               {
-                "weeks": null,
-                "count": 1,
+                "container": "83",
                 "readyDate": null,
                 "listed": false,
-                "container": "83",
+                "weeks": null,
+                "count": 1,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 10,
-          "key": "graphite"
+          "total": 0,
+          "key": "graphite",
+          "color": "Graphite"
         }
-      ],
-      "total": 0,
-      "currentTotal": 0,
-      "name": "San Marino 1",
-      "incomingTotal": 10,
-      "key": "san marino 1"
+      ]
     },
     {
+      "currentTotal": 0,
+      "name": "Seattle",
+      "total": 0,
+      "incomingTotal": 1,
+      "key": "seattle",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
-                "weeks": null,
-                "count": 1,
+                "container": "83",
                 "readyDate": null,
                 "listed": false,
-                "container": "83",
+                "weeks": null,
+                "count": 1,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 1,
-          "key": "graphite"
+          "total": 0,
+          "key": "graphite",
+          "color": "Graphite"
         }
-      ],
-      "total": 0,
-      "currentTotal": 0,
-      "name": "Seattle",
-      "incomingTotal": 1,
-      "key": "seattle"
+      ]
     },
     {
+      "currentTotal": 13,
+      "name": "Serenity",
+      "total": 13,
+      "incomingTotal": 0,
+      "key": "serenity",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 13,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 13
             }
           ],
+          "currentTotal": 13,
           "sources": {
             "currentStock": 13,
             "incomingStock": []
           },
-          "currentTotal": 13,
-          "total": 13,
           "incomingTotal": 0,
-          "key": "graphite"
+          "total": 13,
+          "key": "graphite",
+          "color": "Graphite"
         }
-      ],
-      "total": 13,
-      "currentTotal": 13,
-      "name": "Serenity",
-      "incomingTotal": 0,
-      "key": "serenity"
+      ]
     },
     {
+      "currentTotal": 1,
+      "name": "Sevilla",
+      "total": 1,
+      "incomingTotal": 0,
+      "key": "sevilla",
       "cabinets": [
         {
-          "color": "Ancient grey",
           "innerColors": [
             {
-              "count": 1,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 1
             }
           ],
+          "currentTotal": 1,
           "sources": {
             "currentStock": 1,
             "incomingStock": []
           },
-          "currentTotal": 1,
-          "total": 1,
           "incomingTotal": 0,
-          "key": "ancient grey"
+          "total": 1,
+          "key": "ancient grey",
+          "color": "Ancient grey"
         }
-      ],
-      "total": 1,
-      "currentTotal": 1,
-      "name": "Sevilla",
-      "incomingTotal": 0,
-      "key": "sevilla"
+      ]
     },
     {
+      "currentTotal": 12,
+      "name": "Silverline Compact",
+      "total": 12,
+      "incomingTotal": 3,
+      "key": "silverline compact",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 11,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 11
             }
           ],
+          "currentTotal": 11,
           "sources": {
             "currentStock": 11,
             "incomingStock": [
               {
-                "weeks": null,
-                "count": 3,
+                "container": "45",
                 "readyDate": null,
                 "listed": false,
-                "container": "45",
+                "weeks": null,
+                "count": 3,
                 "arrivalDate": null
               }
             ]
           },
-          "currentTotal": 11,
-          "total": 11,
           "incomingTotal": 3,
-          "key": "graphite"
+          "total": 11,
+          "key": "graphite",
+          "color": "Graphite"
         },
         {
-          "color": "Grey",
           "innerColors": [
             {
-              "count": 1,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 1
             }
           ],
+          "currentTotal": 1,
           "sources": {
             "currentStock": 1,
             "incomingStock": []
           },
-          "currentTotal": 1,
-          "total": 1,
           "incomingTotal": 0,
-          "key": "grey"
+          "total": 1,
+          "key": "grey",
+          "color": "Grey"
         }
-      ],
-      "total": 12,
-      "currentTotal": 12,
-      "name": "Silverline Compact",
-      "incomingTotal": 3,
-      "key": "silverline compact"
+      ]
     },
     {
+      "currentTotal": 4,
+      "name": "Vancouver",
+      "total": 4,
+      "incomingTotal": 0,
+      "key": "vancouver",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 1,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 1
             }
           ],
+          "currentTotal": 1,
           "sources": {
             "currentStock": 1,
             "incomingStock": []
           },
-          "currentTotal": 1,
-          "total": 1,
           "incomingTotal": 0,
-          "key": "graphite"
+          "total": 1,
+          "key": "graphite",
+          "color": "Graphite"
         },
         {
-          "color": "Grey",
           "innerColors": [
             {
-              "count": 3,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 3
             }
           ],
+          "currentTotal": 3,
           "sources": {
             "currentStock": 3,
             "incomingStock": []
           },
-          "currentTotal": 3,
-          "total": 3,
           "incomingTotal": 0,
-          "key": "grey"
+          "total": 3,
+          "key": "grey",
+          "color": "Grey"
         }
-      ],
-      "total": 4,
-      "currentTotal": 4,
-      "name": "Vancouver",
-      "incomingTotal": 0,
-      "key": "vancouver"
+      ]
     },
     {
+      "currentTotal": 2,
+      "name": "Yakon",
+      "total": 2,
+      "incomingTotal": 0,
+      "key": "yakon",
       "cabinets": [
         {
-          "color": "Graphite",
           "innerColors": [
             {
-              "count": 2,
-              "color": "Silver Marble"
+              "color": "Silver Marble",
+              "count": 2
             }
           ],
+          "currentTotal": 2,
           "sources": {
             "currentStock": 2,
             "incomingStock": []
           },
-          "currentTotal": 2,
-          "total": 2,
           "incomingTotal": 0,
-          "key": "graphite"
+          "total": 2,
+          "key": "graphite",
+          "color": "Graphite"
         }
-      ],
-      "total": 2,
-      "currentTotal": 2,
-      "name": "Yakon",
-      "incomingTotal": 0,
-      "key": "yakon"
+      ]
     },
     {
+      "currentTotal": 0,
+      "name": "Yoyago",
+      "total": 0,
+      "incomingTotal": 10,
+      "key": "yoyago",
       "cabinets": [
         {
-          "color": "Grey",
           "innerColors": [],
+          "currentTotal": 0,
           "sources": {
             "currentStock": 0,
             "incomingStock": [
               {
-                "weeks": 7,
-                "count": 10,
+                "container": "65",
                 "readyDate": "2026-09-24",
                 "listed": true,
-                "container": "65",
+                "weeks": 7,
+                "count": 10,
                 "arrivalDate": "2026-08-27"
               }
             ]
           },
-          "currentTotal": 0,
-          "total": 0,
           "incomingTotal": 10,
-          "key": "grey"
+          "total": 0,
+          "key": "grey",
+          "color": "Grey"
         }
-      ],
-      "total": 0,
-      "currentTotal": 0,
-      "name": "Yoyago",
-      "incomingTotal": 10,
-      "key": "yoyago"
+      ]
     }
   ],
   "counts": {
-    "incomingAvailableRows": 263,
     "arrivals": 25,
+    "currentAvailableRows": 195,
     "incomingSoldOrColoredRows": 7,
     "currentSoldOrColoredRows": 35,
-    "currentAvailableRows": 195
+    "incomingAvailableRows": 263
   },
   "saunas": {
+    "source": {
+      "type": "sharepoint-xlsx",
+      "url": "https://avlemmix-my.sharepoint.com/:x:/p/angelo/Ee8O1yUpFeNHvQQ-FlI45PcBFuDZZxfo6hFU8lEIZ8bS6A?e=MC090c&download=1",
+      "live": true
+    },
     "items": [
       {
         "incoming": [],
@@ -2308,8 +2331,8 @@
       {
         "incoming": [
           {
-            "count": 8,
-            "date": "2026-08-11"
+            "date": "2026-08-11",
+            "count": 8
           }
         ],
         "currentTotal": 5,
@@ -2321,8 +2344,8 @@
       {
         "incoming": [
           {
-            "count": 1,
-            "date": "2026-08-11"
+            "date": "2026-08-11",
+            "count": 1
           }
         ],
         "currentTotal": 0,
@@ -2350,8 +2373,8 @@
       {
         "incoming": [
           {
-            "count": 8,
-            "date": "2026-08-11"
+            "date": "2026-08-11",
+            "count": 8
           }
         ],
         "currentTotal": 2,
@@ -2379,8 +2402,8 @@
       {
         "incoming": [
           {
-            "count": 4,
-            "date": "2026-08-17"
+            "date": "2026-08-17",
+            "count": 4
           }
         ],
         "currentTotal": 0,
@@ -2400,8 +2423,8 @@
       {
         "incoming": [
           {
-            "count": 6,
-            "date": "2026-08-11"
+            "date": "2026-08-11",
+            "count": 6
           }
         ],
         "currentTotal": 0,
@@ -3605,8 +3628,8 @@
       {
         "incoming": [
           {
-            "count": 4,
-            "date": "2026-08-17"
+            "date": "2026-08-17",
+            "count": 4
           }
         ],
         "currentTotal": 0,
@@ -3618,8 +3641,8 @@
       {
         "incoming": [
           {
-            "count": 6,
-            "date": "2026-08-11"
+            "date": "2026-08-11",
+            "count": 6
           }
         ],
         "currentTotal": 0,
@@ -6247,8 +6270,8 @@
       {
         "incoming": [
           {
-            "count": 2,
-            "date": "2026-08-11"
+            "date": "2026-08-11",
+            "count": 2
           }
         ],
         "currentTotal": 11,
@@ -6355,19 +6378,19 @@
       },
       {
         "incoming": [],
-        "currentTotal": 15,
-        "code": "SA2545",
-        "name": "Royal Losse FS Lamp 350 watt",
-        "incomingTotal": 0,
-        "key": "sa2545 royal losse fs lamp 350 watt"
-      },
-      {
-        "incoming": [],
         "currentTotal": 18,
         "code": "SA0750",
         "name": "Royal Losse FS Lamp 350 watt",
         "incomingTotal": 0,
         "key": "sa0750 royal losse fs lamp 350 watt"
+      },
+      {
+        "incoming": [],
+        "currentTotal": 15,
+        "code": "SA2545",
+        "name": "Royal Losse FS Lamp 350 watt",
+        "incomingTotal": 0,
+        "key": "sa2545 royal losse fs lamp 350 watt"
       },
       {
         "incoming": [],
@@ -6380,8 +6403,8 @@
       {
         "incoming": [
           {
-            "count": 1,
-            "date": "2026-08-11"
+            "date": "2026-08-11",
+            "count": 1
           }
         ],
         "currentTotal": 0,
@@ -6673,8 +6696,8 @@
       {
         "incoming": [
           {
-            "count": 9,
-            "date": "2026-08-17"
+            "date": "2026-08-17",
+            "count": 9
           }
         ],
         "currentTotal": 0,
@@ -9125,31 +9148,8 @@
       }
     ],
     "counts": {
-      "currentRows": 866,
-      "incomingRows": 10
-    },
-    "source": {
-      "url": "https://avlemmix-my.sharepoint.com/:x:/p/angelo/Ee8O1yUpFeNHvQQ-FlI45PcBFuDZZxfo6hFU8lEIZ8bS6A?e=MC090c&download=1",
-      "type": "sharepoint-xlsx",
-      "live": true
-    }
-  },
-  "generatedAt": "2026-08-11T10:28:34.9232519Z",
-  "source": {
-    "currentStock": {
-      "url": "https://avlemmix-my.sharepoint.com/:x:/p/angelo/IQBho8ccoP7iTLW5lf8ESyxXAaPNn2tHRpmmSEhee_sVJeE?e=caKQnF&download=1",
-      "type": "sharepoint-xlsx",
-      "live": true
-    },
-    "incomingStock": {
-      "url": "https://avlemmix-my.sharepoint.com/:x:/p/angelo/EVXDPHIAsa1IjPgA3aHlVAQBPaLBDEWYcoaZkm82kF57Bg?e=H2xx8C&download=1",
-      "type": "sharepoint-xlsx",
-      "live": true
-    },
-    "containerArrivals": {
-      "url": "https://www.sunspa-dealer.nl/stock/conatiner-arrivals/",
-      "type": "password-protected-html",
-      "live": true
+      "incomingRows": 10,
+      "currentRows": 866
     }
   }
 }
