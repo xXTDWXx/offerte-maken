@@ -2033,7 +2033,7 @@ function getSelectedOfferLines() {
   }
 
   if ($('optSpaBalancer')?.checked && spaOrSwimspa) {
-    lines.push({ label: 'Spa Balancer 750 ml', price: PRICES.spa_balancer_unit });
+    lines.push({ label: 'Spa Balancer pakket (incl. pH-producten & testers)', price: PRICES.spa_balancer_unit });
   }
 
   if ($('optUltrashock')?.checked && spaOrSwimspa) {
