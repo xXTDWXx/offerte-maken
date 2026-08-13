@@ -781,7 +781,6 @@
     #optMaintRow .opt-copy,
     #optSwimFiltersetRow .opt-copy,
     #optSpaBalancerRow .opt-copy,
-    #optUltrashockRow .opt-copy,
     #optDigitalTesterRow .opt-copy,
     #optWarmtepompRow .opt-copy{
       display:grid;
@@ -797,7 +796,6 @@
     #optMaintRow .opt-label,
     #optSwimFiltersetRow .opt-label,
     #optSpaBalancerRow .opt-label,
-    #optUltrashockRow .opt-label,
     #optDigitalTesterRow .opt-label,
     #optWarmtepompRow .opt-label{
       line-height:1.15;
@@ -810,7 +808,6 @@
     #optMaintRow .opt-price,
     #optSwimFiltersetRow .opt-price,
     #optSpaBalancerRow .opt-price,
-    #optUltrashockRow .opt-price,
     #optDigitalTesterRow .opt-price,
     #optWarmtepompRow .opt-price{
       justify-self:end;
@@ -822,7 +819,6 @@
     #optMaintRow .opt-title,
     #optSwimFiltersetRow .opt-title,
     #optSpaBalancerRow .opt-title,
-    #optUltrashockRow .opt-title,
     #optDigitalTesterRow .opt-title{
       display:grid;
       grid-template-columns:76px 24px minmax(0, 1fr);
@@ -835,7 +831,6 @@
     #optMaintRow .opt-title > img,
     #optSwimFiltersetRow .opt-title > img,
     #optSpaBalancerRow .opt-title > img,
-    #optUltrashockRow .opt-title > img,
     #optDigitalTesterRow .opt-title > img{
       grid-column:1;
       width:76px;
@@ -851,21 +846,43 @@
     }
 
     #optSpaBalancerRow .opt-title > img,
-    #optUltrashockRow .opt-title > img,
     #optDigitalTesterRow .opt-title > img{
       padding:5px;
       object-fit:contain;
     }
 
-    #optSpaBalancerRow .opt-title > img,
-    #optUltrashockRow .opt-title > img{
+    #optSpaBalancerRow .opt-title > img{
       height:calc(100% - 2px);
       margin:1px 0 1px -10px;
     }
 
-    #optSpaBalancerRow,
-    #optUltrashockRow{
+    #optSpaBalancerRow{
       overflow:hidden;
+    }
+
+    #optSpaBalancerRow .spa-balancer-images{
+      grid-column:1;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      width:76px;
+      height:calc(100% - 2px);
+      margin:1px 0 1px -10px;
+      overflow:hidden;
+      align-self:stretch;
+      border-right:1px solid #e5eaf0;
+      border-radius:15px 0 0 15px;
+      background:#fff;
+    }
+
+    #optSpaBalancerRow .spa-balancer-images img{
+      width:100%;
+      height:100%;
+      min-height:0;
+      margin:0;
+      padding:5px;
+      border:0;
+      border-radius:0;
+      object-fit:contain;
     }
 
     #optWarmtepompRow .opt-title{
@@ -1469,31 +1486,22 @@
               <label class="opt opt-inline" id="optSpaBalancerRow" style="display:none">
                 <div class="opt-text">
                   <div class="opt-title">
-                    <img src="images/spa-balancer-spa-balancer-chloorvrije-waterbehande.webp" alt="Spa Balancer"/>
+                    <span class="spa-balancer-images" aria-hidden="true">
+                      <img src="images/spa-balancer-spa-balancer-chloorvrije-waterbehande.webp" alt="">
+                      <img src="images/spa-balancer-spa-balancer-ultrashock-chloorvrije-w.webp" alt="">
+                    </span>
                     <input id="optSpaBalancer" type="checkbox" />
                     <span class="opt-copy">
                       <span>
-                        <span class="opt-label">Spa Balancer pakket</span>
+                        <span class="opt-label">Spa Balancer pakket + Ultrashock</span>
                         <span class="opt-note">(incl. pH-producten &amp; testers)</span>
                       </span>
-                      <span class="opt-price">€ 99</span>
+                      <span class="opt-price">€ 189</span>
                     </span>
                   </div>
                 </div>
               </label>
 
-              <label class="opt opt-inline" id="optUltrashockRow" style="display:none">
-                <div class="opt-text">
-                  <div class="opt-title">
-                    <img src="images/spa-balancer-spa-balancer-ultrashock-chloorvrije-w.webp" alt="Ultrashock"/>
-                    <input id="optUltrashock" type="checkbox" />
-                    <span class="opt-copy">
-                      <span class="opt-label">Ultrashock</span>
-                      <span class="opt-price">€ 49,95</span>
-                    </span>
-                  </div>
-                </div>
-              </label>
 
               <label class="opt opt-inline" id="optDigitalTesterRow" style="display:none">
                 <div class="opt-text">
