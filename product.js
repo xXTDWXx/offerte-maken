@@ -1168,7 +1168,7 @@ const SAUNA_HEATER_OPTIONS = Object.freeze({
   'vega-45': { label: 'Harvia Vega 4,5 kW', price: 339, note: 'Incl. stenen & montage' },
   'vega-60': { label: 'Harvia Vega 6 kW', price: 349, note: 'Incl. stenen & montage' },
   'sawo-tower': { label: 'Sawo Tower Heater 8 kW', price: 395, note: 'Incl. stenen & montage' },
-  'huum-drop': { label: 'HUUM Drop 9 kW', price: PRICES.barrel_huum_drop_unit, note: 'Incl. WiFi-module, bediening, stenen, safety rail & montage' },
+  'huum-drop': { label: 'HUUM Drop 9 kW', price: PRICES.barrel_huum_drop_unit, note: 'Incl. Saunastenen, WiFi module, controller & safety rail.' },
   'harvia-cilinder': { label: 'Harvia Cilinder 9 kW', price: PRICES.barrel_harvia_cilinder_unit, note: 'Incl. stenen & montage' },
   'harvia-cilinder-70': { label: 'Harvia Cilindro PC 70', price: 549, note: 'Incl. stenen & montage' },
   'harvia-linear-16': { label: 'Harvia Linear 16 houtkachel + rookafvoer', price: 1195, note: 'Incl. stenen & montage' },
@@ -1205,7 +1205,18 @@ const SAUNA_HEATERS_BY_PRODUCT = Object.freeze({
 });
 
 function getAvailableSaunaHeaterIds(product = currentProduct) {
-  return SAUNA_HEATERS_BY_PRODUCT[product?.id] || [];
+  const productHeaters = SAUNA_HEATERS_BY_PRODUCT[product?.id] || [];
+  const type = product?.type;
+  const huumDropAvailable = product?.sauna_heating_options !== false && (
+    isBarrelSauna(type) ||
+    isSaunaPod(type) ||
+    typeNorm(type) === 'combi sauna' ||
+    (isSauna(type) && !isInfrared(type))
+  );
+
+  return huumDropAvailable && !productHeaters.includes('huum-drop')
+    ? [...productHeaters, 'huum-drop']
+    : productHeaters;
 }
 
 function getSelectedSaunaHeater(product = currentProduct) {
