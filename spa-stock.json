@@ -2126,6 +2126,7 @@
       "key": "python"
     },
     {
+      "name": "Quebec",
       "cabinets": [
         {
           "innerColors": [
@@ -2145,11 +2146,10 @@
           "key": "grey"
         }
       ],
-      "name": "Qubec",
       "incomingTotal": 0,
       "total": 6,
       "currentTotal": 6,
-      "key": "qubec"
+      "key": "quebec"
     },
     {
       "cabinets": [

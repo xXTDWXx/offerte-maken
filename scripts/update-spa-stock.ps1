@@ -56,6 +56,16 @@ function Get-StockModelName {
   return ''
 }
 
+function Get-CanonicalModelName {
+  param([string]$Value)
+
+  # De externe voorraadbron bevat deze modelnaam met een schrijffout.
+  # Centraliseer de correctie hier zodat elke gegenereerde voorraadlijst
+  # consequent naar het product "MySpa Quebec" verwijst.
+  if ((Normalize-Text $Value) -eq 'qubec') { return 'Quebec' }
+  return $Value
+}
+
 function Normalize-Container {
   param([string]$Value)
   $clean = ([string]$Value).Trim().ToUpperInvariant()
@@ -186,6 +196,7 @@ function Read-XlsxRows {
       }
 
       $modelName = Get-StockModelName $values $ModelColumns
+      $modelName = Get-CanonicalModelName $modelName
       $cabinetRaw = [string]$values[$CabinetColumn]
       if ([string]::IsNullOrWhiteSpace($modelName) -or [string]::IsNullOrWhiteSpace($cabinetRaw)) { continue }
 

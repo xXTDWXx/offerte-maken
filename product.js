@@ -363,14 +363,20 @@ function getProductImageList(product) {
   const galleryImages = Array.isArray(product?.gallery_images) ? product.gallery_images : [];
 
   // Bij nieuwe galerijen is de eerste bronfoto de hoofdfoto. Oudere producten
-  // behouden hun bestaande hoofdfoto en eventuele oude images-veld.
+  // behouden hun bestaande hoofdfoto en eventuele oude images-veld. Wanneer
+  // een samengestelde galerij al minstens twee foto's bevat, is die galerij
+  // volledig gecureerd; het historische images-veld bevat dan dezelfde foto's
+  // vaak nog eens via een andere domeinnaam of afmeting.
   if (galleryImages.length) {
     galleryImages.forEach(addImage);
   } else {
     addImage(product?.image, 0);
+    (Array.isArray(product?.images) ? product.images : []).forEach(addImage);
   }
 
-  (Array.isArray(product?.images) ? product.images : []).forEach(addImage);
+  if (galleryImages.length === 1) {
+    (Array.isArray(product?.images) ? product.images : []).forEach(addImage);
+  }
   addImage(product?.secondary_image, images.length);
 
   return images;
