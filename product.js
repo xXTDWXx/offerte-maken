@@ -2306,6 +2306,8 @@ function translateElectricalContentHtml(html) {
     .replace(/Stroomschema indien elektrische kachel 8-9 kW:/g, 'Schéma électrique avec poêle électrique 8-9 kW :')
     .replace(/Voor het spa gedeelte:/g, 'Pour la partie spa :')
     .replace(/Voor het zwemgedeelte:/g, 'Pour la partie nage :')
+    .replace(/massagepompen/g, 'pompes de massage')
+    .replace(/massagepomp/g, 'pompe de massage')
     .replace(/\bOF\b/g, 'OU')
     .replace(/krachtstroom/g, 'courant triphasé')
     .replace(/Krachtstroom/g, 'Courant triphasé')
@@ -2321,7 +2323,50 @@ function translateElectricalContentHtml(html) {
     .replace(/driefase/g, 'triphasé');
 }
 
+function getEliteMassagePumpCount(product) {
+  const specs = Array.isArray(product?.specs) ? product.specs : [];
+  return specs.filter(spec => /^pomp\s*\d+$/i.test(String(spec?.label || '').trim())).length;
+}
+
+function getEliteElectricalSchema(product) {
+  if (normalizeSchemaText(product?.merk) !== 'elite') return null;
+
+  const detectedPumpCount = getEliteMassagePumpCount(product);
+  const pumpCount = detectedPumpCount >= 3 ? 3 : detectedPumpCount === 2 ? 2 : 1;
+  const requirementsByPumpCount = {
+    1: `
+      1x fase 20 amp. C karakteristiek: (1x fase, 1x nul en aarde)<br>
+      OF<br>
+      2x fase 16 amp. C karakteristiek: (2x fase, 2x nul en aarde)<br>
+      OF<br>
+      3x fase 16 amp. C karakteristiek: (3x fase, 1x nul en aarde)
+    `,
+    2: `
+      3x fase 16 amp. C karakteristiek (<em>krachtstroom</em>): (3x fase, 1x nul en aarde)<br>
+      OF<br>
+      2x fase 16 amp. C karakteristiek: (2x fase, 2x nul en aarde)<br>
+      OF<br>
+      1x 25 amp. C karakteristiek: (1x fase, 1x nul en aarde)
+    `,
+    3: `
+      3x fase 16 amp. C karakteristiek (<em>krachtstroom</em>): (3x fase, 1x nul en aarde)<br>
+      OF<br>
+      2x fase 20 amp. C karakteristiek: (2x fase, 2x nul en aarde)
+    `
+  };
+  const label = pumpCount === 1 ? '1 massagepomp' : `${pumpCount} massagepompen`;
+
+  return {
+    sectionTitle: window.SunspaI18n?.isFrench?.() ? 'Spas Elite' : "Elite spa's",
+    summary: label,
+    contentHtml: translateElectricalContentHtml(`<p><strong>${label}:</strong><br>${requirementsByPumpCount[pumpCount]}</p>`)
+  };
+}
+
 async function getElectricalSchemaForProduct(product) {
+  const eliteSchema = getEliteElectricalSchema(product);
+  if (eliteSchema) return eliteSchema;
+
   if (isBarrelSauna(product?.type)) {
     return {
       sectionTitle: 'Barrelsauna',
