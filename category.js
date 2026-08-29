@@ -20,6 +20,7 @@ const activeChips = document.getElementById('activeChips');
 let products = [];
 let filtered = [];
 let searchFrame = 0;
+let spaStockData = null;
 
 function getShowroomFromUrl() {
   const params = new URLSearchParams(window.location.search);
@@ -412,6 +413,7 @@ function renderGrid() {
     const img = node.querySelector('.card-img');
     const badge = node.querySelector('[data-badge]');
     const showroomBadge = node.querySelector('[data-showroom]');
+    const stockStatus = node.querySelector('[data-stock-status]');
     const title = node.querySelector('[data-title]');
     const price = node.querySelector('[data-price]');
     const specs = node.querySelector('[data-specs]');
@@ -430,6 +432,15 @@ if (showroomBadge) {
     showroomBadge.style.display = 'none';
   }
 }
+
+    if (stockStatus) {
+      const available = window.SunspaStockStatus?.getAvailability?.(p, spaStockData);
+      stockStatus.hidden = typeof available !== 'boolean';
+      stockStatus.classList.toggle('stock-dot--available', available === true);
+      stockStatus.classList.toggle('stock-dot--unavailable', available === false);
+      stockStatus.title = available === true ? 'Op voorraad' : (available === false ? 'Niet op voorraad' : '');
+      stockStatus.setAttribute('aria-label', stockStatus.title);
+    }
 
     if (img) {
       img.decoding = 'async';
@@ -579,7 +590,12 @@ async function init() {
   markActiveMenu(currentType);
   setupFilterVisibility();
 
-  products = (await loadProducts()).map(enrichProduct);
+  const [loadedProducts, stockData] = await Promise.all([
+    loadProducts(),
+    window.SunspaStockStatus?.load?.() || Promise.resolve(null)
+  ]);
+  spaStockData = stockData;
+  products = loadedProducts.map(enrichProduct);
 
   loadFiltersFromUrl();
   bindFilters();

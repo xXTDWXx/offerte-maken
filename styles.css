@@ -1706,6 +1706,34 @@ body {
   right: 12px;
 }
 
+.stock-dot {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.28);
+}
+
+.stock-dot[hidden] {
+  display: none;
+}
+
+.stock-dot--available {
+  background: #16a34a;
+}
+
+.stock-dot--unavailable {
+  background: #dc2626;
+}
+
+.card-imgwrap .badge-location {
+  right: 38px;
+}
+
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -1908,6 +1936,15 @@ body {
   .badge-location {
     top: 8px;
     right: 8px;
+  }
+
+  .stock-dot {
+    top: 8px;
+    right: 8px;
+  }
+
+  .card-imgwrap .badge-location {
+    right: 34px;
   }
 
   .modal-head {
