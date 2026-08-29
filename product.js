@@ -1049,6 +1049,26 @@ function isOutdoorSaunaWithRoofAndStove(type) {
   return isBarrelSauna(type) || isSaunaPod(type);
 }
 
+function isNivaOrLuccaSauna(product) {
+  return [
+    'sauna::niva-infrarood-cabine',
+    'sauna::lucca-finse-sauna-cabine'
+  ].includes(String(product?.id || '').toLowerCase());
+}
+
+function getRoofFinishOptions(product = currentProduct) {
+  const standardRoofOptions = isOutdoorSaunaWithRoofAndStove(product?.type);
+  const epdmShinglesOnly = isNivaOrLuccaSauna(product);
+
+  return {
+    showRoofGroup: standardRoofOptions || epdmShinglesOnly,
+    showAllRoofOptions: standardRoofOptions && !isCedarOutdoorSauna(product),
+    shingles: epdmShinglesOnly
+      ? { label: 'EPDM + dakshingles', price: PRICES.sauna_roof_epdm_shingles_unit }
+      : { label: 'Shingles dak', price: PRICES.barrel_roof_shingles_unit }
+  };
+}
+
 function isOverkapping(type) {
   return typeNorm(type).includes('overkapping');
 }
@@ -1162,6 +1182,7 @@ const PRICES = {
   barrel_huum_drop_unit: 1595,
   barrel_harvia_cilinder_unit: 599,
   barrel_roof_shingles_unit: 399,
+  sauna_roof_epdm_shingles_unit: 375,
   barrel_roof_heather_unit: 849,
   barrel_roof_design_unit: 899,
   barrel_infrared_module_unit: 699
@@ -1683,6 +1704,8 @@ function updateOptionUI() {
   const optBarrelRoofGroup = $('optBarrelRoofGroup');
   const optBarrelRoofShinglesRow = $('optBarrelRoofShinglesRow');
   const optBarrelRoofShingles = $('optBarrelRoofShingles');
+  const optBarrelRoofShinglesLabel = $('optBarrelRoofShinglesLabel');
+  const optBarrelRoofShinglesPrice = $('optBarrelRoofShinglesPrice');
   const optBarrelRoofShinglesTotal = $('optBarrelRoofShinglesTotal');
   const optBarrelRoofHeatherRow = $('optBarrelRoofHeatherRow');
   const optBarrelRoofHeather = $('optBarrelRoofHeather');
@@ -1711,7 +1734,7 @@ function updateOptionUI() {
   const allowCoverlift = (allowExtraOptions || bullfrog) && !isRoundSpaWithoutCoverlift(currentProduct);
   const swim = isSwimspa(type);
   const spaOrSwimspa = allowExtraOptions;
-  const outdoorSauna = isOutdoorSaunaWithRoofAndStove(type);
+  const roofFinishOptions = getRoofFinishOptions(currentProduct);
   const barrelSauna = isBarrelSauna(type);
   const sauna = isSauna(type);
   const canopyInfraredBarrel = isCanopyInfraredBarrel(currentProduct);
@@ -1721,9 +1744,8 @@ function updateOptionUI() {
   const showWoodStove = availableSaunaHeaterIds.includes('wood');
   const showHuumDrop = availableSaunaHeaterIds.includes('huum-drop');
   const showHarviaCilinder = availableSaunaHeaterIds.includes('harvia-cilinder');
-  const showRoofGroup = outdoorSauna;
-  const shinglesOnlyRoof = showRoofGroup && isCedarOutdoorSauna(currentProduct);
-  const showAllRoofOptions = showRoofGroup && !shinglesOnlyRoof;
+  const showRoofGroup = roofFinishOptions.showRoofGroup;
+  const showAllRoofOptions = roofFinishOptions.showAllRoofOptions;
   const showInfraredModule = barrelSauna && !canopyInfraredBarrel;
 
   if (optInstall) optInstall.disabled = !bullfrog;
@@ -1764,6 +1786,8 @@ function updateOptionUI() {
 
   if (optBarrelRoofGroup) optBarrelRoofGroup.style.display = showRoofGroup ? '' : 'none';
   if (optBarrelRoofShinglesRow) optBarrelRoofShinglesRow.style.display = showRoofGroup ? '' : 'none';
+  if (optBarrelRoofShinglesLabel) optBarrelRoofShinglesLabel.textContent = roofFinishOptions.shingles.label;
+  if (optBarrelRoofShinglesPrice) optBarrelRoofShinglesPrice.textContent = euro(roofFinishOptions.shingles.price);
   if (optBarrelRoofHeatherRow) optBarrelRoofHeatherRow.style.display = showAllRoofOptions ? '' : 'none';
   if (optBarrelRoofDesignRow) optBarrelRoofDesignRow.style.display = showAllRoofOptions ? '' : 'none';
   if (optBarrelInfraredModuleRow) optBarrelInfraredModuleRow.style.display = showInfraredModule ? '' : 'none';
@@ -1808,7 +1832,7 @@ function updateOptionUI() {
 
   const selectedSaunaHeater = showStoveGroup ? getSelectedSaunaHeater() : null;
   const saunaHeaterLine = selectedSaunaHeater?.price || 0;
-  const barrelRoofShinglesLine = (showRoofGroup && optBarrelRoofShingles?.checked) ? PRICES.barrel_roof_shingles_unit : 0;
+  const barrelRoofShinglesLine = (showRoofGroup && optBarrelRoofShingles?.checked) ? roofFinishOptions.shingles.price : 0;
   const barrelRoofHeatherLine = (showAllRoofOptions && optBarrelRoofHeather?.checked) ? PRICES.barrel_roof_heather_unit : 0;
   const barrelRoofDesignLine = (showAllRoofOptions && optBarrelRoofDesign?.checked) ? PRICES.barrel_roof_design_unit : 0;
   const barrelInfraredModuleLine = barrelInfraredModuleQty * PRICES.barrel_infrared_module_unit;
@@ -2060,11 +2084,12 @@ function getSelectedOfferLines() {
     });
   }
 
-  const showRoofGroup = isOutdoorSaunaWithRoofAndStove(type);
-  const showAllRoofOptions = showRoofGroup && !isCedarOutdoorSauna(currentProduct);
+  const roofFinishOptions = getRoofFinishOptions(currentProduct);
+  const showRoofGroup = roofFinishOptions.showRoofGroup;
+  const showAllRoofOptions = roofFinishOptions.showAllRoofOptions;
 
   if ($('optBarrelRoofShingles')?.checked && showRoofGroup) {
-    lines.push({ label: 'Shingles dak', price: PRICES.barrel_roof_shingles_unit });
+    lines.push({ label: roofFinishOptions.shingles.label, price: roofFinishOptions.shingles.price });
   }
 
   if ($('optBarrelRoofHeather')?.checked && showAllRoofOptions) {
