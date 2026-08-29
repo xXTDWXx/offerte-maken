@@ -4911,7 +4911,6 @@
     {
       "id": "spa::vogue-prime",
       "type": "spa",
-      "showroom": ["Brugge", "Lievegem"],
       "merk": "Vogue",
       "title": "Vogue Prime",
       "url": "https://www.sunspabenelux.nl/p/vogue-prime/",
@@ -5017,7 +5016,6 @@
     {
       "id": "spa::vogue-royal",
       "type": "spa",
-      "showroom": ["Brugge", "Lievegem"],
       "merk": "Vogue",
       "title": "Vogue Royal",
       "url": "https://www.sunspabenelux.nl/p/vogue-royal/",
@@ -8260,6 +8258,7 @@
       "type": "combi sauna",
       "title": "Traditionele Combi sauna",
       "showroom": ["Brugge", "Lievegem"],
+      "showroom_extra": ["Kortrijk"],
       "url": "https://www.sunspabenelux.be/p/traditionele-combi-sauna/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2022/07/Traditionele-combi-sauna.jpg",
       "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/07/Traditionele-combi-sauna.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/07/Traditionele-combi-sauna-650x650.jpg","label":"Traditionele Combi sauna"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/07/Traditionele-combi-sauna-zijkant.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/07/Traditionele-combi-sauna-zijkant-650x650.jpg","label":"Traditionele Combi sauna – zijaanzicht"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/07/Traditionele-combi-sauna-1.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/07/Traditionele-combi-sauna-1-650x650.jpg","label":"Traditionele Combi sauna – foto 1"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/07/Traditionele-combi-sauna-2.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/07/Traditionele-combi-sauna-2-650x650.jpg","label":"Traditionele Combi sauna – foto 2"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/07/Traditionele-combi-sauna-3.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/07/Traditionele-combi-sauna-3-650x650.jpg","label":"Traditionele Combi sauna – foto 3"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2022/07/Traditionele-combi-sauna-4.jpg","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2022/07/Traditionele-combi-sauna-4-650x650.jpg","label":"Traditionele Combi sauna – foto 4"}],
@@ -8335,7 +8334,7 @@
     {
       "id": "sauna::traditionele-combi-sauna-chaleur",
       "type": "combi sauna",
-      "showroom": ["Brugge", "Lievegem"],
+      "showroom_extra": ["Kortrijk"],
       "title": "Traditionele Combi sauna Chaleur",
       "url": "https://www.sunspabenelux.be/p/traditionele-combi-sauna-chaleur/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/07/Traditionele-combi-sauna-chaleur.png",
@@ -8960,7 +8959,6 @@
       "showroom_extra": ["Kortrijk"],
       "type": "Infrarood",
       "title": "i160C Infrarood sauna",
-      "showroom": "Lievegem",
       "url": "https://www.sunspabenelux.be/p/i160c-infrarood-sauna/",
       "image": "https://www.sunspabenelux.nl/wp-content/uploads/2022/07/i160c-1.jpg",
       "price": 4950,
@@ -9215,6 +9213,7 @@
     {
       "id": "sauna::barrelsauna-tr230",
       "type": "barrelsauna",
+      "showroom_extra": ["Kortrijk"],
       "title": "Barrelsauna TR230",
       "url": "https://www.sunspabenelux.be/p/barrelsauna-tr230/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/07/barrelsauna-tr230.jpg",
@@ -9945,6 +9944,7 @@
       "id": "sauna::barrelsauna-tr300-–-halfglas",
       "type": "barrelsauna",
       "showroom": "Lievegem",
+      "showroom_extra": ["Kortrijk"],
       "title": "Barrelsauna TR300 – Halfglas",
       "url": "https://www.sunspabenelux.be/p/barrelsauna-tr300-halfglas/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2022/11/barrelsauna-tr300-half-glas-1024x1024.jpg",
@@ -15572,6 +15572,7 @@
   {
     "id": "sauna::niva-infrarood-cabine",
     "type": "sauna",
+    "showroom_extra": ["Kortrijk"],
     "merk": "Sunspa Sauna",
     "title": "Niva Infrarood Cabine",
     "url": "https://www.sunspabenelux.be/p/niva-infrarood-cabine/",
@@ -15594,6 +15595,7 @@
   {
     "id": "sauna::lucca-finse-sauna-cabine",
     "type": "sauna",
+    "showroom_extra": ["Kortrijk"],
     "merk": "Sunspa Sauna",
     "title": "Lucca Finse Sauna Cabine",
     "url": "https://www.sunspabenelux.be/p/lucca-finse-sauna-cabine/",
