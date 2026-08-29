@@ -3622,6 +3622,7 @@
     {
       "id": "spa::myspa-colorado",
       "type": "spa",
+      "hidden": true,
       "merk": "Myspa",
       "title": "MySpa Colorado",
       "url": "https://www.sunspabenelux.be/p/myspa-colorado/",
@@ -4027,6 +4028,7 @@
     {
       "id": "spa::myspa-lake-city",
       "type": "spa",
+      "hidden": true,
       "merk": "Myspa",
       "title": "MySpa Lake City",
       "url": "https://www.sunspabenelux.be/p/myspa-lake-city/",
@@ -5326,6 +5328,7 @@
     {
       "id": "spa::myspa-grand-canyon",
       "type": "spa",
+      "hidden": true,
       "merk": "Myspa",
       "title": "MySpa Grand Canyon",
       "url": "https://www.sunspabenelux.be/p/myspa-grand-canyon/",
@@ -5587,6 +5590,7 @@
     {
       "id": "spa::myspa-seattle-xline",
       "type": "spa",
+      "hidden": true,
       "merk": "Myspa",
       "title": "MySpa Seattle Xline",
       "url": "https://www.sunspabenelux.be/p/myspa-seattle/",
