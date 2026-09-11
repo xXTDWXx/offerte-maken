@@ -7,9 +7,19 @@
   });
   const includedOptionsTotal = Object.values(optionPrices).reduce((sum, price) => sum + price, 0);
   const offers = [
-    { id: 'showroom::bullfrog-m7-gent', productId: 'spa::bullfrog-m7', location: 'Gent', innerColor: 'Solitude', cabinetColor: 'Ebony', total: 21495 },
+    { id: 'showroom::bullfrog-m7-gent', productId: 'spa::bullfrog-m7', location: 'Gent', innerColor: 'Solitude', cabinetColor: 'Ebony', total: 21495,
+      images: [
+        { src: 'images/showroom/bullfrog-m7-gent-vooraanzicht.jpeg', label: 'M7 showroommodel Gent — vooraanzicht' },
+        { src: 'images/showroom/bullfrog-m7-gent-binnenzijde.jpeg', label: 'M7 showroommodel Gent — binnenzijde' }
+      ]
+    },
     { id: 'showroom::bullfrog-a7d-select-brugge', productId: 'spa::bullfrog-a7d-select', location: 'Brugge', innerColor: 'Snow', cabinetColor: 'Ebony', total: 18895 },
-    { id: 'showroom::bullfrog-a7l-choice-gent', productId: 'spa::bullfrog-a7l-choice', location: 'Gent', innerColor: 'Mist', cabinetColor: 'Coastal Grey', total: 16995 }
+    { id: 'showroom::bullfrog-a7l-choice-gent', productId: 'spa::bullfrog-a7l-choice', location: 'Gent', innerColor: 'Mist', cabinetColor: 'Coastal Grey', total: 16995,
+      images: [
+        { src: 'images/showroom/bullfrog-a7l-choice-gent-vooraanzicht.jpeg', label: 'A7L Choice showroommodel Gent — vooraanzicht' },
+        { src: 'images/showroom/bullfrog-a7l-choice-gent-binnenzijde.jpeg', label: 'A7L Choice showroommodel Gent — binnenzijde' }
+      ]
+    }
   ];
 
   function createProducts(products) {
@@ -21,6 +31,7 @@
         : Object.entries(source.specs || {}).map(([label, value]) => ({ label, value }));
       return {
         ...source,
+        ...(offer.images?.length ? { image: offer.images[0].src, gallery_images: offer.images, images: [], secondary_image: null } : {}),
         id: offer.id,
         title: `${source.title} — showroommodel ${offer.location}`,
         showroom: offer.location,
