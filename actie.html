@@ -3,42 +3,142 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sunspa actie banner</title>
-  <link rel="stylesheet" href="actie.css" />
+  <title>Showroommodellen | Sunspa Catalogus</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="showroom-menu.css?v=showroom-20260911" />
 </head>
-<body>
-  <div class="frame">
-    <section class="banner" aria-label="Sunspa actie banner">
-      <div class="content">
-        <div class="topline"><span class="dot"></span> Actie</div>
-        <div class="brand">Sunspa Benelux</div>
 
-        <h1>ACTIE OP MYSPA</h1>
+<body class="showroom-menu-proposal" data-showroom-models>
+  <section class="container showroom-menu-shell">
+    <div class="showroom-logo-row">
+      <div class="brand">
+        <img src="logo.svg" alt="Sunspa Benelux logo" class="logo" />
+      </div>
+      <div class="showroom-top-search">
+        <label for="search">Zoeken</label>
+        <input id="search" type="search" placeholder="Zoek product..." />
+      </div>
+      <a href="kassa.html" class="category-link kassa showroom-top-kassa">Kassa</a>
+      <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-mobile-menu-toggle>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
 
-        <p class="lead">
-          Alleen op de MySpa-reeks geldt momenteel een actieprijs. De korting is direct verwerkt in de catalogus en op de offerte.
-        </p>
+    <div class="showroom-menu-panel">
+      <div class="showroom-menu-content">
+        <nav class="category-menu showroom-primary-menu">
+          <div class="category-menu-row">
+            <a href="oppervlakte.html" class="category-link menu-keuzehulp">Keuzehulp</a>
+            <a href="category.html?type=Spa" class="category-link" data-category-link="Spa">Spa</a>
+            <a href="category.html?type=Zwemspa" class="category-link" data-category-link="Zwemspa">Zwemspa</a>
+            <a href="category.html?type=Barrelsauna" class="category-link" data-category-link="Barrelsauna">Barrelsauna</a>
+            <a href="category.html?type=Infrarood" class="category-link" data-category-link="Infrarood">Infrarood</a>
+            <a href="category.html?type=combi sauna" class="category-link" data-category-link="combi sauna">Combi sauna</a>
+            <a href="category.html?type=sauna" class="category-link" data-category-link="sauna">Finse sauna</a>
+            <a href="category.html?type=sauna pod" class="category-link" data-category-link="sauna pod">Sauna pod</a>
+            <a href="hottub.html" class="category-link">Hottub</a>
+            <a href="category.html?type=overkappingen" class="category-link" data-category-link="overkappingen">Overkappingen</a>
+            <a href="category.html?showroom=all" class="category-link">In de showroom</a>
+            <a href="actie.html" class="category-link menu-showroom-models">SHOWROOMMODELLEN</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </section>
 
-        <div class="meta" aria-label="Spa acties">
-          <div class="pill">MySpa actie</div>
-          <div class="pill">21% btw-actie</div>
-          <div class="pill">Korting direct verrekend</div>
-        </div>
+  <div class="mobile-menu-overlay" data-mobile-menu-overlay></div>
+  <aside class="mobile-menu-drawer" data-mobile-menu-drawer aria-hidden="true">
+    <div class="mobile-menu-head">
+      <div class="mobile-menu-title">Menu</div>
+      <button class="mobile-menu-close" type="button" aria-label="Sluit menu" data-mobile-menu-close>&times;</button>
+    </div>
+    <div class="mobile-menu-content" data-mobile-menu-content></div>
+  </aside>
 
-        <div class="actions">
-          <a class="btn btn-primary" href="category.html?type=Spa&amp;merk=Myspa">Bekijk onze Myspa modellen</a>
+  <main class="container">
+    <section class="panel category-filter-card">
+      <div class="category-filter-head">
+        <div class="category-filter-title-wrap">
+          <a href="index.html" class="btn category-back-btn">← Terug naar overzicht</a>
+          <div class="panel-title" id="pageTitle">SHOWROOMMODELLEN</div>
+          <div class="small" id="resultMetaTop">—</div>
+          <p>Inclusief levering &amp; installatie, cover &amp; trap, coverlift en Spa Balancer pakket.</p>
         </div>
       </div>
 
-      <aside class="corner-card">
-        <div class="label">MySpa actie</div>
-        <h2 class="title">Direct voordeel op de originele prijs</h2>
-        <p>
-          De actieprijs wordt uitsluitend toegepast op de MySpa-reeks.
-        </p>
-      </aside>
+      <div class="category-filter-grid" id="filtersPanel">
+        <div class="field category-select-field">
+          <label for="brandFilter">Reeks</label>
+          <select id="brandFilter">
+            <option value="">Alle reeksen</option>
+            <option value="Sunspa">Sunspa</option>
+            <option value="Myspa">Myspa</option>
+            <option value="Vogue">Vogue</option>
+            <option value="Fox">Fox</option>
+            <option value="Elite">Elite</option>
+            <option value="Bullfrog">Bullfrog</option>
+          </select>
+        </div>
+
+        <div class="field category-select-field">
+          <label for="sort">Sorteren</label>
+          <select id="sort">
+            <option value="relevance">Relevantie</option>
+            <option value="priceAsc">Prijs (laag → hoog)</option>
+            <option value="priceDesc">Prijs (hoog → laag)</option>
+            <option value="titleAsc">Titel (A → Z)</option>
+          </select>
+        </div>
+
+        <div class="field category-clear-field">
+          <label>&nbsp;</label>
+          <button id="btnClear" class="btn category-clear-btn" type="button">Wissen</button>
+        </div>
+      </div>
+
+      <div class="panel-row panel-row-2 category-filter-meta">
+        <div class="chips" id="activeChips"></div>
+        <div class="small" id="resultMetaBottom">—</div>
+      </div>
     </section>
-  </div>
-  <script src="i18n.js?v=fr-20260621c"></script>
+
+    <section class="grid" id="grid"></section>
+
+    <section class="panel" id="errorBox" style="display:none">
+      <div class="panel-title">Fout bij laden</div>
+      <div class="small" id="errorText"></div>
+      <div class="small" style="margin-top:8px">
+        Controleer of <code>products.json</code> bestaat en bereikbaar is.
+      </div>
+    </section>
+  </main>
+
+  <template id="cardTpl">
+    <article class="card">
+      <button class="card-link" type="button" data-open>
+        <div class="card-imgwrap">
+          <img class="card-img" alt="" loading="lazy" />
+          <div class="badge" data-badge></div>
+          <div class="badge badge-location" data-showroom></div>
+          <span class="stock-dot" data-stock-status role="img" hidden></span>
+        </div>
+
+        <div class="card-body">
+          <div class="card-title" data-title></div>
+          <div class="card-price" data-price></div>
+          <div class="card-specs" data-specs></div>
+          <div class="card-cta">👉 Bekijk details</div>
+        </div>
+      </button>
+    </article>
+  </template>
+
+  <script src="i18n.js?v=showroom-20260911"></script>
+  <script src="mobile-menu.js"></script>
+  <script src="stock-status.js?v=20260829"></script>
+  <script src="showroom-models.js?v=20260911"></script>
+  <script src="category.js?v=showroom-20260911"></script>
 </body>
 </html>

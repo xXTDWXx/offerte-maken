@@ -1092,6 +1092,10 @@
       font-size:18px;
     }
 
+    .totals-row[hidden]{
+      display:none;
+    }
+
     .totals-row strong{
       color:#fff;
       white-space:nowrap;
@@ -1374,6 +1378,7 @@
             <div class="totals" style="font-size:22px; margin-top:20px;">
               <div class="totals-row"><span>Product </span><strong id="optProductTotal">€&nbsp;4.195,00</strong></div>
               <div class="totals-row"><span>Opties </span><strong id="optOptionsTotal">€&nbsp;995,00</strong></div>
+              <div class="totals-row" id="showroomDiscountRow" hidden><span>Showroomkorting</span><strong id="showroomDiscountTotal"></strong></div>
               <div class="totals-row totals-row-big"><span>Totaal </span><strong id="optGrandTotal">€&nbsp;5.190,00</strong></div>
               <div class="small">Alle bedragen incl. btw &amp; excl. kraankosten.</div>
 
@@ -1856,7 +1861,8 @@
     </section>
   </main>
 
-  <script src="i18n.js?v=fr-20260621c"></script>
-  <script src="product.js?v=roof-epdm-20260829"></script>
+  <script src="i18n.js?v=showroom-20260911"></script>
+  <script src="showroom-models.js?v=20260911"></script>
+  <script src="product.js?v=showroom-20260911"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+const SHOWROOM_MODELS_PAGE = document.body.hasAttribute('data-showroom-models');
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
 const OVERKAPPING_URL = new URL('overkapping.json', document.baseURI).toString();
 
@@ -125,6 +126,13 @@ function discountLabel() {
 }
 
 function productPriceHtml(p) {
+  const showroom = window.SunspaShowroomModels?.getPricing(p);
+  if (showroom) {
+    return `<span class="price-action-label">Showroommodel · pakketprijs</span>
+      <span class="price-old">${escapeHtml(euro(showroom.originalTotal))}</span>
+      <span class="price-current">${escapeHtml(euro(showroom.total))}</span>
+      <span class="price-action-note">${escapeHtml(discountLabel())} ${escapeHtml(euro(showroom.discount))}</span>`;
+  }
   const action = getMySpaBtwAction(p);
 
   if (!action) {
@@ -376,9 +384,9 @@ function sortProducts(items) {
   const sort = sortFilter?.value || 'relevance';
 
   if (sort === 'priceAsc') {
-    items.sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
+    items.sort((a, b) => Number(a.showroomOffer?.total ?? a.price ?? 0) - Number(b.showroomOffer?.total ?? b.price ?? 0));
   } else if (sort === 'priceDesc') {
-    items.sort((a, b) => Number(b.price || 0) - Number(a.price || 0));
+    items.sort((a, b) => Number(b.showroomOffer?.total ?? b.price ?? 0) - Number(a.showroomOffer?.total ?? a.price ?? 0));
   } else if (sort === 'titleAsc') {
     items.sort((a, b) => normalize(a.title).localeCompare(normalize(b.title)));
   }
@@ -434,7 +442,7 @@ if (showroomBadge) {
 }
 
     if (stockStatus) {
-      const available = window.SunspaStockStatus?.getAvailability?.(p, spaStockData);
+      const available = p.showroomOffer ? true : window.SunspaStockStatus?.getAvailability?.(p, spaStockData);
       stockStatus.hidden = typeof available !== 'boolean';
       stockStatus.classList.toggle('stock-dot--available', available === true);
       stockStatus.classList.toggle('stock-dot--unavailable', available === false);
@@ -545,7 +553,7 @@ function filterProducts() {
   filtered = sortProducts([...filtered]);
 
   if (pageTitle) {
-    pageTitle.textContent = isGlobalSearch ? 'Zoeken' : getCategoryTitle(currentType);
+    pageTitle.textContent = SHOWROOM_MODELS_PAGE ? 'SHOWROOMMODELLEN' : (isGlobalSearch ? 'Zoeken' : getCategoryTitle(currentType));
   }
 
   updateUrlFromFilters();
@@ -595,7 +603,7 @@ async function init() {
     window.SunspaStockStatus?.load?.() || Promise.resolve(null)
   ]);
   spaStockData = stockData;
-  products = loadedProducts.map(enrichProduct);
+  products = (SHOWROOM_MODELS_PAGE ? window.SunspaShowroomModels.createProducts(loadedProducts) : loadedProducts).map(enrichProduct);
 
   loadFiltersFromUrl();
   bindFilters();

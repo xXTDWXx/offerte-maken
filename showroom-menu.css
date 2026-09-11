@@ -433,3 +433,15 @@ body.showroom-menu-proposal .category-filter-card .chip{
     flex-direction:column;
   }
 }
+
+body.showroom-menu-proposal .category-link.menu-showroom-models {
+  background: #40cfc4;
+  border-color: #199b93;
+  color: #073b38;
+  font-weight: 800;
+}
+body.showroom-menu-proposal .category-link.menu-showroom-models:hover,
+body.showroom-menu-proposal .category-link.menu-showroom-models:focus-visible {
+  background: #2bbbb0;
+  color: #073b38;
+}

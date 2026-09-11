@@ -167,7 +167,38 @@ function discountLabel() {
   return window.SunspaI18n?.isFrench?.() ? 'Réduction' : 'korting';
 }
 
+function showroomPricing(product = currentProduct) {
+  return window.SunspaShowroomModels?.getPricing(product) || null;
+}
+
+function enforceShowroomPackage() {
+  const offer = currentProduct?.showroomOffer;
+  if (!offer) return;
+  ['optInstall', 'optCoverTrap', 'optCoverlift', 'optSpaBalancer'].forEach(id => {
+    const input = $(id);
+    if (!input) return;
+    input.checked = true;
+    input.disabled = true;
+    input.closest('label')?.classList.add('opt-disabled');
+  });
+  // Spa Balancer replaces the alternative maintenance package.
+  if ($('optMaint')) {
+    $('optMaint').checked = false;
+    $('optMaint').disabled = true;
+  }
+  $('optMaintRow')?.classList.add('opt-disabled');
+  [['spaInnerColor', offer.innerColor], ['spaCabinetColor', offer.cabinetColor]].forEach(([id, color]) => {
+    const select = $(id);
+    if (!select) return;
+    select.innerHTML = `<option value="${escapeHtml(color)}">${escapeHtml(color)}</option>`;
+    select.disabled = true;
+  });
+}
+
 function displayPrice(product) {
+  const showroom = showroomPricing(product);
+  if (showroom) return `Showroommodel: ${euro(showroom.total)} (van ${euro(showroom.originalTotal)}, korting ${euro(showroom.discount)})`;
+
   const action = getMySpaBtwAction(product);
 
   if (!action) {
@@ -179,6 +210,14 @@ function displayPrice(product) {
 }
 
 function productPriceHtml(product, price = Number(product?.price || 0)) {
+  const showroom = showroomPricing(product);
+  if (showroom) {
+    return `<span class="price-action-label">Showroommodel · pakketprijs</span>
+      <span class="price-old">${escapeHtml(euro(showroom.originalTotal))}</span>
+      <span class="price-current">${escapeHtml(euro(showroom.total))}</span>
+      <span class="price-action-note">${escapeHtml(discountLabel())} ${escapeHtml(euro(showroom.discount))}</span>`;
+  }
+
   const action = getMySpaBtwAction(product, price);
 
   if (!action) {
@@ -297,6 +336,10 @@ function escapeHtml(s) {
 function getSpaColorSwatchBackground(value) {
   const key = String(value || '').trim().toLowerCase();
   const backgrounds = {
+    solitude: 'linear-gradient(135deg, #d7d9d8, #f3f1ec)',
+    snow: '#fafafa',
+    mist: 'linear-gradient(135deg, #b8bdc1, #e2e5e7)',
+    'coastal grey': 'linear-gradient(135deg, #858986, #b3b5ae)',
     'silver marble': 'linear-gradient(135deg, #d8dee7 0%, #f8fafc 48%, #aeb8c6 100%)',
     'black marble': 'linear-gradient(135deg, #05070a 0%, #263241 52%, #05070a 100%)',
     'pure white': 'linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%)',
@@ -880,6 +923,7 @@ function renderSaunaStockDelivery(product, stockData) {
 
 async function getCurrentOfferDeliveryTerm(product) {
   if (!product) return '';
+  if (product.showroomOffer) return 'In overleg';
 
   const stockData = await getSpaStockData();
 
@@ -911,6 +955,11 @@ async function getCurrentOfferDeliveryTerm(product) {
 
 function updateSpaStockDelivery() {
   const wrap = $('spaStockDelivery');
+  if (currentProduct?.showroomOffer && wrap) {
+    wrap.hidden = false;
+    wrap.innerHTML = `<div class="spa-stock-head"><span>Showroommodel</span><span class="spa-stock-state">${escapeHtml(currentProduct.showroomOffer.location)}</span></div><div>Levering in overleg</div>`;
+    return;
+  }
   const showSpaStock = currentProduct && hasSpaColorOptions(currentProduct.type);
   const showSaunaStock = currentProduct && isSaunaStockProduct(currentProduct);
   if (!currentProduct || !wrap || (!showSpaStock && !showSaunaStock)) {
@@ -1087,6 +1136,7 @@ function getCategoryTypeForProduct(product) {
 }
 
 function getBackToOverviewHref(product) {
+  if (product?.showroomOffer) return window.SunspaI18n?.localizeUrl('actie.html') || 'actie.html';
   try {
     const referrerUrl = document.referrer ? new URL(document.referrer) : null;
     if (
@@ -1162,17 +1212,13 @@ function setNumberInputValue(input, value) {
 
 const PRICES = {
   install_jacuzzi: 695,
-  install_bullfrog: 895,
   install_swimspa: 895,
   install_barrel_sauna: 995,
   install_infrared: 450,
   install_sauna: 695,
   install_overkapping: 680,
 
-  coverlift_unit: 189,
-  bullfrog_cover_trap_unit: 699,
   maintenance_unit: 179,
-  spa_balancer_package_unit: 189,
   digital_tester_unit: 399,
   swim_filterset_unit: 250,
   warmtepomp_unit: 2795,
@@ -1185,7 +1231,8 @@ const PRICES = {
   sauna_roof_epdm_shingles_unit: 375,
   barrel_roof_heather_unit: 849,
   barrel_roof_design_unit: 899,
-  barrel_infrared_module_unit: 699
+  barrel_infrared_module_unit: 699,
+  ...window.SunspaShowroomModels.optionPrices
 };
 
 const SAUNA_HEATER_OPTIONS = Object.freeze({
@@ -1310,6 +1357,9 @@ async function fetchProductItems(url, label = 'producten') {
 async function loadProducts() {
   const catalogProducts = (await fetchProductItems(PRODUCTS_URL, 'products.json')).filter(isProductVisible);
   const productId = getProductIdFromUrl();
+  if (productId.startsWith('showroom::')) {
+    return window.SunspaShowroomModels.createProducts(catalogProducts);
+  }
 
   if (!productId || catalogProducts.some(product => String(product.id) === String(productId))) {
     return catalogProducts;
@@ -1819,6 +1869,8 @@ function updateOptionUI() {
     setNumberInputValue(input, input.value);
   });
 
+  enforceShowroomPackage();
+
   const installLine = (inst > 0 && (!bullfrog || optInstall?.checked)) ? inst : 0;
   const coverliftLine = (allowCoverlift && optCoverlift?.checked) ? PRICES.coverlift_unit : 0;
   const bullfrogCoverTrapLine = (bullfrog && optCoverTrap?.checked) ? PRICES.bullfrog_cover_trap_unit : 0;
@@ -1868,7 +1920,10 @@ function updateOptionUI() {
     barrelRoofDesignLine +
     barrelInfraredModuleLine;
 
-  const grand = productPriceValue + optionsTotal;
+  const showroom = showroomPricing();
+  const grand = roundCurrency(productPriceValue + optionsTotal - (showroom?.discount || 0));
+  if ($('showroomDiscountRow')) $('showroomDiscountRow').hidden = !showroom;
+  if ($('showroomDiscountTotal')) $('showroomDiscountTotal').textContent = showroom ? `− ${euro(showroom.discount)}` : '';
 
   if (tProduct) tProduct.textContent = euro(productPriceValue);
   if (tOptions) tOptions.textContent = euro(optionsTotal);
@@ -1969,6 +2024,7 @@ function wireOptionHandlers() {
 
 function getSelectedOfferLines() {
   if (!currentProduct) return [];
+  enforceShowroomPackage();
 
   const type = currentProduct.type || '';
   const lines = [];
@@ -2024,7 +2080,7 @@ function getSelectedOfferLines() {
     });
   }
 
-  if (extraOptionsAllowed(type)) {
+  if (extraOptionsAllowed(type) && !bullfrog) {
     lines.push({
       label: 'Cover & trap inclusief',
       price: 0
@@ -2108,6 +2164,8 @@ function getSelectedOfferLines() {
     });
   }
 
+  const showroom = showroomPricing();
+  if (showroom) lines.push({ label: 'Showroomkorting', price: -showroom.discount });
   return lines;
 }
 
@@ -4648,6 +4706,7 @@ function renderProduct(p) {
       .map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`)
       .join('');
   }
+  enforceShowroomPackage();
   updateSpaColorSwatches();
   updateSpaStockDelivery();
 
