@@ -4,33 +4,45 @@ on:
   schedule:
     - cron: '*/5 * * * *'
   workflow_dispatch:
+  # Validate changes to the updater by immediately refreshing the stock.
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-spa-stock.yml'
+      - 'scripts/update-spa-stock.ps1'
+      - 'scripts/publish-spa-stock.sh'
 
 permissions:
   contents: write
 
+concurrency:
+  group: update-spa-stock-main
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: windows-latest
+    timeout-minutes: 15
     steps:
-      - name: Checkout
+      - name: Checkout latest main
         uses: actions/checkout@v4
+        with:
+          # A rerun must refresh stock against today's code, not its original SHA.
+          ref: main
 
       - name: Build stock JSON
         shell: pwsh
         env:
           SUNSPA_DEALER_PASSWORD: ${{ secrets.SUNSPA_DEALER_PASSWORD }}
         run: |
-          .\scripts\update-spa-stock.ps1 | Out-File -FilePath .\spa-stock.json -Encoding utf8
+          $ErrorActionPreference = 'Stop'
+          $json = .\scripts\update-spa-stock.ps1 | Out-String
+          $stock = $json | ConvertFrom-Json
+          if (-not $stock.generatedAt -or $null -eq $stock.models) {
+            throw 'Stock output is missing generatedAt or models.'
+          }
+          $json | Set-Content -LiteralPath .\spa-stock.json -Encoding utf8
 
       - name: Commit stock JSON when changed
-        shell: pwsh
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add spa-stock.json
-          if (git diff --cached --quiet) {
-            Write-Host "No stock changes."
-          } else {
-            git commit -m "Update spa stock"
-            git push
-          }
+        shell: bash
+        run: bash scripts/publish-spa-stock.sh
