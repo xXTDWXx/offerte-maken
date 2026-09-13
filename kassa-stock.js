@@ -258,7 +258,7 @@ function createSupabaseStockApi(client) {
       });
       return normalizeStockMap(stock, productList);
     },
-    async sell(showroom, items, productList) {
+    async sell(showroom, items, productList, paymentMethod) {
       const payload = items.map(item => ({
         product_id: item.id,
         quantity: item.qty,
@@ -267,9 +267,10 @@ function createSupabaseStockApi(client) {
         line_total: item.lineTotal
       }));
 
-      const { error } = await client.rpc('register_showroom_sale', {
+      const { error } = await client.rpc('register_showroom_sale_with_payment', {
         p_showroom: showroom,
-        p_items: payload
+        p_items: payload,
+        p_payment_method: paymentMethod
       });
 
       if (error) throw new Error(error.message);
@@ -546,6 +547,7 @@ function updateCheckoutPrintButton() {
 }
 
 async function completeSaleAndPrint() {
+  if (checkoutProcessing) return;
   const items = getCartItems();
   if (!items.length) {
     closeCheckout();
@@ -570,7 +572,7 @@ async function completeSaleAndPrint() {
   setStatus('Betaling registreren en voorraad bijwerken...');
 
   try {
-    stockByProduct = await stockApi.sell(currentShowroom, items, products);
+    stockByProduct = await stockApi.sell(currentShowroom, items, products, checkoutPaymentMethod);
     writeReceipt(receiptWindow, items, checkoutPaymentMethod);
     cart = {};
     checkoutProcessing = false;
