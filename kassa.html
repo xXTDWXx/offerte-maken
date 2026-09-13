@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Kassa kleine producten</title>
 <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="kassa-pv.css?v=20260913" />
 <style>
 :root {
   --kassa-line: #d8e0e9;
@@ -586,7 +587,10 @@ body {
       <h1>Kassa kleine producten</h1>
       <span class="showroom-badge" id="showroomBadge"></span>
     </div>
-    <button class="btn" type="button" id="changeShowroomBtn">Andere showroom</button>
+    <div class="total-actions">
+      <button class="btn" type="button" id="changeShowroomBtn">Andere showroom</button>
+      <button class="btn btn-primary" type="button" id="pvOpenBtn">PV overzicht</button>
+    </div>
   </header>
 
   <div class="status-line" id="statusLine">Voorraad laden...</div>
@@ -687,6 +691,7 @@ body {
 
 <script src="i18n.js?v=fr-20260621c"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="kassa-stock.js?v=fr-20260621"></script>
+<script src="kassa-stock.js?v=pv-20260913"></script>
+<script src="kassa-pv.js?v=20260913"></script>
 </body>
 </html>

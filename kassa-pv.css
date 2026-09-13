@@ -1,0 +1,58 @@
+.pv-overview, .pv-login { box-sizing: border-box; color: #0f172a; font: 16px/1.5 "Segoe UI", Arial, sans-serif; }
+.pv-overview *, .pv-login * { box-sizing: border-box; }
+.pv-overview [hidden], .pv-overview[hidden] { display: none !important; }
+.pv-overview { min-height: 100vh; background: #f6f8fb; padding-bottom: 40px; }
+.pv-header { padding: 20px 28px; background: #fff; border-bottom: 1px solid #d8e0e9; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.pv-header h1 { font-size: 28px; line-height: 1.2; letter-spacing: 0; margin: 0; color: #18364f; }
+.pv-shell { max-width: 1240px; margin: auto; padding: 24px; }
+.pv-filters { padding: 20px; background: #fff; border: 1px solid #d8e0e9; border-radius: 12px; display: flex; align-items: end; flex-wrap: wrap; gap: 16px; }
+.pv-field { display: grid; gap: 6px; flex: 1 1 160px; min-width: 0; }
+.pv-field label { font-size: 14px; color: #475569; font-weight: 700; }
+.pv-field input, .pv-field select { width: 100%; min-width: 0; min-height: 46px; padding: 10px 12px; font: inherit; color: #0f172a; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; }
+.pv-overview :focus-visible, .pv-login :focus-visible { outline: 3px solid #407298; outline-offset: 3px; }
+.pv-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 20px 0; }
+.pv-stat { padding: 18px 20px; border: 1px solid #d8e0e9; background: #fff; border-radius: 12px; min-width: 0; }
+.pv-stat:first-child { background: #18364f; color: #fff; border-color: #18364f; }
+.pv-stat span { display: block; font-size: 14px; }
+.pv-stat strong { display: block; margin-top: 5px; font-size: clamp(22px, 2.5vw, 30px); line-height: 1.3; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.pv-note, .pv-status { color: #475569; margin: 14px 0; }
+.pv-status.error, .pv-login .error { color: #b42318; }
+.pv-day { margin: 26px 0 12px; font-size: 18px; color: #18364f; text-transform: capitalize; }
+.pv-sale { margin-bottom: 14px; background: #fff; border: 1px solid #d8e0e9; border-radius: 12px; overflow: hidden; }
+.pv-sale-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #e5e7eb; background: #f0f5f9; }
+.pv-sale-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.pv-sale-meta h3 { font-size: 16px; margin: 0; color: #18364f; }
+.pv-payment { padding: 4px 10px; border: 1px solid #b9d7ec; border-radius: 6px; background: #e8f3fb; color: #234d6e; font-size: 14px; font-weight: 600; }
+.pv-payment.unknown { background: #fff8e8; color: #805509; border-color: #ead7a9; }
+.pv-sale-total { font-size: 20px; color: #18364f; font-variant-numeric: tabular-nums; }
+.pv-reference { color: #64748b; font-size: 13px; overflow-wrap: anywhere; padding: 10px 20px; border-top: 1px solid #edf2f7; }
+.pv-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.pv-table th, .pv-table td { padding: 10px 20px; border-bottom: 1px solid #edf2f7; text-align: left; overflow-wrap: anywhere; }
+.pv-table th { color: #64748b; background: #fff; font-weight: 600; font-size: 14px; text-transform: none; letter-spacing: 0; }
+.pv-table th:first-child { width: 52%; }
+.pv-table th:nth-child(2) { width: 12%; }
+.pv-table th:nth-child(3), .pv-table th:nth-child(4) { width: 18%; }
+.pv-table .number { text-align: right; font-variant-numeric: tabular-nums; }
+.pv-table tr:last-child td { border-bottom: 0; }
+.pv-pagination { display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+.pv-login { width: min(440px, calc(100% - 32px)); padding: 28px; border: 1px solid #d8e0e9; border-radius: 16px; box-shadow: 0 24px 60px #0f172a33; background: #fff; max-height: calc(100vh - 32px); overflow: auto; }
+.pv-login::backdrop { background: #0f172a99; }
+.pv-login h2 { margin: 0; font-size: 26px; color: #18364f; }
+.pv-login p { margin: 10px 0 20px; color: #475569; }
+.pv-login-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.pv-login-status { margin-top: 12px; min-height: 24px; }
+@media (max-width: 760px) {
+  .pv-shell { padding: 16px; }
+  .pv-header { padding: 16px; }
+  .pv-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .pv-stat { padding: 14px; }
+  .pv-sale-head { padding: 14px; }
+  .pv-table th, .pv-table td { padding: 10px 8px; font-size: 14px; }
+  .pv-table th:first-child { width: 40%; }
+  .pv-table th:nth-child(2) { width: 12%; }
+  .pv-table th:nth-child(3), .pv-table th:nth-child(4) { width: 24%; }
+}
+@media (max-width: 420px) {
+  .pv-filters { padding: 14px; }
+  .pv-field, .pv-filters .btn { flex-basis: 100%; }
+}
