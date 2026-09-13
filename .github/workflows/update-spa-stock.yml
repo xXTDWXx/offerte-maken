@@ -11,6 +11,7 @@ on:
       - '.github/workflows/update-spa-stock.yml'
       - 'scripts/update-spa-stock.ps1'
       - 'scripts/publish-spa-stock.sh'
+      - 'tests/container-arrivals.test.ps1'
 
 permissions:
   contents: write
@@ -29,6 +30,10 @@ jobs:
         with:
           # A rerun must refresh stock against today's code, not its original SHA.
           ref: main
+
+      - name: Test container arrival parsing
+        shell: pwsh
+        run: .\tests\container-arrivals.test.ps1
 
       - name: Build stock JSON
         shell: pwsh

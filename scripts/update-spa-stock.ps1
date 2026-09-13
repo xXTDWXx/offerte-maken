@@ -347,13 +347,14 @@ function Get-ArrivalDateFromText {
   param([string]$Value)
   if ([string]::IsNullOrWhiteSpace($Value)) { return $null }
 
+  # WordPress content can contain spaces, non-breaking spaces and Unicode dashes.
+  $value = $Value -replace '[‐‑‒–—−]', '-'
   $patterns = @(
-    '(?<day>\d{1,2})[/-](?<month>\d{1,2})[/-](?<year>\d{2,4})',
-    '(?<year>\d{4})[/-](?<month>\d{1,2})[/-](?<day>\d{1,2})'
+    '(?<!\d)(?<year>\d{4})\s*[/-]\s*(?<month>\d{1,2})\s*[/-]\s*(?<day>\d{1,2})(?!\d)',
+    '(?<!\d)(?<day>\d{1,2})\s*[/-]\s*(?<month>\d{1,2})\s*[/-]\s*(?<year>\d{4}|\d{2})(?!\d)'
   )
-
   foreach ($pattern in $patterns) {
-    $match = [regex]::Match($Value, $pattern)
+    $match = [regex]::Match($value, $pattern)
     if ($match.Success) {
       $day = [int]$match.Groups['day'].Value
       $month = [int]$match.Groups['month'].Value
@@ -362,8 +363,48 @@ function Get-ArrivalDateFromText {
       try { return [datetime]::new($year, $month, $day) } catch {}
     }
   }
-
   return $null
+}
+
+function ConvertFrom-ContainerArrivalsHtml {
+  param([string]$Html, [datetime]$Today = (Get-Date).Date)
+
+  if ($Html -match '(?i)name\s*=\s*["'']password_protected_pwd["'']') {
+    throw 'Container arrivals login failed; refusing to publish stock without arrival dates.'
+  }
+  $visible = $Html -replace '(?is)<(script|style)\b[^>]*>.*?</\1>', ' '
+  $visible = $visible -replace '(?s)<!--.*?-->', ' '
+  $text = ([System.Net.WebUtility]::HtmlDecode(($visible -replace '<[^>]+>', ' ')) -replace '\s+', ' ').Trim()
+  $arrivals = @{}
+
+  # Bound each date search to its own container entry. An unrecognised date must
+  # never borrow a later container's date or treat a date/day as a container ID.
+  $labels = [regex]::Matches($text, '(?i)\bcontainer\s*:?\s*(?<container>(?:WS|S)?\d{1,3}(?:-\d{4})?)\b')
+  for ($i = 0; $i -lt $labels.Count; $i++) {
+    $label = $labels[$i]
+    $container = Normalize-Container $label.Groups['container'].Value
+    $from = $label.Index + $label.Length
+    $until = if ($i + 1 -lt $labels.Count) { $labels[$i + 1].Index } else { $text.Length }
+    $arrivalDate = Get-ArrivalDateFromText $text.Substring($from, $until - $from)
+    if (-not $arrivalDate) {
+      Write-Warning ("No valid arrival date found for container " + $container)
+      continue
+    }
+    if ($arrivals.ContainsKey($container)) { continue }
+
+    $readyDate = $arrivalDate.Date.AddDays(28)
+    $weeks = [Math]::Max(1, [int][Math]::Ceiling(($readyDate - $Today.Date).TotalDays / 7))
+    $arrivals[$container] = @{
+      container = $container
+      arrivalDate = $arrivalDate.ToString('yyyy-MM-dd')
+      readyDate = $readyDate.ToString('yyyy-MM-dd')
+      weeks = $weeks
+    }
+  }
+  if ($arrivals.Count -eq 0) {
+    throw 'No container arrival dates recognised; refusing to publish incomplete stock.'
+  }
+  return $arrivals
 }
 
 function Get-ContainerArrivals {
@@ -386,39 +427,7 @@ function Get-ContainerArrivals {
   }
 
   $response = Invoke-WebRequest -Uri $Url -WebSession $session -UseBasicParsing -MaximumRedirection 10 -TimeoutSec 30
-  # Log only arrival table rows for troubleshooting container/date matching.
-  foreach ($tableRow in [regex]::Matches($response.Content, '(?is)<tr\b[^>]*>.*?</tr>')) {
-    $rowText = ([System.Net.WebUtility]::HtmlDecode(($tableRow.Value -replace '<[^>]+>', ' ')) -replace '\s+', ' ').Trim()
-    if ($rowText -match '\b(?:79|80)\b' -and $rowText -match '\d{1,4}[/-]\d{1,2}[/-]\d{1,4}') {
-      Write-Host ("Arrival source row: " + $rowText)
-    }
-  }
-  $text = [System.Net.WebUtility]::HtmlDecode(($response.Content -replace '<[^>]+>', ' ')) -replace '\s+', ' '
-  foreach ($snippet in [regex]::Matches($text, '.{0,80}\b(?:79|80)\b.{0,120}')) {
-    Write-Host ("Arrival source context: " + $snippet.Value)
-  }
-  $arrivals = @{}
-  $today = (Get-Date).Date
-
-  $matches = [regex]::Matches($text, '(?i)(?:container\s*)?(?<container>S?\d{1,3})\b.{0,160}?(?<date>(?:\d{1,2}[/-]\d{1,2}[/-]\d{2,4})|(?:\d{4}[/-]\d{1,2}[/-]\d{1,2}))')
-  foreach ($match in $matches) {
-    $container = $match.Groups['container'].Value.ToUpperInvariant()
-    if ($arrivals.ContainsKey($container)) { continue }
-
-    $arrivalDate = Get-ArrivalDateFromText $match.Groups['date'].Value
-    if (-not $arrivalDate) { continue }
-
-    $readyDate = $arrivalDate.Date.AddDays(28)
-    $weeks = [Math]::Max(1, [int][Math]::Ceiling(($readyDate - $today).TotalDays / 7))
-    $arrivals[$container] = @{
-      container = $container
-      arrivalDate = $arrivalDate.ToString('yyyy-MM-dd')
-      readyDate = $readyDate.ToString('yyyy-MM-dd')
-      weeks = $weeks
-    }
-  }
-
-  return $arrivals
+  return ConvertFrom-ContainerArrivalsHtml -Html $response.Content
 }
 
 function Ensure-Model {
