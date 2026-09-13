@@ -387,9 +387,9 @@ function Get-ContainerArrivals {
 
   $response = Invoke-WebRequest -Uri $Url -WebSession $session -UseBasicParsing -MaximumRedirection 10 -TimeoutSec 30
   # Log only arrival table rows for troubleshooting container/date matching.
-  foreach ($tableRow in [regex]::Matches($response.Content, '(?is)<tr\\b[^>]*>.*?</tr>')) {
-    $rowText = ([System.Net.WebUtility]::HtmlDecode(($tableRow.Value -replace '<[^>]+>', ' ')) -replace '\\s+', ' ').Trim()
-    if ($rowText -match '\\b(?:79|80)\\b' -and $rowText -match '\\d{1,4}[/-]\\d{1,2}[/-]\\d{1,4}') {
+  foreach ($tableRow in [regex]::Matches($response.Content, '(?is)<tr\b[^>]*>.*?</tr>')) {
+    $rowText = ([System.Net.WebUtility]::HtmlDecode(($tableRow.Value -replace '<[^>]+>', ' ')) -replace '\s+', ' ').Trim()
+    if ($rowText -match '\b(?:79|80)\b' -and $rowText -match '\d{1,4}[/-]\d{1,2}[/-]\d{1,4}') {
       Write-Host ("Arrival source row: " + $rowText)
     }
   }
