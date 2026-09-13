@@ -1,3 +1,4 @@
+.kassa-app .kassa-header, .pv-overview .pv-header { padding-right: 116px; }
 .pv-overview, .pv-login { box-sizing: border-box; color: #0f172a; font: 16px/1.5 "Segoe UI", Arial, sans-serif; }
 .pv-overview *, .pv-login * { box-sizing: border-box; }
 .pv-overview [hidden], .pv-overview[hidden] { display: none !important; }
