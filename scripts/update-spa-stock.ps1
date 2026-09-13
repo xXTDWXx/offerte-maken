@@ -394,6 +394,9 @@ function Get-ContainerArrivals {
     }
   }
   $text = [System.Net.WebUtility]::HtmlDecode(($response.Content -replace '<[^>]+>', ' ')) -replace '\s+', ' '
+  foreach ($snippet in [regex]::Matches($text, '.{0,80}\b(?:79|80)\b.{0,120}')) {
+    Write-Host ("Arrival source context: " + $snippet.Value)
+  }
   $arrivals = @{}
   $today = (Get-Date).Date
 
