@@ -31,7 +31,7 @@ class Query {
   in(key,values){this.filters.push(row=>values.includes(row[key]));return this;}
   gte(key,value){this.filters.push(row=>row[key]>=value);return this;}
   lt(key,value){this.filters.push(row=>row[key]<value);return this;}
-  maybeSingle(){return Promise.resolve({data:signedIn?{user_id:'admin'}:null,error:null});}
+  maybeSingle(){assert.equal(this.table,'kassa_pv_readers','PV must check its own read-only role');return Promise.resolve({data:signedIn?{user_id:'admin'}:null,error:null});}
   then(resolve,reject) {
     queries++;
     if (rejectReads || !signedIn) return Promise.resolve({error:{message:'Denied'}}).then(resolve,reject);
@@ -42,7 +42,7 @@ class Query {
 }
 const mockClient={
   auth:{
-    async signInWithPassword(){signIns++;signedIn=!failLogin;return failLogin?{error:{message:'Invalid'},data:null}:{data:{user:{id:'admin'}},error:null};},
+    async signInWithPassword({email}){assert.equal(email,'sunspabrugge+kassapv@gmail.com','PV must not authenticate as the stock administrator');signIns++;signedIn=!failLogin;return failLogin?{error:{message:'Invalid'},data:null}:{data:{user:{id:'admin'}},error:null};},
     async signOut(){signedIn=false;}
   },
   from: table=>new Query(table)

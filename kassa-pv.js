@@ -1,9 +1,10 @@
-/* PV uses a separate, memory-only admin session. Closing always locks it again. */
+/* PV has its own read-only account, separate from stock administration. */
 (() => {
   'use strict';
   const PAGE_SIZE = 30;
   const FETCH_SIZE = 200;
   const SESSION_MS = 15 * 60 * 1000;
+  const PV_LOGIN_EMAIL = 'sunspabrugge+kassapv@gmail.com';
   const zone = 'Europe/Brussels';
   const money = cents => euro(cents / 100);
   const dayKey = date => new Intl.DateTimeFormat('sv-SE', {
@@ -44,7 +45,7 @@
     <dialog class="pv-login" id="pvLogin" aria-labelledby="pvLoginTitle">
       <form id="pvLoginForm">
         <h2 id="pvLoginTitle">PV overzicht</h2>
-        <p>Vul het wachtwoord van voorraadbeheer in.</p>
+        <p>Vul het wachtwoord voor het PV overzicht in.</p>
         <div class="pv-field">
           <label for="pvPassword">Wachtwoord</label>
           <input id="pvPassword" type="password" autocomplete="current-password" required />
@@ -163,10 +164,10 @@
       candidate = window.supabase.createClient(STOCK_BACKEND.supabaseUrl, STOCK_BACKEND.supabaseAnonKey, {
         auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false, storageKey: 'sunspa-pv-session' }
       });
-      const { data, error } = await candidate.auth.signInWithPassword({ email: ADMIN_LOGIN.email, password });
+      const { data, error } = await candidate.auth.signInWithPassword({ email: PV_LOGIN_EMAIL, password });
       if (error || !data?.user) throw new Error('Aanmelden mislukt. Controleer je wachtwoord en probeer opnieuw.');
       if (attempt !== generation) return;
-      const member = await candidate.from('kassa_admins').select('user_id').eq('user_id', data.user.id).maybeSingle();
+      const member = await candidate.from('kassa_pv_readers').select('user_id').eq('user_id', data.user.id).maybeSingle();
       if (member.error || !member.data) throw new Error('Dit account heeft geen toegang tot het PV overzicht.');
       if (attempt !== generation) return;
       client = candidate;
