@@ -2,7 +2,9 @@ name: Update spa stock
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    # Quarter-hour cadence, offset from the busiest minute of the hour.
+    # GitHub schedules are best-effort; workflow_dispatch supports an external timer.
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
   # Validate changes to the updater by immediately refreshing the stock.
   push:
@@ -41,12 +43,21 @@ jobs:
           SUNSPA_DEALER_PASSWORD: ${{ secrets.SUNSPA_DEALER_PASSWORD }}
         run: |
           $ErrorActionPreference = 'Stop'
-          $json = .\scripts\update-spa-stock.ps1 | Out-String
-          $stock = $json | ConvertFrom-Json
-          if (-not $stock.generatedAt -or $null -eq $stock.models) {
-            throw 'Stock output is missing generatedAt or models.'
+          for ($attempt = 1; $attempt -le 3; $attempt++) {
+            try {
+              $json = .\scripts\update-spa-stock.ps1 | Out-String
+              $stock = $json | ConvertFrom-Json
+              if (-not $stock.generatedAt -or $null -eq $stock.models) {
+                throw 'Stock output is missing generatedAt or models.'
+              }
+              $json | Set-Content -LiteralPath .\spa-stock.json -Encoding utf8
+              break
+            } catch {
+              if ($attempt -eq 3) { throw }
+              Write-Warning "Stock refresh attempt $attempt failed; retrying in 20 seconds."
+              Start-Sleep -Seconds 20
+            }
           }
-          $json | Set-Content -LiteralPath .\spa-stock.json -Encoding utf8
 
       - name: Commit stock JSON when changed
         shell: bash
