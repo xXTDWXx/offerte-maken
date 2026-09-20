@@ -1281,6 +1281,24 @@ const SAUNA_HEATERS_BY_PRODUCT = Object.freeze({
 function getAvailableSaunaHeaterIds(product = currentProduct) {
   const productHeaters = SAUNA_HEATERS_BY_PRODUCT[product?.id] || [];
   const type = product?.type;
+  const infraredOrCombi = isInfrared(type) ||
+    /infrarood|infrared|combi/i.test(`${product?.id || ''} ${product?.title || ''} ${getSpecValue(product, 'Type sauna') || ''}`) ||
+    Boolean(getSpecValue(product, 'Stralers'));
+  const useTr300Heaters = product?.sauna_heating_options !== false &&
+    !infraredOrCombi && (isBarrelSauna(type) || isSaunaPod(type) || isSauna(type));
+
+  if (useTr300Heaters) {
+    // Share the complete TR300 range, while retaining existing electric choices.
+    const heaters = [...new Set([
+      ...productHeaters,
+      ...SAUNA_HEATERS_BY_PRODUCT['sauna::barrelsauna-tr300'],
+      'huum-drop'
+    ])];
+    return isTr170Barrel(product)
+      ? heaters.filter(id => id !== 'wood' && id !== 'harvia-linear-16')
+      : heaters;
+  }
+
   const huumDropAvailable = product?.sauna_heating_options !== false && (
     isBarrelSauna(type) ||
     isSaunaPod(type) ||
