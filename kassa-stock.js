@@ -33,6 +33,9 @@ let stockApi = null;
 let stockSubscription = null;
 let supabaseClient = null;
 let adminStockByProduct = {};
+const adminDraftsByShowroom = { gent: {}, brugge: {} };
+let adminLoadedShowroom = null;
+let adminBusy = false;
 let checkoutPaymentMethod = '';
 let checkoutProcessing = false;
 let activeProductFilter = 'all';
@@ -123,7 +126,10 @@ function bindEvents() {
     if (event.key === 'Enter') adminLogin();
   });
   els.adminShowroom?.addEventListener('change', refreshAdminStock);
-  els.adminSearch?.addEventListener('input', renderAdminStockList);
+  els.adminSearch?.addEventListener('input', () => {
+    captureAdminInputs();
+    renderAdminStockList();
+  });
   els.adminRefreshBtn?.addEventListener('click', refreshAdminStock);
   els.adminSaveAllBtn?.addEventListener('click', saveAllAdminStock);
   els.adminLogoutBtn?.addEventListener('click', adminLogout);
@@ -285,7 +291,6 @@ function createSupabaseStockApi(client) {
       });
 
       if (error) throw new Error(error.message);
-      return this.getStock(showroom, products);
     },
     subscribe(showroom, onChange) {
       const channel = client
@@ -902,23 +907,49 @@ async function adminLogout() {
 }
 
 async function refreshAdminStock() {
+  if (adminBusy) return;
   const showroom = els.adminShowroom.value;
+  captureAdminInputs();
   showAdminStatus(`Voorraad ${SHOWROOMS[showroom]} laden...`);
   setAdminControlsDisabled(true);
 
   try {
     adminStockByProduct = await stockApi.getStock(showroom, products);
+    adminLoadedShowroom = showroom;
     renderAdminStockList();
-    showAdminStatus(`Voorraad ${SHOWROOMS[showroom]} geladen.`);
+    const pending = Object.keys(adminDraftsByShowroom[showroom]).length;
+    showAdminStatus(`Voorraad ${SHOWROOMS[showroom]} geladen.${pending ? ` ${pending} wijziging(en) nog niet opgeslagen.` : ''}`);
   } catch (err) {
+    adminLoadedShowroom = null;
+    els.adminStockList.innerHTML = '';
     showAdminStatus(err.message || 'Voorraad kon niet geladen worden.', true);
   } finally {
     setAdminControlsDisabled(false);
   }
 }
 
+function rememberAdminQuantity(productId, value) {
+  if (!adminLoadedShowroom) return;
+  const drafts = adminDraftsByShowroom[adminLoadedShowroom];
+  const quantity = Number(value);
+  if (value.trim() !== '' && Number.isInteger(quantity) && quantity >= 0
+      && quantity === Number(adminStockByProduct[productId] || 0)) {
+    delete drafts[productId];
+  } else {
+    drafts[productId] = value;
+  }
+}
+
+function captureAdminInputs() {
+  if (!adminLoadedShowroom) return;
+  els.adminStockList.querySelectorAll('[data-admin-input]').forEach(input => {
+    rememberAdminQuantity(input.dataset.adminInput, input.value);
+  });
+}
+
 function renderAdminStockList() {
   const showroom = els.adminShowroom.value;
+  if (adminLoadedShowroom !== showroom) return;
   const query = els.adminSearch.value.trim().toLowerCase();
   const visibleProducts = products
     .filter(product => isProductVisibleForShowroom(product, showroom))
@@ -928,6 +959,7 @@ function renderAdminStockList() {
 
   visibleProducts.forEach(product => {
     const stock = Number(adminStockByProduct[product.id] || 0);
+    const draft = adminDraftsByShowroom[showroom][product.id];
     const row = document.createElement('div');
     row.className = 'admin-row';
     row.innerHTML = `
@@ -938,11 +970,15 @@ function renderAdminStockList() {
       <div class="admin-stock-now">Prijs<br><strong>${euro(product.price)}</strong></div>
       <div class="admin-stepper">
         <button type="button" data-admin-step="${product.id}" data-delta="-1">-</button>
-        <input type="number" min="0" step="1" value="${stock}" data-admin-input="${product.id}" />
+        <input type="number" min="0" step="1" value="${escapeHtml(draft ?? stock)}" data-admin-input="${product.id}" />
         <button type="button" data-admin-step="${product.id}" data-delta="1">+</button>
       </div>
     `;
     els.adminStockList.appendChild(row);
+  });
+
+  els.adminStockList.querySelectorAll('[data-admin-input]').forEach(input => {
+    input.addEventListener('input', () => rememberAdminQuantity(input.dataset.adminInput, input.value));
   });
 
   els.adminStockList.querySelectorAll('[data-admin-step]').forEach(button => {
@@ -950,37 +986,62 @@ function renderAdminStockList() {
       const input = els.adminStockList.querySelector(`[data-admin-input="${cssEscape(button.dataset.adminStep)}"]`);
       const nextValue = Math.max(0, Number(input.value || 0) + Number(button.dataset.delta));
       input.value = String(nextValue);
+      rememberAdminQuantity(button.dataset.adminStep, input.value);
     });
   });
 
 }
 
 async function saveAllAdminStock() {
+  if (adminBusy) return;
   const showroom = els.adminShowroom.value;
-  const rows = Array.from(els.adminStockList.querySelectorAll('[data-admin-input]'))
-    .map(input => {
-      const product = products.find(item => item.id === input.dataset.adminInput);
+  if (adminLoadedShowroom !== showroom) return;
+  captureAdminInputs();
+  const drafts = adminDraftsByShowroom[showroom];
+  const rows = Object.entries(drafts)
+    .map(([productId, value]) => {
+      const product = products.find(item => item.id === productId);
       return {
         product,
-        quantity: Math.max(0, Math.floor(Number(input.value || 0)))
+        quantity: value.trim() === '' ? NaN : Number(value)
       };
     })
     .filter(row => row.product && isProductVisibleForShowroom(row.product, showroom));
 
-  if (!rows.length) return;
+  if (!rows.length) {
+    showAdminStatus(`Geen wijzigingen om op te slaan voor ${SHOWROOMS[showroom]}.`);
+    return;
+  }
+  const invalid = rows.find(row => !Number.isSafeInteger(row.quantity) || row.quantity < 0 || row.quantity > 2147483647);
+  if (invalid) {
+    showAdminStatus(`Vul een geldig geheel aantal in voor ${invalid.product.title}.`, true);
+    return;
+  }
 
   setAdminControlsDisabled(true);
   showAdminStatus(`Voorraad ${SHOWROOMS[showroom]} opslaan...`);
+  let saved = 0;
 
   try {
     for (const row of rows) {
-      adminStockByProduct = await stockApi.setStock(showroom, row.product, row.quantity);
+      await stockApi.setStock(showroom, row.product, row.quantity);
+      adminStockByProduct[row.product.id] = row.quantity;
+      delete drafts[row.product.id];
+      saved += 1;
+      showAdminStatus(`Voorraad ${SHOWROOMS[showroom]} opslaan: ${saved} van ${rows.length}...`);
     }
-    renderAdminStockList();
-    showAdminStatus(`Alle voorraad is opgeslagen voor ${SHOWROOMS[showroom]}.`);
+    adminStockByProduct = await stockApi.getStock(showroom, products);
+    const mismatches = rows.filter(row => adminStockByProduct[row.product.id] !== row.quantity);
+    if (mismatches.length) {
+      mismatches.forEach(row => { drafts[row.product.id] = String(row.quantity); });
+      throw new Error('De voorraad is ondertussen gewijzigd. Controleer de aantallen en sla opnieuw op.');
+    }
+    showAdminStatus(`${saved} wijziging(en) opgeslagen en gecontroleerd voor ${SHOWROOMS[showroom]}.`);
   } catch (err) {
-    showAdminStatus(err.message || 'Voorraad kon niet opgeslagen worden.', true);
+    const remaining = Object.keys(drafts).length;
+    showAdminStatus(`${err.message || 'Opslaan of controleren is mislukt.'} ${saved} van ${rows.length} verstuurd.${remaining ? ' Niet-opgeslagen wijzigingen blijven bewaard in dit scherm.' : ' Vernieuw om de opgeslagen voorraad te controleren.'}`, true);
   } finally {
+    renderAdminStockList();
     setAdminControlsDisabled(false);
   }
 }
@@ -996,6 +1057,9 @@ function showAdminStatus(message, isError = false) {
 }
 
 function setAdminControlsDisabled(disabled) {
+  adminBusy = disabled;
+  els.adminShowroom.disabled = disabled;
+  els.adminSearch.disabled = disabled;
   els.adminRefreshBtn.disabled = disabled;
   els.adminSaveAllBtn.disabled = disabled;
   els.adminLogoutBtn.disabled = disabled;
