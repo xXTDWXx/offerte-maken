@@ -151,7 +151,7 @@ function Read-XlsxRows {
     [string]$ContainerColumn = ''
   )
 
-  $tempFile = Join-Path $env:TEMP ("sunspa-live-stock-{0}.xlsx" -f ([guid]::NewGuid().ToString('N')))
+  $tempFile = Join-Path ([IO.Path]::GetTempPath()) ("sunspa-live-stock-{0}.xlsx" -f ([guid]::NewGuid().ToString('N')))
   $tempFiles.Add($tempFile) | Out-Null
   Invoke-WebRequest -Uri (Get-DownloadUrl $Url) -OutFile $tempFile -UseBasicParsing -MaximumRedirection 10 -TimeoutSec 60 | Out-Null
 
@@ -240,7 +240,7 @@ function Read-XlsxRows {
 function Read-SaunaStock {
   param([string]$Url)
 
-  $tempFile = Join-Path $env:TEMP ("sunspa-sauna-stock-{0}.xlsx" -f ([guid]::NewGuid().ToString('N')))
+  $tempFile = Join-Path ([IO.Path]::GetTempPath()) ("sunspa-sauna-stock-{0}.xlsx" -f ([guid]::NewGuid().ToString('N')))
   $tempFiles.Add($tempFile) | Out-Null
   Invoke-WebRequest -Uri (Get-DownloadUrl $Url) -OutFile $tempFile -UseBasicParsing -MaximumRedirection 10 -TimeoutSec 60 | Out-Null
 

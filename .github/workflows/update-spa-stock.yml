@@ -14,6 +14,11 @@ on:
       - 'scripts/update-spa-stock.ps1'
       - 'scripts/publish-spa-stock.sh'
       - 'tests/container-arrivals.test.ps1'
+      - 'tests/stock-status.test.cjs'
+      - 'stock-status.js'
+      - 'product.js'
+      - 'app.js'
+      - 'category.js'
 
 permissions:
   contents: write
@@ -24,7 +29,7 @@ concurrency:
 
 jobs:
   update:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - name: Checkout latest main
@@ -32,6 +37,14 @@ jobs:
         with:
           # A rerun must refresh stock against today's code, not its original SHA.
           ref: main
+          # Stock refreshes do not need the product photos.
+          sparse-checkout: |
+            scripts
+            tests
+          sparse-checkout-cone-mode: true
+
+      - name: Test stock matching and automatic refresh
+        run: node tests/stock-status.test.cjs
 
       - name: Test container arrival parsing
         shell: pwsh

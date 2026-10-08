@@ -1,8 +1,6 @@
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
 const OVERKAPPING_URL = new URL('overkapping.json', document.baseURI).toString();
 const ELECTRICAL_SCHEMA_URL = new URL('stroom.html', document.baseURI).toString();
-const SPA_STOCK_URL = new URL('api/spa-stock', document.baseURI).toString();
-const SPA_STOCK_STATIC_URL = new URL('spa-stock.json', document.baseURI).toString();
 
 /*
   Zet hier het pad naar jullie logo.
@@ -44,7 +42,6 @@ let customerHandlersWired = false;
 let productLayoutResizeWired = false;
 let productImageCarouselWired = false;
 let spaColorSwatchesWired = false;
-let spaStockDataPromise = null;
 let productImages = [];
 let activeProductImageIndex = 0;
 
@@ -613,30 +610,7 @@ function normalizeStockColor(value) {
   return clean;
 }
 
-function getSpaStockModelCandidates(product) {
-  const rawTitle = String(product?.title || '');
-  const normalizedTitle = normalizeStockText(rawTitle);
-  const withoutKnownPrefixes = normalizeStockText(
-    rawTitle.replace(/\b(sunspa|myspa|fox|elite|vogue|gold\s*line|goldline)\b/gi, ' ')
-  );
-  const words = withoutKnownPrefixes.split(' ').filter(Boolean);
-  const aliases = [];
 
-  if (normalizedTitle.includes('aquavera')) {
-    aliases.push('aquatique');
-  }
-
-  if (normalizedTitle.includes('python')) {
-    aliases.push('python');
-  }
-
-  return Array.from(new Set([
-    ...aliases,
-    normalizedTitle,
-    withoutKnownPrefixes,
-    words.length ? words[words.length - 1] : ''
-  ].filter(Boolean)));
-}
 
 function getSaunaStockCandidates(product) {
   const rawTitle = String(product?.title || '');
@@ -702,38 +676,11 @@ function getSaunaStockCandidates(product) {
 }
 
 function getSpaStockData() {
-  if (!spaStockDataPromise) {
-    spaStockDataPromise = fetch(SPA_STOCK_URL, { cache: 'no-store' })
-      .then(response => {
-        if (!response.ok) throw new Error(`Stock API ${response.status}`);
-        return response.json();
-      })
-      .catch(() => fetch(`${SPA_STOCK_STATIC_URL}?v=${Date.now()}`, { cache: 'no-store' })
-        .then(response => {
-          if (!response.ok) throw new Error(`Stock JSON ${response.status}`);
-          return response.json();
-        }))
-      .catch(error => {
-        console.warn('Live spa stock niet beschikbaar', error);
-        return null;
-      });
-  }
-
-  return spaStockDataPromise;
+  return window.SunspaStockStatus.load();
 }
 
 function findSpaStockModel(product, stockData) {
-  const models = Array.isArray(stockData?.models) ? stockData.models : [];
-  if (!models.length) return null;
-
-  const candidates = getSpaStockModelCandidates(product);
-  const exact = models.find(model => candidates.includes(normalizeStockText(model?.key || model?.name)));
-  if (exact) return exact;
-
-  return models.find(model => {
-    const modelKey = normalizeStockText(model?.key || model?.name);
-    return candidates.some(candidate => candidate.includes(modelKey) || modelKey.includes(candidate));
-  }) || null;
+  return window.SunspaStockStatus.findModel(product, stockData);
 }
 
 function isSaunaStockProduct(product) {
@@ -926,6 +873,7 @@ async function getCurrentOfferDeliveryTerm(product) {
   if (product.showroomOffer) return 'In overleg';
 
   const stockData = await getSpaStockData();
+  if (!window.SunspaStockStatus.isFresh(stockData)) return 'Beschikbaarheid en levering op aanvraag';
 
   if (hasSpaColorOptions(product.type)) {
     const selectedColor = normalizeStockColor($('spaCabinetColor')?.value || '');
@@ -980,11 +928,18 @@ function updateSpaStockDelivery() {
 
   getSpaStockData().then(stockData => {
     if (!currentProduct) return;
+    if (!window.SunspaStockStatus.isFresh(stockData)) {
+      wrap.textContent = window.SunspaStockStatus.describe(stockData);
+      return;
+    }
     if (hasSpaColorOptions(currentProduct.type)) {
       renderSpaStockDelivery(currentProduct, stockData);
     } else if (isSaunaStockProduct(currentProduct)) {
       renderSaunaStockDelivery(currentProduct, stockData);
     }
+    const stamp = document.createElement('small');
+    stamp.textContent = window.SunspaStockStatus.describe(stockData);
+    wrap.appendChild(stamp);
   });
 }
 
@@ -4831,4 +4786,20 @@ async function init() {
 init().catch(e => {
   console.error(e);
   showError(String(e.message || e));
+});
+
+window.SunspaStockStatus.subscribe(stockData => {
+  const wrap = $('spaStockDelivery');
+  if (!currentProduct || currentProduct.showroomOffer || !wrap) return;
+  if (!hasSpaColorOptions(currentProduct.type) && !isSaunaStockProduct(currentProduct)) return;
+  wrap.hidden = false;
+  if (!window.SunspaStockStatus.isFresh(stockData)) {
+    wrap.textContent = window.SunspaStockStatus.describe(stockData);
+    return;
+  }
+  if (hasSpaColorOptions(currentProduct.type)) renderSpaStockDelivery(currentProduct, stockData);
+  else renderSaunaStockDelivery(currentProduct, stockData);
+  const stamp = document.createElement('small');
+  stamp.textContent = window.SunspaStockStatus.describe(stockData);
+  wrap.appendChild(stamp);
 });

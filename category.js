@@ -614,3 +614,8 @@ init().catch(e => {
   console.error(e);
   showError(String(e.message || e));
 });
+
+window.SunspaStockStatus.subscribe(data => {
+  spaStockData = data;
+  if (products.length) filterProducts();
+});
