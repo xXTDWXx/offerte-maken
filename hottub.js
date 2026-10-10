@@ -106,8 +106,24 @@ const OVAL_HEATER_OPTIONS = {
   ]
 };
 
+// Round tubs also include the external 20 kW 304 heater.
+const ROUND_HEATER_OPTIONS = {
+  extern: [
+    ["External - 20kW, 304", "images/configurator/externe-kachel.webp", 0],
+    ["External - 26kW, 316", "images/configurator/externe-kachel.webp", 495],
+    ["External - 30kW, 316", "images/configurator/externe-kachel.webp", 695]
+  ],
+  intern: [
+    ["Integrated - 35kW, 316", "images/configurator/integrated-kachel.webp", 315],
+    ["Verta - 35kW, 316", "images/configurator/verta-kachel.webp", 1045]
+  ]
+};
+
 function getHeaterOptions() {
-  return getCurrentModelKey() === "ovaal" ? OVAL_HEATER_OPTIONS : HEATER_OPTIONS;
+  const model = getCurrentModelKey();
+  if (model === "ovaal") return OVAL_HEATER_OPTIONS;
+  if (model === "rond") return ROUND_HEATER_OPTIONS;
+  return HEATER_OPTIONS;
 }
 
 const MASSAGE_OPTIONS = [
