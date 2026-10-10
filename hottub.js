@@ -94,6 +94,22 @@ const HEATER_OPTIONS = {
   ]
 };
 
+// The oval tub includes the external 20 kW 304 heater in its base price.
+const OVAL_HEATER_OPTIONS = {
+  extern: [
+    ["External - 20kW, 304", "images/configurator/externe-kachel.webp", 0],
+    ["External - 26kW, 316", "images/configurator/externe-kachel.webp", 495],
+    ["External - 30kW, 316", "images/configurator/externe-kachel.webp", 695]
+  ],
+  intern: [
+    ["Integrated - 20kW, 316", "images/configurator/integrated-kachel.webp", 425]
+  ]
+};
+
+function getHeaterOptions() {
+  return getCurrentModelKey() === "ovaal" ? OVAL_HEATER_OPTIONS : HEATER_OPTIONS;
+}
+
 const MASSAGE_OPTIONS = [
   ["Geen massage", "Zonder jets", "images/configurator/geen-massage.webp", 0, "geen"],
   ["Air 12 jets", "Luchtmassage", "images/configurator/air-jets.webp", 440, "air"],
@@ -266,6 +282,7 @@ function renderSizeOptions() {
 }
 
 function renderHeaterOptions() {
+  const heaterOptions = getHeaterOptions();
   const type = selectedRadioValue("opwarming");
   const container = document.getElementById("heaterOptions");
   const intro = document.getElementById("heaterIntro");
@@ -281,7 +298,7 @@ function renderHeaterOptions() {
   let content = "";
   if (type === "extern" || type === "intern") {
     intro.textContent = `Kies je ${type === "extern" ? "externe" : "interne"} kachel.`;
-    content = HEATER_OPTIONS[type].map(([label, image, price]) => heaterCard(label, image, price, price === 0 ? "Inbegrepen in basisprijs" : "")).join("");
+    content = heaterOptions[type].map(([label, image, price]) => heaterCard(label, image, price, price === 0 ? "Inbegrepen in basisprijs" : "")).join("");
   } else if (type === "elektrisch") {
     intro.textContent = "Kies je elektrische kachel en eventueel de touchscreen-upgrade.";
     content = heaterCard("Elektrische 3 kW heater met display (Gecko)", "images/hottub-fast/gecko.jpg", 990, "Elektrische opwarming") + `
@@ -292,8 +309,8 @@ function renderHeaterOptions() {
   } else if (type === "hybride") {
     intro.textContent = "De elektrische 3 kW heater met display (Gecko) wordt automatisch toegevoegd voor € 990,00. Kies hieronder de houtkachel waarmee je die combineert.";
     const hybridOptions = [
-      ...HEATER_OPTIONS.extern.map(([label, image, price]) => [`Extern – ${label}`, image, price]),
-      ...HEATER_OPTIONS.intern.map(([label, image, price]) => [`Intern – ${label}`, image, price])
+      ...heaterOptions.extern.map(([label, image, price]) => [`Extern – ${label}`, image, price]),
+      ...heaterOptions.intern.map(([label, image, price]) => [`Intern – ${label}`, image, price])
     ];
     content = hybridOptions.map(([label, image, price]) => heaterCard(label, image, price, price === 0 ? "Inbegrepen in basisprijs" : "")).join("");
   } else {
