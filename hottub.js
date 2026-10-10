@@ -94,10 +94,8 @@ const HEATER_OPTIONS = {
   ]
 };
 
-// The oval tub includes the external 20 kW 304 heater in its base price.
 const OVAL_HEATER_OPTIONS = {
   extern: [
-    ["External - 20kW, 304", "images/configurator/externe-kachel.webp", 0],
     ["External - 26kW, 316", "images/configurator/externe-kachel.webp", 495],
     ["External - 30kW, 316", "images/configurator/externe-kachel.webp", 695]
   ],
@@ -106,10 +104,8 @@ const OVAL_HEATER_OPTIONS = {
   ]
 };
 
-// Round tubs also include the external 20 kW 304 heater.
 const ROUND_HEATER_OPTIONS = {
   extern: [
-    ["External - 20kW, 304", "images/configurator/externe-kachel.webp", 0],
     ["External - 26kW, 316", "images/configurator/externe-kachel.webp", 495],
     ["External - 30kW, 316", "images/configurator/externe-kachel.webp", 695]
   ],
