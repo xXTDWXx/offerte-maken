@@ -685,6 +685,13 @@ body {
           <label for="adminSearch">Zoeken</label>
           <input id="adminSearch" type="search" placeholder="Product zoeken" />
         </div>
+        <div class="admin-field">
+          <label for="adminAssortment">Producten tonen</label>
+          <select id="adminAssortment">
+            <option value="active">Actief assortiment</option>
+            <option value="all">Alle producten</option>
+          </select>
+        </div>
         <button class="btn" type="button" id="adminRefreshBtn">Vernieuwen</button>
         <button class="btn btn-primary" type="button" id="adminSaveAllBtn">Alles opslaan</button>
         <button class="btn btn-danger" type="button" id="adminLogoutBtn">Afmelden</button>
@@ -697,7 +704,7 @@ body {
 
 <script src="i18n.js?v=fr-20260621c"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="kassa-stock.js?v=kortrijk-20261012"></script>
+<script src="kassa-stock.js?v=beheer-20261012"></script>
 <script src="kassa-pv.js?v=kortrijk-20261012"></script>
 </body>
 </html>
