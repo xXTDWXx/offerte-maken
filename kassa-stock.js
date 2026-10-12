@@ -396,6 +396,9 @@ function matchesProductFilter(product, filter) {
   const text = `${product.id} ${product.title}`.toLowerCase();
   const isSpaLine = text.includes('spa-line');
 
+  if (filter === 'easy-water') {
+    return text.includes('easy-water');
+  }
   if (filter === 'filters') {
     return text.includes('filter') && !text.includes('filter-clean');
   }
