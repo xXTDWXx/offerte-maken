@@ -20,7 +20,7 @@ Easy Water pH min en chloorkorrels zijn niet gevonden op main, de vier overige
 remote branches of in de live Brugge-voorraad. Na gebruikersverduidelijking
 zijn twee eigen Kortrijk-artikelen aangemaakt. Melpool blijft ongemoeid.
 Voor de twee nieuwe artikelen ontbreken nog foto's.
-Easy Water chloorkorrels heeft nog geen prijs.
+Easy Water chloorkorrels en chloortabletten: EUR 17,95 incl. BTW.
 Broodkussen wit krijgt op verzoek dezelfde catalogusprijs als zwart: EUR 24,95.
 De bestaande BTW-verwerking van de kassa blijft gelijk.
 Easy Water pH min en pH Plus: EUR 14 per stuk incl. BTW, voor Brugge en
@@ -30,7 +30,9 @@ Er is geen pH min-voorraadregel voor Brugge aangemaakt; ontbrekende
 voorraad wordt in de kassa als nul weergegeven.
 Easy Water Tube Clean en Foam Down: EUR 16 per stuk incl. BTW, voor
 Brugge en Kortrijk. Geen Kortrijk-voorraad voor Foam Down toegevoegd.
-Alleen de prijs van Easy Water chloorkorrels ontbreekt nog voor Kortrijk.
+InSPAration Eucalyptus Mint aroma: EUR 20 incl. BTW voor beide locaties.
+Geen Kortrijk-voorraad voor aroma of Brugge-voorraad voor chloorkorrels toegevoegd.
+Alle opgegeven Kortrijk-artikelen hebben nu een verkoopprijs.
 Artikelen zonder prijs blijven zichtbaar in voorraadbeheer; verkoop is geblokkeerd.
 
 CONTROLES
@@ -44,9 +46,10 @@ andere locaties ongewijzigd, voorraadbeheer zonder login geweigerd.
 De gehele verkooptest is teruggedraaid; geen testverkoop achtergebleven.
 
 PUBLICATIE
-De database en voorraad zijn live. De kassabestanden moeten nog via de
-reviewbranch worden samengevoegd en gepubliceerd voordat Kortrijk in de
-publieke kassakeuze verschijnt. Draai het historische bootstrap-schema
+De database en voorraad zijn live. Publicatie van de kassabestanden en alle
+bevestigde prijzen is door de gebruiker geautoriseerd op 12 oktober 2026.
+Publicatie verloopt via samenvoegen van PR #4 naar main.
+Draai het historische bootstrap-schema
 niet opnieuw: dat bevat een voorraadreset. De nieuwe migratie doet dat niet.
 
 De Supabase-advisor meldt bestaande configuratiepunten die deze wijziging

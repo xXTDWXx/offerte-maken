@@ -33,7 +33,8 @@ async function main() {
   const visible = vm.runInContext('getShowroomProducts().map(p=>p.id)', context);
   for (const id of ['broodkussen-wit','spagoedkoop-brood-kussentje','easy-water-chloortablet','chloordrijver','myspa-vogue-filter','aquacheck-teststrips-ph-chloor','easy-water-tube-clean','spa-balancer-1l','easy-water-ph-plus','easy-water-ph-min','easy-water-chloorkorrels']) assert.ok(visible.includes(id), id);
   assert.ok(visible.includes('easy-water-foam-down'), 'Foam Down is available with its confirmed price, without seeding stock');
-  assert.ok(!visible.includes('insparation-eucalyptus-mint'), 'Brugge-only product stays restricted');
+  assert.ok(visible.includes('insparation-eucalyptus-mint'), 'Confirmed aroma price applies to Kortrijk too');
+  assert.ok(!visible.includes('badjas-sunspa'), 'Brugge-only product stays restricted');
   const calls = [];
   const client = { rpc:async(name,args)=>{calls.push({name,args});return {error:null};}, from:()=>({select(){return this;},in(){return this;},eq(key,value){calls.push({key,value});return this;},then(resolve){return Promise.resolve({data:[],error:null}).then(resolve);}}) };
   context.client=client;

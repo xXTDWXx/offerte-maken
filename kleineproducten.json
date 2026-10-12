@@ -188,7 +188,7 @@
   {
     "id": "easy-water-chloortablet",
     "title": "Easy Water chloortablet",
-    "price": 17.5,
+    "price": 17.95,
     "image": "images/kassa/easy-water-chloortablet.png",
     "showrooms": [
       "brugge",
@@ -479,10 +479,11 @@
   {
     "id": "insparation-eucalyptus-mint",
     "title": "InSPAration Eucalyptus Mint aroma",
-    "price": null,
+    "price": 20,
     "image": "https://bunx.nl/media/catalog/product/cache/744f82e36d5b307c7df9f3781938366e/i/n/insparation_eucalyptusmint.webp",
     "showrooms": [
-      "brugge"
+      "brugge",
+      "kortrijk"
     ]
   },
   {
@@ -498,10 +499,11 @@
   {
     "id": "easy-water-chloorkorrels",
     "title": "Easy Water chloorkorrels",
-    "price": null,
+    "price": 17.95,
     "image": "",
     "showrooms": [
-      "kortrijk"
+      "kortrijk",
+      "brugge"
     ]
   }
 ]
