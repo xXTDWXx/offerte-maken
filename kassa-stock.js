@@ -159,7 +159,7 @@ async function selectShowroom(showroom) {
 async function loadProducts() {
   if (products.length) return;
 
-  const response = await fetch('kleineproducten.json');
+  const response = await fetch('kleineproducten.json', { cache: 'no-store' });
   if (!response.ok) throw new Error('kleineproducten.json kon niet geladen worden');
 
   const data = await response.json();
@@ -168,7 +168,7 @@ async function loadProducts() {
   products = data.map((p, index) => ({
     id: p.id ?? `product-${index}`,
     title: p.title ?? 'Onbekend product',
-    price: Number(p.price) || 0,
+    price: p.price == null ? null : Number(p.price),
     image: p.image ?? '',
     showrooms: Array.isArray(p.showrooms)
       ? p.showrooms.filter(showroom => SHOWROOMS[showroom])
@@ -435,7 +435,7 @@ function render() {
         ${product.image ? `<img src="${product.image}" class="product-img" alt="${escapeHtml(product.title)}">` : ''}
       </div>
       <div class="product-title">${escapeHtml(product.title)}</div>
-      <div class="product-price">${euro(product.price)}</div>
+      <div class="product-price">${product.price == null ? 'Prijs nog in te vullen' : euro(product.price)}</div>
       <div class="stock-row">
         <span>Voorraad ${escapeHtml(SHOWROOMS[currentShowroom])}</span>
         <span class="stock-value ${stockClass}">${stock}</span>
@@ -443,7 +443,7 @@ function render() {
       <div class="counter">
         <button type="button" data-change="${product.id}" data-delta="-1" ${qty <= 0 ? 'disabled' : ''}>-</button>
         <span>${qty}</span>
-        <button type="button" data-change="${product.id}" data-delta="1">+</button>
+        <button type="button" data-change="${product.id}" data-delta="1" ${product.price == null ? 'disabled' : ''}>+</button>
       </div>`;
 
     els.grid.appendChild(card);
@@ -459,6 +459,7 @@ function render() {
 }
 
 function change(id, delta) {
+  if (products.find(product => product.id === id)?.price == null) return;
   const currentQty = cart[id] || 0;
   const nextQty = Math.max(0, currentQty + delta);
 
@@ -478,7 +479,7 @@ function getCartItems() {
       qty: cart[product.id] || 0,
       lineTotal: (cart[product.id] || 0) * product.price
     }))
-    .filter(product => product.qty > 0);
+    .filter(product => product.qty > 0 && product.price != null);
 }
 
 function updateTotal() {
@@ -967,7 +968,7 @@ function renderAdminStockList() {
         <div class="admin-product-title">${escapeHtml(product.title)}</div>
         <div class="admin-stock-now">Huidige voorraad: <strong>${stock}</strong></div>
       </div>
-      <div class="admin-stock-now">Prijs<br><strong>${euro(product.price)}</strong></div>
+      <div class="admin-stock-now">Prijs<br><strong>${product.price == null ? 'Prijs nog in te vullen' : euro(product.price)}</strong></div>
       <div class="admin-stepper">
         <button type="button" data-admin-step="${product.id}" data-delta="-1">-</button>
         <input type="number" min="0" step="1" value="${escapeHtml(draft ?? stock)}" data-admin-input="${product.id}" />

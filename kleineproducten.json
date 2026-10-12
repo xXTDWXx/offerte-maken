@@ -1,65 +1,482 @@
 [
-  {"id":"melpool-chloorgranulaat-55-g-1kg","title":"Melpool Chloorgranulaat 55/G","price":19.95,"image":"images/melpool-chloorgranulaat-55-g-granulaat-1-kg.webp"},
-  {"id":"melpool-chloortabletten-90-20-1kg","title":"Melpool Chloortabletten 90/20","price":19.95,"image":"images/melpool-chloortabletten-90-20-1-kg.webp"},
-  {"id":"melpool-ph-plus","title":"Melpool pH +","price":11.95,"image":"images/melpool-ph.webp"},
-  {"id":"melpool-ph-min","title":"Melpool pH -","price":11.95,"image":"images/melpool-ph (1).webp"},
-  {"id":"melpool-ta-alkaliteit","title":"Melpool TA + Alkaliteit increaser","price":18.99,"image":"images/melpool-ta-alkaliteit-increaser.webp"},
-  {"id":"aquafinesse-pakket","title":"Aquafinesse pakket","price":119.00,"image":"images/aquafinesse-pakket.webp"},
-  {"id":"spa-balancer-ultrashock","title":"Spa Balancer Spa Balancer Ultrashock - Chloorvrije","price":46.90,"image":"images/spa-balancer-spa-balancer-ultrashock-chloorvrije-w.webp"},
-  {"id":"aquacheck-teststrips-ph-chloor","title":"Aquacheck Teststrips pH & Chloor","price":13.95,"image":"images/aquacheck-teststrips-ph-chloor.webp"},
-  {"id":"spagoedkoop-brood-kussentje","title":"SpaGoedkoop.be Brood kussentje","price":24.95,"image":"images/spagoedkoopbe-brood-kussentje.webp"},
-  {"id":"sunspa-filter-klein","title":"Sunspa Filter klein","price":45.00,"image":"images/sunspa-filter-klein.webp"},
-  {"id":"sunspa-filter-groot","title":"Sunspa Filter groot","price":45.00,"image":"images/sunspa-filter-groot.webp"},
-  {"id":"fox-spa-filter","title":"Fox spa filter","price":45.00,"image":"images/fox-spa-filter.webp"},
-  {"id":"fox-spa-kussen","title":"Fox spa kussen","price":29.95,"image":"images/fox-spa-kussen.webp"},
-  {"id":"myspa-hoek-kussen","title":"SpaGoedkoop.be Myspa Hoek kussen","price":28.95,"image":"images/spagoedkoopbe-myspa-hoek-kussen.webp"},
-  {"id":"myspa-vogue-filter","title":"MySpa & Vogue filter","price":45.00,"image":"images/myspa-vogue-filter.webp"},
-  {"id":"spa-line-cover-shine","title":"Spa Line Spa Cover Shine","price":19.95,"image":"images/spa-line-spa-cover-shine.webp"},
-  {"id":"spa-line-tube-clean","title":"Spa Line Spa Tube Clean","price":15.95,"image":"images/spa-line-spa-tube-clean.webp"},
-  {"id":"spa-line-metal-clean","title":"Spa Line Spa Metal Clean","price":15.95,"image":"images/spa-line-spa-metal-clean.webp"},
-  {"id":"spa-line-defense","title":"Spa Line Spa Defense","price":24.95,"image":"images/spa-line-spa-defense.webp"},
-  {"id":"spa-line-foam-down","title":"Spa Line Spa Foam Down","price":15.95,"image":"images/spa-line-spa-foam-down.webp"},
-  {"id":"spa-line-spa-aroma-sensual","title":"Spa Line Spa Aroma","price":10.95,"image":"images/spa-line-spa-aroma-sensual.png"},
-  {"id":"spa-line-bright","title":"Spa Line Spa Line Bright","price":19.95,"image":"images/spa-line-spa-line-bright.webp"},
-  {"id":"filter-explore-san-marino-new-york","title":"Filter Explore | san marino | New york","price":45.00, "image":"images/filter-explore-san-marino-new-york.webp"},
-  {"id":"filterset-zwemspa","title":"Filterset zwemspa","price":160.00,"image":"images/darlly-filterset-zwemspa.webp"},
-  {"id":"spa-line-ph-minus","title":"Spa Line Spa pH Minus","price":13.95,"image":"images/spa-line-spa-ph-minus.webp"},
-  {"id":"spa-line-ph-plus","title":"Spa Line Spa pH Plus","price":13.95,"image":"images/spa-line-spa-ph-plus.webp"},
-  {"id":"chloordrijver","title":"Chloordrijver","price":11.95,"image":"images/chloordrijver.webp"},
-  {"id":"insparation-wellness-geurtjes","title":"Wellness - Eucalyptus","price":20.00,"image":"images/insparation-wellness-eucalyptus.webp","showrooms":["gent"]},
-  {"id":"spa-line-clear-water","title":"Spa Line Spa Clear Water","price":19.95,"image":"images/spa-line-spa-line-spa-clear-water.webp"},
-  {"id":"nieuwe-zwemspa-filter","title":"Nieuwe zwemspa filter","price":79.95,"image":"images/kassa/nieuwe-zwemspa-filter.jpg","showrooms":["brugge"]},
-  {"id":"easy-water-chloortablet","title":"Easy Water chloortablet","price":17.50,"image":"images/kassa/easy-water-chloortablet.png","showrooms":["brugge"]},
-  {"id":"spa-line-fast-gloss","title":"Spa Line Fast Gloss","price":24.95,"image":"images/kassa/spa-line-fast-gloss.png"},
-  {"id":"spa-duck","title":"Spa Duck","price":10.95,"image":"images/kassa/spa-duck.webp","showrooms":["brugge"]},
-  {"id":"opgietmiddel-dennen","title":"Opgietmiddel dennen","price":16.95,"image":"images/kassa/opgietmiddel-dennen.jpg","showrooms":["brugge"]},
-  {"id":"insparation-coco","title":"InSPAration Coco Lime","price":19.95,"image":"images/kassa/insparation-coco-lime.avif","showrooms":["brugge"]},
-  {"id":"opgietmiddel-klein-lavendel","title":"Opgietmiddel klein lavendel","price":10.00,"image":"images/kassa/opgietmiddel-klein-lavendel.webp","showrooms":["brugge"]},
-  {"id":"halu-hoofdsteun","title":"HaLu hoofdsteun","price":49.95,"image":"images/kassa/halu-hoofdsteun.webp"},
-  {"id":"bullfrog-filter","title":"Bullfrog filter","price":45.00,"image":"images/kassa/bullfrog-filter.webp"},
-  {"id":"badjas-sunspa","title":"Badjas Sunspa","price":25.00,"image":"","showrooms":["brugge"]},
-  {"id":"spa-protector-240-cm","title":"Spa protector 240 cm","price":119.95,"image":"images/kassa/spa-protector-240-cm.webp","showrooms":["brugge"]},
-  {"id":"bds-jumbo-jet","title":"BDS jumbo jet","price":22.95,"image":"images/kassa/bds-jumbo-jet.webp","showrooms":["brugge"]},
-  {"id":"bds-dico-jet","title":"BDS dico jet","price":18.50,"image":"images/kassa/bds-dico-jet.webp","showrooms":["brugge"]},
-  {"id":"bds-mini-jet","title":"BDS mini jet","price":12.95,"image":"images/kassa/bds-mini-jet.webp","showrooms":["brugge"]},
-  {"id":"wellness-aroma-lavendel","title":"Wellness aroma Lavendel","price":19.95,"image":"images/kassa/wellness-aroma-lavendel.webp","showrooms":["brugge"]},
-  {"id":"wellness-aroma-clary-sage","title":"Wellness aroma Clary Sage","price":19.95,"image":"images/kassa/wellness-aroma-clary-sage.webp","showrooms":["brugge"]},
-  {"id":"wellness-aroma-eucalyptus","title":"Wellness aroma Eucalyptus","price":19.95,"image":"images/kassa/wellness-aroma-eucalyptus.webp","showrooms":["brugge"]},
-  {"id":"spa-balancer-1l","title":"Spa Balancer 1 L","price":99.00,"image":"images/kassa/spa-balancer-750ml-1000ml.webp","showrooms":["brugge"]},
-  {"id":"spa-balancer-75cl","title":"Spa Balancer 75 CL","price":75.00,"image":"images/kassa/spa-balancer-750ml-1000ml.webp"},
-  {"id":"calcium-booster","title":"Calcium Booster","price":19.95,"image":"images/kassa/calcium-booster.jpg","showrooms":["brugge"]},
-  {"id":"renew","title":"Renew","price":19.95,"image":"images/kassa/renew.jpg"},
-  {"id":"estelle-filter-cleaner","title":"Estelle filter cleaner","price":129.95,"image":"images/kassa/estelle-filter-cleaner.webp"},
-  {"id":"spa-line-citrus-clean","title":"Spa Line Citrus Clean","price":15.95,"image":"images/kassa/spa-line-citrus-clean.webp"},
-  {"id":"spa-line-pre-filter","title":"Spa Line Pre Filter","price":9.95,"image":"images/kassa/spa-line-pre-filter.png"},
-  {"id":"leisure-time-filter-clean","title":"Leisure Time Filter Clean","price":15.95,"image":""},
-  {"id":"leisure-time-defender","title":"Leisure Time Defender","price":24.95,"image":"images/kassa/leisure-time-defender.jpg","showrooms":["brugge"]},
-  {"id":"spa-line-fragrance-eucalyptus","title":"Spa Line Fragrance Eucalyptus","price":11.95,"image":"images/kassa/spa-line-fragrance-eucalyptus.webp","showrooms":["brugge"]},
-  {"id":"grote-rugsteun","title":"Grote Rugsteun","price":125.00,"image":"images/kassa/grote-rugsteun.webp"},
-  {"id":"kleine-ruggesteun","title":"Kleine ruggesteun","price":50.00,"image":"images/kassa/kleine-ruggesteun.webp"},
-  {"id":"spa-vac-waterstofzuiger","title":"Spa Vac Waterstofzuiger","price":69.00,"image":"images/kassa/spa-vac.webp"},
-  {"id":"korte-lamp-300w","title":"Korte lamp 300w","price":85.00,"image":"images/kassa/full-spectrum-straler.webp"},
-  {"id":"lange-lamp","title":"Lange Lamp I4H","price":95.00,"image":"images/kassa/full-spectrum-straler.webp"},
-  {"id":"drijvende-bartafel","title":"Drijvende bartafel","price":69.00,"image":"images/kassa/drijvende-bartafel.webp"},
-  {"id":"coverlift-beugel","title":"Coverlift beugel","price":189.00,"image":"images/Coverlift.jpg"}
+  {
+    "id": "melpool-chloorgranulaat-55-g-1kg",
+    "title": "Melpool Chloorkorrels",
+    "price": 19.95,
+    "image": "images/melpool-chloorgranulaat-55-g-granulaat-1-kg.webp"
+  },
+  {
+    "id": "melpool-chloortabletten-90-20-1kg",
+    "title": "Melpool Chloortabletten 90/20",
+    "price": 19.95,
+    "image": "images/melpool-chloortabletten-90-20-1-kg.webp"
+  },
+  {
+    "id": "melpool-ph-plus",
+    "title": "Melpool pH +",
+    "price": 11.95,
+    "image": "images/melpool-ph.webp"
+  },
+  {
+    "id": "melpool-ph-min",
+    "title": "Melpool pH -",
+    "price": 11.95,
+    "image": "images/melpool-ph (1).webp"
+  },
+  {
+    "id": "melpool-ta-alkaliteit",
+    "title": "Melpool TA + Alkaliteit increaser",
+    "price": 18.99,
+    "image": "images/melpool-ta-alkaliteit-increaser.webp"
+  },
+  {
+    "id": "aquafinesse-pakket",
+    "title": "Aquafinesse pakket",
+    "price": 119,
+    "image": "images/aquafinesse-pakket.webp"
+  },
+  {
+    "id": "spa-balancer-ultrashock",
+    "title": "Spa Balancer Spa Balancer Ultrashock - Chloorvrije",
+    "price": 46.9,
+    "image": "images/spa-balancer-spa-balancer-ultrashock-chloorvrije-w.webp"
+  },
+  {
+    "id": "aquacheck-teststrips-ph-chloor",
+    "title": "Aquacheck Teststrips pH & Chloor",
+    "price": 13.95,
+    "image": "images/aquacheck-teststrips-ph-chloor.webp"
+  },
+  {
+    "id": "spagoedkoop-brood-kussentje",
+    "title": "Broodkussen zwart",
+    "price": 24.95,
+    "image": "images/spagoedkoopbe-brood-kussentje.webp"
+  },
+  {
+    "id": "sunspa-filter-klein",
+    "title": "Sunspa Filter klein",
+    "price": 45,
+    "image": "images/sunspa-filter-klein.webp"
+  },
+  {
+    "id": "sunspa-filter-groot",
+    "title": "Sunspa Filter groot",
+    "price": 45,
+    "image": "images/sunspa-filter-groot.webp"
+  },
+  {
+    "id": "fox-spa-filter",
+    "title": "Fox spa filter",
+    "price": 45,
+    "image": "images/fox-spa-filter.webp"
+  },
+  {
+    "id": "fox-spa-kussen",
+    "title": "Fox spa kussen",
+    "price": 29.95,
+    "image": "images/fox-spa-kussen.webp"
+  },
+  {
+    "id": "myspa-hoek-kussen",
+    "title": "SpaGoedkoop.be Myspa Hoek kussen",
+    "price": 28.95,
+    "image": "images/spagoedkoopbe-myspa-hoek-kussen.webp"
+  },
+  {
+    "id": "myspa-vogue-filter",
+    "title": "MySpa & Vogue filter",
+    "price": 45,
+    "image": "images/myspa-vogue-filter.webp"
+  },
+  {
+    "id": "spa-line-cover-shine",
+    "title": "Spa Line Spa Cover Shine",
+    "price": 19.95,
+    "image": "images/spa-line-spa-cover-shine.webp"
+  },
+  {
+    "id": "spa-line-tube-clean",
+    "title": "Spa Line Spa Tube Clean",
+    "price": 15.95,
+    "image": "images/spa-line-spa-tube-clean.webp"
+  },
+  {
+    "id": "spa-line-metal-clean",
+    "title": "Spa Line Spa Metal Clean",
+    "price": 15.95,
+    "image": "images/spa-line-spa-metal-clean.webp"
+  },
+  {
+    "id": "spa-line-defense",
+    "title": "Spa Line Spa Defense",
+    "price": 24.95,
+    "image": "images/spa-line-spa-defense.webp"
+  },
+  {
+    "id": "spa-line-foam-down",
+    "title": "Spa Line Spa Foam Down",
+    "price": 15.95,
+    "image": "images/spa-line-spa-foam-down.webp"
+  },
+  {
+    "id": "spa-line-spa-aroma-sensual",
+    "title": "Spa Line Spa Aroma",
+    "price": 10.95,
+    "image": "images/spa-line-spa-aroma-sensual.png"
+  },
+  {
+    "id": "spa-line-bright",
+    "title": "Spa Line Spa Line Bright",
+    "price": 19.95,
+    "image": "images/spa-line-spa-line-bright.webp"
+  },
+  {
+    "id": "filter-explore-san-marino-new-york",
+    "title": "Filter Explore | san marino | New york",
+    "price": 45,
+    "image": "images/filter-explore-san-marino-new-york.webp"
+  },
+  {
+    "id": "filterset-zwemspa",
+    "title": "Filterset zwemspa",
+    "price": 160,
+    "image": "images/darlly-filterset-zwemspa.webp"
+  },
+  {
+    "id": "spa-line-ph-minus",
+    "title": "Spa Line Spa pH Minus",
+    "price": 13.95,
+    "image": "images/spa-line-spa-ph-minus.webp"
+  },
+  {
+    "id": "spa-line-ph-plus",
+    "title": "Spa Line Spa pH Plus",
+    "price": 13.95,
+    "image": "images/spa-line-spa-ph-plus.webp"
+  },
+  {
+    "id": "chloordrijver",
+    "title": "Chloordrijver",
+    "price": 11.95,
+    "image": "images/chloordrijver.webp"
+  },
+  {
+    "id": "insparation-wellness-geurtjes",
+    "title": "Wellness - Eucalyptus",
+    "price": 20,
+    "image": "images/insparation-wellness-eucalyptus.webp",
+    "showrooms": [
+      "gent"
+    ]
+  },
+  {
+    "id": "spa-line-clear-water",
+    "title": "Spa Line Spa Clear Water",
+    "price": 19.95,
+    "image": "images/spa-line-spa-line-spa-clear-water.webp"
+  },
+  {
+    "id": "nieuwe-zwemspa-filter",
+    "title": "Nieuwe zwemspa filter",
+    "price": 79.95,
+    "image": "images/kassa/nieuwe-zwemspa-filter.jpg",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "easy-water-chloortablet",
+    "title": "Easy Water chloortablet",
+    "price": 17.5,
+    "image": "images/kassa/easy-water-chloortablet.png",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "spa-line-fast-gloss",
+    "title": "Spa Line Fast Gloss",
+    "price": 24.95,
+    "image": "images/kassa/spa-line-fast-gloss.png"
+  },
+  {
+    "id": "spa-duck",
+    "title": "Spa Duck",
+    "price": 10.95,
+    "image": "images/kassa/spa-duck.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "opgietmiddel-dennen",
+    "title": "Opgietmiddel dennen",
+    "price": 16.95,
+    "image": "images/kassa/opgietmiddel-dennen.jpg",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "insparation-coco",
+    "title": "InSPAration Coco Lime",
+    "price": 19.95,
+    "image": "images/kassa/insparation-coco-lime.avif",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "opgietmiddel-klein-lavendel",
+    "title": "Opgietmiddel klein lavendel",
+    "price": 10,
+    "image": "images/kassa/opgietmiddel-klein-lavendel.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "halu-hoofdsteun",
+    "title": "HaLu hoofdsteun",
+    "price": 49.95,
+    "image": "images/kassa/halu-hoofdsteun.webp"
+  },
+  {
+    "id": "bullfrog-filter",
+    "title": "Bullfrog filter",
+    "price": 45,
+    "image": "images/kassa/bullfrog-filter.webp"
+  },
+  {
+    "id": "badjas-sunspa",
+    "title": "Badjas Sunspa",
+    "price": 25,
+    "image": "",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "spa-protector-240-cm",
+    "title": "Spa protector 240 cm",
+    "price": 119.95,
+    "image": "images/kassa/spa-protector-240-cm.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "bds-jumbo-jet",
+    "title": "BDS jumbo jet",
+    "price": 22.95,
+    "image": "images/kassa/bds-jumbo-jet.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "bds-dico-jet",
+    "title": "BDS dico jet",
+    "price": 18.5,
+    "image": "images/kassa/bds-dico-jet.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "bds-mini-jet",
+    "title": "BDS mini jet",
+    "price": 12.95,
+    "image": "images/kassa/bds-mini-jet.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "wellness-aroma-lavendel",
+    "title": "Wellness aroma Lavendel",
+    "price": 19.95,
+    "image": "images/kassa/wellness-aroma-lavendel.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "wellness-aroma-clary-sage",
+    "title": "Wellness aroma Clary Sage",
+    "price": 19.95,
+    "image": "images/kassa/wellness-aroma-clary-sage.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "wellness-aroma-eucalyptus",
+    "title": "Wellness aroma Eucalyptus",
+    "price": 19.95,
+    "image": "images/kassa/wellness-aroma-eucalyptus.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "spa-balancer-1l",
+    "title": "Spa Balancer 1 L",
+    "price": 99,
+    "image": "images/kassa/spa-balancer-750ml-1000ml.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "spa-balancer-75cl",
+    "title": "Spa Balancer 75 CL",
+    "price": 75,
+    "image": "images/kassa/spa-balancer-750ml-1000ml.webp"
+  },
+  {
+    "id": "calcium-booster",
+    "title": "Calcium Booster",
+    "price": 19.95,
+    "image": "images/kassa/calcium-booster.jpg",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "renew",
+    "title": "Renew",
+    "price": 19.95,
+    "image": "images/kassa/renew.jpg"
+  },
+  {
+    "id": "estelle-filter-cleaner",
+    "title": "Estelle filter cleaner",
+    "price": 129.95,
+    "image": "images/kassa/estelle-filter-cleaner.webp"
+  },
+  {
+    "id": "spa-line-citrus-clean",
+    "title": "Spa Line Citrus Clean",
+    "price": 15.95,
+    "image": "images/kassa/spa-line-citrus-clean.webp"
+  },
+  {
+    "id": "spa-line-pre-filter",
+    "title": "Spa Line Pre Filter",
+    "price": 9.95,
+    "image": "images/kassa/spa-line-pre-filter.png"
+  },
+  {
+    "id": "leisure-time-filter-clean",
+    "title": "Leisure Time Filter Clean",
+    "price": 15.95,
+    "image": ""
+  },
+  {
+    "id": "leisure-time-defender",
+    "title": "Leisure Time Defender",
+    "price": 24.95,
+    "image": "images/kassa/leisure-time-defender.jpg",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "spa-line-fragrance-eucalyptus",
+    "title": "Spa Line Fragrance Eucalyptus",
+    "price": 11.95,
+    "image": "images/kassa/spa-line-fragrance-eucalyptus.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "grote-rugsteun",
+    "title": "Grote Rugsteun",
+    "price": 125,
+    "image": "images/kassa/grote-rugsteun.webp"
+  },
+  {
+    "id": "kleine-ruggesteun",
+    "title": "Kleine ruggesteun",
+    "price": 50,
+    "image": "images/kassa/kleine-ruggesteun.webp"
+  },
+  {
+    "id": "spa-vac-waterstofzuiger",
+    "title": "Spa Vac Waterstofzuiger",
+    "price": 69,
+    "image": "images/kassa/spa-vac.webp"
+  },
+  {
+    "id": "korte-lamp-300w",
+    "title": "Korte lamp 300w",
+    "price": 85,
+    "image": "images/kassa/full-spectrum-straler.webp"
+  },
+  {
+    "id": "lange-lamp",
+    "title": "Lange Lamp I4H",
+    "price": 95,
+    "image": "images/kassa/full-spectrum-straler.webp"
+  },
+  {
+    "id": "drijvende-bartafel",
+    "title": "Drijvende bartafel",
+    "price": 69,
+    "image": "images/kassa/drijvende-bartafel.webp"
+  },
+  {
+    "id": "coverlift-beugel",
+    "title": "Coverlift beugel",
+    "price": 189,
+    "image": "images/Coverlift.jpg"
+  },
+  {
+    "id": "easy-water-tube-clean",
+    "title": "Easy Water Tube Clean",
+    "price": null,
+    "image": "images/kassa/easy-water-tube-clean.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "easy-water-ph-plus",
+    "title": "Easy Water pH Plus",
+    "price": null,
+    "image": "images/kassa/easy-water-ph-plus.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "easy-water-foam-down",
+    "title": "Easy Water Foam Down",
+    "price": null,
+    "image": "images/kassa/easy-water-foam-down.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "broodkussen-wit",
+    "title": "Broodkussen wit",
+    "price": null,
+    "image": "images/kassa/broodkussen-wit.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "insparation-eucalyptus-mint",
+    "title": "InSPAration Eucalyptus Mint aroma",
+    "price": null,
+    "image": "https://bunx.nl/media/catalog/product/cache/744f82e36d5b307c7df9f3781938366e/i/n/insparation_eucalyptusmint.webp",
+    "showrooms": [
+      "brugge"
+    ]
+  }
 ]
