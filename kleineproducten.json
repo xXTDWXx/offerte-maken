@@ -449,7 +449,7 @@
   {
     "id": "easy-water-ph-plus",
     "title": "Easy Water pH Plus",
-    "price": null,
+    "price": 14,
     "image": "images/kassa/easy-water-ph-plus.webp",
     "showrooms": [
       "brugge",
@@ -487,10 +487,11 @@
   {
     "id": "easy-water-ph-min",
     "title": "Easy Water pH min",
-    "price": null,
+    "price": 14,
     "image": "",
     "showrooms": [
-      "kortrijk"
+      "kortrijk",
+      "brugge"
     ]
   },
   {
