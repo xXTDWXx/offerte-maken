@@ -75,7 +75,7 @@
           <div class="pv-field" id="pvFromField" hidden><label for="pvFrom">Van</label><input type="date" id="pvFrom" /></div>
           <div class="pv-field" id="pvToField" hidden><label for="pvTo">Tot en met</label><input type="date" id="pvTo" /></div>
           <div class="pv-field"><label for="pvShowroom">Showroom</label>
-            <select id="pvShowroom"><option value="">Alle showrooms</option><option value="gent">Gent</option><option value="brugge">Brugge</option></select>
+            <select id="pvShowroom"><option value="">Alle showrooms</option>${Object.entries(SHOWROOMS).map(([id, label]) => `<option value="${escapeHtml(id)}">${escapeHtml(label)}</option>`).join('')}</select>
           </div>
           <button class="btn btn-primary" type="submit">Toon verkopen</button>
         </form>

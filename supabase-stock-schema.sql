@@ -1,5 +1,5 @@
 ﻿create table if not exists public.showroom_stock (
-  showroom text not null check (showroom in ('gent', 'brugge')),
+  showroom text not null check (showroom in ('gent', 'brugge', 'kortrijk')),
   product_id text not null,
   product_title text not null,
   quantity integer not null default 0 check (quantity >= 0),
@@ -9,7 +9,7 @@
 
 create table if not exists public.showroom_stock_sales (
   id uuid primary key default gen_random_uuid(),
-  showroom text not null check (showroom in ('gent', 'brugge')),
+  showroom text not null check (showroom in ('gent', 'brugge', 'kortrijk')),
   sold_at timestamptz not null default now(),
   total_amount numeric(10, 2) not null default 0
 );
@@ -47,7 +47,7 @@ declare
   v_line_total numeric(10, 2);
   v_total_amount numeric(10, 2) := 0;
 begin
-  if p_showroom not in ('gent', 'brugge') then
+  if p_showroom not in ('gent', 'brugge', 'kortrijk') then
     raise exception 'Ongeldige showroom: %', p_showroom;
   end if;
 
@@ -151,7 +151,7 @@ begin
     raise exception 'Geen toegang tot voorraadbeheer.';
   end if;
 
-  if p_showroom not in ('gent', 'brugge') then
+  if p_showroom not in ('gent', 'brugge', 'kortrijk') then
     raise exception 'Ongeldige showroom: %', p_showroom;
   end if;
 
@@ -202,7 +202,7 @@ begin
     raise exception 'Geen toegang tot maandverkoop wissen.';
   end if;
 
-  if p_showroom not in ('gent', 'brugge') then
+  if p_showroom not in ('gent', 'brugge', 'kortrijk') then
     raise exception 'Ongeldige showroom: %', p_showroom;
   end if;
 

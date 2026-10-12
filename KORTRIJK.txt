@@ -1,0 +1,48 @@
+Kortrijk - 12 oktober 2026
+
+Basis: main 3bc8742, inclusief de recente Brugge-catalogus en foto's.
+De locatie is toegevoegd aan de kassakeuze, voorraadbeheer, lokale opslag,
+realtime voorraadfiltering, verkoopregistratie en het PV-filter.
+
+LIVE UITGEVOERD
+De add_kortrijk_showroom-migratie is toegepast op sunspa-kassa-stock.
+Deze verruimt uitsluitend de showroomcontroles; bestaande functie-inhoud,
+beheerautorisatie en betaalregistratie blijven behouden.
+Alle 11 absolute beginstanden zijn opgeslagen en teruggelezen: 202 stuks.
+Vogue filters: 36 totaal. Zie kortrijk-beginvoorraad.json voor de volledige lijst.
+Bij beide voorraadschrijfacties zijn onder een transactielock alle velden van
+alle Gent- en Brugge-voorraadregels voor/na vergeleken: exact gelijk.
+De beginvoorraad-JSON is een registratie, geen automatisch importbestand.
+
+CATALOGUS
+De bestaande artikelen en foto's zijn hergebruikt waar aanwezig.
+Easy Water pH min en chloorkorrels zijn niet gevonden op main, de vier overige
+remote branches of in de live Brugge-voorraad. Na gebruikersverduidelijking
+zijn twee eigen Kortrijk-artikelen aangemaakt. Melpool blijft ongemoeid.
+Voor de twee nieuwe artikelen ontbreken nog prijs en foto.
+Broodkussen wit, Easy Water Tube Clean en pH Plus hadden al geen prijs.
+Artikelen zonder prijs blijven zichtbaar in voorraadbeheer; verkoop is geblokkeerd.
+
+CONTROLES
+node tests/kassa-showrooms.test.cjs
+node tests/kassa-pv.test.cjs
+JavaScript-syntaxis en git diff --check.
+Headless Edge: drie locatieknoppen op desktop/mobiel, geen horizontale
+overflow, Kortrijk-producten zichtbaar en geen JavaScript-fouten.
+Live database: verkoop van één Kortrijk-filter getest (36 naar 35),
+andere locaties ongewijzigd, voorraadbeheer zonder login geweigerd.
+De gehele verkooptest is teruggedraaid; geen testverkoop achtergebleven.
+
+PUBLICATIE
+De database en voorraad zijn live. De kassabestanden moeten nog via de
+reviewbranch worden samengevoegd en gepubliceerd voordat Kortrijk in de
+publieke kassakeuze verschijnt. Draai het historische bootstrap-schema
+niet opnieuw: dat bevat een voorraadreset. De nieuwe migratie doet dat niet.
+
+De Supabase-advisor meldt bestaande configuratiepunten die deze wijziging
+niet verandert: pg_net in public, uitvoerbare SECURITY DEFINER-functies en
+uitgeschakelde gelekte-wachtwoordcontrole. De beheerfunctie controleert
+nog steeds de ingelogde gebruiker en diens kassa_admins-lidmaatschap.
+https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable
+https://supabase.com/docs/guides/database/database-linter?lint=0014_extension_in_public
+https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection

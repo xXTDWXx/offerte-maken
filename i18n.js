@@ -212,6 +212,7 @@
     "Selecteer showroom": "Sélectionner un showroom",
     "Gebruik voorraad van showroom Gent": "Utiliser le stock du showroom de Gand",
     "Gebruik voorraad van showroom Brugge": "Utiliser le stock du showroom de Bruges",
+    "Gebruik voorraad van showroom Kortrijk": "Utiliser le stock du showroom de Courtrai",
     "Kassa kleine producten": "Caisse petits produits",
     "Andere showroom": "Autre showroom",
     "Voorraad laden...": "Chargement du stock...",

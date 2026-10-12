@@ -36,7 +36,7 @@ declare
   v_line_total numeric(10, 2);
   v_total_amount numeric(10, 2) := 0;
 begin
-  if p_showroom not in ('gent', 'brugge') then
+  if p_showroom not in ('gent', 'brugge', 'kortrijk') then
     raise exception 'Ongeldige showroom: %', p_showroom;
   end if;
 
@@ -142,7 +142,7 @@ begin
     raise exception 'Geen toegang tot maandverkoop wissen.';
   end if;
 
-  if p_showroom not in ('gent', 'brugge') then
+  if p_showroom not in ('gent', 'brugge', 'kortrijk') then
     raise exception 'Ongeldige showroom: %', p_showroom;
   end if;
 

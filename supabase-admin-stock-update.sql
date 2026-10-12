@@ -24,7 +24,7 @@ begin
     raise exception 'Geen toegang tot voorraadbeheer.';
   end if;
 
-  if p_showroom not in ('gent', 'brugge') then
+  if p_showroom not in ('gent', 'brugge', 'kortrijk') then
     raise exception 'Ongeldige showroom: %', p_showroom;
   end if;
 

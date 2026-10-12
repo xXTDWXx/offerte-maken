@@ -26,7 +26,7 @@ begin
   if p_payment_method is null or p_payment_method not in ('Bancontact', 'Overschrijving') then
     raise exception 'Kies een geldige betaalwijze.';
   end if;
-  if p_showroom is null or p_showroom not in ('gent', 'brugge') then
+  if p_showroom is null or p_showroom not in ('gent', 'brugge', 'kortrijk') then
     raise exception 'Kies een geldige showroom.';
   end if;
   if p_items is null or jsonb_typeof(p_items) <> 'array' then

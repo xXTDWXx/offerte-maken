@@ -191,7 +191,8 @@
     "price": 17.5,
     "image": "images/kassa/easy-water-chloortablet.png",
     "showrooms": [
-      "brugge"
+      "brugge",
+      "kortrijk"
     ]
   },
   {
@@ -326,7 +327,8 @@
     "price": 99,
     "image": "images/kassa/spa-balancer-750ml-1000ml.webp",
     "showrooms": [
-      "brugge"
+      "brugge",
+      "kortrijk"
     ]
   },
   {
@@ -440,7 +442,8 @@
     "price": null,
     "image": "images/kassa/easy-water-tube-clean.webp",
     "showrooms": [
-      "brugge"
+      "brugge",
+      "kortrijk"
     ]
   },
   {
@@ -449,7 +452,8 @@
     "price": null,
     "image": "images/kassa/easy-water-ph-plus.webp",
     "showrooms": [
-      "brugge"
+      "brugge",
+      "kortrijk"
     ]
   },
   {
@@ -467,7 +471,8 @@
     "price": null,
     "image": "images/kassa/broodkussen-wit.webp",
     "showrooms": [
-      "brugge"
+      "brugge",
+      "kortrijk"
     ]
   },
   {
@@ -477,6 +482,24 @@
     "image": "https://bunx.nl/media/catalog/product/cache/744f82e36d5b307c7df9f3781938366e/i/n/insparation_eucalyptusmint.webp",
     "showrooms": [
       "brugge"
+    ]
+  },
+  {
+    "id": "easy-water-ph-min",
+    "title": "Easy Water pH min",
+    "price": null,
+    "image": "",
+    "showrooms": [
+      "kortrijk"
+    ]
+  },
+  {
+    "id": "easy-water-chloorkorrels",
+    "title": "Easy Water chloorkorrels",
+    "price": null,
+    "image": "",
+    "showrooms": [
+      "kortrijk"
     ]
   }
 ]

@@ -1,0 +1,62 @@
+{
+  "showroom": "kortrijk",
+  "date": "2026-10-12",
+  "note": "Vastgelegde absolute beginstanden; geen automatische import of reset van live voorraad.",
+  "items": [
+    {
+      "product_id": "broodkussen-wit",
+      "product_title": "Broodkussen wit",
+      "quantity": 20
+    },
+    {
+      "product_id": "spagoedkoop-brood-kussentje",
+      "product_title": "Broodkussen zwart",
+      "quantity": 20
+    },
+    {
+      "product_id": "easy-water-chloortablet",
+      "product_title": "Easy Water chloortablet",
+      "quantity": 12
+    },
+    {
+      "product_id": "chloordrijver",
+      "product_title": "Chloordrijver",
+      "quantity": 10
+    },
+    {
+      "product_id": "myspa-vogue-filter",
+      "product_title": "MySpa & Vogue filter",
+      "quantity": 36
+    },
+    {
+      "product_id": "aquacheck-teststrips-ph-chloor",
+      "product_title": "Aquacheck Teststrips pH & Chloor",
+      "quantity": 30
+    },
+    {
+      "product_id": "easy-water-tube-clean",
+      "product_title": "Easy Water Tube Clean",
+      "quantity": 18
+    },
+    {
+      "product_id": "spa-balancer-1l",
+      "product_title": "Spa Balancer 1 L",
+      "quantity": 18
+    },
+    {
+      "product_id": "easy-water-ph-plus",
+      "product_title": "Easy Water pH Plus",
+      "quantity": 14
+    },
+    {
+      "product_id": "easy-water-ph-min",
+      "product_title": "Easy Water pH min",
+      "quantity": 12
+    },
+    {
+      "product_id": "easy-water-chloorkorrels",
+      "product_title": "Easy Water chloorkorrels",
+      "quantity": 12
+    }
+  ]
+}
