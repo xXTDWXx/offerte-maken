@@ -35,6 +35,18 @@ async function main() {
   assert.ok(visible.includes('easy-water-foam-down'), 'Foam Down is available with its confirmed price, without seeding stock');
   assert.ok(visible.includes('insparation-eucalyptus-mint'), 'Confirmed aroma price applies to Kortrijk too');
   assert.ok(!visible.includes('badjas-sunspa'), 'Brugge-only product stays restricted');
+  const excluded = catalog.filter(p => /^(melpool-|spa-line-)/.test(p.id)
+    || ['aquafinesse-pakket', 'fox-spa-filter', 'fox-spa-kussen', 'renew', 'coverlift-beugel'].includes(p.id));
+  for (const product of excluded) {
+    assert.ok(!visible.includes(product.id), `${product.id} must be hidden in Kortrijk`);
+    assert.ok(product.showrooms.includes('brugge'), `${product.id} stays in Brugge`);
+    if (product.id !== 'spa-line-fragrance-eucalyptus') {
+      assert.ok(product.showrooms.includes('gent'), `${product.id} stays in Gent`);
+    }
+  }
+  context.excludedIds = excluded.map(p => p.id);
+  vm.runInContext('cart = Object.fromEntries([...excludedIds, "myspa-vogue-filter"].map(id => [id, 1])); trimCartToStock();', context);
+  assert.equal(vm.runInContext('Object.keys(cart).join(",")', context), 'myspa-vogue-filter', 'Hidden products cannot remain in a refreshed Kortrijk cart');
   const calls = [];
   const client = { rpc:async(name,args)=>{calls.push({name,args});return {error:null};}, from:()=>({select(){return this;},in(){return this;},eq(key,value){calls.push({key,value});return this;},then(resolve){return Promise.resolve({data:[],error:null}).then(resolve);}}) };
   context.client=client;
