@@ -439,7 +439,7 @@
   {
     "id": "easy-water-tube-clean",
     "title": "Easy Water Tube Clean",
-    "price": null,
+    "price": 16,
     "image": "images/kassa/easy-water-tube-clean.webp",
     "showrooms": [
       "brugge",
@@ -459,10 +459,11 @@
   {
     "id": "easy-water-foam-down",
     "title": "Easy Water Foam Down",
-    "price": null,
+    "price": 16,
     "image": "images/kassa/easy-water-foam-down.webp",
     "showrooms": [
-      "brugge"
+      "brugge",
+      "kortrijk"
     ]
   },
   {

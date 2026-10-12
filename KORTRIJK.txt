@@ -28,7 +28,9 @@ Kortrijk. Broodkussen wit: EUR 24,95 voor beide locaties. Deze artikelen
 zijn niet beschikbaar voor Gent; diens prijzen blijven ongewijzigd.
 Er is geen pH min-voorraadregel voor Brugge aangemaakt; ontbrekende
 voorraad wordt in de kassa als nul weergegeven.
-Easy Water Tube Clean heeft nog geen prijs.
+Easy Water Tube Clean en Foam Down: EUR 16 per stuk incl. BTW, voor
+Brugge en Kortrijk. Geen Kortrijk-voorraad voor Foam Down toegevoegd.
+Alleen de prijs van Easy Water chloorkorrels ontbreekt nog voor Kortrijk.
 Artikelen zonder prijs blijven zichtbaar in voorraadbeheer; verkoop is geblokkeerd.
 
 CONTROLES
