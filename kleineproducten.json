@@ -3,37 +3,61 @@
     "id": "melpool-chloorgranulaat-55-g-1kg",
     "title": "Melpool Chloorkorrels",
     "price": 19.95,
-    "image": "images/melpool-chloorgranulaat-55-g-granulaat-1-kg.webp"
+    "image": "images/melpool-chloorgranulaat-55-g-granulaat-1-kg.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "melpool-chloortabletten-90-20-1kg",
     "title": "Melpool Chloortabletten 90/20",
     "price": 19.95,
-    "image": "images/melpool-chloortabletten-90-20-1-kg.webp"
+    "image": "images/melpool-chloortabletten-90-20-1-kg.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "melpool-ph-plus",
     "title": "Melpool pH +",
     "price": 11.95,
-    "image": "images/melpool-ph.webp"
+    "image": "images/melpool-ph.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "melpool-ph-min",
     "title": "Melpool pH -",
     "price": 11.95,
-    "image": "images/melpool-ph (1).webp"
+    "image": "images/melpool-ph (1).webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "melpool-ta-alkaliteit",
     "title": "Melpool TA + Alkaliteit increaser",
     "price": 18.99,
-    "image": "images/melpool-ta-alkaliteit-increaser.webp"
+    "image": "images/melpool-ta-alkaliteit-increaser.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "aquafinesse-pakket",
     "title": "Aquafinesse pakket",
     "price": 119,
-    "image": "images/aquafinesse-pakket.webp"
+    "image": "images/aquafinesse-pakket.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "spa-balancer-ultrashock",
@@ -69,13 +93,21 @@
     "id": "fox-spa-filter",
     "title": "Fox spa filter",
     "price": 45,
-    "image": "images/fox-spa-filter.webp"
+    "image": "images/fox-spa-filter.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "fox-spa-kussen",
     "title": "Fox spa kussen",
     "price": 29.95,
-    "image": "images/fox-spa-kussen.webp"
+    "image": "images/fox-spa-kussen.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "myspa-hoek-kussen",
@@ -93,43 +125,71 @@
     "id": "spa-line-cover-shine",
     "title": "Spa Line Spa Cover Shine",
     "price": 19.95,
-    "image": "images/spa-line-spa-cover-shine.webp"
+    "image": "images/spa-line-spa-cover-shine.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "spa-line-tube-clean",
     "title": "Spa Line Spa Tube Clean",
     "price": 15.95,
-    "image": "images/spa-line-spa-tube-clean.webp"
+    "image": "images/spa-line-spa-tube-clean.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "spa-line-metal-clean",
     "title": "Spa Line Spa Metal Clean",
     "price": 15.95,
-    "image": "images/spa-line-spa-metal-clean.webp"
+    "image": "images/spa-line-spa-metal-clean.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "spa-line-defense",
     "title": "Spa Line Spa Defense",
     "price": 24.95,
-    "image": "images/spa-line-spa-defense.webp"
+    "image": "images/spa-line-spa-defense.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "spa-line-foam-down",
     "title": "Spa Line Spa Foam Down",
     "price": 15.95,
-    "image": "images/spa-line-spa-foam-down.webp"
+    "image": "images/spa-line-spa-foam-down.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "spa-line-spa-aroma-sensual",
     "title": "Spa Line Spa Aroma",
     "price": 10.95,
-    "image": "images/spa-line-spa-aroma-sensual.png"
+    "image": "images/spa-line-spa-aroma-sensual.png",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "spa-line-bright",
     "title": "Spa Line Spa Line Bright",
     "price": 19.95,
-    "image": "images/spa-line-spa-line-bright.webp"
+    "image": "images/spa-line-spa-line-bright.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "filter-explore-san-marino-new-york",
@@ -147,13 +207,21 @@
     "id": "spa-line-ph-minus",
     "title": "Spa Line Spa pH Minus",
     "price": 13.95,
-    "image": "images/spa-line-spa-ph-minus.webp"
+    "image": "images/spa-line-spa-ph-minus.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "spa-line-ph-plus",
     "title": "Spa Line Spa pH Plus",
     "price": 13.95,
-    "image": "images/spa-line-spa-ph-plus.webp"
+    "image": "images/spa-line-spa-ph-plus.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "chloordrijver",
@@ -174,7 +242,11 @@
     "id": "spa-line-clear-water",
     "title": "Spa Line Spa Clear Water",
     "price": 19.95,
-    "image": "images/spa-line-spa-line-spa-clear-water.webp"
+    "image": "images/spa-line-spa-line-spa-clear-water.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "nieuwe-zwemspa-filter",
@@ -199,7 +271,11 @@
     "id": "spa-line-fast-gloss",
     "title": "Spa Line Fast Gloss",
     "price": 24.95,
-    "image": "images/kassa/spa-line-fast-gloss.png"
+    "image": "images/kassa/spa-line-fast-gloss.png",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "spa-duck",
@@ -350,7 +426,11 @@
     "id": "renew",
     "title": "Renew",
     "price": 19.95,
-    "image": "images/kassa/renew.jpg"
+    "image": "images/kassa/renew.jpg",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "estelle-filter-cleaner",
@@ -362,13 +442,21 @@
     "id": "spa-line-citrus-clean",
     "title": "Spa Line Citrus Clean",
     "price": 15.95,
-    "image": "images/kassa/spa-line-citrus-clean.webp"
+    "image": "images/kassa/spa-line-citrus-clean.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "spa-line-pre-filter",
     "title": "Spa Line Pre Filter",
     "price": 9.95,
-    "image": "images/kassa/spa-line-pre-filter.png"
+    "image": "images/kassa/spa-line-pre-filter.png",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "leisure-time-filter-clean",
@@ -434,7 +522,11 @@
     "id": "coverlift-beugel",
     "title": "Coverlift beugel",
     "price": 189,
-    "image": "images/Coverlift.jpg"
+    "image": "images/Coverlift.jpg",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
   },
   {
     "id": "easy-water-tube-clean",
