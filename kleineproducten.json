@@ -264,7 +264,8 @@
     "image": "images/kassa/easy-water-chloortablet.png",
     "showrooms": [
       "brugge",
-      "kortrijk"
+      "kortrijk",
+      "gent"
     ]
   },
   {
@@ -535,7 +536,8 @@
     "image": "images/kassa/easy-water-tube-clean.webp",
     "showrooms": [
       "brugge",
-      "kortrijk"
+      "kortrijk",
+      "gent"
     ]
   },
   {
@@ -545,7 +547,8 @@
     "image": "images/kassa/easy-water-ph-plus.webp",
     "showrooms": [
       "brugge",
-      "kortrijk"
+      "kortrijk",
+      "gent"
     ]
   },
   {
@@ -555,7 +558,8 @@
     "image": "images/kassa/easy-water-foam-down.webp",
     "showrooms": [
       "brugge",
-      "kortrijk"
+      "kortrijk",
+      "gent"
     ]
   },
   {
@@ -565,7 +569,8 @@
     "image": "images/kassa/broodkussen-wit.webp",
     "showrooms": [
       "brugge",
-      "kortrijk"
+      "kortrijk",
+      "gent"
     ]
   },
   {
@@ -585,7 +590,8 @@
     "image": "images/kassa/easy-water-ph-min.jpg",
     "showrooms": [
       "kortrijk",
-      "brugge"
+      "brugge",
+      "gent"
     ]
   },
   {
@@ -595,7 +601,8 @@
     "image": "images/kassa/easy-water-chloorkorrels.png",
     "showrooms": [
       "kortrijk",
-      "brugge"
+      "brugge",
+      "gent"
     ]
   }
 ]

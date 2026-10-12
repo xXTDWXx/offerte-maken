@@ -67,6 +67,7 @@ const els = {
   adminLoginStatus: document.getElementById('adminLoginStatus'),
   adminShowroom: document.getElementById('adminShowroom'),
   adminSearch: document.getElementById('adminSearch'),
+  adminAssortment: document.getElementById('adminAssortment'),
   adminRefreshBtn: document.getElementById('adminRefreshBtn'),
   adminSaveAllBtn: document.getElementById('adminSaveAllBtn'),
   adminLogoutBtn: document.getElementById('adminLogoutBtn'),
@@ -127,6 +128,10 @@ function bindEvents() {
     if (event.key === 'Enter') adminLogin();
   });
   els.adminShowroom?.addEventListener('change', refreshAdminStock);
+  els.adminAssortment?.addEventListener('change', () => {
+    captureAdminInputs();
+    renderAdminStockList();
+  });
   els.adminSearch?.addEventListener('input', () => {
     captureAdminInputs();
     renderAdminStockList();
@@ -157,8 +162,8 @@ async function selectShowroom(showroom) {
   }
 }
 
-async function loadProducts() {
-  if (products.length) return;
+async function loadProducts(force = false) {
+  if (products.length && !force) return;
 
   const response = await fetch('kleineproducten.json', { cache: 'no-store' });
   if (!response.ok) throw new Error('kleineproducten.json kon niet geladen worden');
@@ -848,6 +853,8 @@ async function initAdminMode() {
   els.gate.hidden = true;
   els.app.hidden = true;
   els.stockAdmin.hidden = false;
+  const savedShowroom = localStorage.getItem(STORAGE_KEYS.showroom);
+  if (SHOWROOMS[savedShowroom]) els.adminShowroom.value = savedShowroom;
 
   if (!supabaseClient) {
     showAdminLoginStatus('Supabase is niet beschikbaar voor voorraadbeheer.', true);
@@ -873,7 +880,6 @@ function showAdminLogin() {
 async function showAdminManager() {
   els.adminLoginPanel.hidden = true;
   els.adminManagerPanel.hidden = false;
-  await loadProducts();
   await refreshAdminStock();
 }
 
@@ -918,6 +924,7 @@ async function refreshAdminStock() {
   setAdminControlsDisabled(true);
 
   try {
+    await loadProducts(true);
     adminStockByProduct = await stockApi.getStock(showroom, products);
     adminLoadedShowroom = showroom;
     renderAdminStockList();
@@ -955,11 +962,16 @@ function renderAdminStockList() {
   const showroom = els.adminShowroom.value;
   if (adminLoadedShowroom !== showroom) return;
   const query = els.adminSearch.value.trim().toLowerCase();
+  const showAll = els.adminAssortment?.value === 'all';
   const visibleProducts = products
-    .filter(product => isProductVisibleForShowroom(product, showroom))
+    .filter(product => showAll || isProductVisibleForShowroom(product, showroom))
     .filter(product => !query || product.title.toLowerCase().includes(query));
 
   els.adminStockList.innerHTML = '';
+  if (!visibleProducts.length) {
+    els.adminStockList.textContent = 'Geen producten gevonden. Pas je zoekterm aan of kies Alle producten.';
+    return;
+  }
 
   visibleProducts.forEach(product => {
     const stock = Number(adminStockByProduct[product.id] || 0);
@@ -969,12 +981,13 @@ function renderAdminStockList() {
     row.innerHTML = `
       <div>
         <div class="admin-product-title">${escapeHtml(product.title)}</div>
+        ${isProductVisibleForShowroom(product, showroom) ? '' : '<div class="admin-stock-now">Niet in het kassa-assortiment van deze vestiging</div>'}
         <div class="admin-stock-now">Huidige voorraad: <strong>${stock}</strong></div>
       </div>
       <div class="admin-stock-now">Prijs<br><strong>${product.price == null ? 'Prijs nog in te vullen' : euro(product.price)}</strong></div>
       <div class="admin-stepper">
         <button type="button" data-admin-step="${product.id}" data-delta="-1">-</button>
-        <input type="number" min="0" step="1" value="${escapeHtml(draft ?? stock)}" data-admin-input="${product.id}" />
+        <input type="number" min="0" step="1" aria-label="Voorraad ${escapeHtml(product.title)}" value="${escapeHtml(draft ?? stock)}" data-admin-input="${product.id}" />
         <button type="button" data-admin-step="${product.id}" data-delta="1">+</button>
       </div>
     `;
@@ -1010,7 +1023,7 @@ async function saveAllAdminStock() {
         quantity: value.trim() === '' ? NaN : Number(value)
       };
     })
-    .filter(row => row.product && isProductVisibleForShowroom(row.product, showroom));
+    .filter(row => row.product);
 
   if (!rows.length) {
     showAdminStatus(`Geen wijzigingen om op te slaan voor ${SHOWROOMS[showroom]}.`);
@@ -1064,6 +1077,7 @@ function setAdminControlsDisabled(disabled) {
   adminBusy = disabled;
   els.adminShowroom.disabled = disabled;
   els.adminSearch.disabled = disabled;
+  if (els.adminAssortment) els.adminAssortment.disabled = disabled;
   els.adminRefreshBtn.disabled = disabled;
   els.adminSaveAllBtn.disabled = disabled;
   els.adminLogoutBtn.disabled = disabled;
