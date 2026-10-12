@@ -490,7 +490,7 @@
     "id": "easy-water-ph-min",
     "title": "Easy Water pH min",
     "price": 14,
-    "image": "",
+    "image": "images/kassa/easy-water-ph-min.jpg",
     "showrooms": [
       "kortrijk",
       "brugge"
@@ -500,7 +500,7 @@
     "id": "easy-water-chloorkorrels",
     "title": "Easy Water chloorkorrels",
     "price": 17.95,
-    "image": "",
+    "image": "images/kassa/easy-water-chloorkorrels.png",
     "showrooms": [
       "kortrijk",
       "brugge"
