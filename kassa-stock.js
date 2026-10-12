@@ -6,7 +6,8 @@ const COMPANY_LOGO = 'logo.svg';
 
 const SHOWROOMS = {
   gent: 'Gent',
-  brugge: 'Brugge'
+  brugge: 'Brugge',
+  kortrijk: 'Kortrijk'
 };
 
 const STORAGE_KEYS = {
@@ -33,7 +34,7 @@ let stockApi = null;
 let stockSubscription = null;
 let supabaseClient = null;
 let adminStockByProduct = {};
-const adminDraftsByShowroom = { gent: {}, brugge: {} };
+const adminDraftsByShowroom = Object.fromEntries(Object.keys(SHOWROOMS).map(id => [id, {}]));
 let adminLoadedShowroom = null;
 let adminBusy = false;
 let checkoutPaymentMethod = '';
@@ -344,10 +345,9 @@ async function getLocalStockStore(productList) {
   if (!response.ok) throw new Error('voorbeeld-stock.json kon niet geladen worden');
 
   const data = await response.json();
-  const store = {
-    gent: normalizeStockMap(data.gent || {}, productList),
-    brugge: normalizeStockMap(data.brugge || {}, productList)
-  };
+  const store = Object.fromEntries(Object.keys(SHOWROOMS).map(showroom => [
+    showroom, normalizeStockMap(data[showroom] || {}, productList)
+  ]));
   localStorage.setItem(STORAGE_KEYS.localStock, JSON.stringify(store));
   return store;
 }

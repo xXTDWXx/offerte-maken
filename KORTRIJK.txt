@@ -1,0 +1,61 @@
+Kortrijk - 12 oktober 2026
+
+Basis: main 3bc8742, inclusief de recente Brugge-catalogus en foto's.
+De locatie is toegevoegd aan de kassakeuze, voorraadbeheer, lokale opslag,
+realtime voorraadfiltering, verkoopregistratie en het PV-filter.
+
+LIVE UITGEVOERD
+De add_kortrijk_showroom-migratie is toegepast op sunspa-kassa-stock.
+Deze verruimt uitsluitend de showroomcontroles; bestaande functie-inhoud,
+beheerautorisatie en betaalregistratie blijven behouden.
+Alle 11 absolute beginstanden zijn opgeslagen en teruggelezen: 202 stuks.
+Vogue filters: 36 totaal. Zie kortrijk-beginvoorraad.json voor de volledige lijst.
+Bij beide voorraadschrijfacties zijn onder een transactielock alle velden van
+alle Gent- en Brugge-voorraadregels voor/na vergeleken: exact gelijk.
+De beginvoorraad-JSON is een registratie, geen automatisch importbestand.
+
+CATALOGUS
+De bestaande artikelen en foto's zijn hergebruikt waar aanwezig.
+Easy Water pH min en chloorkorrels zijn niet gevonden op main, de vier overige
+remote branches of in de live Brugge-voorraad. Na gebruikersverduidelijking
+zijn twee eigen Kortrijk-artikelen aangemaakt. Melpool blijft ongemoeid.
+Voor de twee nieuwe artikelen ontbreken nog foto's.
+Easy Water chloorkorrels en chloortabletten: EUR 17,95 incl. BTW.
+Broodkussen wit krijgt op verzoek dezelfde catalogusprijs als zwart: EUR 24,95.
+De bestaande BTW-verwerking van de kassa blijft gelijk.
+Easy Water pH min en pH Plus: EUR 14 per stuk incl. BTW, voor Brugge en
+Kortrijk. Broodkussen wit: EUR 24,95 voor beide locaties. Deze artikelen
+zijn niet beschikbaar voor Gent; diens prijzen blijven ongewijzigd.
+Er is geen pH min-voorraadregel voor Brugge aangemaakt; ontbrekende
+voorraad wordt in de kassa als nul weergegeven.
+Easy Water Tube Clean en Foam Down: EUR 16 per stuk incl. BTW, voor
+Brugge en Kortrijk. Geen Kortrijk-voorraad voor Foam Down toegevoegd.
+InSPAration Eucalyptus Mint aroma: EUR 20 incl. BTW voor beide locaties.
+Geen Kortrijk-voorraad voor aroma of Brugge-voorraad voor chloorkorrels toegevoegd.
+Alle opgegeven Kortrijk-artikelen hebben nu een verkoopprijs.
+Artikelen zonder prijs blijven zichtbaar in voorraadbeheer; verkoop is geblokkeerd.
+
+CONTROLES
+node tests/kassa-showrooms.test.cjs
+node tests/kassa-pv.test.cjs
+JavaScript-syntaxis en git diff --check.
+Headless Edge: drie locatieknoppen op desktop/mobiel, geen horizontale
+overflow, Kortrijk-producten zichtbaar en geen JavaScript-fouten.
+Live database: verkoop van één Kortrijk-filter getest (36 naar 35),
+andere locaties ongewijzigd, voorraadbeheer zonder login geweigerd.
+De gehele verkooptest is teruggedraaid; geen testverkoop achtergebleven.
+
+PUBLICATIE
+De database en voorraad zijn live. Publicatie van de kassabestanden en alle
+bevestigde prijzen is door de gebruiker geautoriseerd op 12 oktober 2026.
+Publicatie verloopt via samenvoegen van PR #4 naar main.
+Draai het historische bootstrap-schema
+niet opnieuw: dat bevat een voorraadreset. De nieuwe migratie doet dat niet.
+
+De Supabase-advisor meldt bestaande configuratiepunten die deze wijziging
+niet verandert: pg_net in public, uitvoerbare SECURITY DEFINER-functies en
+uitgeschakelde gelekte-wachtwoordcontrole. De beheerfunctie controleert
+nog steeds de ingelogde gebruiker en diens kassa_admins-lidmaatschap.
+https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable
+https://supabase.com/docs/guides/database/database-linter?lint=0014_extension_in_public
+https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection
