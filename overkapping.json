@@ -13,7 +13,8 @@
       "https://www.alusense.be/shop/page/4/?opts=infinit_scrolling",
       "https://www.alusense.be/shop/page/5/?opts=infinit_scrolling",
       "https://www.alusense.be/shop/page/6/?opts=infinit_scrolling"
-    ]
+    ],
+    "prices_verified_at": "2026-10-15"
   },
   "products": [
     {
@@ -33,11 +34,11 @@
       "sku": "CWXH*",
       "currency": "EUR",
       "price_includes_vat": true,
-      "price": 899,
-      "price_min": 899,
-      "price_max": 1179,
+      "price": 945,
+      "price_min": 945,
+      "price_max": 1245,
       "price_is_range": true,
-      "price_display": "€ 899,00 - € 1.179,00",
+      "price_display": "€ 945,00 - € 1.245,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
       "variant_label": "Afmeting",
@@ -45,22 +46,22 @@
         {
           "id": "alusense-27848",
           "label": "3m",
-          "price": 899
+          "price": 945
         },
         {
           "id": "alusense-27845",
           "label": "3.6m",
-          "price": 999
+          "price": 1045
         },
         {
           "id": "alusense-27844",
           "label": "4m",
-          "price": 1049
+          "price": 1145
         },
         {
           "id": "alusense-27847",
           "label": "5.3m",
-          "price": 1179
+          "price": 1245
         }
       ],
       "specs": [
@@ -424,11 +425,11 @@
       "sku": "ALVMXZ360530",
       "currency": "EUR",
       "price_includes_vat": true,
-      "price": 5395,
-      "price_min": 5395,
-      "price_max": 5395,
+      "price": 5095,
+      "price_min": 5095,
+      "price_max": 5095,
       "price_is_range": false,
-      "price_display": "€ 5.395,00",
+      "price_display": "€ 5.095,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
       "specs": [
@@ -736,11 +737,11 @@
       "sku": "ALVMXA300400",
       "currency": "EUR",
       "price_includes_vat": true,
-      "price": 3950,
-      "price_min": 3950,
-      "price_max": 3950,
+      "price": 3850,
+      "price_min": 3850,
+      "price_max": 3850,
       "price_is_range": false,
-      "price_display": "€ 3.950,00",
+      "price_display": "€ 3.850,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
       "specs": [
@@ -840,11 +841,11 @@
       "sku": "ALVMXZ300400",
       "currency": "EUR",
       "price_includes_vat": true,
-      "price": 3950,
-      "price_min": 3950,
-      "price_max": 3950,
+      "price": 3850,
+      "price_min": 3850,
+      "price_max": 3850,
       "price_is_range": false,
-      "price_display": "€ 3.950,00",
+      "price_display": "€ 3.850,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
       "specs": [
@@ -929,7 +930,9 @@
     },
     {
       "id": "alusense-27640",
-      "showroom_extra": ["Kortrijk"],
+      "showroom_extra": [
+        "Kortrijk"
+      ],
       "source_id": "27640",
       "source_page": "https://www.alusense.be/shop/page/2/?opts=infinit_scrolling",
       "source_url": "https://www.alusense.be/product/alu-lumen-3-x-6-antraciet-led-vrijstaande-overkapping-met-lamellen/",
@@ -1242,7 +1245,9 @@
     },
     {
       "id": "alusense-28282",
-      "showroom_extra": ["Kortrijk"],
+      "showroom_extra": [
+        "Kortrijk"
+      ],
       "source_id": "28282",
       "source_page": "https://www.alusense.be/shop/page/3/?opts=infinit_scrolling",
       "source_url": "https://www.alusense.be/product/alu-lumen-4x4m-zandgrijs-led-vrijstaande-overkapping-met-lamellen/",
@@ -1780,11 +1785,11 @@
       "sku": "ASVMXA360530",
       "currency": "EUR",
       "price_includes_vat": true,
-      "price": 4495,
-      "price_min": 4495,
-      "price_max": 4495,
+      "price": 4695,
+      "price_min": 4695,
+      "price_max": 4695,
       "price_is_range": false,
-      "price_display": "€ 4.495,00",
+      "price_display": "€ 4.695,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
       "specs": [
@@ -1885,11 +1890,11 @@
       "sku": "ASVMXZ360530",
       "currency": "EUR",
       "price_includes_vat": true,
-      "price": 4495,
-      "price_min": 4495,
-      "price_max": 4495,
+      "price": 4695,
+      "price_min": 4695,
+      "price_max": 4695,
       "price_is_range": false,
-      "price_display": "€ 4.495,00",
+      "price_display": "€ 4.695,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
       "specs": [
@@ -1990,11 +1995,11 @@
       "sku": "ASVMXA360720",
       "currency": "EUR",
       "price_includes_vat": true,
-      "price": 5995,
-      "price_min": 5995,
-      "price_max": 5995,
+      "price": 5895,
+      "price_min": 5895,
+      "price_max": 5895,
       "price_is_range": false,
-      "price_display": "€ 5.995,00",
+      "price_display": "€ 5.895,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
       "specs": [
@@ -2095,11 +2100,11 @@
       "sku": "ASVMXZ360720",
       "currency": "EUR",
       "price_includes_vat": true,
-      "price": 5995,
-      "price_min": 5995,
-      "price_max": 5995,
+      "price": 5895,
+      "price_min": 5895,
+      "price_max": 5895,
       "price_is_range": false,
-      "price_display": "€ 5.995,00",
+      "price_display": "€ 5.895,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
       "specs": [
@@ -2200,11 +2205,11 @@
       "sku": "ASVMXA300400",
       "currency": "EUR",
       "price_includes_vat": true,
-      "price": 3295,
-      "price_min": 3295,
-      "price_max": 3295,
+      "price": 3195,
+      "price_min": 3195,
+      "price_max": 3195,
       "price_is_range": false,
-      "price_display": "€ 3.295,00",
+      "price_display": "€ 3.195,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
       "specs": [
@@ -2305,11 +2310,11 @@
       "sku": "ASVMXZ300400",
       "currency": "EUR",
       "price_includes_vat": true,
-      "price": 3295,
-      "price_min": 3295,
-      "price_max": 3295,
+      "price": 3195,
+      "price_min": 3195,
+      "price_max": 3195,
       "price_is_range": false,
-      "price_display": "€ 3.295,00",
+      "price_display": "€ 3.195,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
       "specs": [
@@ -2410,11 +2415,11 @@
       "sku": "ASVMXA300600",
       "currency": "EUR",
       "price_includes_vat": true,
-      "price": 3999,
-      "price_min": 3999,
-      "price_max": 3999,
+      "price": 4395,
+      "price_min": 4395,
+      "price_max": 4395,
       "price_is_range": false,
-      "price_display": "€ 3.999,00",
+      "price_display": "€ 4.395,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
       "specs": [
@@ -2515,11 +2520,11 @@
       "sku": "ASVMXZ300600",
       "currency": "EUR",
       "price_includes_vat": true,
-      "price": 3999,
-      "price_min": 3999,
-      "price_max": 3999,
+      "price": 4395,
+      "price_min": 4395,
+      "price_max": 4395,
       "price_is_range": false,
-      "price_display": "€ 3.999,00",
+      "price_display": "€ 4.395,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
       "specs": [
@@ -3226,11 +3231,11 @@
       "sku": "HLMA*",
       "currency": "EUR",
       "price_includes_vat": true,
-      "price": 549,
-      "price_min": 549,
-      "price_max": 649,
+      "price": 495,
+      "price_min": 495,
+      "price_max": 595,
       "price_is_range": true,
-      "price_display": "€ 549,00 - € 649,00",
+      "price_display": "€ 495,00 - € 595,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
       "variant_label": "Afmeting",
@@ -3238,17 +3243,17 @@
         {
           "id": "alusense-27834",
           "label": "100 cm",
-          "price": 549
+          "price": 495
         },
         {
           "id": "alusense-27833",
           "label": "120 cm",
-          "price": 599
+          "price": 545
         },
         {
           "id": "alusense-27832",
           "label": "133 cm",
-          "price": 649
+          "price": 595
         }
       ],
       "specs": [
@@ -3304,11 +3309,11 @@
       "sku": "SMA*",
       "currency": "EUR",
       "price_includes_vat": true,
-      "price": 699,
-      "price_min": 699,
-      "price_max": 799,
+      "price": 595,
+      "price_min": 595,
+      "price_max": 745,
       "price_is_range": true,
-      "price_display": "€ 699,00 - € 799,00",
+      "price_display": "€ 595,00 - € 745,00",
       "price_source": "crossed_out_original_price",
       "discounted_price_ignored": true,
       "specs": [

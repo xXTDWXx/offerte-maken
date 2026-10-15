@@ -234,16 +234,16 @@ function isProductVisible(product) {
 }
 
 const OVERKAPPING_SCREEN_OPTIONS = [
-  { id: 'lamellenwand-100', label: '100 cm', price: 549 },
-  { id: 'lamellenwand-120', label: '120 cm', price: 599 },
-  { id: 'lamellenwand-133', label: '133 cm', price: 649 }
+  { id: 'lamellenwand-100', label: '100 cm', price: 495 },
+  { id: 'lamellenwand-120', label: '120 cm', price: 545 },
+  { id: 'lamellenwand-133', label: '133 cm', price: 595 }
 ];
 
 const OVERKAPPING_WPC_OPTIONS = [
-  { id: 'wpc-3m', sizeKey: '3', label: '3 m', offerLabel: 'WPC Wand 3 m', price: 899 },
-  { id: 'wpc-36m', sizeKey: '3.6', label: '3.6 m', offerLabel: 'WPC Wand 3.6 m', price: 999 },
-  { id: 'wpc-4m', sizeKey: '4', label: '4 m', offerLabel: 'WPC Wand 4 m', price: 1049 },
-  { id: 'wpc-53m', sizeKey: '5.3', label: '5.3 m', offerLabel: 'WPC Wand 5.3 m', price: 1179 }
+  { id: 'wpc-3m', sizeKey: '3', label: '3 m', offerLabel: 'WPC Wand 3 m', price: 945 },
+  { id: 'wpc-36m', sizeKey: '3.6', label: '3.6 m', offerLabel: 'WPC Wand 3.6 m', price: 1045 },
+  { id: 'wpc-4m', sizeKey: '4', label: '4 m', offerLabel: 'WPC Wand 4 m', price: 1145 },
+  { id: 'wpc-53m', sizeKey: '5.3', label: '5.3 m', offerLabel: 'WPC Wand 5.3 m', price: 1245 }
 ];
 
 const OVERKAPPING_MANUAL_SCREEN_OPTIONS = [
