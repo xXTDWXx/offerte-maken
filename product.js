@@ -1186,7 +1186,7 @@ const PRICES = {
   sauna_roof_epdm_shingles_unit: 375,
   barrel_roof_heather_unit: 849,
   barrel_roof_design_unit: 899,
-  barrel_infrared_module_unit: 699,
+  barrel_infrared_module_unit: 1295,
   ...window.SunspaShowroomModels.optionPrices
 };
 
