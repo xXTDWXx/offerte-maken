@@ -2241,6 +2241,14 @@ function getTermsHtml(type, validUntil) {
     `);
   }
 
+  terms.push(french
+    ? `<li><strong>Garantie : Usage professionnel</strong><br>
+    L’appareil sera utilisé à des fins professionnelles (location). Par conséquent, nos 2 ans de service gratuit ne s’appliquent plus.<br>
+    En cas de panne, des frais de déplacement seront systématiquement facturés.</li>`
+    : `<li><strong>Garantie: Professioneel gebruik</strong><br>
+    Het toestel zal gebruikt worden op professioneel vlak (verhuur). Hierdoor vervalt onze 2 jaar gratis service.<br>
+    Bij storingen zullen steeds voorrijkosten worden aangerekend.</li>`);
+
   return terms.join('');
 }
 
