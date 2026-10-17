@@ -826,6 +826,9 @@ function getTermsHtml() {
     Levering & plaatsing volgens afgesproken voorwaarden (voldoende doorgang, geen obstakels & hulp)<br>
     Betalingsvoorwaarden: 10% voorschot bij bestelling, restbedrag uiterlijk één week vóor levering.</li>
     <li>Sunspa Benelux verleent een garantie van 2 jaar op de technische en elektronische onderdelen vanaf de datum van levering.</li>
+    <li><strong>Garantie: Professioneel gebruik</strong><br>
+    Het toestel zal gebruikt worden op professioneel vlak (verhuur). Hierdoor vervalt onze 2 jaar gratis service.<br>
+    Bij storingen zullen steeds voorrijkosten worden aangerekend.</li>
   `;
 }
 
