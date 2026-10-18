@@ -4,7 +4,7 @@
     "website": "https://www.alusense.be",
     "shop_url": "https://www.alusense.be/shop/",
     "scraped_at": "2026-04-23T12:11:01.491Z",
-    "product_count": 33,
+    "product_count": 68,
     "price_note": "Alle prijsvelden zijn originele prijzen incl. btw. Wanneer de site een doorgestreepte prijs (<del>) en kortingsprijs (<ins>) toont, is uitsluitend de doorgestreepte originele prijs gebruikt. Kortingsprijzen zijn niet opgenomen.",
     "pages_scraped": [
       "https://www.alusense.be/shop/?opts=infinit_scrolling",
@@ -14,7 +14,16 @@
       "https://www.alusense.be/shop/page/5/?opts=infinit_scrolling",
       "https://www.alusense.be/shop/page/6/?opts=infinit_scrolling"
     ],
-    "prices_verified_at": "2026-10-15"
+    "prices_verified_at": "2026-10-18",
+    "catalog_verified_at": "2026-10-18",
+    "source_listing_count": 69,
+    "deduplication_note": "Alu Wall 4x8m wit: bronproducten 30125 en 30142 samengevoegd (gelijke titel, afmetingen, kleur, verlichting en prijs).",
+    "price_review_notes": [
+      "29905: originele doorgestreepte bronprijs € 4.949,10 overgenomen; geen afgeleide prijs gebruikt.",
+      "30077/30098: originele bronprijzen overgenomen ondanks afwijkende prijsvolgorde tussen zonder LED en E-LED.",
+      "30115: maat uit producttitel gebruikt; tegenstrijdige 4x6 technische velden niet overgenomen.",
+      "E-LED wandmodellen: elektrische bediening niet bevestigd en daarom niet geclaimd."
+    ]
   },
   "products": [
     {
@@ -1660,8 +1669,7 @@
           "value": "Gratis vanaf €1000"
         }
       ],
-      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 14 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin.",
-      "hidden": true
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 14 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
     },
     {
       "id": "alusense-28211",
@@ -1765,8 +1773,7 @@
           "value": "Gratis vanaf €1000"
         }
       ],
-      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 14 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin.",
-      "hidden": true
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 14 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
     },
     {
       "id": "alusense-27741",
@@ -1870,8 +1877,7 @@
           "value": "Gratis vanaf €1000"
         }
       ],
-      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 530 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 19 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin.",
-      "hidden": true
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 530 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 19 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
     },
     {
       "id": "alusense-28228",
@@ -1975,8 +1981,7 @@
           "value": "Gratis vanaf €1000"
         }
       ],
-      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 530 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 19 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin.",
-      "hidden": true
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 530 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 19 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
     },
     {
       "id": "alusense-27753",
@@ -2080,8 +2085,7 @@
           "value": "Gratis vanaf €1000"
         }
       ],
-      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 720 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 26 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin.",
-      "hidden": true
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 720 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 26 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
     },
     {
       "id": "alusense-28236",
@@ -2185,8 +2189,7 @@
           "value": "Gratis vanaf €1000"
         }
       ],
-      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 720 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 26 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin.",
-      "hidden": true
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (360 x 720 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 26 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
     },
     {
       "id": "alusense-27159",
@@ -2290,8 +2293,7 @@
           "value": "Gratis vanaf €1000"
         }
       ],
-      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (300 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 9 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin.",
-      "hidden": true
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (300 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 9 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
     },
     {
       "id": "alusense-27498",
@@ -2395,8 +2397,7 @@
           "value": "Gratis vanaf €1000"
         }
       ],
-      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (300 x 400 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 12 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin.",
-      "hidden": true
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (300 x 400 cm).\n\nDeze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 12 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw.\n\nHet slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
     },
     {
       "id": "alusense-27729",
@@ -2500,8 +2501,7 @@
           "value": "Gratis vanaf €1000"
         }
       ],
-      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (300 x 600 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 18 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin.",
-      "hidden": true
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (300 x 600 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 18 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
     },
     {
       "id": "alusense-28201",
@@ -2605,8 +2605,7 @@
           "value": "Gratis vanaf €1000"
         }
       ],
-      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (300 x 600 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 18 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin.",
-      "hidden": true
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (300 x 600 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 18 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
     },
     {
       "id": "alusense-27763",
@@ -2710,8 +2709,7 @@
           "value": "Gratis vanaf €1000"
         }
       ],
-      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (400 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 16 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin.",
-      "hidden": true
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (400 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 16 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
     },
     {
       "id": "alusense-28243",
@@ -2815,8 +2813,7 @@
           "value": "Gratis vanaf €1000"
         }
       ],
-      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (400 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 16 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin.",
-      "hidden": true
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (400 x 400 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 16 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
     },
     {
       "id": "alusense-27772",
@@ -2920,8 +2917,7 @@
           "value": "Gratis vanaf €1000"
         }
       ],
-      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (400 x 600 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 24 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin.",
-      "hidden": true
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (400 x 600 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 24 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
     },
     {
       "id": "alusense-28250",
@@ -3025,8 +3021,7 @@
           "value": "Gratis vanaf €1000"
         }
       ],
-      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (400 x 600 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 24 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin.",
-      "hidden": true
+      "description": "Geniet het hele jaar door van buiten met de Alu Style Overkapping (400 x 600 cm).Deze stijlvolle pergola van hoogwaardig aluminium biedt een overdekte ruimte van 24 m² en is ideaal voor een loungeset, spa, zwembad of als carport. Dankzij de verstelbare lamellen (tot 135°) bepaal je zelf de perfecte balans tussen zon en schaduw. Het slimme ontwerp met onzichtbare schroeven, geïntegreerde waterafvoer en extra stevige poten zorgt voor een strak en duurzaam resultaat. Onderhoudsarm, weerbestendig en 100% waterdicht bij gesloten lamellen – de ideale oplossing voor jarenlang comfort in je tuin."
     },
     {
       "id": "alusense-27853",
@@ -3119,7 +3114,7 @@
         }
       ],
       "description": "De Alusense aluminium carport biedt duurzame bescherming voor je wagen, het hele jaar door.\n\nMet haar sterke volaluminium structuur, geïsoleerd dak en ingebouwd drainagesysteem combineert ze design, comfort en onderhoudsgemak.\n\nUit te breiden met zijpanelen of lamellenwanden voor extra privacy. Een stijlvolle, milieuvriendelijke oplossing voor elke buitenruimte.",
-      "hidden": true
+      "installation_price": 680
     },
     {
       "id": "alusense-27865",
@@ -3156,7 +3151,7 @@
         },
         {
           "label": "Afmeting",
-          "value": "3m × 5m"
+          "value": "3m × 7,2m"
         },
         {
           "label": "Kleurcode (RAL)",
@@ -3212,7 +3207,7 @@
         }
       ],
       "description": "De Alusense aluminium carport biedt duurzame bescherming voor je wagen, het hele jaar door.\n\nMet haar sterke volaluminium structuur, geïsoleerd dak en ingebouwd drainagesysteem combineert ze design, comfort en onderhoudsgemak.\n\nUit te breiden met zijpanelen of lamellenwanden voor extra privacy. Een stijlvolle, milieuvriendelijke oplossing voor elke buitenruimte.",
-      "hidden": true
+      "installation_price": null
     },
     {
       "id": "alusense-27796",
@@ -3351,7 +3346,1980 @@
         }
       ],
       "description": "Maak jouw Alusense overkapping compleet met een stijlvol zij- of windscherm. De Alusense screens bieden optimale privacy, bescherming tegen wind én een laaghangende zon, volledig geïntegreerd in de pergolaconstructie.\n\nGemaakt uit duurzaam gepoedercoat aluminium en UV-bestendig textileen, met een moderne antracietkleur (RAL 7024). Verkrijgbaar in 2,65m, 3 m, 3,6 m en 4 m.\n\nEenvoudig te monteren en verstelbaar naar wens, voor een comfortabele buitenruimte, het hele jaar door.",
-      "hidden": true
+      "variant_label": "Afmeting",
+      "variants": [
+        {
+          "id": "manual-screen-2.65",
+          "label": "2,65 m",
+          "price": 595
+        },
+        {
+          "id": "manual-screen-3",
+          "label": "3 m",
+          "price": 645
+        },
+        {
+          "id": "manual-screen-3.6",
+          "label": "3,6 m",
+          "price": 695
+        },
+        {
+          "id": "manual-screen-4",
+          "label": "4 m",
+          "price": 745
+        }
+      ]
+    },
+    {
+      "id": "alusense-29645",
+      "source_id": "29645",
+      "source_url": "https://www.alusense.be/product/alu-motion-36x4m-antrasiet-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 3,6×4m - Antraciet - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-36x4m-antrasiet-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/Alumotion-Wit-360-400-3-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4899,
+      "price_min": 4899,
+      "price_max": 4899,
+      "price_is_range": false,
+      "price_display": "€ 4.899,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 680,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3,6×4m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29619",
+      "source_id": "29619",
+      "source_url": "https://www.alusense.be/product/alu-motion-36x4m-wit-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 3,6×4m - Wit - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-36x4m-wit-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/Alumotion-wit-360-400-1-1-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4899,
+      "price_min": 4899,
+      "price_max": 4899,
+      "price_is_range": false,
+      "price_display": "€ 4.899,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 680,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3,6×4m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Wit"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29627",
+      "source_id": "29627",
+      "source_url": "https://www.alusense.be/product/alu-motion-36x4m-zandgrijs-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 3,6×4m - Zandgrijs - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-36x4m-zandgrijs-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/Alumotion-kiezelgrijs-360-400-1-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4899,
+      "price_min": 4899,
+      "price_max": 4899,
+      "price_is_range": false,
+      "price_display": "€ 4.899,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 680,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3,6×4m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29643",
+      "source_id": "29643",
+      "source_url": "https://www.alusense.be/product/alu-motion-36x53m-antrasiet-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 3,6×5,3m - Antraciet - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-36x53m-antrasiet-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/Alumotion-Antra-360-600-1-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 6499,
+      "price_min": 6499,
+      "price_max": 6499,
+      "price_is_range": false,
+      "price_display": "€ 6.499,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 1360,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3,6×5,3m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29621",
+      "source_id": "29621",
+      "source_url": "https://www.alusense.be/product/alu-motion-36x53m-wit-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 3,6×5,3m - Wit - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-36x53m-wit-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/alumotion-wit-360-360-1-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 6499,
+      "price_min": 6499,
+      "price_max": 6499,
+      "price_is_range": false,
+      "price_display": "€ 6.499,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 1360,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3,6×5,3m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Wit"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29625",
+      "source_id": "29625",
+      "source_url": "https://www.alusense.be/product/alu-motion-36x53m-zandgrijs-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 3,6×5,3m - Zandgrijs - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-36x53m-zandgrijs-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/Alumotion-kiezelgrijs-360-530-1-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 6499,
+      "price_min": 6499,
+      "price_max": 6499,
+      "price_is_range": false,
+      "price_display": "€ 6.499,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 1360,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3,6×5,3m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29636",
+      "source_id": "29636",
+      "source_url": "https://www.alusense.be/product/alu-motion-36x72m-antrasiet-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 3,6×7,2m - Antraciet - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-36x72m-antrasiet-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/Alumotion-antra-360-720-1-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 7799,
+      "price_min": 7799,
+      "price_max": 7799,
+      "price_is_range": false,
+      "price_display": "€ 7.799,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 1360,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3,6×7,2m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29617",
+      "source_id": "29617",
+      "source_url": "https://www.alusense.be/product/alu-motion-36x72m-wit-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 3,6×7,2m - Wit - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-36x72m-wit-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/Alumotion-wit-360-720-1-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 7799,
+      "price_min": 7799,
+      "price_max": 7799,
+      "price_is_range": false,
+      "price_display": "€ 7.799,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 1360,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3,6×7,2m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Wit"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29647",
+      "source_id": "29647",
+      "source_url": "https://www.alusense.be/product/alu-motion-3x4m-antrasiet-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 3×4m - Antraciet - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-3x4m-antrasiet-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/Alumotion-Antra-300-400-2-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4499,
+      "price_min": 4499,
+      "price_max": 4499,
+      "price_is_range": false,
+      "price_display": "€ 4.499,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 680,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3×4m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29623",
+      "source_id": "29623",
+      "source_url": "https://www.alusense.be/product/alu-motion-3x4m-wit-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 3×4m - Wit - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-3x4m-wit-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/Alumotion-Wit-300-400-1-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4499,
+      "price_min": 4499,
+      "price_max": 4499,
+      "price_is_range": false,
+      "price_display": "€ 4.499,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 680,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3×4m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Wit"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29634",
+      "source_id": "29634",
+      "source_url": "https://www.alusense.be/product/alu-motion-3x4m-zandgrijs-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 3×4m - Zandgrijs - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-3x4m-zandgrijs-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/Alumotion-Kiezelgrijs-300-400-1-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4499,
+      "price_min": 4499,
+      "price_max": 4499,
+      "price_is_range": false,
+      "price_display": "€ 4.499,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 680,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3×4m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29629",
+      "source_id": "29629",
+      "source_url": "https://www.alusense.be/product/alu-motion-3x6m-zandgrijs-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 3×6m - Zandgrijs - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-3x6m-zandgrijs-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/Alumotion-kiezelgrijs-300-600-1-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 5799,
+      "price_min": 5799,
+      "price_max": 5799,
+      "price_is_range": false,
+      "price_display": "€ 5.799,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 1360,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3×6m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29615",
+      "source_id": "29615",
+      "source_url": "https://www.alusense.be/product/alu-motion-4x4m-wit-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 4×4m - Wit - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-4x4m-wit-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/Alumotion-wit-400-400-1-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 5499,
+      "price_min": 5499,
+      "price_max": 5499,
+      "price_is_range": false,
+      "price_display": "€ 5.499,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 680,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "4×4m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Wit"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29613",
+      "source_id": "29613",
+      "source_url": "https://www.alusense.be/product/alu-motion-4x6m-wit-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 4×6m - Wit - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-4x6m-wit-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/Alumotion-wit-400-600-1-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 7499,
+      "price_min": 7499,
+      "price_max": 7499,
+      "price_is_range": false,
+      "price_display": "€ 7.499,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 1360,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "4×6m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Wit"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29610",
+      "source_id": "29610",
+      "source_url": "https://www.alusense.be/product/alu-motion-4x8m-wit-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 4×8m - Wit - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alu-motion-4x8m-wit-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/Alumotion-Wit-400-800-1-768x768.png",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 9499,
+      "price_min": 9499,
+      "price_max": 9499,
+      "price_is_range": false,
+      "price_display": "€ 9.499,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "4×8m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Wit"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-29905",
+      "source_id": "29905",
+      "source_url": "https://www.alusense.be/product/alumotion-4x4m-antrasiet-elektrische-lamellen-overkappingen-met-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Motion - 4×4m - Antraciet - Elektrisch - LED",
+      "url": "https://www.alusense.be/product/alumotion-4x4m-antrasiet-elektrische-lamellen-overkappingen-met-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/01/pergola-4x4-antraciet-1-768x768.jpg",
+      "categories": [
+        "Alu Motion Overkapping"
+      ],
+      "category": "Alu Motion Overkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4949.1,
+      "price_min": 4949.1,
+      "price_max": 4949.1,
+      "price_is_range": false,
+      "price_display": "€ 4.949,10",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": 680,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Motion"
+        },
+        {
+          "label": "Producttype",
+          "value": "Vrijstaande overkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "4×4m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        },
+        {
+          "label": "Bediening",
+          "value": "Elektrisch met afstandsbediening"
+        },
+        {
+          "label": "Kantelhoek van de lamellen",
+          "value": "135°"
+        }
+      ],
+      "description": "Vrijstaande aluminium overkapping met elektrisch verstelbare lamellen, afstandsbediening en geïntegreerde LED-verlichting. Geïntegreerde waterafvoer via de staanders."
+    },
+    {
+      "id": "alusense-30013",
+      "source_id": "30013",
+      "source_url": "https://www.alusense.be/product/alu-wall-36x4m-antraciet-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 3,6×4m - Antraciet - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-36x4m-antraciet-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/4-4-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3195,
+      "price_min": 3195,
+      "price_max": 3195,
+      "price_is_range": false,
+      "price_display": "€ 3.195,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3,6×4m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
+    },
+    {
+      "id": "alusense-30032",
+      "source_id": "30032",
+      "source_url": "https://www.alusense.be/product/alu-wall-36x4m-wit-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 3,6×4m - Wit - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-36x4m-wit-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/1-9-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3699,
+      "price_min": 3699,
+      "price_max": 3699,
+      "price_is_range": false,
+      "price_display": "€ 3.699,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3,6×4m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Wit"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
+    },
+    {
+      "id": "alusense-30021",
+      "source_id": "30021",
+      "source_url": "https://www.alusense.be/product/alu-wall-36x4m-zandgrijs-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 3,6×4m - Zandgrijs - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-36x4m-zandgrijs-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/1-8-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3699,
+      "price_min": 3699,
+      "price_max": 3699,
+      "price_is_range": false,
+      "price_display": "€ 3.699,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3,6×4m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
+    },
+    {
+      "id": "alusense-30040",
+      "source_id": "30040",
+      "source_url": "https://www.alusense.be/product/alu-wall-36x53m-antraciet-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 3,6×5,3m - Antraciet - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-36x53m-antraciet-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/1-11-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4695,
+      "price_min": 4695,
+      "price_max": 4695,
+      "price_is_range": false,
+      "price_display": "€ 4.695,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3,6×5,3m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
+    },
+    {
+      "id": "alusense-30064",
+      "source_id": "30064",
+      "source_url": "https://www.alusense.be/product/alu-wall-36x53m-wit-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 3,6×5,3m - Wit - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-36x53m-wit-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/10/1-1-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4695,
+      "price_min": 4695,
+      "price_max": 4695,
+      "price_is_range": false,
+      "price_display": "€ 4.695,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3,6×5,3m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Wit"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
+    },
+    {
+      "id": "alusense-29955",
+      "source_id": "29955",
+      "source_url": "https://www.alusense.be/product/alu-wall-3x36m-antraciet-wandoverkapping/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 3×3,6m - Antraciet - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-3x36m-antraciet-wandoverkapping/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/1-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3199,
+      "price_min": 3199,
+      "price_max": 3199,
+      "price_is_range": false,
+      "price_display": "€ 3.199,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3×3,6m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
+    },
+    {
+      "id": "alusense-29975",
+      "source_id": "29975",
+      "source_url": "https://www.alusense.be/product/alu-wall-3x36m-wit-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 3×3,6m - Wit - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-3x36m-wit-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/1-2-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3799,
+      "price_min": 3799,
+      "price_max": 3799,
+      "price_is_range": false,
+      "price_display": "€ 3.799,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3×3,6m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Wit"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
+    },
+    {
+      "id": "alusense-29965",
+      "source_id": "29965",
+      "source_url": "https://www.alusense.be/product/alu-wall-3x36m-kiezelgrijs-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 3×3,6m - Zandgrijs - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-3x36m-kiezelgrijs-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/1-2-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3799,
+      "price_min": 3799,
+      "price_max": 3799,
+      "price_is_range": false,
+      "price_display": "€ 3.799,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3×3,6m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
+    },
+    {
+      "id": "alusense-30006",
+      "source_id": "30006",
+      "source_url": "https://www.alusense.be/product/alu-wall-3x4m-wit-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 3×4m - Wit - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-3x4m-wit-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/1-6-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3195,
+      "price_min": 3195,
+      "price_max": 3195,
+      "price_is_range": false,
+      "price_display": "€ 3.195,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3×4m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Wit"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
+    },
+    {
+      "id": "alusense-29998",
+      "source_id": "29998",
+      "source_url": "https://www.alusense.be/product/alu-wall-3x4m-zandgrijs-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 3×4m - Zandgrijs - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-3x4m-zandgrijs-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/1-5-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3195,
+      "price_min": 3195,
+      "price_max": 3195,
+      "price_is_range": false,
+      "price_display": "€ 3.195,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3×4m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
+    },
+    {
+      "id": "alusense-30077",
+      "source_id": "30077",
+      "source_url": "https://www.alusense.be/product/alu-wall-4x6m-antraciet-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 4×6m - Antraciet - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-4x6m-antraciet-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/10/1-2-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 6595,
+      "price_min": 6595,
+      "price_max": 6595,
+      "price_is_range": false,
+      "price_display": "€ 6.595,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "4×6m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
+    },
+    {
+      "id": "alusense-30098",
+      "source_id": "30098",
+      "source_url": "https://www.alusense.be/product/alu-wall-4x6m-antraciet-wandoverkappingen-e-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 4×6m - Antraciet - E-LED - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-4x6m-antraciet-wandoverkappingen-e-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/10/1-4-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 5995,
+      "price_min": 5995,
+      "price_max": 5995,
+      "price_is_range": false,
+      "price_display": "€ 5.995,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "4×6m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering met LED-verlichting (E-LED volgens Alusense)."
+    },
+    {
+      "id": "alusense-30087",
+      "source_id": "30087",
+      "source_url": "https://www.alusense.be/product/alu-wall-4x6m-wit-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 4×6m - Wit - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-4x6m-wit-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/10/1-3-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 5995,
+      "price_min": 5995,
+      "price_max": 5995,
+      "price_is_range": false,
+      "price_display": "€ 5.995,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "4×6m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Wit"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
+    },
+    {
+      "id": "alusense-30106",
+      "source_id": "30106",
+      "source_url": "https://www.alusense.be/product/alu-wall-4x6m-wit-wandoverkappingen-e-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 4×6m - Wit - E-LED - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-4x6m-wit-wandoverkappingen-e-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/10/1-5-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 6595,
+      "price_min": 6595,
+      "price_max": 6595,
+      "price_is_range": false,
+      "price_display": "€ 6.595,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "4×6m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Wit"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering met LED-verlichting (E-LED volgens Alusense)."
+    },
+    {
+      "id": "alusense-30136",
+      "source_id": "30136",
+      "source_url": "https://www.alusense.be/product/alu-wall-4x8m-antraciet-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 4×8m - Antraciet - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-4x8m-antraciet-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/10/1-8-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 8799,
+      "price_min": 8799,
+      "price_max": 8799,
+      "price_is_range": false,
+      "price_display": "€ 8.799,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "4×8m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
+    },
+    {
+      "id": "alusense-30115",
+      "source_id": "30115",
+      "source_url": "https://www.alusense.be/product/alu-wall-4x8m-antraciet-wandoverkappingen-e-led/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 4×8m - Antraciet - E-LED - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-4x8m-antraciet-wandoverkappingen-e-led/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/10/1-6-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 8799,
+      "price_min": 8799,
+      "price_max": 8799,
+      "price_is_range": false,
+      "price_display": "€ 8.799,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "4×8m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Led"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering met LED-verlichting (E-LED volgens Alusense)."
+    },
+    {
+      "id": "alusense-30142",
+      "source_id": "30142",
+      "source_url": "https://www.alusense.be/product/alu-wall-4x8m-wit-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 4×8m - Wit - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-4x8m-wit-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/10/1-9-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 8799,
+      "price_min": 8799,
+      "price_max": 8799,
+      "price_is_range": false,
+      "price_display": "€ 8.799,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "4×8m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Wit"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting.",
+      "source_aliases": [
+        "https://www.alusense.be/product/alu-wall-4x8m-wit-wandoverkappingen-2/"
+      ]
+    },
+    {
+      "id": "alusense-30054",
+      "source_id": "30054",
+      "source_url": "https://www.alusense.be/product/alu-wall-zandgrijs-36x53m-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 3,6×5,3m - Zandgrijs - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-zandgrijs-36x53m-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/10/1-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 4695,
+      "price_min": 4695,
+      "price_max": 4695,
+      "price_is_range": false,
+      "price_display": "€ 4.695,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3,6×5,3m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Zandgrijs"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
+    },
+    {
+      "id": "alusense-29987",
+      "source_id": "29987",
+      "source_url": "https://www.alusense.be/product/alu-wall-3x4m-antraciet-wandoverkappingen/",
+      "type": "overkapping",
+      "merk": "Alusense",
+      "title": "Alu Wall - 3×4m - Antraciet - Wandoverkapping",
+      "url": "https://www.alusense.be/product/alu-wall-3x4m-antraciet-wandoverkappingen/",
+      "image": "https://usercontent.one/wp/www.alusense.be/wp-content/uploads/2026/09/1-4-768x768.png",
+      "categories": [
+        "Alu Wall Wandoverkapping"
+      ],
+      "category": "Alu Wall Wandoverkapping",
+      "currency": "EUR",
+      "price_includes_vat": true,
+      "price": 3195,
+      "price_min": 3195,
+      "price_max": 3195,
+      "price_is_range": false,
+      "price_display": "€ 3.195,00",
+      "price_source": "crossed_out_original_price",
+      "discounted_price_ignored": true,
+      "prices_verified_at": "2026-10-18",
+      "installation_price": null,
+      "specs": [
+        {
+          "label": "Reeks",
+          "value": "Alu Wall"
+        },
+        {
+          "label": "Producttype",
+          "value": "Wandoverkapping"
+        },
+        {
+          "label": "Afmeting",
+          "value": "3×4m"
+        },
+        {
+          "label": "Kleur",
+          "value": "Antraciet"
+        },
+        {
+          "label": "Materiaal",
+          "value": "Aluminium"
+        },
+        {
+          "label": "Led-verlichting",
+          "value": "Geen"
+        }
+      ],
+      "description": "Aluminium lamellenoverkapping voor plaatsing tegen de gevel. Uitvoering zonder LED-verlichting."
     }
   ]
 }

@@ -312,7 +312,9 @@ function getCurrentProductPriceHtml() {
     return escapeHtml(total > 0 ? euro(total) : displayPrice(currentProduct));
   }
 
-  return productPriceHtml(currentProduct, getCurrentProductBasePriceValue());
+  const basePrice = getCurrentProductBasePriceValue();
+  const pricedProduct = selectedVariant ? { ...currentProduct, price_display: euro(basePrice) } : currentProduct;
+  return productPriceHtml(pricedProduct, basePrice);
 }
 
 function syncProductPriceDisplay() {
@@ -1277,9 +1279,25 @@ function saunaHeaterOptionsAllowed(product = currentProduct) {
     getAvailableSaunaHeaterIds(product).length > 0;
 }
 
+function requiresManualInstallationPrice(product = currentProduct) {
+  return isMainOverkappingProduct(product) &&
+    Object.prototype.hasOwnProperty.call(product, 'installation_price') &&
+    product.installation_price === null;
+}
+
+function getManualInstallationPrice() {
+  const input = $('customInstallationPrice');
+  if (!input || input.value.trim() === '' || !input.validity.valid) return null;
+  const price = Number(input.value);
+  return Number.isFinite(price) && price >= 0 ? roundCurrency(price) : null;
+}
+
 function installCost(type, product = currentProduct) {
   if (isOverkapping(type)) {
     if (!isMainOverkappingProduct(product)) return 0;
+
+    if (requiresManualInstallationPrice(product)) return getManualInstallationPrice() ?? 0;
+    if (Number.isFinite(product?.installation_price)) return product.installation_price;
 
     const dimensionPairKey = getOverkappingDimensionPairKey(product);
     return OVERKAPPING_HIGH_INSTALL_DIMENSIONS.has(dimensionPairKey) ? 1360 : PRICES.install_overkapping;
@@ -1749,7 +1767,14 @@ function updateOptionUI() {
   const productPriceValue = getCurrentProductPriceValue();
 
   if (optInstallPrice) optInstallPrice.textContent = euro(inst);
-  if (optInstallRow) optInstallRow.style.display = inst > 0 ? '' : 'none';
+  const manualInstallation = requiresManualInstallationPrice();
+  const missingInstallation = manualInstallation && getManualInstallationPrice() === null;
+  if (optInstallRow) optInstallRow.style.display = inst > 0 && !manualInstallation ? '' : 'none';
+  if ($('customInstallationRow')) $('customInstallationRow').hidden = !manualInstallation;
+  if ($('customInstallationPrice')) {
+    $('customInstallationPrice').required = manualInstallation;
+    $('customInstallationPrice').disabled = !manualInstallation;
+  }
   syncProductPriceDisplay();
 
   const allowExtraOptions = extraOptionsAllowed(type);
@@ -1900,7 +1925,7 @@ function updateOptionUI() {
 
   if (tProduct) tProduct.textContent = euro(productPriceValue);
   if (tOptions) tOptions.textContent = euro(optionsTotal);
-  if (tGrand) tGrand.textContent = euro(grand);
+  if (tGrand) tGrand.textContent = euro(grand) + (missingInstallation ? ' + montage' : '');
 }
 
 function wireOptionHandlers() {
@@ -1921,6 +1946,7 @@ function wireOptionHandlers() {
 
   const ids = [
     'optInstall',
+    'customInstallationPrice',
     'optCoverTrap',
     'optCoverlift',
     'optCoverlift2',
@@ -2046,7 +2072,7 @@ function getSelectedOfferLines() {
 
   const installation = installCost(type);
 
-  if (installation > 0 && (!bullfrog || $('optInstall')?.checked)) {
+  if ((installation > 0 || (requiresManualInstallationPrice() && getManualInstallationPrice() !== null)) && (!bullfrog || $('optInstall')?.checked)) {
     lines.push({
       label: 'Levering & installatie',
       price: installation
@@ -3163,6 +3189,12 @@ function printSixPercentForm() {
 
 async function printOfferte({ autoPrint = true } = {}) {
   if (!currentProduct) return;
+  if (requiresManualInstallationPrice() && getManualInstallationPrice() === null) {
+    const input = $('customInstallationPrice');
+    input?.reportValidity();
+    input?.focus();
+    return;
+  }
 
   const productForOffer = currentProduct;
   const win = autoPrint ? window.open('', '_blank') : null;
@@ -4651,6 +4683,7 @@ async function printOfferte({ autoPrint = true } = {}) {
 
 function renderProduct(p) {
   currentProduct = p;
+  if ($('customInstallationPrice')) $('customInstallationPrice').value = '';
 
   const type = p.type || '';
   const colorSelects = document.querySelector('.color-selects');
