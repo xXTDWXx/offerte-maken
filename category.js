@@ -1,6 +1,6 @@
 const SHOWROOM_MODELS_PAGE = document.body.hasAttribute('data-showroom-models');
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
-const OVERKAPPING_URL = new URL('overkapping.json', document.baseURI).toString();
+const OVERKAPPING_URL = new URL('overkapping.json?v=20261018', document.baseURI).toString();
 
 const elGrid = document.getElementById('grid');
 const tpl = document.getElementById('cardTpl');

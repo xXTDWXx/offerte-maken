@@ -1,5 +1,5 @@
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
-const OVERKAPPING_URL = new URL('overkapping.json', document.baseURI).toString();
+const OVERKAPPING_URL = new URL('overkapping.json?v=20261018', document.baseURI).toString();
 const ELECTRICAL_SCHEMA_URL = new URL('stroom.html', document.baseURI).toString();
 
 /*

@@ -2,7 +2,7 @@
 // Klik op een product gaat naar product.html?id=PRODUCT_ID
 
 const PRODUCTS_URL = new URL('products.json', document.baseURI).toString();
-const OVERKAPPING_URL = new URL('overkapping.json', document.baseURI).toString();
+const OVERKAPPING_URL = new URL('overkapping.json?v=20261018', document.baseURI).toString();
 
 // --- Catalog refs
 const elGrid = document.getElementById('grid');
