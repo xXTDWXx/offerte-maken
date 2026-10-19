@@ -1031,6 +1031,12 @@ function isInfrared(type) {
   return typeNorm(type).includes('infrarood');
 }
 
+function getInfraredInstallationFloor(product = currentProduct) {
+  if (!isInfrared(product?.type)) return '';
+  const floor = $('infraredInstallationFloor')?.value;
+  return floor === 'gelijkvloers' || floor === 'verdieping' ? floor : '';
+}
+
 function isBarrelSauna(type) {
   const t = typeNorm(type);
   return t.includes('barrel') && t.includes('sauna');
@@ -1775,6 +1781,12 @@ function updateOptionUI() {
     $('customInstallationPrice').required = manualInstallation;
     $('customInstallationPrice').disabled = !manualInstallation;
   }
+  const infraredInstallation = isInfrared(type);
+  if ($('infraredInstallationRow')) $('infraredInstallationRow').hidden = !infraredInstallation;
+  if ($('infraredInstallationFloor')) {
+    $('infraredInstallationFloor').required = infraredInstallation;
+    $('infraredInstallationFloor').disabled = !infraredInstallation;
+  }
   syncProductPriceDisplay();
 
   const allowExtraOptions = extraOptionsAllowed(type);
@@ -1947,6 +1959,7 @@ function wireOptionHandlers() {
   const ids = [
     'optInstall',
     'customInstallationPrice',
+    'infraredInstallationFloor',
     'optCoverTrap',
     'optCoverlift',
     'optCoverlift2',
@@ -2074,7 +2087,9 @@ function getSelectedOfferLines() {
 
   if ((installation > 0 || (requiresManualInstallationPrice() && getManualInstallationPrice() !== null)) && (!bullfrog || $('optInstall')?.checked)) {
     lines.push({
-      label: 'Levering & installatie',
+      label: getInfraredInstallationFloor()
+        ? `Levering & installatie — ${getInfraredInstallationFloor() === 'verdieping' ? 'Verdieping' : 'Gelijkvloers'}`
+        : 'Levering & installatie',
       price: installation
     });
   }
@@ -2504,8 +2519,8 @@ async function getElectricalSchemaForProduct(product) {
   }
 }
 
-function needsInfraredFloorDeliveryNote(product) {
-  if (!product || !isInfrared(product.type)) return false;
+function needsInfraredFloorDeliveryNote(product, installationFloor = getInfraredInstallationFloor(product)) {
+  if (!product || !isInfrared(product.type) || installationFloor !== 'verdieping') return false;
   const productKey = normalizeSchemaText(`${product.id || ''} ${product.title || ''}`);
   return productKey.includes('130 infrarood sauna') || productKey.includes('160 infrarood sauna');
 }
@@ -2515,18 +2530,18 @@ function needsPackagingMaterialNote(product) {
   return isBarrelSauna(type) || isInfrared(type) || isSauna(type);
 }
 
-function getElectricalSchemaPageHtml(schema, product) {
+function getElectricalSchemaPageHtml(schema, product, installationFloor = getInfraredInstallationFloor(product)) {
   const french = window.SunspaI18n?.isFrench?.();
   const deliveryAccess = getSpaDeliveryAccess(product);
   const isBarrelProduct = isBarrelSauna(product?.type);
-  const floorDeliveryHtml = needsInfraredFloorDeliveryNote(product)
+  const floorDeliveryHtml = needsInfraredFloorDeliveryNote(product, installationFloor)
     ? `
         <div class="delivery-card">
           <h2>${french ? 'ÉTAGE' : 'VERDIEP'}</h2>
           <p class="delivery-card-intro">
             ${french
-              ? "La cabine est déposée au préalable. Le client la descend ou la monte sous sa propre responsabilité. Le montage a ensuite lieu à la date convenue."
-              : 'De cabine wordt voordien afgezet. Klant doet deze op eigen verantwoordelijkheid naar beneden/boven. Nadien op afgesproken datum montage.'}
+              ? "Le sauna est d'abord livré par le transporteur, le client le monte à l'étage sous sa propre responsabilité"
+              : 'Sauna wordt eerst afgezet met transport, klant doet deze op eigen verantwoordelijkheid naar boven'}
           </p>
         </div>
       `
@@ -3196,7 +3211,15 @@ async function printOfferte({ autoPrint = true } = {}) {
     return;
   }
 
+  if (isInfrared(currentProduct.type) && !getInfraredInstallationFloor()) {
+    const input = $('infraredInstallationFloor');
+    input?.reportValidity();
+    input?.focus();
+    return;
+  }
+
   const productForOffer = currentProduct;
+  const installationFloor = getInfraredInstallationFloor(productForOffer);
   const win = autoPrint ? window.open('', '_blank') : null;
   if (autoPrint && !win) return;
 
@@ -3241,7 +3264,7 @@ async function printOfferte({ autoPrint = true } = {}) {
   const termsHtml = getTermsHtml(productType, validUntil);
   const electricalSchema = await getElectricalSchemaForProduct(productForOffer);
   const deliveryTermText = await getCurrentOfferDeliveryTerm(productForOffer);
-  const electricalSchemaHtml = getElectricalSchemaPageHtml(electricalSchema, productForOffer);
+  const electricalSchemaHtml = getElectricalSchemaPageHtml(electricalSchema, productForOffer, installationFloor);
   const offerSheetClass = electricalSchemaHtml ? 'sheet offer-sheet has-next-page' : 'sheet offer-sheet';
   const autoPrintScript = autoPrint
     ? `
@@ -4684,6 +4707,7 @@ async function printOfferte({ autoPrint = true } = {}) {
 function renderProduct(p) {
   currentProduct = p;
   if ($('customInstallationPrice')) $('customInstallationPrice').value = '';
+  if ($('infraredInstallationFloor')) $('infraredInstallationFloor').value = '';
 
   const type = p.type || '';
   const colorSelects = document.querySelector('.color-selects');
