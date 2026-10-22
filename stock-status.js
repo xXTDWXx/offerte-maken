@@ -107,7 +107,12 @@
   }
 
   function getAvailability(product, stockData) {
-    if (!isSpaProduct(product) || !isFresh(stockData)) return null;
+    if (!isSpaProduct(product)) return null;
+    // Alicante and Pacific are permanently available in Graphite.
+    // Keep their overview dot green independently of the live stock snapshot.
+    if (normalize(product?.type).includes('zwemspa') &&
+        getModelCandidates(product).some(model => model === 'alicante' || model === 'pacific')) return true;
+    if (!isFresh(stockData)) return null;
     const model = findModel(product, stockData);
     if (!model) return false;
     return (Array.isArray(model.cabinets) && model.cabinets.some(c => Number(c?.currentTotal ?? c?.total ?? 0) > 0))
