@@ -1210,6 +1210,7 @@ const SAUNA_HEATER_OPTIONS = Object.freeze({
   'harvia-cilinder-70': { label: 'Harvia Cilindro PC 70', price: 549, note: 'Incl. stenen & montage' },
   'harvia-linear-16': { label: 'Harvia Linear 16 houtkachel + rookafvoer', price: 1195, note: 'Incl. stenen & montage' },
   'kip-45': { label: 'Kip 4,5 kW', price: 310, note: 'Incl. stenen & montage' },
+  'kip-60': { label: 'Harvia KIP 6 kW', price: 349, note: 'Incl. stenen & montage' },
   'delta-36': { label: 'Delta 3,6 kW', price: 325, note: 'Incl. stenen & montage' }
 });
 
@@ -1238,7 +1239,7 @@ const SAUNA_HEATERS_BY_PRODUCT = Object.freeze({
   'sauna::discovery-sauna': ['electric', 'harvia-cilinder'],
   'sauna::kerava-outdoor-sauna': ['electric', 'harvia-cilinder'],
   'sauna::sunset-outdoor-sauna': ['electric', 'harvia-cilinder'],
-  'sauna::lucca-finse-sauna-cabine': ['vega-35', 'kip-45', 'delta-36']
+  'sauna::lucca-finse-sauna-cabine': ['vega-35', 'kip-45', 'kip-60', 'delta-36']
 });
 
 function getAvailableSaunaHeaterIds(product = currentProduct) {
@@ -1251,7 +1252,12 @@ function getAvailableSaunaHeaterIds(product = currentProduct) {
     return getAvailableSaunaHeaterIds({
       id: 'sauna::lucca-finse-sauna-cabine',
       type: 'sauna'
-    }).filter(id => id !== 'wood' && id !== 'harvia-linear-16');
+    }).filter(id => {
+      if (id === 'wood' || id === 'harvia-linear-16') return false;
+      const lowerPowerOnly = product.id === 'sauna::traditionele-sauna' ||
+        product.id === 'sauna::traditionele-combi-sauna';
+      return !lowerPowerOnly || !['electric', 'harvia-cilinder', 'huum-drop'].includes(id);
+    });
   }
 
   const productHeaters = SAUNA_HEATERS_BY_PRODUCT[product?.id] || [];
@@ -1985,6 +1991,7 @@ function wireOptionHandlers() {
     'optBarrelVega35',
     'optBarrelVega45',
     'optBarrelKip45',
+    'optBarrelKip60',
     'optBarrelDelta36',
     'optBarrelVega60',
     'optBarrelSawoTower',
