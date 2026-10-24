@@ -1242,6 +1242,18 @@ const SAUNA_HEATERS_BY_PRODUCT = Object.freeze({
 });
 
 function getAvailableSaunaHeaterIds(product = currentProduct) {
+  if ([
+    'sauna::traditionele-sauna',
+    'sauna::traditionele-combi-sauna',
+    'sauna::traditionele-combi-sauna-chaleur'
+  ].includes(product?.id)) {
+    // These indoor models share Lucca's electric range, without wood-burning stoves.
+    return getAvailableSaunaHeaterIds({
+      id: 'sauna::lucca-finse-sauna-cabine',
+      type: 'sauna'
+    }).filter(id => id !== 'wood' && id !== 'harvia-linear-16');
+  }
+
   const productHeaters = SAUNA_HEATERS_BY_PRODUCT[product?.id] || [];
   const type = product?.type;
   const infraredOrCombi = isInfrared(type) ||
