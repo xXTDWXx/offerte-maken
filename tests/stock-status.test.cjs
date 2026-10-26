@@ -45,6 +45,39 @@ async function runStockTests(stockSource, productSource) {
   assert(api.findModel({title:'Fox Elite Javea'}, {models:[{key:''}]}) === null, 'Empty name matched');
   assert(api.findModel({title:'Vogue Angora'}, {models:[{key:'angora'},{key:'angora'}]}) === null, 'Ambiguous name matched');
   assert(api.getAvailability({title:'Vogue Angora',type:'spa'}, stock) === true, 'Fresh stock hidden');
+
+  const saunaStock = {generatedAt: new Clock().toISOString(), models: [], saunas: {items: [
+    {name:'Barrel TR300-X Nutty Cedar',currentTotal:0,incomingTotal:5},
+    {name:'Barrel TR300-X Nutty Cedar (Half Glass)',currentTotal:2},
+    {name:'Royal 9101C',currentTotal:0},
+    {name:'Royal 9101C - Black Front',currentTotal:3},
+    {name:'HY406 COMBI SAUNA',currentTotal:4},
+    {name:'HY560 Traditional Sauna',currentTotal:0},
+    {name:'Sauna Pod Rustic / Joint Cedar',currentTotal:2},
+    {name:'Koy H04-K6 150 exclusive 4',currentTotal:0},
+    {name:'Koy H04-K61 180 exclusive 6',currentTotal:5},
+    {name:'Koy Scharnier cabine set',currentTotal:99},
+    {name:'Infra4Health SHC - i160 Ongelakt',currentTotal:9},
+    {name:'Koy H03-K62 150 exclusive 5',currentTotal:0}
+  ]}};
+  const availability = (title,type,data=saunaStock) => api.getAvailability({title,type},data);
+  assert(availability('Barrelsauna TR300','barrelsauna') === false, 'Incoming or half-glass stock borrowed by standard barrel');
+  assert(availability('Barrelsauna TR300 – Halfglas','Barrelsauna') === true, 'Half-glass barrel missing');
+  assert(availability('Full Spectrum Exclusive 9101C','Infrarood') === false, 'Black-front stock borrowed by standard infrared');
+  assert(availability('Sauna Full Spectrum Black Front 9101C','Infrarood') === true, 'Black-front infrared missing');
+  assert(availability('Traditionele Combi sauna','combi sauna') === true, 'Combi sauna missing');
+  assert(availability('Traditionele sauna','sauna') === false, 'Traditional sauna must be red at zero');
+  assert(availability('Sauna pod Knotty Red Cedar','sauna pod') === true, 'Sauna pod missing');
+  assert(availability('Health Company 4','Infrarood') === false, 'H04-K6 borrowed H04-K61 stock');
+  assert(availability('Health Company 5 hoeksauna','Infrarood') === false, 'Health Company borrowed i160C stock');
+  assert(availability('Sauna Cabine Cedar Outdoor','barrelsauna') === false, 'Cabinet hinges matched a full sauna');
+  assert(availability('Traditionele Combi sauna','combi sauna',{...saunaStock,generatedAt:'2000-01-01'}) === null, 'Stale sauna data shown');
+  assert(availability('Traditionele Combi sauna','combi sauna',{generatedAt:saunaStock.generatedAt,models:[]}) === null, 'Missing sauna feed shown as unavailable');
+  assert(availability('Roof','overkapping') === null, 'Unrelated category got a stock dot');
+  const halfOnly = {...saunaStock,saunas:{items:[saunaStock.saunas.items[1]]}};
+  assert(availability('Barrelsauna TR300','barrelsauna',halfOnly) === false, 'Partial fallback borrowed half-glass stock');
+  assert(productSource.includes('window.SunspaStockStatus.findSaunaStockMatches(product, stockData)'), 'Detail page and overview use different sauna matching');
+
   await api.load();
   assert(requests === 1, 'Cache should deduplicate requests within one minute');
   now += 61000;

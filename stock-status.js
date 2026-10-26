@@ -19,6 +19,121 @@
     return type === 'spa' || type === 'spa s' || type.includes('zwemspa');
   }
 
+
+  function isSaunaProduct(product) {
+    return ['barrelsauna', 'infrarood', 'sauna', 'sauna pod', 'combi sauna'].includes(normalize(product?.type));
+  }
+
+  function getSaunaStockCandidates(product) {
+    const rawTitle = String(product?.title || '');
+    const normalizedTitle = normalize(rawTitle);
+    const title = normalizedTitle;
+    const aliases = [];
+  
+    const add = (...values) => values.forEach(value => {
+      const normalized = normalize(value);
+      if (normalized) aliases.push(normalized);
+    });
+  
+    
+    if (title.includes('black front') && title.includes('9101')) add('royal 9101c black front');
+    else if (title.includes('9101') && title.includes('funda')) add('9101 c funda');
+    else if (title.includes('9101')) add('royal 9101c');
+    if (title.includes('i100')) add('infra4health sh1 i100 ongelakt');
+    if (title.includes('i120')) add('infra4health sh2 i120 ongelakt');
+    if (title.includes('i150')) add('infra4health sh3 i150 ongelakt');
+    if (title.includes('i170') && !title.includes('barrelsauna')) add('infra4health sh4 i170 ongelakt');
+    if (title.includes('i160c')) add('infra4health shc i160 ongelakt');
+    if (title.includes('icombi')) add('combi sauna 95b h i220');
+    if (title.includes('health company 1')) add('h08 r5');
+    if (title.includes('health company 2')) add('h01 k6');
+    if (title.includes('health company 3')) add('h02 k6');
+    if (title.includes('health company 4')) add('h04 k6');
+    if (title.includes('health company 5')) add('h03 k62');
+    if (title.includes('health company 6')) add('h03 k61');
+    if (title.includes('dreammaker')) add('koy dreammaker h32s l8');
+    if (title.includes('130 infrarood')) add('royal 130');
+    if (title.includes('160 infrarood')) add('royal 160');
+    if (title === 'traditionele sauna') add('hy560 traditional sauna');
+    if (title === 'traditionele combi sauna') add('hy406 combi sauna');
+    if (title.includes('sauna pod')) add('sauna pod rustic joint cedar');
+    if (title.includes('infrarood barrelsauna canopy')) add('barrel infrarood in170 x c with canopy nutty cedar');
+  
+    if (title.includes('barrelsauna tr170') && title.includes('halfglas')) add('barrel tr170 x nutty half glass');
+    else if (title.includes('barrelsauna tr170')) add('barrel tr170 x nutty cedar');
+    if (title.includes('barrelsauna tr210') && title.includes('halfglas')) add('barrel tr210 x nutty half glass');
+    else if (title.includes('barrelsauna tr210')) add('barrel tr210 x nutty');
+    if (title.includes('barrelsauna tr230') && title.includes('glazen achterwand')) add('barrel tr230 x nutty full glass');
+    else if (title.includes('barrelsauna tr230') && title.includes('panorama')) add('barrel tr230 x acryl bol nutty');
+    else if (title.includes('barrelsauna tr230') && title.includes('halfglas')) add('barrel tr230 x nutty half glass');
+    else if (title.includes('barrelsauna tr230')) add('barrel tr230 x nutty');
+    if (title.includes('barrelsauna tr270') && title.includes('halfglas')) add('barrel tr270 x nutty half glass');
+    else if (title.includes('barrelsauna tr270')) add('barrel tr270 x nutty');
+    if (title.includes('barrelsauna tr300') && title.includes('halfglas')) add('barrel tr300 x nutty cedar half glass');
+    else if (title.includes('barrelsauna tr300')) add('barrel tr300 x nutty cedar');
+    if (title.includes('barrelsauna tr400') && title.includes('half')) add('barrel tr400 x nutty cedar half glass');
+    else if (title.includes('barrelsauna tr400')) add('barrel tr400 x nutty cedar');
+  
+    if (title === 'funda mahogany 1 persoons infrarood sauna') add('9101 c 0052 funda');
+    if (title === 'hemlock magnus 1 persoons uitschuifbare sauna') add('1101t ch 3 magnus 1');
+    if (title === 'hemlock magnus 2 persoons uitschuifbare infrarood sauna') add('1102t ch 1 magnus 2');
+    if (title === 'sumum wit 2 persoons infrarood sauna') add('9022s ch 1 alba 2 sumum wit 2');
+    if (title === 'sumum wit 3 persoons infrarood sauna') add('9033s ch 2 alba3 sumum wit 3');
+    if (title === 'sumum hemlock 3 persoons infrarood sauna') add('9033s ch 2 mb3 sumum hemlock 3');
+    if (title === 'sumum quatro 4 persoons infrarood sauna') add('9044s ch 1 mb4 sumum quatro 4');
+    if (title === 'infrarood lounge chair') add('hyz107 infrarood stoel lounge');
+    if (title === 'health company 7') add('koy h04 k61 180 exclusive 6');
+    if (title === 'health company 8 links') add('koy h03 k63 210 exclusive 7 l');
+    if (title === 'health company 8 rechts') add('koy h03 k63 210 exclusive 7 r');
+    if (title === 'traditionele combi sauna chaleur') add('ap 001 c alpha chaleur combi');
+    if (title === 'horizon outdoor sauna') add('horizon cube black');
+    if (title === 'discovery sauna') add('dc220 discovery');
+    if (title === 'kerava outdoor sauna') add('kerava outdoor cabin');
+    if (title === 'sunset outdoor sauna') add('sunset black edition');
+  
+    const simplified = normalize(
+      rawTitle
+        .replace(/\b(sunspa|infra4health|infrarood|sauna|persoons|uitschuifbare|full\s*spectrum)\b/gi, ' ')
+        .replace(/\b(cedar|outdoor|knotty|red|benelux)\b/gi, ' ')
+    );
+  
+    return Array.from(new Set([
+      ...aliases,
+      normalizedTitle,
+      simplified
+    ].filter(value => value && !['cabine', 'cabine outdoor', 'sauna', 'infrarood'].includes(value))));
+  }
+
+  function findSaunaStockMatches(product, stockData) {
+    const items = Array.isArray(stockData?.saunas?.items) ? stockData.saunas.items : [];
+    const candidates = getSaunaStockCandidates(product);
+    // Prefer exact names so a standard barrel never borrows half-glass stock.
+    for (const candidate of candidates) {
+      const exact = items.filter(item =>
+        normalize(item?.name || item?.key) === candidate ||
+        normalize(item?.code) === candidate ||
+        normalize(item?.key) === candidate);
+      if (exact.length) return exact;
+    }
+    // Supplier names can include extra model codes. Match complete words only
+    // and keep glass variants separate (H04-K6 must not match H04-K61).
+    const title = normalize(product?.title);
+    const variant = text => /half\s*glas/.test(text) ? 'half'
+      : /full\s*glas|glazen achterwand/.test(text) ? 'full'
+      : /panorama|acryl bol/.test(text) ? 'panorama' : 'standard';
+    for (const candidate of candidates) {
+      if (candidate.length < 3) continue;
+      const matches = items.filter(item => {
+        const name = normalize(item?.name || item?.key);
+        if ((title.includes('barrelsauna tr') || title.includes('9101')) &&
+            (variant(title) !== variant(name) || title.includes('black front') !== name.includes('black front'))) return false;
+        return (' ' + name + ' ').includes(' ' + candidate + ' ');
+      });
+      if (matches.length) return matches;
+    }
+    return [];
+  }
+
   function getModelCandidates(product) {
     const title = normalize(product?.title);
     // Strip a complete brand prefix only. Never match "Elite" inside Fox Elite Javea.
@@ -107,6 +222,10 @@
   }
 
   function getAvailability(product, stockData) {
+    if (isSaunaProduct(product)) {
+      if (!isFresh(stockData) || !Array.isArray(stockData?.saunas?.items)) return null;
+      return findSaunaStockMatches(product, stockData).some(item => Number(item?.currentTotal || 0) > 0);
+    }
     if (!isSpaProduct(product)) return null;
     // Alicante and Pacific are permanently available in Graphite.
     // Keep their overview dot green independently of the live stock snapshot.
@@ -124,7 +243,7 @@
     return () => listeners.delete(listener);
   }
 
-  window.SunspaStockStatus = Object.freeze({ load, getAvailability, findModel, isFresh, describe, subscribe });
+  window.SunspaStockStatus = Object.freeze({ load, getAvailability, findModel, findSaunaStockMatches, isFresh, describe, subscribe });
   setInterval(() => { if (!document.hidden) load({ force: true }); }, REFRESH_MS);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) load({ force: true }); });
   window.addEventListener('online', () => load({ force: true }));

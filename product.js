@@ -614,69 +614,6 @@ function normalizeStockColor(value) {
 
 
 
-function getSaunaStockCandidates(product) {
-  const rawTitle = String(product?.title || '');
-  const normalizedTitle = normalizeStockText(rawTitle);
-  const title = normalizedTitle;
-  const aliases = [];
-
-  const add = (...values) => values.forEach(value => {
-    const normalized = normalizeStockText(value);
-    if (normalized) aliases.push(normalized);
-  });
-
-  if (title.includes('aquavera')) add('aquatique');
-  if (title.includes('black front') && title.includes('9101')) add('royal 9101c black front');
-  else if (title.includes('9101') && title.includes('funda')) add('9101 c funda');
-  else if (title.includes('9101')) add('royal 9101c');
-  if (title.includes('i100')) add('infra4health sh1 i100 ongelakt');
-  if (title.includes('i120')) add('infra4health sh2 i120 ongelakt');
-  if (title.includes('i150')) add('infra4health sh3 i150 ongelakt');
-  if (title.includes('i170') && !title.includes('barrelsauna')) add('infra4health sh4 i170 ongelakt');
-  if (title.includes('i160c') || title.includes('hoeksauna')) add('infra4health shc i160 ongelakt');
-  if (title.includes('icombi')) add('combi sauna 95b h i220');
-  if (title.includes('health company 1')) add('h08 r5');
-  if (title.includes('health company 2')) add('h01 k6');
-  if (title.includes('health company 3')) add('h02 k6');
-  if (title.includes('health company 4')) add('h04 k6');
-  if (title.includes('health company 5')) add('h03 k62');
-  if (title.includes('health company 6')) add('h03 k61');
-  if (title.includes('dreammaker')) add('dreammaker h32s l8', 'h32s l8 dreammaker');
-  if (title.includes('130 infrarood')) add('royal 130');
-  if (title.includes('160 infrarood')) add('royal 160');
-  if (title === 'traditionele sauna') add('hy560 traditional sauna');
-  if (title === 'traditionele combi sauna') add('hy406 combi sauna');
-  if (title.includes('sauna pod')) add('sauna pod rustic joint cedar');
-  if (title.includes('infrarood barrelsauna canopy')) add('barrel infrarood in170 x c with canopy nutty cedar');
-
-  if (title.includes('barrelsauna tr170') && title.includes('halfglas')) add('barrel tr170 x nutty half glass');
-  else if (title.includes('barrelsauna tr170')) add('barrel tr170 x nutty cedar');
-  if (title.includes('barrelsauna tr210') && title.includes('halfglas')) add('barrel tr210 x nutty half glass');
-  else if (title.includes('barrelsauna tr210')) add('barrel tr210 x nutty');
-  if (title.includes('barrelsauna tr230') && title.includes('glazen achterwand')) add('barrel tr230 x nutty full glass');
-  else if (title.includes('barrelsauna tr230') && title.includes('panorama')) add('barrel tr230 x acryl bol nutty');
-  else if (title.includes('barrelsauna tr230') && title.includes('halfglas')) add('barrel tr230 x nutty half glass');
-  else if (title.includes('barrelsauna tr230')) add('barrel tr230 x nutty');
-  if (title.includes('barrelsauna tr270') && title.includes('halfglas')) add('barrel tr270 x nutty half glass');
-  else if (title.includes('barrelsauna tr270')) add('barrel tr270 x nutty');
-  if (title.includes('barrelsauna tr300') && title.includes('halfglas')) add('barrel tr300 x nutty cedar half glass');
-  else if (title.includes('barrelsauna tr300')) add('barrel tr300 x nutty cedar');
-  if (title.includes('barrelsauna tr400') && title.includes('half')) add('barrel tr400 x nutty cedar half glass');
-  else if (title.includes('barrelsauna tr400')) add('barrel tr400 x nutty cedar');
-
-  const simplified = normalizeStockText(
-    rawTitle
-      .replace(/\b(sunspa|infra4health|infrarood|sauna|persoons|uitschuifbare|full\s*spectrum)\b/gi, ' ')
-      .replace(/\b(cedar|outdoor|knotty|red|benelux)\b/gi, ' ')
-  );
-
-  return Array.from(new Set([
-    ...aliases,
-    normalizedTitle,
-    simplified
-  ].filter(Boolean)));
-}
-
 function getSpaStockData() {
   return window.SunspaStockStatus.load();
 }
@@ -691,20 +628,7 @@ function isSaunaStockProduct(product) {
 }
 
 function findSaunaStockMatches(product, stockData) {
-  const items = Array.isArray(stockData?.saunas?.items) ? stockData.saunas.items : [];
-  if (!items.length) return [];
-
-  const candidates = getSaunaStockCandidates(product);
-  const matches = items.filter(item => {
-    const itemKey = normalizeStockText(`${item?.code || ''} ${item?.name || item?.key || ''}`);
-    return candidates.some(candidate => {
-      if (!candidate || candidate.length < 3) return false;
-      if (itemKey === candidate) return true;
-      return candidate.length >= 6 && itemKey.includes(candidate);
-    });
-  });
-
-  return matches.length ? matches : [];
+  return window.SunspaStockStatus.findSaunaStockMatches(product, stockData);
 }
 
 function getSpaStockStatus(cabinet) {
