@@ -115,7 +115,9 @@ function bindEvents() {
   els.checkoutPrintBtn?.addEventListener('click', completeSaleAndPrint);
   document.querySelectorAll('input[name="checkoutPayment"]').forEach(input => {
     input.addEventListener('change', () => {
+      if (checkoutProcessing) return;
       checkoutPaymentMethod = input.checked ? input.value : '';
+      renderCheckoutSummary(getCheckoutItems());
       updateCheckoutPrintButton();
     });
   });
@@ -490,6 +492,17 @@ function getCartItems() {
     .filter(product => product.qty > 0 && product.price != null);
 }
 
+function isNonPayment(method) {
+  return method === 'Eigen gebruik' || method === 'Cadeau klant';
+}
+
+function getCheckoutItems(method = checkoutPaymentMethod) {
+  const items = getCartItems();
+  return isNonPayment(method)
+    ? items.map(item => ({ ...item, price: 0, lineTotal: 0 }))
+    : items;
+}
+
 function updateTotal() {
   const total = getCartItems().reduce((sum, product) => sum + product.lineTotal, 0);
   els.total.innerText = euro(total);
@@ -558,11 +571,15 @@ function renderCheckoutSummary(items) {
 function updateCheckoutPrintButton() {
   if (!els.checkoutPrintBtn) return;
   els.checkoutPrintBtn.disabled = checkoutProcessing || !checkoutPaymentMethod;
+  document.querySelectorAll('input[name="checkoutPayment"]').forEach(input => {
+    input.disabled = checkoutProcessing;
+  });
 }
 
 async function completeSaleAndPrint() {
   if (checkoutProcessing) return;
-  const items = getCartItems();
+  const paymentMethod = checkoutPaymentMethod;
+  const items = getCheckoutItems(paymentMethod);
   if (!items.length) {
     closeCheckout();
     alert('De selectie is leeg. Kies eerst producten.');
@@ -570,7 +587,7 @@ async function completeSaleAndPrint() {
   }
 
   if (!checkoutPaymentMethod) {
-    alert('Kies eerst Bancontact of overschrijving.');
+    alert('Kies eerst een betaalwijze, Eigen gebruik of Cadeau klant.');
     return;
   }
 
@@ -583,11 +600,11 @@ async function completeSaleAndPrint() {
   checkoutProcessing = true;
   updateCheckoutPrintButton();
   setControlsDisabled(true);
-  setStatus('Betaling registreren en voorraad bijwerken...');
+  setStatus('Bon registreren en voorraad bijwerken...');
 
   try {
-    stockByProduct = await stockApi.sell(currentShowroom, items, products, checkoutPaymentMethod);
-    writeReceipt(receiptWindow, items, checkoutPaymentMethod);
+    stockByProduct = await stockApi.sell(currentShowroom, items, products, paymentMethod);
+    writeReceipt(receiptWindow, items, paymentMethod);
     cart = {};
     checkoutProcessing = false;
     closeCheckout();
@@ -720,7 +737,7 @@ function writeReceipt(w, items, paymentMethod) {
                   <div class="offer-meta-value">${escapeHtml(SHOWROOMS[currentShowroom])}</div>
                 </div>
                 <div class="offer-meta-row">
-                  <div class="offer-meta-label">Betaald via</div>
+                  <div class="offer-meta-label">${isNonPayment(paymentMethod) ? 'Registratie' : 'Betaald via'}</div>
                   <div class="offer-meta-value">${escapeHtml(paymentMethod)}</div>
                 </div>
               </div>
@@ -735,7 +752,7 @@ function writeReceipt(w, items, paymentMethod) {
 
             <div class="product-highlight">
               <div>
-                <div class="product-highlight-label">Particuliere verkoop</div>
+                <div class="product-highlight-label">${isNonPayment(paymentMethod) ? escapeHtml(paymentMethod) : 'Particuliere verkoop'}</div>
                 <h3 class="product-highlight-title">Showroom ${escapeHtml(SHOWROOMS[currentShowroom])}</h3>
               </div>
               <div class="product-highlight-price">
@@ -762,7 +779,7 @@ function writeReceipt(w, items, paymentMethod) {
             <div class="summary">
               <div class="summary-left">
                 <div class="payment-line">
-                  <span>BETAALD VIA</span>
+                  <span>${isNonPayment(paymentMethod) ? 'REGISTRATIE' : 'BETAALD VIA'}</span>
                   <strong>${escapeHtml(paymentMethod)}</strong>
                 </div>
               </div>

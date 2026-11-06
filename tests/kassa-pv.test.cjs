@@ -88,7 +88,7 @@ async function test(){
   el('pvMonth').value='2026-09';
   await api.loadSales();
   assert.equal(el('pvOverview').hidden,false);
-  assert.match(el('pvStatus').textContent,/205 verkopen/);
+  assert.match(el('pvStatus').textContent,/205 registraties/);
   assert.match(el('pvSummary').innerHTML,/5.186,50/);
   assert.equal((el('pvSales').innerHTML.match(/class="pv-sale"/g)||[]).length,30);
   assert.match(el('pvSales').innerHTML,/&lt;script&gt;/);
@@ -97,8 +97,17 @@ async function test(){
   assert.equal(el('pvPageInfo').textContent,'Pagina 2 van 7');
   el('pvShowroom').value='gent';
   await api.loadSales();
-  assert.match(el('pvStatus').textContent,/102 verkopen/);
+  assert.match(el('pvStatus').textContent,/102 registraties/);
   assert.match(el('pvSummary').innerHTML,/2.580,60/);
+  fixtures.push({id:'gift',showroom:'gent',sold_at:'2026-09-13T10:00:00Z',payment_method:'Cadeau klant'},
+    {id:'own',showroom:'gent',sold_at:'2026-09-13T10:00:00Z',payment_method:'Eigen gebruik'});
+  itemFixtures.push({id:'gift-item',sale_id:'gift',product_title:'Cadeau',quantity:1,unit_price:0},
+    {id:'own-item',sale_id:'own',product_title:'Eigen',quantity:1,unit_price:0});
+  await api.loadSales();
+  assert.match(el('pvSummary').innerHTML, /Aantal verkopen<\/span><strong>102<\/strong>/);
+  assert.match(el('pvSummary').innerHTML, /2.580,60/);
+  assert.match(el('pvSummary').innerHTML, /Cadeau klant<\/span><strong>1 bon/);
+  assert.match(el('pvSummary').innerHTML, /Eigen gebruik<\/span><strong>1 bon/);
   el('pvPeriod').value='custom';el('pvFrom').value='2026-09-14';el('pvTo').value='2026-09-13';
   await api.loadSales();
   assert.equal(el('pvResults').hidden,true);

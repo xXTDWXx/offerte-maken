@@ -2,6 +2,7 @@
 (() => {
   'use strict';
   const PAGE_SIZE = 30;
+  const isNonPayment = method => method === 'Eigen gebruik' || method === 'Cadeau klant';
   const FETCH_SIZE = 200;
   const SESSION_MS = 15 * 60 * 1000;
   const PV_LOGIN_EMAIL = 'sunspabrugge+kassapv@gmail.com';
@@ -287,7 +288,7 @@
       sales = [...byId.values()];
       page = 0;
       const label = range.from ? dateLabel(range.from) + ' t/m ' + dateLabel(range.to) : 'Alle datums';
-      ui.Status.textContent = label + ' · ' + (SHOWROOMS[range.showroom] || 'Alle showrooms') + ' · ' + sales.length + ' verkopen';
+      ui.Status.textContent = label + ' · ' + (SHOWROOMS[range.showroom] || 'Alle showrooms') + ' · ' + sales.length + ' registraties';
       ui.Results.hidden = false;
       renderSummary();
       renderPage();
@@ -299,10 +300,15 @@
   }
 
   function renderSummary() {
-    const total = sales.reduce((sum, sale) => sum + sale.cents, 0);
+    const paidSales = sales.filter(sale => !isNonPayment(sale.payment_method));
+    const total = paidSales.reduce((sum, sale) => sum + sale.cents, 0);
     const byPayment = method => sales.filter(sale => sale.payment_method === method).reduce((sum, sale) => sum + sale.cents, 0);
-    const cards = [['Totaal verkopen', money(total)], ['Aantal verkopen', String(sales.length)],
+    const cards = [['Totaal verkopen', money(total)], ['Aantal verkopen', String(paidSales.length)],
       ['Bancontact', money(byPayment('Bancontact'))], ['Overschrijving', money(byPayment('Overschrijving'))]];
+    ['Eigen gebruik', 'Cadeau klant'].forEach(method => {
+      const count = sales.filter(sale => sale.payment_method === method).length;
+      if (count) cards.push([method, count + ' bon' + (count === 1 ? '' : 'nen')]);
+    });
     const unknown = sales.filter(sale => !sale.payment_method);
     if (unknown.length) cards.push(['Betaalwijze niet geregistreerd', money(unknown.reduce((sum, sale) => sum + sale.cents, 0))]);
     ui.Summary.innerHTML = cards.map(([label, value]) => '<div class="pv-stat"><span>' + escapeHtml(label) + '</span><strong>' + escapeHtml(value) + '</strong></div>').join('');

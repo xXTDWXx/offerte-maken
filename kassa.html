@@ -358,6 +358,11 @@ body {
 .payment-option-copy { display: grid; gap: 3px; }
 .payment-option-note { color: var(--kassa-muted); font-size: 12px; font-weight: 600; }
 
+.payment-options-secondary { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; }
+.payment-option-small { min-height: 36px; padding: 7px 12px; gap: 7px; font-size: 13px; font-weight: 700; }
+.payment-option-small input { width: 15px; height: 15px; }
+.payment-option:has(input:disabled) { opacity: .6; cursor: wait; }
+
 .checkout-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px; }
 
 .total-bar {
@@ -643,6 +648,16 @@ body {
             <span class="payment-option-note">BE 75 3800 1777 8151 / Wellnessmarkt BV</span>
           </span>
         </label>
+        <div class="payment-options-secondary">
+          <label class="payment-option payment-option-small">
+            <input type="radio" name="checkoutPayment" value="Eigen gebruik" />
+            <span>Eigen gebruik</span>
+          </label>
+          <label class="payment-option payment-option-small">
+            <input type="radio" name="checkoutPayment" value="Cadeau klant" />
+            <span>Cadeau klant</span>
+          </label>
+        </div>
       </div>
       <div class="checkout-actions">
         <button class="btn" type="button" id="checkoutBackBtn">Annuleren</button>
@@ -704,7 +719,7 @@ body {
 
 <script src="i18n.js?v=fr-20260621c"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="kassa-stock.js?v=beheer-20261012"></script>
-<script src="kassa-pv.js?v=kortrijk-20261012"></script>
+<script src="kassa-stock.js?v=gebruik-cadeau-20261106"></script>
+<script src="kassa-pv.js?v=gebruik-cadeau-20261106"></script>
 </body>
 </html>
