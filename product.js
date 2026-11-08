@@ -981,6 +981,41 @@ function isSauna(type) {
   return typeNorm(type).includes('sauna');
 }
 
+const SAUNA_ACCESSORIES = [
+  { id: 'optSaunaBackrest', label: 'Rugsteun', price: 50, group: 'all' },
+  { id: 'optSaunaEucalyptus', label: 'Aroma eucalyptus', price: 20, group: 'infrared' },
+  { id: 'optSaunaLargeBackrest', label: 'Grote rugsteun', price: 135, group: 'traditional' }
+];
+
+function getAvailableSaunaAccessories(product = currentProduct) {
+  const type = product?.type || '';
+  if (!isSauna(type) && !isInfrared(type)) return [];
+  const infrared = isInfrared(type) || typeNorm(type).includes('combi') ||
+    titleNorm(product?.title).includes('infrarood');
+  return SAUNA_ACCESSORIES.filter(option => option.group === 'all' ||
+    option.group === (infrared ? 'infrared' : 'traditional'));
+}
+
+function getSelectedSaunaAccessoryLines() {
+  return getAvailableSaunaAccessories()
+    .filter(option => $(option.id)?.checked)
+    .map(({ label, price }) => ({ label, price }));
+}
+
+function updateSaunaAccessoryUI() {
+  const available = getAvailableSaunaAccessories();
+  for (const option of SAUNA_ACCESSORIES) {
+    const allowed = available.includes(option);
+    const input = $(option.id);
+    const row = $(option.id + 'Row');
+    if (row) row.style.display = allowed ? '' : 'none';
+    if (input) {
+      input.disabled = !allowed;
+      if (!allowed) input.checked = false;
+    }
+  }
+}
+
 function isOutdoorSaunaWithRoofAndStove(type) {
   return isBarrelSauna(type) || isSaunaPod(type);
 }
@@ -1634,6 +1669,7 @@ function setupOverkappingAccessoryImages(product) {
 
 function updateOptionUI() {
   if (!currentProduct) return;
+  updateSaunaAccessoryUI();
 
   const type = currentProduct.type || '';
 
@@ -1870,7 +1906,8 @@ function updateOptionUI() {
     barrelRoofShinglesLine +
     barrelRoofHeatherLine +
     barrelRoofDesignLine +
-    barrelInfraredModuleLine;
+    barrelInfraredModuleLine +
+    getSelectedSaunaAccessoryLines().reduce((total, line) => total + line.price, 0);
 
   const showroom = showroomPricing();
   const grand = roundCurrency(productPriceValue + optionsTotal - (showroom?.discount || 0));
@@ -1899,6 +1936,7 @@ function wireOptionHandlers() {
   }, true);
 
   const ids = [
+    ...SAUNA_ACCESSORIES.map(option => option.id),
     'optInstall',
     'customInstallationPrice',
     'infraredInstallationFloor',
@@ -2025,6 +2063,7 @@ function getSelectedOfferLines() {
   }
 
   lines.push(...getOverkappingScreenOfferLines());
+  lines.push(...getSelectedSaunaAccessoryLines());
 
   const installation = installCost(type);
 
@@ -4649,6 +4688,7 @@ async function printOfferte({ autoPrint = true } = {}) {
 
 function renderProduct(p) {
   currentProduct = p;
+  SAUNA_ACCESSORIES.forEach(({ id }) => { if ($(id)) $(id).checked = false; });
   if ($('customInstallationPrice')) $('customInstallationPrice').value = '';
   if ($('infraredInstallationFloor')) $('infraredInstallationFloor').value = '';
 

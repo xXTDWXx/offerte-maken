@@ -3,6 +3,9 @@
   const SUPPORTED_LANGUAGES = new Set(["nl", "fr"]);
 
   const exactFr = new Map(Object.entries({
+    "Rugsteun": "Dossier",
+    "Grote rugsteun": "Grand dossier",
+    "Aroma eucalyptus": "Arôme eucalyptus",
     "Sunspa Catalogus": "Catalogue Sunspa",
     "Sunspa Categorie": "Catégorie Sunspa",
     "Product | Sunspa Catalogus": "Produit | Catalogue Sunspa",

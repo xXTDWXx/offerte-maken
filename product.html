@@ -1359,6 +1359,19 @@
         margin-left:0;
       }
     }
+    .product-configurator .sauna-accessory .opt-title {
+      display:grid;
+      grid-template-columns:70px 24px minmax(0, 1fr);
+      align-items:center;
+    }
+    .product-configurator .sauna-accessory .opt-title > img {
+      object-fit:contain;
+      background:#fff;
+    }
+    .product-configurator .sauna-accessory .opt-copy {
+      flex-wrap:wrap;
+    }
+
   </style>
 </head>
 <body>
@@ -1857,6 +1870,45 @@
                 </div>
               </div>
 
+              <label class="opt opt-inline sauna-accessory" id="optSaunaBackrestRow" style="display:none">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <img src="images/sauna-accessoires/rugsteun.png" alt="Rugsteun" />
+                    <input id="optSaunaBackrest" type="checkbox" />
+                    <span class="opt-copy">
+                      <span class="opt-label">Rugsteun</span>
+                      <span class="opt-price">€ 50</span>
+                    </span>
+                  </div>
+                </div>
+              </label>
+
+              <label class="opt opt-inline sauna-accessory" id="optSaunaEucalyptusRow" style="display:none">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <img src="images/sauna-accessoires/aroma-eucalyptus.png" alt="Aroma eucalyptus" />
+                    <input id="optSaunaEucalyptus" type="checkbox" />
+                    <span class="opt-copy">
+                      <span class="opt-label">Aroma eucalyptus</span>
+                      <span class="opt-price">€ 20</span>
+                    </span>
+                  </div>
+                </div>
+              </label>
+
+              <label class="opt opt-inline sauna-accessory" id="optSaunaLargeBackrestRow" style="display:none">
+                <div class="opt-text">
+                  <div class="opt-title">
+                    <img src="images/sauna-accessoires/grote-rugsteun.png" alt="Grote rugsteun" />
+                    <input id="optSaunaLargeBackrest" type="checkbox" />
+                    <span class="opt-copy">
+                      <span class="opt-label">Grote rugsteun</span>
+                      <span class="opt-price">€ 135</span>
+                    </span>
+                  </div>
+                </div>
+              </label>
+
               <div class="opt opt-inline" id="optBarrelInfraredModuleRow" style="display:none">
                 <div class="opt-text">
                   <div class="opt-title">
@@ -1892,9 +1944,9 @@
     </section>
   </main>
 
-  <script src="i18n.js?v=infrared-floor-20261019"></script>
+  <script src="i18n.js?v=sauna-accessoires-20261108"></script>
   <script src="showroom-models.js?v=20260911-showroom-photos"></script>
   <script src="stock-status.js?v=sauna-stock-20261026"></script>
-  <script src="product.js?v=sauna-stock-20261026"></script>
+  <script src="product.js?v=sauna-accessoires-20261108"></script>
 </body>
 </html>
