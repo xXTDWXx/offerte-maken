@@ -2030,10 +2030,16 @@ function getSelectedOfferLines() {
   const innerColor = showSpaColors ? ($('spaInnerColor')?.value || '') : '';
   const cabinetColor = showSpaColors ? ($('spaCabinetColor')?.value || '') : '';
 
-  let productLabel = currentProduct.title || 'Product';
+  let productLabel = escapeHtml(currentProduct.title || 'Product');
+  const productDimensions = String(
+    getSpecValue(selectedVariant, 'Afmeting') || getSpecValue(selectedVariant, 'Afmetingen') ||
+    (selectedVariant?.label && /^afmeting(?:en)?$/i.test(getVariantLabel(currentProduct)) ? selectedVariant.label : '') ||
+    getSpecValue(currentProduct, 'Afmeting') || getSpecValue(currentProduct, 'Afmetingen') || ''
+  ).trim();
+  if (productDimensions) productLabel += ` — ${escapeHtml(productDimensions)}`;
   const detailParts = [];
 
-  if (selectedVariant?.label) {
+  if (selectedVariant?.label && selectedVariant.label !== productDimensions) {
     detailParts.push(`${getVariantLabel(currentProduct)}: ${selectedVariant.label}`);
   }
 
