@@ -128,7 +128,7 @@ const MASSAGE_OPTIONS = [
   ["Air 20 jets", "Uitgebreide luchtmassage", "images/configurator/air-jets.webp", 708, "air"],
   ["Water 8 jets", "Watermassage", "images/configurator/water-8-jets.webp", 440, "water"],
   ["Water 14 jets", "Uitgebreide watermassage", "images/hottub-fast/8massagejets.jpg", 708, "water"],
-  ["Gecombineerd 8 waterjets + 4 airjets", "Combinatie van water- en luchtmassage", "images/hottub-fast/12combijets.jpg", 692, "gecombineerd"],
+  ["Gecombineerd 8 waterjets + 4 airjets", "Combinatie van water- en luchtmassage", "images/hottub-fast/12combijets.jpg", 995, "gecombineerd"],
   ["LED water 8 jets", "Watermassage met LED-verlichting", "images/configurator/led-jets.webp", 676, "water"],
   ["LED water 14 jets", "Uitgebreide watermassage met LED-verlichting", "images/configurator/led-jets.webp", 975, "water"]
 ];
