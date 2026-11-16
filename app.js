@@ -147,29 +147,16 @@ function getMerk(p) {
   );
 }
 
-function isMySpaBtwActionProduct(p) {
-  const type = normalize(p?.type);
-  const merk = normalize(getMerk(p));
-  const title = normalize(p?.title);
-
-  return (type === 'spa' || type === "spa's") && (merk.includes('myspa') || title.includes('myspa'));
+function getProductAction(product) {
+  return window.SunspaPromotions?.getAction(product) || null;
 }
 
-function getMySpaBtwAction(p, price = Number(p?.price || 0)) {
-  const originalPrice = Number(price || 0);
-
-  if (!Number.isFinite(originalPrice) || originalPrice <= 0 || !isMySpaBtwActionProduct(p)) {
-    return null;
-  }
-
-  const actionPrice = roundCurrency(originalPrice / 1.21);
-  const discount = roundCurrency(originalPrice - actionPrice);
-
-  return { originalPrice, actionPrice, discount };
+function productActionLabel() {
+  return window.SunspaPromotions?.label() || 'Black Friday';
 }
 
-function mySpaBtwActionLabel(p) {
-  return window.SunspaI18n?.isFrench?.() ? 'Promotion MySpa' : 'MySpa actie';
+function productActionConditions(product) {
+  return window.SunspaPromotions?.conditions(product) || '';
 }
 
 function discountLabel() {
@@ -177,17 +164,18 @@ function discountLabel() {
 }
 
 function productPriceHtml(p) {
-  const action = getMySpaBtwAction(p);
+  const action = getProductAction(p);
 
   if (!action) {
     return escapeHtml(p.price_display || euro(p.price || 0));
   }
 
   return `
-    <span class="price-action-label">${escapeHtml(mySpaBtwActionLabel(p))}</span>
+    <span class="price-action-label">${escapeHtml(productActionLabel(p))}</span>
     <span class="price-old">${escapeHtml(euro(action.originalPrice))}</span>
     <span class="price-current">${escapeHtml(euro(action.actionPrice))}</span>
     <span class="price-action-note">${escapeHtml(discountLabel())} ${escapeHtml(euro(action.discount))}</span>
+    <span class="price-action-note">${escapeHtml(productActionConditions(p))}</span>
   `;
 }
 
@@ -406,9 +394,9 @@ function applyFilters() {
   });
 
   if (sort === 'priceAsc') {
-    filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
+    filtered.sort((a, b) => window.SunspaPromotions.price(a) - window.SunspaPromotions.price(b));
   } else if (sort === 'priceDesc') {
-    filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
+    filtered.sort((a, b) => window.SunspaPromotions.price(b) - window.SunspaPromotions.price(a));
   } else if (sort === 'titleAsc') {
     filtered.sort((a, b) => (a.title || '').localeCompare(b.title || '', 'nl'));
   }

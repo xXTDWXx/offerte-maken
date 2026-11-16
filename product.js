@@ -135,29 +135,16 @@ function wireProductLayoutResize() {
   window.addEventListener('resize', scheduleProductConfiguratorHeightSync);
 }
 
-function isMySpaBtwActionProduct(product) {
-  const type = String(product?.type || '').toLowerCase().trim();
-  const merk = getMerk(product).toLowerCase();
-  const title = String(product?.title || '').toLowerCase();
-
-  return (type === 'spa' || type === "spa's") && (merk.includes('myspa') || title.includes('myspa'));
+function getProductAction(product) {
+  return window.SunspaPromotions?.getAction(product) || null;
 }
 
-function getMySpaBtwAction(product, price = Number(product?.price || 0)) {
-  const originalPrice = Number(price || 0);
-
-  if (!Number.isFinite(originalPrice) || originalPrice <= 0 || !isMySpaBtwActionProduct(product)) {
-    return null;
-  }
-
-  const actionPrice = roundCurrency(originalPrice / 1.21);
-  return { originalPrice, actionPrice, discount: roundCurrency(originalPrice - actionPrice) };
+function productActionLabel() {
+  return window.SunspaPromotions?.label() || 'Black Friday';
 }
 
-function mySpaBtwActionLabel(product) {
-  return window.SunspaI18n?.isFrench?.()
-    ? 'Action TVA 21 %'
-    : '21% btw-actie';
+function productActionConditions(product) {
+  return window.SunspaPromotions?.conditions(product) || '';
 }
 
 function discountLabel() {
@@ -196,14 +183,14 @@ function displayPrice(product) {
   const showroom = showroomPricing(product);
   if (showroom) return `Showroommodel: ${euro(showroom.total)} (van ${euro(showroom.originalTotal)}, korting ${euro(showroom.discount)})`;
 
-  const action = getMySpaBtwAction(product);
+  const action = getProductAction(product);
 
   if (!action) {
     return product?.price_display || euro(product?.price || 0);
   }
 
   const fromLabel = window.SunspaI18n?.isFrench?.() ? 'au lieu de' : 'van';
-  return `${mySpaBtwActionLabel(product)}: ${euro(action.actionPrice)} (${fromLabel} ${euro(action.originalPrice)}, ${discountLabel()} ${euro(action.discount)})`;
+  return `${productActionLabel(product)}: ${euro(action.actionPrice)} (${fromLabel} ${euro(action.originalPrice)}, ${discountLabel()} ${euro(action.discount)}) ${productActionConditions(product)}`;
 }
 
 function productPriceHtml(product, price = Number(product?.price || 0)) {
@@ -215,17 +202,18 @@ function productPriceHtml(product, price = Number(product?.price || 0)) {
       <span class="price-action-note">${escapeHtml(discountLabel())} ${escapeHtml(euro(showroom.discount))}</span>`;
   }
 
-  const action = getMySpaBtwAction(product, price);
+  const action = getProductAction(product, price);
 
   if (!action) {
     return escapeHtml(product?.price_display || euro(price || 0));
   }
 
   return `
-    <span class="price-action-label">${escapeHtml(mySpaBtwActionLabel(product))}</span>
+    <span class="price-action-label">${escapeHtml(productActionLabel(product))}</span>
     <span class="price-old">${escapeHtml(euro(action.originalPrice))}</span>
     <span class="price-current">${escapeHtml(euro(action.actionPrice))}</span>
     <span class="price-action-note">${escapeHtml(discountLabel())} ${escapeHtml(euro(action.discount))}</span>
+    <span class="price-action-note">${escapeHtml(productActionConditions(product))}</span>
   `;
 }
 
@@ -291,7 +279,7 @@ function getCurrentProductBasePriceValue() {
 
 function getCurrentProductPriceValue() {
   const basePrice = getCurrentProductBasePriceValue();
-  return getMySpaBtwAction(currentProduct, basePrice)?.actionPrice ?? basePrice;
+  return getProductAction(currentProduct, basePrice)?.actionPrice ?? basePrice;
 }
 
 function getCurrentProductPriceText() {
@@ -301,7 +289,7 @@ function getCurrentProductPriceText() {
   }
 
   const basePrice = getCurrentProductBasePriceValue();
-  return getMySpaBtwAction(currentProduct, basePrice)?.actionPrice
+  return getProductAction(currentProduct, basePrice)?.actionPrice
     ? displayPrice(currentProduct)
     : (selectedVariant ? euro(selectedVariant.price) : displayPrice(currentProduct));
 }
@@ -2052,17 +2040,17 @@ function getSelectedOfferLines() {
 
   if (!quantityVariantProduct) {
     const baseProductPrice = getCurrentProductBasePriceValue();
-    const action = getMySpaBtwAction(currentProduct, baseProductPrice);
+    const action = getProductAction(currentProduct, baseProductPrice);
 
     lines.push({
       label: productLabel,
-      price: baseProductPrice,
+      price: action?.originalPrice ?? baseProductPrice,
       is_html: true
     });
 
     if (action) {
       lines.push({
-        label: mySpaBtwActionLabel(currentProduct),
+        label: [productActionLabel(currentProduct), productActionConditions(currentProduct)].filter(Boolean).join(' — '),
         price: -action.discount
       });
     }
