@@ -1,5 +1,71 @@
 [
   {
+    "id": "easy-water-chloortablet",
+    "title": "Easy Water chloortablet",
+    "price": 17.95,
+    "image": "images/kassa/easy-water-chloortablet.png",
+    "showrooms": [
+      "brugge",
+      "kortrijk",
+      "gent"
+    ]
+  },
+  {
+    "id": "easy-water-tube-clean",
+    "title": "Easy Water Tube Clean",
+    "price": 16,
+    "image": "images/kassa/easy-water-tube-clean.webp",
+    "showrooms": [
+      "brugge",
+      "kortrijk",
+      "gent"
+    ]
+  },
+  {
+    "id": "easy-water-ph-plus",
+    "title": "Easy Water pH Plus",
+    "price": 14,
+    "image": "images/kassa/easy-water-ph-plus.webp",
+    "showrooms": [
+      "brugge",
+      "kortrijk",
+      "gent"
+    ]
+  },
+  {
+    "id": "easy-water-foam-down",
+    "title": "Easy Water Foam Down",
+    "price": 16,
+    "image": "images/kassa/easy-water-foam-down.webp",
+    "showrooms": [
+      "brugge",
+      "kortrijk",
+      "gent"
+    ]
+  },
+  {
+    "id": "easy-water-ph-min",
+    "title": "Easy Water pH min",
+    "price": 14,
+    "image": "images/kassa/easy-water-ph-min.jpg",
+    "showrooms": [
+      "kortrijk",
+      "brugge",
+      "gent"
+    ]
+  },
+  {
+    "id": "easy-water-chloorkorrels",
+    "title": "Easy Water chloorkorrels",
+    "price": 17.95,
+    "image": "images/kassa/easy-water-chloorkorrels.png",
+    "showrooms": [
+      "kortrijk",
+      "brugge",
+      "gent"
+    ]
+  },
+  {
     "id": "melpool-chloorgranulaat-55-g-1kg",
     "title": "Melpool Chloorkorrels",
     "price": 19.95,
@@ -254,17 +320,6 @@
     ]
   },
   {
-    "id": "easy-water-chloortablet",
-    "title": "Easy Water chloortablet",
-    "price": 17.95,
-    "image": "images/kassa/easy-water-chloortablet.png",
-    "showrooms": [
-      "brugge",
-      "kortrijk",
-      "gent"
-    ]
-  },
-  {
     "id": "spa-line-fast-gloss",
     "title": "Spa Line Fast Gloss",
     "price": 24.95,
@@ -445,8 +500,7 @@
     "price": 15.95,
     "image": "images/kassa/spa-line-citrus-clean.webp",
     "showrooms": [
-      "gent",
-      "brugge"
+      "gent"
     ]
   },
   {
@@ -463,15 +517,10 @@
     "id": "leisure-time-filter-clean",
     "title": "Leisure Time Filter Clean",
     "price": 15.95,
-    "image": ""
-  },
-  {
-    "id": "leisure-time-defender",
-    "title": "Leisure Time Defender",
-    "price": 24.95,
-    "image": "images/kassa/leisure-time-defender.jpg",
+    "image": "",
     "showrooms": [
-      "brugge"
+      "gent",
+      "kortrijk"
     ]
   },
   {
@@ -530,39 +579,6 @@
     ]
   },
   {
-    "id": "easy-water-tube-clean",
-    "title": "Easy Water Tube Clean",
-    "price": 16,
-    "image": "images/kassa/easy-water-tube-clean.webp",
-    "showrooms": [
-      "brugge",
-      "kortrijk",
-      "gent"
-    ]
-  },
-  {
-    "id": "easy-water-ph-plus",
-    "title": "Easy Water pH Plus",
-    "price": 14,
-    "image": "images/kassa/easy-water-ph-plus.webp",
-    "showrooms": [
-      "brugge",
-      "kortrijk",
-      "gent"
-    ]
-  },
-  {
-    "id": "easy-water-foam-down",
-    "title": "Easy Water Foam Down",
-    "price": 16,
-    "image": "images/kassa/easy-water-foam-down.webp",
-    "showrooms": [
-      "brugge",
-      "kortrijk",
-      "gent"
-    ]
-  },
-  {
     "id": "broodkussen-wit",
     "title": "Broodkussen wit",
     "price": 24.95,
@@ -581,28 +597,6 @@
     "showrooms": [
       "brugge",
       "kortrijk"
-    ]
-  },
-  {
-    "id": "easy-water-ph-min",
-    "title": "Easy Water pH min",
-    "price": 14,
-    "image": "images/kassa/easy-water-ph-min.jpg",
-    "showrooms": [
-      "kortrijk",
-      "brugge",
-      "gent"
-    ]
-  },
-  {
-    "id": "easy-water-chloorkorrels",
-    "title": "Easy Water chloorkorrels",
-    "price": 17.95,
-    "image": "images/kassa/easy-water-chloorkorrels.png",
-    "showrooms": [
-      "kortrijk",
-      "brugge",
-      "gent"
     ]
   }
 ]
