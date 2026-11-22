@@ -433,7 +433,11 @@
     "id": "estelle-filter-cleaner",
     "title": "Estelle filter cleaner",
     "price": 129.95,
-    "image": "images/kassa/estelle-filter-cleaner.webp"
+    "image": "images/kassa/estelle-filter-cleaner.webp",
+    "showrooms": [
+      "gent",
+      "kortrijk"
+    ]
   },
   {
     "id": "spa-line-citrus-clean",
