@@ -1,20 +1,20 @@
 [
   {
-    "id": "easy-water-chloortablet",
-    "title": "Easy Water chloortablet",
+    "id": "easy-water-chloorkorrels",
+    "title": "Easy Water chloorkorrels",
     "price": 17.95,
-    "image": "images/kassa/easy-water-chloortablet.png",
+    "image": "images/kassa/easy-water-chloorkorrels.png",
     "showrooms": [
-      "brugge",
       "kortrijk",
+      "brugge",
       "gent"
     ]
   },
   {
-    "id": "easy-water-tube-clean",
-    "title": "Easy Water Tube Clean",
-    "price": 16,
-    "image": "images/kassa/easy-water-tube-clean.webp",
+    "id": "easy-water-chloortablet",
+    "title": "Easy Water chloortablet",
+    "price": 17.95,
+    "image": "images/kassa/easy-water-chloortablet.png",
     "showrooms": [
       "brugge",
       "kortrijk",
@@ -33,17 +33,6 @@
     ]
   },
   {
-    "id": "easy-water-foam-down",
-    "title": "Easy Water Foam Down",
-    "price": 16,
-    "image": "images/kassa/easy-water-foam-down.webp",
-    "showrooms": [
-      "brugge",
-      "kortrijk",
-      "gent"
-    ]
-  },
-  {
     "id": "easy-water-ph-min",
     "title": "Easy Water pH min",
     "price": 14,
@@ -55,13 +44,24 @@
     ]
   },
   {
-    "id": "easy-water-chloorkorrels",
-    "title": "Easy Water chloorkorrels",
-    "price": 17.95,
-    "image": "images/kassa/easy-water-chloorkorrels.png",
+    "id": "easy-water-tube-clean",
+    "title": "Easy Water Tube Clean",
+    "price": 16,
+    "image": "images/kassa/easy-water-tube-clean.webp",
     "showrooms": [
-      "kortrijk",
       "brugge",
+      "kortrijk",
+      "gent"
+    ]
+  },
+  {
+    "id": "easy-water-foam-down",
+    "title": "Easy Water Foam Down",
+    "price": 16,
+    "image": "images/kassa/easy-water-foam-down.webp",
+    "showrooms": [
+      "brugge",
+      "kortrijk",
       "gent"
     ]
   },
