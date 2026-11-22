@@ -66,6 +66,71 @@
     ]
   },
   {
+    "id": "myspa-vogue-filter",
+    "title": "MySpa & Vogue filter",
+    "price": 45,
+    "image": "images/myspa-vogue-filter.webp"
+  },
+  {
+    "id": "sunspa-filter-klein",
+    "title": "Sunspa Filter klein",
+    "price": 45,
+    "image": "images/sunspa-filter-klein.webp"
+  },
+  {
+    "id": "sunspa-filter-groot",
+    "title": "Sunspa Filter groot",
+    "price": 45,
+    "image": "images/sunspa-filter-groot.webp"
+  },
+  {
+    "id": "fox-spa-filter",
+    "title": "Fox spa filter",
+    "price": 45,
+    "image": "images/fox-spa-filter.webp",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
+  },
+  {
+    "id": "filter-explore-san-marino-new-york",
+    "title": "Filter Explore | san marino | New york",
+    "price": 45,
+    "image": "images/filter-explore-san-marino-new-york.webp"
+  },
+  {
+    "id": "spa-line-pre-filter",
+    "title": "Spa Line Pre Filter",
+    "price": 9.95,
+    "image": "images/kassa/spa-line-pre-filter.png",
+    "showrooms": [
+      "gent",
+      "brugge"
+    ]
+  },
+  {
+    "id": "filterset-zwemspa",
+    "title": "Filterset zwemspa",
+    "price": 160,
+    "image": "images/darlly-filterset-zwemspa.webp"
+  },
+  {
+    "id": "nieuwe-zwemspa-filter",
+    "title": "Nieuwe zwemspa filter",
+    "price": 79.95,
+    "image": "images/kassa/nieuwe-zwemspa-filter.jpg",
+    "showrooms": [
+      "brugge"
+    ]
+  },
+  {
+    "id": "bullfrog-filter",
+    "title": "Bullfrog filter",
+    "price": 45,
+    "image": "images/kassa/bullfrog-filter.webp"
+  },
+  {
     "id": "melpool-chloorgranulaat-55-g-1kg",
     "title": "Melpool Chloorkorrels",
     "price": 19.95,
@@ -143,28 +208,6 @@
     "image": "images/spagoedkoopbe-brood-kussentje.webp"
   },
   {
-    "id": "sunspa-filter-klein",
-    "title": "Sunspa Filter klein",
-    "price": 45,
-    "image": "images/sunspa-filter-klein.webp"
-  },
-  {
-    "id": "sunspa-filter-groot",
-    "title": "Sunspa Filter groot",
-    "price": 45,
-    "image": "images/sunspa-filter-groot.webp"
-  },
-  {
-    "id": "fox-spa-filter",
-    "title": "Fox spa filter",
-    "price": 45,
-    "image": "images/fox-spa-filter.webp",
-    "showrooms": [
-      "gent",
-      "brugge"
-    ]
-  },
-  {
     "id": "fox-spa-kussen",
     "title": "Fox spa kussen",
     "price": 29.95,
@@ -179,12 +222,6 @@
     "title": "SpaGoedkoop.be Myspa Hoek kussen",
     "price": 28.95,
     "image": "images/spagoedkoopbe-myspa-hoek-kussen.webp"
-  },
-  {
-    "id": "myspa-vogue-filter",
-    "title": "MySpa & Vogue filter",
-    "price": 45,
-    "image": "images/myspa-vogue-filter.webp"
   },
   {
     "id": "spa-line-cover-shine",
@@ -255,18 +292,6 @@
     ]
   },
   {
-    "id": "filter-explore-san-marino-new-york",
-    "title": "Filter Explore | san marino | New york",
-    "price": 45,
-    "image": "images/filter-explore-san-marino-new-york.webp"
-  },
-  {
-    "id": "filterset-zwemspa",
-    "title": "Filterset zwemspa",
-    "price": 160,
-    "image": "images/darlly-filterset-zwemspa.webp"
-  },
-  {
     "id": "spa-line-ph-minus",
     "title": "Spa Line Spa pH Minus",
     "price": 13.95,
@@ -308,15 +333,6 @@
     "image": "images/spa-line-spa-line-spa-clear-water.webp",
     "showrooms": [
       "gent"
-    ]
-  },
-  {
-    "id": "nieuwe-zwemspa-filter",
-    "title": "Nieuwe zwemspa filter",
-    "price": 79.95,
-    "image": "images/kassa/nieuwe-zwemspa-filter.jpg",
-    "showrooms": [
-      "brugge"
     ]
   },
   {
@@ -370,12 +386,6 @@
     "title": "HaLu hoofdsteun",
     "price": 49.95,
     "image": "images/kassa/halu-hoofdsteun.webp"
-  },
-  {
-    "id": "bullfrog-filter",
-    "title": "Bullfrog filter",
-    "price": 45,
-    "image": "images/kassa/bullfrog-filter.webp"
   },
   {
     "id": "badjas-sunspa",
@@ -501,16 +511,6 @@
     "image": "images/kassa/spa-line-citrus-clean.webp",
     "showrooms": [
       "gent"
-    ]
-  },
-  {
-    "id": "spa-line-pre-filter",
-    "title": "Spa Line Pre Filter",
-    "price": 9.95,
-    "image": "images/kassa/spa-line-pre-filter.png",
-    "showrooms": [
-      "gent",
-      "brugge"
     ]
   },
   {
