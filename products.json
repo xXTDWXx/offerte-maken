@@ -235,12 +235,11 @@
     {
       "id": "spa::sunspa-serenza",
       "type": "spa",
-      "hidden": true,
       "merk": "Sunspa",
       "title": "Sunspa Serenza",
-      "url": "https://www.sunspabenelux.be/p/sunspa-serenza/",
+      "url": "https://www.sunspabenelux.nl/p/sunspa-serenza/",
       "image": "https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-Side_768px-1536x1536.png",
-      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-Side_768px.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-Side_768px-650x650.png","label":"Serenity spa Zijkant"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-TOP_800px.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-TOP_800px-650x650.png","label":"Serenity spa SPA2000-1MD \u0026#8211; TOP_800px"}],
+      "gallery_images": [{"src":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-Side_768px.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-Side_768px-650x650.png","label":"Sunspa Serenza - zijaanzicht"},{"src":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-TOP_800px.png","thumbnail":"https://www.sunspabenelux.be/wp-content/uploads/2024/06/Serenity-spa-SPA2000-1MD-TOP_800px-650x650.png","label":"Sunspa Serenza - bovenaanzicht"}],
       "price": 5395,
       "bullets": [],
       "specs": [
@@ -330,7 +329,7 @@
         },
         {
           "label": "UV",
-          "value": "Ozonator of UV-filter"
+          "value": "UV-filter"
         }
       ]
     },
