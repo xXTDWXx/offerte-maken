@@ -140,7 +140,7 @@
     const model = title
       .replace(/^(?:plug and play spa|fox elite|fox spa|legend spa|bullfrog spa|maxicuzzi|sunspa|myspa|vogue|zwemspa)\s+/, '')
       .replace(/\s+hottub spa$/, '');
-    const aliases = { aquavera: 'aquatique', 'goldline spa': 'goldline' };
+    const aliases = { aquavera: 'aquatique', serenza: 'serenity', 'goldline spa': 'goldline' };
     return [...new Set([aliases[model], model, title].filter(Boolean))];
   }
 

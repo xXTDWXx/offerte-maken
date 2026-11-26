@@ -11,6 +11,7 @@ async function runStockTests(stockSource, productSource) {
     { key: 'elite', currentTotal: 1 },
     { key: 'angora', currentTotal: 2 },
     { key: 'aquatique', currentTotal: 4 },
+    { key: 'serenity', currentTotal: 5 },
     { key: 'python', currentTotal: 18 },
     { key: 'san marino 1', currentTotal: 4 },
     { key: 'grand pacific prem', currentTotal: 1 }
@@ -46,6 +47,10 @@ async function runStockTests(stockSource, productSource) {
   assert(api.findModel({title:'Vogue Angora'}, {models:[{key:'angora'},{key:'angora'}]}) === null, 'Ambiguous name matched');
   assert(api.getAvailability({title:'Vogue Angora',type:'spa'}, stock) === true, 'Fresh stock hidden');
 
+  assert(api.findModel({title:'Sunspa Serenza'}, stock).key === 'serenity', 'Serenza alias missing');
+  assert(api.getAvailability({title:'Sunspa Serenza',type:'spa'}, stock) === true, 'Serenity stock not shown for Serenza');
+  assert(api.getAvailability({title:'Sunspa Serenza',type:'spa'}, {...stock,models:[{key:'serenity',currentTotal:0}]}) === false, 'Zero Serenity stock shown as available');
+  assert(api.findModel({title:'Sunspa Serenza'}, {models:[{key:'serenity plus',currentTotal:9}]}) === null, 'Serenza borrowed another variant');
   const saunaStock = {generatedAt: new Clock().toISOString(), models: [], saunas: {items: [
     {name:'Barrel TR300-X Nutty Cedar',currentTotal:0,incomingTotal:5},
     {name:'Barrel TR300-X Nutty Cedar (Half Glass)',currentTotal:2},
